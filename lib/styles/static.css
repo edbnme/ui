@@ -1,0 +1,304 @@
+/**
+ * =============================================================================
+ * STATIC STYLES - CSS-Only Variant
+ * =============================================================================
+ * 
+ * Styles specific to static components using CSS transitions only.
+ * This file extends the base layer with tw-animate-css utilities
+ * and simple CSS transitions without motion/react dependencies.
+ *
+ * Usage:
+ *   @import "@/lib/styles/base.css";
+ *   @import "@/lib/styles/static.css";
+ *
+ * Features:
+ *   - tw-animate-css integration for Radix UI animations
+ *   - Simple CSS transitions (no spring physics)
+ *   - Optimized for minimal bundle size (~30KB less than animated)
+ *   - No JavaScript animation dependencies
+ *
+ * @layer static - Applied after base, contains CSS-only animations
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./base.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =============================================================================
+   TAILWIND V4 THEME CONFIGURATION
+   ============================================================================= */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+}
+
+/* =============================================================================
+   CSS LAYERS - Static Variant
+   ============================================================================= */
+
+@layer static;
+
+/* =============================================================================
+   STATIC TIMING TOKENS (simple easing, no spring physics)
+   ============================================================================= */
+
+@layer tokens {
+  :root {
+    /* Simple CSS easing (not spring-based) */
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-linear: linear;
+  }
+}
+
+/* =============================================================================
+   STATIC TRANSITION UTILITIES
+   ============================================================================= */
+
+@layer static {
+  /* Simple transition utilities */
+  .transition-ease-in {
+    transition-timing-function: var(--ease-in);
+  }
+
+  .transition-ease-out {
+    transition-timing-function: var(--ease-out);
+  }
+
+  .transition-ease-in-out {
+    transition-timing-function: var(--ease-in-out);
+  }
+
+  /* Combined transition presets */
+  .transition-fast {
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .transition-normal {
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .transition-slow {
+    transition-duration: var(--duration-slow);
+    transition-timing-function: var(--ease-in-out);
+  }
+}
+
+/* =============================================================================
+   STATIC BUTTON STATES
+   ============================================================================= */
+
+@layer static {
+  /* Simple hover/active states without ripple */
+  .static-button-hover {
+    transition:
+      background-color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  .static-button-active {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .static-button-active:active {
+    transform: scale(0.98);
+  }
+}
+
+/* =============================================================================
+   STATIC ICON ANIMATIONS (CSS-only)
+   ============================================================================= */
+
+@layer static {
+  @keyframes static-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes static-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .static-icon-spin {
+    animation: static-spin 1s linear infinite;
+  }
+
+  .static-icon-pulse {
+    animation: static-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+/* =============================================================================
+   TW-ANIMATE-CSS OVERRIDES FOR STATIC COMPONENTS
+   ============================================================================= */
+
+@layer static {
+  /* Ensure tw-animate-css animations are fast and clean */
+  [data-state="open"] {
+    --tw-animate-duration: var(--duration-normal);
+  }
+
+  [data-state="closed"] {
+    --tw-animate-duration: var(--duration-fast);
+  }
+
+  /* Slide animations - slightly slower for polish */
+  .slide-in-from-top,
+  .slide-in-from-bottom,
+  .slide-in-from-left,
+  .slide-in-from-right,
+  .slide-out-to-top,
+  .slide-out-to-bottom,
+  .slide-out-to-left,
+  .slide-out-to-right {
+    --tw-animate-duration: var(--duration-slow);
+  }
+}
+
+/* =============================================================================
+   REDUCED MOTION - Static Variant
+   ============================================================================= */
+
+@layer static {
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    /* Disable icon animations */
+    .static-icon-spin,
+    .static-icon-pulse {
+      animation: none;
+    }
+
+    /* Disable button scale on active */
+    .static-button-active:active {
+      transform: none;
+    }
+  }
+}
+
+/* =============================================================================
+   STATIC LOADING STATES
+   ============================================================================= */
+
+@layer static {
+  /* Simple loading spinner (CSS-only) */
+  @keyframes static-spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .static-spinner {
+    animation: static-spinner 0.8s linear infinite;
+  }
+
+  /* Loading dots */
+  @keyframes static-dots {
+    0%,
+    80%,
+    100% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+
+  .static-loading-dot {
+    animation: static-dots 1.4s ease-in-out infinite both;
+  }
+
+  .static-loading-dot:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  .static-loading-dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  .static-loading-dot:nth-child(3) {
+    animation-delay: 0s;
+  }
+}
+
+/* =============================================================================
+   STATIC FOCUS STATES
+   ============================================================================= */
+
+@layer static {
+  /* Focus ring with simple transition */
+  .static-focus-ring {
+    transition:
+      box-shadow var(--duration-fast) var(--ease-out),
+      outline var(--duration-fast) var(--ease-out);
+  }
+
+  .static-focus-ring:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}

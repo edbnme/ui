@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Popover Component
  *
  * A styled, reusable UI component for displaying rich content in a portal-like layer.

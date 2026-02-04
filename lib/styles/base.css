@@ -1,0 +1,342 @@
+/**
+ * =============================================================================
+ * BASE STYLES - Shared Foundation Layer
+ * =============================================================================
+ * 
+ * Core design tokens and utilities shared between animated and static variants.
+ * This file contains CSS custom properties, base resets, and essential utilities
+ * that are variant-agnostic.
+ *
+ * Usage:
+ *   - Import this file BEFORE animated.css or static.css
+ *   - Contains: color tokens, typography, radius, shadows, base utilities
+ *   - Does NOT contain: animations, transitions, keyframes
+ *
+ * @layer base - Applied first, can be overridden by variant layers
+ */
+
+/* =============================================================================
+   CSS LAYERS - Define cascade order
+   ============================================================================= */
+
+@layer base, tokens, utilities;
+
+/* =============================================================================
+   DESIGN TOKENS
+   Core design values for consistent styling
+   ============================================================================= */
+
+@layer tokens {
+  html {
+    /* Prevent layout shift when scrollbar appears/disappears */
+    scrollbar-gutter: stable;
+    /* CSS custom property for scroll lock compensation (set by usePreventScroll) */
+    --scrollbar-width: 0px;
+  }
+
+  /* Scroll lock body styles - added programmatically, this just sets defaults */
+  body {
+    /* Transition for smooth scrollbar compensation */
+    transition: padding-right 0ms;
+  }
+
+  /* Radix UI scroll lock compensation */
+  body[data-scroll-locked] {
+    /* When Radix locks scroll, maintain layout by adding padding for scrollbar */
+    padding-right: var(--scrollbar-width, 0px) !important;
+    margin-right: 0 !important;
+  }
+
+  :root {
+    /* Base radius - Modern (larger, more rounded) */
+    --radius: 0.75rem;
+
+    /* Colors - Light mode (OKLCH format for Tailwind v4) */
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.646 0.222 41.116);
+    --chart-2: oklch(0.6 0.118 184.704);
+    --chart-3: oklch(0.398 0.07 227.392);
+    --chart-4: oklch(0.828 0.189 84.429);
+    --chart-5: oklch(0.769 0.188 70.08);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+
+    /* Blur values */
+    --blur-sm: 4px;
+    --blur-md: 8px;
+    --blur-lg: 16px;
+    --blur-xl: 20px;
+    --blur-2xl: 32px;
+
+    /* Saturation for glassmorphism backdrop */
+    --backdrop-saturate: 180%;
+
+    /* Shadow curves - softer, multi-layer */
+    --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.04);
+    --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04);
+    --shadow-md: 0 4px 6px oklch(0 0 0 / 0.05), 0 2px 4px oklch(0 0 0 / 0.04);
+    --shadow-lg: 0 10px 15px oklch(0 0 0 / 0.08), 0 4px 6px oklch(0 0 0 / 0.04);
+    --shadow-xl: 0 20px 25px oklch(0 0 0 / 0.1), 0 8px 10px oklch(0 0 0 / 0.05);
+    --shadow-2xl: 0 25px 50px oklch(0 0 0 / 0.15);
+
+    /* Duration presets (used by both variants) */
+    --duration-instant: 0ms;
+    --duration-fast: 100ms;
+    --duration-normal: 200ms;
+    --duration-slow: 300ms;
+    --duration-slower: 500ms;
+  }
+
+  .dark {
+    --background: oklch(0.21 0.006 285.885);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+
+    /* Darker shadows for dark mode */
+    --shadow-xs: 0 1px 2px oklch(0 0 0 / 0.1);
+    --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px oklch(0 0 0 / 0.15), 0 2px 4px oklch(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px oklch(0 0 0 / 0.2), 0 4px 6px oklch(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px oklch(0 0 0 / 0.25), 0 8px 10px oklch(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px oklch(0 0 0 / 0.35);
+  }
+}
+
+/* =============================================================================
+   BASE LAYER STYLES
+   ============================================================================= */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    @apply overflow-x-hidden;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* System font stack */
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* =============================================================================
+   SHIKI SYNTAX HIGHLIGHTING
+   Dual theme support with CSS variables
+   ============================================================================= */
+
+@layer base {
+  /* Light mode - use Shiki light theme colors */
+  :root {
+    --shiki-color-text: #24292f;
+    --shiki-color-background: transparent;
+    --shiki-token-constant: #0550ae;
+    --shiki-token-string: #0a3069;
+    --shiki-token-comment: #6e7781;
+    --shiki-token-keyword: #cf222e;
+    --shiki-token-parameter: #24292f;
+    --shiki-token-function: #8250df;
+    --shiki-token-string-expression: #0a3069;
+    --shiki-token-punctuation: #24292f;
+    --shiki-token-link: #0a3069;
+  }
+
+  /* Dark mode - use Shiki dark theme colors */
+  .dark {
+    --shiki-color-text: #adbac7;
+    --shiki-color-background: transparent;
+    --shiki-token-constant: #6cb6ff;
+    --shiki-token-string: #96d0ff;
+    --shiki-token-comment: #768390;
+    --shiki-token-keyword: #f47067;
+    --shiki-token-parameter: #adbac7;
+    --shiki-token-function: #dcbdfb;
+    --shiki-token-string-expression: #96d0ff;
+    --shiki-token-punctuation: #adbac7;
+    --shiki-token-link: #96d0ff;
+  }
+
+  /* Shiki pre/code styling */
+  [data-shiki] {
+    background-color: transparent !important;
+  }
+
+  [data-shiki] code {
+    display: block;
+  }
+
+  /* Shiki dual theme - use CSS variables set by Shiki */
+  .shiki,
+  .shiki span {
+    color: var(--shiki-light) !important;
+    background-color: transparent !important;
+  }
+
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: transparent !important;
+  }
+}
+
+/* =============================================================================
+   BASE UTILITIES (non-animation)
+   ============================================================================= */
+
+@layer utilities {
+  /* Backdrop blur with saturation (glassmorphism) */
+  .backdrop-apple {
+    backdrop-filter: blur(var(--blur-xl)) saturate(var(--backdrop-saturate));
+  }
+
+  /* Sleek modern scrollbars */
+  .scrollbar-sleek {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+  }
+
+  .scrollbar-sleek::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-sleek::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+  }
+
+  .scrollbar-sleek::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+  }
+
+  .scrollbar-sleek::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  .scrollbar-sleek::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  .dark .scrollbar-sleek {
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+
+  .dark .scrollbar-sleek::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .dark .scrollbar-sleek::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Hide scrollbar buttons in code blocks (Edge/Windows arrows) */
+  .code-block-scroll::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+    background: transparent;
+  }
+
+  /* Hide scrollbars completely on mobile for code blocks */
+  .code-block-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .code-block-scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Scrollbar-none utility for Tailwind */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* High contrast mode adjustments */
+  @media (prefers-contrast: more) {
+    :root {
+      --border: oklch(0.5 0 0);
+    }
+    .dark {
+      --border: oklch(0.7 0 0);
+    }
+  }
+
+  /* Focus ring */
+  .focus-ring-apple {
+    @apply outline-none;
+    @apply focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply focus-visible:ring-offset-background;
+  }
+
+  /* Force justify text for an element and all its children (use sparingly) */
+  .justify-all,
+  .justify-all * {
+    text-align: justify !important;
+    text-justify: inter-word;
+  }
+}

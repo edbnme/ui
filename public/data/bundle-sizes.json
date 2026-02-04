@@ -1,0 +1,864 @@
+{
+  "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
+  "version": "1.0.0",
+  "summary": {
+    "totalPackages": 14,
+    "totalComponents": 21,
+    "animatedComponents": 7,
+    "staticComponents": 7,
+    "sharedComponents": 7,
+    "largestDependency": {
+      "name": "motion",
+      "size": 150000,
+      "gzip": 45000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "computedAt": "2026-02-04T04:14:57.175Z"
+  },
+  "packages": [
+    {
+      "name": "@phosphor-icons/react",
+      "size": 1200,
+      "gzip": 400,
+      "version": "latest",
+      "source": "fallback",
+      "note": "Per icon, tree-shakable"
+    },
+    {
+      "name": "@radix-ui/react-avatar",
+      "size": 8000,
+      "gzip": 2500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "@radix-ui/react-dialog",
+      "size": 25000,
+      "gzip": 7500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "@radix-ui/react-dropdown-menu",
+      "size": 35000,
+      "gzip": 10000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "@radix-ui/react-scroll-area",
+      "size": 15000,
+      "gzip": 4500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "@radix-ui/react-separator",
+      "size": 2500,
+      "gzip": 800,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "@radix-ui/react-slider",
+      "size": 18000,
+      "gzip": 5500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "@radix-ui/react-slot",
+      "size": 2500,
+      "gzip": 900,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "@radix-ui/react-tooltip",
+      "size": 20000,
+      "gzip": 6000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "class-variance-authority",
+      "size": 4500,
+      "gzip": 1500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "clsx",
+      "size": 1800,
+      "gzip": 600,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "motion",
+      "size": 150000,
+      "gzip": 45000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "tailwind-merge",
+      "size": 28000,
+      "gzip": 8000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    {
+      "name": "tw-animate-css",
+      "size": 18000,
+      "gzip": 5000,
+      "version": "latest",
+      "source": "fallback"
+    }
+  ],
+  "components": {
+    "button": {
+      "name": "button",
+      "title": "Button",
+      "description": "Animated button component with press feedback, loading states, and icon support.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 176200,
+        "gzipped": 52800,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-slot",
+          "size": 2500,
+          "gzip": 900,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 5
+    },
+    "alert-dialog": {
+      "name": "alert-dialog",
+      "title": "Alert Dialog",
+      "description": "Animated modal dialog with morphing animations, focus trap, and controlled/uncontrolled state.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 169200,
+        "gzipped": 50400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "popover": {
+      "name": "popover",
+      "title": "Popover",
+      "description": "Animated popover component with morphing transitions, focus trap, and click-outside handling.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 168000,
+        "gzipped": 50000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "dropdown-menu": {
+      "name": "dropdown-menu",
+      "title": "Dropdown Menu",
+      "description": "Animated dropdown menu with smooth spring animations and staggered item reveals.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 204200,
+        "gzipped": 60400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-dropdown-menu",
+          "size": 35000,
+          "gzip": 10000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 4
+    },
+    "pull-down": {
+      "name": "pull-down",
+      "title": "Pull Down Menu",
+      "description": "A pull down menu with morphing animations. The trigger morphs into the menu container with spring physics.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 169200,
+        "gzipped": 50400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "sheet": {
+      "name": "sheet",
+      "title": "Sheet",
+      "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 179500,
+        "gzipped": 54000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-dialog",
+          "size": 25000,
+          "gzip": 7500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "sidebar": {
+      "name": "sidebar",
+      "title": "Sidebar",
+      "description": "A responsive sidebar component with collapsible states, mobile sheet mode, and keyboard shortcuts.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 8200,
+        "gzipped": 2800,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-slot",
+          "size": 2500,
+          "gzip": 900,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "button-static": {
+      "name": "button",
+      "title": "Button (Static)",
+      "description": "Static button component with CSS transitions only. No motion dependency required.",
+      "variant": "static",
+      "sizes": {
+        "minified": 26200,
+        "gzipped": 7800,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-slot",
+          "size": 2500,
+          "gzip": 900,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 4
+    },
+    "alert-dialog-static": {
+      "name": "alert-dialog",
+      "title": "Alert Dialog (Static)",
+      "description": "Static modal dialog with CSS transitions only. No motion dependency required.",
+      "variant": "static",
+      "sizes": {
+        "minified": 19200,
+        "gzipped": 5400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "popover-static": {
+      "name": "popover",
+      "title": "Popover (Static)",
+      "description": "Static popover component with CSS transitions only. No motion dependency required.",
+      "variant": "static",
+      "sizes": {
+        "minified": 18000,
+        "gzipped": 5000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "dropdown-menu-static": {
+      "name": "dropdown-menu",
+      "title": "Dropdown Menu (Static)",
+      "description": "Static dropdown menu with CSS transitions only. No motion dependency required.",
+      "variant": "static",
+      "sizes": {
+        "minified": 54200,
+        "gzipped": 15400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-dropdown-menu",
+          "size": 35000,
+          "gzip": 10000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "tw-animate-css",
+          "size": 18000,
+          "gzip": 5000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "pull-down-static": {
+      "name": "pull-down",
+      "title": "Pull Down Menu (Static)",
+      "description": "A pull down menu with CSS animations. No motion dependency required (~30KB savings).",
+      "variant": "static",
+      "sizes": {
+        "minified": 1200,
+        "gzipped": 400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "sheet-static": {
+      "name": "sheet",
+      "title": "Sheet (Static)",
+      "description": "A slide-out panel component with CSS animations. No motion dependency required.",
+      "variant": "static",
+      "sizes": {
+        "minified": 30700,
+        "gzipped": 9400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-dialog",
+          "size": 25000,
+          "gzip": 7500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "sidebar-static": {
+      "name": "sidebar",
+      "title": "Sidebar (Static)",
+      "description": "A responsive sidebar component with CSS animations. No motion dependency required.",
+      "variant": "static",
+      "sizes": {
+        "minified": 8200,
+        "gzipped": 2800,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-slot",
+          "size": 2500,
+          "gzip": 900,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "avatar": {
+      "name": "avatar",
+      "title": "Avatar",
+      "description": "Composable avatar component with sizes, status indicators, and group stacking support.",
+      "variant": "shared",
+      "sizes": {
+        "minified": 12500,
+        "gzipped": 4000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-avatar",
+          "size": 8000,
+          "gzip": 2500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "input": {
+      "name": "input",
+      "title": "Input",
+      "description": "A styled input component with focus states, validation support, and file input styling.",
+      "variant": "shared",
+      "sizes": {
+        "minified": 0,
+        "gzipped": 0,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [],
+      "dependencyCount": 0
+    },
+    "scroll-area": {
+      "name": "scroll-area",
+      "title": "Scroll Area",
+      "description": "A scrollable area with custom scrollbars built on Radix UI ScrollArea.",
+      "variant": "shared",
+      "sizes": {
+        "minified": 15000,
+        "gzipped": 4500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-scroll-area",
+          "size": 15000,
+          "gzip": 4500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "separator": {
+      "name": "separator",
+      "title": "Separator",
+      "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
+      "variant": "shared",
+      "sizes": {
+        "minified": 2500,
+        "gzipped": 800,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-separator",
+          "size": 2500,
+          "gzip": 800,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "skeleton": {
+      "name": "skeleton",
+      "title": "Skeleton",
+      "description": "A loading placeholder component with pulse animation for content loading states.",
+      "variant": "shared",
+      "sizes": {
+        "minified": 0,
+        "gzipped": 0,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [],
+      "dependencyCount": 0
+    },
+    "slider": {
+      "name": "slider",
+      "title": "Slider",
+      "description": "A range slider component with single or multiple thumbs, built on Radix UI Slider.",
+      "variant": "shared",
+      "sizes": {
+        "minified": 18000,
+        "gzipped": 5500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-slider",
+          "size": 18000,
+          "gzip": 5500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "tooltip": {
+      "name": "tooltip",
+      "title": "Tooltip",
+      "description": "A tooltip component with smooth animations and configurable positioning.",
+      "variant": "shared",
+      "sizes": {
+        "minified": 20000,
+        "gzipped": 6000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@radix-ui/react-tooltip",
+          "size": 20000,
+          "gzip": 6000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    }
+  },
+  "comparisons": {
+    "button": {
+      "animated": {
+        "name": "button",
+        "gzipped": 52800
+      },
+      "static": {
+        "name": "button-static",
+        "gzipped": 7800
+      },
+      "difference": {
+        "bytes": 45000,
+        "percent": 85,
+        "savings": "43.9 KB"
+      }
+    },
+    "alert-dialog": {
+      "animated": {
+        "name": "alert-dialog",
+        "gzipped": 50400
+      },
+      "static": {
+        "name": "alert-dialog-static",
+        "gzipped": 5400
+      },
+      "difference": {
+        "bytes": 45000,
+        "percent": 89,
+        "savings": "43.9 KB"
+      }
+    },
+    "popover": {
+      "animated": {
+        "name": "popover",
+        "gzipped": 50000
+      },
+      "static": {
+        "name": "popover-static",
+        "gzipped": 5000
+      },
+      "difference": {
+        "bytes": 45000,
+        "percent": 90,
+        "savings": "43.9 KB"
+      }
+    },
+    "dropdown-menu": {
+      "animated": {
+        "name": "dropdown-menu",
+        "gzipped": 60400
+      },
+      "static": {
+        "name": "dropdown-menu-static",
+        "gzipped": 15400
+      },
+      "difference": {
+        "bytes": 45000,
+        "percent": 75,
+        "savings": "43.9 KB"
+      }
+    },
+    "pull-down": {
+      "animated": {
+        "name": "pull-down",
+        "gzipped": 50400
+      },
+      "static": {
+        "name": "pull-down-static",
+        "gzipped": 400
+      },
+      "difference": {
+        "bytes": 50000,
+        "percent": 99,
+        "savings": "48.8 KB"
+      }
+    },
+    "sheet": {
+      "animated": {
+        "name": "sheet",
+        "gzipped": 54000
+      },
+      "static": {
+        "name": "sheet-static",
+        "gzipped": 9400
+      },
+      "difference": {
+        "bytes": 44600,
+        "percent": 83,
+        "savings": "43.6 KB"
+      }
+    },
+    "sidebar": {
+      "animated": {
+        "name": "sidebar",
+        "gzipped": 2800
+      },
+      "static": {
+        "name": "sidebar-static",
+        "gzipped": 2800
+      },
+      "difference": {
+        "bytes": 0,
+        "percent": 0,
+        "savings": "0 B"
+      }
+    }
+  }
+}
