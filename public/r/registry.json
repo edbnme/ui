@@ -1,8 +1,24 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "edbn-ui",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://ui.edbn.me",
+  "variants": {
+    "animated": {
+      "name": "Animated",
+      "description": "Components with motion/react spring animations",
+      "dependencies": [
+        "motion"
+      ],
+      "cssImport": "@/lib/styles/animated.css"
+    },
+    "static": {
+      "name": "Static",
+      "description": "Components with CSS-only animations (lighter bundle)",
+      "dependencies": [],
+      "cssImport": "@/lib/styles/static.css"
+    }
+  },
   "items": [
     {
       "name": "button",
@@ -19,9 +35,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "animated",
       "files": [
         {
-          "path": "components/ui/button.tsx",
+          "path": "components/ui/animated/button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -40,9 +57,10 @@
         "utils",
         "button"
       ],
+      "variant": "animated",
       "files": [
         {
-          "path": "components/ui/alert-dialog.tsx",
+          "path": "components/ui/animated/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -59,9 +77,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "animated",
       "files": [
         {
-          "path": "components/ui/popover.tsx",
+          "path": "components/ui/animated/popover.tsx",
           "type": "registry:ui"
         }
       ]
@@ -80,9 +99,137 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "animated",
       "files": [
         {
-          "path": "components/ui/dropdown-menu.tsx",
+          "path": "components/ui/animated/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pull-down",
+      "type": "registry:ui",
+      "title": "Pull Down Menu",
+      "description": "A pull down menu with morphing animations. The trigger morphs into the menu container with spring physics.",
+      "dependencies": [
+        "motion",
+        "@phosphor-icons/react",
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/animated/pull-down.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority",
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/animated/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A responsive sidebar component with collapsible states, mobile sheet mode, and keyboard shortcuts.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button",
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wheel-picker",
+      "type": "registry:ui",
+      "title": "Wheel Picker",
+      "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
+      "dependencies": [
+        "@ncdai/react-wheel-picker"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/wheel-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shimmering-text",
+      "type": "registry:ui",
+      "title": "Shimmering Text",
+      "description": "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/animated/shimmering-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slide-to-unlock",
+      "type": "registry:ui",
+      "title": "Slide to Unlock",
+      "description": "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils",
+        "shimmering-text"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/animated/slide-to-unlock.tsx",
           "type": "registry:ui"
         }
       ]
@@ -97,6 +244,7 @@
         "tw-animate-css"
       ],
       "registryDependencies": [],
+      "variant": "animated",
       "files": [
         {
           "path": "components/motion-provider.tsx",
@@ -126,23 +274,10 @@
         "tw-animate-css"
       ],
       "registryDependencies": [],
+      "variant": "animated",
       "files": [
         {
           "path": "lib/animations.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "tokens",
-      "type": "registry:lib",
-      "title": "Design Tokens",
-      "description": "Centralized design tokens for colors, spacing, typography, shadows, and more.",
-      "dependencies": [],
-      "registryDependencies": [],
-      "files": [
-        {
-          "path": "lib/tokens.ts",
           "type": "registry:lib"
         }
       ]
@@ -160,6 +295,7 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "animated",
       "files": [
         {
           "path": "lib/icons.tsx",
@@ -168,58 +304,185 @@
       ]
     },
     {
-      "name": "use-click-outside",
-      "type": "registry:hook",
-      "title": "useClickOutside",
-      "description": "Hook to detect clicks outside a referenced element.",
-      "dependencies": [],
-      "registryDependencies": [],
+      "name": "button-static",
+      "type": "registry:ui",
+      "title": "Button (Static)",
+      "description": "Static button component with CSS transitions only. No motion dependency required.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "@phosphor-icons/react",
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
       "files": [
         {
-          "path": "hooks/use-click-outside.tsx",
-          "type": "registry:hook"
+          "path": "components/ui/static/button.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "use-stable-id",
-      "type": "registry:hook",
-      "title": "useStableId",
-      "description": "SSR-safe hook for generating stable unique IDs for accessibility attributes.",
-      "dependencies": [],
-      "registryDependencies": [],
+      "name": "alert-dialog-static",
+      "type": "registry:ui",
+      "title": "Alert Dialog (Static)",
+      "description": "Static modal dialog with CSS transitions only. No motion dependency required.",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
       "files": [
         {
-          "path": "hooks/use-stable-id.ts",
-          "type": "registry:hook"
+          "path": "components/ui/static/alert-dialog.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "use-controllable-state",
-      "type": "registry:hook",
-      "title": "useControllableState",
-      "description": "Hook for handling controlled/uncontrolled state pattern in components.",
-      "dependencies": [],
-      "registryDependencies": [],
+      "name": "popover-static",
+      "type": "registry:ui",
+      "title": "Popover (Static)",
+      "description": "Static popover component with CSS transitions only. No motion dependency required.",
+      "dependencies": [
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
       "files": [
         {
-          "path": "hooks/use-controllable-state.ts",
-          "type": "registry:hook"
+          "path": "components/ui/static/popover.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "use-merged-refs",
-      "type": "registry:hook",
-      "title": "useMergedRefs",
-      "description": "Hook to merge multiple refs into a single callback ref.",
-      "dependencies": [],
-      "registryDependencies": [],
+      "name": "dropdown-menu-static",
+      "type": "registry:ui",
+      "title": "Dropdown Menu (Static)",
+      "description": "Static dropdown menu with CSS transitions only. No motion dependency required.",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "@phosphor-icons/react",
+        "tw-animate-css"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
       "files": [
         {
-          "path": "hooks/use-merged-refs.ts",
-          "type": "registry:hook"
+          "path": "components/ui/static/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pull-down-static",
+      "type": "registry:ui",
+      "title": "Pull Down Menu (Static)",
+      "description": "A pull down menu with CSS animations. No motion dependency required (~30KB savings).",
+      "dependencies": [
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/pull-down.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet-static",
+      "type": "registry:ui",
+      "title": "Sheet (Static)",
+      "description": "A slide-out panel component with CSS animations. No motion dependency required.",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-static",
+      "type": "registry:ui",
+      "title": "Sidebar (Static)",
+      "description": "A responsive sidebar component with CSS animations. No motion dependency required.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button-static",
+        "input",
+        "separator",
+        "sheet-static",
+        "skeleton",
+        "tooltip"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "static-transitions",
+      "type": "registry:lib",
+      "title": "Static Transitions",
+      "description": "CSS-only transition utilities for static components.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "lib/static-transitions.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "icons-static",
+      "type": "registry:lib",
+      "title": "Static Icons",
+      "description": "CSS-only icon components for static variants.",
+      "dependencies": [
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "lib/icons-static.tsx",
+          "type": "registry:lib"
         }
       ]
     },
@@ -235,29 +498,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/avatar.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "pull-down",
-      "type": "registry:ui",
-      "title": "Pull Down Menu",
-      "description": "A pull down menu with morphing animations. The trigger morphs into the menu container with spring physics.",
-      "dependencies": [
-        "motion",
-        "@phosphor-icons/react",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "components/ui/pull-down.tsx",
+          "path": "components/ui/shared/avatar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -271,9 +515,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/input.tsx",
+          "path": "components/ui/shared/input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -289,9 +534,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/scroll-area.tsx",
+          "path": "components/ui/shared/scroll-area.tsx",
           "type": "registry:ui"
         }
       ]
@@ -307,29 +553,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/separator.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "sheet",
-      "type": "registry:ui",
-      "title": "Sheet",
-      "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
-      "dependencies": [
-        "@radix-ui/react-dialog",
-        "class-variance-authority",
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "components/ui/sheet.tsx",
+          "path": "components/ui/shared/separator.tsx",
           "type": "registry:ui"
         }
       ]
@@ -343,9 +570,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/skeleton.tsx",
+          "path": "components/ui/shared/skeleton.tsx",
           "type": "registry:ui"
         }
       ]
@@ -361,9 +589,10 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/slider.tsx",
+          "path": "components/ui/shared/slider.tsx",
           "type": "registry:ui"
         }
       ]
@@ -379,36 +608,104 @@
       "registryDependencies": [
         "utils"
       ],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/tooltip.tsx",
+          "path": "components/ui/shared/tooltip.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "sidebar",
-      "type": "registry:ui",
-      "title": "Sidebar",
-      "description": "A responsive sidebar component with collapsible states, mobile sheet mode, and keyboard shortcuts.",
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils",
-        "button",
-        "input",
-        "separator",
-        "sheet",
-        "skeleton",
-        "tooltip"
-      ],
+      "name": "tokens",
+      "type": "registry:lib",
+      "title": "Design Tokens",
+      "description": "Centralized design tokens for colors, spacing, typography, shadows, and more.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "shared",
       "files": [
         {
-          "path": "components/ui/sidebar.tsx",
-          "type": "registry:ui"
+          "path": "lib/tokens.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "Utility functions including cn() for class merging.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "registryDependencies": [],
+      "variant": "shared",
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-click-outside",
+      "type": "registry:hook",
+      "title": "useClickOutside",
+      "description": "Hook to detect clicks outside a referenced element.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "shared",
+      "files": [
+        {
+          "path": "hooks/use-click-outside.tsx",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-stable-id",
+      "type": "registry:hook",
+      "title": "useStableId",
+      "description": "SSR-safe hook for generating stable unique IDs for accessibility attributes.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "shared",
+      "files": [
+        {
+          "path": "hooks/use-stable-id.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-controllable-state",
+      "type": "registry:hook",
+      "title": "useControllableState",
+      "description": "Hook for handling controlled/uncontrolled state pattern in components.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "shared",
+      "files": [
+        {
+          "path": "hooks/use-controllable-state.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-merged-refs",
+      "type": "registry:hook",
+      "title": "useMergedRefs",
+      "description": "Hook to merge multiple refs into a single callback ref.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "shared",
+      "files": [
+        {
+          "path": "hooks/use-merged-refs.ts",
+          "type": "registry:hook"
         }
       ]
     },
@@ -419,6 +716,7 @@
       "description": "Hook to detect mobile viewport based on media query.",
       "dependencies": [],
       "registryDependencies": [],
+      "variant": "shared",
       "files": [
         {
           "path": "hooks/use-mobile.ts",

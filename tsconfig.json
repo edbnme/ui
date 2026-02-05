@@ -13,6 +13,13 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "paths": {
+      "@/components/ui/*": ["./components/ui/*"],
+      "@/components/ui/animated/*": ["./components/ui/animated/*"],
+      "@/components/ui/static/*": ["./components/ui/static/*"],
+      "@/components/ui/shared/*": ["./components/ui/shared/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/lib/*": ["./lib/*"],
+      "@/lib/styles/*": ["./lib/styles/*"],
       "@/*": ["./*"]
     }
   },

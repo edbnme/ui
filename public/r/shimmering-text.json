@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmering-text",
+  "type": "registry:ui",
+  "title": "Shimmering Text",
+  "description": "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "animated",
+  "files": [
+    {
+      "path": "components/ui/animated/shimmering-text.tsx",
+      "content": "/**\r\n * Shimmering Text Component\r\n *\r\n * An animated text component that creates a shimmering effect by sequentially\r\n * animating each character's color. Perfect for \"slide to unlock\" style UIs.\r\n *\r\n * Credits: Original implementation by @ncdai (https://chanhdai.com/components/slide-to-unlock)\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { motion, type HTMLMotionProps, type Variants } from \"motion/react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// TYPES\r\n// =============================================================================\r\n\r\nexport type ShimmeringTextProps = Omit<HTMLMotionProps<\"span\">, \"children\"> & {\r\n  /** The text content to display with the shimmering effect */\r\n  text: string;\r\n  /** Duration (in seconds) for each character's shimmer animation cycle */\r\n  duration?: number;\r\n  /** Controls whether the animation is stopped */\r\n  isStopped?: boolean;\r\n};\r\n\r\n// =============================================================================\r\n// SHIMMERING TEXT COMPONENT\r\n// =============================================================================\r\n\r\n/**\r\n * ShimmeringText - Animated text with per-character color shimmer\r\n *\r\n * Creates a wave-like shimmer effect across text by animating each character's\r\n * color with a slight delay, producing an elegant \"traveling light\" effect.\r\n *\r\n * @example\r\n * ```tsx\r\n * <ShimmeringText text=\"slide to unlock\" />\r\n *\r\n * // With controlled state\r\n * <ShimmeringText\r\n *   text=\"slide to unlock\"\r\n *   isStopped={isDragging}\r\n *   duration={1.5}\r\n * />\r\n * ```\r\n */\r\nexport function ShimmeringText({\r\n  text,\r\n  duration = 1,\r\n  isStopped = false,\r\n  className,\r\n  ...props\r\n}: ShimmeringTextProps) {\r\n  const createCharVariants = React.useCallback(\r\n    (charIndex: number): Variants => ({\r\n      running: {\r\n        color: [\"var(--color)\", \"var(--shimmering-color)\", \"var(--color)\"],\r\n        transition: {\r\n          duration,\r\n          repeat: Infinity,\r\n          repeatType: \"loop\" as const,\r\n          repeatDelay: text.length * 0.05,\r\n          delay: (charIndex * duration) / text.length,\r\n          ease: \"easeInOut\",\r\n        },\r\n      },\r\n      stopped: {\r\n        color: \"var(--color)\",\r\n        transition: {\r\n          duration: duration * 0.5,\r\n          ease: \"easeOut\",\r\n        },\r\n      },\r\n    }),\r\n    [duration, text.length],\r\n  );\r\n\r\n  return (\r\n    <motion.span\r\n      data-slot=\"shimmering-text\"\r\n      className={cn(\r\n        \"inline-block select-none\",\r\n        \"[--color:var(--color-zinc-400)] [--shimmering-color:var(--color-zinc-950)]\",\r\n        \"dark:[--color:var(--color-zinc-600)] dark:[--shimmering-color:var(--color-zinc-50)]\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    >\r\n      {text?.split(\"\")?.map((char, i) => (\r\n        <motion.span\r\n          key={i}\r\n          className=\"inline-block whitespace-pre\"\r\n          initial=\"stopped\"\r\n          animate={isStopped ? \"stopped\" : \"running\"}\r\n          variants={createCharVariants(i)}\r\n        >\r\n          {char}\r\n        </motion.span>\r\n      ))}\r\n    </motion.span>\r\n  );\r\n}\r\n\r\nShimmeringText.displayName = \"ShimmeringText\";\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

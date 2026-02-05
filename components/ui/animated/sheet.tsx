@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Sheet Component
  *
  * A slide-out panel component that appears from any edge of the screen.
@@ -76,12 +76,13 @@ export type SheetProps = {
   enableDrag?: boolean;
 } & React.ComponentProps<typeof SheetPrimitive.Root>;
 
-function Sheet({
-  disableAnimation,
-  enableDrag = true,
-  onOpenChange,
-  ...props
-}: SheetProps) {
+/**
+ * Sheet Root Component
+ *
+ * Wraps Radix Dialog.Root. The scrollbar compensation is handled automatically
+ * by Radix's internal react-remove-scroll-bar package.
+ */
+function Sheet({ disableAnimation, enableDrag = true, ...props }: SheetProps) {
   const shouldDisable = useShouldDisableAnimation(disableAnimation);
 
   return (
@@ -92,11 +93,7 @@ function Sheet({
         enableDrag,
       }}
     >
-      <SheetPrimitive.Root
-        data-slot="sheet"
-        onOpenChange={onOpenChange}
-        {...props}
-      />
+      <SheetPrimitive.Root data-slot="sheet" {...props} />
     </SheetContext.Provider>
   );
 }

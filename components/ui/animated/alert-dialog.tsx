@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Alert Dialog Component
  *
  * A modal dialog for important interactions that require acknowledgement.
@@ -1064,7 +1064,7 @@ function AlertDialogAction({
         isDestructive
           ? "bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80"
           : "bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80",
-        "transition-all duration-150",
+        "transition-[color,background-color,transform] duration-150",
         "active:scale-[0.98]",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "touch-manipulation select-none",
@@ -1135,7 +1135,7 @@ function AlertDialogCancel({
         "bg-secondary text-secondary-foreground shadow-sm",
         "hover:bg-secondary/90 active:bg-secondary/80",
         "dark:bg-secondary/80 dark:hover:bg-secondary/70",
-        "transition-all duration-150",
+        "transition-[color,background-color,transform] duration-150",
         "active:scale-[0.98]",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "touch-manipulation select-none",

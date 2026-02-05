@@ -1,9 +1,10 @@
-/**
- * Button Component
+﻿/**
+ * Button Component (Static Version)
  *
- * A production-grade button with animations, loading states, and full accessibility.
- * Follows the component philosophy: open (full source), reliable (battle-tested),
- * comprehensive (rich API), and customizable.
+ * A production-grade button without motion animations.
+ * Uses CSS transitions for subtle feedback while avoiding motion library dependencies.
+ *
+ * This is the static variant - use the animated variant for full spring animations.
  *
  * @packageDocumentation
  */
@@ -14,7 +15,6 @@
 // IMPORTS
 // =============================================================================
 
-// 1. React imports
 import * as React from "react";
 import {
   forwardRef,
@@ -25,25 +25,16 @@ import {
   type ElementRef,
 } from "react";
 
-// 2. External library imports
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion, type HTMLMotionProps } from "motion/react";
 import type { Icon } from "@phosphor-icons/react";
 
-// 3. Internal imports
 import { cn } from "@/lib/utils";
-import { springPresets, gestures } from "@/lib/animations";
-import { LoadingSpinner, AnimatedCheck } from "@/lib/icons";
-import { useShouldDisableAnimation } from "@/components/motion-provider";
 
 // =============================================================================
 // TYPES
 // =============================================================================
 
-/**
- * Ripple effect data structure
- */
 interface Ripple {
   x: number;
   y: number;
@@ -55,12 +46,6 @@ interface Ripple {
 // HOOKS
 // =============================================================================
 
-/**
- * Hook to manage ripple effects on button click
- *
- * Creates expanding circular ripples from the click point,
- * automatically cleaning up after animation completes.
- */
 function useRipple() {
   const [ripples, setRipples] = useState<Ripple[]>([]);
 
@@ -78,7 +63,6 @@ function useRipple() {
     [],
   );
 
-  // Auto-cleanup ripples after animation
   useEffect(() => {
     if (ripples.length > 0) {
       const lastRipple = ripples[ripples.length - 1];
@@ -93,44 +77,75 @@ function useRipple() {
 }
 
 // =============================================================================
-// VARIANTS (CVA)
-// Defined outside component for performance
+// LOADING SPINNER (Static CSS version)
 // =============================================================================
 
-/**
- * Button variants using class-variance-authority
- *
- * Includes all standard variants plus refinements for shadows,
- * focus states, and accessibility.
- */
+function LoadingSpinner({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      className="animate-spin"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        className="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+      />
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      />
+    </svg>
+  );
+}
+
+function CheckIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
+
+// =============================================================================
+// VARIANTS (CVA)
+// =============================================================================
+
 const buttonVariants = cva(
-  // Base styles - always applied
   [
-    // Layout
     "inline-flex items-center justify-center gap-2 whitespace-nowrap shrink-0",
-    // Typography
     "text-sm font-medium",
-    // Shape
     "rounded-lg",
-    // Transitions
-    "transition-colors duration-150",
-    // Disabled state
+    "transition-[color,background-color,border-color,box-shadow,transform] duration-150",
     "disabled:pointer-events-none disabled:opacity-50",
-    // Icon sizing
     "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
-    // Focus ring
     "outline-none",
     "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-    // Error state (aria-invalid)
     "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-    // Usability
     "select-none",
+    // CSS-based interaction feedback
+    "active:scale-[0.98] active:transition-transform",
   ].join(" "),
   {
     variants: {
-      /**
-       * Visual style variants
-       */
       variant: {
         default: [
           "bg-primary text-primary-foreground",
@@ -168,9 +183,6 @@ const buttonVariants = cva(
         link: ["text-primary underline-offset-4", "hover:underline"].join(" "),
       },
 
-      /**
-       * Size variants
-       */
       size: {
         default: "h-10 px-5 py-2.5 has-[>svg]:px-4",
         sm: "h-9 rounded-md gap-1.5 px-4 text-xs has-[>svg]:px-3",
@@ -193,98 +205,21 @@ const buttonVariants = cva(
 // COMPONENT PROPS
 // =============================================================================
 
-/**
- * Button component props
- */
 export interface ButtonProps
   extends
     Omit<ComponentPropsWithoutRef<"button">, "ref">,
     VariantProps<typeof buttonVariants> {
-  /**
-   * Render as a different element using Radix Slot pattern.
-   * When true, button merges props with its child element.
-   *
-   * @example
-   * ```tsx
-   * <Button asChild>
-   *   <a href="/home">Go Home</a>
-   * </Button>
-   * ```
-   */
   asChild?: boolean;
-
-  /**
-   * Show loading spinner and disable interactions.
-   * Replaces iconStart with a spinner.
-   */
   loading?: boolean;
-
-  /**
-   * Show success state with animated checkmark.
-   * Replaces iconStart with a check icon.
-   */
   success?: boolean;
-
-  /**
-   * Icon to display at the start (left side).
-   * Hidden during loading/success states.
-   */
   iconStart?: Icon;
-
-  /**
-   * Icon to display at the end (right side).
-   * Hidden during loading/success states.
-   */
   iconEnd?: Icon;
-
-  /**
-   * Disable all animations for this button.
-   * Overrides global motion provider settings.
-   */
-  disableAnimation?: boolean;
 }
 
 // =============================================================================
 // BUTTON COMPONENT
 // =============================================================================
 
-/**
- * Button - Unified button component with animations and rich features.
- *
- * Features:
- * - All standard variants (default, destructive, outline, secondary, ghost, link)
- * - Motion press feedback (scale on tap)
- * - Ripple effect on click
- * - Loading state with animated spinner
- * - Success state with checkmark
- * - Icon support with proper positioning
- * - Respects reduced motion preferences
- * - Full ARIA compliance
- * - Polymorphic with asChild pattern
- *
- * @example
- * ```tsx
- * // Basic usage
- * <Button variant="default" size="lg">
- *   Submit
- * </Button>
- *
- * // With loading state
- * <Button loading={isSubmitting}>
- *   Save Changes
- * </Button>
- *
- * // With icons
- * <Button variant="outline" iconStart={PlusIcon}>
- *   Add Item
- * </Button>
- *
- * // As a link
- * <Button asChild>
- *   <a href="/dashboard">Dashboard</a>
- * </Button>
- * ```
- */
 const Button = forwardRef<ElementRef<"button">, ButtonProps>(
   (
     {
@@ -296,7 +231,6 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       success = false,
       iconStart: IconStart,
       iconEnd: IconEnd,
-      disableAnimation,
       disabled,
       children,
       onClick,
@@ -304,19 +238,10 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
     },
     ref,
   ) => {
-    // Animation preference
-    const shouldDisableAnimation = useShouldDisableAnimation(disableAnimation);
     const isDisabled = disabled || loading;
-
-    // Ripple effect management
     const { ripples, createRipple } = useRipple();
-
-    // Determine if ripple should show (not on ghost/link variants)
     const showRipple = variant !== "ghost" && variant !== "link";
 
-    /**
-     * Handle click with ripple creation
-     */
     const handleClick = useCallback(
       (event: React.MouseEvent<HTMLButtonElement>) => {
         if (!loading && !success && showRipple) {
@@ -327,55 +252,23 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       [loading, success, showRipple, createRipple, onClick],
     );
 
-    // =========================================================================
-    // Determine icon sizes based on button size
-    // =========================================================================
     const iconSize = size === "sm" || size === "icon-sm" ? 14 : 16;
 
-    // =========================================================================
-    // Icon content - stable rendering without AnimatePresence
-    // =========================================================================
     const iconStartContent =
       IconStart && !loading && !success ? (
-        <IconStart
-          key="icon-start"
-          className="shrink-0"
-          size={iconSize}
-          aria-hidden="true"
-        />
+        <IconStart className="shrink-0" size={iconSize} aria-hidden="true" />
       ) : null;
 
-    const loadingSpinner = loading ? (
-      <LoadingSpinner
-        key="loading-spinner"
-        size={iconSize}
-        aria-hidden="true"
-      />
-    ) : null;
+    const loadingSpinner = loading ? <LoadingSpinner size={iconSize} /> : null;
 
     const successCheck =
-      success && !loading ? (
-        <AnimatedCheck
-          key="success-check"
-          size={iconSize}
-          className="shrink-0"
-          aria-hidden="true"
-        />
-      ) : null;
+      success && !loading ? <CheckIcon size={iconSize} /> : null;
 
     const iconEndContent =
       IconEnd && !loading && !success ? (
-        <IconEnd
-          key="icon-end"
-          className="shrink-0"
-          size={iconSize}
-          aria-hidden="true"
-        />
+        <IconEnd className="shrink-0" size={iconSize} aria-hidden="true" />
       ) : null;
 
-    // =========================================================================
-    // Content wrapper with icons and children
-    // =========================================================================
     const buttonContent = (
       <>
         <span className="relative z-10 flex items-center justify-center gap-2">
@@ -386,7 +279,6 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
           {iconEndContent}
         </span>
 
-        {/* Ripple container */}
         {showRipple && (
           <span
             className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -415,9 +307,6 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       </>
     );
 
-    // =========================================================================
-    // Common props for all button variations
-    // =========================================================================
     const commonProps = {
       "data-slot": "button",
       "data-loading": loading || undefined,
@@ -433,9 +322,6 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       ...props,
     };
 
-    // =========================================================================
-    // Render: asChild pattern using Slot
-    // =========================================================================
     if (asChild) {
       return (
         <Slot ref={ref} {...commonProps}>
@@ -444,39 +330,10 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       );
     }
 
-    // =========================================================================
-    // Render: Non-animated version
-    // =========================================================================
-    if (shouldDisableAnimation) {
-      return (
-        <button ref={ref} {...commonProps}>
-          {buttonContent}
-        </button>
-      );
-    }
-
-    // =========================================================================
-    // Render: Animated version with motion.button
-    // =========================================================================
-    // Extract motion-conflicting props
-    const {
-      onAnimationStart: _onAnimationStart,
-      onDrag: _onDrag,
-      onDragStart: _onDragStart,
-      onDragEnd: _onDragEnd,
-      ...restCommonProps
-    } = commonProps as typeof commonProps & Partial<HTMLMotionProps<"button">>;
-
     return (
-      <motion.button
-        ref={ref}
-        {...restCommonProps}
-        whileTap={isDisabled ? undefined : gestures.button.whileTap}
-        whileHover={isDisabled ? undefined : gestures.button.whileHover}
-        transition={springPresets.interactive}
-      >
+      <button ref={ref} {...commonProps}>
         {buttonContent}
-      </motion.button>
+      </button>
     );
   },
 );
@@ -485,37 +342,16 @@ Button.displayName = "Button";
 
 // =============================================================================
 // ICON BUTTON COMPONENT
-// Specialized button for icon-only usage
 // =============================================================================
 
-/**
- * IconButton component props
- */
 export interface IconButtonProps extends Omit<
   ButtonProps,
   "iconStart" | "iconEnd" | "children" | "asChild"
 > {
-  /**
-   * The icon to display (required)
-   */
   icon: Icon;
-
-  /**
-   * Accessible label (required for icon-only buttons)
-   */
   "aria-label": string;
 }
 
-/**
- * IconButton - Icon-only button with proper accessibility
- *
- * Forces an aria-label for accessibility since there's no visible text.
- *
- * @example
- * ```tsx
- * <IconButton icon={XIcon} aria-label="Close dialog" variant="ghost" />
- * ```
- */
 const IconButton = forwardRef<ElementRef<"button">, IconButtonProps>(
   ({ icon, size = "icon", ...props }, ref) => {
     return <Button ref={ref} size={size} iconStart={icon} {...props} />;

@@ -1,4 +1,30 @@
-import { readFileSync, writeFileSync } from "fs";
+/**
+ * Registry Update Script
+ *
+ * This script generates the component registry JSON files for both
+ * animated and static component variants.
+ *
+ * Output Structure:
+ *   public/r/
+ *   ├── animated/
+ *   │   ├── button.json
+ *   │   ├── alert-dialog.json
+ *   │   └── ...
+ *   ├── static/
+ *   │   ├── button.json
+ *   │   ├── alert-dialog.json
+ *   │   └── ...
+ *   ├── shared/
+ *   │   ├── avatar.json
+ *   │   ├── input.json
+ *   │   └── ...
+ *   ├── registry.json (main index)
+ *   └── [legacy flat structure for backwards compatibility]
+ *
+ * @packageDocumentation
+ */
+
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -6,8 +32,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = join(__dirname, "..");
 
-// Component registry configuration
-const components = {
+// =============================================================================
+// REGISTRY CONFIGURATION
+// =============================================================================
+
+/**
+ * Animated component registry (with motion/react)
+ */
+const animatedComponents = {
   button: {
     type: "registry:ui",
     title: "Button",
@@ -22,7 +54,8 @@ const components = {
     ],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider", "icons"],
-    files: [{ path: "components/ui/button.tsx", type: "registry:ui" }],
+    files: [{ path: "components/ui/animated/button.tsx", type: "registry:ui" }],
+    variant: "animated",
   },
   "alert-dialog": {
     type: "registry:ui",
@@ -38,11 +71,9 @@ const components = {
       "use-stable-id",
       "use-controllable-state",
     ],
-    files: [{ path: "components/ui/alert-dialog.tsx", type: "registry:ui" }],
+    files: [{ path: "components/ui/animated/alert-dialog.tsx", type: "registry:ui" }],
     cssVars: true,
-    tailwind: {
-      config: {},
-    },
+    variant: "animated",
   },
   popover: {
     type: "registry:ui",
@@ -59,11 +90,9 @@ const components = {
       "use-controllable-state",
       "use-click-outside",
     ],
-    files: [{ path: "components/ui/popover.tsx", type: "registry:ui" }],
+    files: [{ path: "components/ui/animated/popover.tsx", type: "registry:ui" }],
     cssVars: true,
-    tailwind: {
-      config: {},
-    },
+    variant: "animated",
   },
   "dropdown-menu": {
     type: "registry:ui",
@@ -78,104 +107,9 @@ const components = {
     ],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider", "animations", "tokens"],
-    files: [{ path: "components/ui/dropdown-menu.tsx", type: "registry:ui" }],
+    files: [{ path: "components/ui/animated/dropdown-menu.tsx", type: "registry:ui" }],
     cssVars: true,
-    tailwind: {
-      config: {},
-    },
-  },
-  "motion-provider": {
-    type: "registry:component",
-    title: "Motion Provider",
-    description:
-      "Global animation configuration provider with reduced motion and low-power device detection.",
-    dependencies: ["motion", "tw-animate-css"],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [
-      { path: "components/motion-provider.tsx", type: "registry:component" },
-      { path: "hooks/use-reduced-motion.ts", type: "registry:hook" },
-      { path: "hooks/use-low-power-device.ts", type: "registry:hook" },
-      { path: "lib/motion.ts", type: "registry:lib" },
-    ],
-  },
-  animations: {
-    type: "registry:lib",
-    title: "Animations",
-    description:
-      "Motion system with spring presets, transitions, and variant factories.",
-    dependencies: ["motion", "tw-animate-css"],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [{ path: "lib/animations.ts", type: "registry:lib" }],
-  },
-  tokens: {
-    type: "registry:lib",
-    title: "Design Tokens",
-    description:
-      "Centralized design tokens for colors, spacing, typography, shadows, and more.",
-    dependencies: [],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [{ path: "lib/tokens.ts", type: "registry:lib" }],
-  },
-  icons: {
-    type: "registry:lib",
-    title: "Animated Icons",
-    description:
-      "Animated icon components including loading spinners, morphing icons, and close buttons.",
-    dependencies: ["motion", "@phosphor-icons/react", "tw-animate-css"],
-    registryDependencies: ["utils"],
-    inlineDependencies: ["motion-provider"],
-    files: [{ path: "lib/icons.tsx", type: "registry:lib" }],
-  },
-  "use-click-outside": {
-    type: "registry:hook",
-    title: "useClickOutside",
-    description: "Hook to detect clicks outside a referenced element.",
-    dependencies: [],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [{ path: "hooks/use-click-outside.tsx", type: "registry:hook" }],
-  },
-  "use-stable-id": {
-    type: "registry:hook",
-    title: "useStableId",
-    description:
-      "SSR-safe hook for generating stable unique IDs for accessibility attributes.",
-    dependencies: [],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [{ path: "hooks/use-stable-id.ts", type: "registry:hook" }],
-  },
-  "use-controllable-state": {
-    type: "registry:hook",
-    title: "useControllableState",
-    description:
-      "Hook for handling controlled/uncontrolled state pattern in components.",
-    dependencies: [],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [{ path: "hooks/use-controllable-state.ts", type: "registry:hook" }],
-  },
-  "use-merged-refs": {
-    type: "registry:hook",
-    title: "useMergedRefs",
-    description: "Hook to merge multiple refs into a single callback ref.",
-    dependencies: [],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [{ path: "hooks/use-merged-refs.ts", type: "registry:hook" }],
-  },
-  avatar: {
-    type: "registry:ui",
-    title: "Avatar",
-    description:
-      "Composable avatar component with sizes, status indicators, and group stacking support.",
-    dependencies: ["@radix-ui/react-avatar", "class-variance-authority"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/avatar.tsx", type: "registry:ui" }],
+    variant: "animated",
   },
   "pull-down": {
     type: "registry:ui",
@@ -185,41 +119,9 @@ const components = {
     dependencies: ["motion", "@phosphor-icons/react", "tw-animate-css"],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider"],
-    files: [{ path: "components/ui/pull-down.tsx", type: "registry:ui" }],
+    files: [{ path: "components/ui/animated/pull-down.tsx", type: "registry:ui" }],
     cssVars: true,
-    tailwind: {
-      config: {},
-    },
-  },
-  input: {
-    type: "registry:ui",
-    title: "Input",
-    description:
-      "A styled input component with focus states, validation support, and file input styling.",
-    dependencies: [],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/input.tsx", type: "registry:ui" }],
-  },
-  "scroll-area": {
-    type: "registry:ui",
-    title: "Scroll Area",
-    description:
-      "A scrollable area with custom scrollbars built on Radix UI ScrollArea.",
-    dependencies: ["@radix-ui/react-scroll-area"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/scroll-area.tsx", type: "registry:ui" }],
-  },
-  separator: {
-    type: "registry:ui",
-    title: "Separator",
-    description:
-      "A visual separator for dividing content, supporting horizontal and vertical orientations.",
-    dependencies: ["@radix-ui/react-separator"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/separator.tsx", type: "registry:ui" }],
+    variant: "animated",
   },
   sheet: {
     type: "registry:ui",
@@ -233,37 +135,8 @@ const components = {
     ],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider", "icons"],
-    files: [{ path: "components/ui/sheet.tsx", type: "registry:ui" }],
-  },
-  skeleton: {
-    type: "registry:ui",
-    title: "Skeleton",
-    description:
-      "A loading placeholder component with pulse animation for content loading states.",
-    dependencies: [],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/skeleton.tsx", type: "registry:ui" }],
-  },
-  slider: {
-    type: "registry:ui",
-    title: "Slider",
-    description:
-      "A range slider component with single or multiple thumbs, built on Radix UI Slider.",
-    dependencies: ["@radix-ui/react-slider"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/slider.tsx", type: "registry:ui" }],
-  },
-  tooltip: {
-    type: "registry:ui",
-    title: "Tooltip",
-    description:
-      "A tooltip component with smooth animations and configurable positioning.",
-    dependencies: ["@radix-ui/react-tooltip"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/tooltip.tsx", type: "registry:ui" }],
+    files: [{ path: "components/ui/animated/sheet.tsx", type: "registry:ui" }],
+    variant: "animated",
   },
   sidebar: {
     type: "registry:ui",
@@ -286,6 +159,378 @@ const components = {
     ],
     inlineDependencies: ["use-mobile"],
     files: [{ path: "components/ui/sidebar.tsx", type: "registry:ui" }],
+    variant: "animated",
+  },
+  "wheel-picker": {
+    type: "registry:ui",
+    title: "Wheel Picker",
+    description:
+      "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
+    dependencies: ["@ncdai/react-wheel-picker"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/wheel-picker.tsx", type: "registry:ui" }],
+    variant: "animated",
+  },
+  "shimmering-text": {
+    type: "registry:ui",
+    title: "Shimmering Text",
+    description:
+      "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
+    dependencies: ["motion"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/animated/shimmering-text.tsx", type: "registry:ui" }],
+    variant: "animated",
+    credits: "@ncdai (https://chanhdai.com/components/slide-to-unlock)",
+  },
+  "slide-to-unlock": {
+    type: "registry:ui",
+    title: "Slide to Unlock",
+    description:
+      "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
+    dependencies: ["motion"],
+    registryDependencies: ["utils", "shimmering-text"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/animated/slide-to-unlock.tsx", type: "registry:ui" }],
+    variant: "animated",
+    credits: "@ncdai (https://chanhdai.com/components/slide-to-unlock)",
+  },
+};
+
+/**
+ * Static component registry (CSS-only, no motion)
+ */
+const staticComponents = {
+  "button-static": {
+    type: "registry:ui",
+    title: "Button (Static)",
+    description:
+      "Static button component with CSS transitions only. No motion dependency required.",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "@phosphor-icons/react",
+      "tw-animate-css",
+    ],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/static/button.tsx", type: "registry:ui" }],
+    variant: "static",
+  },
+  "alert-dialog-static": {
+    type: "registry:ui",
+    title: "Alert Dialog (Static)",
+    description:
+      "Static modal dialog with CSS transitions only. No motion dependency required.",
+    dependencies: ["@phosphor-icons/react", "tw-animate-css"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [
+      "use-stable-id",
+      "use-controllable-state",
+    ],
+    files: [{ path: "components/ui/static/alert-dialog.tsx", type: "registry:ui" }],
+    cssVars: true,
+    variant: "static",
+  },
+  "popover-static": {
+    type: "registry:ui",
+    title: "Popover (Static)",
+    description:
+      "Static popover component with CSS transitions only. No motion dependency required.",
+    dependencies: ["tw-animate-css"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [
+      "use-stable-id",
+      "use-controllable-state",
+      "use-click-outside",
+    ],
+    files: [{ path: "components/ui/static/popover.tsx", type: "registry:ui" }],
+    cssVars: true,
+    variant: "static",
+  },
+  "dropdown-menu-static": {
+    type: "registry:ui",
+    title: "Dropdown Menu (Static)",
+    description:
+      "Static dropdown menu with CSS transitions only. No motion dependency required.",
+    dependencies: [
+      "@radix-ui/react-dropdown-menu",
+      "@phosphor-icons/react",
+      "tw-animate-css",
+    ],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/static/dropdown-menu.tsx", type: "registry:ui" }],
+    cssVars: true,
+    variant: "static",
+  },
+  "pull-down-static": {
+    type: "registry:ui",
+    title: "Pull Down Menu (Static)",
+    description:
+      "A pull down menu with CSS animations. No motion dependency required (~30KB savings).",
+    dependencies: ["@phosphor-icons/react"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/static/pull-down.tsx", type: "registry:ui" }],
+    variant: "static",
+  },
+  "sheet-static": {
+    type: "registry:ui",
+    title: "Sheet (Static)",
+    description:
+      "A slide-out panel component with CSS animations. No motion dependency required.",
+    dependencies: [
+      "@radix-ui/react-dialog",
+      "class-variance-authority",
+      "@phosphor-icons/react",
+    ],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/static/sheet.tsx", type: "registry:ui" }],
+    variant: "static",
+  },
+  "sidebar-static": {
+    type: "registry:ui",
+    title: "Sidebar (Static)",
+    description:
+      "A responsive sidebar component with CSS animations. No motion dependency required.",
+    dependencies: [
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "@phosphor-icons/react",
+    ],
+    registryDependencies: [
+      "utils",
+      "button-static",
+      "input",
+      "separator",
+      "sheet-static",
+      "skeleton",
+      "tooltip",
+    ],
+    inlineDependencies: ["use-mobile"],
+    files: [{ path: "components/ui/static/sidebar.tsx", type: "registry:ui" }],
+    variant: "static",
+  },
+};
+
+/**
+ * Shared components (no animation dependency, used by both variants)
+ */
+const sharedComponents = {
+  avatar: {
+    type: "registry:ui",
+    title: "Avatar",
+    description:
+      "Composable avatar component with sizes, status indicators, and group stacking support.",
+    dependencies: ["@radix-ui/react-avatar", "class-variance-authority"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/shared/avatar.tsx", type: "registry:ui" }],
+    variant: "shared",
+  },
+  input: {
+    type: "registry:ui",
+    title: "Input",
+    description:
+      "A styled input component with focus states, validation support, and file input styling.",
+    dependencies: [],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/shared/input.tsx", type: "registry:ui" }],
+    variant: "shared",
+  },
+  "scroll-area": {
+    type: "registry:ui",
+    title: "Scroll Area",
+    description:
+      "A scrollable area with custom scrollbars built on Radix UI ScrollArea.",
+    dependencies: ["@radix-ui/react-scroll-area"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/shared/scroll-area.tsx", type: "registry:ui" }],
+    variant: "shared",
+  },
+  separator: {
+    type: "registry:ui",
+    title: "Separator",
+    description:
+      "A visual separator for dividing content, supporting horizontal and vertical orientations.",
+    dependencies: ["@radix-ui/react-separator"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/shared/separator.tsx", type: "registry:ui" }],
+    variant: "shared",
+  },
+  skeleton: {
+    type: "registry:ui",
+    title: "Skeleton",
+    description:
+      "A loading placeholder component with pulse animation for content loading states.",
+    dependencies: [],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/shared/skeleton.tsx", type: "registry:ui" }],
+    variant: "shared",
+  },
+  slider: {
+    type: "registry:ui",
+    title: "Slider",
+    description:
+      "A range slider component with single or multiple thumbs, built on Radix UI Slider.",
+    dependencies: ["@radix-ui/react-slider"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/shared/slider.tsx", type: "registry:ui" }],
+    variant: "shared",
+  },
+  tooltip: {
+    type: "registry:ui",
+    title: "Tooltip",
+    description:
+      "A tooltip component with smooth animations and configurable positioning.",
+    dependencies: ["@radix-ui/react-tooltip"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/shared/tooltip.tsx", type: "registry:ui" }],
+    variant: "shared",
+  },
+};
+
+/**
+ * Library utilities
+ */
+const libraryComponents = {
+  "motion-provider": {
+    type: "registry:component",
+    title: "Motion Provider",
+    description:
+      "Global animation configuration provider with reduced motion and low-power device detection.",
+    dependencies: ["motion", "tw-animate-css"],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [
+      { path: "components/motion-provider.tsx", type: "registry:component" },
+      { path: "hooks/use-reduced-motion.ts", type: "registry:hook" },
+      { path: "hooks/use-low-power-device.ts", type: "registry:hook" },
+      { path: "lib/motion.ts", type: "registry:lib" },
+    ],
+    variant: "animated",
+  },
+  animations: {
+    type: "registry:lib",
+    title: "Animations",
+    description:
+      "Motion system with spring presets, transitions, and variant factories.",
+    dependencies: ["motion", "tw-animate-css"],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "lib/animations.ts", type: "registry:lib" }],
+    variant: "animated",
+  },
+  "static-transitions": {
+    type: "registry:lib",
+    title: "Static Transitions",
+    description:
+      "CSS-only transition utilities for static components.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "lib/static-transitions.ts", type: "registry:lib" }],
+    variant: "static",
+  },
+  tokens: {
+    type: "registry:lib",
+    title: "Design Tokens",
+    description:
+      "Centralized design tokens for colors, spacing, typography, shadows, and more.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "lib/tokens.ts", type: "registry:lib" }],
+    variant: "shared",
+  },
+  icons: {
+    type: "registry:lib",
+    title: "Animated Icons",
+    description:
+      "Animated icon components including loading spinners, morphing icons, and close buttons.",
+    dependencies: ["motion", "@phosphor-icons/react", "tw-animate-css"],
+    registryDependencies: ["utils"],
+    inlineDependencies: ["motion-provider"],
+    files: [{ path: "lib/icons.tsx", type: "registry:lib" }],
+    variant: "animated",
+  },
+  "icons-static": {
+    type: "registry:lib",
+    title: "Static Icons",
+    description:
+      "CSS-only icon components for static variants.",
+    dependencies: ["@phosphor-icons/react"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "lib/icons-static.tsx", type: "registry:lib" }],
+    variant: "static",
+  },
+  utils: {
+    type: "registry:lib",
+    title: "Utils",
+    description: "Utility functions including cn() for class merging.",
+    dependencies: ["clsx", "tailwind-merge"],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "lib/utils.ts", type: "registry:lib" }],
+    variant: "shared",
+  },
+};
+
+/**
+ * Hooks
+ */
+const hookComponents = {
+  "use-click-outside": {
+    type: "registry:hook",
+    title: "useClickOutside",
+    description: "Hook to detect clicks outside a referenced element.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-click-outside.tsx", type: "registry:hook" }],
+    variant: "shared",
+  },
+  "use-stable-id": {
+    type: "registry:hook",
+    title: "useStableId",
+    description:
+      "SSR-safe hook for generating stable unique IDs for accessibility attributes.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-stable-id.ts", type: "registry:hook" }],
+    variant: "shared",
+  },
+  "use-controllable-state": {
+    type: "registry:hook",
+    title: "useControllableState",
+    description:
+      "Hook for handling controlled/uncontrolled state pattern in components.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-controllable-state.ts", type: "registry:hook" }],
+    variant: "shared",
+  },
+  "use-merged-refs": {
+    type: "registry:hook",
+    title: "useMergedRefs",
+    description: "Hook to merge multiple refs into a single callback ref.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-merged-refs.ts", type: "registry:hook" }],
+    variant: "shared",
   },
   "use-mobile": {
     type: "registry:hook",
@@ -295,22 +540,115 @@ const components = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-mobile.ts", type: "registry:hook" }],
+    variant: "shared",
   },
 };
 
+// Merge all components
+const allComponents = {
+  ...animatedComponents,
+  ...staticComponents,
+  ...sharedComponents,
+  ...libraryComponents,
+  ...hookComponents,
+};
+
+// =============================================================================
+// CSS VARS CONFIGURATION
+// =============================================================================
+
+const cssVarsLight = {
+  radius: "0.75rem",
+  background: "oklch(1 0 0)",
+  foreground: "oklch(0.145 0 0)",
+  card: "oklch(1 0 0)",
+  "card-foreground": "oklch(0.145 0 0)",
+  popover: "oklch(1 0 0)",
+  "popover-foreground": "oklch(0.145 0 0)",
+  primary: "oklch(0.205 0 0)",
+  "primary-foreground": "oklch(0.985 0 0)",
+  secondary: "oklch(0.97 0 0)",
+  "secondary-foreground": "oklch(0.205 0 0)",
+  muted: "oklch(0.97 0 0)",
+  "muted-foreground": "oklch(0.556 0 0)",
+  accent: "oklch(0.97 0 0)",
+  "accent-foreground": "oklch(0.205 0 0)",
+  destructive: "oklch(0.577 0.245 27.325)",
+  "destructive-foreground": "oklch(0.985 0 0)",
+  border: "oklch(0.922 0 0)",
+  input: "oklch(0.922 0 0)",
+  ring: "oklch(0.708 0 0)",
+  "chart-1": "oklch(0.646 0.222 41.116)",
+  "chart-2": "oklch(0.6 0.118 184.704)",
+  "chart-3": "oklch(0.398 0.07 227.392)",
+  "chart-4": "oklch(0.828 0.189 84.429)",
+  "chart-5": "oklch(0.769 0.188 70.08)",
+  sidebar: "oklch(0.985 0 0)",
+  "sidebar-foreground": "oklch(0.145 0 0)",
+  "sidebar-primary": "oklch(0.205 0 0)",
+  "sidebar-primary-foreground": "oklch(0.985 0 0)",
+  "sidebar-accent": "oklch(0.97 0 0)",
+  "sidebar-accent-foreground": "oklch(0.205 0 0)",
+  "sidebar-border": "oklch(0.922 0 0)",
+  "sidebar-ring": "oklch(0.708 0 0)",
+};
+
+const cssVarsDark = {
+  background: "oklch(0.21 0.006 285.885)",
+  foreground: "oklch(0.985 0 0)",
+  card: "oklch(0.205 0 0)",
+  "card-foreground": "oklch(0.985 0 0)",
+  popover: "oklch(0.205 0 0)",
+  "popover-foreground": "oklch(0.985 0 0)",
+  primary: "oklch(0.922 0 0)",
+  "primary-foreground": "oklch(0.205 0 0)",
+  secondary: "oklch(0.269 0 0)",
+  "secondary-foreground": "oklch(0.985 0 0)",
+  muted: "oklch(0.269 0 0)",
+  "muted-foreground": "oklch(0.708 0 0)",
+  accent: "oklch(0.269 0 0)",
+  "accent-foreground": "oklch(0.985 0 0)",
+  destructive: "oklch(0.704 0.191 22.216)",
+  "destructive-foreground": "oklch(0.985 0 0)",
+  border: "oklch(1 0 0 / 10%)",
+  input: "oklch(1 0 0 / 15%)",
+  ring: "oklch(0.556 0 0)",
+  "chart-1": "oklch(0.488 0.243 264.376)",
+  "chart-2": "oklch(0.696 0.17 162.48)",
+  "chart-3": "oklch(0.769 0.188 70.08)",
+  "chart-4": "oklch(0.627 0.265 303.9)",
+  "chart-5": "oklch(0.645 0.246 16.439)",
+  sidebar: "oklch(0.205 0 0)",
+  "sidebar-foreground": "oklch(0.985 0 0)",
+  "sidebar-primary": "oklch(0.488 0.243 264.376)",
+  "sidebar-primary-foreground": "oklch(0.985 0 0)",
+  "sidebar-accent": "oklch(0.269 0 0)",
+  "sidebar-accent-foreground": "oklch(0.985 0 0)",
+  "sidebar-border": "oklch(1 0 0 / 10%)",
+  "sidebar-ring": "oklch(0.556 0 0)",
+};
+
+// =============================================================================
+// HELPER FUNCTIONS
+// =============================================================================
+
+function ensureDir(dirPath) {
+  if (!existsSync(dirPath)) {
+    mkdirSync(dirPath, { recursive: true });
+  }
+}
+
 function escapeContent(content) {
-  // Return as-is, JSON.stringify will handle escaping
   return content;
 }
 
-function updateRegistryFile(name, config) {
-  // Collect all files including inline dependencies
+function updateRegistryFile(name, config, outputDir) {
   const allFiles = [...config.files];
 
   // Add files from inline dependencies
   if (config.inlineDependencies && config.inlineDependencies.length > 0) {
     config.inlineDependencies.forEach((depName) => {
-      const depConfig = components[depName];
+      const depConfig = allComponents[depName];
       if (depConfig) {
         allFiles.push(...depConfig.files);
       }
@@ -325,265 +663,165 @@ function updateRegistryFile(name, config) {
     description: config.description,
     dependencies: config.dependencies,
     registryDependencies: config.registryDependencies,
+    variant: config.variant,
     files: allFiles.map((file) => {
       const fullPath = join(root, file.path);
-      const content = readFileSync(fullPath, "utf-8");
-      return {
-        path: file.path,
-        content: escapeContent(content),
-        type: file.type,
-      };
+      try {
+        const content = readFileSync(fullPath, "utf-8");
+        return {
+          path: file.path,
+          content: escapeContent(content),
+          type: file.type,
+        };
+      } catch (_error) {
+        console.warn(`[WARN] File not found: ${file.path}`);
+        return {
+          path: file.path,
+          content: "",
+          type: file.type,
+        };
+      }
     }),
   };
 
-  // Add CSS vars configuration if present (using OKLCH colors for Tailwind v4)
+  // Add CSS vars configuration if present
   if (config.cssVars) {
     registryItem.cssVars = {
-      light: {
-        // Base radius
-        radius: "0.75rem",
-        // Core colors (OKLCH format)
-        background: "oklch(1 0 0)",
-        foreground: "oklch(0.145 0 0)",
-        card: "oklch(1 0 0)",
-        "card-foreground": "oklch(0.145 0 0)",
-        popover: "oklch(1 0 0)",
-        "popover-foreground": "oklch(0.145 0 0)",
-        primary: "oklch(0.205 0 0)",
-        "primary-foreground": "oklch(0.985 0 0)",
-        secondary: "oklch(0.97 0 0)",
-        "secondary-foreground": "oklch(0.205 0 0)",
-        muted: "oklch(0.97 0 0)",
-        "muted-foreground": "oklch(0.556 0 0)",
-        accent: "oklch(0.97 0 0)",
-        "accent-foreground": "oklch(0.205 0 0)",
-        destructive: "oklch(0.577 0.245 27.325)",
-        "destructive-foreground": "oklch(0.985 0 0)",
-        border: "oklch(0.922 0 0)",
-        input: "oklch(0.922 0 0)",
-        ring: "oklch(0.708 0 0)",
-        // Charts
-        "chart-1": "oklch(0.646 0.222 41.116)",
-        "chart-2": "oklch(0.6 0.118 184.704)",
-        "chart-3": "oklch(0.398 0.07 227.392)",
-        "chart-4": "oklch(0.828 0.189 84.429)",
-        "chart-5": "oklch(0.769 0.188 70.08)",
-        // Sidebar
-        sidebar: "oklch(0.985 0 0)",
-        "sidebar-foreground": "oklch(0.145 0 0)",
-        "sidebar-primary": "oklch(0.205 0 0)",
-        "sidebar-primary-foreground": "oklch(0.985 0 0)",
-        "sidebar-accent": "oklch(0.97 0 0)",
-        "sidebar-accent-foreground": "oklch(0.205 0 0)",
-        "sidebar-border": "oklch(0.922 0 0)",
-        "sidebar-ring": "oklch(0.708 0 0)",
-        // Light mode shadows
-        "shadow-xs": "0 1px 2px oklch(0 0 0 / 0.04)",
-        "shadow-sm":
-          "0 1px 3px oklch(0 0 0 / 0.06), 0 1px 2px oklch(0 0 0 / 0.04)",
-        "shadow-md":
-          "0 4px 6px oklch(0 0 0 / 0.05), 0 2px 4px oklch(0 0 0 / 0.04)",
-        "shadow-lg":
-          "0 10px 15px oklch(0 0 0 / 0.08), 0 4px 6px oklch(0 0 0 / 0.04)",
-        "shadow-xl":
-          "0 20px 25px oklch(0 0 0 / 0.1), 0 8px 10px oklch(0 0 0 / 0.05)",
-        "shadow-2xl": "0 25px 50px oklch(0 0 0 / 0.15)",
-      },
-      dark: {
-        // Core colors (OKLCH format)
-        background: "oklch(0.21 0.006 285.885)",
-        foreground: "oklch(0.985 0 0)",
-        card: "oklch(0.205 0 0)",
-        "card-foreground": "oklch(0.985 0 0)",
-        popover: "oklch(0.205 0 0)",
-        "popover-foreground": "oklch(0.985 0 0)",
-        primary: "oklch(0.922 0 0)",
-        "primary-foreground": "oklch(0.205 0 0)",
-        secondary: "oklch(0.269 0 0)",
-        "secondary-foreground": "oklch(0.985 0 0)",
-        muted: "oklch(0.269 0 0)",
-        "muted-foreground": "oklch(0.708 0 0)",
-        accent: "oklch(0.269 0 0)",
-        "accent-foreground": "oklch(0.985 0 0)",
-        destructive: "oklch(0.704 0.191 22.216)",
-        "destructive-foreground": "oklch(0.985 0 0)",
-        border: "oklch(1 0 0 / 10%)",
-        input: "oklch(1 0 0 / 15%)",
-        ring: "oklch(0.556 0 0)",
-        // Charts
-        "chart-1": "oklch(0.488 0.243 264.376)",
-        "chart-2": "oklch(0.696 0.17 162.48)",
-        "chart-3": "oklch(0.769 0.188 70.08)",
-        "chart-4": "oklch(0.627 0.265 303.9)",
-        "chart-5": "oklch(0.645 0.246 16.439)",
-        // Sidebar
-        sidebar: "oklch(0.205 0 0)",
-        "sidebar-foreground": "oklch(0.985 0 0)",
-        "sidebar-primary": "oklch(0.488 0.243 264.376)",
-        "sidebar-primary-foreground": "oklch(0.985 0 0)",
-        "sidebar-accent": "oklch(0.269 0 0)",
-        "sidebar-accent-foreground": "oklch(0.985 0 0)",
-        "sidebar-border": "oklch(1 0 0 / 10%)",
-        "sidebar-ring": "oklch(0.556 0 0)",
-        // Dark mode shadows
-        "shadow-xs": "0 1px 2px oklch(0 0 0 / 0.1)",
-        "shadow-sm":
-          "0 1px 3px oklch(0 0 0 / 0.15), 0 1px 2px oklch(0 0 0 / 0.1)",
-        "shadow-md":
-          "0 4px 6px oklch(0 0 0 / 0.15), 0 2px 4px oklch(0 0 0 / 0.1)",
-        "shadow-lg":
-          "0 10px 15px oklch(0 0 0 / 0.2), 0 4px 6px oklch(0 0 0 / 0.1)",
-        "shadow-xl":
-          "0 20px 25px oklch(0 0 0 / 0.25), 0 8px 10px oklch(0 0 0 / 0.1)",
-        "shadow-2xl": "0 25px 50px oklch(0 0 0 / 0.35)",
-      },
-      // Global theme tokens (not themed by light/dark)
-      theme: {
-        // Blur values
-        "blur-sm": "4px",
-        "blur-md": "8px",
-        "blur-lg": "16px",
-        "blur-xl": "20px",
-        "blur-2xl": "32px",
-        // Backdrop saturation for glassmorphism
-        "backdrop-saturate": "180%",
-        // Spring timing (CSS approximation)
-        "spring-snappy": "cubic-bezier(0.25, 0.1, 0.25, 1)",
-        "spring-bouncy": "cubic-bezier(0.34, 1.56, 0.64, 1)",
-        "spring-smooth": "cubic-bezier(0.33, 1, 0.68, 1)",
-        // Duration presets
-        "duration-instant": "0ms",
-        "duration-fast": "100ms",
-        "duration-normal": "200ms",
-        "duration-slow": "300ms",
-        "duration-slower": "500ms",
-      },
+      light: cssVarsLight,
+      dark: cssVarsDark,
     };
   }
 
-  // Add tailwind configuration if present
-  if (config.tailwind) {
-    registryItem.tailwind = {
-      config: {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: [
-                "var(--font-sans)",
-                "Inter",
-                "ui-sans-serif",
-                "system-ui",
-                "-apple-system",
-                "BlinkMacSystemFont",
-                "Segoe UI",
-                "Roboto",
-                "Helvetica Neue",
-                "Arial",
-                "Noto Sans",
-                "sans-serif",
-              ],
-            },
-          },
-        },
-      },
-    };
-  }
-
-  // Add cssVars.theme for Tailwind v4 @theme directive mapping
-  // This is the correct property for Tailwind v4 color mappings
-  if (config.cssVars) {
-    // Extend cssVars with theme property for Tailwind v4
-    registryItem.cssVars.theme = {
-      "--color-background": "var(--background)",
-      "--color-foreground": "var(--foreground)",
-      "--color-card": "var(--card)",
-      "--color-card-foreground": "var(--card-foreground)",
-      "--color-popover": "var(--popover)",
-      "--color-popover-foreground": "var(--popover-foreground)",
-      "--color-primary": "var(--primary)",
-      "--color-primary-foreground": "var(--primary-foreground)",
-      "--color-secondary": "var(--secondary)",
-      "--color-secondary-foreground": "var(--secondary-foreground)",
-      "--color-muted": "var(--muted)",
-      "--color-muted-foreground": "var(--muted-foreground)",
-      "--color-accent": "var(--accent)",
-      "--color-accent-foreground": "var(--accent-foreground)",
-      "--color-destructive": "var(--destructive)",
-      "--color-destructive-foreground": "var(--destructive-foreground)",
-      "--color-border": "var(--border)",
-      "--color-input": "var(--input)",
-      "--color-ring": "var(--ring)",
-      "--radius-sm": "calc(var(--radius) - 4px)",
-      "--radius-md": "calc(var(--radius) - 2px)",
-      "--radius-lg": "var(--radius)",
-      "--radius-xl": "calc(var(--radius) + 4px)",
-    };
-
-    // Add base layer CSS separately
-    registryItem.css = {
-      "@layer base": {
-        "*": {
-          "border-color": "var(--border)",
-          "outline-color": "var(--ring)",
-        },
-        body: {
-          "background-color": "var(--background)",
-          color: "var(--foreground)",
-        },
-      },
-    };
-  }
-
-  const outputPath = join(root, "public", "r", `${name}.json`);
+  // Write to variant-specific subdirectory
+  const variantDir = join(outputDir, config.variant || "shared");
+  ensureDir(variantDir);
+  
+  const outputPath = join(variantDir, `${name.replace("-static", "")}.json`);
   writeFileSync(outputPath, JSON.stringify(registryItem, null, 2), "utf-8");
-  console.log(`✅ Updated ${name}.json`);
+  
+  // Also write to flat structure for backwards compatibility
+  const flatPath = join(outputDir, `${name}.json`);
+  writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
+  
+  console.log(`[OK] Updated ${config.variant}/${name}.json`);
 }
 
-function updateMainRegistry() {
-  const items = Object.entries(components).map(([name, config]) => ({
-    name,
-    type: config.type,
-    title: config.title,
-    description: config.description,
-    dependencies: config.dependencies,
-    registryDependencies: config.registryDependencies,
-    files: config.files.map((f) => ({ path: f.path, type: f.type })),
-  }));
+function updateMainRegistry(outputDir) {
+  // Group items by variant
+  const animatedItems = [];
+  const staticItems = [];
+  const sharedItems = [];
+
+  Object.entries(allComponents).forEach(([name, config]) => {
+    const item = {
+      name,
+      type: config.type,
+      title: config.title,
+      description: config.description,
+      dependencies: config.dependencies,
+      registryDependencies: config.registryDependencies,
+      variant: config.variant,
+      files: config.files.map((f) => ({ path: f.path, type: f.type })),
+    };
+
+    if (config.variant === "animated") {
+      animatedItems.push(item);
+    } else if (config.variant === "static") {
+      staticItems.push(item);
+    } else {
+      sharedItems.push(item);
+    }
+  });
 
   const registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     name: "edbn-ui",
-    version: "0.2.0",
+    version: "0.3.0",
     homepage: "https://ui.edbn.me",
-    items,
+    variants: {
+      animated: {
+        name: "Animated",
+        description: "Components with motion/react spring animations",
+        dependencies: ["motion"],
+        cssImport: "@/lib/styles/animated.css",
+      },
+      static: {
+        name: "Static",
+        description: "Components with CSS-only animations (lighter bundle)",
+        dependencies: [],
+        cssImport: "@/lib/styles/static.css",
+      },
+    },
+    items: [...animatedItems, ...staticItems, ...sharedItems],
   };
 
   const registryPath = join(root, "registry.json");
   writeFileSync(registryPath, JSON.stringify(registry, null, 2), "utf-8");
-  console.log("✅ Updated registry.json");
+  console.log("[OK] Updated registry.json");
 
-  const publicRegistryPath = join(root, "public", "r", "registry.json");
+  const publicRegistryPath = join(outputDir, "registry.json");
   writeFileSync(publicRegistryPath, JSON.stringify(registry, null, 2), "utf-8");
-  console.log("✅ Updated public/r/registry.json");
+  console.log("[OK] Updated public/r/registry.json");
 }
 
-// Main execution
-console.log("🔄 Updating registry files...\n");
+// =============================================================================
+// MAIN EXECUTION
+// =============================================================================
+
+// ASCII Art Banner - EDBN UI
+const banner = [
+  "",
+  "   ███████ ██████  ██████  ███    ██   ██    ██ ██████",
+  "   ██      ██   ██ ██   ██ ████   ██   ██    ██   ██  ",
+  "   █████   ██   ██ ██████  ██ ██  ██   ██    ██   ██  ",
+  "   ██      ██   ██ ██   ██ ██  ██ ██   ██    ██   ██  ",
+  "   ███████ ██████  ██████  ██   ████    ██████  ██████",
+  "",
+].join("\n");
+
+console.log(banner);
+console.log("[REGISTRY] Updating registry files...\n");
+
+const outputDir = join(root, "public", "r");
+
+// Ensure output directories exist
+ensureDir(outputDir);
+ensureDir(join(outputDir, "animated"));
+ensureDir(join(outputDir, "static"));
+ensureDir(join(outputDir, "shared"));
 
 // Update individual component registry files
-Object.entries(components).forEach(([name, config]) => {
+Object.entries(allComponents).forEach(([name, config]) => {
   try {
-    updateRegistryFile(name, config);
+    updateRegistryFile(name, config, outputDir);
   } catch (error) {
-    console.error(`❌ Failed to update ${name}.json:`, error.message);
+    console.error(`[ERROR] Failed to update ${name}.json:`, error.message);
   }
 });
 
 // Update main registry
 try {
-  updateMainRegistry();
+  updateMainRegistry(outputDir);
 } catch (error) {
-  console.error("❌ Failed to update main registry:", error.message);
+  console.error("[ERROR] Failed to update main registry:", error.message);
 }
 
-console.log("\n✨ Registry update complete!");
+console.log("\n[DONE] Registry update complete!");
+console.log("\nOutput structure:");
+console.log("  public/r/");
+console.log("  ├── animated/   (motion/react components)");
+console.log("  ├── static/     (CSS-only components)");
+console.log("  ├── shared/     (variant-agnostic components)");
+console.log("  └── registry.json");
+
+// =============================================================================
+// BUNDLE SIZE COMPUTATION
+// =============================================================================
+
+console.log("\n[BUNDLE] Computing bundle sizes...\n");
+
+import("./compute-bundle-sizes.mjs").catch((error) => {
+  console.warn("[WARN] Bundle size computation skipped:", error.message);
+  console.log("   Run 'node oss/scripts/compute-bundle-sizes.mjs' manually to generate bundle data.");
+});
+
