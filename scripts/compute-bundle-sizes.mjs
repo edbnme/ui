@@ -78,10 +78,10 @@ function loadCache() {
           ([, entry]) => now - (entry.timestamp || 0) < maxAge
         )
       );
-      console.log(`📦 Loaded ${Object.keys(cache).length} cached package sizes`);
+      console.log(`[CACHE] Loaded ${Object.keys(cache).length} cached package sizes`);
     }
   } catch (error) {
-    console.warn("⚠️  Could not load cache:", error.message);
+    console.warn("[WARN] Could not load cache:", error.message);
     cache = {};
   }
 }
@@ -94,7 +94,7 @@ function saveCache() {
     }
     writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2), "utf-8");
   } catch (error) {
-    console.warn("⚠️  Could not save cache:", error.message);
+    console.warn("[WARN] Could not save cache:", error.message);
   }
 }
 
@@ -119,7 +119,7 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
       if (response.status === 429) {
         // Rate limited - wait and retry
         const retryAfter = parseInt(response.headers.get("Retry-After") || "5");
-        console.log(`⏳ Rate limited, waiting ${retryAfter}s...`);
+        console.log(`[WAIT] Rate limited, waiting ${retryAfter}s...`);
         await sleep(retryAfter * 1000);
         continue;
       }
@@ -131,7 +131,7 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
       return await response.json();
     } catch (error) {
       if (attempt < retries) {
-        console.log(`⚠️  Attempt ${attempt} failed, retrying...`);
+        console.log(`[WARN] Attempt ${attempt} failed, retrying...`);
         await sleep(RETRY_DELAY_MS * attempt);
       } else {
         throw error;
@@ -164,7 +164,7 @@ async function getPackageSize(packageName) {
     // Rate limit
     await sleep(RATE_LIMIT_MS);
 
-    console.log(`📡 Fetching size for ${packageName}...`);
+    console.log(`[FETCH] Fetching size for ${packageName}...`);
     const data = await fetchWithRetry(
       `${BUNDLEPHOBIA_API}?package=${encodeURIComponent(packageName)}`
     );
@@ -180,11 +180,11 @@ async function getPackageSize(packageName) {
 
     cache[packageName] = { data: result, timestamp: Date.now() };
     console.log(
-      `✅ ${packageName}@${data.version}: ${formatBytes(data.gzip)} gzip`
+      `[OK] ${packageName}@${data.version}: ${formatBytes(data.gzip)} gzip`
     );
     return result;
   } catch (error) {
-    console.warn(`⚠️  Could not fetch ${packageName}: ${error.message}`);
+    console.warn(`[WARN] Could not fetch ${packageName}: ${error.message}`);
 
     // Create estimate based on package type
     const estimate = estimatePackageSize(packageName);
@@ -227,7 +227,7 @@ function loadRegistry() {
   try {
     return JSON.parse(readFileSync(registryPath, "utf-8"));
   } catch (error) {
-    console.error("❌ Could not load registry.json:", error.message);
+    console.error("[ERROR] Could not load registry.json:", error.message);
     process.exit(1);
   }
 }
@@ -361,18 +361,18 @@ function ensureDir(dirPath) {
 // =============================================================================
 
 async function main() {
-  console.log("📊 Computing bundle sizes...\n");
+  console.log("[BUNDLE] Computing bundle sizes...\n");
 
   // Load cache
   loadCache();
 
   // Load registry
   const registry = loadRegistry();
-  console.log(`📦 Found ${registry.items?.length || 0} registry items\n`);
+  console.log(`[INFO] Found ${registry.items?.length || 0} registry items\n`);
 
   // Extract all unique dependencies
   const allDeps = extractAllDependencies(registry);
-  console.log(`📋 Found ${allDeps.length} unique dependencies\n`);
+  console.log(`[INFO] Found ${allDeps.length} unique dependencies\n`);
 
   // Fetch sizes for all dependencies
   const packageSizes = [];
@@ -384,7 +384,7 @@ async function main() {
   // Save cache after fetching
   saveCache();
 
-  console.log("\n📈 Computing component sizes...\n");
+  console.log("\n[SIZES] Computing component sizes...\n");
 
   // Compute per-component sizes
   const components = computeComponentSizes(registry, packageSizes);
@@ -425,9 +425,9 @@ async function main() {
   ensureDir(dirname(OUTPUT_FILE));
   writeFileSync(OUTPUT_FILE, JSON.stringify(output, null, 2), "utf-8");
 
-  console.log(`\n✨ Bundle sizes computed successfully!`);
-  console.log(`📁 Output: ${OUTPUT_FILE}`);
-  console.log(`\n📊 Summary:`);
+  console.log(`\n[DONE] Bundle sizes computed successfully!`);
+  console.log(`[OUTPUT] ${OUTPUT_FILE}`);
+  console.log(`\n[SUMMARY]`);
   console.log(`   • ${summary.totalPackages} packages analyzed`);
   console.log(`   • ${summary.totalComponents} components processed`);
   console.log(
@@ -439,6 +439,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error("❌ Fatal error:", error);
+  console.error("[ERROR] Fatal error:", error);
   process.exit(1);
 });

@@ -161,6 +161,41 @@ const animatedComponents = {
     files: [{ path: "components/ui/sidebar.tsx", type: "registry:ui" }],
     variant: "animated",
   },
+  "wheel-picker": {
+    type: "registry:ui",
+    title: "Wheel Picker",
+    description:
+      "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
+    dependencies: ["@ncdai/react-wheel-picker"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/wheel-picker.tsx", type: "registry:ui" }],
+    variant: "animated",
+  },
+  "shimmering-text": {
+    type: "registry:ui",
+    title: "Shimmering Text",
+    description:
+      "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
+    dependencies: ["motion"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/animated/shimmering-text.tsx", type: "registry:ui" }],
+    variant: "animated",
+    credits: "@ncdai (https://chanhdai.com/components/slide-to-unlock)",
+  },
+  "slide-to-unlock": {
+    type: "registry:ui",
+    title: "Slide to Unlock",
+    description:
+      "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
+    dependencies: ["motion"],
+    registryDependencies: ["utils", "shimmering-text"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/animated/slide-to-unlock.tsx", type: "registry:ui" }],
+    variant: "animated",
+    credits: "@ncdai (https://chanhdai.com/components/slide-to-unlock)",
+  },
 };
 
 /**
@@ -639,7 +674,7 @@ function updateRegistryFile(name, config, outputDir) {
           type: file.type,
         };
       } catch (_error) {
-        console.warn(`⚠️  File not found: ${file.path}`);
+        console.warn(`[WARN] File not found: ${file.path}`);
         return {
           path: file.path,
           content: "",
@@ -668,7 +703,7 @@ function updateRegistryFile(name, config, outputDir) {
   const flatPath = join(outputDir, `${name}.json`);
   writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
   
-  console.log(`✅ Updated ${config.variant}/${name}.json`);
+  console.log(`[OK] Updated ${config.variant}/${name}.json`);
 }
 
 function updateMainRegistry(outputDir) {
@@ -722,18 +757,30 @@ function updateMainRegistry(outputDir) {
 
   const registryPath = join(root, "registry.json");
   writeFileSync(registryPath, JSON.stringify(registry, null, 2), "utf-8");
-  console.log("✅ Updated registry.json");
+  console.log("[OK] Updated registry.json");
 
   const publicRegistryPath = join(outputDir, "registry.json");
   writeFileSync(publicRegistryPath, JSON.stringify(registry, null, 2), "utf-8");
-  console.log("✅ Updated public/r/registry.json");
+  console.log("[OK] Updated public/r/registry.json");
 }
 
 // =============================================================================
 // MAIN EXECUTION
 // =============================================================================
 
-console.log("🔄 Updating registry files...\n");
+// ASCII Art Banner - EDBN UI
+const banner = [
+  "",
+  "   ███████ ██████  ██████  ███    ██   ██    ██ ██████",
+  "   ██      ██   ██ ██   ██ ████   ██   ██    ██   ██  ",
+  "   █████   ██   ██ ██████  ██ ██  ██   ██    ██   ██  ",
+  "   ██      ██   ██ ██   ██ ██  ██ ██   ██    ██   ██  ",
+  "   ███████ ██████  ██████  ██   ████    ██████  ██████",
+  "",
+].join("\n");
+
+console.log(banner);
+console.log("[REGISTRY] Updating registry files...\n");
 
 const outputDir = join(root, "public", "r");
 
@@ -748,7 +795,7 @@ Object.entries(allComponents).forEach(([name, config]) => {
   try {
     updateRegistryFile(name, config, outputDir);
   } catch (error) {
-    console.error(`❌ Failed to update ${name}.json:`, error.message);
+    console.error(`[ERROR] Failed to update ${name}.json:`, error.message);
   }
 });
 
@@ -756,10 +803,10 @@ Object.entries(allComponents).forEach(([name, config]) => {
 try {
   updateMainRegistry(outputDir);
 } catch (error) {
-  console.error("❌ Failed to update main registry:", error.message);
+  console.error("[ERROR] Failed to update main registry:", error.message);
 }
 
-console.log("\n✨ Registry update complete!");
+console.log("\n[DONE] Registry update complete!");
 console.log("\nOutput structure:");
 console.log("  public/r/");
 console.log("  ├── animated/   (motion/react components)");
@@ -771,10 +818,10 @@ console.log("  └── registry.json");
 // BUNDLE SIZE COMPUTATION
 // =============================================================================
 
-console.log("\n📊 Computing bundle sizes...\n");
+console.log("\n[BUNDLE] Computing bundle sizes...\n");
 
 import("./compute-bundle-sizes.mjs").catch((error) => {
-  console.warn("⚠️  Bundle size computation skipped:", error.message);
+  console.warn("[WARN] Bundle size computation skipped:", error.message);
   console.log("   Run 'node oss/scripts/compute-bundle-sizes.mjs' manually to generate bundle data.");
 });
 

@@ -139,5 +139,15 @@
       "source": "fallback"
     },
     "timestamp": 1770148192507
+  },
+  "@ncdai/react-wheel-picker": {
+    "data": {
+      "name": "@ncdai/react-wheel-picker",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1770237241779
   }
 }

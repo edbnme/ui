@@ -177,6 +177,64 @@
       ]
     },
     {
+      "name": "wheel-picker",
+      "type": "registry:ui",
+      "title": "Wheel Picker",
+      "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
+      "dependencies": [
+        "@ncdai/react-wheel-picker"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/wheel-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shimmering-text",
+      "type": "registry:ui",
+      "title": "Shimmering Text",
+      "description": "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/animated/shimmering-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slide-to-unlock",
+      "type": "registry:ui",
+      "title": "Slide to Unlock",
+      "description": "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils",
+        "shimmering-text"
+      ],
+      "variant": "animated",
+      "files": [
+        {
+          "path": "components/ui/animated/slide-to-unlock.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "motion-provider",
       "type": "registry:component",
       "title": "Motion Provider",

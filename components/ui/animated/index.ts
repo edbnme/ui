@@ -15,6 +15,8 @@ export * from "./dropdown-menu";
 export * from "./popover";
 export * from "./pull-down";
 export * from "./sheet";
+export * from "./shimmering-text";
+export * from "./slide-to-unlock";
 
 // Re-export shared components for convenience
 export {

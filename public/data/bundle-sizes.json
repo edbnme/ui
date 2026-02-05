@@ -2,9 +2,9 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 14,
-    "totalComponents": 21,
-    "animatedComponents": 7,
+    "totalPackages": 15,
+    "totalComponents": 24,
+    "animatedComponents": 10,
     "staticComponents": 7,
     "sharedComponents": 7,
     "largestDependency": {
@@ -14,9 +14,16 @@
       "version": "latest",
       "source": "fallback"
     },
-    "computedAt": "2026-02-04T04:14:57.175Z"
+    "computedAt": "2026-02-05T09:48:02.204Z"
   },
   "packages": [
+    {
+      "name": "@ncdai/react-wheel-picker",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
     {
       "name": "@phosphor-icons/react",
       "size": 1200,
@@ -383,6 +390,72 @@
         }
       ],
       "dependencyCount": 3
+    },
+    "wheel-picker": {
+      "name": "wheel-picker",
+      "title": "Wheel Picker",
+      "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 10000,
+        "gzipped": 3000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@ncdai/react-wheel-picker",
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "shimmering-text": {
+      "name": "shimmering-text",
+      "title": "Shimmering Text",
+      "description": "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 150000,
+        "gzipped": 45000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "slide-to-unlock": {
+      "name": "slide-to-unlock",
+      "title": "Slide to Unlock",
+      "description": "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
+      "variant": "animated",
+      "sizes": {
+        "minified": 150000,
+        "gzipped": 45000,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
     },
     "button-static": {
       "name": "button",
