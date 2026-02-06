@@ -636,6 +636,8 @@ function AlertDialogContent({
     "outline-none focus:outline-none",
     "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "w-full max-w-[calc(100vw-2rem)] sm:max-w-md",
+    // Base padding for consistent spacing
+    "p-6 sm:p-8",
     className,
   );
 
@@ -795,7 +797,7 @@ function AlertDialogBody({ children, className }: AlertDialogBodyProps) {
   const { disableAnimation } = useAlertDialog();
 
   const bodyClasses = cn(
-    "flex flex-col items-center text-center gap-5 sm:gap-6 p-6 sm:p-8",
+    "flex flex-col items-center text-center gap-5 sm:gap-6",
     className,
   );
 
@@ -843,7 +845,7 @@ function AlertDialogFooter({ children, className }: AlertDialogFooterProps) {
   return (
     <div
       className={cn(
-        "flex flex-col w-full gap-2 sm:gap-3 pt-1 sm:pt-2",
+        "flex flex-col w-full gap-2 sm:gap-3 pt-4 sm:pt-5",
         className,
       )}
       data-slot="alert-dialog-footer"
