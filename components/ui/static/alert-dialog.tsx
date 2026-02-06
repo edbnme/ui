@@ -406,6 +406,8 @@ function AlertDialogContent({
     "outline-none focus:outline-none",
     "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "w-full max-w-[calc(100vw-2rem)] sm:max-w-md",
+    // Base padding for consistent spacing
+    "p-6 sm:p-8",
     // CSS animations with tw-animate-css
     "duration-200",
     "data-[state=open]:animate-in data-[state=closed]:animate-out",
@@ -482,7 +484,6 @@ function AlertDialogHeader({
     <div
       className={cn(
         "flex flex-col items-center text-center gap-4 sm:gap-5",
-        "p-6 pb-4 sm:p-8 sm:pb-5",
         className,
       )}
       data-slot="alert-dialog-header"
@@ -518,7 +519,7 @@ function AlertDialogBody({ children, className }: AlertDialogBodyProps) {
   return (
     <div
       className={cn(
-        "flex flex-col items-center text-center gap-5 sm:gap-6 p-6 sm:p-8",
+        "flex flex-col items-center text-center gap-5 sm:gap-6",
         className,
       )}
       data-slot="alert-dialog-body"
@@ -544,7 +545,7 @@ function AlertDialogFooter({ children, className }: AlertDialogFooterProps) {
     <div
       className={cn(
         "flex flex-col w-full gap-2 sm:gap-3",
-        "px-6 pb-6 pt-2 sm:px-8 sm:pb-8 sm:pt-3",
+        "pt-4 sm:pt-5",
         className,
       )}
       data-slot="alert-dialog-footer"

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.4] - 2025-02-06
+
+### Changed
+
+- **Registry Rebuild** — Updated registry JSON files for Sheet, Sidebar, Alert Dialog, and Wheel Picker components
+- **Alert Dialog (Static)** — Moved padding from sub-components to content root (`p-6 sm:p-8`) for more consistent spacing
+
 ## [0.2.0] - 2026-01-03
 
 ### Added

@@ -72,8 +72,7 @@ export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 export type AvatarStatus = "online" | "offline" | "away" | "busy";
 
 export interface AvatarProps
-  extends
-    React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>,
+  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>,
     VariantProps<typeof avatarVariants> {
   /** Status indicator */
   status?: AvatarStatus;
