@@ -122,7 +122,7 @@ export function useShouldDisableAnimation(disableAnimation?: boolean): boolean {
  */
 export function useAnimationTransition(
   transition: Transition = transitions.default,
-  disableAnimation?: boolean,
+  disableAnimation?: boolean
 ): Transition {
   const shouldDisable = useShouldDisableAnimation(disableAnimation);
 
@@ -227,7 +227,7 @@ export function MotionProvider({
       lowPowerState.batteryLevel,
       lowPowerState.isCharging,
       effectiveTransition,
-    ],
+    ]
   );
 
   return (

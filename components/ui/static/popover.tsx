@@ -73,14 +73,14 @@ function usePopover(componentName = "PopoverTrigger"): PopoverContextValue {
  */
 function useDelayedUnmount(
   isOpen: boolean,
-  duration: number = 200,
+  duration: number = 200
 ): {
   shouldRender: boolean;
   state: "open" | "closed";
 } {
   const [shouldRender, setShouldRender] = React.useState(isOpen);
   const [state, setState] = React.useState<"open" | "closed">(
-    isOpen ? "open" : "closed",
+    isOpen ? "open" : "closed"
   );
 
   React.useEffect(() => {
@@ -138,7 +138,7 @@ function PopoverRoot({
   const closePopover = useCallback(() => setIsOpen(false), [setIsOpen]);
   const togglePopover = useCallback(
     () => setIsOpen((prev) => !prev),
-    [setIsOpen],
+    [setIsOpen]
   );
 
   // Callback to set trigger ref from child
@@ -165,7 +165,7 @@ function PopoverRoot({
       togglePopover,
       uniqueId,
       setTriggerRef,
-    ],
+    ]
   );
 
   return (
@@ -188,8 +188,7 @@ PopoverRoot.displayName = "PopoverRoot";
 // POPOVER TRIGGER
 // =============================================================================
 
-export interface PopoverTriggerProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface PopoverTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
@@ -204,7 +203,7 @@ const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>(
         toggle();
         props.onClick?.(e);
       },
-      [toggle, props],
+      [toggle, props]
     );
 
     const handleKeyDown = useCallback(
@@ -215,7 +214,7 @@ const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>(
         }
         props.onKeyDown?.(event);
       },
-      [toggle, props],
+      [toggle, props]
     );
 
     // Merge refs using callback
@@ -230,7 +229,7 @@ const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>(
           ref.current = node;
         }
       },
-      [ref, setTriggerRef],
+      [ref, setTriggerRef]
     );
 
     const Comp = asChild ? Slot : "button";
@@ -250,7 +249,7 @@ const PopoverTrigger = forwardRef<HTMLButtonElement, PopoverTriggerProps>(
         {...props}
       />
     );
-  },
+  }
 );
 
 PopoverTrigger.displayName = "PopoverTrigger";
@@ -387,7 +386,7 @@ function PopoverContent({
         "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
         "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
         "data-[state=open]:slide-in-from-top-2 data-[state=closed]:slide-out-to-top-2",
-        className,
+        className
       )}
       style={{
         ...style,
@@ -426,7 +425,7 @@ function PopoverHeader({ children, className, style }: PopoverHeaderProps) {
         "border-b border-border",
         "px-5 py-4",
         "bg-background",
-        className,
+        className
       )}
       style={{
         ...style,
@@ -463,7 +462,7 @@ function PopoverTitle({ children, className, style }: PopoverTitleProps) {
         "flex items-center gap-2",
         "text-sm font-semibold leading-none",
         "text-foreground",
-        className,
+        className
       )}
       style={style}
       data-slot="popover-title"
@@ -553,7 +552,7 @@ function PopoverFooter({ children, className, style }: PopoverFooterProps) {
         "border-t border-border",
         "px-5 py-3.5",
         "bg-background",
-        className,
+        className
       )}
       style={{
         ...style,
@@ -614,7 +613,7 @@ function PopoverClose({
         "hover:bg-secondary/80",
         "transition-colors duration-150",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className,
+        className
       )}
       style={style}
       onClick={handleClick}

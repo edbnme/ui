@@ -122,7 +122,7 @@ function validateDependencies(item, file) {
     if (!declaredDeps.has(pkg)) {
       error(
         item.name,
-        `npm import "${pkg}" in ${file.path} not declared in dependencies`,
+        `npm import "${pkg}" in ${file.path} not declared in dependencies`
       );
     }
   }
@@ -145,7 +145,7 @@ function validateComponentConventions(item, file) {
   if (file.type === "registry:ui" && !patterns.forwardRef.test(content)) {
     warn(
       item.name,
-      `No forwardRef found in ${file.path} — expected for UI components`,
+      `No forwardRef found in ${file.path} — expected for UI components`
     );
   }
 
@@ -171,7 +171,7 @@ function validateHardcodedColors(item, file) {
     if (filtered.length > 0) {
       warn(
         item.name,
-        `Hardcoded colors in ${file.path}: ${[...new Set(filtered)].join(", ")}`,
+        `Hardcoded colors in ${file.path}: ${[...new Set(filtered)].join(", ")}`
       );
     }
   }
@@ -191,7 +191,7 @@ const registryDir = getRegistryDir();
 
 if (!registryDir) {
   console.error(
-    "[FATAL] No registry directory found. Run `npm run registry:build` first.",
+    "[FATAL] No registry directory found. Run `npm run registry:build` first."
   );
   console.error("  Checked:", REGISTRY_DIRS.join(", "));
   process.exit(1);
@@ -201,7 +201,7 @@ console.log(`[INFO] Using registry at: ${registryDir}`);
 console.log("");
 
 const jsonFiles = readdirSync(registryDir).filter(
-  (f) => f.endsWith(".json") && f !== "registry.json",
+  (f) => f.endsWith(".json") && f !== "registry.json"
 );
 
 console.log(`[INFO] Found ${jsonFiles.length} registry items to validate\n`);
@@ -255,7 +255,7 @@ if (registryIndex) {
       if (!indexedNames.has(name)) {
         warn(
           "registry.json",
-          `${name} has a JSON file but is not in the index`,
+          `${name} has a JSON file but is not in the index`
         );
       }
     }
@@ -274,7 +274,7 @@ console.log("=".repeat(50) + "\n");
 
 if (errors > 0) {
   console.error(
-    "[FAIL] Registry validation failed with errors. Fix them before building.\n",
+    "[FAIL] Registry validation failed with errors. Fix them before building.\n"
   );
   process.exit(1);
 } else if (warnings > 0) {

@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Pull Down Menu (Static)",
   "description": "A pull down menu with CSS animations. No motion dependency required (~30KB savings).",
-  "dependencies": [
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

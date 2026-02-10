@@ -1,13 +1,13 @@
 /**
  * Component Variant Index
- * 
+ *
  * This file provides a unified export system for animated and static component variants.
  * Components automatically use the correct variant based on the VariantProvider context.
- * 
+ *
  * Usage:
  * - Import components from this file to get auto-variant-switching behavior
  * - Or import directly from animated/ or static/ folders for explicit control
- * 
+ *
  * @packageDocumentation
  */
 
@@ -17,15 +17,11 @@
 // =============================================================================
 
 // Button
-export { 
-  Button, 
-  IconButton, 
-  buttonVariants 
-} from "./animated/button";
-export type { 
-  ButtonProps, 
+export { Button, IconButton, buttonVariants } from "./animated/button";
+export type {
+  ButtonProps,
   IconButtonProps,
-  ButtonRootProps 
+  ButtonRootProps,
 } from "./animated/button";
 
 // Alert Dialog
@@ -47,7 +43,7 @@ export {
   AlertDialogImage,
 } from "./animated/alert-dialog";
 
-// Dropdown Menu  
+// Dropdown Menu
 export {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -119,23 +115,33 @@ export {
 // These are variant-agnostic and work with both animated and static
 // =============================================================================
 
-export { Avatar, AvatarImage, AvatarFallback, AvatarGroup } from "./shared/avatar";
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarGroup,
+} from "./shared/avatar";
 export { Input } from "./shared/input";
 export { ScrollArea, ScrollBar } from "./shared/scroll-area";
 export { Separator } from "./shared/separator";
 export { Skeleton } from "./shared/skeleton";
 export { Slider } from "./shared/slider";
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "./shared/tooltip";
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "./shared/tooltip";
 
 // =============================================================================
 // STATIC COMPONENT VARIANTS
 // Import these directly when you want no motion dependencies
 // =============================================================================
 
-export { 
-  Button as StaticButton, 
-  IconButton as StaticIconButton, 
-  buttonVariants as staticButtonVariants 
+export {
+  Button as StaticButton,
+  IconButton as StaticIconButton,
+  buttonVariants as staticButtonVariants,
 } from "./static/button";
 
 export {

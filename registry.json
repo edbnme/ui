@@ -7,9 +7,7 @@
     "animated": {
       "name": "Animated",
       "description": "Components with motion/react spring animations",
-      "dependencies": [
-        "motion"
-      ],
+      "dependencies": ["motion"],
       "cssImport": "@/lib/styles/animated.css"
     },
     "static": {
@@ -32,9 +30,7 @@
         "@phosphor-icons/react",
         "tw-animate-css"
       ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -48,15 +44,8 @@
       "type": "registry:ui",
       "title": "Alert Dialog",
       "description": "Animated modal dialog with morphing animations, focus trap, and controlled/uncontrolled state.",
-      "dependencies": [
-        "motion",
-        "@phosphor-icons/react",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils",
-        "button"
-      ],
+      "dependencies": ["motion", "@phosphor-icons/react", "tw-animate-css"],
+      "registryDependencies": ["utils", "button"],
       "variant": "animated",
       "files": [
         {
@@ -70,13 +59,8 @@
       "type": "registry:ui",
       "title": "Popover",
       "description": "Animated popover component with morphing transitions, focus trap, and click-outside handling.",
-      "dependencies": [
-        "motion",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["motion", "tw-animate-css"],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -96,9 +80,7 @@
         "@phosphor-icons/react",
         "tw-animate-css"
       ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -112,14 +94,8 @@
       "type": "registry:ui",
       "title": "Pull Down Menu",
       "description": "A pull down menu with morphing animations. The trigger morphs into the menu container with spring physics.",
-      "dependencies": [
-        "motion",
-        "@phosphor-icons/react",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["motion", "@phosphor-icons/react", "tw-animate-css"],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -139,9 +115,7 @@
         "class-variance-authority",
         "motion"
       ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -182,12 +156,8 @@
       "type": "registry:ui",
       "title": "Wheel Picker",
       "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
-      "dependencies": [
-        "@ncdai/react-wheel-picker"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@ncdai/react-wheel-picker"],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -201,12 +171,8 @@
       "type": "registry:ui",
       "title": "Shimmering Text",
       "description": "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["motion"],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -220,13 +186,8 @@
       "type": "registry:ui",
       "title": "Slide to Unlock",
       "description": "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
-      "dependencies": [
-        "motion"
-      ],
-      "registryDependencies": [
-        "utils",
-        "shimmering-text"
-      ],
+      "dependencies": ["motion"],
+      "registryDependencies": ["utils", "shimmering-text"],
       "variant": "animated",
       "files": [
         {
@@ -240,10 +201,7 @@
       "type": "registry:component",
       "title": "Motion Provider",
       "description": "Global animation configuration provider with reduced motion and low-power device detection.",
-      "dependencies": [
-        "motion",
-        "tw-animate-css"
-      ],
+      "dependencies": ["motion", "tw-animate-css"],
       "registryDependencies": [],
       "variant": "animated",
       "files": [
@@ -270,10 +228,7 @@
       "type": "registry:lib",
       "title": "Animations",
       "description": "Motion system with spring presets, transitions, and variant factories.",
-      "dependencies": [
-        "motion",
-        "tw-animate-css"
-      ],
+      "dependencies": ["motion", "tw-animate-css"],
       "registryDependencies": [],
       "variant": "animated",
       "files": [
@@ -288,14 +243,8 @@
       "type": "registry:lib",
       "title": "Animated Icons",
       "description": "Animated icon components including loading spinners, morphing icons, and close buttons.",
-      "dependencies": [
-        "motion",
-        "@phosphor-icons/react",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["motion", "@phosphor-icons/react", "tw-animate-css"],
+      "registryDependencies": ["utils"],
       "variant": "animated",
       "files": [
         {
@@ -315,9 +264,7 @@
         "@phosphor-icons/react",
         "tw-animate-css"
       ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "static",
       "files": [
         {
@@ -331,13 +278,8 @@
       "type": "registry:ui",
       "title": "Alert Dialog (Static)",
       "description": "Static modal dialog with CSS transitions only. No motion dependency required.",
-      "dependencies": [
-        "@phosphor-icons/react",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@phosphor-icons/react", "tw-animate-css"],
+      "registryDependencies": ["utils"],
       "variant": "static",
       "files": [
         {
@@ -351,13 +293,8 @@
       "type": "registry:ui",
       "title": "Popover (Static)",
       "description": "Static popover component with CSS transitions only. No motion dependency required.",
-      "dependencies": [
-        "@radix-ui/react-slot",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@radix-ui/react-slot", "tw-animate-css"],
+      "registryDependencies": ["utils"],
       "variant": "static",
       "files": [
         {
@@ -376,9 +313,7 @@
         "@phosphor-icons/react",
         "tw-animate-css"
       ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "static",
       "files": [
         {
@@ -392,12 +327,8 @@
       "type": "registry:ui",
       "title": "Pull Down Menu (Static)",
       "description": "A pull down menu with CSS animations. No motion dependency required (~30KB savings).",
-      "dependencies": [
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
       "variant": "static",
       "files": [
         {
@@ -416,9 +347,7 @@
         "class-variance-authority",
         "@phosphor-icons/react"
       ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "static",
       "files": [
         {
@@ -474,12 +403,8 @@
       "type": "registry:lib",
       "title": "Static Icons",
       "description": "CSS-only icon components for static variants.",
-      "dependencies": [
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
       "variant": "static",
       "files": [
         {
@@ -493,13 +418,8 @@
       "type": "registry:ui",
       "title": "Avatar",
       "description": "Composable avatar component with sizes, status indicators, and group stacking support.",
-      "dependencies": [
-        "@radix-ui/react-avatar",
-        "class-variance-authority"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@radix-ui/react-avatar", "class-variance-authority"],
+      "registryDependencies": ["utils"],
       "variant": "shared",
       "files": [
         {
@@ -514,9 +434,7 @@
       "title": "Input",
       "description": "A styled input component with focus states, validation support, and file input styling.",
       "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "shared",
       "files": [
         {
@@ -530,12 +448,8 @@
       "type": "registry:ui",
       "title": "Scroll Area",
       "description": "A scrollable area with custom scrollbars built on Radix UI ScrollArea.",
-      "dependencies": [
-        "@radix-ui/react-scroll-area"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@radix-ui/react-scroll-area"],
+      "registryDependencies": ["utils"],
       "variant": "shared",
       "files": [
         {
@@ -549,12 +463,8 @@
       "type": "registry:ui",
       "title": "Separator",
       "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
-      "dependencies": [
-        "@radix-ui/react-separator"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@radix-ui/react-separator"],
+      "registryDependencies": ["utils"],
       "variant": "shared",
       "files": [
         {
@@ -569,9 +479,7 @@
       "title": "Skeleton",
       "description": "A loading placeholder component with pulse animation for content loading states.",
       "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
+      "registryDependencies": ["utils"],
       "variant": "shared",
       "files": [
         {
@@ -585,12 +493,8 @@
       "type": "registry:ui",
       "title": "Slider",
       "description": "A range slider component with single or multiple thumbs, built on Radix UI Slider.",
-      "dependencies": [
-        "@radix-ui/react-slider"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@radix-ui/react-slider"],
+      "registryDependencies": ["utils"],
       "variant": "shared",
       "files": [
         {
@@ -604,12 +508,8 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "A tooltip component with smooth animations and configurable positioning.",
-      "dependencies": [
-        "@radix-ui/react-tooltip"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "registryDependencies": ["utils"],
       "variant": "shared",
       "files": [
         {
@@ -638,10 +538,7 @@
       "type": "registry:lib",
       "title": "Utils",
       "description": "Utility functions including cn() for class merging.",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "registryDependencies": [],
       "variant": "shared",
       "files": [

@@ -210,7 +210,7 @@ function usePullDownContext(componentName = "PullDown"): PullDownContextValue {
   if (!context) {
     throw new Error(
       `${componentName} must be used within <PullDown>. ` +
-        "Wrap your component tree with <PullDown>",
+        "Wrap your component tree with <PullDown>"
     );
   }
   return context;
@@ -222,7 +222,7 @@ function useSubMenuContext(): PullDownSubMenuContextValue {
   const context = useContext(SubMenuContext);
   if (!context) {
     throw new Error(
-      "SubMenu components must be used within a <PullDown.SubMenu> component",
+      "SubMenu components must be used within a <PullDown.SubMenu> component"
     );
   }
   return context;
@@ -260,7 +260,7 @@ function useControllable<T>({
         wasControlled.current ? "controlled" : "uncontrolled",
         "to",
         isControlled ? "controlled" : "uncontrolled",
-        ". This is likely a bug.",
+        ". This is likely a bug."
       );
     }
     wasControlled.current = isControlled;
@@ -273,7 +273,7 @@ function useControllable<T>({
       }
       onChange?.(newValue);
     },
-    [isControlled, onChange],
+    [isControlled, onChange]
   );
 
   return [value, setValue];
@@ -285,7 +285,7 @@ function useControllable<T>({
 function useClickOutside(
   refs: RefObject<HTMLElement | null>[],
   handler: () => void,
-  enabled: boolean = true,
+  enabled: boolean = true
 ) {
   useEffect(() => {
     if (!enabled) return;
@@ -371,7 +371,7 @@ function getAnchorOffset(
   menuWidth: number,
   menuHeight: number,
   buttonWidth: number,
-  buttonHeight: number,
+  buttonHeight: number
 ) {
   if (anchor === "start") {
     return { x: 0, y: 0 };
@@ -391,7 +391,7 @@ function getAnchorOffset(
 /** Calculate transform origin based on direction and anchor */
 function getTransformOrigin(
   direction: PullDownDirection,
-  anchor: PullDownAnchor,
+  anchor: PullDownAnchor
 ): string {
   const vertical =
     direction === "top" ? "bottom" : direction === "bottom" ? "top" : "center";
@@ -440,7 +440,7 @@ const Root = forwardRef<HTMLDivElement, PullDownProps>(function PullDownRoot(
     anchor: anchorProp = "start",
     animationDuration = 250,
   },
-  ref,
+  ref
 ) {
   // For horizontal directions, anchor is always center
   const anchor =
@@ -481,7 +481,7 @@ const Root = forwardRef<HTMLDivElement, PullDownProps>(function PullDownRoot(
         setActiveSubmenu(id);
       }
     },
-    [activeSubmenu, animationDuration],
+    [activeSubmenu, animationDuration]
   );
 
   const handleSetOpen = useCallback(
@@ -498,7 +498,7 @@ const Root = forwardRef<HTMLDivElement, PullDownProps>(function PullDownRoot(
       }
       setOpen(newOpen);
     },
-    [setOpen],
+    [setOpen]
   );
 
   // Handle click outside
@@ -515,7 +515,7 @@ const Root = forwardRef<HTMLDivElement, PullDownProps>(function PullDownRoot(
   useClickOutside(
     [triggerRef, contentRef],
     handleClickOutside,
-    open && closeOnClickOutside,
+    open && closeOnClickOutside
   );
 
   // Handle escape key
@@ -560,7 +560,7 @@ const Root = forwardRef<HTMLDivElement, PullDownProps>(function PullDownRoot(
       handleSetActiveSubmenu,
       isSubmenuClosing,
       animationDuration,
-    ],
+    ]
   );
 
   return (
@@ -589,7 +589,7 @@ const Container = forwardRef<HTMLDivElement, PullDownContainerProps>(
       className,
       style,
     },
-    ref,
+    ref
   ) {
     const {
       open,
@@ -626,7 +626,7 @@ const Container = forwardRef<HTMLDivElement, PullDownContainerProps>(
           setOpen(true);
         }
       },
-      [open, setOpen],
+      [open, setOpen]
     );
 
     const closedRadius =
@@ -641,7 +641,7 @@ const Container = forwardRef<HTMLDivElement, PullDownContainerProps>(
       menuWidth,
       measuredHeight,
       buttonWidth,
-      buttonHeight,
+      buttonHeight
     );
 
     const openOffset = {
@@ -682,7 +682,7 @@ const Container = forwardRef<HTMLDivElement, PullDownContainerProps>(
           onClick={handleClick}
           className={cn(
             "bg-popover text-popover-foreground ring-1 ring-border/50",
-            className,
+            className
           )}
           style={containerStyle}
         >
@@ -690,7 +690,7 @@ const Container = forwardRef<HTMLDivElement, PullDownContainerProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 Container.displayName = "PullDownContainer";
@@ -702,7 +702,7 @@ Container.displayName = "PullDownContainer";
 const Trigger = forwardRef<HTMLDivElement, PullDownTriggerProps>(
   function PullDownTrigger(
     { children, disabled = false, className, style },
-    ref,
+    ref
   ) {
     const { open, setOpen, triggerRef, animationDuration } =
       usePullDownContext("PullDownTrigger");
@@ -714,7 +714,7 @@ const Trigger = forwardRef<HTMLDivElement, PullDownTriggerProps>(
         event.stopPropagation();
         setOpen(!open);
       },
-      [disabled, setOpen, open],
+      [disabled, setOpen, open]
     );
 
     const handleKeyDown = useCallback(
@@ -729,7 +729,7 @@ const Trigger = forwardRef<HTMLDivElement, PullDownTriggerProps>(
           setOpen(true);
         }
       },
-      [disabled, setOpen, open],
+      [disabled, setOpen, open]
     );
 
     const triggerStyle: CSSProperties = {
@@ -771,7 +771,7 @@ const Trigger = forwardRef<HTMLDivElement, PullDownTriggerProps>(
         {children}
       </div>
     );
-  },
+  }
 );
 
 Trigger.displayName = "PullDownTrigger";
@@ -783,7 +783,7 @@ Trigger.displayName = "PullDownTrigger";
 const Content = forwardRef<HTMLDivElement, PullDownContentProps>(
   function PullDownContent(
     { children, className, style, onAnimationComplete },
-    ref,
+    ref
   ) {
     const {
       open,
@@ -853,7 +853,7 @@ const Content = forwardRef<HTMLDivElement, PullDownContentProps>(
         {children}
       </div>
     );
-  },
+  }
 );
 
 Content.displayName = "PullDownContent";
@@ -872,7 +872,7 @@ const Item = forwardRef<HTMLDivElement, PullDownItemProps>(
       className,
       style,
     },
-    ref,
+    ref
   ) {
     const {
       setOpen,
@@ -897,7 +897,7 @@ const Item = forwardRef<HTMLDivElement, PullDownItemProps>(
           setOpen(false);
         }
       },
-      [disabled, onSelect, closeOnSelect, setOpen],
+      [disabled, onSelect, closeOnSelect, setOpen]
     );
 
     const handleMouseEnter = useCallback(() => {
@@ -935,14 +935,14 @@ const Item = forwardRef<HTMLDivElement, PullDownItemProps>(
           "hover:bg-accent hover:text-accent-foreground",
           "focus:bg-accent focus:text-accent-foreground",
           "data-disabled:pointer-events-none data-disabled:opacity-50",
-          className,
+          className
         )}
         style={itemStyle}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 
 Item.displayName = "PullDownItem";
@@ -955,7 +955,7 @@ function Portal({ children, container }: PullDownPortalProps): ReactNode {
   const mounted = React.useSyncExternalStore(
     useCallback(() => () => {}, []),
     useCallback(() => true, []),
-    useCallback(() => false, []),
+    useCallback(() => false, [])
   );
 
   if (!mounted) {
@@ -986,7 +986,7 @@ const Overlay = forwardRef<HTMLDivElement, PullDownOverlayProps>(
           setOpen(false);
         }
       },
-      [onClick, setOpen],
+      [onClick, setOpen]
     );
 
     const overlayStyle: CSSProperties = {
@@ -1007,7 +1007,7 @@ const Overlay = forwardRef<HTMLDivElement, PullDownOverlayProps>(
         aria-hidden="true"
       />
     );
-  },
+  }
 );
 
 Overlay.displayName = "PullDownOverlay";
@@ -1043,12 +1043,12 @@ const Label = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
         ref={ref}
         className={cn(
           "px-3 py-1.5 text-xs font-medium text-muted-foreground",
-          className,
+          className
         )}
         {...props}
       />
     );
-  },
+  }
 );
 
 Label.displayName = "PullDownLabel";
@@ -1077,7 +1077,7 @@ SubMenu.displayName = "PullDownSubMenu";
 const SubMenuTrigger = forwardRef<HTMLDivElement, PullDownSubMenuTriggerProps>(
   function PullDownSubMenuTrigger(
     { children, className, style, disabled = false },
-    ref,
+    ref
   ) {
     const {
       setActiveSubmenu,
@@ -1101,7 +1101,7 @@ const SubMenuTrigger = forwardRef<HTMLDivElement, PullDownSubMenuTriggerProps>(
           setActiveSubmenu(isActive ? null : id);
         }
       },
-      [disabled, setActiveSubmenu, id, isActive],
+      [disabled, setActiveSubmenu, id, isActive]
     );
 
     const handleKeyDown = useCallback(
@@ -1121,7 +1121,7 @@ const SubMenuTrigger = forwardRef<HTMLDivElement, PullDownSubMenuTriggerProps>(
           setActiveSubmenu(null);
         }
       },
-      [disabled, setActiveSubmenu, id, isActive],
+      [disabled, setActiveSubmenu, id, isActive]
     );
 
     const content =
@@ -1161,7 +1161,7 @@ const SubMenuTrigger = forwardRef<HTMLDivElement, PullDownSubMenuTriggerProps>(
           "hover:bg-accent hover:text-accent-foreground",
           "focus:bg-accent focus:text-accent-foreground",
           "data-elevated:hover:bg-transparent",
-          className,
+          className
         )}
         style={triggerStyle}
         onClick={handleClick}
@@ -1170,7 +1170,7 @@ const SubMenuTrigger = forwardRef<HTMLDivElement, PullDownSubMenuTriggerProps>(
         {content}
       </div>
     );
-  },
+  }
 );
 
 SubMenuTrigger.displayName = "PullDownSubMenuTrigger";
@@ -1284,7 +1284,7 @@ const SubMenuContent = forwardRef<HTMLDivElement, PullDownSubMenuContentProps>(
         }}
         className={cn(
           "rounded-xl bg-popover p-1 shadow-lg ring-1 ring-border/50",
-          className,
+          className
         )}
         style={subMenuStyle}
       >
@@ -1294,7 +1294,7 @@ const SubMenuContent = forwardRef<HTMLDivElement, PullDownSubMenuContentProps>(
         </div>
       </div>
     );
-  },
+  }
 );
 
 SubMenuContent.displayName = "PullDownSubMenuContent";
@@ -1314,7 +1314,7 @@ function PullDownChevron({ isActive, className }: PullDownChevronProps) {
       className={cn(
         "h-4 w-4 text-muted-foreground transition-transform duration-200",
         isActive && "rotate-90",
-        className,
+        className
       )}
     />
   );

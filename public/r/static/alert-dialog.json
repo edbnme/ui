@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Alert Dialog (Static)",
   "description": "Static modal dialog with CSS transitions only. No motion dependency required.",
-  "dependencies": [
-    "@phosphor-icons/react",
-    "tw-animate-css"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@phosphor-icons/react", "tw-animate-css"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

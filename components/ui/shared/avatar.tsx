@@ -36,7 +36,7 @@ const avatarVariants = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 const statusVariants = cva(
@@ -61,7 +61,7 @@ const statusVariants = cva(
     defaultVariants: {
       size: "md",
     },
-  },
+  }
 );
 
 // =============================================================================
@@ -72,7 +72,8 @@ export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 export type AvatarStatus = "online" | "offline" | "away" | "busy";
 
 export interface AvatarProps
-  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>,
+  extends
+    React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>,
     VariantProps<typeof avatarVariants> {
   /** Status indicator */
   status?: AvatarStatus;
@@ -140,7 +141,7 @@ const AvatarFallback = React.forwardRef<
     ref={ref}
     className={cn(
       "flex h-full w-full items-center justify-center rounded-full bg-muted font-medium text-muted-foreground",
-      className,
+      className
     )}
     {...props}
   />
@@ -175,7 +176,7 @@ function AvatarGroup({
     <div
       className={cn(
         "flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
-        className,
+        className
       )}
     >
       {visible.map((child, i) => (
@@ -187,7 +188,7 @@ function AvatarGroup({
         <div
           className={cn(
             "relative flex items-center justify-center rounded-full bg-muted font-medium text-muted-foreground ring-2 ring-background",
-            avatarVariants({ size }),
+            avatarVariants({ size })
           )}
           style={{ zIndex: 0 }}
         >

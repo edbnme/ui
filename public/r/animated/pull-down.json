@@ -4,14 +4,8 @@
   "type": "registry:ui",
   "title": "Pull Down Menu",
   "description": "A pull down menu with morphing animations. The trigger morphs into the menu container with spring physics.",
-  "dependencies": [
-    "motion",
-    "@phosphor-icons/react",
-    "tw-animate-css"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["motion", "@phosphor-icons/react", "tw-animate-css"],
+  "registryDependencies": ["utils"],
   "variant": "animated",
   "files": [
     {

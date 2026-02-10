@@ -11,9 +11,7 @@
     "@phosphor-icons/react",
     "tw-animate-css"
   ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "animated",
   "files": [
     {

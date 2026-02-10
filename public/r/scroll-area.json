@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Scroll Area",
   "description": "A scrollable area with custom scrollbars built on Radix UI ScrollArea.",
-  "dependencies": [
-    "@radix-ui/react-scroll-area"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@radix-ui/react-scroll-area"],
+  "registryDependencies": ["utils"],
   "variant": "shared",
   "files": [
     {

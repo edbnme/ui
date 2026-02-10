@@ -10,9 +10,7 @@
     "class-variance-authority",
     "motion"
   ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "animated",
   "files": [
     {

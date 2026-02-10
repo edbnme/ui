@@ -71,7 +71,9 @@ const animatedComponents = {
       "use-stable-id",
       "use-controllable-state",
     ],
-    files: [{ path: "components/ui/animated/alert-dialog.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/animated/alert-dialog.tsx", type: "registry:ui" },
+    ],
     cssVars: true,
     variant: "animated",
   },
@@ -90,7 +92,9 @@ const animatedComponents = {
       "use-controllable-state",
       "use-click-outside",
     ],
-    files: [{ path: "components/ui/animated/popover.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/animated/popover.tsx", type: "registry:ui" },
+    ],
     cssVars: true,
     variant: "animated",
   },
@@ -107,7 +111,9 @@ const animatedComponents = {
     ],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider", "animations", "tokens"],
-    files: [{ path: "components/ui/animated/dropdown-menu.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/animated/dropdown-menu.tsx", type: "registry:ui" },
+    ],
     cssVars: true,
     variant: "animated",
   },
@@ -119,7 +125,9 @@ const animatedComponents = {
     dependencies: ["motion", "@phosphor-icons/react", "tw-animate-css"],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider"],
-    files: [{ path: "components/ui/animated/pull-down.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/animated/pull-down.tsx", type: "registry:ui" },
+    ],
     cssVars: true,
     variant: "animated",
   },
@@ -181,7 +189,12 @@ const animatedComponents = {
     dependencies: ["motion"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/animated/shimmering-text.tsx", type: "registry:ui" }],
+    files: [
+      {
+        path: "components/ui/animated/shimmering-text.tsx",
+        type: "registry:ui",
+      },
+    ],
     variant: "animated",
     credits: "@ncdai (https://chanhdai.com/components/slide-to-unlock)",
   },
@@ -193,7 +206,12 @@ const animatedComponents = {
     dependencies: ["motion"],
     registryDependencies: ["utils", "shimmering-text"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/animated/slide-to-unlock.tsx", type: "registry:ui" }],
+    files: [
+      {
+        path: "components/ui/animated/slide-to-unlock.tsx",
+        type: "registry:ui",
+      },
+    ],
     variant: "animated",
     credits: "@ncdai (https://chanhdai.com/components/slide-to-unlock)",
   },
@@ -226,11 +244,10 @@ const staticComponents = {
       "Static modal dialog with CSS transitions only. No motion dependency required.",
     dependencies: ["@phosphor-icons/react", "tw-animate-css"],
     registryDependencies: ["utils"],
-    inlineDependencies: [
-      "use-stable-id",
-      "use-controllable-state",
+    inlineDependencies: ["use-stable-id", "use-controllable-state"],
+    files: [
+      { path: "components/ui/static/alert-dialog.tsx", type: "registry:ui" },
     ],
-    files: [{ path: "components/ui/static/alert-dialog.tsx", type: "registry:ui" }],
     cssVars: true,
     variant: "static",
   },
@@ -262,7 +279,9 @@ const staticComponents = {
     ],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/static/dropdown-menu.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/static/dropdown-menu.tsx", type: "registry:ui" },
+    ],
     cssVars: true,
     variant: "static",
   },
@@ -274,7 +293,9 @@ const staticComponents = {
     dependencies: ["@phosphor-icons/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/static/pull-down.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/static/pull-down.tsx", type: "registry:ui" },
+    ],
     variant: "static",
   },
   "sheet-static": {
@@ -351,7 +372,9 @@ const sharedComponents = {
     dependencies: ["@radix-ui/react-scroll-area"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/scroll-area.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/shared/scroll-area.tsx", type: "registry:ui" },
+    ],
     variant: "shared",
   },
   separator: {
@@ -362,7 +385,9 @@ const sharedComponents = {
     dependencies: ["@radix-ui/react-separator"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/separator.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/shared/separator.tsx", type: "registry:ui" },
+    ],
     variant: "shared",
   },
   skeleton: {
@@ -434,8 +459,7 @@ const libraryComponents = {
   "static-transitions": {
     type: "registry:lib",
     title: "Static Transitions",
-    description:
-      "CSS-only transition utilities for static components.",
+    description: "CSS-only transition utilities for static components.",
     dependencies: [],
     registryDependencies: [],
     inlineDependencies: [],
@@ -467,8 +491,7 @@ const libraryComponents = {
   "icons-static": {
     type: "registry:lib",
     title: "Static Icons",
-    description:
-      "CSS-only icon components for static variants.",
+    description: "CSS-only icon components for static variants.",
     dependencies: ["@phosphor-icons/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
@@ -546,8 +569,7 @@ const hookComponents = {
   "use-ripple": {
     type: "registry:hook",
     title: "useRipple",
-    description:
-      "Hook for creating ripple effects on click interactions.",
+    description: "Hook for creating ripple effects on click interactions.",
     dependencies: [],
     registryDependencies: [],
     inlineDependencies: [],
@@ -707,14 +729,14 @@ function updateRegistryFile(name, config, outputDir) {
   // Write to variant-specific subdirectory
   const variantDir = join(outputDir, config.variant || "shared");
   ensureDir(variantDir);
-  
+
   const outputPath = join(variantDir, `${name.replace("-static", "")}.json`);
   writeFileSync(outputPath, JSON.stringify(registryItem, null, 2), "utf-8");
-  
+
   // Also write to flat structure for backwards compatibility
   const flatPath = join(outputDir, `${name}.json`);
   writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
-  
+
   console.log(`[OK] Updated ${config.variant}/${name}.json`);
 }
 
@@ -834,6 +856,7 @@ console.log("\n[BUNDLE] Computing bundle sizes...\n");
 
 import("./compute-bundle-sizes.mjs").catch((error) => {
   console.warn("[WARN] Bundle size computation skipped:", error.message);
-  console.log("   Run 'node oss/scripts/compute-bundle-sizes.mjs' manually to generate bundle data.");
+  console.log(
+    "   Run 'node oss/scripts/compute-bundle-sizes.mjs' manually to generate bundle data."
+  );
 });
-

@@ -45,7 +45,7 @@ export function useReducedMotion(override?: boolean): boolean {
   const prefersReducedMotion = useSyncExternalStore(
     subscribe,
     getSnapshot,
-    getServerSnapshot,
+    getServerSnapshot
   );
 
   // Override takes precedence if provided

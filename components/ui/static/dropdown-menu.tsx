@@ -105,7 +105,7 @@ const DropdownMenuTrigger = forwardRef<
     data-slot="dropdown-menu-trigger"
     className={cn(
       "outline-none focus-visible:ring-2 focus-visible:ring-ring",
-      className,
+      className
     )}
     {...props}
   />
@@ -143,7 +143,7 @@ const DropdownMenuContent = forwardRef<
       children,
       ...props
     },
-    ref,
+    ref
   ) => (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
@@ -177,14 +177,14 @@ const DropdownMenuContent = forwardRef<
           "data-[side=right]:slide-in-from-left-2",
           "data-[side=top]:slide-in-from-bottom-2",
           "duration-150",
-          className,
+          className
         )}
         {...props}
       >
         {children}
       </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>
-  ),
+  )
 );
 
 DropdownMenuContent.displayName = "DropdownMenuContent";
@@ -250,7 +250,7 @@ const DropdownMenuItem = forwardRef<
       inset && "pl-8",
       // SVG sizing
       "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -286,7 +286,7 @@ const DropdownMenuCheckboxItem = forwardRef<
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       // SVG sizing
       "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-      className,
+      className
     )}
     checked={checked}
     {...props}
@@ -351,7 +351,7 @@ const DropdownMenuRadioItem = forwardRef<
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       // SVG sizing
       "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -392,7 +392,7 @@ const DropdownMenuLabel = forwardRef<
       "px-2.5 py-2 text-xs font-semibold",
       "text-foreground/80",
       inset && "pl-8",
-      className,
+      className
     )}
     {...props}
   />
@@ -438,7 +438,7 @@ function DropdownMenuShortcut({
       className={cn(
         "ml-auto text-[10px] tracking-widest",
         "text-muted-foreground/60",
-        className,
+        className
       )}
       {...props}
     />
@@ -511,7 +511,7 @@ const DropdownMenuSubTrigger = forwardRef<
       inset && "pl-8",
       // SVG sizing
       "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-      className,
+      className
     )}
     {...props}
   >
@@ -560,7 +560,7 @@ const DropdownMenuSubContent = forwardRef<
       "data-[side=right]:slide-in-from-left-2",
       "data-[side=top]:slide-in-from-bottom-2",
       "duration-150",
-      className,
+      className
     )}
     {...props}
   />

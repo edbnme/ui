@@ -104,7 +104,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 // =============================================================================
@@ -112,7 +112,8 @@ const buttonVariants = cva(
 // =============================================================================
 
 export interface ButtonProps
-  extends Omit<ComponentPropsWithoutRef<"button">, "ref">,
+  extends
+    Omit<ComponentPropsWithoutRef<"button">, "ref">,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   loading?: boolean;
@@ -141,7 +142,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       onClick,
       ...props
     },
-    ref,
+    ref
   ) => {
     const isDisabled = disabled || loading;
     const { ripples, createRipple } = useRipple();
@@ -154,7 +155,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
         }
         onClick?.(event);
       },
-      [loading, success, showRipple, createRipple, onClick],
+      [loading, success, showRipple, createRipple, onClick]
     );
 
     const iconSize = size === "sm" || size === "icon-sm" ? 14 : 16;
@@ -220,7 +221,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       "data-success": success || undefined,
       className: cn(
         buttonVariants({ variant, size, className }),
-        showRipple && "relative overflow-hidden",
+        showRipple && "relative overflow-hidden"
       ),
       disabled: isDisabled,
       "aria-busy": loading || undefined,
@@ -242,7 +243,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
         {buttonContent}
       </button>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";
@@ -251,8 +252,10 @@ Button.displayName = "Button";
 // ICON BUTTON COMPONENT
 // =============================================================================
 
-export interface IconButtonProps
-  extends Omit<ButtonProps, "iconStart" | "iconEnd" | "children" | "asChild"> {
+export interface IconButtonProps extends Omit<
+  ButtonProps,
+  "iconStart" | "iconEnd" | "children" | "asChild"
+> {
   icon: Icon;
   "aria-label": string;
 }
@@ -260,7 +263,7 @@ export interface IconButtonProps
 const IconButton = forwardRef<ElementRef<"button">, IconButtonProps>(
   ({ icon, size = "icon", ...props }, ref) => {
     return <Button ref={ref} size={size} iconStart={icon} {...props} />;
-  },
+  }
 );
 
 IconButton.displayName = "IconButton";

@@ -55,7 +55,7 @@ const FOCUSABLE_SELECTORS = [
 export function useFocusTrap<T extends HTMLElement>(
   containerRef: RefObject<T | null>,
   isActive: boolean,
-  options: FocusTrapOptions = {},
+  options: FocusTrapOptions = {}
 ): void {
   const {
     onEscape,
@@ -69,12 +69,12 @@ export function useFocusTrap<T extends HTMLElement>(
   const getFocusableElements = useCallback((): HTMLElement[] => {
     if (!containerRef.current) return [];
     return Array.from(
-      containerRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS),
+      containerRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS)
     ).filter(
       (el) =>
         !el.hasAttribute("disabled") &&
         el.getAttribute("tabindex") !== "-1" &&
-        el.offsetParent !== null, // Element is visible
+        el.offsetParent !== null // Element is visible
     );
   }, [containerRef]);
 

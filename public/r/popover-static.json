@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Popover (Static)",
   "description": "Static popover component with CSS transitions only. No motion dependency required.",
-  "dependencies": [
-    "@radix-ui/react-slot",
-    "tw-animate-css"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@radix-ui/react-slot", "tw-animate-css"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

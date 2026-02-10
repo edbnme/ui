@@ -4,15 +4,8 @@
   "type": "registry:ui",
   "title": "Alert Dialog",
   "description": "Animated modal dialog with morphing animations, focus trap, and controlled/uncontrolled state.",
-  "dependencies": [
-    "motion",
-    "@phosphor-icons/react",
-    "tw-animate-css"
-  ],
-  "registryDependencies": [
-    "utils",
-    "button"
-  ],
+  "dependencies": ["motion", "@phosphor-icons/react", "tw-animate-css"],
+  "registryDependencies": ["utils", "button"],
   "variant": "animated",
   "files": [
     {

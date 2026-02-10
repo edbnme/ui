@@ -57,7 +57,7 @@ function useAlertDialog(): AlertDialogContextValue {
   if (!context) {
     throw new Error(
       "useAlertDialog must be used within <AlertDialog>. " +
-        "Wrap your component tree with <AlertDialog>",
+        "Wrap your component tree with <AlertDialog>"
     );
   }
   return context;
@@ -75,7 +75,7 @@ function useIsMounted(): boolean {
   return useSyncExternalStore(
     emptySubscribe,
     getClientSnapshot,
-    getServerSnapshot,
+    getServerSnapshot
   );
 }
 
@@ -87,14 +87,14 @@ function useIsMounted(): boolean {
  */
 function useDelayedUnmount(
   isOpen: boolean,
-  duration: number = 200,
+  duration: number = 200
 ): {
   shouldRender: boolean;
   state: "open" | "closed";
 } {
   const [shouldRender, setShouldRender] = React.useState(isOpen);
   const [state, setState] = React.useState<"open" | "closed">(
-    isOpen ? "open" : "closed",
+    isOpen ? "open" : "closed"
   );
 
   React.useEffect(() => {
@@ -153,7 +153,7 @@ function AlertDialogRoot({
       contentRef,
       onOpenChange,
     }),
-    [isOpen, setIsOpen, uniqueId, onOpenChange],
+    [isOpen, setIsOpen, uniqueId, onOpenChange]
   );
 
   return (
@@ -195,7 +195,7 @@ function AlertDialogTrigger({
         setIsOpen(true);
       }
     },
-    [setIsOpen],
+    [setIsOpen]
   );
 
   const commonProps = {
@@ -260,7 +260,7 @@ function AlertDialogContainer({ children }: AlertDialogContainerProps) {
         key={`backdrop-${uniqueId}`}
         className={cn(
           "fixed inset-0 z-100 bg-black/50 backdrop-blur-lg",
-          "transition-opacity duration-200",
+          "transition-opacity duration-200"
         )}
         data-slot="alert-dialog-backdrop"
       />
@@ -268,7 +268,7 @@ function AlertDialogContainer({ children }: AlertDialogContainerProps) {
         {children}
       </div>
     </>,
-    document.body,
+    document.body
   );
 }
 
@@ -413,7 +413,7 @@ function AlertDialogContent({
     "data-[state=open]:animate-in data-[state=closed]:animate-out",
     "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
     "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
-    className,
+    className
   );
 
   const ContentPanel = (
@@ -448,7 +448,7 @@ function AlertDialogContent({
           "fixed inset-0 z-100 bg-black/50 backdrop-blur-lg",
           "duration-200",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
-          "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
+          "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0"
         )}
         data-slot="alert-dialog-overlay"
         data-state={state}
@@ -457,7 +457,7 @@ function AlertDialogContent({
         {ContentPanel}
       </div>
     </>,
-    document.body,
+    document.body
   );
 }
 
@@ -484,7 +484,7 @@ function AlertDialogHeader({
     <div
       className={cn(
         "flex flex-col items-center text-center gap-4 sm:gap-5",
-        className,
+        className
       )}
       data-slot="alert-dialog-header"
     >
@@ -493,7 +493,7 @@ function AlertDialogHeader({
           className={cn(
             "size-14 sm:size-16 rounded-full flex items-center justify-center",
             "bg-primary/10 dark:bg-primary/20",
-            iconClassName,
+            iconClassName
           )}
         >
           {icon}
@@ -520,7 +520,7 @@ function AlertDialogBody({ children, className }: AlertDialogBodyProps) {
     <div
       className={cn(
         "flex flex-col items-center text-center gap-5 sm:gap-6",
-        className,
+        className
       )}
       data-slot="alert-dialog-body"
     >
@@ -546,7 +546,7 @@ function AlertDialogFooter({ children, className }: AlertDialogFooterProps) {
       className={cn(
         "flex flex-col w-full gap-2 sm:gap-3",
         "pt-4 sm:pt-5",
-        className,
+        className
       )}
       data-slot="alert-dialog-footer"
     >
@@ -579,7 +579,7 @@ function AlertDialogTitle({
       className={cn(
         "text-lg sm:text-xl font-semibold tracking-tight leading-tight",
         "text-foreground",
-        className,
+        className
       )}
       style={style}
       id={`${uniqueId}-title`}
@@ -642,7 +642,7 @@ function AlertDialogDescription({
       className={cn(
         "text-sm sm:text-[13px] text-muted-foreground leading-relaxed",
         "max-w-full sm:max-w-70 mx-auto",
-        className,
+        className
       )}
       style={style}
       id={`${uniqueId}-description`}
@@ -687,7 +687,7 @@ function AlertDialogAction({
         setIsOpen(false);
       }
     },
-    [onClick, setIsOpen],
+    [onClick, setIsOpen]
   );
 
   return (
@@ -706,7 +706,7 @@ function AlertDialogAction({
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "touch-manipulation select-none",
         disabled && "opacity-50 cursor-not-allowed pointer-events-none",
-        className,
+        className
       )}
       style={style}
       onClick={handleClick}
@@ -748,7 +748,7 @@ function AlertDialogCancel({
         setIsOpen(false);
       }
     },
-    [onClick, setIsOpen],
+    [onClick, setIsOpen]
   );
 
   return (
@@ -766,7 +766,7 @@ function AlertDialogCancel({
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "touch-manipulation select-none",
         disabled && "opacity-50 cursor-not-allowed pointer-events-none",
-        className,
+        className
       )}
       style={style}
       onClick={handleClick}
@@ -799,7 +799,7 @@ function AlertDialogClose({ className, onClick }: AlertDialogCloseProps) {
         setIsOpen(false);
       }
     },
-    [onClick, setIsOpen],
+    [onClick, setIsOpen]
   );
 
   return (
@@ -812,7 +812,7 @@ function AlertDialogClose({ className, onClick }: AlertDialogCloseProps) {
         "hover:bg-muted/80",
         "transition-colors duration-150",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className,
+        className
       )}
       onClick={handleClick}
       aria-label="Close dialog"

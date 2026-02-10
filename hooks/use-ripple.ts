@@ -33,7 +33,7 @@ export function useRipple() {
       const newRipple: Ripple = { x, y, size, key: Date.now() };
       setRipples((prev) => [...prev, newRipple]);
     },
-    [],
+    []
   );
 
   // Auto-cleanup ripples after animation

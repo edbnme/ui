@@ -22,7 +22,7 @@ import { RefObject, useEffect, useLayoutEffect, useRef } from "react";
  */
 function useClickOutside<T extends HTMLElement>(
   ref: RefObject<T | null>,
-  handler: (event: MouseEvent | TouchEvent) => void,
+  handler: (event: MouseEvent | TouchEvent) => void
 ): void {
   // Store handler in ref to prevent event listener re-attachment
   const handlerRef = useRef(handler);

@@ -286,7 +286,7 @@ export function createModalVariants(options?: {
  * @returns Variants for enter/exit animations
  */
 export function createSlideVariants(
-  side: "top" | "right" | "bottom" | "left",
+  side: "top" | "right" | "bottom" | "left"
 ): Variants {
   const transforms: Record<
     string,
@@ -643,7 +643,7 @@ export function mergeVariants(...variants: Variants[]): Variants {
  */
 export function getTransition(
   transition: Transition,
-  prefersReducedMotion: boolean,
+  prefersReducedMotion: boolean
 ): Transition {
   if (prefersReducedMotion) {
     return transitions.reduced;
@@ -671,7 +671,7 @@ export function createLayoutId(prefix: string, id: string | number): string {
  */
 export function getReducedMotionVariants(
   variants: Variants,
-  prefersReducedMotion: boolean,
+  prefersReducedMotion: boolean
 ): Variants {
   if (!prefersReducedMotion) {
     return variants;

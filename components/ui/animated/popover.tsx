@@ -187,7 +187,7 @@ function PopoverRoot({
   const closePopover = useCallback(() => setIsOpen(false), [setIsOpen]);
   const togglePopover = useCallback(
     () => setIsOpen((prev) => !prev),
-    [setIsOpen],
+    [setIsOpen]
   );
 
   // Memoized context value
@@ -213,7 +213,7 @@ function PopoverRoot({
       uniqueId,
       shouldDisableAnimation,
       variants,
-    ],
+    ]
   );
 
   return (
@@ -278,7 +278,7 @@ function PopoverTrigger({
         open();
       }
     },
-    [open],
+    [open]
   );
 
   // Common ARIA and data attributes
@@ -528,7 +528,7 @@ function PopoverContent({
     "bg-background",
     "shadow-2xl shadow-black/20 dark:shadow-black/50",
     "outline-none focus:outline-none",
-    className,
+    className
   );
 
   // Animated version with morphing
@@ -611,7 +611,7 @@ function PopoverHeader({ children, className, style }: PopoverHeaderProps) {
     "border-b border-border",
     "px-5 py-4",
     "bg-background",
-    className,
+    className
   );
 
   if (!disableAnimation) {
@@ -675,7 +675,7 @@ function PopoverTitle({ children, className, style }: PopoverTitleProps) {
     "flex items-center gap-2",
     "text-sm font-semibold leading-none",
     "text-foreground",
-    className,
+    className
   );
 
   if (!disableAnimation) {
@@ -857,7 +857,7 @@ function PopoverFooter({ children, className, style }: PopoverFooterProps) {
     "border-t border-border",
     "px-5 py-3.5",
     "bg-background",
-    className,
+    className
   );
 
   if (!disableAnimation) {
@@ -955,7 +955,7 @@ function PopoverClose({
         "hover:bg-secondary/80",
         "transition-colors duration-150",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className,
+        className
       )}
       style={style}
       onClick={handleClick}

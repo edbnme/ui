@@ -168,7 +168,7 @@ export function StaticCloseButton({
         "hover:bg-muted hover:text-foreground hover:scale-105",
         "active:scale-95",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className,
+        className
       )}
       style={{
         width: dimensions.button,
@@ -273,7 +273,7 @@ export function StaticIconMorph({
       className={cn(
         "relative inline-flex items-center justify-center",
         "transition-transform duration-150 ease-out",
-        className,
+        className
       )}
       style={{ width: size, height: size }}
     >
@@ -328,7 +328,7 @@ export function StaticChevron({
       className={cn(
         "transition-transform duration-200 ease-out",
         directionRotation[direction],
-        className,
+        className
       )}
       aria-hidden="true"
     >

@@ -70,7 +70,7 @@ export function useMergedRefs<T>(...refs: PossibleRef<T>[]): RefCallback<T> {
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    refs,
+    refs
   );
 }
 
