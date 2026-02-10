@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.5] - 2026-02-11
+
+### Added
+
+- **Maps Component Library** — Full MapLibre GL JS composable React wrapper with `Map`, `MapMarker`, `MapPopup`, `MapControls`, `MapRoute`, `MapClusterLayer`, `MapLayerControl` components
+- **MapPanel System** — 6 composable overlay panel components (`MapPanel`, `MapPanelHeader`, `MapPanelTitle`, `MapPanelBody`, `MapPanelSection`, `MapPanelFooter`) with CVA variants
+- **Popup Composables** — `PopupShell`, `PopupHeader`, `PopupTitle`, `PopupDescription`, `PopupBody`, `PopupFooter`, `PopupArrow`
+- **10 Registry Components** — `map-search`, `map-heatmap`, `map-directions`, `map-deckgl`, `map-scatterplot`, `map-gpu-heatmap`, `map-hexbin`, `map-arc`, `map-spatial`, `map-draw`
+- **Map Position System** — `ATTRIBUTION_CLEARANCE_CLASS` and `positionClasses` for consistent control positioning
+- **Shared Geocoder** — Reusable Nominatim geocoding with AbortController support
+- **Map Hooks** — `useMapLayer`, `useDebouncedCallback`, `useMapEvent` for declarative MapLibre interactions
+
+### Fixed
+
+- **Control Overlap** — Bottom-positioned controls now clear attribution bar with `bottom-8` offset
+- **Cluster Animation** — Widened cross-fade zone, exponential interpolation, paint transitions
+- **Search "No Results"** — Guard against debounced re-trigger after selection
+- **Heatmap Interpolation** — Fixed invalid `heatmap-intensity` expression
+- **Build Errors** — Deck.gl event handler types, MapBox GL Draw overloads, React 19 ref patterns
+
+### Changed
+
+- **Map Theme** — Enhanced with color tokens, position system, shared constants
+- **Registry Rebuild** — Updated all registry JSON files for new map components
+
 ## [0.2.4] - 2025-02-06
 
 ### Changed
