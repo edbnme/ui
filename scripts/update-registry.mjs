@@ -53,7 +53,7 @@ const animatedComponents = {
       "tw-animate-css",
     ],
     registryDependencies: ["utils"],
-    inlineDependencies: ["motion-provider", "icons"],
+    inlineDependencies: ["motion-provider", "icons", "use-ripple"],
     files: [{ path: "components/ui/animated/button.tsx", type: "registry:ui" }],
     variant: "animated",
   },
@@ -130,6 +130,7 @@ const animatedComponents = {
       "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
     dependencies: [
       "@radix-ui/react-dialog",
+      "@phosphor-icons/react",
       "class-variance-authority",
       "motion",
     ],
@@ -214,7 +215,7 @@ const staticComponents = {
       "tw-animate-css",
     ],
     registryDependencies: ["utils"],
-    inlineDependencies: [],
+    inlineDependencies: ["use-ripple", "icons-static"],
     files: [{ path: "components/ui/static/button.tsx", type: "registry:ui" }],
     variant: "static",
   },
@@ -238,7 +239,7 @@ const staticComponents = {
     title: "Popover (Static)",
     description:
       "Static popover component with CSS transitions only. No motion dependency required.",
-    dependencies: ["tw-animate-css"],
+    dependencies: ["@radix-ui/react-slot", "tw-animate-css"],
     registryDependencies: ["utils"],
     inlineDependencies: [
       "use-stable-id",
@@ -540,6 +541,17 @@ const hookComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-mobile.ts", type: "registry:hook" }],
+    variant: "shared",
+  },
+  "use-ripple": {
+    type: "registry:hook",
+    title: "useRipple",
+    description:
+      "Hook for creating ripple effects on click interactions.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-ripple.ts", type: "registry:hook" }],
     variant: "shared",
   },
 };

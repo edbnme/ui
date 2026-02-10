@@ -19,111 +19,17 @@ import * as React from "react";
 import {
   forwardRef,
   useCallback,
-  useState,
-  useEffect,
   type ComponentPropsWithoutRef,
   type ElementRef,
 } from "react";
 
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "@/lib/primitives";
 import { cva, type VariantProps } from "class-variance-authority";
 import type { Icon } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
-
-// =============================================================================
-// TYPES
-// =============================================================================
-
-interface Ripple {
-  x: number;
-  y: number;
-  size: number;
-  key: number;
-}
-
-// =============================================================================
-// HOOKS
-// =============================================================================
-
-function useRipple() {
-  const [ripples, setRipples] = useState<Ripple[]>([]);
-
-  const createRipple = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      const button = event.currentTarget;
-      const rect = button.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = event.clientX - rect.left - size / 2;
-      const y = event.clientY - rect.top - size / 2;
-
-      const newRipple: Ripple = { x, y, size, key: Date.now() };
-      setRipples((prev) => [...prev, newRipple]);
-    },
-    [],
-  );
-
-  useEffect(() => {
-    if (ripples.length > 0) {
-      const lastRipple = ripples[ripples.length - 1];
-      const timeout = setTimeout(() => {
-        setRipples((prev) => prev.filter((r) => r.key !== lastRipple.key));
-      }, 600);
-      return () => clearTimeout(timeout);
-    }
-  }, [ripples]);
-
-  return { ripples, createRipple };
-}
-
-// =============================================================================
-// LOADING SPINNER (Static CSS version)
-// =============================================================================
-
-function LoadingSpinner({ size = 16 }: { size?: number }) {
-  return (
-    <svg
-      className="animate-spin"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle
-        className="opacity-25"
-        cx="12"
-        cy="12"
-        r="10"
-        stroke="currentColor"
-        strokeWidth="4"
-      />
-      <path
-        className="opacity-75"
-        fill="currentColor"
-        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-      />
-    </svg>
-  );
-}
-
-function CheckIcon({ size = 16 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
+import { useRipple } from "@/hooks/use-ripple";
+import { StaticLoadingSpinner, StaticCheck } from "@/lib/icons-static";
 
 // =============================================================================
 // VARIANTS (CVA)
@@ -206,8 +112,7 @@ const buttonVariants = cva(
 // =============================================================================
 
 export interface ButtonProps
-  extends
-    Omit<ComponentPropsWithoutRef<"button">, "ref">,
+  extends Omit<ComponentPropsWithoutRef<"button">, "ref">,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   loading?: boolean;
@@ -259,10 +164,12 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
         <IconStart className="shrink-0" size={iconSize} aria-hidden="true" />
       ) : null;
 
-    const loadingSpinner = loading ? <LoadingSpinner size={iconSize} /> : null;
+    const loadingSpinner = loading ? (
+      <StaticLoadingSpinner size={iconSize} />
+    ) : null;
 
     const successCheck =
-      success && !loading ? <CheckIcon size={iconSize} /> : null;
+      success && !loading ? <StaticCheck size={iconSize} /> : null;
 
     const iconEndContent =
       IconEnd && !loading && !success ? (
@@ -344,10 +251,8 @@ Button.displayName = "Button";
 // ICON BUTTON COMPONENT
 // =============================================================================
 
-export interface IconButtonProps extends Omit<
-  ButtonProps,
-  "iconStart" | "iconEnd" | "children" | "asChild"
-> {
+export interface IconButtonProps
+  extends Omit<ButtonProps, "iconStart" | "iconEnd" | "children" | "asChild"> {
   icon: Icon;
   "aria-label": string;
 }

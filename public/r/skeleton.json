@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/shared/skeleton.tsx",
-      "content": "/**\r\n * Skeleton Component\r\n *\r\n * A loading placeholder component with pulse animation for content loading states.\r\n * Use to indicate loading content while maintaining layout structure.\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"skeleton\"\r\n      className={cn(\"bg-accent animate-pulse rounded-md\", className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nSkeleton.displayName = \"Skeleton\";\r\n\r\nexport { Skeleton };\r\n",
+      "content": "/**\r\n * Skeleton Component\r\n *\r\n * A loading placeholder component with pulse animation for content loading states.\r\n * Use to indicate loading content while maintaining layout structure.\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\n\"use client\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\r\n  return (\r\n    <div\r\n      data-slot=\"skeleton\"\r\n      className={cn(\"bg-accent animate-pulse rounded-md\", className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nSkeleton.displayName = \"Skeleton\";\r\n\r\nexport { Skeleton };\r\n",
       "type": "registry:ui"
     }
   ]

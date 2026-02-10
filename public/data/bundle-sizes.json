@@ -14,7 +14,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "computedAt": "2026-02-05T19:42:14.937Z"
+    "computedAt": "2026-02-08T09:38:53.068Z"
   },
   "packages": [
     {
@@ -325,8 +325,8 @@
       "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
       "variant": "animated",
       "sizes": {
-        "minified": 179500,
-        "gzipped": 54000,
+        "minified": 180700,
+        "gzipped": 54400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -335,6 +335,13 @@
           "name": "@radix-ui/react-dialog",
           "size": 25000,
           "gzip": 7500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
           "version": "latest",
           "source": "fallback"
         },
@@ -353,7 +360,7 @@
           "source": "fallback"
         }
       ],
-      "dependencyCount": 3
+      "dependencyCount": 4
     },
     "sidebar": {
       "name": "sidebar",
@@ -535,12 +542,19 @@
       "description": "Static popover component with CSS transitions only. No motion dependency required.",
       "variant": "static",
       "sizes": {
-        "minified": 18000,
-        "gzipped": 5000,
+        "minified": 20500,
+        "gzipped": 5900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
+        {
+          "name": "@radix-ui/react-slot",
+          "size": 2500,
+          "gzip": 900,
+          "version": "latest",
+          "source": "fallback"
+        },
         {
           "name": "tw-animate-css",
           "size": 18000,
@@ -549,7 +563,7 @@
           "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
     "dropdown-menu-static": {
       "name": "dropdown-menu",
@@ -865,12 +879,12 @@
       },
       "static": {
         "name": "popover-static",
-        "gzipped": 5000
+        "gzipped": 5900
       },
       "difference": {
-        "bytes": 45000,
-        "percent": 90,
-        "savings": "43.9 KB"
+        "bytes": 44100,
+        "percent": 88,
+        "savings": "43.1 KB"
       }
     },
     "dropdown-menu": {
@@ -906,16 +920,16 @@
     "sheet": {
       "animated": {
         "name": "sheet",
-        "gzipped": 54000
+        "gzipped": 54400
       },
       "static": {
         "name": "sheet-static",
         "gzipped": 9400
       },
       "difference": {
-        "bytes": 44600,
+        "bytes": 45000,
         "percent": 83,
-        "savings": "43.6 KB"
+        "savings": "43.9 KB"
       }
     },
     "sidebar": {

@@ -135,6 +135,7 @@
       "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
       "dependencies": [
         "@radix-ui/react-dialog",
+        "@phosphor-icons/react",
         "class-variance-authority",
         "motion"
       ],
@@ -351,6 +352,7 @@
       "title": "Popover (Static)",
       "description": "Static popover component with CSS transitions only. No motion dependency required.",
       "dependencies": [
+        "@radix-ui/react-slot",
         "tw-animate-css"
       ],
       "registryDependencies": [
@@ -720,6 +722,21 @@
       "files": [
         {
           "path": "hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-ripple",
+      "type": "registry:hook",
+      "title": "useRipple",
+      "description": "Hook for creating ripple effects on click interactions.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "shared",
+      "files": [
+        {
+          "path": "hooks/use-ripple.ts",
           "type": "registry:hook"
         }
       ]

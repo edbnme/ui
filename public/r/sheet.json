@@ -6,6 +6,7 @@
   "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
   "dependencies": [
     "@radix-ui/react-dialog",
+    "@phosphor-icons/react",
     "class-variance-authority",
     "motion"
   ],
