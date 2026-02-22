@@ -141,19 +141,23 @@ export function useLowPowerDevice(): LowPowerState {
   const subscribe = useCallback((callback: () => void) => {
     if (typeof window === "undefined") return () => {};
 
+    let cancelled = false;
+    let addedBattery: BatteryManager | null = null;
+
     // Subscribe to battery events if available
     getBatteryManager().then((battery) => {
-      if (battery) {
-        battery.addEventListener("chargingchange", callback);
-        battery.addEventListener("levelchange", callback);
-      }
+      if (cancelled || !battery) return;
+      addedBattery = battery;
+      battery.addEventListener("chargingchange", callback);
+      battery.addEventListener("levelchange", callback);
     });
 
-    // Clean up
+    // Clean up — handles the case where unmount races the async battery resolve
     return () => {
-      if (batteryManager) {
-        batteryManager.removeEventListener("chargingchange", callback);
-        batteryManager.removeEventListener("levelchange", callback);
+      cancelled = true;
+      if (addedBattery) {
+        addedBattery.removeEventListener("chargingchange", callback);
+        addedBattery.removeEventListener("levelchange", callback);
       }
     };
   }, []);

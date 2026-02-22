@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:ui",
+  "title": "Label",
+  "description": "A styled label component with peer/group disabled state support.",
+  "dependencies": [],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "shared",
+  "files": [
+    {
+      "path": "components/ui/shared/label.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport type LabelProps = React.ComponentProps<\"label\">;\r\n\r\nfunction Label({ className, ...props }: LabelProps) {\r\n  return (\r\n    <label\r\n      data-slot=\"label\"\r\n      className={cn(\r\n        \"flex items-center gap-2 text-sm font-medium leading-none select-none\",\r\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\r\n        \"group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nLabel.displayName = \"Label\";\r\n\r\nexport { Label };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

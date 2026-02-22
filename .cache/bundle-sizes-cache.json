@@ -1,4 +1,14 @@
 {
+  "@base-ui/react": {
+    "data": {
+      "name": "@base-ui/react",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1771588993825
+  },
   "@ncdai/react-wheel-picker": {
     "data": {
       "name": "@ncdai/react-wheel-picker",
@@ -7,7 +17,7 @@
       "version": "unknown",
       "source": "estimate"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@phosphor-icons/react": {
     "data": {
@@ -18,7 +28,7 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-avatar": {
     "data": {
@@ -28,7 +38,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-dialog": {
     "data": {
@@ -38,7 +48,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-dropdown-menu": {
     "data": {
@@ -48,7 +58,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-scroll-area": {
     "data": {
@@ -58,7 +68,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-separator": {
     "data": {
@@ -68,7 +78,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-slider": {
     "data": {
@@ -78,7 +88,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-slot": {
     "data": {
@@ -88,7 +98,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "@radix-ui/react-tooltip": {
     "data": {
@@ -98,7 +108,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "class-variance-authority": {
     "data": {
@@ -108,7 +118,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
   },
   "clsx": {
     "data": {
@@ -118,7 +128,27 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771588998280
+  },
+  "embla-carousel-react": {
+    "data": {
+      "name": "embla-carousel-react",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1771589002826
+  },
+  "input-otp": {
+    "data": {
+      "name": "input-otp",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1771589007019
   },
   "motion": {
     "data": {
@@ -128,7 +158,40 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771589007019
+  },
+  "react-day-picker": {
+    "data": {
+      "name": "react-day-picker",
+      "version": "9.13.0",
+      "size": 67287,
+      "gzip": 19376,
+      "dependencyCount": 3,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1771589007392
+  },
+  "react-resizable-panels": {
+    "data": {
+      "name": "react-resizable-panels",
+      "version": "4.6.2",
+      "size": 31524,
+      "gzip": 10201,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1771589007802
+  },
+  "recharts": {
+    "data": {
+      "name": "recharts",
+      "version": "3.7.0",
+      "size": 508317,
+      "gzip": 134969,
+      "dependencyCount": 11,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1771589007956
   },
   "tailwind-merge": {
     "data": {
@@ -138,7 +201,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771589007956
   },
   "tw-animate-css": {
     "data": {
@@ -148,6 +211,16 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1770543076131
+    "timestamp": 1771589007956
+  },
+  "vaul": {
+    "data": {
+      "name": "vaul",
+      "size": 18000,
+      "gzip": 5500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771589007956
   }
 }

@@ -475,13 +475,14 @@ function PopoverContent({
 
         if (!first || !last) return;
 
+        const doc = contentRef.current?.ownerDocument ?? document;
         if (event.shiftKey) {
-          if (document.activeElement === first) {
+          if (doc.activeElement === first) {
             event.preventDefault();
             last.focus();
           }
         } else {
-          if (document.activeElement === last) {
+          if (doc.activeElement === last) {
             event.preventDefault();
             first.focus();
           }
@@ -489,9 +490,10 @@ function PopoverContent({
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, close, closeOnEscape]);
+    const doc = contentRef.current?.ownerDocument ?? document;
+    doc.addEventListener("keydown", handleKeyDown);
+    return () => doc.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, close, closeOnEscape, contentRef]);
 
   // Initial focus management
   useEffect(() => {

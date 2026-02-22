@@ -347,12 +347,13 @@ function useClickOutside(
       }
     }
 
-    document.addEventListener("mousedown", handleClick);
-    document.addEventListener("touchstart", handleClick);
+    const doc = refs[0]?.current?.ownerDocument ?? document;
+    doc.addEventListener("mousedown", handleClick);
+    doc.addEventListener("touchstart", handleClick, { passive: true });
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
-      document.removeEventListener("touchstart", handleClick);
+      doc.removeEventListener("mousedown", handleClick);
+      doc.removeEventListener("touchstart", handleClick);
     };
   }, [refs, handler, enabled]);
 }

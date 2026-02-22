@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-static",
+  "type": "registry:ui",
+  "title": "Checkbox (Static)",
+  "description": "Static checkbox built on Base UI Checkbox with indeterminate support.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/checkbox.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

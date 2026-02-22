@@ -548,13 +548,14 @@ function AlertDialogContent({
 
         if (!first || !last) return;
 
+        const doc = contentRef.current?.ownerDocument ?? document;
         if (event.shiftKey) {
-          if (document.activeElement === first) {
+          if (doc.activeElement === first) {
             event.preventDefault();
             last.focus();
           }
         } else {
-          if (document.activeElement === last) {
+          if (doc.activeElement === last) {
             event.preventDefault();
             first.focus();
           }
@@ -562,9 +563,10 @@ function AlertDialogContent({
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, setIsOpen, preventEscapeClose]);
+    const doc = contentRef.current?.ownerDocument ?? document;
+    doc.addEventListener("keydown", handleKeyDown);
+    return () => doc.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, setIsOpen, preventEscapeClose, contentRef]);
 
   // Body scroll lock and initial focus
   useEffect(() => {
@@ -574,8 +576,9 @@ function AlertDialogContent({
     const contentElement = contentRef.current;
 
     // Save original body overflow
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const doc = contentElement?.ownerDocument ?? document;
+    const originalOverflow = doc.body.style.overflow;
+    doc.body.style.overflow = "hidden";
 
     // Find focusable elements
     const focusableSelector =
@@ -596,7 +599,7 @@ function AlertDialogContent({
     }
 
     return () => {
-      document.body.style.overflow = originalOverflow;
+      doc.body.style.overflow = originalOverflow;
       triggerElement?.focus();
     };
   }, [isOpen, triggerRef, contentRef]);
@@ -615,13 +618,14 @@ function AlertDialogContent({
     };
 
     // Delay to prevent immediate closing
+    const doc = contentRef.current?.ownerDocument ?? document;
     const timeoutId = setTimeout(() => {
-      document.addEventListener("mousedown", handleClickOutside);
+      doc.addEventListener("mousedown", handleClickOutside);
     }, 0);
 
     return () => {
       clearTimeout(timeoutId);
-      document.removeEventListener("mousedown", handleClickOutside);
+      doc.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, setIsOpen, preventOutsideClose, contentRef]);
 

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "field-static",
+  "type": "registry:ui",
+  "title": "Field (Static)",
+  "description": "Static form field built on Base UI Field with label, description, error, and validity.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/field.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

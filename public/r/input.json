@@ -5,12 +5,14 @@
   "title": "Input",
   "description": "A styled input component with focus states, validation support, and file input styling.",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "shared",
   "files": [
     {
       "path": "components/ui/shared/input.tsx",
-      "content": "/**\r\n * Input Component\r\n *\r\n * A styled input component with focus states, validation support,\r\n * and file input styling. Follows accessibility best practices.\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\r\n  return (\r\n    <input\r\n      type={type}\r\n      data-slot=\"input\"\r\n      className={cn(\r\n        \"file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\r\n        \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\r\n        \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\r\n        className,\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nInput.displayName = \"Input\";\r\n\r\nexport { Input };\r\n",
+      "content": "/**\n * Input Component\n *\n * A styled input component with focus states, validation support,\n * and file input styling. Built on Base UI Input primitive with\n * automatic Field integration.\n *\n * @packageDocumentation\n */\n\n\"use client\";\n\nimport * as React from \"react\";\nimport { Input as InputPrimitive } from \"@base-ui/react/input\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface InputProps extends React.ComponentProps<\n  typeof InputPrimitive\n> {\n  type?: React.HTMLInputTypeAttribute;\n}\n\nfunction Input({ className, type, ...props }: InputProps) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\n        \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\n        \"data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive\",\n        \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nInput.displayName = \"Input\";\n\nexport { Input };\n",
       "type": "registry:ui"
     }
   ]

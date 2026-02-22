@@ -302,3 +302,116 @@
     outline-offset: 2px;
   }
 }
+
+/* =============================================================================
+   BASE UI PORTAL STACKING CONTEXT
+   Ensures portaled popups always render above page content.
+   ============================================================================= */
+
+@layer static {
+  .base-ui-root {
+    isolation: isolate;
+  }
+}
+
+/* =============================================================================
+   BASE UI TRANSITION UTILITIES
+   Data-attribute driven enter/exit animations for popups, panels, and overlays.
+   ============================================================================= */
+
+@layer static {
+  .base-ui-popup {
+    transition-property: opacity, transform;
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-out);
+    transform-origin: var(--transform-origin);
+  }
+
+  .base-ui-popup[data-starting-style],
+  .base-ui-popup[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  .base-ui-backdrop {
+    transition-property: opacity;
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .base-ui-backdrop[data-starting-style],
+  .base-ui-backdrop[data-ending-style] {
+    opacity: 0;
+  }
+
+  .base-ui-panel {
+    transition-property: height;
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-out);
+    overflow: hidden;
+  }
+
+  .base-ui-panel[data-starting-style],
+  .base-ui-panel[data-ending-style] {
+    height: 0;
+  }
+
+  .base-ui-indicator {
+    transition-property: opacity;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .base-ui-indicator[data-starting-style],
+  .base-ui-indicator[data-ending-style] {
+    opacity: 0;
+  }
+
+  .base-ui-slide-right {
+    transition-property: opacity, transform;
+    transition-duration: var(--duration-slow);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .base-ui-slide-right[data-starting-style],
+  .base-ui-slide-right[data-ending-style] {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  .base-ui-slide-left {
+    transition-property: opacity, transform;
+    transition-duration: var(--duration-slow);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .base-ui-slide-left[data-starting-style],
+  .base-ui-slide-left[data-ending-style] {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .base-ui-slide-top {
+    transition-property: opacity, transform;
+    transition-duration: var(--duration-slow);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .base-ui-slide-top[data-starting-style],
+  .base-ui-slide-top[data-ending-style] {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  .base-ui-slide-bottom {
+    transition-property: opacity, transform;
+    transition-duration: var(--duration-slow);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .base-ui-slide-bottom[data-starting-style],
+  .base-ui-slide-bottom[data-ending-style] {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}

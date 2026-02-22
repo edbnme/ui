@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu-static",
+  "type": "registry:ui",
+  "title": "Context Menu (Static)",
+  "description": "Static context menu built on Base UI ContextMenu with right-click trigger.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/context-menu.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

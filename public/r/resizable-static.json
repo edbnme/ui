@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resizable-static",
+  "type": "registry:ui",
+  "title": "Resizable (Static)",
+  "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
+  "dependencies": [
+    "react-resizable-panels",
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/resizable.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

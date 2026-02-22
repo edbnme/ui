@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer-static",
+  "type": "registry:ui",
+  "title": "Drawer (Static)",
+  "description": "Static drawer/bottom sheet component built on Vaul with snap points and nested support.",
+  "dependencies": [
+    "vaul"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/drawer.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

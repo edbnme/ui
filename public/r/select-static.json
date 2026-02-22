@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select-static",
+  "type": "registry:ui",
+  "title": "Select (Static)",
+  "description": "Static select built on Base UI Select with scroll arrows.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/select.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

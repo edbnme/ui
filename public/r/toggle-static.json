@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-static",
+  "type": "registry:ui",
+  "title": "Toggle (Static)",
+  "description": "Static toggle button built on Base UI Toggle with CVA variants.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/toggle.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

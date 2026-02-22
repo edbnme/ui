@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion-static",
+  "type": "registry:ui",
+  "title": "Accordion (Static)",
+  "description": "Static accordion built on Base UI Accordion with CSS height transitions.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/accordion.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

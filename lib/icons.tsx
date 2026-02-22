@@ -82,7 +82,7 @@ export function AnimatedIcon({
         className={className}
         size={size}
         strokeWidth={strokeWidth}
-        {...(iconProps as React.SVGProps<SVGSVGElement>)}
+        {...(iconProps as Omit<React.SVGProps<SVGSVGElement>, "ref">)}
       />
     );
   }
@@ -101,7 +101,7 @@ export function AnimatedIcon({
       <Icon
         size={size}
         strokeWidth={strokeWidth}
-        {...(iconProps as React.SVGProps<SVGSVGElement>)}
+        {...(iconProps as Omit<React.SVGProps<SVGSVGElement>, "ref">)}
       />
     </motion.span>
   );

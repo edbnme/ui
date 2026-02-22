@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs-static",
+  "type": "registry:ui",
+  "title": "Tabs (Static)",
+  "description": "Static tabs built on Base UI Tabs with animated indicator.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/tabs.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group-static",
+  "type": "registry:ui",
+  "title": "Radio Group (Static)",
+  "description": "Static radio group built on Base UI RadioGroup.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/radio-group.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

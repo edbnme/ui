@@ -98,7 +98,9 @@ function SidebarProvider({
       }
 
       // This sets the cookie to keep the sidebar state.
-      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+      if (typeof document !== "undefined") {
+        document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+      }
     },
     [setOpenProp, open]
   );
@@ -120,8 +122,10 @@ function SidebarProvider({
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    const win = typeof window !== "undefined" ? window : undefined;
+    if (!win) return;
+    win.addEventListener("keydown", handleKeyDown);
+    return () => win.removeEventListener("keydown", handleKeyDown);
   }, [toggleSidebar]);
 
   // We add a state so that we can do data-state="expanded" or "collapsed".
@@ -621,10 +625,17 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean;
 }) {
-  // Random width between 50 to 90%.
-  const [width] = React.useState(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
-  });
+  // Deterministic width between 50 to 90% — derived from useId to avoid
+  // hydration mismatches that Math.random() would cause.
+  const reactId = React.useId();
+  const width = React.useMemo(() => {
+    let hash = 0;
+    for (let i = 0; i < reactId.length; i++) {
+      hash = (hash << 5) - hash + reactId.charCodeAt(i);
+      hash |= 0;
+    }
+    return `${(Math.abs(hash) % 40) + 50}%`;
+  }, [reactId]);
 
   return (
     <div

@@ -220,6 +220,7 @@ export function StaticIcon({
   className,
   size,
   strokeWidth = 2,
+  ref: _ref,
   ...props
 }: StaticIconProps) {
   return (
@@ -227,7 +228,7 @@ export function StaticIcon({
       <IconComponent
         size={size}
         strokeWidth={strokeWidth}
-        {...(props as React.SVGProps<SVGSVGElement>)}
+        {...(props as Omit<React.SVGProps<SVGSVGElement>, "ref">)}
       />
     </span>
   );

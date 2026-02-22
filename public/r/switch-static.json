@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch-static",
+  "type": "registry:ui",
+  "title": "Switch (Static)",
+  "description": "Static switch/toggle built on Base UI Switch.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/switch.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}
