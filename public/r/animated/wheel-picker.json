@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Wheel Picker",
   "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
-  "dependencies": [
-    "@ncdai/react-wheel-picker"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@ncdai/react-wheel-picker"],
+  "registryDependencies": ["utils"],
   "variant": "animated",
   "files": [
     {

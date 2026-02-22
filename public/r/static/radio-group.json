@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Radio Group (Static)",
   "description": "Static radio group built on Base UI RadioGroup.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Autocomplete (Static)",
   "description": "Static autocomplete/combobox built on Base UI Autocomplete with filtering and groups.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

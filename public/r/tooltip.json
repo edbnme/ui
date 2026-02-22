@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Tooltip",
   "description": "A tooltip component with smooth animations and configurable positioning.",
-  "dependencies": [
-    "@radix-ui/react-tooltip"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@radix-ui/react-tooltip"],
+  "registryDependencies": ["utils"],
   "variant": "shared",
   "files": [
     {

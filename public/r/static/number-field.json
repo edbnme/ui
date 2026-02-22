@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Number Field (Static)",
   "description": "Static number field built on Base UI NumberField with increment/decrement.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

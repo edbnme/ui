@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Checkbox Group (Static)",
   "description": "Static checkbox group built on Base UI CheckboxGroup for parent-child checkbox control.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils",
-    "checkbox-static"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils", "checkbox-static"],
   "variant": "static",
   "files": [
     {

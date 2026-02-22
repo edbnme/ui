@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Scroll Area (Static)",
   "description": "Static scroll area built on Base UI ScrollArea with custom scrollbars.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

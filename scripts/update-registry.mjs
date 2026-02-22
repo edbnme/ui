@@ -273,9 +273,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/menu.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/menu.tsx", type: "registry:ui" }],
     cssVars: true,
     variant: "static",
   },
@@ -315,9 +313,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react", "@phosphor-icons/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/dialog.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/dialog.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "tooltip-static": {
@@ -328,9 +324,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/tooltip.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/tooltip.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "checkbox-static": {
@@ -341,9 +335,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/checkbox.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/checkbox.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "checkbox-group-static": {
@@ -362,8 +354,7 @@ const staticComponents = {
   "radio-group-static": {
     type: "registry:ui",
     title: "Radio Group (Static)",
-    description:
-      "Static radio group built on Base UI RadioGroup.",
+    description: "Static radio group built on Base UI RadioGroup.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
@@ -375,14 +366,11 @@ const staticComponents = {
   "switch-static": {
     type: "registry:ui",
     title: "Switch (Static)",
-    description:
-      "Static switch/toggle built on Base UI Switch.",
+    description: "Static switch/toggle built on Base UI Switch.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/switch.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/switch.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "toggle-static": {
@@ -393,16 +381,13 @@ const staticComponents = {
     dependencies: ["@base-ui/react", "class-variance-authority"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/toggle.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/toggle.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "toggle-group-static": {
     type: "registry:ui",
     title: "Toggle Group (Static)",
-    description:
-      "Static toggle group built on Base UI ToggleGroup.",
+    description: "Static toggle group built on Base UI ToggleGroup.",
     dependencies: ["@base-ui/react", "class-variance-authority"],
     registryDependencies: ["utils", "toggle-static"],
     inlineDependencies: [],
@@ -419,9 +404,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/slider.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/slider.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "number-field-static": {
@@ -445,9 +428,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/field.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/field.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "fieldset-static": {
@@ -458,22 +439,17 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/fieldset.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/fieldset.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "form-static": {
     type: "registry:ui",
     title: "Form (Static)",
-    description:
-      "Static form built on Base UI Form.",
+    description: "Static form built on Base UI Form.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/form.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/form.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "progress-static": {
@@ -484,9 +460,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/progress.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/progress.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "meter-static": {
@@ -497,9 +471,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/meter.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/meter.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "toast-static": {
@@ -507,12 +479,14 @@ const staticComponents = {
     title: "Toast (Static)",
     description:
       "Static toast notifications built on Base UI Toast with CVA variants.",
-    dependencies: ["@base-ui/react", "class-variance-authority", "@phosphor-icons/react"],
+    dependencies: [
+      "@base-ui/react",
+      "class-variance-authority",
+      "@phosphor-icons/react",
+    ],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/toast.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/toast.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "accordion-static": {
@@ -544,14 +518,11 @@ const staticComponents = {
   "tabs-static": {
     type: "registry:ui",
     title: "Tabs (Static)",
-    description:
-      "Static tabs built on Base UI Tabs with animated indicator.",
+    description: "Static tabs built on Base UI Tabs with animated indicator.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/tabs.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/tabs.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "scroll-area-static": {
@@ -570,14 +541,11 @@ const staticComponents = {
   "select-static": {
     type: "registry:ui",
     title: "Select (Static)",
-    description:
-      "Static select built on Base UI Select with scroll arrows.",
+    description: "Static select built on Base UI Select with scroll arrows.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/select.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/select.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "toolbar-static": {
@@ -588,9 +556,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/toolbar.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/toolbar.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "navigation-menu-static": {
@@ -662,7 +628,9 @@ const staticComponents = {
     dependencies: ["input-otp"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/static/input-otp.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/static/input-otp.tsx", type: "registry:ui" },
+    ],
     variant: "static",
   },
   "hover-card-static": {
@@ -673,7 +641,9 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/static/hover-card.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/static/hover-card.tsx", type: "registry:ui" },
+    ],
     variant: "static",
   },
   "resizable-static": {
@@ -684,7 +654,9 @@ const staticComponents = {
     dependencies: ["react-resizable-panels", "@phosphor-icons/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/static/resizable.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/static/resizable.tsx", type: "registry:ui" },
+    ],
     variant: "static",
   },
   "menubar-static": {
@@ -706,7 +678,9 @@ const staticComponents = {
     dependencies: ["@base-ui/react", "@phosphor-icons/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/static/autocomplete.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/static/autocomplete.tsx", type: "registry:ui" },
+    ],
     variant: "static",
   },
   "calendar-static": {
@@ -767,7 +741,9 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/aspect-ratio.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/shared/aspect-ratio.tsx", type: "registry:ui" },
+    ],
     variant: "shared",
   },
   avatar: {
@@ -817,8 +793,7 @@ const sharedComponents = {
   textarea: {
     type: "registry:ui",
     title: "Textarea",
-    description:
-      "A styled textarea component with auto-resize support.",
+    description: "A styled textarea component with auto-resize support.",
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
@@ -855,7 +830,9 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/breadcrumb.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/shared/breadcrumb.tsx", type: "registry:ui" },
+    ],
     variant: "shared",
   },
   pagination: {
@@ -866,7 +843,9 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/pagination.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/shared/pagination.tsx", type: "registry:ui" },
+    ],
     variant: "shared",
   },
   "scroll-area": {

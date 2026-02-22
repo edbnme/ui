@@ -5,9 +5,7 @@
   "title": "Table",
   "description": "Table component with header, body, footer, row, head, cell, and caption sub-components.",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "shared",
   "files": [
     {
