@@ -1,0 +1,226 @@
+{
+  "@base-ui/react": {
+    "data": {
+      "name": "@base-ui/react",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1771588993825
+  },
+  "@ncdai/react-wheel-picker": {
+    "data": {
+      "name": "@ncdai/react-wheel-picker",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1771588998280
+  },
+  "@phosphor-icons/react": {
+    "data": {
+      "name": "@phosphor-icons/react",
+      "size": 1200,
+      "gzip": 400,
+      "version": "latest",
+      "source": "fallback",
+      "note": "Per icon, tree-shakable"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-avatar": {
+    "data": {
+      "name": "@radix-ui/react-avatar",
+      "size": 8000,
+      "gzip": 2500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-dialog": {
+    "data": {
+      "name": "@radix-ui/react-dialog",
+      "size": 25000,
+      "gzip": 7500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-dropdown-menu": {
+    "data": {
+      "name": "@radix-ui/react-dropdown-menu",
+      "size": 35000,
+      "gzip": 10000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-scroll-area": {
+    "data": {
+      "name": "@radix-ui/react-scroll-area",
+      "size": 15000,
+      "gzip": 4500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-separator": {
+    "data": {
+      "name": "@radix-ui/react-separator",
+      "size": 2500,
+      "gzip": 800,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-slider": {
+    "data": {
+      "name": "@radix-ui/react-slider",
+      "size": 18000,
+      "gzip": 5500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-slot": {
+    "data": {
+      "name": "@radix-ui/react-slot",
+      "size": 2500,
+      "gzip": 900,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "@radix-ui/react-tooltip": {
+    "data": {
+      "name": "@radix-ui/react-tooltip",
+      "size": 20000,
+      "gzip": 6000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "class-variance-authority": {
+    "data": {
+      "name": "class-variance-authority",
+      "size": 4500,
+      "gzip": 1500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "clsx": {
+    "data": {
+      "name": "clsx",
+      "size": 1800,
+      "gzip": 600,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771588998280
+  },
+  "embla-carousel-react": {
+    "data": {
+      "name": "embla-carousel-react",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1771589002826
+  },
+  "input-otp": {
+    "data": {
+      "name": "input-otp",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1771589007019
+  },
+  "motion": {
+    "data": {
+      "name": "motion",
+      "size": 150000,
+      "gzip": 45000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771589007019
+  },
+  "react-day-picker": {
+    "data": {
+      "name": "react-day-picker",
+      "version": "9.13.0",
+      "size": 67287,
+      "gzip": 19376,
+      "dependencyCount": 3,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1771589007392
+  },
+  "react-resizable-panels": {
+    "data": {
+      "name": "react-resizable-panels",
+      "version": "4.6.2",
+      "size": 31524,
+      "gzip": 10201,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1771589007802
+  },
+  "recharts": {
+    "data": {
+      "name": "recharts",
+      "version": "3.7.0",
+      "size": 508317,
+      "gzip": 134969,
+      "dependencyCount": 11,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1771589007956
+  },
+  "tailwind-merge": {
+    "data": {
+      "name": "tailwind-merge",
+      "size": 28000,
+      "gzip": 8000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771589007956
+  },
+  "tw-animate-css": {
+    "data": {
+      "name": "tw-animate-css",
+      "size": 18000,
+      "gzip": 5000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771589007956
+  },
+  "vaul": {
+    "data": {
+      "name": "vaul",
+      "size": 18000,
+      "gzip": 5500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1771589007956
+  }
+}

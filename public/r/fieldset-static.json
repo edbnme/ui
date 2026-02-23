@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fieldset-static",
+  "type": "registry:ui",
+  "title": "Fieldset (Static)",
+  "description": "Static fieldset built on Base UI Fieldset with root and legend.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/fieldset.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

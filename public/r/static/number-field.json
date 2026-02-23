@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-field-static",
+  "type": "registry:ui",
+  "title": "Number Field (Static)",
+  "description": "Static number field built on Base UI NumberField with increment/decrement.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/number-field.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

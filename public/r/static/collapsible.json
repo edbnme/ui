@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible-static",
+  "type": "registry:ui",
+  "title": "Collapsible (Static)",
+  "description": "Static collapsible built on Base UI Collapsible with CSS height transitions.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/collapsible.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

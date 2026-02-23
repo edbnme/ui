@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter-static",
+  "type": "registry:ui",
+  "title": "Meter (Static)",
+  "description": "Static meter/gauge built on Base UI Meter with track, indicator, label, and value.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/meter.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

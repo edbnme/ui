@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navigation-menu-static",
+  "type": "registry:ui",
+  "title": "Navigation Menu (Static)",
+  "description": "Static navigation menu built on Base UI NavigationMenu with viewport and CSS transitions.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/navigation-menu.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider-static",
+  "type": "registry:ui",
+  "title": "Slider (Static)",
+  "description": "Static slider built on Base UI Slider with track, thumb, and value display.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/slider.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

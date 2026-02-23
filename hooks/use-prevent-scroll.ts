@@ -56,7 +56,7 @@ function lockScroll(reserveScrollBarGap: boolean): void {
   // Set CSS custom property for fixed elements
   document.documentElement.style.setProperty(
     "--scrollbar-width",
-    `${scrollbarWidth}px`,
+    `${scrollbarWidth}px`
   );
 
   // Lock scroll
@@ -113,7 +113,7 @@ function unlockScroll(): void {
  */
 export function usePreventScroll(
   isLocked: boolean,
-  reserveScrollBarGap: boolean = true,
+  reserveScrollBarGap: boolean = true
 ): void {
   const wasLockedRef = useRef(false);
 

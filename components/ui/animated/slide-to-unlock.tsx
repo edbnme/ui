@@ -49,14 +49,14 @@ type SlideToUnlockContextValue = {
 // =============================================================================
 
 const SlideToUnlockContext = createContext<SlideToUnlockContextValue | null>(
-  null,
+  null
 );
 
 function useSlideToUnlock() {
   const context = useContext(SlideToUnlockContext);
   if (!context) {
     throw new Error(
-      "SlideToUnlock components must be used within SlideToUnlock",
+      "SlideToUnlock components must be used within SlideToUnlock"
     );
   }
   return context;
@@ -138,7 +138,7 @@ export function SlideToUnlock({
         className={cn(
           "w-[216px] rounded-xl bg-zinc-100 p-1 shadow-inner ring ring-black/5 ring-inset",
           "dark:bg-zinc-900 dark:ring-white/10",
-          className,
+          className
         )}
         {...props}
       >
@@ -174,7 +174,7 @@ export function SlideToUnlockTrack({
       data-slot="slide-to-unlock-track"
       className={cn(
         "relative flex h-10 items-center justify-center",
-        className,
+        className
       )}
       {...props}
     >
@@ -288,7 +288,7 @@ export function SlideToUnlockHandle({
         "bg-white text-zinc-400 shadow-sm active:cursor-grabbing",
         "dark:bg-zinc-700 dark:text-zinc-300",
         "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-6",
-        className,
+        className
       )}
       style={{ width: handleWidth, x, ...style }}
       drag="x"

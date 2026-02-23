@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "title": "Aspect Ratio",
+  "description": "A CSS aspect-ratio wrapper component for maintaining consistent proportions.",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "variant": "shared",
+  "files": [
+    {
+      "path": "components/ui/shared/aspect-ratio.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface AspectRatioProps extends React.ComponentProps<\"div\"> {\r\n  ratio?: number;\r\n}\r\n\r\nfunction AspectRatio({\r\n  ratio = 1,\r\n  className,\r\n  style,\r\n  children,\r\n  ...props\r\n}: AspectRatioProps) {\r\n  return (\r\n    <div\r\n      data-slot=\"aspect-ratio\"\r\n      className={cn(\"relative w-full\", className)}\r\n      style={{ aspectRatio: `${ratio}`, ...style }}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n\r\nAspectRatio.displayName = \"AspectRatio\";\r\n\r\nexport { AspectRatio };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

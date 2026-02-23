@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "preview-card-static",
+  "type": "registry:ui",
+  "title": "Preview Card (Static)",
+  "description": "Static preview card built on Base UI PreviewCard with hover trigger and arrow.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/preview-card.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

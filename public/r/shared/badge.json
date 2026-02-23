@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Badge component with CVA variants for default, secondary, destructive, and outline styles.",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
+  "variant": "shared",
+  "files": [
+    {
+      "path": "components/ui/shared/badge.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst badgeVariants = cva(\r\n  \"inline-flex items-center rounded-full border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2\",\r\n  {\r\n    variants: {\r\n      variant: {\r\n        default: \"border-transparent bg-primary text-primary-foreground\",\r\n        secondary: \"border-transparent bg-secondary text-secondary-foreground\",\r\n        destructive:\r\n          \"border-transparent bg-destructive text-destructive-foreground\",\r\n        outline: \"text-foreground\",\r\n      },\r\n      size: {\r\n        sm: \"px-2 py-0.5 text-[10px]\",\r\n        md: \"px-2.5 py-0.5 text-xs\",\r\n        lg: \"px-3 py-1 text-sm\",\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      variant: \"default\",\r\n      size: \"md\",\r\n    },\r\n  }\r\n);\r\n\r\nexport type BadgeProps = React.ComponentProps<\"div\"> &\r\n  VariantProps<typeof badgeVariants>;\r\n\r\nfunction Badge({ className, variant, size, ...props }: BadgeProps) {\r\n  return (\r\n    <div\r\n      data-slot=\"badge\"\r\n      className={cn(badgeVariants({ variant, size }), className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nBadge.displayName = \"Badge\";\r\n\r\nexport { Badge, badgeVariants };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

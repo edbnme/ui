@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast-static",
+  "type": "registry:ui",
+  "title": "Toast (Static)",
+  "description": "Static toast notifications built on Base UI Toast with CVA variants.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/toast.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

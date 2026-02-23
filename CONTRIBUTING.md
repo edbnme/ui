@@ -44,7 +44,7 @@ const MyComponent = React.forwardRef<HTMLDivElement, Props>(
         {...props}
       />
     );
-  },
+  }
 );
 MyComponent.displayName = "MyComponent";
 

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-static",
+  "type": "registry:ui",
+  "title": "Form (Static)",
+  "description": "Static form built on Base UI Form.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/form.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

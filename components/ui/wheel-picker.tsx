@@ -24,7 +24,7 @@ function WheelPickerWrapper({
         "w-56 rounded-lg border border-border bg-background px-1 shadow-sm",
         "*:data-rwp:first:*:data-rwp-highlight-wrapper:rounded-s-md",
         "*:data-rwp:last:*:data-rwp-highlight-wrapper:rounded-e-md",
-        className,
+        className
       )}
       {...props}
     />
@@ -41,7 +41,7 @@ function WheelPicker<T extends WheelPickerValue = string>({
         optionItem: "text-muted-foreground",
         highlightWrapper: cn(
           "bg-accent text-accent-foreground",
-          "data-rwp-focused:ring-2 data-rwp-focused:ring-ring data-rwp-focused:ring-inset",
+          "data-rwp-focused:ring-2 data-rwp-focused:ring-ring data-rwp-focused:ring-inset"
         ),
         ...classNames,
       }}

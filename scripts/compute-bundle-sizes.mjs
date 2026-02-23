@@ -57,7 +57,11 @@ const FALLBACK_SIZES = {
   "@radix-ui/react-separator": { size: 2500, gzip: 800 },
   "@radix-ui/react-avatar": { size: 8000, gzip: 2500 },
   "@radix-ui/react-slider": { size: 18000, gzip: 5500 },
-  "@phosphor-icons/react": { size: 1200, gzip: 400, note: "Per icon, tree-shakable" },
+  "@phosphor-icons/react": {
+    size: 1200,
+    gzip: 400,
+    note: "Per icon, tree-shakable",
+  },
 };
 
 // =============================================================================
@@ -78,7 +82,9 @@ function loadCache() {
           ([, entry]) => now - (entry.timestamp || 0) < maxAge
         )
       );
-      console.log(`[CACHE] Loaded ${Object.keys(cache).length} cached package sizes`);
+      console.log(
+        `[CACHE] Loaded ${Object.keys(cache).length} cached package sizes`
+      );
     }
   } catch (error) {
     console.warn("[WARN] Could not load cache:", error.message);
@@ -204,7 +210,10 @@ function estimatePackageSize(packageName) {
   } else if (packageName.startsWith("@phosphor-icons/")) {
     size = 1200;
     gzip = 400;
-  } else if (packageName.includes("motion") || packageName.includes("animate")) {
+  } else if (
+    packageName.includes("motion") ||
+    packageName.includes("animate")
+  ) {
     size = 50000;
     gzip = 15000;
   }
@@ -234,13 +243,13 @@ function loadRegistry() {
 
 function extractAllDependencies(registry) {
   const allDeps = new Set();
-  
+
   for (const item of registry.items || []) {
     if (item.dependencies) {
       item.dependencies.forEach((dep) => allDeps.add(dep));
     }
   }
-  
+
   return Array.from(allDeps).sort();
 }
 
@@ -261,11 +270,11 @@ function computeComponentSizes(registry, packageSizes) {
 
     // Calculate sizes for this component
     const deps = (item.dependencies || []).map((dep) => {
-      const pkgData = packageSizeMap.get(dep) || { 
-        name: dep, 
-        size: 5000, 
+      const pkgData = packageSizeMap.get(dep) || {
+        name: dep,
+        size: 5000,
         gzip: 1500,
-        source: "unknown" 
+        source: "unknown",
       };
       return {
         name: dep,
@@ -281,7 +290,8 @@ function computeComponentSizes(registry, packageSizes) {
     const totalGzip = deps.reduce((sum, d) => sum + d.gzip, 0);
 
     // Determine component key
-    const key = variant === "static" ? `${componentName}-static` : componentName;
+    const key =
+      variant === "static" ? `${componentName}-static` : componentName;
 
     components[key] = {
       name: componentName,
@@ -315,9 +325,7 @@ function computeVariantComparisons(components) {
 
     if (staticComponent) {
       const sizeDiff = animated.sizes.gzipped - staticComponent.sizes.gzipped;
-      const percentDiff = Math.round(
-        (sizeDiff / animated.sizes.gzipped) * 100
-      );
+      const percentDiff = Math.round((sizeDiff / animated.sizes.gzipped) * 100);
 
       comparisons[animated.name] = {
         animated: {

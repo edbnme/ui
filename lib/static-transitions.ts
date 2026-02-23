@@ -181,3 +181,55 @@ export function getAccessibleDuration(duration: DurationType | number): number {
   if (prefersReducedMotion()) return 0;
   return typeof duration === "number" ? duration : durationPresets[duration];
 }
+
+// =============================================================================
+// BASE UI TRANSITION CLASS PRESETS
+// Reusable Tailwind class strings for Base UI data-attribute animations
+// =============================================================================
+
+export const popupTransitionClasses = [
+  "origin-[var(--transform-origin)]",
+  "transition-[opacity,transform] duration-200",
+  "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+  "data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+].join(" ");
+
+export const backdropTransitionClasses = [
+  "fixed inset-0 bg-black/50",
+  "transition-opacity duration-200",
+  "data-[starting-style]:opacity-0",
+  "data-[ending-style]:opacity-0",
+].join(" ");
+
+export function slideTransitionClasses(
+  side: "top" | "right" | "bottom" | "left"
+): string {
+  const directionMap = {
+    top: "data-[starting-style]:-translate-y-full data-[ending-style]:-translate-y-full",
+    right:
+      "data-[starting-style]:translate-x-full data-[ending-style]:translate-x-full",
+    bottom:
+      "data-[starting-style]:translate-y-full data-[ending-style]:translate-y-full",
+    left: "data-[starting-style]:-translate-x-full data-[ending-style]:-translate-x-full",
+  };
+  return [
+    "transition-[opacity,transform] duration-300",
+    "data-[starting-style]:opacity-0",
+    "data-[ending-style]:opacity-0",
+    directionMap[side],
+  ].join(" ");
+}
+
+export const panelTransitionClasses = [
+  "overflow-hidden",
+  "transition-[height] duration-200",
+  "h-[var(--panel-height)]",
+  "data-[starting-style]:h-0",
+  "data-[ending-style]:h-0",
+].join(" ");
+
+export const indicatorTransitionClasses = [
+  "transition-opacity duration-150",
+  "data-[starting-style]:opacity-0",
+  "data-[ending-style]:opacity-0",
+].join(" ");

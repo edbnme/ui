@@ -22,7 +22,7 @@ import { RefObject, useEffect, useLayoutEffect, useRef } from "react";
  */
 function useClickOutside<T extends HTMLElement>(
   ref: RefObject<T | null>,
-  handler: (event: MouseEvent | TouchEvent) => void,
+  handler: (event: MouseEvent | TouchEvent) => void
 ): void {
   // Store handler in ref to prevent event listener re-attachment
   const handlerRef = useRef(handler);
@@ -42,12 +42,14 @@ function useClickOutside<T extends HTMLElement>(
       handlerRef.current(event);
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
+    // Use the element's ownerDocument so this works inside portals / iframes
+    const doc = ref.current?.ownerDocument ?? document;
+    doc.addEventListener("mousedown", handleClickOutside);
+    doc.addEventListener("touchstart", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
+      doc.removeEventListener("mousedown", handleClickOutside);
+      doc.removeEventListener("touchstart", handleClickOutside);
     };
   }, [ref]); // handler removed from deps - now stable!
 }

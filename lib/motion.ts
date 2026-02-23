@@ -182,7 +182,7 @@ export function createModalVariants(options?: {
  * Creates slide variants for sheets/drawers
  */
 export function createSlideVariants(
-  side: "top" | "right" | "bottom" | "left",
+  side: "top" | "right" | "bottom" | "left"
 ): Variants {
   const transforms: Record<
     string,
@@ -432,7 +432,7 @@ export function mergeVariants(...variants: Variants[]): Variants {
  */
 export function getTransition(
   transition: Transition,
-  prefersReducedMotion: boolean,
+  prefersReducedMotion: boolean
 ): Transition {
   if (prefersReducedMotion) {
     return transitions.reduced;

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip-static",
+  "type": "registry:ui",
+  "title": "Tooltip (Static)",
+  "description": "Static tooltip built on Base UI Tooltip with arrow and CSS transitions.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/tooltip.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

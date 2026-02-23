@@ -79,7 +79,7 @@ export function useControllableState<T>({
             (isControlled ? "controlled" : "uncontrolled") +
             ". This is likely caused by the value changing from a defined to undefined, " +
             "which should not happen. Decide between using a controlled or uncontrolled " +
-            "component for the lifetime of the component.",
+            "component for the lifetime of the component."
         );
       }
     }
@@ -118,7 +118,7 @@ export function useControllableState<T>({
       // Always call onChange if provided
       onChangeRef.current?.(resolvedValue);
     },
-    [isControlled, value],
+    [isControlled, value]
   );
 
   return [value, setValue];

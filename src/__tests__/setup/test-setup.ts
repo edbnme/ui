@@ -134,7 +134,7 @@ global.requestAnimationFrame = vi.fn(
     rafId += 1;
     setTimeout(() => callback(performance.now()), 0);
     return rafId;
-  },
+  }
 );
 
 global.cancelAnimationFrame = vi.fn((): void => {

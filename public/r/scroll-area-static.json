@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area-static",
+  "type": "registry:ui",
+  "title": "Scroll Area (Static)",
+  "description": "Static scroll area built on Base UI ScrollArea with custom scrollbars.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/scroll-area.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

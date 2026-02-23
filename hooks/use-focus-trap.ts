@@ -55,7 +55,7 @@ const FOCUSABLE_SELECTORS = [
 export function useFocusTrap<T extends HTMLElement>(
   containerRef: RefObject<T | null>,
   isActive: boolean,
-  options: FocusTrapOptions = {},
+  options: FocusTrapOptions = {}
 ): void {
   const {
     onEscape,
@@ -69,12 +69,12 @@ export function useFocusTrap<T extends HTMLElement>(
   const getFocusableElements = useCallback((): HTMLElement[] => {
     if (!containerRef.current) return [];
     return Array.from(
-      containerRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS),
+      containerRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS)
     ).filter(
       (el) =>
         !el.hasAttribute("disabled") &&
         el.getAttribute("tabindex") !== "-1" &&
-        el.offsetParent !== null, // Element is visible
+        el.offsetParent !== null // Element is visible
     );
   }, [containerRef]);
 
@@ -128,9 +128,10 @@ export function useFocusTrap<T extends HTMLElement>(
 
     return () => {
       // Restore focus when trap is deactivated
+      const doc = containerRef.current?.ownerDocument ?? document;
       if (
         previousActiveElementRef.current &&
-        document.body.contains(previousActiveElementRef.current)
+        doc.body.contains(previousActiveElementRef.current)
       ) {
         previousActiveElementRef.current.focus();
       }
@@ -162,14 +163,16 @@ export function useFocusTrap<T extends HTMLElement>(
 
         // Shift + Tab
         if (event.shiftKey) {
-          if (document.activeElement === firstElement) {
+          const doc = containerRef.current?.ownerDocument ?? document;
+          if (doc.activeElement === firstElement) {
             event.preventDefault();
             lastElement.focus();
           }
         }
         // Tab
         else {
-          if (document.activeElement === lastElement) {
+          const doc = containerRef.current?.ownerDocument ?? document;
+          if (doc.activeElement === lastElement) {
             event.preventDefault();
             firstElement.focus();
           }
@@ -177,9 +180,10 @@ export function useFocusTrap<T extends HTMLElement>(
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isActive, onEscape, getFocusableElements]);
+    const doc = containerRef.current?.ownerDocument ?? document;
+    doc.addEventListener("keydown", handleKeyDown);
+    return () => doc.removeEventListener("keydown", handleKeyDown);
+  }, [isActive, onEscape, getFocusableElements, containerRef]);
 
   // Prevent focus from leaving the container
   useEffect(() => {
@@ -200,8 +204,9 @@ export function useFocusTrap<T extends HTMLElement>(
       }
     };
 
-    document.addEventListener("focusin", handleFocusIn);
-    return () => document.removeEventListener("focusin", handleFocusIn);
+    const doc = containerRef.current?.ownerDocument ?? document;
+    doc.addEventListener("focusin", handleFocusIn);
+    return () => doc.removeEventListener("focusin", handleFocusIn);
   }, [isActive, containerRef, getFocusableElements]);
 }
 

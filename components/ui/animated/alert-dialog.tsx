@@ -85,7 +85,7 @@ function useAlertDialog(): AlertDialogContextValue {
   if (!context) {
     throw new Error(
       "useAlertDialog must be used within <AlertDialog>. " +
-        "Wrap your component tree with <AlertDialog>",
+        "Wrap your component tree with <AlertDialog>"
     );
   }
   return context;
@@ -133,7 +133,7 @@ function useIsMounted(): boolean {
   return useSyncExternalStore(
     emptySubscribe,
     getClientSnapshot,
-    getServerSnapshot,
+    getServerSnapshot
   );
 }
 
@@ -210,7 +210,7 @@ function AlertDialogRoot({
       disableAnimation: shouldDisableAnimation,
       onOpenChange,
     }),
-    [isOpen, setIsOpen, uniqueId, shouldDisableAnimation, onOpenChange],
+    [isOpen, setIsOpen, uniqueId, shouldDisableAnimation, onOpenChange]
   );
 
   return (
@@ -266,7 +266,7 @@ function AlertDialogTrigger({
         setIsOpen(true);
       }
     },
-    [setIsOpen],
+    [setIsOpen]
   );
 
   // Common ARIA and data attributes
@@ -457,7 +457,7 @@ function AlertDialogContainer({ children }: AlertDialogContainerProps) {
         </MotionConfig>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body
   );
 }
 
@@ -548,13 +548,14 @@ function AlertDialogContent({
 
         if (!first || !last) return;
 
+        const doc = contentRef.current?.ownerDocument ?? document;
         if (event.shiftKey) {
-          if (document.activeElement === first) {
+          if (doc.activeElement === first) {
             event.preventDefault();
             last.focus();
           }
         } else {
-          if (document.activeElement === last) {
+          if (doc.activeElement === last) {
             event.preventDefault();
             first.focus();
           }
@@ -562,9 +563,10 @@ function AlertDialogContent({
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, setIsOpen, preventEscapeClose]);
+    const doc = contentRef.current?.ownerDocument ?? document;
+    doc.addEventListener("keydown", handleKeyDown);
+    return () => doc.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, setIsOpen, preventEscapeClose, contentRef]);
 
   // Body scroll lock and initial focus
   useEffect(() => {
@@ -574,8 +576,9 @@ function AlertDialogContent({
     const contentElement = contentRef.current;
 
     // Save original body overflow
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const doc = contentElement?.ownerDocument ?? document;
+    const originalOverflow = doc.body.style.overflow;
+    doc.body.style.overflow = "hidden";
 
     // Find focusable elements
     const focusableSelector =
@@ -596,7 +599,7 @@ function AlertDialogContent({
     }
 
     return () => {
-      document.body.style.overflow = originalOverflow;
+      doc.body.style.overflow = originalOverflow;
       triggerElement?.focus();
     };
   }, [isOpen, triggerRef, contentRef]);
@@ -615,13 +618,14 @@ function AlertDialogContent({
     };
 
     // Delay to prevent immediate closing
+    const doc = contentRef.current?.ownerDocument ?? document;
     const timeoutId = setTimeout(() => {
-      document.addEventListener("mousedown", handleClickOutside);
+      doc.addEventListener("mousedown", handleClickOutside);
     }, 0);
 
     return () => {
       clearTimeout(timeoutId);
-      document.removeEventListener("mousedown", handleClickOutside);
+      doc.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, setIsOpen, preventOutsideClose, contentRef]);
 
@@ -638,7 +642,7 @@ function AlertDialogContent({
     "w-full max-w-[calc(100vw-2rem)] sm:max-w-md",
     // Base padding for consistent spacing
     "p-6 sm:p-8",
-    className,
+    className
   );
 
   // Content panel component
@@ -717,7 +721,7 @@ function AlertDialogContent({
         </MotionConfig>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body
   );
 }
 
@@ -754,7 +758,7 @@ function AlertDialogHeader({
     <div
       className={cn(
         "flex flex-col items-center text-center gap-4 sm:gap-5",
-        className,
+        className
       )}
       data-slot="alert-dialog-header"
     >
@@ -763,7 +767,7 @@ function AlertDialogHeader({
           className={cn(
             "size-14 sm:size-16 rounded-full flex items-center justify-center",
             "bg-primary/10 dark:bg-primary/20",
-            iconClassName,
+            iconClassName
           )}
         >
           {icon}
@@ -798,7 +802,7 @@ function AlertDialogBody({ children, className }: AlertDialogBodyProps) {
 
   const bodyClasses = cn(
     "flex flex-col items-center text-center gap-5 sm:gap-6",
-    className,
+    className
   );
 
   if (!disableAnimation) {
@@ -846,7 +850,7 @@ function AlertDialogFooter({ children, className }: AlertDialogFooterProps) {
     <div
       className={cn(
         "flex flex-col w-full gap-2 sm:gap-3 pt-4 sm:pt-5",
-        className,
+        className
       )}
       data-slot="alert-dialog-footer"
     >
@@ -888,7 +892,7 @@ function AlertDialogTitle({
       className={cn(
         "text-lg sm:text-xl font-semibold tracking-tight leading-tight",
         "text-foreground",
-        className,
+        className
       )}
       style={style}
       id={`${uniqueId}-title`}
@@ -989,7 +993,7 @@ function AlertDialogDescription({
       className={cn(
         "text-sm sm:text-[13px] text-muted-foreground leading-relaxed",
         "max-w-full sm:max-w-70 mx-auto",
-        className,
+        className
       )}
       style={style}
       id={`${uniqueId}-description`}
@@ -1052,7 +1056,7 @@ function AlertDialogAction({
         setIsOpen(false);
       }
     },
-    [onClick, setIsOpen],
+    [onClick, setIsOpen]
   );
 
   return (
@@ -1071,7 +1075,7 @@ function AlertDialogAction({
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "touch-manipulation select-none",
         disabled && "opacity-50 cursor-not-allowed pointer-events-none",
-        className,
+        className
       )}
       style={style}
       onClick={handleClick}
@@ -1124,7 +1128,7 @@ function AlertDialogCancel({
         setIsOpen(false);
       }
     },
-    [onClick, setIsOpen],
+    [onClick, setIsOpen]
   );
 
   return (
@@ -1142,7 +1146,7 @@ function AlertDialogCancel({
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "touch-manipulation select-none",
         disabled && "opacity-50 cursor-not-allowed pointer-events-none",
-        className,
+        className
       )}
       style={style}
       onClick={handleClick}
@@ -1183,7 +1187,7 @@ function AlertDialogClose({ className, onClick }: AlertDialogCloseProps) {
         setIsOpen(false);
       }
     },
-    [onClick, setIsOpen],
+    [onClick, setIsOpen]
   );
 
   return (
@@ -1196,7 +1200,7 @@ function AlertDialogClose({ className, onClick }: AlertDialogCloseProps) {
         "hover:bg-muted/80",
         "transition-colors duration-150",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className,
+        className
       )}
       onClick={handleClick}
       aria-label="Close dialog"

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card-static",
+  "type": "registry:ui",
+  "title": "Hover Card (Static)",
+  "description": "Static hover card built on Base UI PreviewCard with arrow and CSS transitions.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/hover-card.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

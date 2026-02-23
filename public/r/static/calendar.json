@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-static",
+  "type": "registry:ui",
+  "title": "Calendar (Static)",
+  "description": "Static date picker calendar with single, multiple, and range selection modes built on react-day-picker.",
+  "dependencies": ["react-day-picker", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/calendar.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

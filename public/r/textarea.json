@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "textarea",
+  "type": "registry:ui",
+  "title": "Textarea",
+  "description": "A styled textarea component with auto-resize support.",
+  "dependencies": [],
+  "registryDependencies": ["utils"],
+  "variant": "shared",
+  "files": [
+    {
+      "path": "components/ui/shared/textarea.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {\r\n  autoResize?: boolean;\r\n}\r\n\r\nconst Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(\r\n  ({ className, autoResize = false, ...props }, ref) => {\r\n    const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);\r\n\r\n    const resizeTextarea = React.useCallback(() => {\r\n      const el = textareaRef.current;\r\n      if (!el || !autoResize) return;\r\n      el.style.height = \"auto\";\r\n      el.style.height = `${el.scrollHeight}px`;\r\n    }, [autoResize]);\r\n\r\n    const setRef = React.useCallback(\r\n      (node: HTMLTextAreaElement | null) => {\r\n        textareaRef.current = node;\r\n        // Forward ref to consumer\r\n        if (typeof ref === \"function\") {\r\n          ref(node);\r\n        } else if (ref) {\r\n          (ref as React.MutableRefObject<HTMLTextAreaElement | null>).current =\r\n            node;\r\n        }\r\n        // Initial auto-resize\r\n        if (node && autoResize) {\r\n          node.style.height = \"auto\";\r\n          node.style.height = `${node.scrollHeight}px`;\r\n        }\r\n      },\r\n      [ref, autoResize]\r\n    );\r\n\r\n    // Re-measure when controlled value changes\r\n    React.useEffect(() => {\r\n      if (autoResize && props.value !== undefined) {\r\n        resizeTextarea();\r\n      }\r\n    }, [autoResize, props.value, resizeTextarea]);\r\n\r\n    // Attach input listener for auto-resize via ref (avoids dual React types issue)\r\n    React.useEffect(() => {\r\n      const el = textareaRef.current;\r\n      if (!el || !autoResize) return;\r\n      const handler = () => resizeTextarea();\r\n      el.addEventListener(\"input\", handler);\r\n      return () => el.removeEventListener(\"input\", handler);\r\n    }, [autoResize, resizeTextarea]);\r\n\r\n    return (\r\n      <textarea\r\n        ref={setRef}\r\n        data-slot=\"textarea\"\r\n        className={cn(\r\n          \"placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input w-full min-w-0 rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\r\n          \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\r\n          \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\r\n          autoResize && \"resize-none overflow-hidden\",\r\n          !autoResize && \"min-h-20\",\r\n          className\r\n        )}\r\n        {...props}\r\n      />\r\n    );\r\n  }\r\n);\r\n\r\nTextarea.displayName = \"Textarea\";\r\n\r\nexport { Textarea };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

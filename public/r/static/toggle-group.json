@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle-group-static",
+  "type": "registry:ui",
+  "title": "Toggle Group (Static)",
+  "description": "Static toggle group built on Base UI ToggleGroup.",
+  "dependencies": ["@base-ui/react", "class-variance-authority"],
+  "registryDependencies": ["utils", "toggle-static"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/toggle-group.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog-static",
+  "type": "registry:ui",
+  "title": "Dialog (Static)",
+  "description": "Static dialog/modal built on Base UI Dialog with CSS transitions.",
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/dialog.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

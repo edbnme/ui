@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-static",
+  "type": "registry:ui",
+  "title": "Progress (Static)",
+  "description": "Static progress bar built on Base UI Progress with indeterminate state.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/progress.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}

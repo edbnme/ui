@@ -19,14 +19,12 @@ import * as React from "react";
 import {
   forwardRef,
   useCallback,
-  useState,
-  useEffect,
   type ComponentPropsWithoutRef,
   type ElementRef,
 } from "react";
 
 // 2. External library imports
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "@/lib/primitives";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, type HTMLMotionProps } from "motion/react";
 import type { Icon } from "@phosphor-icons/react";
@@ -36,61 +34,7 @@ import { cn } from "@/lib/utils";
 import { springPresets, gestures } from "@/lib/animations";
 import { LoadingSpinner, AnimatedCheck } from "@/lib/icons";
 import { useShouldDisableAnimation } from "@/components/motion-provider";
-
-// =============================================================================
-// TYPES
-// =============================================================================
-
-/**
- * Ripple effect data structure
- */
-interface Ripple {
-  x: number;
-  y: number;
-  size: number;
-  key: number;
-}
-
-// =============================================================================
-// HOOKS
-// =============================================================================
-
-/**
- * Hook to manage ripple effects on button click
- *
- * Creates expanding circular ripples from the click point,
- * automatically cleaning up after animation completes.
- */
-function useRipple() {
-  const [ripples, setRipples] = useState<Ripple[]>([]);
-
-  const createRipple = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      const button = event.currentTarget;
-      const rect = button.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = event.clientX - rect.left - size / 2;
-      const y = event.clientY - rect.top - size / 2;
-
-      const newRipple: Ripple = { x, y, size, key: Date.now() };
-      setRipples((prev) => [...prev, newRipple]);
-    },
-    [],
-  );
-
-  // Auto-cleanup ripples after animation
-  useEffect(() => {
-    if (ripples.length > 0) {
-      const lastRipple = ripples[ripples.length - 1];
-      const timeout = setTimeout(() => {
-        setRipples((prev) => prev.filter((r) => r.key !== lastRipple.key));
-      }, 600);
-      return () => clearTimeout(timeout);
-    }
-  }, [ripples]);
-
-  return { ripples, createRipple };
-}
+import { useRipple } from "@/hooks/use-ripple";
 
 // =============================================================================
 // VARIANTS (CVA)
@@ -186,7 +130,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  },
+  }
 );
 
 // =============================================================================
@@ -302,7 +246,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       onClick,
       ...props
     },
-    ref,
+    ref
   ) => {
     // Animation preference
     const shouldDisableAnimation = useShouldDisableAnimation(disableAnimation);
@@ -324,7 +268,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
         }
         onClick?.(event);
       },
-      [loading, success, showRipple, createRipple, onClick],
+      [loading, success, showRipple, createRipple, onClick]
     );
 
     // =========================================================================
@@ -424,7 +368,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       "data-success": success || undefined,
       className: cn(
         buttonVariants({ variant, size, className }),
-        showRipple && "relative overflow-hidden",
+        showRipple && "relative overflow-hidden"
       ),
       disabled: isDisabled,
       "aria-busy": loading || undefined,
@@ -478,7 +422,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
         {buttonContent}
       </motion.button>
     );
-  },
+  }
 );
 
 Button.displayName = "Button";
@@ -519,7 +463,7 @@ export interface IconButtonProps extends Omit<
 const IconButton = forwardRef<ElementRef<"button">, IconButtonProps>(
   ({ icon, size = "icon", ...props }, ref) => {
     return <Button ref={ref} size={size} iconStart={icon} {...props} />;
-  },
+  }
 );
 
 IconButton.displayName = "IconButton";

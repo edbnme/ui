@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-group-static",
+  "type": "registry:ui",
+  "title": "Checkbox Group (Static)",
+  "description": "Static checkbox group built on Base UI CheckboxGroup for parent-child checkbox control.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils", "checkbox-static"],
+  "variant": "static",
+  "files": [
+    {
+      "path": "components/ui/static/checkbox-group.tsx",
+      "content": "",
+      "type": "registry:ui"
+    }
+  ]
+}
