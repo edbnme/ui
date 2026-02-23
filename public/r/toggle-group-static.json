@@ -4,8 +4,14 @@
   "type": "registry:ui",
   "title": "Toggle Group (Static)",
   "description": "Static toggle group built on Base UI ToggleGroup.",
-  "dependencies": ["@base-ui/react", "class-variance-authority"],
-  "registryDependencies": ["utils", "toggle-static"],
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils",
+    "toggle-static"
+  ],
   "variant": "static",
   "files": [
     {

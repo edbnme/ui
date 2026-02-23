@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Input OTP (Static)",
   "description": "Static OTP/verification code input built on input-otp with customizable slots.",
-  "dependencies": ["input-otp"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "input-otp"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {

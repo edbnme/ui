@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Form (Static)",
   "description": "Static form built on Base UI Form.",
-  "dependencies": ["@base-ui/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {
       "path": "components/ui/static/form.tsx",
-      "content": "",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Form } from \"@base-ui/react/form\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// FORM ROOT\r\n// =============================================================================\r\n\r\nconst FormRoot = React.forwardRef<\r\n  HTMLFormElement,\r\n  React.ComponentPropsWithRef<typeof Form>\r\n>(({ className, ...props }, ref) => (\r\n  <Form ref={ref} className={cn(\"space-y-6\", className)} {...props} />\r\n));\r\nFormRoot.displayName = \"FormRoot\";\r\n\r\n// =============================================================================\r\n// EXPORTS\r\n// =============================================================================\r\n\r\nexport { FormRoot };\r\n",
       "type": "registry:ui"
     }
   ]

@@ -4,7 +4,10 @@
   "type": "registry:lib",
   "title": "Utils",
   "description": "Utility functions including cn() for class merging.",
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "registryDependencies": [],
   "variant": "shared",
   "files": [

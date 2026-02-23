@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Drawer (Static)",
   "description": "Static drawer/bottom sheet component built on Vaul with snap points and nested support.",
-  "dependencies": ["vaul"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "vaul"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {

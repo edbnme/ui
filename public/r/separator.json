@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Separator",
   "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
-  "dependencies": ["@radix-ui/react-separator"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@radix-ui/react-separator"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "shared",
   "files": [
     {
       "path": "components/ui/shared/separator.tsx",
-      "content": "/**\n * Separator Component\n *\n * A visual separator for dividing content. Supports horizontal and vertical\n * orientations with proper accessibility semantics.\n *\n * Built on Base UI Separator primitive.\n *\n * @packageDocumentation\n */\n\n\"use client\";\n\nimport * as React from \"react\";\nimport { Separator as SeparatorPrimitive } from \"@base-ui/react/separator\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface SeparatorProps extends React.ComponentProps<\n  typeof SeparatorPrimitive\n> {\n  decorative?: boolean;\n}\n\nfunction Separator({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: SeparatorProps) {\n  return (\n    <SeparatorPrimitive\n      data-slot=\"separator\"\n      role={decorative ? \"none\" : \"separator\"}\n      aria-orientation={decorative ? undefined : orientation}\n      orientation={orientation}\n      className={cn(\n        \"bg-border shrink-0\",\n        orientation === \"horizontal\" ? \"h-px w-full\" : \"h-full w-px\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nSeparator.displayName = \"Separator\";\n\nexport { Separator };\n",
+      "content": "/**\r\n * Separator Component\r\n *\r\n * A visual separator for dividing content. Supports horizontal and vertical\r\n * orientations with proper accessibility semantics.\r\n *\r\n * Built on Base UI Separator primitive.\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Separator as SeparatorPrimitive } from \"@base-ui/react/separator\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface SeparatorProps extends React.ComponentProps<\r\n  typeof SeparatorPrimitive\r\n> {\r\n  decorative?: boolean;\r\n}\r\n\r\nfunction Separator({\r\n  className,\r\n  orientation = \"horizontal\",\r\n  decorative = true,\r\n  ...props\r\n}: SeparatorProps) {\r\n  return (\r\n    <SeparatorPrimitive\r\n      data-slot=\"separator\"\r\n      role={decorative ? \"none\" : \"separator\"}\r\n      aria-orientation={decorative ? undefined : orientation}\r\n      orientation={orientation}\r\n      className={cn(\r\n        \"bg-border shrink-0\",\r\n        orientation === \"horizontal\" ? \"h-px w-full\" : \"h-full w-px\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nSeparator.displayName = \"Separator\";\r\n\r\nexport { Separator };\r\n",
       "type": "registry:ui"
     }
   ]

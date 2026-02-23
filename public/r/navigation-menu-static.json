@@ -4,8 +4,12 @@
   "type": "registry:ui",
   "title": "Navigation Menu (Static)",
   "description": "Static navigation menu built on Base UI NavigationMenu with viewport and CSS transitions.",
-  "dependencies": ["@base-ui/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {

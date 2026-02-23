@@ -5,7 +5,9 @@
   "title": "Label",
   "description": "A styled label component with peer/group disabled state support.",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "shared",
   "files": [
     {

@@ -246,7 +246,7 @@ const staticComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/static/alert-dialog-v2.tsx", type: "registry:ui" },
+      { path: "components/ui/static/alert-dialog.tsx", type: "registry:ui" },
     ],
     cssVars: true,
     variant: "static",
@@ -260,7 +260,7 @@ const staticComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/static/popover-v2.tsx", type: "registry:ui" },
+      { path: "components/ui/static/popover.tsx", type: "registry:ui" },
     ],
     cssVars: true,
     variant: "static",
@@ -359,7 +359,7 @@ const staticComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/static/radio-group.tsx", type: "registry:ui" },
+      { path: "components/ui/static/radio.tsx", type: "registry:ui" },
     ],
     variant: "static",
   },

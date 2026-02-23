@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Scroll Area (Static)",
   "description": "Static scroll area built on Base UI ScrollArea with custom scrollbars.",
-  "dependencies": ["@base-ui/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {
       "path": "components/ui/static/scroll-area.tsx",
-      "content": "",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { ScrollArea } from \"@base-ui/react/scroll-area\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// SCROLL AREA ROOT\r\n// =============================================================================\r\n\r\nconst ScrollAreaRoot = React.forwardRef<HTMLDivElement, ScrollArea.Root.Props>(\r\n  ({ className, ...props }, ref) => (\r\n    <ScrollArea.Root\r\n      ref={ref}\r\n      className={cn(\"relative overflow-hidden\", className)}\r\n      {...props}\r\n    />\r\n  )\r\n);\r\nScrollAreaRoot.displayName = \"ScrollAreaRoot\";\r\n\r\n// =============================================================================\r\n// SCROLL AREA VIEWPORT\r\n// =============================================================================\r\n\r\nconst ScrollAreaViewport = React.forwardRef<\r\n  HTMLDivElement,\r\n  ScrollArea.Viewport.Props\r\n>(({ className, ...props }, ref) => (\r\n  <ScrollArea.Viewport\r\n    ref={ref}\r\n    className={cn(\"h-full w-full\", className)}\r\n    {...props}\r\n  />\r\n));\r\nScrollAreaViewport.displayName = \"ScrollAreaViewport\";\r\n\r\n// =============================================================================\r\n// SCROLL AREA SCROLLBAR\r\n// =============================================================================\r\n\r\nconst ScrollAreaScrollbar = React.forwardRef<\r\n  HTMLDivElement,\r\n  ScrollArea.Scrollbar.Props\r\n>(({ className, orientation = \"vertical\", ...props }, ref) => (\r\n  <ScrollArea.Scrollbar\r\n    ref={ref}\r\n    orientation={orientation}\r\n    className={cn(\r\n      \"flex touch-none select-none transition-colors\",\r\n      orientation === \"vertical\"\r\n        ? \"h-full w-2.5 border-l border-l-transparent p-px\"\r\n        : \"h-2.5 flex-col border-t border-t-transparent p-px\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n));\r\nScrollAreaScrollbar.displayName = \"ScrollAreaScrollbar\";\r\n\r\n// =============================================================================\r\n// SCROLL AREA THUMB\r\n// =============================================================================\r\n\r\nconst ScrollAreaThumb = React.forwardRef<\r\n  HTMLDivElement,\r\n  ScrollArea.Thumb.Props\r\n>(({ className, ...props }, ref) => (\r\n  <ScrollArea.Thumb\r\n    ref={ref}\r\n    className={cn(\"relative flex-1 rounded-full bg-border\", className)}\r\n    {...props}\r\n  />\r\n));\r\nScrollAreaThumb.displayName = \"ScrollAreaThumb\";\r\n\r\n// =============================================================================\r\n// EXPORTS\r\n// =============================================================================\r\n\r\nexport {\r\n  ScrollAreaRoot,\r\n  ScrollAreaViewport,\r\n  ScrollAreaScrollbar,\r\n  ScrollAreaThumb,\r\n};\r\n",
       "type": "registry:ui"
     }
   ]

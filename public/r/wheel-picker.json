@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Wheel Picker",
   "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
-  "dependencies": ["@ncdai/react-wheel-picker"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@ncdai/react-wheel-picker"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "animated",
   "files": [
     {
       "path": "components/ui/wheel-picker.tsx",
-      "content": "\"use client\";\n\nimport \"@ncdai/react-wheel-picker/style.css\";\n\nimport * as WheelPickerPrimitive from \"@ncdai/react-wheel-picker\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype WheelPickerValue = WheelPickerPrimitive.WheelPickerValue;\n\ntype WheelPickerOption<T extends WheelPickerValue = string> =\n  WheelPickerPrimitive.WheelPickerOption<T>;\n\ntype WheelPickerClassNames = WheelPickerPrimitive.WheelPickerClassNames;\n\nfunction WheelPickerWrapper({\n  className,\n  ...props\n}: React.ComponentProps<typeof WheelPickerPrimitive.WheelPickerWrapper>) {\n  return (\n    <WheelPickerPrimitive.WheelPickerWrapper\n      className={cn(\n        \"w-56 rounded-lg border border-border bg-background px-1 shadow-sm\",\n        \"*:data-rwp:first:*:data-rwp-highlight-wrapper:rounded-s-md\",\n        \"*:data-rwp:last:*:data-rwp-highlight-wrapper:rounded-e-md\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nfunction WheelPicker<T extends WheelPickerValue = string>({\n  classNames,\n  ...props\n}: WheelPickerPrimitive.WheelPickerProps<T>) {\n  return (\n    <WheelPickerPrimitive.WheelPicker\n      classNames={{\n        optionItem: \"text-muted-foreground\",\n        highlightWrapper: cn(\n          \"bg-accent text-accent-foreground\",\n          \"data-rwp-focused:ring-2 data-rwp-focused:ring-ring data-rwp-focused:ring-inset\"\n        ),\n        ...classNames,\n      }}\n      {...props}\n    />\n  );\n}\n\nexport { WheelPicker, WheelPickerWrapper };\nexport type { WheelPickerClassNames, WheelPickerOption, WheelPickerValue };\n",
+      "content": "\"use client\";\r\n\r\nimport \"@ncdai/react-wheel-picker/style.css\";\r\n\r\nimport * as WheelPickerPrimitive from \"@ncdai/react-wheel-picker\";\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ntype WheelPickerValue = WheelPickerPrimitive.WheelPickerValue;\r\n\r\ntype WheelPickerOption<T extends WheelPickerValue = string> =\r\n  WheelPickerPrimitive.WheelPickerOption<T>;\r\n\r\ntype WheelPickerClassNames = WheelPickerPrimitive.WheelPickerClassNames;\r\n\r\nfunction WheelPickerWrapper({\r\n  className,\r\n  ...props\r\n}: React.ComponentProps<typeof WheelPickerPrimitive.WheelPickerWrapper>) {\r\n  return (\r\n    <WheelPickerPrimitive.WheelPickerWrapper\r\n      className={cn(\r\n        \"w-56 rounded-lg border border-border bg-background px-1 shadow-sm\",\r\n        \"*:data-rwp:first:*:data-rwp-highlight-wrapper:rounded-s-md\",\r\n        \"*:data-rwp:last:*:data-rwp-highlight-wrapper:rounded-e-md\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nfunction WheelPicker<T extends WheelPickerValue = string>({\r\n  classNames,\r\n  ...props\r\n}: WheelPickerPrimitive.WheelPickerProps<T>) {\r\n  return (\r\n    <WheelPickerPrimitive.WheelPicker\r\n      classNames={{\r\n        optionItem: \"text-muted-foreground\",\r\n        highlightWrapper: cn(\r\n          \"bg-accent text-accent-foreground\",\r\n          \"data-rwp-focused:ring-2 data-rwp-focused:ring-ring data-rwp-focused:ring-inset\"\r\n        ),\r\n        ...classNames,\r\n      }}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { WheelPicker, WheelPickerWrapper };\r\nexport type { WheelPickerClassNames, WheelPickerOption, WheelPickerValue };\r\n",
       "type": "registry:ui"
     }
   ]

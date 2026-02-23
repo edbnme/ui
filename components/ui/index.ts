@@ -6,7 +6,7 @@
  *
  * Usage:
  * - Import components from this file to get animation support
- * - Or import directly from animated/ or base-ui/ folders for explicit control
+ * - Or import directly from animated/ or static/ folders for explicit control
  *
  * @packageDocumentation
  */
@@ -137,4 +137,4 @@ export {
 // VARIANT TYPES
 // =============================================================================
 
-export type ComponentVariant = "animated" | "base-ui";
+export type ComponentVariant = "animated" | "static";
