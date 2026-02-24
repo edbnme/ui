@@ -224,7 +224,7 @@ For components with multiple files (like motion-provider):
 External packages installed via npm:
 
 ```json
-"dependencies": ["motion", "@radix-ui/react-dialog", "@phosphor-icons/react"]
+"dependencies": ["motion", "@base-ui/react", "@phosphor-icons/react"]
 ```
 
 ### Registry Dependencies

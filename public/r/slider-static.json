@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Slider (Static)",
   "description": "Static slider built on Base UI Slider with track, thumb, and value display.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

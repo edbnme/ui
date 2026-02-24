@@ -56,7 +56,7 @@ node scripts/update-registry.mjs
 
 ## Stack
 
-Next.js 16, React 19, Tailwind CSS v4, Radix UI, Motion (framer-motion fork), Vitest.
+Next.js 16, React 19, Tailwind CSS v4, Base UI, Motion (framer-motion fork), Vitest.
 
 ## Issues
 

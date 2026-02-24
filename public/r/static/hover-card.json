@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Hover Card (Static)",
   "description": "Static hover card built on Base UI PreviewCard with arrow and CSS transitions.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

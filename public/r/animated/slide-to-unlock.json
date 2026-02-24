@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Slide to Unlock",
   "description": "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "utils",
-    "shimmering-text"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["utils", "shimmering-text"],
   "variant": "animated",
   "files": [
     {

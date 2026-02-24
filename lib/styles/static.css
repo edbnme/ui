@@ -12,7 +12,7 @@
  *   @import "@/lib/styles/static.css";
  *
  * Features:
- *   - tw-animate-css integration for Radix UI animations
+ *   - tw-animate-css integration for CSS animations
  *   - Simple CSS transitions (no spring physics)
  *   - Optimized for minimal bundle size (~30KB less than animated)
  *   - No JavaScript animation dependencies

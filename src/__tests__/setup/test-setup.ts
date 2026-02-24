@@ -62,8 +62,8 @@ Object.defineProperty(window, "matchMedia", {
  * Mock ResizeObserver
  *
  * Required for:
- * - @radix-ui/react-popover
- * - @radix-ui/react-dropdown-menu
+ * - @base-ui/react/popover
+ * - @base-ui/react/menu
  * - @floating-ui/dom
  * - Any component that observes element size changes
  *
@@ -171,7 +171,7 @@ window.getComputedStyle = vi.fn().mockImplementation((element: Element) => {
  *
  * JSDOM doesn't support PointerEvent, so we need to mock it
  * Required for:
- * - Radix UI components with pointer interactions
+ * - Base UI components with pointer interactions
  * - Drag and drop functionality
  */
 class PointerEventMock extends MouseEvent {
@@ -214,7 +214,7 @@ global.PointerEvent = PointerEventMock as unknown as typeof PointerEvent;
  * Suppress known console warnings that clutter test output
  *
  * Suppressed warnings:
- * - Missing Description warnings from Radix UI
+ * - Missing Description warnings from Base UI
  * - React hydration mismatches in tests
  * - Motion animation value warnings
  */

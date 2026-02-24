@@ -45,18 +45,8 @@ const FALLBACK_SIZES = {
   clsx: { size: 1800, gzip: 600 },
   "tailwind-merge": { size: 28000, gzip: 8000 },
   "class-variance-authority": { size: 4500, gzip: 1500 },
-  vaul: { size: 18000, gzip: 5500 },
   "next-themes": { size: 4000, gzip: 1200 },
-  "@radix-ui/react-slot": { size: 2500, gzip: 900 },
-  "@radix-ui/react-dialog": { size: 25000, gzip: 7500 },
-  "@radix-ui/react-dropdown-menu": { size: 35000, gzip: 10000 },
-  "@radix-ui/react-alert-dialog": { size: 22000, gzip: 6500 },
-  "@radix-ui/react-popover": { size: 25000, gzip: 7500 },
-  "@radix-ui/react-tooltip": { size: 20000, gzip: 6000 },
-  "@radix-ui/react-scroll-area": { size: 15000, gzip: 4500 },
-  "@radix-ui/react-separator": { size: 2500, gzip: 800 },
-  "@radix-ui/react-avatar": { size: 8000, gzip: 2500 },
-  "@radix-ui/react-slider": { size: 18000, gzip: 5500 },
+  "@base-ui/react": { size: 85000, gzip: 25000 },
   "@phosphor-icons/react": {
     size: 1200,
     gzip: 400,
@@ -204,9 +194,9 @@ function estimatePackageSize(packageName) {
   let size = 10000; // Default 10KB
   let gzip = 3000; // Default 3KB gzip
 
-  if (packageName.startsWith("@radix-ui/")) {
-    size = 20000;
-    gzip = 6000;
+  if (packageName.startsWith("@base-ui/")) {
+    size = 85000;
+    gzip = 25000;
   } else if (packageName.startsWith("@phosphor-icons/")) {
     size = 1200;
     gzip = 400;

@@ -4,7 +4,7 @@
  * A composable avatar component with multiple sizes, status indicators,
  * and group stacking support. Handles image loading states gracefully.
  *
- * Built on Radix UI Avatar primitive.
+ * Built on Base UI Avatar primitive.
  *
  * @packageDocumentation
  */
@@ -12,7 +12,7 @@
 "use client";
 
 import * as React from "react";
-import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 

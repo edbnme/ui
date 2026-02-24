@@ -2,12 +2,12 @@
   "@base-ui/react": {
     "data": {
       "name": "@base-ui/react",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "size": 85000,
+      "gzip": 25000,
+      "version": "latest",
+      "source": "fallback"
     },
-    "timestamp": 1771588993825
+    "timestamp": 1771947848647
   },
   "@ncdai/react-wheel-picker": {
     "data": {
@@ -17,7 +17,7 @@
       "version": "unknown",
       "source": "estimate"
     },
-    "timestamp": 1771588998280
+    "timestamp": 1771947853366
   },
   "@phosphor-icons/react": {
     "data": {
@@ -28,87 +28,7 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-avatar": {
-    "data": {
-      "name": "@radix-ui/react-avatar",
-      "size": 8000,
-      "gzip": 2500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-dialog": {
-    "data": {
-      "name": "@radix-ui/react-dialog",
-      "size": 25000,
-      "gzip": 7500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-dropdown-menu": {
-    "data": {
-      "name": "@radix-ui/react-dropdown-menu",
-      "size": 35000,
-      "gzip": 10000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-scroll-area": {
-    "data": {
-      "name": "@radix-ui/react-scroll-area",
-      "size": 15000,
-      "gzip": 4500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-separator": {
-    "data": {
-      "name": "@radix-ui/react-separator",
-      "size": 2500,
-      "gzip": 800,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-slider": {
-    "data": {
-      "name": "@radix-ui/react-slider",
-      "size": 18000,
-      "gzip": 5500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-slot": {
-    "data": {
-      "name": "@radix-ui/react-slot",
-      "size": 2500,
-      "gzip": 900,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
-  },
-  "@radix-ui/react-tooltip": {
-    "data": {
-      "name": "@radix-ui/react-tooltip",
-      "size": 20000,
-      "gzip": 6000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771588998280
+    "timestamp": 1771947853366
   },
   "class-variance-authority": {
     "data": {
@@ -118,7 +38,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771588998280
+    "timestamp": 1771947853366
   },
   "clsx": {
     "data": {
@@ -128,7 +48,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771588998280
+    "timestamp": 1771947853366
   },
   "embla-carousel-react": {
     "data": {
@@ -138,7 +58,7 @@
       "version": "unknown",
       "source": "estimate"
     },
-    "timestamp": 1771589002826
+    "timestamp": 1771947857410
   },
   "input-otp": {
     "data": {
@@ -148,7 +68,7 @@
       "version": "unknown",
       "source": "estimate"
     },
-    "timestamp": 1771589007019
+    "timestamp": 1771947861835
   },
   "motion": {
     "data": {
@@ -158,7 +78,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771589007019
+    "timestamp": 1771947861835
   },
   "react-day-picker": {
     "data": {
@@ -169,7 +89,7 @@
       "dependencyCount": 3,
       "source": "bundlephobia"
     },
-    "timestamp": 1771589007392
+    "timestamp": 1771947862244
   },
   "react-resizable-panels": {
     "data": {
@@ -180,7 +100,7 @@
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1771589007802
+    "timestamp": 1771947862657
   },
   "recharts": {
     "data": {
@@ -191,7 +111,7 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "timestamp": 1771589007956
+    "timestamp": 1771947863148
   },
   "tailwind-merge": {
     "data": {
@@ -201,7 +121,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771589007956
+    "timestamp": 1771947863148
   },
   "tw-animate-css": {
     "data": {
@@ -211,16 +131,6 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771589007956
-  },
-  "vaul": {
-    "data": {
-      "name": "vaul",
-      "size": 18000,
-      "gzip": 5500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1771589007956
+    "timestamp": 1771947863148
   }
 }

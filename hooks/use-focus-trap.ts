@@ -126,9 +126,11 @@ export function useFocusTrap<T extends HTMLElement>(
   useEffect(() => {
     if (isActive || !restoreFocus) return;
 
+    const containerElement = containerRef.current;
+    const doc = containerElement?.ownerDocument ?? document;
+
     return () => {
       // Restore focus when trap is deactivated
-      const doc = containerRef.current?.ownerDocument ?? document;
       if (
         previousActiveElementRef.current &&
         doc.body.contains(previousActiveElementRef.current)
@@ -136,7 +138,7 @@ export function useFocusTrap<T extends HTMLElement>(
         previousActiveElementRef.current.focus();
       }
     };
-  }, [isActive, restoreFocus]);
+  }, [isActive, restoreFocus, containerRef]);
 
   // Handle keyboard navigation
   useEffect(() => {

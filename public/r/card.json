@@ -5,9 +5,7 @@
   "title": "Card",
   "description": "Card component with header, title, description, content, and footer sub-components.",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "shared",
   "files": [
     {

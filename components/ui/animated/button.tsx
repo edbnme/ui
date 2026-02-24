@@ -145,7 +145,7 @@ export interface ButtonProps
     Omit<ComponentPropsWithoutRef<"button">, "ref">,
     VariantProps<typeof buttonVariants> {
   /**
-   * Render as a different element using Radix Slot pattern.
+   * Render as a different element using the Slot pattern.
    * When true, button merges props with its child element.
    *
    * @example

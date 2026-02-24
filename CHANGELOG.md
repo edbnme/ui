@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed (Phase 9 — Deprecated File Cleanup)
 
-- **Deleted 5 deprecated Radix-based static components** — replaced by Base UI v2 equivalents
+- **Deleted 5 deprecated static components** — replaced by Base UI v2 equivalents
   - `static/alert-dialog.tsx` → use `static/alert-dialog-v2.tsx`
   - `static/dropdown-menu.tsx` → use `static/menu.tsx`
   - `static/popover.tsx` → use `static/popover-v2.tsx`
@@ -23,11 +23,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **shared/badge.tsx** — Empty interface `BadgeProps` → type alias
 - **shared/label.tsx** — Empty interface `LabelProps` → type alias
 - **shared/separator.tsx** — Removed duplicate export statement
-- **static/sidebar.tsx** — Changed `@radix-ui/react-slot` import to `@/lib/primitives` adapter layer
+- **static/sidebar.tsx** — Updated Slot import to `@/lib/primitives` adapter layer
 
 ### Changed
 
-- **index.ts** — Updated `Static*` re-exports to point to Base UI v2 components instead of deleted Radix files
+- **index.ts** — Updated `Static*` re-exports to point to Base UI v2 components instead of deleted deprecated files
 - **docs/COMPONENT-VARIANTS.md** — Updated to reflect full Base UI static component catalog (30+ components)
 
 ## [0.2.5] - 2026-02-11

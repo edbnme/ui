@@ -5,14 +5,11 @@
   "title": "Button (Static)",
   "description": "Static button component with CSS transitions only. No motion dependency required.",
   "dependencies": [
-    "@radix-ui/react-slot",
     "class-variance-authority",
     "@phosphor-icons/react",
     "tw-animate-css"
   ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

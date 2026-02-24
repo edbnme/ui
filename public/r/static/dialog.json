@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Dialog (Static)",
   "description": "Static dialog/modal built on Base UI Dialog with CSS transitions.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

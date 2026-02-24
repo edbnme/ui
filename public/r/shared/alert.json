@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Alert",
   "description": "Alert component with CVA variants for default, destructive, success, warning, and info states.",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "variant": "shared",
   "files": [
     {

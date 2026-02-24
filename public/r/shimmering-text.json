@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Shimmering Text",
   "description": "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["utils"],
   "variant": "animated",
   "files": [
     {

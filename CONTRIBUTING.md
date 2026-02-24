@@ -18,7 +18,7 @@ Open an issue first if you're planning to add a new component or make significan
 ## Component guidelines
 
 - Use TypeScript
-- Build on Radix UI primitives when possible
+- Build on Base UI primitives when possible
 - Use motion presets from `lib/motion.ts` (no hardcoded spring values)
 - Support both light and dark themes
 - Test on mobile and desktop

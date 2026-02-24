@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Menubar (Static)",
   "description": "Static menubar built on Base UI Menubar and Menu with keyboard navigation and sub-menus.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

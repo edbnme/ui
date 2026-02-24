@@ -46,7 +46,6 @@ const animatedComponents = {
     description:
       "Animated button component with press feedback, loading states, and icon support.",
     dependencies: [
-      "@radix-ui/react-slot",
       "class-variance-authority",
       "motion",
       "@phosphor-icons/react",
@@ -104,7 +103,7 @@ const animatedComponents = {
     description:
       "Animated dropdown menu with smooth spring animations and staggered item reveals.",
     dependencies: [
-      "@radix-ui/react-dropdown-menu",
+      "@base-ui/react",
       "motion",
       "@phosphor-icons/react",
       "tw-animate-css",
@@ -137,10 +136,9 @@ const animatedComponents = {
     description:
       "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
     dependencies: [
-      "@radix-ui/react-dialog",
+      "@base-ui/react",
       "@phosphor-icons/react",
       "class-variance-authority",
-      "motion",
     ],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider", "icons"],
@@ -152,11 +150,7 @@ const animatedComponents = {
     title: "Sidebar",
     description:
       "A responsive sidebar component with collapsible states, mobile sheet mode, and keyboard shortcuts.",
-    dependencies: [
-      "@radix-ui/react-slot",
-      "class-variance-authority",
-      "@phosphor-icons/react",
-    ],
+    dependencies: ["class-variance-authority", "@phosphor-icons/react"],
     registryDependencies: [
       "utils",
       "button",
@@ -166,7 +160,7 @@ const animatedComponents = {
       "skeleton",
       "tooltip",
     ],
-    inlineDependencies: ["use-mobile"],
+    inlineDependencies: ["use-mobile", "primitives"],
     files: [{ path: "components/ui/sidebar.tsx", type: "registry:ui" }],
     variant: "animated",
   },
@@ -227,13 +221,12 @@ const staticComponents = {
     description:
       "Static button component with CSS transitions only. No motion dependency required.",
     dependencies: [
-      "@radix-ui/react-slot",
       "class-variance-authority",
       "@phosphor-icons/react",
       "tw-animate-css",
     ],
     registryDependencies: ["utils"],
-    inlineDependencies: ["use-ripple", "icons-static"],
+    inlineDependencies: ["use-ripple", "icons-static", "primitives"],
     files: [{ path: "components/ui/static/button.tsx", type: "registry:ui" }],
     variant: "static",
   },
@@ -259,9 +252,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react", "@phosphor-icons/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/popover.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/popover.tsx", type: "registry:ui" }],
     cssVars: true,
     variant: "static",
   },
@@ -358,9 +349,7 @@ const staticComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/radio.tsx", type: "registry:ui" },
-    ],
+    files: [{ path: "components/ui/static/radio.tsx", type: "registry:ui" }],
     variant: "static",
   },
   "switch-static": {
@@ -591,7 +580,6 @@ const staticComponents = {
     description:
       "A responsive sidebar component with Base UI sheet and tooltip. No motion dependency required.",
     dependencies: [
-      "@radix-ui/react-slot",
       "@base-ui/react",
       "class-variance-authority",
       "@phosphor-icons/react",
@@ -605,7 +593,7 @@ const staticComponents = {
       "skeleton",
       "tooltip-static",
     ],
-    inlineDependencies: ["use-mobile"],
+    inlineDependencies: ["use-mobile", "primitives"],
     files: [{ path: "components/ui/static/sidebar.tsx", type: "registry:ui" }],
     variant: "static",
   },
@@ -613,8 +601,8 @@ const staticComponents = {
     type: "registry:ui",
     title: "Drawer (Static)",
     description:
-      "Static drawer/bottom sheet component built on Vaul with snap points and nested support.",
-    dependencies: ["vaul"],
+      "Static drawer/bottom sheet component built on Base UI Dialog with snap points and nested support.",
+    dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [{ path: "components/ui/static/drawer.tsx", type: "registry:ui" }],
@@ -751,7 +739,7 @@ const sharedComponents = {
     title: "Avatar",
     description:
       "Composable avatar component with sizes, status indicators, and group stacking support.",
-    dependencies: ["@radix-ui/react-avatar", "class-variance-authority"],
+    dependencies: ["@base-ui/react", "class-variance-authority"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [{ path: "components/ui/shared/avatar.tsx", type: "registry:ui" }],
@@ -852,8 +840,8 @@ const sharedComponents = {
     type: "registry:ui",
     title: "Scroll Area",
     description:
-      "A scrollable area with custom scrollbars built on Radix UI ScrollArea.",
-    dependencies: ["@radix-ui/react-scroll-area"],
+      "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
+    dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
@@ -866,7 +854,7 @@ const sharedComponents = {
     title: "Separator",
     description:
       "A visual separator for dividing content, supporting horizontal and vertical orientations.",
-    dependencies: ["@radix-ui/react-separator"],
+    dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
@@ -889,8 +877,8 @@ const sharedComponents = {
     type: "registry:ui",
     title: "Slider",
     description:
-      "A range slider component with single or multiple thumbs, built on Radix UI Slider.",
-    dependencies: ["@radix-ui/react-slider"],
+      "A range slider component with single or multiple thumbs, built on Base UI Slider.",
+    dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [{ path: "components/ui/shared/slider.tsx", type: "registry:ui" }],
@@ -901,7 +889,7 @@ const sharedComponents = {
     title: "Tooltip",
     description:
       "A tooltip component with smooth animations and configurable positioning.",
-    dependencies: ["@radix-ui/react-tooltip"],
+    dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [{ path: "components/ui/shared/tooltip.tsx", type: "registry:ui" }],
@@ -1191,7 +1179,7 @@ function updateRegistryFile(name, config, outputDir) {
           content: escapeContent(content),
           type: file.type,
         };
-      } catch (_error) {
+      } catch {
         console.warn(`[WARN] File not found: ${file.path}`);
         return {
           path: file.path,

@@ -5,7 +5,6 @@
   "title": "Sidebar (Static)",
   "description": "A responsive sidebar component with Base UI sheet and tooltip. No motion dependency required.",
   "dependencies": [
-    "@radix-ui/react-slot",
     "@base-ui/react",
     "class-variance-authority",
     "@phosphor-icons/react"

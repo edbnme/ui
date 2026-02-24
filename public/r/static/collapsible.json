@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Collapsible (Static)",
   "description": "Static collapsible built on Base UI Collapsible with CSS height transitions.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

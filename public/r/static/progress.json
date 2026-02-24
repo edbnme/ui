@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Progress (Static)",
   "description": "Static progress bar built on Base UI Progress with indeterminate state.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

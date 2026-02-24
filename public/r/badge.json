@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Badge",
   "description": "Badge component with CVA variants for default, secondary, destructive, and outline styles.",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "variant": "shared",
   "files": [
     {

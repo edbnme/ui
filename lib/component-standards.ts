@@ -238,10 +238,10 @@ export const exportConventions = {
 // =============================================================================
 
 /**
- * Migration plan from Radix UI to Base UI (MUI headless).
+ * Migration plan from legacy primitives to Base UI (MUI headless).
  *
  * Components import primitives from @/lib/primitives.ts instead of
- * directly from @radix-ui/*. When migrating, only primitives.ts changes.
+ * directly from external packages. When migrating, only primitives.ts changes.
  *
  * Migration order (simplest to most complex):
  */
@@ -278,36 +278,8 @@ export const baseUIMigrationOrder = [
       "toggle-group",
       "toolbar",
       "tooltip",
+      "avatar",
     ],
-    notes:
-      "Primary headless primitive provider — all static components use Base UI",
-  },
-  {
-    package: "@radix-ui/react-avatar",
-    priority: 0,
-    status: "retained" as const,
-    consumers: ["avatar"],
-    notes: "Base UI has no Avatar primitive — keep Radix",
-  },
-  {
-    package: "@radix-ui/react-slot",
-    priority: 0,
-    status: "retained" as const,
-    consumers: ["button (animated + static)", "sidebar"],
-    notes: "Base UI uses render prop instead of Slot — keep for asChild compat",
-  },
-  {
-    package: "@radix-ui/react-dialog",
-    priority: 0,
-    status: "legacy" as const,
-    consumers: ["sheet (animated)"],
-    notes: "Animated variant only — static uses Base UI Dialog",
-  },
-  {
-    package: "@radix-ui/react-dropdown-menu",
-    priority: 0,
-    status: "legacy" as const,
-    consumers: ["dropdown-menu (animated)"],
-    notes: "Animated variant only — static uses Base UI Menu",
+    notes: "Primary headless primitive provider — all components use Base UI",
   },
 ] as const;

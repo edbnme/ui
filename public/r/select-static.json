@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Select (Static)",
   "description": "Static select built on Base UI Select with scroll arrows.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

@@ -5,9 +5,7 @@
   "title": "Aspect Ratio",
   "description": "A CSS aspect-ratio wrapper component for maintaining consistent proportions.",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "shared",
   "files": [
     {

@@ -40,9 +40,9 @@
     transition: padding-right 0ms;
   }
 
-  /* Radix UI scroll lock compensation */
+  /* Scroll lock compensation */
   body[data-scroll-locked] {
-    /* When Radix locks scroll, maintain layout by adding padding for scrollbar */
+    /* When scroll is locked, maintain layout by adding padding for scrollbar */
     padding-right: var(--scrollbar-width, 0px) !important;
     margin-right: 0 !important;
   }
@@ -171,65 +171,6 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-/* =============================================================================
-   SHIKI SYNTAX HIGHLIGHTING
-   Dual theme support with CSS variables
-   ============================================================================= */
-
-@layer base {
-  /* Light mode - use Shiki light theme colors */
-  :root {
-    --shiki-color-text: #24292f;
-    --shiki-color-background: transparent;
-    --shiki-token-constant: #0550ae;
-    --shiki-token-string: #0a3069;
-    --shiki-token-comment: #6e7781;
-    --shiki-token-keyword: #cf222e;
-    --shiki-token-parameter: #24292f;
-    --shiki-token-function: #8250df;
-    --shiki-token-string-expression: #0a3069;
-    --shiki-token-punctuation: #24292f;
-    --shiki-token-link: #0a3069;
-  }
-
-  /* Dark mode - use Shiki dark theme colors */
-  .dark {
-    --shiki-color-text: #adbac7;
-    --shiki-color-background: transparent;
-    --shiki-token-constant: #6cb6ff;
-    --shiki-token-string: #96d0ff;
-    --shiki-token-comment: #768390;
-    --shiki-token-keyword: #f47067;
-    --shiki-token-parameter: #adbac7;
-    --shiki-token-function: #dcbdfb;
-    --shiki-token-string-expression: #96d0ff;
-    --shiki-token-punctuation: #adbac7;
-    --shiki-token-link: #96d0ff;
-  }
-
-  /* Shiki pre/code styling */
-  [data-shiki] {
-    background-color: transparent !important;
-  }
-
-  [data-shiki] code {
-    display: block;
-  }
-
-  /* Shiki dual theme - use CSS variables set by Shiki */
-  .shiki,
-  .shiki span {
-    color: var(--shiki-light) !important;
-    background-color: transparent !important;
-  }
-
-  .dark .shiki,
-  .dark .shiki span {
-    color: var(--shiki-dark) !important;
-    background-color: transparent !important;
   }
 }
 

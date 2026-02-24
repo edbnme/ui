@@ -46,6 +46,15 @@ import { useShouldDisableAnimation } from "@/components/motion-provider";
 import { useStableId } from "@/hooks/use-stable-id";
 import { useControllableBoolean } from "@/hooks/use-controllable-state";
 
+function lockBodyScroll(doc: Document) {
+  const body = doc.body;
+  const previousOverflow = body.style.overflow;
+  body.style.overflow = "hidden";
+  return () => {
+    body.style.overflow = previousOverflow;
+  };
+}
+
 // =============================================================================
 // TYPES
 // =============================================================================
@@ -481,7 +490,7 @@ export interface AlertDialogContentProps {
   showCloseButton?: boolean;
   /** Callback when close button clicked */
   onCloseButtonClick?: () => void;
-  /** Prevent Escape key from closing (default: false for Radix compatibility) */
+  /** Prevent Escape key from closing (default: false for shadcn compatibility) */
   preventEscapeClose?: boolean;
   /** Prevent clicking outside from closing (default: true) */
   preventOutsideClose?: boolean;
@@ -511,7 +520,7 @@ function AlertDialogContent({
   style,
   showCloseButton = false,
   onCloseButtonClick,
-  preventEscapeClose = false, // Changed to false for Radix/shadcn compatibility
+  preventEscapeClose = false, // Changed to false for shadcn compatibility
   preventOutsideClose = true,
   standalone = false,
 }: AlertDialogContentProps) {
@@ -577,8 +586,7 @@ function AlertDialogContent({
 
     // Save original body overflow
     const doc = contentElement?.ownerDocument ?? document;
-    const originalOverflow = doc.body.style.overflow;
-    doc.body.style.overflow = "hidden";
+    const unlockBodyScroll = lockBodyScroll(doc);
 
     // Find focusable elements
     const focusableSelector =
@@ -599,7 +607,7 @@ function AlertDialogContent({
     }
 
     return () => {
-      doc.body.style.overflow = originalOverflow;
+      unlockBodyScroll();
       triggerElement?.focus();
     };
   }, [isOpen, triggerRef, contentRef]);

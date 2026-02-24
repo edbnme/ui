@@ -4,7 +4,7 @@
  * A comprehensive dropdown menu system with morphing animations, keyboard navigation,
  * and full accessibility support.
  *
- * Built on Radix UI primitives with custom motion animations.
+ * Built on Base UI Menu primitives with custom motion animations.
  *
  * Based on WAI-ARIA Menu Button pattern.
  * @see https://www.w3.org/WAI/ARIA/apg/patterns/menubutton/
@@ -30,7 +30,7 @@ import {
 } from "react";
 
 // 2. External library imports
-import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { Menu } from "@base-ui/react/menu";
 import {
   motion,
   MotionConfig,
@@ -272,8 +272,6 @@ export interface DropdownMenuProps {
   modal?: boolean;
   /** Whether to prevent page scroll when open */
   preventScroll?: boolean;
-  /** Direction for RTL support */
-  dir?: "ltr" | "rtl";
 }
 
 /**
@@ -295,32 +293,30 @@ export interface DropdownMenuProps {
 function DropdownMenu({
   children,
   transition = menuTransition,
-  open,
+  open: controlledOpen,
   defaultOpen = false,
   onOpenChange,
   disableAnimation: disableAnimationProp,
   variants = DEFAULT_MENU_VARIANTS,
   modal = false,
   preventScroll = false,
-  dir,
 }: DropdownMenuProps) {
-  // Track open state for context
-  const [isOpen, setIsOpen] = React.useState(open ?? defaultOpen);
+  // Handle defaultOpen by using internal state when uncontrolled
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
 
-  // Sync with controlled open prop
-  React.useEffect(() => {
-    if (open !== undefined) {
-      setIsOpen(open);
-    }
-  }, [open]);
+  // Use controlled state if provided, otherwise use internal state
+  const isControlled = controlledOpen !== undefined;
+  const isOpen = isControlled ? controlledOpen : internalOpen;
 
-  // Handle open changes
+  // Handle open changes with adapter for Base UI callback signature
   const handleOpenChange = useCallback(
     (newOpen: boolean) => {
-      setIsOpen(newOpen);
+      if (!isControlled) {
+        setInternalOpen(newOpen);
+      }
       onOpenChange?.(newOpen);
     },
-    [onOpenChange]
+    [isControlled, onOpenChange]
   );
 
   // Generate stable IDs
@@ -348,16 +344,14 @@ function DropdownMenu({
   return (
     <DropdownMenuContext.Provider value={contextValue}>
       <MotionConfig transition={transition}>
-        <DropdownMenuPrimitive.Root
-          open={open}
-          defaultOpen={defaultOpen}
+        <Menu.Root
+          open={isOpen}
           onOpenChange={handleOpenChange}
           modal={modal}
-          dir={dir}
           data-slot="dropdown-menu"
         >
           {children}
-        </DropdownMenuPrimitive.Root>
+        </Menu.Root>
       </MotionConfig>
     </DropdownMenuContext.Provider>
   );
@@ -377,26 +371,16 @@ export interface DropdownMenuPortalProps {
   children: ReactNode;
   /** Container element for the portal */
   container?: HTMLElement | null;
-  /** Force mounting for animation control */
-  forceMount?: true;
 }
 
 /**
  * DropdownMenuPortal - Renders content in a portal
  */
-function DropdownMenuPortal({
-  children,
-  container,
-  forceMount,
-}: DropdownMenuPortalProps) {
+function DropdownMenuPortal({ children, container }: DropdownMenuPortalProps) {
   return (
-    <DropdownMenuPrimitive.Portal
-      container={container}
-      forceMount={forceMount}
-      data-slot="dropdown-menu-portal"
-    >
+    <Menu.Portal container={container} data-slot="dropdown-menu-portal">
       {children}
-    </DropdownMenuPrimitive.Portal>
+    </Menu.Portal>
   );
 }
 
@@ -410,9 +394,9 @@ DropdownMenuPortal.displayName = "DropdownMenuPortal";
  * DropdownMenuTrigger props
  */
 export interface DropdownMenuTriggerProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.Trigger
+  typeof Menu.Trigger
 > {
-  /** Merge props with child element */
+  /** Merge props with child element (uses render prop in Base UI) */
   asChild?: boolean;
 }
 
@@ -420,25 +404,28 @@ export interface DropdownMenuTriggerProps extends React.ComponentProps<
  * DropdownMenuTrigger - Button that opens the dropdown
  */
 const DropdownMenuTrigger = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.Trigger>,
+  HTMLButtonElement,
   DropdownMenuTriggerProps
->(({ className, asChild = false, ...props }, ref) => {
+>(({ className, asChild = false, children, ...props }, ref) => {
   const { uniqueId, isOpen } = useDropdownMenu("DropdownMenuTrigger");
 
-  return (
-    <DropdownMenuPrimitive.Trigger
-      ref={ref}
-      asChild={asChild}
-      aria-controls={`${uniqueId}-content`}
-      data-slot="dropdown-menu-trigger"
-      data-state={isOpen ? "open" : "closed"}
-      className={cn(
-        "outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        className
-      )}
-      {...props}
-    />
-  );
+  const triggerProps = {
+    ref,
+    "aria-controls": `${uniqueId}-content`,
+    "data-slot": "dropdown-menu-trigger",
+    "data-state": isOpen ? "open" : "closed",
+    className: cn(
+      "outline-none focus-visible:ring-2 focus-visible:ring-ring",
+      className
+    ),
+    ...props,
+  };
+
+  if (asChild && React.isValidElement(children)) {
+    return <Menu.Trigger {...triggerProps} render={children} />;
+  }
+
+  return <Menu.Trigger {...triggerProps}>{children}</Menu.Trigger>;
 });
 
 DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
@@ -451,8 +438,8 @@ DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
  * DropdownMenuContent props
  */
 export interface DropdownMenuContentProps extends Omit<
-  React.ComponentProps<typeof DropdownMenuPrimitive.Content>,
-  "asChild"
+  React.ComponentProps<typeof Menu.Popup>,
+  "children"
 > {
   /** Offset from the trigger */
   sideOffset?: number;
@@ -462,15 +449,15 @@ export interface DropdownMenuContentProps extends Omit<
   side?: "top" | "right" | "bottom" | "left";
   /** Enable loop navigation */
   loop?: boolean;
-  /** Force mounting for animation control */
-  forceMount?: true;
+  /** Children content */
+  children?: ReactNode;
 }
 
 /**
  * DropdownMenuContent - Main dropdown panel with animations
  */
 const DropdownMenuContent = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.Content>,
+  HTMLDivElement,
   DropdownMenuContentProps
 >(
   (
@@ -479,8 +466,7 @@ const DropdownMenuContent = forwardRef<
       sideOffset = 6,
       align = "start",
       side = "bottom",
-      loop = true,
-      forceMount,
+      loop: _loop = true,
       children,
       ...props
     },
@@ -499,9 +485,9 @@ const DropdownMenuContent = forwardRef<
       // Shadow
       "shadow-lg",
       // Sizing
-      "max-h-[var(--radix-dropdown-menu-content-available-height)]",
+      "max-h-[var(--available-height)]",
       // Transform origin for animations
-      "origin-[var(--radix-dropdown-menu-content-transform-origin)]",
+      "origin-[var(--transform-origin)]",
       // Scroll
       "overflow-y-auto",
       className
@@ -510,76 +496,75 @@ const DropdownMenuContent = forwardRef<
     // Non-animated version
     if (disableAnimation) {
       return (
-        <DropdownMenuPrimitive.Portal>
-          <DropdownMenuPrimitive.Content
-            ref={ref}
-            id={`${uniqueId}-content`}
-            data-slot="dropdown-menu-content"
-            data-state="open"
+        <Menu.Portal>
+          <Menu.Positioner
             sideOffset={sideOffset}
             align={align}
             side={side}
-            loop={loop}
-            forceMount={forceMount}
-            onCloseAutoFocus={(e) => e.preventDefault()}
-            className={cn(
-              contentClasses,
-              "border-border",
-              "data-[state=open]:animate-in data-[state=closed]:animate-out",
-              "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-              "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-              "data-[side=bottom]:slide-in-from-top-2",
-              "data-[side=left]:slide-in-from-right-2",
-              "data-[side=right]:slide-in-from-left-2",
-              "data-[side=top]:slide-in-from-bottom-2"
-            )}
-            {...props}
+            data-slot="dropdown-menu-positioner"
           >
-            {children}
-          </DropdownMenuPrimitive.Content>
-        </DropdownMenuPrimitive.Portal>
+            <Menu.Popup
+              ref={ref}
+              id={`${uniqueId}-content`}
+              data-slot="dropdown-menu-content"
+              className={cn(
+                contentClasses,
+                "border-border",
+                // CSS transitions for non-motion animations
+                "transition-all duration-150",
+                "data-starting-style:scale-95 data-starting-style:opacity-0",
+                "data-ending-style:scale-95 data-ending-style:opacity-0",
+                "scale-100 opacity-100"
+              )}
+              {...props}
+            >
+              {children}
+            </Menu.Popup>
+          </Menu.Positioner>
+        </Menu.Portal>
       );
     }
 
     // Animated version with motion
     return (
-      <DropdownMenuPrimitive.Portal>
-        <DropdownMenuPrimitive.Content
-          ref={ref}
-          id={`${uniqueId}-content`}
+      <Menu.Portal>
+        <Menu.Positioner
           sideOffset={sideOffset}
           align={align}
           side={side}
-          loop={loop}
-          forceMount={forceMount}
-          onCloseAutoFocus={(e) => e.preventDefault()}
-          asChild
-          {...props}
+          data-slot="dropdown-menu-positioner"
         >
-          <motion.div
-            data-slot="dropdown-menu-content"
-            className={cn(
-              contentClasses,
-              // Enhanced styling for animated version
-              "border-border/60",
-              "bg-popover/98",
-              "shadow-lg shadow-black/15",
-              // Subtle glassmorphism - static blur (NOT animated)
-              "supports-backdrop-filter:bg-popover/90",
-              "supports-backdrop-filter:backdrop-blur-xl",
-              // Dark mode enhancements
-              "dark:border-white/15",
-              "dark:shadow-xl dark:shadow-black/30"
-            )}
-            variants={variants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+          <Menu.Popup
+            ref={ref}
+            id={`${uniqueId}-content`}
+            render={
+              <motion.div
+                data-slot="dropdown-menu-content"
+                className={cn(
+                  contentClasses,
+                  // Enhanced styling for animated version
+                  "border-border/60",
+                  "bg-popover/98",
+                  "shadow-lg shadow-black/15",
+                  // Subtle glassmorphism - static blur (NOT animated)
+                  "supports-backdrop-filter:bg-popover/90",
+                  "supports-backdrop-filter:backdrop-blur-xl",
+                  // Dark mode enhancements
+                  "dark:border-white/15",
+                  "dark:shadow-xl dark:shadow-black/30"
+                )}
+                variants={variants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              />
+            }
+            {...props}
           >
             {children}
-          </motion.div>
-        </DropdownMenuPrimitive.Content>
-      </DropdownMenuPrimitive.Portal>
+          </Menu.Popup>
+        </Menu.Positioner>
+      </Menu.Portal>
     );
   }
 );
@@ -593,16 +578,14 @@ DropdownMenuContent.displayName = "DropdownMenuContent";
 /**
  * DropdownMenuGroup props
  */
-export type DropdownMenuGroupProps = React.ComponentProps<
-  typeof DropdownMenuPrimitive.Group
->;
+export type DropdownMenuGroupProps = React.ComponentProps<typeof Menu.Group>;
 
 /**
  * DropdownMenuGroup - Groups related items together
  */
 function DropdownMenuGroup({ className, ...props }: DropdownMenuGroupProps) {
   return (
-    <DropdownMenuPrimitive.Group
+    <Menu.Group
       data-slot="dropdown-menu-group"
       className={cn(className)}
       {...props}
@@ -618,84 +601,109 @@ DropdownMenuGroup.displayName = "DropdownMenuGroup";
 
 /**
  * DropdownMenuItem props
+ *
+ * Note: onSelect signature matches shadcn API (native Event, not SyntheticEvent)
  */
-export interface DropdownMenuItemProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.Item
+export interface DropdownMenuItemProps extends Omit<
+  React.ComponentProps<typeof Menu.Item>,
+  "onSelect"
 > {
   /** Add left padding for alignment with checkbox/radio items */
   inset?: boolean;
   /** Visual variant */
   variant?: "default" | "destructive";
+  /** Called when the item is selected (shadcn API compatibility) */
+  onSelect?: (event: Event) => void;
 }
 
 /**
  * DropdownMenuItem - Interactive menu item
  */
-const DropdownMenuItem = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.Item>,
-  DropdownMenuItemProps
->(({ className, inset, variant = "default", children, ...props }, ref) => {
-  const { disableAnimation, itemTransition } =
-    useDropdownMenu("DropdownMenuItem");
+const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps>(
+  (
+    {
+      className,
+      inset,
+      variant = "default",
+      children,
+      onSelect,
+      onClick,
+      ...props
+    },
+    ref
+  ) => {
+    const { disableAnimation, itemTransition } =
+      useDropdownMenu("DropdownMenuItem");
 
-  const itemClass = cn(
-    // Layout
-    "relative flex cursor-default items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm",
-    // Focus & interaction
-    "outline-none select-none",
-    "transition-colors duration-75",
-    "focus:bg-accent focus:text-accent-foreground",
-    // Destructive variant
-    "data-[variant=destructive]:text-destructive",
-    "data-[variant=destructive]:focus:bg-destructive/10",
-    "dark:data-[variant=destructive]:focus:bg-destructive/20",
-    "data-[variant=destructive]:focus:text-destructive",
-    "data-[variant=destructive]:*:[svg]:!text-destructive",
-    // Icon styling
-    "[&_svg:not([class*='text-'])]:text-muted-foreground",
-    // Disabled state
-    "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-    // Inset padding
-    inset && "pl-8",
-    // SVG sizing
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-    className
-  );
+    // Adapter: Map shadcn's onSelect to onClick
+    const handleClick: React.ComponentProps<typeof Menu.Item>["onClick"] = (
+      event
+    ) => {
+      onClick?.(event);
+      onSelect?.(event.nativeEvent);
+    };
 
-  if (disableAnimation) {
+    const itemClass = cn(
+      // Layout
+      "relative flex cursor-default items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm",
+      // Focus & interaction
+      "outline-none select-none",
+      "transition-colors duration-75",
+      "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
+      // Destructive variant
+      "data-[variant=destructive]:text-destructive",
+      "data-[variant=destructive]:data-[highlighted]:bg-destructive/10",
+      "dark:data-[variant=destructive]:data-[highlighted]:bg-destructive/20",
+      "data-[variant=destructive]:data-[highlighted]:text-destructive",
+      "data-[variant=destructive]:*:[svg]:!text-destructive",
+      // Icon styling
+      "[&_svg:not([class*='text-'])]:text-muted-foreground",
+      // Disabled state
+      "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      // Inset padding
+      inset && "pl-8",
+      // SVG sizing
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+      className
+    );
+
+    if (disableAnimation) {
+      return (
+        <Menu.Item
+          ref={ref}
+          data-slot="dropdown-menu-item"
+          data-inset={inset ? "true" : undefined}
+          data-variant={variant}
+          className={itemClass}
+          onClick={handleClick}
+          {...props}
+        >
+          {children}
+        </Menu.Item>
+      );
+    }
+
     return (
-      <DropdownMenuPrimitive.Item
+      <Menu.Item
         ref={ref}
         data-slot="dropdown-menu-item"
         data-inset={inset ? "true" : undefined}
         data-variant={variant}
-        className={itemClass}
+        onClick={handleClick}
+        render={
+          <motion.div
+            className={itemClass}
+            variants={itemVariants}
+            transition={itemTransition}
+          />
+        }
         {...props}
       >
         {children}
-      </DropdownMenuPrimitive.Item>
+      </Menu.Item>
     );
   }
-
-  return (
-    <DropdownMenuPrimitive.Item
-      ref={ref}
-      data-slot="dropdown-menu-item"
-      data-inset={inset ? "true" : undefined}
-      data-variant={variant}
-      asChild
-      {...props}
-    >
-      <motion.div
-        className={itemClass}
-        variants={itemVariants}
-        transition={itemTransition}
-      >
-        {children}
-      </motion.div>
-    </DropdownMenuPrimitive.Item>
-  );
-});
+);
 
 DropdownMenuItem.displayName = "DropdownMenuItem";
 
@@ -705,21 +713,34 @@ DropdownMenuItem.displayName = "DropdownMenuItem";
 
 /**
  * DropdownMenuCheckboxItem props
+ *
+ * Note: onCheckedChange signature matches shadcn API (value only, no event)
  */
-export type DropdownMenuCheckboxItemProps = React.ComponentProps<
-  typeof DropdownMenuPrimitive.CheckboxItem
->;
+export interface DropdownMenuCheckboxItemProps extends Omit<
+  React.ComponentProps<typeof Menu.CheckboxItem>,
+  "onCheckedChange"
+> {
+  /** Whether the item is checked */
+  checked?: boolean;
+  /** Called when the checked state changes (shadcn-compatible: value only) */
+  onCheckedChange?: (checked: boolean) => void;
+}
 
 /**
  * DropdownMenuCheckboxItem - Toggleable checkbox item
  */
 const DropdownMenuCheckboxItem = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.CheckboxItem>,
+  HTMLDivElement,
   DropdownMenuCheckboxItemProps
->(({ className, children, checked, ...props }, ref) => {
+>(({ className, children, checked, onCheckedChange, ...props }, ref) => {
   const { disableAnimation, itemTransition } = useDropdownMenu(
     "DropdownMenuCheckboxItem"
   );
+
+  // Adapter: Base UI passes (value, event), shadcn API only passes (value)
+  const handleCheckedChange = onCheckedChange
+    ? (newChecked: boolean) => onCheckedChange(newChecked)
+    : undefined;
 
   const itemClass = cn(
     // Layout
@@ -727,7 +748,7 @@ const DropdownMenuCheckboxItem = forwardRef<
     // Focus & interaction
     "outline-none select-none",
     "transition-colors duration-75",
-    "focus:bg-accent focus:text-accent-foreground",
+    "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
     // Disabled state
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
     // SVG sizing
@@ -735,58 +756,58 @@ const DropdownMenuCheckboxItem = forwardRef<
     className
   );
 
-  const indicatorContent = (
+  const indicatorContent = checked && (
     <span className="pointer-events-none absolute left-2.5 flex size-4 items-center justify-center">
-      <DropdownMenuPrimitive.ItemIndicator asChild>
-        {disableAnimation ? (
+      {disableAnimation ? (
+        <CheckIcon className="size-4" aria-hidden="true" />
+      ) : (
+        <motion.div
+          variants={indicatorVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          transition={indicatorTransition}
+        >
           <CheckIcon className="size-4" aria-hidden="true" />
-        ) : (
-          <motion.div
-            variants={indicatorVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={indicatorTransition}
-          >
-            <CheckIcon className="size-4" aria-hidden="true" />
-          </motion.div>
-        )}
-      </DropdownMenuPrimitive.ItemIndicator>
+        </motion.div>
+      )}
     </span>
   );
 
   if (disableAnimation) {
     return (
-      <DropdownMenuPrimitive.CheckboxItem
+      <Menu.CheckboxItem
         ref={ref}
         data-slot="dropdown-menu-checkbox-item"
         className={itemClass}
         checked={checked}
+        onCheckedChange={handleCheckedChange}
         {...props}
       >
         {indicatorContent}
         {children}
-      </DropdownMenuPrimitive.CheckboxItem>
+      </Menu.CheckboxItem>
     );
   }
 
   return (
-    <DropdownMenuPrimitive.CheckboxItem
+    <Menu.CheckboxItem
       ref={ref}
       data-slot="dropdown-menu-checkbox-item"
       checked={checked}
-      asChild
+      onCheckedChange={handleCheckedChange}
+      render={
+        <motion.div
+          className={itemClass}
+          variants={itemVariants}
+          transition={itemTransition}
+        />
+      }
       {...props}
     >
-      <motion.div
-        className={itemClass}
-        variants={itemVariants}
-        transition={itemTransition}
-      >
-        {indicatorContent}
-        {children}
-      </motion.div>
-    </DropdownMenuPrimitive.CheckboxItem>
+      {indicatorContent}
+      {children}
+    </Menu.CheckboxItem>
   );
 });
 
@@ -798,22 +819,35 @@ DropdownMenuCheckboxItem.displayName = "DropdownMenuCheckboxItem";
 
 /**
  * DropdownMenuRadioGroup props
+ *
+ * Note: onValueChange signature matches shadcn API (value only, no event)
  */
-export type DropdownMenuRadioGroupProps = React.ComponentProps<
-  typeof DropdownMenuPrimitive.RadioGroup
->;
+export interface DropdownMenuRadioGroupProps extends Omit<
+  React.ComponentProps<typeof Menu.RadioGroup>,
+  "onValueChange"
+> {
+  /** Called when the selected value changes (shadcn-compatible: value only) */
+  onValueChange?: (value: string) => void;
+}
 
 /**
  * DropdownMenuRadioGroup - Groups radio items together
  */
 function DropdownMenuRadioGroup({
   className,
+  onValueChange,
   ...props
 }: DropdownMenuRadioGroupProps) {
+  // Adapter: Base UI passes (value, event), shadcn API only passes (value)
+  const handleValueChange = onValueChange
+    ? (newValue: string) => onValueChange(newValue)
+    : undefined;
+
   return (
-    <DropdownMenuPrimitive.RadioGroup
+    <Menu.RadioGroup
       data-slot="dropdown-menu-radio-group"
       className={cn(className)}
+      onValueChange={handleValueChange}
       {...props}
     />
   );
@@ -828,15 +862,20 @@ DropdownMenuRadioGroup.displayName = "DropdownMenuRadioGroup";
 /**
  * DropdownMenuRadioItem props
  */
-export type DropdownMenuRadioItemProps = React.ComponentProps<
-  typeof DropdownMenuPrimitive.RadioItem
->;
+export interface DropdownMenuRadioItemProps extends React.ComponentProps<
+  typeof Menu.RadioItem
+> {
+  /** Value for this radio item */
+  value: string;
+}
 
 /**
  * DropdownMenuRadioItem - Selectable radio item
+ *
+ * Note: The indicator is shown via CSS using data-checked attribute
  */
 const DropdownMenuRadioItem = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.RadioItem>,
+  HTMLDivElement,
   DropdownMenuRadioItemProps
 >(({ className, children, ...props }, ref) => {
   const { disableAnimation, itemTransition } = useDropdownMenu(
@@ -849,7 +888,7 @@ const DropdownMenuRadioItem = forwardRef<
     // Focus & interaction
     "outline-none select-none",
     "transition-colors duration-75",
-    "focus:bg-accent focus:text-accent-foreground",
+    "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
     // Disabled state
     "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
     // SVG sizing
@@ -857,64 +896,61 @@ const DropdownMenuRadioItem = forwardRef<
     className
   );
 
-  const indicatorContent = (
-    <span className="pointer-events-none absolute left-2.5 flex size-4 items-center justify-center">
-      <DropdownMenuPrimitive.ItemIndicator asChild>
-        {disableAnimation ? (
+  if (disableAnimation) {
+    return (
+      <Menu.RadioItem
+        ref={ref}
+        data-slot="dropdown-menu-radio-item"
+        className={cn(
+          itemClass,
+          // Show indicator when checked
+          "[&>[data-indicator]]:opacity-0 [&>[data-indicator]]:data-[checked]:opacity-100"
+        )}
+        {...props}
+      >
+        <span
+          data-indicator=""
+          className="pointer-events-none absolute left-2.5 flex size-4 items-center justify-center"
+        >
           <CircleIcon
             className="size-2.5 fill-current"
             aria-hidden="true"
             weight="fill"
           />
-        ) : (
-          <motion.div
-            variants={indicatorVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={indicatorTransition}
-          >
-            <CircleIcon
-              className="size-2.5 fill-current"
-              aria-hidden="true"
-              weight="fill"
-            />
-          </motion.div>
-        )}
-      </DropdownMenuPrimitive.ItemIndicator>
-    </span>
-  );
-
-  if (disableAnimation) {
-    return (
-      <DropdownMenuPrimitive.RadioItem
-        ref={ref}
-        data-slot="dropdown-menu-radio-item"
-        className={itemClass}
-        {...props}
-      >
-        {indicatorContent}
+        </span>
         {children}
-      </DropdownMenuPrimitive.RadioItem>
+      </Menu.RadioItem>
     );
   }
 
   return (
-    <DropdownMenuPrimitive.RadioItem
+    <Menu.RadioItem
       ref={ref}
       data-slot="dropdown-menu-radio-item"
-      asChild
+      render={
+        <motion.div
+          className={cn(
+            itemClass,
+            "[&>[data-indicator]]:opacity-0 [&>[data-indicator]]:data-[checked]:opacity-100"
+          )}
+          variants={itemVariants}
+          transition={itemTransition}
+        />
+      }
       {...props}
     >
-      <motion.div
-        className={itemClass}
-        variants={itemVariants}
-        transition={itemTransition}
+      <span
+        data-indicator=""
+        className="pointer-events-none absolute left-2.5 flex size-4 items-center justify-center"
       >
-        {indicatorContent}
-        {children}
-      </motion.div>
-    </DropdownMenuPrimitive.RadioItem>
+        <CircleIcon
+          className="size-2.5 fill-current"
+          aria-hidden="true"
+          weight="fill"
+        />
+      </span>
+      {children}
+    </Menu.RadioItem>
   );
 });
 
@@ -926,34 +962,36 @@ DropdownMenuRadioItem.displayName = "DropdownMenuRadioItem";
 
 /**
  * DropdownMenuLabel props
+ *
+ * Note: Unlike Base UI's Menu.GroupLabel which requires Menu.Group context,
+ * this component can be used standalone (matching shadcn API behavior).
  */
-export interface DropdownMenuLabelProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.Label
-> {
+export interface DropdownMenuLabelProps extends React.ComponentPropsWithoutRef<"div"> {
   /** Add left padding for alignment */
   inset?: boolean;
 }
 
 /**
  * DropdownMenuLabel - Non-interactive label for a group
+ *
+ * Can be used standalone or inside DropdownMenuGroup (matches shadcn API).
  */
-const DropdownMenuLabel = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.Label>,
-  DropdownMenuLabelProps
->(({ className, inset, ...props }, ref) => (
-  <DropdownMenuPrimitive.Label
-    ref={ref}
-    data-slot="dropdown-menu-label"
-    data-inset={inset ? "true" : undefined}
-    className={cn(
-      "px-2.5 py-2 text-xs font-semibold",
-      "text-foreground/80",
-      inset && "pl-8",
-      className
-    )}
-    {...props}
-  />
-));
+const DropdownMenuLabel = forwardRef<HTMLDivElement, DropdownMenuLabelProps>(
+  ({ className, inset, ...props }, ref) => (
+    <div
+      ref={ref}
+      data-slot="dropdown-menu-label"
+      data-inset={inset ? "true" : undefined}
+      className={cn(
+        "px-2.5 py-2 text-xs font-semibold",
+        "text-foreground/80",
+        inset && "pl-8",
+        className
+      )}
+      {...props}
+    />
+  )
+);
 
 DropdownMenuLabel.displayName = "DropdownMenuLabel";
 
@@ -965,17 +1003,17 @@ DropdownMenuLabel.displayName = "DropdownMenuLabel";
  * DropdownMenuSeparator props
  */
 export type DropdownMenuSeparatorProps = React.ComponentProps<
-  typeof DropdownMenuPrimitive.Separator
+  typeof Menu.Separator
 >;
 
 /**
  * DropdownMenuSeparator - Visual divider between items
  */
 const DropdownMenuSeparator = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.Separator>,
+  HTMLDivElement,
   DropdownMenuSeparatorProps
 >(({ className, ...props }, ref) => (
-  <DropdownMenuPrimitive.Separator
+  <Menu.Separator
     ref={ref}
     data-slot="dropdown-menu-separator"
     className={cn("bg-border/40 -mx-1 my-1 h-px", className)}
@@ -1039,19 +1077,35 @@ export interface DropdownMenuSubProps {
  */
 function DropdownMenuSub({
   children,
-  open,
-  defaultOpen,
+  open: controlledOpen,
+  defaultOpen = false,
   onOpenChange,
 }: DropdownMenuSubProps) {
+  // Handle defaultOpen by using internal state when uncontrolled
+  const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
+
+  // Use controlled state if provided, otherwise use internal state
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
+
+  const handleOpenChange = useCallback(
+    (newOpen: boolean) => {
+      if (!isControlled) {
+        setInternalOpen(newOpen);
+      }
+      onOpenChange?.(newOpen);
+    },
+    [isControlled, onOpenChange]
+  );
+
   return (
-    <DropdownMenuPrimitive.Sub
+    <Menu.SubmenuRoot
       open={open}
-      defaultOpen={defaultOpen}
-      onOpenChange={onOpenChange}
+      onOpenChange={handleOpenChange}
       data-slot="dropdown-menu-sub"
     >
       {children}
-    </DropdownMenuPrimitive.Sub>
+    </Menu.SubmenuRoot>
   );
 }
 
@@ -1065,7 +1119,7 @@ DropdownMenuSub.displayName = "DropdownMenuSub";
  * DropdownMenuSubTrigger props
  */
 export interface DropdownMenuSubTriggerProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.SubTrigger
+  typeof Menu.SubmenuTrigger
 > {
   /** Add left padding for alignment */
   inset?: boolean;
@@ -1075,7 +1129,7 @@ export interface DropdownMenuSubTriggerProps extends React.ComponentProps<
  * DropdownMenuSubTrigger - Opens a nested submenu
  */
 const DropdownMenuSubTrigger = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.SubTrigger>,
+  HTMLDivElement,
   DropdownMenuSubTriggerProps
 >(({ className, inset, children, ...props }, ref) => {
   const { disableAnimation, itemTransition } = useDropdownMenu(
@@ -1088,9 +1142,9 @@ const DropdownMenuSubTrigger = forwardRef<
     // Focus & interaction
     "outline-none select-none",
     "transition-colors duration-75",
-    "focus:bg-accent focus:text-accent-foreground",
+    "data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground",
     // Open state
-    "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+    "data-[popup-open]:bg-accent data-[popup-open]:text-accent-foreground",
     // Icon styling
     "[&_svg:not([class*='text-'])]:text-muted-foreground",
     // Inset padding
@@ -1102,7 +1156,7 @@ const DropdownMenuSubTrigger = forwardRef<
 
   if (disableAnimation) {
     return (
-      <DropdownMenuPrimitive.SubTrigger
+      <Menu.SubmenuTrigger
         ref={ref}
         data-slot="dropdown-menu-sub-trigger"
         data-inset={inset ? "true" : undefined}
@@ -1111,27 +1165,27 @@ const DropdownMenuSubTrigger = forwardRef<
       >
         {children}
         <CaretRightIcon className="ml-auto size-4" aria-hidden="true" />
-      </DropdownMenuPrimitive.SubTrigger>
+      </Menu.SubmenuTrigger>
     );
   }
 
   return (
-    <DropdownMenuPrimitive.SubTrigger
+    <Menu.SubmenuTrigger
       ref={ref}
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset ? "true" : undefined}
-      asChild
+      render={
+        <motion.div
+          className={triggerClass}
+          variants={itemVariants}
+          transition={itemTransition}
+        />
+      }
       {...props}
     >
-      <motion.div
-        className={triggerClass}
-        variants={itemVariants}
-        transition={itemTransition}
-      >
-        {children}
-        <CaretRightIcon className="ml-auto size-4" aria-hidden="true" />
-      </motion.div>
-    </DropdownMenuPrimitive.SubTrigger>
+      {children}
+      <CaretRightIcon className="ml-auto size-4" aria-hidden="true" />
+    </Menu.SubmenuTrigger>
   );
 });
 
@@ -1145,89 +1199,110 @@ DropdownMenuSubTrigger.displayName = "DropdownMenuSubTrigger";
  * DropdownMenuSubContent props
  */
 export interface DropdownMenuSubContentProps extends React.ComponentProps<
-  typeof DropdownMenuPrimitive.SubContent
+  typeof Menu.Popup
 > {
   /** Offset from the trigger */
   sideOffset?: number;
-  /** Alignment relative to trigger */
+  /** Alignment offset */
   alignOffset?: number;
+  /** Children content */
+  children?: ReactNode;
 }
 
 /**
  * DropdownMenuSubContent - Content panel for a submenu
  */
 const DropdownMenuSubContent = forwardRef<
-  React.ComponentRef<typeof DropdownMenuPrimitive.SubContent>,
+  HTMLDivElement,
   DropdownMenuSubContentProps
->(({ className, sideOffset = 2, alignOffset = -4, ...props }, ref) => {
-  const { disableAnimation } = useDropdownMenu("DropdownMenuSubContent");
+>(
+  (
+    { className, sideOffset = 2, alignOffset = -4, children, ...props },
+    ref
+  ) => {
+    const { disableAnimation } = useDropdownMenu("DropdownMenuSubContent");
 
-  const contentClasses = cn(
-    // Layout
-    "z-[100] min-w-32 overflow-hidden rounded-2xl border p-2",
-    // Colors
-    "bg-popover text-popover-foreground",
-    // Shadow
-    "shadow-lg",
-    // Transform origin
-    "origin-[var(--radix-dropdown-menu-content-transform-origin)]",
-    className
-  );
+    const contentClasses = cn(
+      // Layout
+      "z-[100] min-w-32 overflow-hidden rounded-2xl border p-2",
+      // Colors
+      "bg-popover text-popover-foreground",
+      // Shadow
+      "shadow-lg",
+      // Transform origin
+      "origin-[var(--transform-origin)]",
+      className
+    );
 
-  if (disableAnimation) {
+    if (disableAnimation) {
+      return (
+        <Menu.Portal>
+          <Menu.Positioner
+            sideOffset={sideOffset}
+            alignOffset={alignOffset}
+            data-slot="dropdown-menu-sub-positioner"
+          >
+            <Menu.Popup
+              ref={ref}
+              data-slot="dropdown-menu-sub-content"
+              className={cn(
+                contentClasses,
+                "border-border",
+                // CSS transitions
+                "transition-all duration-150",
+                "data-starting-style:scale-95 data-starting-style:opacity-0",
+                "data-ending-style:scale-95 data-ending-style:opacity-0",
+                "scale-100 opacity-100"
+              )}
+              {...props}
+            >
+              {children}
+            </Menu.Popup>
+          </Menu.Positioner>
+        </Menu.Portal>
+      );
+    }
+
     return (
-      <DropdownMenuPrimitive.SubContent
-        ref={ref}
-        data-slot="dropdown-menu-sub-content"
-        sideOffset={sideOffset}
-        alignOffset={alignOffset}
-        className={cn(
-          contentClasses,
-          "border-border",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out",
-          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-          "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
-          "data-[side=bottom]:slide-in-from-top-2",
-          "data-[side=left]:slide-in-from-right-2",
-          "data-[side=right]:slide-in-from-left-2",
-          "data-[side=top]:slide-in-from-bottom-2"
-        )}
-        {...props}
-      />
+      <Menu.Portal>
+        <Menu.Positioner
+          sideOffset={sideOffset}
+          alignOffset={alignOffset}
+          data-slot="dropdown-menu-sub-positioner"
+        >
+          <Menu.Popup
+            ref={ref}
+            render={
+              <motion.div
+                data-slot="dropdown-menu-sub-content"
+                className={cn(
+                  contentClasses,
+                  // Enhanced styling
+                  "border-border/60",
+                  "bg-popover/98",
+                  "shadow-lg shadow-black/15",
+                  // Subtle glassmorphism - static blur
+                  "supports-backdrop-filter:bg-popover/90",
+                  "supports-backdrop-filter:backdrop-blur-xl",
+                  // Dark mode
+                  "dark:border-white/15",
+                  "dark:shadow-xl dark:shadow-black/30"
+                )}
+                variants={subMenuVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              />
+            }
+            {...props}
+          >
+            {children}
+          </Menu.Popup>
+        </Menu.Positioner>
+      </Menu.Portal>
     );
   }
-
-  return (
-    <DropdownMenuPrimitive.SubContent
-      ref={ref}
-      sideOffset={sideOffset}
-      alignOffset={alignOffset}
-      asChild
-      {...props}
-    >
-      <motion.div
-        data-slot="dropdown-menu-sub-content"
-        className={cn(
-          contentClasses,
-          // Enhanced styling
-          "border-border/60",
-          "bg-popover/98",
-          "shadow-lg shadow-black/15",
-          // Subtle glassmorphism - static blur
-          "supports-backdrop-filter:bg-popover/90",
-          "supports-backdrop-filter:backdrop-blur-xl",
-          // Dark mode
-          "dark:border-white/15",
-          "dark:shadow-xl dark:shadow-black/30"
-        )}
-        variants={subMenuVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      />
-    </DropdownMenuPrimitive.SubContent>
-  );
-});
+);
 
 DropdownMenuSubContent.displayName = "DropdownMenuSubContent";
 

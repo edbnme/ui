@@ -5,7 +5,7 @@
  * Components import from this file instead of directly from provider packages.
  *
  * Base UI (@base-ui/react) is the primary primitive provider.
- * Radix UI is retained only for Avatar (no Base UI equivalent) and Slot.
+ * Slot is vendored locally (oss/lib/slot.ts).
  *
  * @packageDocumentation
  */
@@ -13,17 +13,17 @@
 // =============================================================================
 // SLOT (Polymorphic rendering)
 // Used by: Button (animated + static), Sidebar, Popover (static)
-// Retained from Radix — Base UI uses `render` prop instead of Slot
+// Vendored implementation at oss/lib/slot.ts
 // =============================================================================
 
-export { Slot } from "@radix-ui/react-slot";
+export { Slot } from "./slot";
 
 // =============================================================================
-// AVATAR (Radix — no Base UI equivalent)
+// AVATAR (Base UI)
 // Used by: Avatar
 // =============================================================================
 
-export * as AvatarPrimitive from "@radix-ui/react-avatar";
+export { Avatar as AvatarPrimitive } from "@base-ui/react/avatar";
 
 // =============================================================================
 // BASE UI PRIMITIVES
@@ -57,15 +57,3 @@ export { Toggle as TogglePrimitive } from "@base-ui/react/toggle";
 export { ToggleGroup as ToggleGroupPrimitive } from "@base-ui/react/toggle-group";
 export { Toolbar as ToolbarPrimitive } from "@base-ui/react/toolbar";
 export { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
-
-// =============================================================================
-// LEGACY RADIX EXPORTS (animated variant only — will be removed)
-// Static components should NOT import these
-// =============================================================================
-
-export * as RadixDialogPrimitive from "@radix-ui/react-dialog";
-export * as RadixDropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-export * as RadixSeparatorPrimitive from "@radix-ui/react-separator";
-export * as RadixTooltipPrimitive from "@radix-ui/react-tooltip";
-export * as RadixScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-export * as RadixSliderPrimitive from "@radix-ui/react-slider";

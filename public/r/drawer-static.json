@@ -3,13 +3,9 @@
   "name": "drawer-static",
   "type": "registry:ui",
   "title": "Drawer (Static)",
-  "description": "Static drawer/bottom sheet component built on Vaul with snap points and nested support.",
-  "dependencies": [
-    "vaul"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "description": "Static drawer/bottom sheet component built on Base UI Dialog with snap points and nested support.",
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

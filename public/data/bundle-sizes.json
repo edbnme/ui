@@ -2,7 +2,7 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 22,
+    "totalPackages": 13,
     "totalComponents": 66,
     "animatedComponents": 10,
     "staticComponents": 40,
@@ -15,15 +15,15 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-02-23T14:21:34.663Z"
+    "computedAt": "2026-02-24T16:05:16.641Z"
   },
   "packages": [
     {
       "name": "@base-ui/react",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "size": 85000,
+      "gzip": 25000,
+      "version": "latest",
+      "source": "fallback"
     },
     {
       "name": "@ncdai/react-wheel-picker",
@@ -39,62 +39,6 @@
       "version": "latest",
       "source": "fallback",
       "note": "Per icon, tree-shakable"
-    },
-    {
-      "name": "@radix-ui/react-avatar",
-      "size": 8000,
-      "gzip": 2500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@radix-ui/react-dialog",
-      "size": 25000,
-      "gzip": 7500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@radix-ui/react-dropdown-menu",
-      "size": 35000,
-      "gzip": 10000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@radix-ui/react-scroll-area",
-      "size": 15000,
-      "gzip": 4500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@radix-ui/react-separator",
-      "size": 2500,
-      "gzip": 800,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@radix-ui/react-slider",
-      "size": 18000,
-      "gzip": 5500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@radix-ui/react-slot",
-      "size": 2500,
-      "gzip": 900,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@radix-ui/react-tooltip",
-      "size": 20000,
-      "gzip": 6000,
-      "version": "latest",
-      "source": "fallback"
     },
     {
       "name": "class-variance-authority",
@@ -168,13 +112,6 @@
       "gzip": 5000,
       "version": "latest",
       "source": "fallback"
-    },
-    {
-      "name": "vaul",
-      "size": 18000,
-      "gzip": 5500,
-      "version": "latest",
-      "source": "fallback"
     }
   ],
   "components": {
@@ -184,19 +121,12 @@
       "description": "Animated button component with press feedback, loading states, and icon support.",
       "variant": "animated",
       "sizes": {
-        "minified": 176200,
-        "gzipped": 52800,
+        "minified": 173700,
+        "gzipped": 51900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
-        {
-          "name": "@radix-ui/react-slot",
-          "size": 2500,
-          "gzip": 900,
-          "version": "latest",
-          "source": "fallback"
-        },
         {
           "name": "class-variance-authority",
           "size": 4500,
@@ -226,7 +156,7 @@
           "source": "fallback"
         }
       ],
-      "dependencyCount": 5
+      "dependencyCount": 4
     },
     "alert-dialog": {
       "name": "alert-dialog",
@@ -299,16 +229,16 @@
       "description": "Animated dropdown menu with smooth spring animations and staggered item reveals.",
       "variant": "animated",
       "sizes": {
-        "minified": 204200,
-        "gzipped": 60400,
+        "minified": 254200,
+        "gzipped": 75400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-dropdown-menu",
-          "size": 35000,
-          "gzip": 10000,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         },
@@ -378,16 +308,16 @@
       "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
       "variant": "animated",
       "sizes": {
-        "minified": 180700,
-        "gzipped": 54400,
+        "minified": 90700,
+        "gzipped": 26900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-dialog",
-          "size": 25000,
-          "gzip": 7500,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         },
@@ -404,16 +334,9 @@
           "gzip": 1500,
           "version": "latest",
           "source": "fallback"
-        },
-        {
-          "name": "motion",
-          "size": 150000,
-          "gzip": 45000,
-          "version": "latest",
-          "source": "fallback"
         }
       ],
-      "dependencyCount": 4
+      "dependencyCount": 3
     },
     "sidebar": {
       "name": "sidebar",
@@ -421,19 +344,12 @@
       "description": "A responsive sidebar component with collapsible states, mobile sheet mode, and keyboard shortcuts.",
       "variant": "animated",
       "sizes": {
-        "minified": 8200,
-        "gzipped": 2800,
+        "minified": 5700,
+        "gzipped": 1900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
-        {
-          "name": "@radix-ui/react-slot",
-          "size": 2500,
-          "gzip": 900,
-          "version": "latest",
-          "source": "fallback"
-        },
         {
           "name": "class-variance-authority",
           "size": 4500,
@@ -449,7 +365,7 @@
           "source": "fallback"
         }
       ],
-      "dependencyCount": 3
+      "dependencyCount": 2
     },
     "wheel-picker": {
       "name": "wheel-picker",
@@ -523,19 +439,12 @@
       "description": "Static button component with CSS transitions only. No motion dependency required.",
       "variant": "static",
       "sizes": {
-        "minified": 26200,
-        "gzipped": 7800,
+        "minified": 23700,
+        "gzipped": 6900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
-        {
-          "name": "@radix-ui/react-slot",
-          "size": 2500,
-          "gzip": 900,
-          "version": "latest",
-          "source": "fallback"
-        },
         {
           "name": "class-variance-authority",
           "size": 4500,
@@ -558,7 +467,7 @@
           "source": "fallback"
         }
       ],
-      "dependencyCount": 4
+      "dependencyCount": 3
     },
     "alert-dialog-static": {
       "name": "alert-dialog",
@@ -566,18 +475,18 @@
       "description": "Static alert dialog built on Base UI AlertDialog with CSS transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "@phosphor-icons/react",
@@ -595,18 +504,18 @@
       "description": "Static popover built on Base UI Popover with CSS transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "@phosphor-icons/react",
@@ -624,18 +533,18 @@
       "description": "Static dropdown menu built on Base UI Menu with full sub-menu support.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -646,18 +555,18 @@
       "description": "Static context menu built on Base UI ContextMenu with right-click trigger.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -668,18 +577,18 @@
       "description": "Static slide-out panel built on Base UI Dialog with directional CSS transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 15700,
-        "gzipped": 4900,
+        "minified": 90700,
+        "gzipped": 26900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "class-variance-authority",
@@ -704,18 +613,18 @@
       "description": "Static dialog/modal built on Base UI Dialog with CSS transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "@phosphor-icons/react",
@@ -733,18 +642,18 @@
       "description": "Static tooltip built on Base UI Tooltip with arrow and CSS transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -755,18 +664,18 @@
       "description": "Static checkbox built on Base UI Checkbox with indeterminate support.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -777,18 +686,18 @@
       "description": "Static checkbox group built on Base UI CheckboxGroup for parent-child checkbox control.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -799,18 +708,18 @@
       "description": "Static radio group built on Base UI RadioGroup.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -821,18 +730,18 @@
       "description": "Static switch/toggle built on Base UI Switch.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -843,18 +752,18 @@
       "description": "Static toggle button built on Base UI Toggle with CVA variants.",
       "variant": "static",
       "sizes": {
-        "minified": 14500,
-        "gzipped": 4500,
+        "minified": 89500,
+        "gzipped": 26500,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "class-variance-authority",
@@ -872,18 +781,18 @@
       "description": "Static toggle group built on Base UI ToggleGroup.",
       "variant": "static",
       "sizes": {
-        "minified": 14500,
-        "gzipped": 4500,
+        "minified": 89500,
+        "gzipped": 26500,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "class-variance-authority",
@@ -901,18 +810,18 @@
       "description": "Static slider built on Base UI Slider with track, thumb, and value display.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -923,18 +832,18 @@
       "description": "Static number field built on Base UI NumberField with increment/decrement.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -945,18 +854,18 @@
       "description": "Static form field built on Base UI Field with label, description, error, and validity.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -967,18 +876,18 @@
       "description": "Static fieldset built on Base UI Fieldset with root and legend.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -989,18 +898,18 @@
       "description": "Static form built on Base UI Form.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1011,18 +920,18 @@
       "description": "Static progress bar built on Base UI Progress with indeterminate state.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1033,18 +942,18 @@
       "description": "Static meter/gauge built on Base UI Meter with track, indicator, label, and value.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1055,18 +964,18 @@
       "description": "Static toast notifications built on Base UI Toast with CVA variants.",
       "variant": "static",
       "sizes": {
-        "minified": 15700,
-        "gzipped": 4900,
+        "minified": 90700,
+        "gzipped": 26900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "class-variance-authority",
@@ -1091,18 +1000,18 @@
       "description": "Static accordion built on Base UI Accordion with CSS height transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1113,18 +1022,18 @@
       "description": "Static collapsible built on Base UI Collapsible with CSS height transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1135,18 +1044,18 @@
       "description": "Static tabs built on Base UI Tabs with animated indicator.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1157,18 +1066,18 @@
       "description": "Static scroll area built on Base UI ScrollArea with custom scrollbars.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1179,18 +1088,18 @@
       "description": "Static select built on Base UI Select with scroll arrows.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1201,18 +1110,18 @@
       "description": "Static toolbar built on Base UI Toolbar with button, group, link, input, and separator.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1223,18 +1132,18 @@
       "description": "Static navigation menu built on Base UI NavigationMenu with viewport and CSS transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1245,18 +1154,18 @@
       "description": "Static preview card built on Base UI PreviewCard with hover trigger and arrow.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1267,25 +1176,18 @@
       "description": "A responsive sidebar component with Base UI sheet and tooltip. No motion dependency required.",
       "variant": "static",
       "sizes": {
-        "minified": 18200,
-        "gzipped": 5800,
+        "minified": 90700,
+        "gzipped": 26900,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-slot",
-          "size": 2500,
-          "gzip": 900,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
-        },
-        {
-          "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
         },
         {
           "name": "class-variance-authority",
@@ -1302,24 +1204,24 @@
           "source": "fallback"
         }
       ],
-      "dependencyCount": 4
+      "dependencyCount": 3
     },
     "drawer-static": {
       "name": "drawer",
       "title": "Drawer (Static)",
-      "description": "Static drawer/bottom sheet component built on Vaul with snap points and nested support.",
+      "description": "Static drawer/bottom sheet component built on Base UI Dialog with snap points and nested support.",
       "variant": "static",
       "sizes": {
-        "minified": 18000,
-        "gzipped": 5500,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "vaul",
-          "size": 18000,
-          "gzip": 5500,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         }
@@ -1354,18 +1256,18 @@
       "description": "Static hover card built on Base UI PreviewCard with arrow and CSS transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
       "dependencyCount": 1
@@ -1405,18 +1307,18 @@
       "description": "Static menubar built on Base UI Menubar and Menu with keyboard navigation and sub-menus.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "@phosphor-icons/react",
@@ -1434,18 +1336,18 @@
       "description": "Static autocomplete/combobox built on Base UI Autocomplete with filtering and groups.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
         },
         {
           "name": "@phosphor-icons/react",
@@ -1579,16 +1481,16 @@
       "description": "Composable avatar component with sizes, status indicators, and group stacking support.",
       "variant": "shared",
       "sizes": {
-        "minified": 12500,
-        "gzipped": 4000,
+        "minified": 89500,
+        "gzipped": 26500,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-avatar",
-          "size": 8000,
-          "gzip": 2500,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         },
@@ -1725,19 +1627,19 @@
     "scroll-area": {
       "name": "scroll-area",
       "title": "Scroll Area",
-      "description": "A scrollable area with custom scrollbars built on Radix UI ScrollArea.",
+      "description": "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
       "variant": "shared",
       "sizes": {
-        "minified": 15000,
-        "gzipped": 4500,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-scroll-area",
-          "size": 15000,
-          "gzip": 4500,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         }
@@ -1750,16 +1652,16 @@
       "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
       "variant": "shared",
       "sizes": {
-        "minified": 2500,
-        "gzipped": 800,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-separator",
-          "size": 2500,
-          "gzip": 800,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         }
@@ -1783,19 +1685,19 @@
     "slider": {
       "name": "slider",
       "title": "Slider",
-      "description": "A range slider component with single or multiple thumbs, built on Radix UI Slider.",
+      "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
       "variant": "shared",
       "sizes": {
-        "minified": 18000,
-        "gzipped": 5500,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-slider",
-          "size": 18000,
-          "gzip": 5500,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         }
@@ -1808,16 +1710,16 @@
       "description": "A tooltip component with smooth animations and configurable positioning.",
       "variant": "shared",
       "sizes": {
-        "minified": 20000,
-        "gzipped": 6000,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
-          "name": "@radix-ui/react-tooltip",
-          "size": 20000,
-          "gzip": 6000,
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
           "version": "latest",
           "source": "fallback"
         }
@@ -1829,15 +1731,15 @@
     "button": {
       "animated": {
         "name": "button",
-        "gzipped": 52800
+        "gzipped": 51900
       },
       "static": {
         "name": "button-static",
-        "gzipped": 7800
+        "gzipped": 6900
       },
       "difference": {
         "bytes": 45000,
-        "percent": 85,
+        "percent": 87,
         "savings": "43.9 KB"
       }
     },
@@ -1848,12 +1750,12 @@
       },
       "static": {
         "name": "alert-dialog-static",
-        "gzipped": 3400
+        "gzipped": 25400
       },
       "difference": {
-        "bytes": 47000,
-        "percent": 93,
-        "savings": "45.9 KB"
+        "bytes": 25000,
+        "percent": 50,
+        "savings": "24.4 KB"
       }
     },
     "popover": {
@@ -1863,57 +1765,57 @@
       },
       "static": {
         "name": "popover-static",
-        "gzipped": 3400
+        "gzipped": 25400
       },
       "difference": {
-        "bytes": 46600,
-        "percent": 93,
-        "savings": "45.5 KB"
+        "bytes": 24600,
+        "percent": 49,
+        "savings": "24.0 KB"
       }
     },
     "dropdown-menu": {
       "animated": {
         "name": "dropdown-menu",
-        "gzipped": 60400
+        "gzipped": 75400
       },
       "static": {
         "name": "dropdown-menu-static",
-        "gzipped": 3000
+        "gzipped": 25000
       },
       "difference": {
-        "bytes": 57400,
-        "percent": 95,
-        "savings": "56.1 KB"
+        "bytes": 50400,
+        "percent": 67,
+        "savings": "49.2 KB"
       }
     },
     "sheet": {
       "animated": {
         "name": "sheet",
-        "gzipped": 54400
+        "gzipped": 26900
       },
       "static": {
         "name": "sheet-static",
-        "gzipped": 4900
+        "gzipped": 26900
       },
       "difference": {
-        "bytes": 49500,
-        "percent": 91,
-        "savings": "48.3 KB"
+        "bytes": 0,
+        "percent": 0,
+        "savings": "0 B"
       }
     },
     "sidebar": {
       "animated": {
         "name": "sidebar",
-        "gzipped": 2800
+        "gzipped": 1900
       },
       "static": {
         "name": "sidebar-static",
-        "gzipped": 5800
+        "gzipped": 26900
       },
       "difference": {
-        "bytes": -3000,
-        "percent": -107,
-        "savings": "-3000 B"
+        "bytes": -25000,
+        "percent": -1316,
+        "savings": "-25000 B"
       }
     }
   }

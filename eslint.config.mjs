@@ -18,6 +18,7 @@ const eslintConfig = defineConfig([
   // Custom rules
   {
     rules: {
+      "@next/next/no-html-link-for-pages": "off",
       // Allow unused variables that start with underscore (destructuring pattern)
       "@typescript-eslint/no-unused-vars": [
         "warn",
