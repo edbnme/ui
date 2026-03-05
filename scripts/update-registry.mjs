@@ -709,7 +709,7 @@ const staticComponents = {
 /**
  * Shared components (no animation dependency, used by both variants)
  */
-const sharedComponents = {
+const staticSharedComponents = {
   alert: {
     type: "registry:ui",
     title: "Alert",
@@ -718,8 +718,8 @@ const sharedComponents = {
     dependencies: ["class-variance-authority"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/alert.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/alert.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   "aspect-ratio": {
     type: "registry:ui",
@@ -730,9 +730,9 @@ const sharedComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/shared/aspect-ratio.tsx", type: "registry:ui" },
+      { path: "components/ui/static/aspect-ratio.tsx", type: "registry:ui" },
     ],
-    variant: "shared",
+    variant: "static",
   },
   avatar: {
     type: "registry:ui",
@@ -742,8 +742,8 @@ const sharedComponents = {
     dependencies: ["@base-ui/react", "class-variance-authority"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/avatar.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/avatar.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   input: {
     type: "registry:ui",
@@ -753,8 +753,8 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/input.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/input.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   label: {
     type: "registry:ui",
@@ -764,8 +764,8 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/label.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/label.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   badge: {
     type: "registry:ui",
@@ -775,8 +775,8 @@ const sharedComponents = {
     dependencies: ["class-variance-authority"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/badge.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/badge.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   textarea: {
     type: "registry:ui",
@@ -785,8 +785,8 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/textarea.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/textarea.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   card: {
     type: "registry:ui",
@@ -796,8 +796,8 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/card.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/card.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   table: {
     type: "registry:ui",
@@ -807,8 +807,8 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/table.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/table.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   breadcrumb: {
     type: "registry:ui",
@@ -819,9 +819,9 @@ const sharedComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/shared/breadcrumb.tsx", type: "registry:ui" },
+      { path: "components/ui/static/breadcrumb.tsx", type: "registry:ui" },
     ],
-    variant: "shared",
+    variant: "static",
   },
   pagination: {
     type: "registry:ui",
@@ -832,9 +832,9 @@ const sharedComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/shared/pagination.tsx", type: "registry:ui" },
+      { path: "components/ui/static/pagination.tsx", type: "registry:ui" },
     ],
-    variant: "shared",
+    variant: "static",
   },
   "scroll-area": {
     type: "registry:ui",
@@ -845,9 +845,9 @@ const sharedComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/shared/scroll-area.tsx", type: "registry:ui" },
+      { path: "components/ui/static/scroll-area.tsx", type: "registry:ui" },
     ],
-    variant: "shared",
+    variant: "static",
   },
   separator: {
     type: "registry:ui",
@@ -858,9 +858,9 @@ const sharedComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [
-      { path: "components/ui/shared/separator.tsx", type: "registry:ui" },
+      { path: "components/ui/static/separator.tsx", type: "registry:ui" },
     ],
-    variant: "shared",
+    variant: "static",
   },
   skeleton: {
     type: "registry:ui",
@@ -870,8 +870,8 @@ const sharedComponents = {
     dependencies: [],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/skeleton.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/skeleton.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   slider: {
     type: "registry:ui",
@@ -881,8 +881,8 @@ const sharedComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/slider.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/slider.tsx", type: "registry:ui" }],
+    variant: "static",
   },
   tooltip: {
     type: "registry:ui",
@@ -892,8 +892,8 @@ const sharedComponents = {
     dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
-    files: [{ path: "components/ui/shared/tooltip.tsx", type: "registry:ui" }],
-    variant: "shared",
+    files: [{ path: "components/ui/static/tooltip.tsx", type: "registry:ui" }],
+    variant: "static",
   },
 };
 
@@ -947,7 +947,7 @@ const libraryComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "lib/tokens.ts", type: "registry:lib" }],
-    variant: "shared",
+    variant: "static",
   },
   icons: {
     type: "registry:lib",
@@ -978,7 +978,7 @@ const libraryComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "lib/utils.ts", type: "registry:lib" }],
-    variant: "shared",
+    variant: "static",
   },
 };
 
@@ -994,7 +994,7 @@ const hookComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-click-outside.tsx", type: "registry:hook" }],
-    variant: "shared",
+    variant: "static",
   },
   "use-stable-id": {
     type: "registry:hook",
@@ -1005,7 +1005,7 @@ const hookComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-stable-id.ts", type: "registry:hook" }],
-    variant: "shared",
+    variant: "static",
   },
   "use-controllable-state": {
     type: "registry:hook",
@@ -1016,7 +1016,7 @@ const hookComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-controllable-state.ts", type: "registry:hook" }],
-    variant: "shared",
+    variant: "static",
   },
   "use-merged-refs": {
     type: "registry:hook",
@@ -1026,7 +1026,7 @@ const hookComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-merged-refs.ts", type: "registry:hook" }],
-    variant: "shared",
+    variant: "static",
   },
   "use-mobile": {
     type: "registry:hook",
@@ -1036,7 +1036,7 @@ const hookComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-mobile.ts", type: "registry:hook" }],
-    variant: "shared",
+    variant: "static",
   },
   "use-ripple": {
     type: "registry:hook",
@@ -1046,7 +1046,7 @@ const hookComponents = {
     registryDependencies: [],
     inlineDependencies: [],
     files: [{ path: "hooks/use-ripple.ts", type: "registry:hook" }],
-    variant: "shared",
+    variant: "static",
   },
 };
 
@@ -1054,7 +1054,7 @@ const hookComponents = {
 const allComponents = {
   ...animatedComponents,
   ...staticComponents,
-  ...sharedComponents,
+  ...staticSharedComponents,
   ...libraryComponents,
   ...hookComponents,
 };
@@ -1199,7 +1199,7 @@ function updateRegistryFile(name, config, outputDir) {
   }
 
   // Write to variant-specific subdirectory
-  const variantDir = join(outputDir, config.variant || "shared");
+  const variantDir = join(outputDir, config.variant || "static");
   ensureDir(variantDir);
 
   const outputPath = join(variantDir, `${name.replace("-static", "")}.json`);
@@ -1294,7 +1294,6 @@ const outputDir = join(root, "public", "r");
 ensureDir(outputDir);
 ensureDir(join(outputDir, "animated"));
 ensureDir(join(outputDir, "static"));
-ensureDir(join(outputDir, "shared"));
 
 // Update individual component registry files
 Object.entries(allComponents).forEach(([name, config]) => {
@@ -1316,8 +1315,7 @@ console.log("\n[DONE] Registry update complete!");
 console.log("\nOutput structure:");
 console.log("  public/r/");
 console.log("  ├── animated/   (motion/react components)");
-console.log("  ├── static/     (CSS-only components)");
-console.log("  ├── shared/     (variant-agnostic components)");
+console.log("  ├── static/     (CSS-only + Base UI components)");
 console.log("  └── registry.json");
 
 // =============================================================================

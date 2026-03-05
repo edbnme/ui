@@ -111,27 +111,21 @@ export {
 } from "./animated/sheet";
 
 // =============================================================================
-// SHARED COMPONENTS (No animation dependency)
-// These are variant-agnostic and work with both animated and static
+// STATIC COMPONENTS (No animation dependency)
 // =============================================================================
 
-export {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-  AvatarGroup,
-} from "./shared/avatar";
-export { Input } from "./shared/input";
-export { ScrollArea, ScrollBar } from "./shared/scroll-area";
-export { Separator } from "./shared/separator";
-export { Skeleton } from "./shared/skeleton";
-export { Slider } from "./shared/slider";
+export { Avatar, AvatarImage, AvatarFallback } from "./static/avatar";
+export { Input } from "./static/input";
+export { ScrollArea, ScrollBar } from "./static/scroll-area";
+export { Separator } from "./static/separator";
+export { Skeleton } from "./static/skeleton";
+export { Slider } from "./static/slider";
 export {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
-} from "./shared/tooltip";
+} from "./static/tooltip";
 
 // =============================================================================
 // VARIANT TYPES

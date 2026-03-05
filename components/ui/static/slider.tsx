@@ -122,3 +122,6 @@ export {
   SliderThumb,
   SliderValue,
 };
+
+// Backward-compatible alias (formerly shared/)
+export { SliderRoot as Slider };

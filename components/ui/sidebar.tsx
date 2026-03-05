@@ -23,8 +23,8 @@ import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/animated/button";
-import { Input } from "@/components/ui/shared/input";
-import { Separator } from "@/components/ui/shared/separator";
+import { Input } from "@/components/ui/static/input";
+import { Separator } from "@/components/ui/static/separator";
 import {
   Sheet,
   SheetContent,
@@ -32,13 +32,14 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/animated/sheet";
-import { Skeleton } from "@/components/ui/shared/skeleton";
+import { Skeleton } from "@/components/ui/static/skeleton";
 import {
   Tooltip,
-  TooltipContent,
+  TooltipPopup,
+  TooltipPositioner,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/shared/tooltip";
+} from "@/components/ui/static/tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -147,7 +148,7 @@ function SidebarProvider({
 
   return (
     <SidebarContext.Provider value={contextValue}>
-      <TooltipProvider delayDuration={0}>
+      <TooltipProvider delay={0}>
         <div
           data-slot="sidebar-wrapper"
           style={
@@ -255,7 +256,7 @@ function Sidebar({
           // Adjust the padding for floating and inset variants.
           variant === "floating" || variant === "inset"
             ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]"
-            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
+            : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) border-sidebar-border group-data-[side=left]:border-r group-data-[side=right]:border-l",
           className
         )}
         {...props}
@@ -525,7 +526,7 @@ function SidebarMenuButton({
 }: React.ComponentProps<"button"> & {
   asChild?: boolean;
   isActive?: boolean;
-  tooltip?: string | React.ComponentProps<typeof TooltipContent>;
+  tooltip?: string | React.ComponentProps<typeof TooltipPopup>;
 } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const Comp = asChild ? Slot : "button";
   const { isMobile, state } = useSidebar();
@@ -553,13 +554,10 @@ function SidebarMenuButton({
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild>{button}</TooltipTrigger>
-      <TooltipContent
-        side="right"
-        align="center"
-        hidden={state !== "collapsed" || isMobile}
-        {...tooltip}
-      />
+      <TooltipTrigger render={button} />
+      <TooltipPositioner side="right">
+        <TooltipPopup hidden={state !== "collapsed" || isMobile} {...tooltip} />
+      </TooltipPositioner>
     </Tooltip>
   );
 }

@@ -31,3 +31,6 @@ SeparatorRoot.displayName = "SeparatorRoot";
 // =============================================================================
 
 export { SeparatorRoot };
+
+// Backward-compatible alias (formerly shared/)
+export { SeparatorRoot as Separator };

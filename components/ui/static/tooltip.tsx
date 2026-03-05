@@ -1,32 +1,32 @@
 "use client";
 
 import * as React from "react";
-import { Tooltip } from "@base-ui/react/tooltip";
+import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 import { cn } from "@/lib/utils";
 
 // =============================================================================
 // TOOLTIP PROVIDER
 // =============================================================================
 
-const TooltipProvider = Tooltip.Provider;
+const TooltipProvider = TooltipPrimitive.Provider;
 
 // =============================================================================
 // TOOLTIP ROOT
 // =============================================================================
 
-const TooltipRoot = Tooltip.Root;
+const TooltipRoot = TooltipPrimitive.Root;
 
 // =============================================================================
 // TOOLTIP TRIGGER
 // =============================================================================
 
-const TooltipTrigger = Tooltip.Trigger;
+const TooltipTrigger = TooltipPrimitive.Trigger;
 
 // =============================================================================
 // TOOLTIP PORTAL
 // =============================================================================
 
-const TooltipPortal = Tooltip.Portal;
+const TooltipPortal = TooltipPrimitive.Portal;
 
 // =============================================================================
 // TOOLTIP POSITIONER
@@ -34,9 +34,9 @@ const TooltipPortal = Tooltip.Portal;
 
 const TooltipPositioner = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof Tooltip.Positioner>
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Positioner>
 >(({ className, sideOffset = 4, ...props }, ref) => (
-  <Tooltip.Positioner
+  <TooltipPrimitive.Positioner
     ref={ref}
     sideOffset={sideOffset}
     className={cn("z-50", className)}
@@ -51,9 +51,9 @@ TooltipPositioner.displayName = "TooltipPositioner";
 
 const TooltipPopup = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof Tooltip.Popup>
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Popup>
 >(({ className, ...props }, ref) => (
-  <Tooltip.Popup
+  <TooltipPrimitive.Popup
     ref={ref}
     className={cn(
       "z-50 overflow-hidden rounded-md bg-primary px-3 py-1.5 text-xs text-primary-foreground",
@@ -73,9 +73,9 @@ TooltipPopup.displayName = "TooltipPopup";
 
 const TooltipArrow = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof Tooltip.Arrow>
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
 >(({ className, ...props }, ref) => (
-  <Tooltip.Arrow
+  <TooltipPrimitive.Arrow
     ref={ref}
     className={cn(
       "fill-primary",
@@ -87,7 +87,7 @@ const TooltipArrow = React.forwardRef<
     <svg width="10" height="5" viewBox="0 0 10 5" fill="currentColor">
       <path d="M0 5L5 0L10 5H0Z" />
     </svg>
-  </Tooltip.Arrow>
+  </TooltipPrimitive.Arrow>
 ));
 TooltipArrow.displayName = "TooltipArrow";
 
@@ -104,3 +104,8 @@ export {
   TooltipPopup,
   TooltipArrow,
 };
+
+// Backward-compatible aliases (formerly shared/)
+const Tooltip = TooltipRoot;
+const TooltipContent = TooltipPopup;
+export { Tooltip, TooltipContent };

@@ -102,6 +102,8 @@ export {
   TooltipPositioner,
   TooltipPopup,
   TooltipArrow,
+  Tooltip,
+  TooltipContent,
 } from "./tooltip";
 
 // Collapsible
@@ -122,6 +124,7 @@ export {
   SliderIndicator,
   SliderThumb,
   SliderValue,
+  Slider,
 } from "./slider";
 
 // Popover
@@ -139,7 +142,7 @@ export {
 } from "./popover";
 
 // Input
-export { InputRoot } from "./input";
+export { InputRoot, Input } from "./input";
 
 // Number Field
 export {
@@ -152,7 +155,7 @@ export {
 } from "./number-field";
 
 // Separator
-export { SeparatorRoot } from "./separator";
+export { SeparatorRoot, Separator } from "./separator";
 
 // Toggle
 export {
@@ -168,6 +171,8 @@ export {
   ScrollAreaViewport,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
+  ScrollArea,
+  ScrollBar,
 } from "./scroll-area";
 
 // Field
@@ -193,7 +198,7 @@ export {
 } from "./accordion";
 
 // Avatar
-export { AvatarRoot, AvatarImage, AvatarFallback } from "./avatar";
+export { AvatarRoot, AvatarImage, AvatarFallback, Avatar } from "./avatar";
 
 // Toast
 export {
@@ -280,3 +285,33 @@ export {
   CheckboxGroupItem,
   CheckboxGroupLabel,
 } from "./checkbox-group";
+
+// Alert (formerly shared/)
+export * from "./alert";
+
+// Aspect Ratio (formerly shared/)
+export * from "./aspect-ratio";
+
+// Badge (formerly shared/)
+export * from "./badge";
+
+// Breadcrumb (formerly shared/)
+export * from "./breadcrumb";
+
+// Card (formerly shared/)
+export * from "./card";
+
+// Label (formerly shared/)
+export * from "./label";
+
+// Pagination (formerly shared/)
+export * from "./pagination";
+
+// Skeleton (formerly shared/)
+export * from "./skeleton";
+
+// Table (formerly shared/)
+export * from "./table";
+
+// Textarea (formerly shared/)
+export * from "./textarea";

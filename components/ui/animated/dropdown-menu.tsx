@@ -479,7 +479,7 @@ const DropdownMenuContent = forwardRef<
     // Base classes for dropdown content
     const contentClasses = cn(
       // Layout
-      "z-[100] min-w-32 overflow-hidden rounded-2xl border p-2",
+      "z-[100] min-w-32 overflow-hidden rounded-2xl border border-border p-2",
       // Colors
       "bg-popover text-popover-foreground",
       // Shadow
@@ -1224,7 +1224,7 @@ const DropdownMenuSubContent = forwardRef<
 
     const contentClasses = cn(
       // Layout
-      "z-[100] min-w-32 overflow-hidden rounded-2xl border p-2",
+      "z-[100] min-w-32 overflow-hidden rounded-2xl border border-border p-2",
       // Colors
       "bg-popover text-popover-foreground",
       // Shadow
