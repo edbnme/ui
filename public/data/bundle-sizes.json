@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "summary": {
     "totalPackages": 13,
-    "totalComponents": 66,
+    "totalComponents": 63,
     "animatedComponents": 10,
-    "staticComponents": 40,
-    "sharedComponents": 16,
+    "staticComponents": 53,
+    "sharedComponents": 0,
     "largestDependency": {
       "name": "recharts",
       "version": "3.7.0",
@@ -15,7 +15,7 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-02-24T16:05:16.641Z"
+    "computedAt": "2026-03-08T12:27:24.496Z"
   },
   "packages": [
     {
@@ -27,10 +27,11 @@
     },
     {
       "name": "@ncdai/react-wheel-picker",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "1.2.0",
+      "size": 11468,
+      "gzip": 4393,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     },
     {
       "name": "@phosphor-icons/react",
@@ -56,17 +57,19 @@
     },
     {
       "name": "embla-carousel-react",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "8.6.0",
+      "size": 17975,
+      "gzip": 7277,
+      "dependencyCount": 2,
+      "source": "bundlephobia"
     },
     {
       "name": "input-otp",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "1.4.2",
+      "size": 9599,
+      "gzip": 3860,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     },
     {
       "name": "motion",
@@ -77,17 +80,17 @@
     },
     {
       "name": "react-day-picker",
-      "version": "9.13.0",
-      "size": 67287,
-      "gzip": 19376,
-      "dependencyCount": 3,
+      "version": "9.14.0",
+      "size": 67432,
+      "gzip": 2450,
+      "dependencyCount": 4,
       "source": "bundlephobia"
     },
     {
       "name": "react-resizable-panels",
-      "version": "4.6.2",
-      "size": 31524,
-      "gzip": 10201,
+      "version": "4.7.2",
+      "size": 31443,
+      "gzip": 10406,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
@@ -373,18 +376,18 @@
       "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
       "variant": "animated",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 11468,
+        "gzipped": 4393,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@ncdai/react-wheel-picker",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 11468,
+          "gzip": 4393,
+          "version": "1.2.0",
+          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 1
@@ -638,8 +641,8 @@
     },
     "tooltip-static": {
       "name": "tooltip",
-      "title": "Tooltip (Static)",
-      "description": "Static tooltip built on Base UI Tooltip with arrow and CSS transitions.",
+      "title": "Tooltip",
+      "description": "A tooltip component with smooth animations and configurable positioning.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -806,8 +809,8 @@
     },
     "slider-static": {
       "name": "slider",
-      "title": "Slider (Static)",
-      "description": "Static slider built on Base UI Slider with track, thumb, and value display.",
+      "title": "Slider",
+      "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -1062,8 +1065,8 @@
     },
     "scroll-area-static": {
       "name": "scroll-area",
-      "title": "Scroll Area (Static)",
-      "description": "Static scroll area built on Base UI ScrollArea with custom scrollbars.",
+      "title": "Scroll Area",
+      "description": "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -1234,18 +1237,18 @@
       "description": "Static OTP/verification code input built on input-otp with customizable slots.",
       "variant": "static",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 9599,
+        "gzipped": 3860,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "input-otp",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 9599,
+          "gzip": 3860,
+          "version": "1.4.2",
+          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 1
@@ -1278,17 +1281,17 @@
       "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
       "variant": "static",
       "sizes": {
-        "minified": 32724,
-        "gzipped": 10601,
+        "minified": 32643,
+        "gzipped": 10806,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "react-resizable-panels",
-          "size": 31524,
-          "gzip": 10201,
-          "version": "4.6.2",
+          "size": 31443,
+          "gzip": 10406,
+          "version": "4.7.2",
           "source": "bundlephobia"
         },
         {
@@ -1365,17 +1368,17 @@
       "description": "Static date picker calendar with single, multiple, and range selection modes built on react-day-picker.",
       "variant": "static",
       "sizes": {
-        "minified": 68487,
-        "gzipped": 19776,
+        "minified": 68632,
+        "gzipped": 2850,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "react-day-picker",
-          "size": 67287,
-          "gzip": 19376,
-          "version": "9.13.0",
+          "size": 67432,
+          "gzip": 2450,
+          "version": "9.14.0",
           "source": "bundlephobia"
         },
         {
@@ -1394,18 +1397,18 @@
       "description": "Static accessible carousel with touch/swipe support, loop mode, and keyboard navigation built on Embla Carousel.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 19175,
+        "gzipped": 7677,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "embla-carousel-react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 17975,
+          "gzip": 7277,
+          "version": "8.6.0",
+          "source": "bundlephobia"
         },
         {
           "name": "@phosphor-icons/react",
@@ -1439,11 +1442,11 @@
       ],
       "dependencyCount": 1
     },
-    "alert": {
+    "alert-static": {
       "name": "alert",
       "title": "Alert",
       "description": "Alert component with CVA variants for default, destructive, success, warning, and info states.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 4500,
         "gzipped": 1500,
@@ -1461,11 +1464,11 @@
       ],
       "dependencyCount": 1
     },
-    "aspect-ratio": {
+    "aspect-ratio-static": {
       "name": "aspect-ratio",
       "title": "Aspect Ratio",
       "description": "A CSS aspect-ratio wrapper component for maintaining consistent proportions.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1475,11 +1478,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "avatar": {
+    "avatar-static": {
       "name": "avatar",
       "title": "Avatar",
       "description": "Composable avatar component with sizes, status indicators, and group stacking support.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 89500,
         "gzipped": 26500,
@@ -1504,11 +1507,11 @@
       ],
       "dependencyCount": 2
     },
-    "input": {
+    "input-static": {
       "name": "input",
       "title": "Input",
       "description": "A styled input component with focus states, validation support, and file input styling.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1518,11 +1521,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "label": {
+    "label-static": {
       "name": "label",
       "title": "Label",
       "description": "A styled label component with peer/group disabled state support.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1532,11 +1535,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "badge": {
+    "badge-static": {
       "name": "badge",
       "title": "Badge",
       "description": "Badge component with CVA variants for default, secondary, destructive, and outline styles.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 4500,
         "gzipped": 1500,
@@ -1554,11 +1557,11 @@
       ],
       "dependencyCount": 1
     },
-    "textarea": {
+    "textarea-static": {
       "name": "textarea",
       "title": "Textarea",
       "description": "A styled textarea component with auto-resize support.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1568,11 +1571,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "card": {
+    "card-static": {
       "name": "card",
       "title": "Card",
       "description": "Card component with header, title, description, content, and footer sub-components.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1582,11 +1585,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "table": {
+    "table-static": {
       "name": "table",
       "title": "Table",
       "description": "Table component with header, body, footer, row, head, cell, and caption sub-components.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1596,11 +1599,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "breadcrumb": {
+    "breadcrumb-static": {
       "name": "breadcrumb",
       "title": "Breadcrumb",
       "description": "Breadcrumb navigation component with list, item, link, page, separator, and ellipsis.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1610,11 +1613,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "pagination": {
+    "pagination-static": {
       "name": "pagination",
       "title": "Pagination",
       "description": "Pagination component with previous, next, links, and ellipsis.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1624,33 +1627,11 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "scroll-area": {
-      "name": "scroll-area",
-      "title": "Scroll Area",
-      "description": "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
-      "variant": "shared",
-      "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "separator": {
+    "separator-static": {
       "name": "separator",
       "title": "Separator",
       "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 85000,
         "gzipped": 25000,
@@ -1668,11 +1649,11 @@
       ],
       "dependencyCount": 1
     },
-    "skeleton": {
+    "skeleton-static": {
       "name": "skeleton",
       "title": "Skeleton",
       "description": "A loading placeholder component with pulse animation for content loading states.",
-      "variant": "shared",
+      "variant": "static",
       "sizes": {
         "minified": 0,
         "gzipped": 0,
@@ -1681,50 +1662,6 @@
       },
       "dependencies": [],
       "dependencyCount": 0
-    },
-    "slider": {
-      "name": "slider",
-      "title": "Slider",
-      "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
-      "variant": "shared",
-      "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "tooltip": {
-      "name": "tooltip",
-      "title": "Tooltip",
-      "description": "A tooltip component with smooth animations and configurable positioning.",
-      "variant": "shared",
-      "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
     }
   },
   "comparisons": {

@@ -1,3 +1,16 @@
+/**
+ * CheckboxGroup — Group of related checkboxes with shared state.
+ * Built on @base-ui/react CheckboxGroup primitive.
+ *
+ * @example
+ * <CheckboxGroupRoot defaultValue={["option-1"]}>
+ *   <CheckboxGroupLabel>Select options</CheckboxGroupLabel>
+ *   <CheckboxGroupItem value="option-1" label="Option 1" />
+ *   <CheckboxGroupItem value="option-2" label="Option 2" />
+ * </CheckboxGroupRoot>
+ *
+ * @see https://base-ui.com/react/components/checkbox-group
+ */
 "use client";
 
 import * as React from "react";

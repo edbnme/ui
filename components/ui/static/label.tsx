@@ -1,3 +1,9 @@
+/**
+ * Label — Accessible form label with disabled state styling.
+ *
+ * @example
+ * <Label htmlFor="email">Email address</Label>
+ */
 "use client";
 
 import * as React from "react";

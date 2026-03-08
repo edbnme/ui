@@ -1,3 +1,19 @@
+/**
+ * Accordion — Collapsible content sections for grouping related information.
+ * Built on @base-ui/react Accordion primitive.
+ *
+ * @example
+ * <AccordionRoot defaultValue={["item-1"]}>
+ *   <AccordionItem value="item-1">
+ *     <AccordionHeader>
+ *       <AccordionTrigger>Section 1</AccordionTrigger>
+ *     </AccordionHeader>
+ *     <AccordionPanel>Content 1</AccordionPanel>
+ *   </AccordionItem>
+ * </AccordionRoot>
+ *
+ * @see https://base-ui.com/react/components/accordion
+ */
 "use client";
 
 import * as React from "react";

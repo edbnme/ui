@@ -1,3 +1,12 @@
+/**
+ * Avatar — User avatar with image and fallback support.
+ * Built on @base-ui/react Avatar primitive.
+ *
+ * @example
+ * <Avatar src="/user.jpg" alt="User" fallback="JD" />
+ *
+ * @see https://base-ui.com/react/components/avatar
+ */
 "use client";
 
 import * as React from "react";

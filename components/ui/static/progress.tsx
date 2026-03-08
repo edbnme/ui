@@ -1,3 +1,18 @@
+/**
+ * Progress — Progress bar for tracking async operation completion.
+ * Built on @base-ui/react Progress primitive.
+ *
+ * @example
+ * <ProgressRoot value={60}>
+ *   <ProgressLabel>Loading...</ProgressLabel>
+ *   <ProgressTrack>
+ *     <ProgressIndicator />
+ *   </ProgressTrack>
+ *   <ProgressValue />
+ * </ProgressRoot>
+ *
+ * @see https://base-ui.com/react/components/progress
+ */
 "use client";
 
 import * as React from "react";

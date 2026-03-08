@@ -1,3 +1,21 @@
+/**
+ * Tooltip — Informational popup shown on hover/focus.
+ * Built on @base-ui/react Tooltip primitive.
+ *
+ * @example
+ * <TooltipProvider>
+ *   <TooltipRoot>
+ *     <TooltipTrigger>Hover me</TooltipTrigger>
+ *     <TooltipPortal>
+ *       <TooltipPositioner>
+ *         <TooltipPopup>Helpful info</TooltipPopup>
+ *       </TooltipPositioner>
+ *     </TooltipPortal>
+ *   </TooltipRoot>
+ * </TooltipProvider>
+ *
+ * @see https://base-ui.com/react/components/tooltip
+ */
 "use client";
 
 import * as React from "react";

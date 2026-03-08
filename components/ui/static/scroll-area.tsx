@@ -1,3 +1,15 @@
+/**
+ * ScrollArea — Custom scrollbar overlay for scrollable content.
+ * Built on @base-ui/react ScrollArea primitive.
+ *
+ * @example
+ * <ScrollArea className="h-64">
+ *   <ScrollAreaViewport>Long content...</ScrollAreaViewport>
+ *   <ScrollBar orientation="vertical" />
+ * </ScrollArea>
+ *
+ * @see https://base-ui.com/react/components/scroll-area
+ */
 "use client";
 
 import * as React from "react";

@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Fieldset (Static)",
   "description": "Static fieldset built on Base UI Fieldset with root and legend.",
-  "dependencies": ["@base-ui/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {
       "path": "components/ui/static/fieldset.tsx",
-      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Fieldset } from \"@base-ui/react/fieldset\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// FIELDSET ROOT\r\n// =============================================================================\r\n\r\nconst FieldsetRoot = React.forwardRef<\r\n  HTMLFieldSetElement,\r\n  React.ComponentPropsWithRef<typeof Fieldset.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <Fieldset.Root ref={ref} className={cn(\"space-y-4\", className)} {...props} />\r\n));\r\nFieldsetRoot.displayName = \"FieldsetRoot\";\r\n\r\n// =============================================================================\r\n// FIELDSET LEGEND\r\n// =============================================================================\r\n\r\nconst FieldsetLegend = React.forwardRef<\r\n  HTMLLegendElement,\r\n  React.ComponentPropsWithRef<typeof Fieldset.Legend>\r\n>(({ className, ...props }, ref) => (\r\n  <Fieldset.Legend\r\n    ref={ref}\r\n    className={cn(\r\n      \"text-sm font-medium leading-none text-foreground\",\r\n      \"peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n));\r\nFieldsetLegend.displayName = \"FieldsetLegend\";\r\n\r\n// =============================================================================\r\n// EXPORTS\r\n// =============================================================================\r\n\r\nexport { FieldsetRoot, FieldsetLegend };\r\n",
+      "content": "/**\r\n * Fieldset — Groups related form fields with a legend.\r\n * Built on @base-ui/react Fieldset primitive.\r\n *\r\n * @example\r\n * <FieldsetRoot>\r\n *   <FieldsetLegend>Personal Information</FieldsetLegend>\r\n *   <FieldRoot name=\"name\">...</FieldRoot>\r\n *   <FieldRoot name=\"email\">...</FieldRoot>\r\n * </FieldsetRoot>\r\n *\r\n * @see https://base-ui.com/react/components/fieldset\r\n */\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Fieldset } from \"@base-ui/react/fieldset\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// FIELDSET ROOT\r\n// =============================================================================\r\n\r\nconst FieldsetRoot = React.forwardRef<\r\n  HTMLFieldSetElement,\r\n  React.ComponentPropsWithRef<typeof Fieldset.Root>\r\n>(({ className, ...props }, ref) => (\r\n  <Fieldset.Root ref={ref} className={cn(\"space-y-4\", className)} {...props} />\r\n));\r\nFieldsetRoot.displayName = \"FieldsetRoot\";\r\n\r\n// =============================================================================\r\n// FIELDSET LEGEND\r\n// =============================================================================\r\n\r\nconst FieldsetLegend = React.forwardRef<\r\n  HTMLLegendElement,\r\n  React.ComponentPropsWithRef<typeof Fieldset.Legend>\r\n>(({ className, ...props }, ref) => (\r\n  <Fieldset.Legend\r\n    ref={ref}\r\n    className={cn(\r\n      \"text-sm font-medium leading-none text-foreground\",\r\n      \"peer-disabled:cursor-not-allowed peer-disabled:opacity-70\",\r\n      className\r\n    )}\r\n    {...props}\r\n  />\r\n));\r\nFieldsetLegend.displayName = \"FieldsetLegend\";\r\n\r\n// =============================================================================\r\n// EXPORTS\r\n// =============================================================================\r\n\r\nexport { FieldsetRoot, FieldsetLegend };\r\n",
       "type": "registry:ui"
     }
   ]

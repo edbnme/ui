@@ -1,3 +1,15 @@
+/**
+ * Toast — Notification toasts with provider, viewport, and configurable actions.
+ * Built on @base-ui/react Toast primitive.
+ *
+ * @example
+ * <ToastProvider>
+ *   <ToastViewport />
+ *   // Toasts triggered via useToastManager
+ * </ToastProvider>
+ *
+ * @see https://base-ui.com/react/components/toast
+ */
 "use client";
 
 import * as React from "react";

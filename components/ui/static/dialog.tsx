@@ -1,3 +1,26 @@
+/**
+ * Dialog — CSS-only modal dialog for overlaying content.
+ * Built on @base-ui/react Dialog primitive.
+ *
+ * @example
+ * <DialogRoot>
+ *   <DialogTrigger>Open</DialogTrigger>
+ *   <DialogPortal>
+ *     <DialogBackdrop />
+ *     <DialogPopup>
+ *       <DialogHeader>
+ *         <DialogTitle>Dialog Title</DialogTitle>
+ *         <DialogDescription>Description text</DialogDescription>
+ *       </DialogHeader>
+ *       <DialogFooter>
+ *         <DialogClose>Close</DialogClose>
+ *       </DialogFooter>
+ *     </DialogPopup>
+ *   </DialogPortal>
+ * </DialogRoot>
+ *
+ * @see https://base-ui.com/react/components/dialog
+ */
 "use client";
 
 import * as React from "react";

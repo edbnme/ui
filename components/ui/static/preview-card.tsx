@@ -1,3 +1,19 @@
+/**
+ * PreviewCard — Hover-triggered preview card (like GitHub user cards).
+ * Built on @base-ui/react PreviewCard primitive.
+ *
+ * @example
+ * <PreviewCardRoot>
+ *   <PreviewCardTrigger href="/user">@username</PreviewCardTrigger>
+ *   <PreviewCardPortal>
+ *     <PreviewCardPositioner>
+ *       <PreviewCardPopup>Profile preview</PreviewCardPopup>
+ *     </PreviewCardPositioner>
+ *   </PreviewCardPortal>
+ * </PreviewCardRoot>
+ *
+ * @see https://base-ui.com/react/components/preview-card
+ */
 "use client";
 
 import * as React from "react";

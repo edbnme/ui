@@ -1,3 +1,17 @@
+/**
+ * Form — Form container with consistent spacing.
+ * Built on @base-ui/react Form primitive.
+ *
+ * @example
+ * <FormRoot onSubmit={handleSubmit}>
+ *   <FieldRoot name="email">
+ *     <FieldLabel>Email</FieldLabel>
+ *     <FieldControl render={<Input />} />
+ *   </FieldRoot>
+ * </FormRoot>
+ *
+ * @see https://base-ui.com/react/components/form
+ */
 "use client";
 
 import * as React from "react";

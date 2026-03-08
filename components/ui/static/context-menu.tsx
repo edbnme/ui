@@ -1,3 +1,22 @@
+/**
+ * ContextMenu — Right-click context menu with items, checkboxes, radios, and submenus.
+ * Built on @base-ui/react ContextMenu primitive.
+ *
+ * @example
+ * <ContextMenuRoot>
+ *   <ContextMenuTrigger>Right-click me</ContextMenuTrigger>
+ *   <ContextMenuPortal>
+ *     <ContextMenuPositioner>
+ *       <ContextMenuPopup>
+ *         <ContextMenuItem>Cut</ContextMenuItem>
+ *         <ContextMenuItem>Copy</ContextMenuItem>
+ *       </ContextMenuPopup>
+ *     </ContextMenuPositioner>
+ *   </ContextMenuPortal>
+ * </ContextMenuRoot>
+ *
+ * @see https://base-ui.com/react/components/context-menu
+ */
 "use client";
 
 import * as React from "react";

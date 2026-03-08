@@ -1,3 +1,16 @@
+/**
+ * WheelPicker — iOS-style scrollable wheel picker for value selection.
+ * Styled wrapper around @ncdai/react-wheel-picker.
+ *
+ * @example
+ * <WheelPickerWrapper>
+ *   <WheelPicker
+ *     options={[{ label: "Option 1", value: "1" }]}
+ *     value="1"
+ *     onChange={setValue}
+ *   />
+ * </WheelPickerWrapper>
+ */
 "use client";
 
 import "@ncdai/react-wheel-picker/style.css";

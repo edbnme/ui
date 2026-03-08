@@ -1,3 +1,17 @@
+/**
+ * Card — Content container with variant styles.
+ * Supports default, solid, ghost, and elevated variants.
+ *
+ * @example
+ * <Card variant="elevated">
+ *   <CardHeader>
+ *     <CardTitle>Title</CardTitle>
+ *     <CardDescription>Description</CardDescription>
+ *   </CardHeader>
+ *   <CardContent>Body content</CardContent>
+ *   <CardFooter>Footer</CardFooter>
+ * </Card>
+ */
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";

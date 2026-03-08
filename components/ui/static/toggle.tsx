@@ -1,3 +1,18 @@
+/**
+ * Toggle — Pressable toggle button with group support.
+ * Built on @base-ui/react Toggle and ToggleGroup primitives.
+ *
+ * @example
+ * <ToggleRoot>Bold</ToggleRoot>
+ *
+ * <ToggleGroupRoot>
+ *   <ToggleGroupItem value="left">Left</ToggleGroupItem>
+ *   <ToggleGroupItem value="center">Center</ToggleGroupItem>
+ * </ToggleGroupRoot>
+ *
+ * @see https://base-ui.com/react/components/toggle
+ * @see https://base-ui.com/react/components/toggle-group
+ */
 "use client";
 
 import * as React from "react";

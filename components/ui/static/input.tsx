@@ -1,3 +1,12 @@
+/**
+ * Input — Styled text input field.
+ * Built on @base-ui/react Input primitive.
+ *
+ * @example
+ * <Input type="email" placeholder="you@example.com" />
+ *
+ * @see https://base-ui.com/react/components/input
+ */
 "use client";
 
 import * as React from "react";

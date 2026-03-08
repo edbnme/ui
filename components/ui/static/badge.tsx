@@ -1,3 +1,10 @@
+/**
+ * Badge — Inline status indicator with variant and size options.
+ *
+ * @example
+ * <Badge variant="default" size="md">Active</Badge>
+ * <Badge variant="destructive">Error</Badge>
+ */
 "use client";
 
 import * as React from "react";

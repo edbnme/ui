@@ -1,3 +1,20 @@
+/**
+ * AlertDialog (Static) — CSS-only alert dialog (no motion animations).
+ * Built on @base-ui/react AlertDialog primitive.
+ *
+ * @example
+ * <AlertDialogRoot>
+ *   <AlertDialogTrigger>Delete</AlertDialogTrigger>
+ *   <AlertDialogBackdrop />
+ *   <AlertDialogPopup>
+ *     <AlertDialogTitle>Confirm</AlertDialogTitle>
+ *     <AlertDialogDescription>Are you sure?</AlertDialogDescription>
+ *     <AlertDialogClose>Cancel</AlertDialogClose>
+ *   </AlertDialogPopup>
+ * </AlertDialogRoot>
+ *
+ * @see https://base-ui.com/react/components/alert-dialog
+ */
 "use client";
 
 import * as React from "react";

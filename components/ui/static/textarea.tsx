@@ -1,3 +1,10 @@
+/**
+ * Textarea — Multi-line text input with optional auto-resize.
+ *
+ * @example
+ * <Textarea placeholder="Write a message..." />
+ * <Textarea autoResize placeholder="Auto-growing textarea" />
+ */
 "use client";
 
 import * as React from "react";

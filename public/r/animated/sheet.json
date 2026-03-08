@@ -9,7 +9,9 @@
     "@phosphor-icons/react",
     "class-variance-authority"
   ],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "animated",
   "files": [
     {

@@ -1,3 +1,16 @@
+/**
+ * Table — Semantic HTML table with styled header, body, footer, and caption.
+ *
+ * @example
+ * <Table>
+ *   <TableHeader>
+ *     <TableRow><TableHead>Name</TableHead></TableRow>
+ *   </TableHeader>
+ *   <TableBody>
+ *     <TableRow><TableCell>Alice</TableCell></TableRow>
+ *   </TableBody>
+ * </Table>
+ */
 import * as React from "react";
 import { cn } from "@/lib/utils";
 

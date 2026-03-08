@@ -1,3 +1,19 @@
+/**
+ * Tabs — Tabbed interface for switching between content panels.
+ * Built on @base-ui/react Tabs primitive.
+ *
+ * @example
+ * <TabsRoot defaultValue="tab1">
+ *   <TabsList>
+ *     <TabsTab value="tab1">Tab 1</TabsTab>
+ *     <TabsTab value="tab2">Tab 2</TabsTab>
+ *   </TabsList>
+ *   <TabsPanel value="tab1">Content 1</TabsPanel>
+ *   <TabsPanel value="tab2">Content 2</TabsPanel>
+ * </TabsRoot>
+ *
+ * @see https://base-ui.com/react/components/tabs
+ */
 "use client";
 
 import * as React from "react";

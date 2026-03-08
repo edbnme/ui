@@ -1,3 +1,11 @@
+/**
+ * AspectRatio — Maintains a consistent width-to-height ratio for content.
+ *
+ * @example
+ * <AspectRatio ratio={16 / 9}>
+ *   <img src="/photo.jpg" alt="Landscape" />
+ * </AspectRatio>
+ */
 "use client";
 
 import * as React from "react";

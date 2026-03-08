@@ -4,8 +4,12 @@
   "type": "registry:lib",
   "title": "Static Icons",
   "description": "CSS-only icon components for static variants.",
-  "dependencies": ["@phosphor-icons/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {

@@ -1,3 +1,22 @@
+/**
+ * Popover — CSS-only popover (no motion animations).
+ * Built on @base-ui/react Popover primitive.
+ *
+ * @example
+ * <PopoverRoot>
+ *   <PopoverTrigger>Open</PopoverTrigger>
+ *   <PopoverPortal>
+ *     <PopoverPositioner>
+ *       <PopoverPopup>
+ *         <PopoverTitle>Settings</PopoverTitle>
+ *         <PopoverDescription>Configure options</PopoverDescription>
+ *       </PopoverPopup>
+ *     </PopoverPositioner>
+ *   </PopoverPortal>
+ * </PopoverRoot>
+ *
+ * @see https://base-ui.com/react/components/popover
+ */
 "use client";
 
 import * as React from "react";

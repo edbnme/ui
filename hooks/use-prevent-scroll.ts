@@ -1,3 +1,12 @@
+/**
+ * usePreventScroll — Prevents body scrolling while active (e.g., when a modal is open).
+ * Supports nested locks via a global reference counter.
+ *
+ * @param enabled - Whether scroll prevention is active
+ *
+ * @example
+ * usePreventScroll(isOpen);
+ */
 "use client";
 
 import { useLayoutEffect, useEffect, useRef } from "react";

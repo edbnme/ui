@@ -4,8 +4,13 @@
   "type": "registry:ui",
   "title": "Calendar (Static)",
   "description": "Static date picker calendar with single, multiple, and range selection modes built on react-day-picker.",
-  "dependencies": ["react-day-picker", "@phosphor-icons/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "react-day-picker",
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {

@@ -4,8 +4,13 @@
   "type": "registry:ui",
   "title": "Carousel (Static)",
   "description": "Static accessible carousel with touch/swipe support, loop mode, and keyboard navigation built on Embla Carousel.",
-  "dependencies": ["embla-carousel-react", "@phosphor-icons/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "embla-carousel-react",
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {

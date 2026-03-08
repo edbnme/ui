@@ -1,3 +1,13 @@
+/**
+ * Alert — Static alert banner with variant styles.
+ * Supports default, destructive, success, warning, and info variants.
+ *
+ * @example
+ * <Alert variant="success">
+ *   <AlertTitle>Saved</AlertTitle>
+ *   <AlertDescription>Your changes have been saved.</AlertDescription>
+ * </Alert>
+ */
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";

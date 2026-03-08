@@ -1,3 +1,15 @@
+/**
+ * Pagination — Page navigation with previous, next, and page number links.
+ *
+ * @example
+ * <Pagination>
+ *   <PaginationContent>
+ *     <PaginationItem><PaginationPrevious href="/page/1" /></PaginationItem>
+ *     <PaginationItem><PaginationLink href="/page/2">2</PaginationLink></PaginationItem>
+ *     <PaginationItem><PaginationNext href="/page/3" /></PaginationItem>
+ *   </PaginationContent>
+ * </Pagination>
+ */
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
