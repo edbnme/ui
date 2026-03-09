@@ -3,6 +3,8 @@
  * CSS variable builders shared across pull-down sub-components.
  * @module pull-down/pull-down-utils
  */
+"use client";
+
 import type { CSSProperties } from "react";
 import type {
   PullDownDirection,

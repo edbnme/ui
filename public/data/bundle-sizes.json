@@ -15,7 +15,7 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-03-08T12:27:24.496Z"
+    "computedAt": "2026-03-09T18:00:01.003Z"
   },
   "packages": [
     {
@@ -118,7 +118,7 @@
     }
   ],
   "components": {
-    "button": {
+    "animated/button": {
       "name": "button",
       "title": "Button",
       "description": "Animated button component with press feedback, loading states, and icon support.",
@@ -161,7 +161,7 @@
       ],
       "dependencyCount": 4
     },
-    "alert-dialog": {
+    "animated/alert-dialog": {
       "name": "alert-dialog",
       "title": "Alert Dialog",
       "description": "Animated modal dialog with morphing animations, focus trap, and controlled/uncontrolled state.",
@@ -197,7 +197,7 @@
       ],
       "dependencyCount": 3
     },
-    "popover": {
+    "animated/popover": {
       "name": "popover",
       "title": "Popover",
       "description": "Animated popover component with morphing transitions, focus trap, and click-outside handling.",
@@ -226,7 +226,7 @@
       ],
       "dependencyCount": 2
     },
-    "dropdown-menu": {
+    "animated/dropdown-menu": {
       "name": "dropdown-menu",
       "title": "Dropdown Menu",
       "description": "Animated dropdown menu with smooth spring animations and staggered item reveals.",
@@ -269,7 +269,7 @@
       ],
       "dependencyCount": 4
     },
-    "pull-down": {
+    "animated/pull-down": {
       "name": "pull-down",
       "title": "Pull Down Menu",
       "description": "A pull down menu with morphing animations. The trigger morphs into the menu container with spring physics.",
@@ -305,14 +305,14 @@
       ],
       "dependencyCount": 3
     },
-    "sheet": {
+    "animated/sheet": {
       "name": "sheet",
       "title": "Sheet",
       "description": "A slide-out panel component with drag-to-dismiss, multiple sides, and smooth animations.",
       "variant": "animated",
       "sizes": {
-        "minified": 90700,
-        "gzipped": 26900,
+        "minified": 240700,
+        "gzipped": 71900,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -337,11 +337,18 @@
           "gzip": 1500,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "motion",
+          "size": 150000,
+          "gzip": 45000,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 3
+      "dependencyCount": 4
     },
-    "sidebar": {
+    "animated/sidebar": {
       "name": "sidebar",
       "title": "Sidebar",
       "description": "A responsive sidebar component with collapsible states, mobile sheet mode, and keyboard shortcuts.",
@@ -370,7 +377,7 @@
       ],
       "dependencyCount": 2
     },
-    "wheel-picker": {
+    "animated/wheel-picker": {
       "name": "wheel-picker",
       "title": "Wheel Picker",
       "description": "iOS-style wheel picker with smooth inertia scrolling, infinite loop support, and keyboard navigation.",
@@ -392,7 +399,7 @@
       ],
       "dependencyCount": 1
     },
-    "shimmering-text": {
+    "animated/shimmering-text": {
       "name": "shimmering-text",
       "title": "Shimmering Text",
       "description": "Animated text with per-character color shimmer effect. Perfect for 'slide to unlock' style UIs.",
@@ -414,7 +421,7 @@
       ],
       "dependencyCount": 1
     },
-    "slide-to-unlock": {
+    "animated/slide-to-unlock": {
       "name": "slide-to-unlock",
       "title": "Slide to Unlock",
       "description": "A sleek, interactive slider inspired by the classic iPhone OS 'slide to unlock' gesture.",
@@ -436,9 +443,9 @@
       ],
       "dependencyCount": 1
     },
-    "button-static": {
+    "static/button": {
       "name": "button",
-      "title": "Button (Static)",
+      "title": "Button",
       "description": "Static button component with CSS transitions only. No motion dependency required.",
       "variant": "static",
       "sizes": {
@@ -472,9 +479,9 @@
       ],
       "dependencyCount": 3
     },
-    "alert-dialog-static": {
+    "static/alert-dialog": {
       "name": "alert-dialog",
-      "title": "Alert Dialog (Static)",
+      "title": "Alert Dialog",
       "description": "Static alert dialog built on Base UI AlertDialog with CSS transitions.",
       "variant": "static",
       "sizes": {
@@ -501,9 +508,9 @@
       ],
       "dependencyCount": 2
     },
-    "popover-static": {
+    "static/popover": {
       "name": "popover",
-      "title": "Popover (Static)",
+      "title": "Popover",
       "description": "Static popover built on Base UI Popover with CSS transitions.",
       "variant": "static",
       "sizes": {
@@ -530,14 +537,14 @@
       ],
       "dependencyCount": 2
     },
-    "dropdown-menu-static": {
+    "static/dropdown-menu": {
       "name": "dropdown-menu",
-      "title": "Dropdown Menu (Static)",
+      "title": "Dropdown Menu",
       "description": "Static dropdown menu built on Base UI Menu with full sub-menu support.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -548,18 +555,25 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "context-menu-static": {
+    "static/context-menu": {
       "name": "context-menu",
-      "title": "Context Menu (Static)",
+      "title": "Context Menu",
       "description": "Static context menu built on Base UI ContextMenu with right-click trigger.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -570,13 +584,20 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "sheet-static": {
+    "static/sheet": {
       "name": "sheet",
-      "title": "Sheet (Static)",
+      "title": "Sheet",
       "description": "Static slide-out panel built on Base UI Dialog with directional CSS transitions.",
       "variant": "static",
       "sizes": {
@@ -610,9 +631,9 @@
       ],
       "dependencyCount": 3
     },
-    "dialog-static": {
+    "static/dialog": {
       "name": "dialog",
-      "title": "Dialog (Static)",
+      "title": "Dialog",
       "description": "Static dialog/modal built on Base UI Dialog with CSS transitions.",
       "variant": "static",
       "sizes": {
@@ -639,7 +660,7 @@
       ],
       "dependencyCount": 2
     },
-    "tooltip-static": {
+    "static/tooltip": {
       "name": "tooltip",
       "title": "Tooltip",
       "description": "A tooltip component with smooth animations and configurable positioning.",
@@ -661,14 +682,14 @@
       ],
       "dependencyCount": 1
     },
-    "checkbox-static": {
+    "static/checkbox": {
       "name": "checkbox",
-      "title": "Checkbox (Static)",
+      "title": "Checkbox",
       "description": "Static checkbox built on Base UI Checkbox with indeterminate support.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -679,18 +700,25 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "checkbox-group-static": {
+    "static/checkbox-group": {
       "name": "checkbox-group",
-      "title": "Checkbox Group (Static)",
+      "title": "Checkbox Group",
       "description": "Static checkbox group built on Base UI CheckboxGroup for parent-child checkbox control.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -701,13 +729,20 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "radio-group-static": {
+    "static/radio-group": {
       "name": "radio-group",
-      "title": "Radio Group (Static)",
+      "title": "Radio Group",
       "description": "Static radio group built on Base UI RadioGroup.",
       "variant": "static",
       "sizes": {
@@ -727,9 +762,9 @@
       ],
       "dependencyCount": 1
     },
-    "switch-static": {
+    "static/switch": {
       "name": "switch",
-      "title": "Switch (Static)",
+      "title": "Switch",
       "description": "Static switch/toggle built on Base UI Switch.",
       "variant": "static",
       "sizes": {
@@ -749,9 +784,9 @@
       ],
       "dependencyCount": 1
     },
-    "toggle-static": {
+    "static/toggle": {
       "name": "toggle",
-      "title": "Toggle (Static)",
+      "title": "Toggle",
       "description": "Static toggle button built on Base UI Toggle with CVA variants.",
       "variant": "static",
       "sizes": {
@@ -778,9 +813,9 @@
       ],
       "dependencyCount": 2
     },
-    "toggle-group-static": {
+    "static/toggle-group": {
       "name": "toggle-group",
-      "title": "Toggle Group (Static)",
+      "title": "Toggle Group",
       "description": "Static toggle group built on Base UI ToggleGroup.",
       "variant": "static",
       "sizes": {
@@ -807,7 +842,7 @@
       ],
       "dependencyCount": 2
     },
-    "slider-static": {
+    "static/slider": {
       "name": "slider",
       "title": "Slider",
       "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
@@ -829,14 +864,14 @@
       ],
       "dependencyCount": 1
     },
-    "number-field-static": {
+    "static/number-field": {
       "name": "number-field",
-      "title": "Number Field (Static)",
+      "title": "Number Field",
       "description": "Static number field built on Base UI NumberField with increment/decrement.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -847,13 +882,20 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "field-static": {
+    "static/field": {
       "name": "field",
-      "title": "Field (Static)",
+      "title": "Field",
       "description": "Static form field built on Base UI Field with label, description, error, and validity.",
       "variant": "static",
       "sizes": {
@@ -873,9 +915,9 @@
       ],
       "dependencyCount": 1
     },
-    "fieldset-static": {
+    "static/fieldset": {
       "name": "fieldset",
-      "title": "Fieldset (Static)",
+      "title": "Fieldset",
       "description": "Static fieldset built on Base UI Fieldset with root and legend.",
       "variant": "static",
       "sizes": {
@@ -895,9 +937,9 @@
       ],
       "dependencyCount": 1
     },
-    "form-static": {
+    "static/form": {
       "name": "form",
-      "title": "Form (Static)",
+      "title": "Form",
       "description": "Static form built on Base UI Form.",
       "variant": "static",
       "sizes": {
@@ -917,9 +959,9 @@
       ],
       "dependencyCount": 1
     },
-    "progress-static": {
+    "static/progress": {
       "name": "progress",
-      "title": "Progress (Static)",
+      "title": "Progress",
       "description": "Static progress bar built on Base UI Progress with indeterminate state.",
       "variant": "static",
       "sizes": {
@@ -939,9 +981,9 @@
       ],
       "dependencyCount": 1
     },
-    "meter-static": {
+    "static/meter": {
       "name": "meter",
-      "title": "Meter (Static)",
+      "title": "Meter",
       "description": "Static meter/gauge built on Base UI Meter with track, indicator, label, and value.",
       "variant": "static",
       "sizes": {
@@ -961,9 +1003,9 @@
       ],
       "dependencyCount": 1
     },
-    "toast-static": {
+    "static/toast": {
       "name": "toast",
-      "title": "Toast (Static)",
+      "title": "Toast",
       "description": "Static toast notifications built on Base UI Toast with CVA variants.",
       "variant": "static",
       "sizes": {
@@ -997,14 +1039,14 @@
       ],
       "dependencyCount": 3
     },
-    "accordion-static": {
+    "static/accordion": {
       "name": "accordion",
-      "title": "Accordion (Static)",
+      "title": "Accordion",
       "description": "Static accordion built on Base UI Accordion with CSS height transitions.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1015,13 +1057,20 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "collapsible-static": {
+    "static/collapsible": {
       "name": "collapsible",
-      "title": "Collapsible (Static)",
+      "title": "Collapsible",
       "description": "Static collapsible built on Base UI Collapsible with CSS height transitions.",
       "variant": "static",
       "sizes": {
@@ -1041,9 +1090,9 @@
       ],
       "dependencyCount": 1
     },
-    "tabs-static": {
+    "static/tabs": {
       "name": "tabs",
-      "title": "Tabs (Static)",
+      "title": "Tabs",
       "description": "Static tabs built on Base UI Tabs with animated indicator.",
       "variant": "static",
       "sizes": {
@@ -1063,7 +1112,7 @@
       ],
       "dependencyCount": 1
     },
-    "scroll-area-static": {
+    "static/scroll-area": {
       "name": "scroll-area",
       "title": "Scroll Area",
       "description": "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
@@ -1085,14 +1134,14 @@
       ],
       "dependencyCount": 1
     },
-    "select-static": {
+    "static/select": {
       "name": "select",
-      "title": "Select (Static)",
+      "title": "Select",
       "description": "Static select built on Base UI Select with scroll arrows.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1103,18 +1152,25 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "toolbar-static": {
+    "static/toolbar": {
       "name": "toolbar",
-      "title": "Toolbar (Static)",
+      "title": "Toolbar",
       "description": "Static toolbar built on Base UI Toolbar with button, group, link, input, and separator.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 89500,
+        "gzipped": 26500,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1125,13 +1181,20 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "navigation-menu-static": {
+    "static/navigation-menu": {
       "name": "navigation-menu",
-      "title": "Navigation Menu (Static)",
+      "title": "Navigation Menu",
       "description": "Static navigation menu built on Base UI NavigationMenu with viewport and CSS transitions.",
       "variant": "static",
       "sizes": {
@@ -1151,9 +1214,9 @@
       ],
       "dependencyCount": 1
     },
-    "preview-card-static": {
+    "static/preview-card": {
       "name": "preview-card",
-      "title": "Preview Card (Static)",
+      "title": "Preview Card",
       "description": "Static preview card built on Base UI PreviewCard with hover trigger and arrow.",
       "variant": "static",
       "sizes": {
@@ -1173,9 +1236,9 @@
       ],
       "dependencyCount": 1
     },
-    "sidebar-static": {
+    "static/sidebar": {
       "name": "sidebar",
-      "title": "Sidebar (Static)",
+      "title": "Sidebar",
       "description": "A responsive sidebar component with Base UI sheet and tooltip. No motion dependency required.",
       "variant": "static",
       "sizes": {
@@ -1209,9 +1272,9 @@
       ],
       "dependencyCount": 3
     },
-    "drawer-static": {
+    "static/drawer": {
       "name": "drawer",
-      "title": "Drawer (Static)",
+      "title": "Drawer",
       "description": "Static drawer/bottom sheet component built on Base UI Dialog with snap points and nested support.",
       "variant": "static",
       "sizes": {
@@ -1231,14 +1294,14 @@
       ],
       "dependencyCount": 1
     },
-    "input-otp-static": {
+    "static/input-otp": {
       "name": "input-otp",
-      "title": "Input OTP (Static)",
+      "title": "Input OTP",
       "description": "Static OTP/verification code input built on input-otp with customizable slots.",
       "variant": "static",
       "sizes": {
-        "minified": 9599,
-        "gzipped": 3860,
+        "minified": 10799,
+        "gzipped": 4260,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1249,13 +1312,20 @@
           "gzip": 3860,
           "version": "1.4.2",
           "source": "bundlephobia"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
-    "hover-card-static": {
+    "static/hover-card": {
       "name": "hover-card",
-      "title": "Hover Card (Static)",
+      "title": "Hover Card",
       "description": "Static hover card built on Base UI PreviewCard with arrow and CSS transitions.",
       "variant": "static",
       "sizes": {
@@ -1275,9 +1345,9 @@
       ],
       "dependencyCount": 1
     },
-    "resizable-static": {
+    "static/resizable": {
       "name": "resizable",
-      "title": "Resizable (Static)",
+      "title": "Resizable",
       "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
       "variant": "static",
       "sizes": {
@@ -1304,9 +1374,9 @@
       ],
       "dependencyCount": 2
     },
-    "menubar-static": {
+    "static/menubar": {
       "name": "menubar",
-      "title": "Menubar (Static)",
+      "title": "Menubar",
       "description": "Static menubar built on Base UI Menubar and Menu with keyboard navigation and sub-menus.",
       "variant": "static",
       "sizes": {
@@ -1333,9 +1403,9 @@
       ],
       "dependencyCount": 2
     },
-    "autocomplete-static": {
+    "static/autocomplete": {
       "name": "autocomplete",
-      "title": "Autocomplete (Static)",
+      "title": "Autocomplete",
       "description": "Static autocomplete/combobox built on Base UI Autocomplete with filtering and groups.",
       "variant": "static",
       "sizes": {
@@ -1362,9 +1432,9 @@
       ],
       "dependencyCount": 2
     },
-    "calendar-static": {
+    "static/calendar": {
       "name": "calendar",
-      "title": "Calendar (Static)",
+      "title": "Calendar",
       "description": "Static date picker calendar with single, multiple, and range selection modes built on react-day-picker.",
       "variant": "static",
       "sizes": {
@@ -1391,9 +1461,9 @@
       ],
       "dependencyCount": 2
     },
-    "carousel-static": {
+    "static/carousel": {
       "name": "carousel",
-      "title": "Carousel (Static)",
+      "title": "Carousel",
       "description": "Static accessible carousel with touch/swipe support, loop mode, and keyboard navigation built on Embla Carousel.",
       "variant": "static",
       "sizes": {
@@ -1420,9 +1490,9 @@
       ],
       "dependencyCount": 2
     },
-    "chart-static": {
+    "static/chart": {
       "name": "chart",
-      "title": "Chart (Static)",
+      "title": "Chart",
       "description": "Composable, themed chart components built on Recharts with CSS variable theming, pre-styled tooltips, and legends.",
       "variant": "static",
       "sizes": {
@@ -1442,7 +1512,7 @@
       ],
       "dependencyCount": 1
     },
-    "alert-static": {
+    "static/alert": {
       "name": "alert",
       "title": "Alert",
       "description": "Alert component with CVA variants for default, destructive, success, warning, and info states.",
@@ -1464,7 +1534,7 @@
       ],
       "dependencyCount": 1
     },
-    "aspect-ratio-static": {
+    "static/aspect-ratio": {
       "name": "aspect-ratio",
       "title": "Aspect Ratio",
       "description": "A CSS aspect-ratio wrapper component for maintaining consistent proportions.",
@@ -1478,7 +1548,7 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "avatar-static": {
+    "static/avatar": {
       "name": "avatar",
       "title": "Avatar",
       "description": "Composable avatar component with sizes, status indicators, and group stacking support.",
@@ -1507,21 +1577,29 @@
       ],
       "dependencyCount": 2
     },
-    "input-static": {
+    "static/input": {
       "name": "input",
       "title": "Input",
       "description": "A styled input component with focus states, validation support, and file input styling.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
+        "minified": 85000,
+        "gzipped": 25000,
         "selfSize": 2000,
         "selfGzip": 600
       },
-      "dependencies": [],
-      "dependencyCount": 0
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
     },
-    "label-static": {
+    "static/label": {
       "name": "label",
       "title": "Label",
       "description": "A styled label component with peer/group disabled state support.",
@@ -1535,7 +1613,7 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "badge-static": {
+    "static/badge": {
       "name": "badge",
       "title": "Badge",
       "description": "Badge component with CVA variants for default, secondary, destructive, and outline styles.",
@@ -1557,7 +1635,7 @@
       ],
       "dependencyCount": 1
     },
-    "textarea-static": {
+    "static/textarea": {
       "name": "textarea",
       "title": "Textarea",
       "description": "A styled textarea component with auto-resize support.",
@@ -1571,21 +1649,29 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "card-static": {
+    "static/card": {
       "name": "card",
       "title": "Card",
       "description": "Card component with header, title, description, content, and footer sub-components.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
+        "minified": 4500,
+        "gzipped": 1500,
         "selfSize": 2000,
         "selfGzip": 600
       },
-      "dependencies": [],
-      "dependencyCount": 0
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
     },
-    "table-static": {
+    "static/table": {
       "name": "table",
       "title": "Table",
       "description": "Table component with header, body, footer, row, head, cell, and caption sub-components.",
@@ -1599,7 +1685,7 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "breadcrumb-static": {
+    "static/breadcrumb": {
       "name": "breadcrumb",
       "title": "Breadcrumb",
       "description": "Breadcrumb navigation component with list, item, link, page, separator, and ellipsis.",
@@ -1613,7 +1699,7 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "pagination-static": {
+    "static/pagination": {
       "name": "pagination",
       "title": "Pagination",
       "description": "Pagination component with previous, next, links, and ellipsis.",
@@ -1627,7 +1713,7 @@
       "dependencies": [],
       "dependencyCount": 0
     },
-    "separator-static": {
+    "static/separator": {
       "name": "separator",
       "title": "Separator",
       "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
@@ -1649,7 +1735,7 @@
       ],
       "dependencyCount": 1
     },
-    "skeleton-static": {
+    "static/skeleton": {
       "name": "skeleton",
       "title": "Skeleton",
       "description": "A loading placeholder component with pulse animation for content loading states.",
@@ -1671,7 +1757,7 @@
         "gzipped": 51900
       },
       "static": {
-        "name": "button-static",
+        "name": "button",
         "gzipped": 6900
       },
       "difference": {
@@ -1686,7 +1772,7 @@
         "gzipped": 50400
       },
       "static": {
-        "name": "alert-dialog-static",
+        "name": "alert-dialog",
         "gzipped": 25400
       },
       "difference": {
@@ -1701,7 +1787,7 @@
         "gzipped": 50000
       },
       "static": {
-        "name": "popover-static",
+        "name": "popover",
         "gzipped": 25400
       },
       "difference": {
@@ -1716,28 +1802,28 @@
         "gzipped": 75400
       },
       "static": {
-        "name": "dropdown-menu-static",
-        "gzipped": 25000
+        "name": "dropdown-menu",
+        "gzipped": 25400
       },
       "difference": {
-        "bytes": 50400,
-        "percent": 67,
-        "savings": "49.2 KB"
+        "bytes": 50000,
+        "percent": 66,
+        "savings": "48.8 KB"
       }
     },
     "sheet": {
       "animated": {
         "name": "sheet",
-        "gzipped": 26900
+        "gzipped": 71900
       },
       "static": {
-        "name": "sheet-static",
+        "name": "sheet",
         "gzipped": 26900
       },
       "difference": {
-        "bytes": 0,
-        "percent": 0,
-        "savings": "0 B"
+        "bytes": 45000,
+        "percent": 63,
+        "savings": "43.9 KB"
       }
     },
     "sidebar": {
@@ -1746,7 +1832,7 @@
         "gzipped": 1900
       },
       "static": {
-        "name": "sidebar-static",
+        "name": "sidebar",
         "gzipped": 26900
       },
       "difference": {

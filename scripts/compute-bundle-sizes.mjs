@@ -255,7 +255,9 @@ function computeComponentSizes(registry, packageSizes) {
     // Skip non-UI components
     if (item.type !== "registry:ui") continue;
 
-    const componentName = item.name.replace("-static", "");
+    // Names are already clean (no -static suffix). Use variant-qualified keys
+    // to avoid collisions between animated and static variants of the same component.
+    const componentName = item.name;
     const variant = item.variant || "shared";
 
     // Calculate sizes for this component
@@ -279,9 +281,8 @@ function computeComponentSizes(registry, packageSizes) {
     const totalSize = deps.reduce((sum, d) => sum + d.size, 0);
     const totalGzip = deps.reduce((sum, d) => sum + d.gzip, 0);
 
-    // Determine component key
-    const key =
-      variant === "static" ? `${componentName}-static` : componentName;
+    // Use variant-qualified key to avoid animated/static collisions
+    const key = `${variant}/${componentName}`;
 
     components[key] = {
       name: componentName,
@@ -309,9 +310,9 @@ function computeVariantComparisons(components) {
     ([, c]) => c.variant === "animated"
   );
 
-  for (const [name, animated] of animatedComponents) {
-    const staticName = `${animated.name}-static`;
-    const staticComponent = components[staticName];
+  for (const [key, animated] of animatedComponents) {
+    const staticKey = `static/${animated.name}`;
+    const staticComponent = components[staticKey];
 
     if (staticComponent) {
       const sizeDiff = animated.sizes.gzipped - staticComponent.sizes.gzipped;
@@ -319,11 +320,11 @@ function computeVariantComparisons(components) {
 
       comparisons[animated.name] = {
         animated: {
-          name,
+          name: animated.name,
           gzipped: animated.sizes.gzipped,
         },
         static: {
-          name: staticName,
+          name: animated.name,
           gzipped: staticComponent.sizes.gzipped,
         },
         difference: {

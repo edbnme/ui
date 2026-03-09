@@ -45,7 +45,7 @@ export const staticSharedComponents = {
     title: "Input",
     description:
       "A styled input component with focus states, validation support, and file input styling.",
-    dependencies: [],
+    dependencies: ["@base-ui/react"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [{ path: "components/ui/static/input.tsx", type: "registry:ui" }],
@@ -88,7 +88,7 @@ export const staticSharedComponents = {
     title: "Card",
     description:
       "Card component with header, title, description, content, and footer sub-components.",
-    dependencies: [],
+    dependencies: ["class-variance-authority"],
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [{ path: "components/ui/static/card.tsx", type: "registry:ui" }],

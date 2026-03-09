@@ -1,3 +1,5 @@
+"use client";
+
 // Alert Dialog - Public API
 // Re-exports all components, types, and context from split files
 

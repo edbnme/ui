@@ -1,3 +1,5 @@
+"use client";
+
 export { PopoverRoot, PopoverTrigger, PopoverLabel } from "./popover";
 export type {
   PopoverRootProps,

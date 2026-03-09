@@ -8,6 +8,8 @@
  *   <AlertDescription>Your changes have been saved.</AlertDescription>
  * </Alert>
  */
+"use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";

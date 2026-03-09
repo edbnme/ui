@@ -1,3 +1,5 @@
+"use client";
+
 export { useSidebar } from "./sidebar-context";
 export { SidebarProvider } from "./sidebar-provider";
 export { Sidebar, SidebarTrigger, SidebarRail, SidebarInset } from "./sidebar";

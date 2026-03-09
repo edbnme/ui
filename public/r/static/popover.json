@@ -1,8 +1,8 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "popover-static",
+  "name": "popover",
   "type": "registry:ui",
-  "title": "Popover (Static)",
+  "title": "Popover",
   "description": "Static popover built on Base UI Popover with CSS transitions.",
   "dependencies": [
     "@base-ui/react",

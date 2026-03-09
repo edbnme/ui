@@ -47,14 +47,24 @@ const __dirname = dirname(__filename);
 const root = join(__dirname, "..");
 
 // =============================================================================
-// MERGED REGISTRY
+// COMPONENT REGISTRY — Entry-list approach (avoids name collisions between variants)
 // =============================================================================
 
-// Merge all components
-const allComponents = {
-  ...animatedComponents,
-  ...staticComponents,
-  ...staticSharedComponents,
+// Build a flat list of [name, config] entries from all component sets.
+// Animated and static components can share the same name (e.g. "button")
+// because they are distinguished by their `variant` field.
+const allEntries = [
+  ...Object.entries(animatedComponents),
+  ...Object.entries(staticComponents),
+  ...Object.entries(staticSharedComponents),
+  ...Object.entries(libraryComponents),
+  ...Object.entries(hookComponents),
+];
+
+// Lookup map for inline dependency resolution.
+// Only library and hook components are referenced as inlineDependencies,
+// so there are no name collisions here.
+const inlineLookup = {
   ...libraryComponents,
   ...hookComponents,
 };
@@ -76,10 +86,10 @@ function escapeContent(content) {
 function updateRegistryFile(name, config, outputDir) {
   const allFiles = [...config.files];
 
-  // Add files from inline dependencies
+  // Add files from inline dependencies (resolved from library/hook components)
   if (config.inlineDependencies && config.inlineDependencies.length > 0) {
     config.inlineDependencies.forEach((depName) => {
-      const depConfig = allComponents[depName];
+      const depConfig = inlineLookup[depName];
       if (depConfig) {
         allFiles.push(...depConfig.files);
       }
@@ -127,12 +137,15 @@ function updateRegistryFile(name, config, outputDir) {
   const variantDir = join(outputDir, config.variant || "static");
   ensureDir(variantDir);
 
-  const outputPath = join(variantDir, `${name.replace("-static", "")}.json`);
+  const outputPath = join(variantDir, `${name}.json`);
   writeFileSync(outputPath, JSON.stringify(registryItem, null, 2), "utf-8");
 
   // Also write to flat structure for backwards compatibility
+  // For components that exist in both animated and static, animated wins the flat slot
   const flatPath = join(outputDir, `${name}.json`);
-  writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
+  if (config.variant === "animated" || !existsSync(flatPath)) {
+    writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
+  }
 
   console.log(`[OK] Updated ${config.variant}/${name}.json`);
 }
@@ -143,7 +156,7 @@ function updateMainRegistry(outputDir) {
   const staticItems = [];
   const sharedItems = [];
 
-  Object.entries(allComponents).forEach(([name, config]) => {
+  allEntries.forEach(([name, config]) => {
     const item = {
       name,
       type: config.type,
@@ -221,7 +234,7 @@ ensureDir(join(outputDir, "animated"));
 ensureDir(join(outputDir, "static"));
 
 // Update individual component registry files
-Object.entries(allComponents).forEach(([name, config]) => {
+allEntries.forEach(([name, config]) => {
   try {
     updateRegistryFile(name, config, outputDir);
   } catch (error) {

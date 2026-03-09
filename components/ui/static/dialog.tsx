@@ -7,15 +7,17 @@
  *   <DialogTrigger>Open</DialogTrigger>
  *   <DialogPortal>
  *     <DialogBackdrop />
- *     <DialogPopup>
- *       <DialogHeader>
- *         <DialogTitle>Dialog Title</DialogTitle>
- *         <DialogDescription>Description text</DialogDescription>
- *       </DialogHeader>
- *       <DialogFooter>
- *         <DialogClose>Close</DialogClose>
- *       </DialogFooter>
- *     </DialogPopup>
+ *     <DialogViewport>
+ *       <DialogPopup>
+ *         <DialogHeader>
+ *           <DialogTitle>Dialog Title</DialogTitle>
+ *           <DialogDescription>Description text</DialogDescription>
+ *         </DialogHeader>
+ *         <DialogFooter>
+ *           <DialogClose>Close</DialogClose>
+ *         </DialogFooter>
+ *       </DialogPopup>
+ *     </DialogViewport>
  *   </DialogPortal>
  * </DialogRoot>
  *
@@ -80,6 +82,25 @@ const DialogBackdrop = React.forwardRef<
   />
 ));
 DialogBackdrop.displayName = "DialogBackdrop";
+
+// =============================================================================
+// DIALOG VIEWPORT
+// =============================================================================
+
+const DialogViewport = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Dialog.Viewport>
+>(({ className, ...props }, ref) => (
+  <Dialog.Viewport
+    ref={ref}
+    className={cn(
+      "fixed inset-0 z-50 flex items-center justify-center overflow-auto",
+      className
+    )}
+    {...props}
+  />
+));
+DialogViewport.displayName = "DialogViewport";
 
 // =============================================================================
 // DIALOG POPUP
@@ -203,6 +224,7 @@ export {
   DialogTrigger,
   DialogPortal,
   DialogBackdrop,
+  DialogViewport,
   DialogPopup,
   DialogTitle,
   DialogDescription,

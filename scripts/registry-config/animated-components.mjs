@@ -204,6 +204,7 @@ export const animatedComponents = {
       "@base-ui/react",
       "@phosphor-icons/react",
       "class-variance-authority",
+      "motion",
     ],
     registryDependencies: ["utils"],
     inlineDependencies: ["motion-provider", "icons"],

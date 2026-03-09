@@ -5,12 +5,16 @@
  * @example
  * <AlertDialogRoot>
  *   <AlertDialogTrigger>Delete</AlertDialogTrigger>
- *   <AlertDialogBackdrop />
- *   <AlertDialogPopup>
- *     <AlertDialogTitle>Confirm</AlertDialogTitle>
- *     <AlertDialogDescription>Are you sure?</AlertDialogDescription>
- *     <AlertDialogClose>Cancel</AlertDialogClose>
- *   </AlertDialogPopup>
+ *   <AlertDialogPortal>
+ *     <AlertDialogBackdrop />
+ *     <AlertDialogViewport>
+ *       <AlertDialogPopup>
+ *         <AlertDialogTitle>Confirm</AlertDialogTitle>
+ *         <AlertDialogDescription>Are you sure?</AlertDialogDescription>
+ *         <AlertDialogClose>Cancel</AlertDialogClose>
+ *       </AlertDialogPopup>
+ *     </AlertDialogViewport>
+ *   </AlertDialogPortal>
  * </AlertDialogRoot>
  *
  * @see https://base-ui.com/react/components/alert-dialog
@@ -73,6 +77,25 @@ const AlertDialogBackdrop = React.forwardRef<
   />
 ));
 AlertDialogBackdrop.displayName = "AlertDialogBackdrop";
+
+// =============================================================================
+// ALERT DIALOG VIEWPORT
+// =============================================================================
+
+const AlertDialogViewport = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof AlertDialog.Viewport>
+>(({ className, ...props }, ref) => (
+  <AlertDialog.Viewport
+    ref={ref}
+    className={cn(
+      "fixed inset-0 z-50 flex items-center justify-center overflow-auto",
+      className
+    )}
+    {...props}
+  />
+));
+AlertDialogViewport.displayName = "AlertDialogViewport";
 
 // =============================================================================
 // ALERT DIALOG POPUP
@@ -210,6 +233,7 @@ export {
   AlertDialogTrigger,
   AlertDialogPortal,
   AlertDialogBackdrop,
+  AlertDialogViewport,
   AlertDialogPopup,
   AlertDialogTitle,
   AlertDialogDescription,

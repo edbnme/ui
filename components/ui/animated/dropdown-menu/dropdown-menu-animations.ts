@@ -3,6 +3,8 @@
  * timing constants for the dropdown menu system.
  * @module dropdown-menu/dropdown-menu-animations
  */
+"use client";
+
 import type { Transition, Variants } from "motion/react";
 
 // =============================================================================

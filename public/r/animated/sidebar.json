@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "components/ui/sidebar/index.tsx",
-      "content": "export { useSidebar } from \"./sidebar-context\";\r\nexport { SidebarProvider } from \"./sidebar-provider\";\r\nexport { Sidebar, SidebarTrigger, SidebarRail, SidebarInset } from \"./sidebar\";\r\nexport {\r\n  SidebarInput,\r\n  SidebarHeader,\r\n  SidebarFooter,\r\n  SidebarSeparator,\r\n  SidebarContent,\r\n} from \"./sidebar-structure\";\r\nexport {\r\n  SidebarGroup,\r\n  SidebarGroupLabel,\r\n  SidebarGroupAction,\r\n  SidebarGroupContent,\r\n} from \"./sidebar-group\";\r\nexport {\r\n  SidebarMenu,\r\n  SidebarMenuItem,\r\n  SidebarMenuButton,\r\n  SidebarMenuAction,\r\n  SidebarMenuBadge,\r\n  SidebarMenuSkeleton,\r\n  SidebarMenuSub,\r\n  SidebarMenuSubItem,\r\n  SidebarMenuSubButton,\r\n} from \"./sidebar-menu\";\r\n",
+      "content": "\"use client\";\r\n\r\nexport { useSidebar } from \"./sidebar-context\";\r\nexport { SidebarProvider } from \"./sidebar-provider\";\r\nexport { Sidebar, SidebarTrigger, SidebarRail, SidebarInset } from \"./sidebar\";\r\nexport {\r\n  SidebarInput,\r\n  SidebarHeader,\r\n  SidebarFooter,\r\n  SidebarSeparator,\r\n  SidebarContent,\r\n} from \"./sidebar-structure\";\r\nexport {\r\n  SidebarGroup,\r\n  SidebarGroupLabel,\r\n  SidebarGroupAction,\r\n  SidebarGroupContent,\r\n} from \"./sidebar-group\";\r\nexport {\r\n  SidebarMenu,\r\n  SidebarMenuItem,\r\n  SidebarMenuButton,\r\n  SidebarMenuAction,\r\n  SidebarMenuBadge,\r\n  SidebarMenuSkeleton,\r\n  SidebarMenuSub,\r\n  SidebarMenuSubItem,\r\n  SidebarMenuSubButton,\r\n} from \"./sidebar-menu\";\r\n",
       "type": "registry:ui"
     },
     {

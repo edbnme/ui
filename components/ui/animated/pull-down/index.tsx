@@ -14,6 +14,7 @@
  *
  * @packageDocumentation
  */
+"use client";
 
 // Re-export all types
 export type {

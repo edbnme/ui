@@ -145,6 +145,13 @@ const ToastAction = React.forwardRef<
 ToastAction.displayName = "ToastAction";
 
 // =============================================================================
+// TOAST MANAGER (imperative API re-exports)
+// =============================================================================
+
+const createToastManager = Toast.createToastManager;
+const useToastManager = Toast.useToastManager;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -156,4 +163,6 @@ export {
   ToastDescription,
   ToastClose,
   ToastAction,
+  createToastManager,
+  useToastManager,
 };
