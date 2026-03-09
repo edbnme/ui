@@ -1,6 +1,6 @@
 # SOURCE-AVAILABLE LICENSE AGREEMENT
 
-**Copyright © edbn 2025**
+**Copyright © edbn 2026**
 
 **ui.edbn.me** is dual-licensed for maximum flexibility while sustaining development:
 
@@ -50,7 +50,7 @@ You must retain all copyright notices and include the following attribution in y
 
 ```
 Built with ui.edbn.me
-Copyright © edbn 2025
+Copyright © edbn 2026
 ```
 
 ### Source Code Availability
@@ -237,5 +237,5 @@ Purchase a commercial license before launching your commercial product.
 
 ---
 
-**Last Updated**: December 2025  
-**Copyright © 2024-2025 edbn/ui contributors. All rights reserved.**
+**Last Updated**: December 2026  
+**Copyright © 2024-2026 edbn/ui contributors. All rights reserved.**
