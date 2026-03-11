@@ -1,3 +1,26 @@
+/**
+ * Select — Dropdown select menu for single-value selection.
+ * Built on @base-ui/react Select primitive.
+ *
+ * @example
+ * <SelectRoot>
+ *   <SelectTrigger>
+ *     <SelectValue placeholder="Choose..." />
+ *   </SelectTrigger>
+ *   <SelectPortal>
+ *     <SelectPositioner>
+ *       <SelectPopup>
+ *         <SelectList>
+ *           <SelectItem value="a">Option A</SelectItem>
+ *           <SelectItem value="b">Option B</SelectItem>
+ *         </SelectList>
+ *       </SelectPopup>
+ *     </SelectPositioner>
+ *   </SelectPortal>
+ * </SelectRoot>
+ *
+ * @see https://base-ui.com/react/components/select
+ */
 "use client";
 
 import * as React from "react";

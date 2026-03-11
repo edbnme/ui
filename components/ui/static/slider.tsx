@@ -1,3 +1,12 @@
+/**
+ * Slider — Range input for selecting numeric values within a range.
+ * Built on @base-ui/react Slider primitive.
+ *
+ * @example
+ * <Slider defaultValue={50} min={0} max={100} />
+ *
+ * @see https://base-ui.com/react/components/slider
+ */
 "use client";
 
 import * as React from "react";
@@ -122,3 +131,6 @@ export {
   SliderThumb,
   SliderValue,
 };
+
+// Backward-compatible alias (formerly shared/)
+export { SliderRoot as Slider };

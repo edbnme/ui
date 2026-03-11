@@ -1,3 +1,17 @@
+/**
+ * Switch — Toggle switch for binary on/off states.
+ * Built on @base-ui/react Switch primitive.
+ *
+ * @example
+ * <label>
+ *   <SwitchRoot defaultChecked>
+ *     <SwitchThumb />
+ *   </SwitchRoot>
+ *   Dark mode
+ * </label>
+ *
+ * @see https://base-ui.com/react/components/switch
+ */
 "use client";
 
 import * as React from "react";

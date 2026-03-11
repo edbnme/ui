@@ -1,3 +1,16 @@
+/**
+ * Fieldset — Groups related form fields with a legend.
+ * Built on @base-ui/react Fieldset primitive.
+ *
+ * @example
+ * <FieldsetRoot>
+ *   <FieldsetLegend>Personal Information</FieldsetLegend>
+ *   <FieldRoot name="name">...</FieldRoot>
+ *   <FieldRoot name="email">...</FieldRoot>
+ * </FieldsetRoot>
+ *
+ * @see https://base-ui.com/react/components/fieldset
+ */
 "use client";
 
 import * as React from "react";

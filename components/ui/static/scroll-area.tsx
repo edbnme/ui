@@ -1,22 +1,35 @@
+/**
+ * ScrollArea — Custom scrollbar overlay for scrollable content.
+ * Built on @base-ui/react ScrollArea primitive.
+ *
+ * @example
+ * <ScrollArea className="h-64">
+ *   <ScrollAreaViewport>Long content...</ScrollAreaViewport>
+ *   <ScrollBar orientation="vertical" />
+ * </ScrollArea>
+ *
+ * @see https://base-ui.com/react/components/scroll-area
+ */
 "use client";
 
 import * as React from "react";
-import { ScrollArea } from "@base-ui/react/scroll-area";
+import { ScrollArea as ScrollAreaPrimitive } from "@base-ui/react/scroll-area";
 import { cn } from "@/lib/utils";
 
 // =============================================================================
 // SCROLL AREA ROOT
 // =============================================================================
 
-const ScrollAreaRoot = React.forwardRef<HTMLDivElement, ScrollArea.Root.Props>(
-  ({ className, ...props }, ref) => (
-    <ScrollArea.Root
-      ref={ref}
-      className={cn("relative overflow-hidden", className)}
-      {...props}
-    />
-  )
-);
+const ScrollAreaRoot = React.forwardRef<
+  HTMLDivElement,
+  ScrollAreaPrimitive.Root.Props
+>(({ className, ...props }, ref) => (
+  <ScrollAreaPrimitive.Root
+    ref={ref}
+    className={cn("relative overflow-hidden", className)}
+    {...props}
+  />
+));
 ScrollAreaRoot.displayName = "ScrollAreaRoot";
 
 // =============================================================================
@@ -25,9 +38,9 @@ ScrollAreaRoot.displayName = "ScrollAreaRoot";
 
 const ScrollAreaViewport = React.forwardRef<
   HTMLDivElement,
-  ScrollArea.Viewport.Props
+  ScrollAreaPrimitive.Viewport.Props
 >(({ className, ...props }, ref) => (
-  <ScrollArea.Viewport
+  <ScrollAreaPrimitive.Viewport
     ref={ref}
     className={cn("h-full w-full", className)}
     {...props}
@@ -41,9 +54,9 @@ ScrollAreaViewport.displayName = "ScrollAreaViewport";
 
 const ScrollAreaScrollbar = React.forwardRef<
   HTMLDivElement,
-  ScrollArea.Scrollbar.Props
+  ScrollAreaPrimitive.Scrollbar.Props
 >(({ className, orientation = "vertical", ...props }, ref) => (
-  <ScrollArea.Scrollbar
+  <ScrollAreaPrimitive.Scrollbar
     ref={ref}
     orientation={orientation}
     className={cn(
@@ -64,9 +77,9 @@ ScrollAreaScrollbar.displayName = "ScrollAreaScrollbar";
 
 const ScrollAreaThumb = React.forwardRef<
   HTMLDivElement,
-  ScrollArea.Thumb.Props
+  ScrollAreaPrimitive.Thumb.Props
 >(({ className, ...props }, ref) => (
-  <ScrollArea.Thumb
+  <ScrollAreaPrimitive.Thumb
     ref={ref}
     className={cn("relative flex-1 rounded-full bg-border", className)}
     {...props}
@@ -84,3 +97,7 @@ export {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
 };
+
+// Backward-compatible aliases (formerly shared/)
+export { ScrollAreaRoot as ScrollArea };
+export { ScrollAreaScrollbar as ScrollBar };

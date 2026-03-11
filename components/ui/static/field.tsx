@@ -1,3 +1,17 @@
+/**
+ * Field — Form field wrapper with label, description, and error support.
+ * Built on @base-ui/react Field primitive.
+ *
+ * @example
+ * <FieldRoot name="email">
+ *   <FieldLabel>Email</FieldLabel>
+ *   <FieldControl render={<Input />} />
+ *   <FieldDescription>We'll never share your email.</FieldDescription>
+ *   <FieldError />
+ * </FieldRoot>
+ *
+ * @see https://base-ui.com/react/components/field
+ */
 "use client";
 
 import * as React from "react";

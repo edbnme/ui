@@ -1,3 +1,16 @@
+/**
+ * Toolbar — Grouped set of controls (buttons, toggles, separators, links).
+ * Built on @base-ui/react Toolbar primitive.
+ *
+ * @example
+ * <Toolbar>
+ *   <ToolbarButton>Bold</ToolbarButton>
+ *   <ToolbarSeparator />
+ *   <ToolbarToggle value="italic">Italic</ToolbarToggle>
+ * </Toolbar>
+ *
+ * @see https://base-ui.com/react/components/toolbar
+ */
 "use client";
 
 import * as React from "react";

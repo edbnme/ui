@@ -1,3 +1,18 @@
+/**
+ * NumberField — Numeric input with increment/decrement controls and scrub area.
+ * Built on @base-ui/react NumberField primitive.
+ *
+ * @example
+ * <NumberFieldRoot defaultValue={1}>
+ *   <NumberFieldGroup>
+ *     <NumberFieldDecrement />
+ *     <NumberFieldInput />
+ *     <NumberFieldIncrement />
+ *   </NumberFieldGroup>
+ * </NumberFieldRoot>
+ *
+ * @see https://base-ui.com/react/components/number-field
+ */
 "use client";
 
 import * as React from "react";

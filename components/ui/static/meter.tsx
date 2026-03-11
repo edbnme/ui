@@ -1,3 +1,18 @@
+/**
+ * Meter — Displays a value within a known range (e.g., disk usage, signal strength).
+ * Built on @base-ui/react Meter primitive.
+ *
+ * @example
+ * <MeterRoot value={75}>
+ *   <MeterLabel>Storage</MeterLabel>
+ *   <MeterTrack>
+ *     <MeterIndicator />
+ *   </MeterTrack>
+ *   <MeterValue />
+ * </MeterRoot>
+ *
+ * @see https://base-ui.com/react/components/meter
+ */
 "use client";
 
 import * as React from "react";

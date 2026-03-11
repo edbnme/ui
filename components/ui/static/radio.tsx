@@ -1,3 +1,15 @@
+/**
+ * Radio — Radio button group for single-choice selection.
+ * Built on @base-ui/react RadioGroup and Radio primitives.
+ *
+ * @example
+ * <RadioGroupRoot defaultValue="option-1">
+ *   <RadioItem value="option-1" label="Option 1" />
+ *   <RadioItem value="option-2" label="Option 2" />
+ * </RadioGroupRoot>
+ *
+ * @see https://base-ui.com/react/components/radio
+ */
 "use client";
 
 import * as React from "react";

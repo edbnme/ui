@@ -5,8 +5,8 @@
 // These components use motion/react for spring animations and transitions.
 // For static alternatives without motion dependencies, see ../static/
 //
-// IMPORTANT: Animated components should import shared components from ../shared/
-// to maintain proper isolation between variants.
+// IMPORTANT: This file ONLY exports animated components.
+// Static components must be imported from @/components/ui/static/*
 //
 
 export * from "./button";
@@ -17,21 +17,3 @@ export * from "./pull-down";
 export * from "./sheet";
 export * from "./shimmering-text";
 export * from "./slide-to-unlock";
-
-// Re-export shared components for convenience
-export {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-  AvatarGroup,
-  Input,
-  ScrollArea,
-  ScrollBar,
-  Separator,
-  Skeleton,
-  Slider,
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider,
-} from "../shared";

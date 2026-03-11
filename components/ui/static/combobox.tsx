@@ -1,3 +1,26 @@
+/**
+ * Combobox — Searchable dropdown for filtering and selecting from a list.
+ * Built on @base-ui/react Combobox primitive.
+ *
+ * @example
+ * <ComboboxRoot>
+ *   <ComboboxAnchor>
+ *     <ComboboxInput placeholder="Search..." />
+ *     <ComboboxTrigger />
+ *   </ComboboxAnchor>
+ *   <ComboboxPortal>
+ *     <ComboboxPositioner>
+ *       <ComboboxPopup>
+ *         <ComboboxList>
+ *           <ComboboxItem value="a">Option A</ComboboxItem>
+ *         </ComboboxList>
+ *       </ComboboxPopup>
+ *     </ComboboxPositioner>
+ *   </ComboboxPortal>
+ * </ComboboxRoot>
+ *
+ * @see https://base-ui.com/react/components/combobox
+ */
 "use client";
 
 import * as React from "react";

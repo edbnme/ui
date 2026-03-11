@@ -1,3 +1,17 @@
+/**
+ * Checkbox — Checkbox input with indeterminate state support.
+ * Built on @base-ui/react Checkbox primitive.
+ *
+ * @example
+ * <label>
+ *   <CheckboxRoot>
+ *     <CheckboxIndicator />
+ *   </CheckboxRoot>
+ *   Accept terms
+ * </label>
+ *
+ * @see https://base-ui.com/react/components/checkbox
+ */
 "use client";
 
 import * as React from "react";

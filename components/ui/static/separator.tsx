@@ -1,3 +1,12 @@
+/**
+ * Separator — Visual divider between content sections.
+ * Built on @base-ui/react Separator primitive.
+ *
+ * @example
+ * <SeparatorRoot orientation="horizontal" />
+ *
+ * @see https://base-ui.com/react/components/separator
+ */
 "use client";
 
 import * as React from "react";
@@ -31,3 +40,6 @@ SeparatorRoot.displayName = "SeparatorRoot";
 // =============================================================================
 
 export { SeparatorRoot };
+
+// Backward-compatible alias (formerly shared/)
+export { SeparatorRoot as Separator };

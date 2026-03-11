@@ -32,7 +32,7 @@
     "test:run": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@base-ui/react": "^1.1.0",
+    "@base-ui/react": "^1.2.0",
     "@phosphor-icons/react": "^2.1.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

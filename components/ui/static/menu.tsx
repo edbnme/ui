@@ -1,3 +1,22 @@
+/**
+ * Menu — Dropdown menu with items, checkboxes, radios, groups, and submenus.
+ * Built on @base-ui/react Menu primitive.
+ *
+ * @example
+ * <MenuRoot>
+ *   <MenuTrigger>Open Menu</MenuTrigger>
+ *   <MenuPortal>
+ *     <MenuPositioner>
+ *       <MenuPopup>
+ *         <MenuItem>Settings</MenuItem>
+ *         <MenuItem>Profile</MenuItem>
+ *       </MenuPopup>
+ *     </MenuPositioner>
+ *   </MenuPortal>
+ * </MenuRoot>
+ *
+ * @see https://base-ui.com/react/components/menu
+ */
 "use client";
 
 import * as React from "react";

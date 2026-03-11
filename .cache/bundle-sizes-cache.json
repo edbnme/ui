@@ -7,17 +7,18 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771947848647
+    "timestamp": 1772969565099
   },
   "@ncdai/react-wheel-picker": {
     "data": {
       "name": "@ncdai/react-wheel-picker",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "1.2.0",
+      "size": 11468,
+      "gzip": 4393,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     },
-    "timestamp": 1771947853366
+    "timestamp": 1772969565912
   },
   "@phosphor-icons/react": {
     "data": {
@@ -28,7 +29,7 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1771947853366
+    "timestamp": 1772969565913
   },
   "class-variance-authority": {
     "data": {
@@ -38,7 +39,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771947853366
+    "timestamp": 1772969565913
   },
   "clsx": {
     "data": {
@@ -48,27 +49,29 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771947853366
+    "timestamp": 1772969565913
   },
   "embla-carousel-react": {
     "data": {
       "name": "embla-carousel-react",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "8.6.0",
+      "size": 17975,
+      "gzip": 7277,
+      "dependencyCount": 2,
+      "source": "bundlephobia"
     },
-    "timestamp": 1771947857410
+    "timestamp": 1772969566443
   },
   "input-otp": {
     "data": {
       "name": "input-otp",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "1.4.2",
+      "size": 9599,
+      "gzip": 3860,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     },
-    "timestamp": 1771947861835
+    "timestamp": 1772969566909
   },
   "motion": {
     "data": {
@@ -78,29 +81,29 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771947861835
+    "timestamp": 1772969566909
   },
   "react-day-picker": {
     "data": {
       "name": "react-day-picker",
-      "version": "9.13.0",
-      "size": 67287,
-      "gzip": 19376,
-      "dependencyCount": 3,
+      "version": "9.14.0",
+      "size": 67432,
+      "gzip": 2450,
+      "dependencyCount": 4,
       "source": "bundlephobia"
     },
-    "timestamp": 1771947862244
+    "timestamp": 1772969567294
   },
   "react-resizable-panels": {
     "data": {
       "name": "react-resizable-panels",
-      "version": "4.6.2",
-      "size": 31524,
-      "gzip": 10201,
+      "version": "4.7.2",
+      "size": 31443,
+      "gzip": 10406,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1771947862657
+    "timestamp": 1772969567736
   },
   "recharts": {
     "data": {
@@ -111,7 +114,7 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "timestamp": 1771947863148
+    "timestamp": 1772969567886
   },
   "tailwind-merge": {
     "data": {
@@ -121,7 +124,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771947863148
+    "timestamp": 1772969567887
   },
   "tw-animate-css": {
     "data": {
@@ -131,6 +134,6 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1771947863148
+    "timestamp": 1772969567887
   }
 }

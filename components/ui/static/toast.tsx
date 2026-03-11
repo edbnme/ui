@@ -1,3 +1,15 @@
+/**
+ * Toast — Notification toasts with provider, viewport, and configurable actions.
+ * Built on @base-ui/react Toast primitive.
+ *
+ * @example
+ * <ToastProvider>
+ *   <ToastViewport />
+ *   // Toasts triggered via useToastManager
+ * </ToastProvider>
+ *
+ * @see https://base-ui.com/react/components/toast
+ */
 "use client";
 
 import * as React from "react";
@@ -133,6 +145,13 @@ const ToastAction = React.forwardRef<
 ToastAction.displayName = "ToastAction";
 
 // =============================================================================
+// TOAST MANAGER (imperative API re-exports)
+// =============================================================================
+
+const createToastManager = Toast.createToastManager;
+const useToastManager = Toast.useToastManager;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -144,4 +163,6 @@ export {
   ToastDescription,
   ToastClose,
   ToastAction,
+  createToastManager,
+  useToastManager,
 };

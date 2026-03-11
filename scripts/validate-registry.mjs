@@ -34,7 +34,7 @@ const NON_UI_TYPES = ["registry:hook", "registry:lib", "registry:component"];
 
 /** Files exempt from hardcoded color warnings */
 const COLOR_EXEMPTIONS = [
-  "components/ui/shared/avatar.tsx",
+  "components/ui/static/avatar.tsx",
   "components/ui/animated/slide-to-unlock.tsx",
   "maps/",
 ];

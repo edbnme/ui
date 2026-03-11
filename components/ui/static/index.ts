@@ -13,6 +13,7 @@ export {
   AlertDialogTrigger,
   AlertDialogPortal,
   AlertDialogBackdrop,
+  AlertDialogViewport,
   AlertDialogPopup,
   AlertDialogTitle,
   AlertDialogDescription,
@@ -36,6 +37,7 @@ export {
   DialogTrigger,
   DialogPortal,
   DialogBackdrop,
+  DialogViewport,
   DialogPopup,
   DialogTitle,
   DialogDescription,
@@ -102,6 +104,8 @@ export {
   TooltipPositioner,
   TooltipPopup,
   TooltipArrow,
+  Tooltip,
+  TooltipContent,
 } from "./tooltip";
 
 // Collapsible
@@ -122,6 +126,7 @@ export {
   SliderIndicator,
   SliderThumb,
   SliderValue,
+  Slider,
 } from "./slider";
 
 // Popover
@@ -139,7 +144,7 @@ export {
 } from "./popover";
 
 // Input
-export { InputRoot } from "./input";
+export { InputRoot, Input } from "./input";
 
 // Number Field
 export {
@@ -152,7 +157,7 @@ export {
 } from "./number-field";
 
 // Separator
-export { SeparatorRoot } from "./separator";
+export { SeparatorRoot, Separator } from "./separator";
 
 // Toggle
 export {
@@ -168,6 +173,8 @@ export {
   ScrollAreaViewport,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
+  ScrollArea,
+  ScrollBar,
 } from "./scroll-area";
 
 // Field
@@ -193,7 +200,7 @@ export {
 } from "./accordion";
 
 // Avatar
-export { AvatarRoot, AvatarImage, AvatarFallback } from "./avatar";
+export { AvatarRoot, AvatarImage, AvatarFallback, Avatar } from "./avatar";
 
 // Toast
 export {
@@ -204,6 +211,8 @@ export {
   ToastDescription,
   ToastClose,
   ToastAction,
+  createToastManager,
+  useToastManager,
 } from "./toast";
 
 // Preview Card
@@ -280,3 +289,206 @@ export {
   CheckboxGroupItem,
   CheckboxGroupLabel,
 } from "./checkbox-group";
+
+// Alert (formerly shared/)
+export * from "./alert";
+
+// Aspect Ratio (formerly shared/)
+export * from "./aspect-ratio";
+
+// Badge (formerly shared/)
+export * from "./badge";
+
+// Breadcrumb (formerly shared/)
+export * from "./breadcrumb";
+
+// Card (formerly shared/)
+export * from "./card";
+
+// Label (formerly shared/)
+export * from "./label";
+
+// Pagination (formerly shared/)
+export * from "./pagination";
+
+// Skeleton (formerly shared/)
+export * from "./skeleton";
+
+// Table (formerly shared/)
+export * from "./table";
+
+// Textarea (formerly shared/)
+export * from "./textarea";
+
+// ---- New components (Phase 3) ----
+
+// Button
+export { Button, buttonVariants } from "./button";
+
+// Sheet
+export {
+  SheetRoot,
+  SheetTrigger,
+  SheetPortal,
+  SheetBackdrop,
+  SheetPopup,
+  SheetClose,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetBody,
+  SheetFooter,
+  sheetVariants,
+} from "./sheet";
+
+// Drawer
+export {
+  DrawerRoot,
+  DrawerTrigger,
+  DrawerPortal,
+  DrawerBackdrop,
+  DrawerViewport,
+  DrawerPopup,
+  DrawerHandle,
+  DrawerContent,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerClose,
+} from "./drawer";
+
+// Hover Card
+export {
+  HoverCardRoot,
+  HoverCardTrigger,
+  HoverCardPortal,
+  HoverCardPositioner,
+  HoverCardPopup,
+  HoverCardArrow,
+} from "./hover-card";
+
+// Input OTP
+export {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+  InputOTPSeparator,
+} from "./input-otp";
+
+// Toggle Group (dedicated file)
+export {
+  ToggleGroupRoot as ToggleGroupRootStandalone,
+  ToggleGroupItem as ToggleGroupItemStandalone,
+  toggleGroupItemVariants,
+} from "./toggle-group";
+
+// Menubar
+export {
+  MenubarRoot,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarPortal,
+  MenubarPositioner,
+  MenubarPopup,
+  MenubarItem,
+  MenubarCheckboxItem,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarGroup,
+  MenubarGroupLabel,
+  MenubarSeparator,
+  MenubarSubmenuRoot,
+  MenubarSubmenuTrigger,
+  MenubarShortcut,
+} from "./menubar";
+
+// Navigation Menu
+export {
+  NavMenuRoot,
+  NavMenuList,
+  NavMenuItem,
+  NavMenuTrigger,
+  NavMenuIcon,
+  NavMenuContent,
+  NavMenuLink,
+  NavMenuPortal,
+  NavMenuBackdrop,
+  NavMenuPositioner,
+  NavMenuPopup,
+  NavMenuArrow,
+  NavMenuViewport,
+} from "./navigation-menu";
+
+// Resizable
+export {
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from "./resizable";
+
+// Autocomplete
+export {
+  AutocompleteRoot,
+  AutocompleteInput,
+  AutocompleteTrigger,
+  AutocompletePortal,
+  AutocompletePositioner,
+  AutocompletePopup,
+  AutocompleteList,
+  AutocompleteItem,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteEmpty,
+} from "./autocomplete";
+
+// Calendar
+export { Calendar, type CalendarProps } from "./calendar";
+
+// Carousel
+export {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "./carousel";
+
+// Chart
+export {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  ChartStyle,
+  type ChartConfig,
+} from "./chart";
+
+// Sidebar
+export {
+  useSidebar as useSidebarStatic,
+  SidebarProvider as SidebarProviderStatic,
+  Sidebar as SidebarStatic,
+  SidebarTrigger as SidebarTriggerStatic,
+  SidebarRail as SidebarRailStatic,
+  SidebarInset as SidebarInsetStatic,
+  SidebarInput as SidebarInputStatic,
+  SidebarHeader as SidebarHeaderStatic,
+  SidebarFooter as SidebarFooterStatic,
+  SidebarSeparator as SidebarSeparatorStatic,
+  SidebarContent as SidebarContentStatic,
+  SidebarGroup as SidebarGroupStatic,
+  SidebarGroupLabel as SidebarGroupLabelStatic,
+  SidebarGroupAction as SidebarGroupActionStatic,
+  SidebarGroupContent as SidebarGroupContentStatic,
+  SidebarMenu as SidebarMenuStatic,
+  SidebarMenuItem as SidebarMenuItemStatic,
+  sidebarMenuButtonVariants,
+  SidebarMenuButton as SidebarMenuButtonStatic,
+  SidebarMenuAction as SidebarMenuActionStatic,
+  SidebarMenuBadge as SidebarMenuBadgeStatic,
+  SidebarMenuSkeleton as SidebarMenuSkeletonStatic,
+  SidebarMenuSub as SidebarMenuSubStatic,
+  SidebarMenuSubItem as SidebarMenuSubItemStatic,
+  SidebarMenuSubButton as SidebarMenuSubButtonStatic,
+} from "./sidebar";

@@ -1,3 +1,15 @@
+/**
+ * Toaster — Sonner toast notification wrapper with theme integration.
+ * Styled wrapper around the `sonner` library that inherits the current theme.
+ *
+ * @example
+ * // In your root layout:
+ * <Toaster />
+ *
+ * // To trigger a toast:
+ * import { toast } from "sonner";
+ * toast.success("Saved!");
+ */
 "use client";
 
 import { Toaster as Sonner } from "sonner";

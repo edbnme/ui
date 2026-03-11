@@ -1,3 +1,15 @@
+/**
+ * Collapsible — Expandable/collapsible content region.
+ * Built on @base-ui/react Collapsible primitive.
+ *
+ * @example
+ * <CollapsibleRoot>
+ *   <CollapsibleTrigger>Toggle</CollapsibleTrigger>
+ *   <CollapsiblePanel>Hidden content</CollapsiblePanel>
+ * </CollapsibleRoot>
+ *
+ * @see https://base-ui.com/react/components/collapsible
+ */
 "use client";
 
 import * as React from "react";

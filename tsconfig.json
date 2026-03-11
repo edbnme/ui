@@ -16,7 +16,7 @@
       "@/components/ui/*": ["./components/ui/*"],
       "@/components/ui/animated/*": ["./components/ui/animated/*"],
       "@/components/ui/base-ui/*": ["./components/ui/base-ui/*"],
-      "@/components/ui/shared/*": ["./components/ui/shared/*"],
+      "@/components/ui/static/*": ["./components/ui/static/*"],
       "@/hooks/*": ["./hooks/*"],
       "@/lib/*": ["./lib/*"],
       "@/lib/styles/*": ["./lib/styles/*"],
