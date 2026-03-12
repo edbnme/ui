@@ -67,6 +67,18 @@ const ToastRoot = React.forwardRef<
 ToastRoot.displayName = "ToastRoot";
 
 // =============================================================================
+// TOAST CONTENT
+// =============================================================================
+
+const ToastContent = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof Toast.Content>
+>(({ className, ...props }, ref) => (
+  <Toast.Content ref={ref} className={cn("flex-1", className)} {...props} />
+));
+ToastContent.displayName = "ToastContent";
+
+// =============================================================================
 // TOAST TITLE
 // =============================================================================
 
@@ -152,13 +164,21 @@ const createToastManager = Toast.createToastManager;
 const useToastManager = Toast.useToastManager;
 
 // =============================================================================
+// TOAST PORTAL
+// =============================================================================
+
+const ToastPortal = Toast.Portal;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
 export {
   ToastProvider,
+  ToastPortal,
   ToastViewport,
   ToastRoot,
+  ToastContent,
   ToastTitle,
   ToastDescription,
   ToastClose,

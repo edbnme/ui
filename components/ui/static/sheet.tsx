@@ -7,16 +7,18 @@
  *   <SheetTrigger>Open</SheetTrigger>
  *   <SheetPortal>
  *     <SheetBackdrop />
- *     <SheetPopup side="right">
- *       <SheetHeader>
- *         <SheetTitle>Sheet Title</SheetTitle>
- *         <SheetDescription>Description</SheetDescription>
- *       </SheetHeader>
- *       <SheetBody>Content here</SheetBody>
- *       <SheetFooter>
- *         <SheetClose>Close</SheetClose>
- *       </SheetFooter>
- *     </SheetPopup>
+ *     <SheetViewport>
+ *       <SheetPopup side="right">
+ *         <SheetHeader>
+ *           <SheetTitle>Sheet Title</SheetTitle>
+ *           <SheetDescription>Description</SheetDescription>
+ *         </SheetHeader>
+ *         <SheetBody>Content here</SheetBody>
+ *         <SheetFooter>
+ *           <SheetClose>Close</SheetClose>
+ *         </SheetFooter>
+ *       </SheetPopup>
+ *     </SheetViewport>
  *   </SheetPortal>
  * </SheetRoot>
  *
@@ -82,6 +84,22 @@ const SheetBackdrop = React.forwardRef<
   />
 ));
 SheetBackdrop.displayName = "SheetBackdrop";
+
+// =============================================================================
+// SHEET VIEWPORT
+// =============================================================================
+
+const SheetViewport = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Dialog.Viewport>
+>(({ className, ...props }, ref) => (
+  <Dialog.Viewport
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+SheetViewport.displayName = "SheetViewport";
 
 // =============================================================================
 // SHEET POPUP VARIANTS
@@ -253,6 +271,7 @@ export {
   SheetTrigger,
   SheetPortal,
   SheetBackdrop,
+  SheetViewport,
   SheetPopup,
   SheetClose,
   SheetHeader,

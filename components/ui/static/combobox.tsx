@@ -249,6 +249,58 @@ const ComboboxEmpty = React.forwardRef<
 ComboboxEmpty.displayName = "ComboboxEmpty";
 
 // =============================================================================
+// COMBOBOX ADDITIONAL SUB-COMPONENTS
+// =============================================================================
+
+const ComboboxArrow = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof Combobox.Arrow>
+>(({ className, ...props }, ref) => (
+  <Combobox.Arrow
+    ref={ref}
+    className={cn(
+      "relative -top-px -z-10",
+      "[&>svg]:fill-popover [&>svg]:stroke-border",
+      className
+    )}
+    {...props}
+  />
+));
+ComboboxArrow.displayName = "ComboboxArrow";
+
+const ComboboxBackdrop = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof Combobox.Backdrop>
+>(({ className, ...props }, ref) => (
+  <Combobox.Backdrop
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+ComboboxBackdrop.displayName = "ComboboxBackdrop";
+
+const ComboboxIcon = Combobox.Icon;
+const ComboboxValue = Combobox.Value;
+const ComboboxItemIndicator = Combobox.ItemIndicator;
+const ComboboxSeparator = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof Combobox.Separator>
+>(({ className, ...props }, ref) => (
+  <Combobox.Separator
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    {...props}
+  />
+));
+ComboboxSeparator.displayName = "ComboboxSeparator";
+
+const ComboboxStatus = Combobox.Status;
+const ComboboxChip = Combobox.Chip;
+const ComboboxChips = Combobox.Chips;
+const ComboboxChipRemove = Combobox.ChipRemove;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -266,4 +318,14 @@ export {
   ComboboxGroup,
   ComboboxGroupLabel,
   ComboboxEmpty,
+  ComboboxArrow,
+  ComboboxBackdrop,
+  ComboboxIcon,
+  ComboboxValue,
+  ComboboxItemIndicator,
+  ComboboxSeparator,
+  ComboboxStatus,
+  ComboboxChip,
+  ComboboxChips,
+  ComboboxChipRemove,
 };

@@ -179,6 +179,25 @@ const PopoverClose = React.forwardRef<HTMLButtonElement, Popover.Close.Props>(
 PopoverClose.displayName = "PopoverClose";
 
 // =============================================================================
+// POPOVER VIEWPORT (optional — for multi-trigger animated content transitions)
+// =============================================================================
+
+const PopoverViewport = React.forwardRef<
+  HTMLDivElement,
+  Popover.Viewport.Props
+>(({ className, ...props }, ref) => (
+  <Popover.Viewport ref={ref} className={className} {...props} />
+));
+PopoverViewport.displayName = "PopoverViewport";
+
+// =============================================================================
+// POPOVER HANDLE
+// =============================================================================
+
+const PopoverHandle = Popover.Handle;
+const createPopoverHandle = Popover.createHandle;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -193,4 +212,7 @@ export {
   PopoverTitle,
   PopoverDescription,
   PopoverClose,
+  PopoverViewport,
+  PopoverHandle,
+  createPopoverHandle,
 };

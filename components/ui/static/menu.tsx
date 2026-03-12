@@ -270,6 +270,71 @@ const MenuShortcut = ({
 MenuShortcut.displayName = "MenuShortcut";
 
 // =============================================================================
+// MENU BACKDROP
+// =============================================================================
+
+const MenuBackdrop = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Menu.Backdrop>
+>(({ className, ...props }, ref) => (
+  <Menu.Backdrop
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+MenuBackdrop.displayName = "MenuBackdrop";
+
+// =============================================================================
+// MENU ARROW
+// =============================================================================
+
+const MenuArrow = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Menu.Arrow>
+>(({ className, ...props }, ref) => (
+  <Menu.Arrow
+    ref={ref}
+    className={cn(
+      "relative -top-px -z-10",
+      "[&>svg]:fill-popover [&>svg]:stroke-border",
+      className
+    )}
+    {...props}
+  />
+));
+MenuArrow.displayName = "MenuArrow";
+
+// =============================================================================
+// MENU LINK ITEM
+// =============================================================================
+
+const MenuLinkItem = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<typeof Menu.LinkItem>
+>(({ className, ...props }, ref) => (
+  <Menu.LinkItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
+      "transition-colors",
+      "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+      "data-disabled:pointer-events-none data-disabled:opacity-50",
+      className
+    )}
+    {...props}
+  />
+));
+MenuLinkItem.displayName = "MenuLinkItem";
+
+// =============================================================================
+// MENU HANDLE
+// =============================================================================
+
+const MenuHandle = Menu.Handle;
+const createMenuHandle = Menu.createHandle;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -289,4 +354,9 @@ export {
   MenuSubmenuRoot,
   MenuSubmenuTrigger,
   MenuShortcut,
+  MenuBackdrop,
+  MenuArrow,
+  MenuLinkItem,
+  MenuHandle,
+  createMenuHandle,
 };

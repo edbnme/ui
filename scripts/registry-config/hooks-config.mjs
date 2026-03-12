@@ -57,14 +57,4 @@ export const hookComponents = {
     files: [{ path: "hooks/use-mobile.ts", type: "registry:hook" }],
     variant: "static",
   },
-  "use-ripple": {
-    type: "registry:hook",
-    title: "useRipple",
-    description: "Hook for creating ripple effects on click interactions.",
-    dependencies: [],
-    registryDependencies: [],
-    inlineDependencies: [],
-    files: [{ path: "hooks/use-ripple.ts", type: "registry:hook" }],
-    variant: "static",
-  },
 };

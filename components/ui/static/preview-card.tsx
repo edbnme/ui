@@ -113,6 +113,41 @@ const PreviewCardArrow = React.forwardRef<
 PreviewCardArrow.displayName = "PreviewCardArrow";
 
 // =============================================================================
+// PREVIEW CARD VIEWPORT (optional — for multi-trigger animated content transitions)
+// =============================================================================
+
+const PreviewCardViewport = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof PreviewCard.Viewport>
+>(({ className, ...props }, ref) => (
+  <PreviewCard.Viewport ref={ref} className={className} {...props} />
+));
+PreviewCardViewport.displayName = "PreviewCardViewport";
+
+// =============================================================================
+// PREVIEW CARD BACKDROP
+// =============================================================================
+
+const PreviewCardBackdrop = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof PreviewCard.Backdrop>
+>(({ className, ...props }, ref) => (
+  <PreviewCard.Backdrop
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+PreviewCardBackdrop.displayName = "PreviewCardBackdrop";
+
+// =============================================================================
+// PREVIEW CARD HANDLE
+// =============================================================================
+
+const PreviewCardHandle = PreviewCard.Handle;
+const createPreviewCardHandle = PreviewCard.createHandle;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -123,4 +158,8 @@ export {
   PreviewCardPositioner,
   PreviewCardPopup,
   PreviewCardArrow,
+  PreviewCardViewport,
+  PreviewCardBackdrop,
+  PreviewCardHandle,
+  createPreviewCardHandle,
 };

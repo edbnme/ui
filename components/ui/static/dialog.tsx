@@ -216,6 +216,13 @@ const DialogFooter = ({
 DialogFooter.displayName = "DialogFooter";
 
 // =============================================================================
+// DIALOG HANDLE (for programmatic open/close from detached triggers)
+// =============================================================================
+
+const DialogHandle = Dialog.Handle;
+const createDialogHandle = Dialog.createHandle;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -231,4 +238,6 @@ export {
   DialogClose,
   DialogHeader,
   DialogFooter,
+  DialogHandle,
+  createDialogHandle,
 };

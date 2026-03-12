@@ -19,7 +19,7 @@ export const staticComponents = {
       "tw-animate-css",
     ],
     registryDependencies: ["utils"],
-    inlineDependencies: ["use-ripple", "icons-static", "primitives"],
+    inlineDependencies: ["icons-static", "primitives"],
     files: [{ path: "components/ui/static/button.tsx", type: "registry:ui" }],
     variant: "static",
   },

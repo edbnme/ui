@@ -264,6 +264,64 @@ const ContextMenuShortcut = ({
 ContextMenuShortcut.displayName = "ContextMenuShortcut";
 
 // =============================================================================
+// CONTEXT MENU BACKDROP
+// =============================================================================
+
+const ContextMenuBackdrop = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof ContextMenu.Backdrop>
+>(({ className, ...props }, ref) => (
+  <ContextMenu.Backdrop
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+ContextMenuBackdrop.displayName = "ContextMenuBackdrop";
+
+// =============================================================================
+// CONTEXT MENU ARROW
+// =============================================================================
+
+const ContextMenuArrow = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof ContextMenu.Arrow>
+>(({ className, ...props }, ref) => (
+  <ContextMenu.Arrow
+    ref={ref}
+    className={cn(
+      "relative -top-px -z-10",
+      "[&>svg]:fill-popover [&>svg]:stroke-border",
+      className
+    )}
+    {...props}
+  />
+));
+ContextMenuArrow.displayName = "ContextMenuArrow";
+
+// =============================================================================
+// CONTEXT MENU LINK ITEM
+// =============================================================================
+
+const ContextMenuLinkItem = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentPropsWithoutRef<typeof ContextMenu.LinkItem>
+>(({ className, ...props }, ref) => (
+  <ContextMenu.LinkItem
+    ref={ref}
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
+      "transition-colors",
+      "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+      "data-disabled:pointer-events-none data-disabled:opacity-50",
+      className
+    )}
+    {...props}
+  />
+));
+ContextMenuLinkItem.displayName = "ContextMenuLinkItem";
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -283,4 +341,7 @@ export {
   ContextMenuSubmenuRoot,
   ContextMenuSubmenuTrigger,
   ContextMenuShortcut,
+  ContextMenuBackdrop,
+  ContextMenuArrow,
+  ContextMenuLinkItem,
 };

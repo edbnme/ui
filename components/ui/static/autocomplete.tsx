@@ -217,6 +217,55 @@ const AutocompleteEmpty = React.forwardRef<
 AutocompleteEmpty.displayName = "AutocompleteEmpty";
 
 // =============================================================================
+// AUTOCOMPLETE ADDITIONAL SUB-COMPONENTS (via Combobox wrapping)
+// =============================================================================
+
+const AutocompleteArrow = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof Combobox.Arrow>
+>(({ className, ...props }, ref) => (
+  <Combobox.Arrow
+    ref={ref}
+    className={cn(
+      "relative -top-px -z-10",
+      "[&>svg]:fill-popover [&>svg]:stroke-border",
+      className
+    )}
+    {...props}
+  />
+));
+AutocompleteArrow.displayName = "AutocompleteArrow";
+
+const AutocompleteBackdrop = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof Combobox.Backdrop>
+>(({ className, ...props }, ref) => (
+  <Combobox.Backdrop
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+AutocompleteBackdrop.displayName = "AutocompleteBackdrop";
+
+const AutocompleteIcon = Combobox.Icon;
+const AutocompleteValue = Combobox.Value;
+const AutocompleteItemIndicator = Combobox.ItemIndicator;
+const AutocompleteSeparator = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<typeof Combobox.Separator>
+>(({ className, ...props }, ref) => (
+  <Combobox.Separator
+    ref={ref}
+    className={cn("-mx-1 my-1 h-px bg-muted", className)}
+    {...props}
+  />
+));
+AutocompleteSeparator.displayName = "AutocompleteSeparator";
+
+const AutocompleteStatus = Combobox.Status;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -232,4 +281,11 @@ export {
   AutocompleteGroup,
   AutocompleteGroupLabel,
   AutocompleteEmpty,
+  AutocompleteArrow,
+  AutocompleteBackdrop,
+  AutocompleteIcon,
+  AutocompleteValue,
+  AutocompleteItemIndicator,
+  AutocompleteSeparator,
+  AutocompleteStatus,
 };

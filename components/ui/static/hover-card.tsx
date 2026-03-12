@@ -126,6 +126,41 @@ const HoverCardArrow = React.forwardRef<
 HoverCardArrow.displayName = "HoverCardArrow";
 
 // =============================================================================
+// HOVER CARD VIEWPORT (optional — for multi-trigger animated content transitions)
+// =============================================================================
+
+const HoverCardViewport = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof PreviewCard.Viewport>
+>(({ className, ...props }, ref) => (
+  <PreviewCard.Viewport ref={ref} className={className} {...props} />
+));
+HoverCardViewport.displayName = "HoverCardViewport";
+
+// =============================================================================
+// HOVER CARD BACKDROP
+// =============================================================================
+
+const HoverCardBackdrop = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof PreviewCard.Backdrop>
+>(({ className, ...props }, ref) => (
+  <PreviewCard.Backdrop
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+HoverCardBackdrop.displayName = "HoverCardBackdrop";
+
+// =============================================================================
+// HOVER CARD HANDLE
+// =============================================================================
+
+const HoverCardHandle = PreviewCard.Handle;
+const createHoverCardHandle = PreviewCard.createHandle;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -136,4 +171,8 @@ export {
   HoverCardPositioner,
   HoverCardPopup,
   HoverCardArrow,
+  HoverCardViewport,
+  HoverCardBackdrop,
+  HoverCardHandle,
+  createHoverCardHandle,
 };

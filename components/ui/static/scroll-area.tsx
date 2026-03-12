@@ -49,6 +49,22 @@ const ScrollAreaViewport = React.forwardRef<
 ScrollAreaViewport.displayName = "ScrollAreaViewport";
 
 // =============================================================================
+// SCROLL AREA CONTENT
+// =============================================================================
+
+const ScrollAreaContent = React.forwardRef<
+  HTMLDivElement,
+  ScrollAreaPrimitive.Content.Props
+>(({ className, ...props }, ref) => (
+  <ScrollAreaPrimitive.Content
+    ref={ref}
+    className={cn("table", className)}
+    {...props}
+  />
+));
+ScrollAreaContent.displayName = "ScrollAreaContent";
+
+// =============================================================================
 // SCROLL AREA SCROLLBAR
 // =============================================================================
 
@@ -88,14 +104,32 @@ const ScrollAreaThumb = React.forwardRef<
 ScrollAreaThumb.displayName = "ScrollAreaThumb";
 
 // =============================================================================
+// SCROLL AREA CORNER
+// =============================================================================
+
+const ScrollAreaCorner = React.forwardRef<
+  HTMLDivElement,
+  ScrollAreaPrimitive.Corner.Props
+>(({ className, ...props }, ref) => (
+  <ScrollAreaPrimitive.Corner
+    ref={ref}
+    className={cn("bg-border", className)}
+    {...props}
+  />
+));
+ScrollAreaCorner.displayName = "ScrollAreaCorner";
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
 export {
   ScrollAreaRoot,
   ScrollAreaViewport,
+  ScrollAreaContent,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
+  ScrollAreaCorner,
 };
 
 // Backward-compatible aliases (formerly shared/)

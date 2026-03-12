@@ -1,11 +1,10 @@
 /**
  * Component Variant Index
  *
- * IMPORTANT: This project uses isolated component variants.
- * Import components explicitly from their variant folders:
+ * IMPORTANT: This project uses CSS-only (static) components.
+ * Import components from the static folder:
  *
- *   Animated (motion/react): @/components/ui/animated/button
- *   Static (CSS-only):       @/components/ui/static/button
+ *   Static (CSS-only): @/components/ui/static/button
  *
  * Standalone components (no variant) are exported below.
  *
@@ -13,14 +12,13 @@
  */
 
 // =============================================================================
-// STANDALONE COMPONENTS (not part of animated/static variant system)
+// STANDALONE COMPONENTS (not part of variant system)
 // =============================================================================
 
 export { Toaster } from "./sonner";
-export { WheelPicker } from "./wheel-picker";
 
 // =============================================================================
 // VARIANT TYPES
 // =============================================================================
 
-export type ComponentVariant = "animated" | "static";
+export type ComponentVariant = "static";

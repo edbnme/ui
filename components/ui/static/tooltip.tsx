@@ -110,6 +110,25 @@ const TooltipArrow = React.forwardRef<
 TooltipArrow.displayName = "TooltipArrow";
 
 // =============================================================================
+// TOOLTIP VIEWPORT (optional — for multi-trigger animated content transitions)
+// =============================================================================
+
+const TooltipViewport = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Viewport>
+>(({ className, ...props }, ref) => (
+  <TooltipPrimitive.Viewport ref={ref} className={className} {...props} />
+));
+TooltipViewport.displayName = "TooltipViewport";
+
+// =============================================================================
+// TOOLTIP HANDLE
+// =============================================================================
+
+const TooltipHandle = TooltipPrimitive.Handle;
+const createTooltipHandle = TooltipPrimitive.createHandle;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -121,6 +140,9 @@ export {
   TooltipPositioner,
   TooltipPopup,
   TooltipArrow,
+  TooltipViewport,
+  TooltipHandle,
+  createTooltipHandle,
 };
 
 // Backward-compatible aliases (formerly shared/)

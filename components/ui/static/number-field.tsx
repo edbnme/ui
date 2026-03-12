@@ -135,6 +135,12 @@ const NumberFieldScrubArea = React.forwardRef<
 NumberFieldScrubArea.displayName = "NumberFieldScrubArea";
 
 // =============================================================================
+// NUMBER FIELD SCRUB AREA CURSOR
+// =============================================================================
+
+const NumberFieldScrubAreaCursor = NumberField.ScrubAreaCursor;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -145,4 +151,5 @@ export {
   NumberFieldInput,
   NumberFieldIncrement,
   NumberFieldScrubArea,
+  NumberFieldScrubAreaCursor,
 };

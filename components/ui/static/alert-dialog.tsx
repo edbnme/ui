@@ -225,6 +225,13 @@ const AlertDialogFooter = React.forwardRef<
 AlertDialogFooter.displayName = "AlertDialogFooter";
 
 // =============================================================================
+// ALERT DIALOG HANDLE (for programmatic open/close from detached triggers)
+// =============================================================================
+
+const AlertDialogHandle = AlertDialog.Handle;
+const createAlertDialogHandle = AlertDialog.createHandle;
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -241,4 +248,6 @@ export {
   AlertDialogAction,
   AlertDialogHeader,
   AlertDialogFooter,
+  AlertDialogHandle,
+  createAlertDialogHandle,
 };

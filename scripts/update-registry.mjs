@@ -1,8 +1,8 @@
 /**
  * Registry Update Script
  *
- * This script generates the component registry JSON files for both
- * animated and static component variants.
+ * This script generates the component registry JSON files for
+ * static (CSS-only) component variants.
  *
  * CROSS-REFERENCE: The docs/explorer presentation registry is in
  * src/components/site/docs/explorer/component-registry.ts.
@@ -12,17 +12,9 @@
  *
  * Output Structure:
  *   public/r/
- *   ├── animated/
- *   │   ├── button.json
- *   │   ├── alert-dialog.json
- *   │   └── ...
  *   ├── static/
  *   │   ├── button.json
  *   │   ├── alert-dialog.json
- *   │   └── ...
- *   ├── shared/
- *   │   ├── avatar.json
- *   │   ├── input.json
  *   │   └── ...
  *   ├── registry.json (main index)
  *   └── [legacy flat structure for backwards compatibility]
@@ -35,7 +27,6 @@ import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 // Registry configuration imports (split into separate files for maintainability)
-import { animatedComponents } from "./registry-config/animated-components.mjs";
 import { staticComponents } from "./registry-config/static-components.mjs";
 import { staticSharedComponents } from "./registry-config/shared-components.mjs";
 import { libraryComponents } from "./registry-config/library-components.mjs";
@@ -51,10 +42,7 @@ const root = join(__dirname, "..");
 // =============================================================================
 
 // Build a flat list of [name, config] entries from all component sets.
-// Animated and static components can share the same name (e.g. "button")
-// because they are distinguished by their `variant` field.
 const allEntries = [
-  ...Object.entries(animatedComponents),
   ...Object.entries(staticComponents),
   ...Object.entries(staticSharedComponents),
   ...Object.entries(libraryComponents),
@@ -141,9 +129,8 @@ function updateRegistryFile(name, config, outputDir) {
   writeFileSync(outputPath, JSON.stringify(registryItem, null, 2), "utf-8");
 
   // Also write to flat structure for backwards compatibility
-  // For components that exist in both animated and static, animated wins the flat slot
   const flatPath = join(outputDir, `${name}.json`);
-  if (config.variant === "animated" || !existsSync(flatPath)) {
+  if (!existsSync(flatPath)) {
     writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
   }
 
@@ -151,44 +138,24 @@ function updateRegistryFile(name, config, outputDir) {
 }
 
 function updateMainRegistry(outputDir) {
-  // Group items by variant
-  const animatedItems = [];
-  const staticItems = [];
-  const sharedItems = [];
-
-  allEntries.forEach(([name, config]) => {
-    const item = {
-      name,
-      type: config.type,
-      title: config.title,
-      description: config.description,
-      dependencies: config.dependencies,
-      registryDependencies: config.registryDependencies,
-      variant: config.variant,
-      files: config.files.map((f) => ({ path: f.path, type: f.type })),
-    };
-
-    if (config.variant === "animated") {
-      animatedItems.push(item);
-    } else if (config.variant === "static") {
-      staticItems.push(item);
-    } else {
-      sharedItems.push(item);
-    }
-  });
+  // Collect all items
+  const items = allEntries.map(([name, config]) => ({
+    name,
+    type: config.type,
+    title: config.title,
+    description: config.description,
+    dependencies: config.dependencies,
+    registryDependencies: config.registryDependencies,
+    variant: config.variant,
+    files: config.files.map((f) => ({ path: f.path, type: f.type })),
+  }));
 
   const registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     name: "edbn-ui",
-    version: "0.2.5",
+    version: "0.3.0",
     homepage: "https://ui.edbn.me",
     variants: {
-      animated: {
-        name: "Animated",
-        description: "Components with motion/react spring animations",
-        dependencies: ["motion"],
-        cssImport: "@/lib/styles/animated.css",
-      },
       static: {
         name: "Static",
         description: "Components with CSS-only animations (lighter bundle)",
@@ -196,7 +163,7 @@ function updateMainRegistry(outputDir) {
         cssImport: "@/lib/styles/static.css",
       },
     },
-    items: [...animatedItems, ...staticItems, ...sharedItems],
+    items,
   };
 
   const registryPath = join(root, "registry.json");
@@ -230,7 +197,6 @@ const outputDir = join(root, "public", "r");
 
 // Ensure output directories exist
 ensureDir(outputDir);
-ensureDir(join(outputDir, "animated"));
 ensureDir(join(outputDir, "static"));
 
 // Update individual component registry files
@@ -252,7 +218,6 @@ try {
 console.log("\n[DONE] Registry update complete!");
 console.log("\nOutput structure:");
 console.log("  public/r/");
-console.log("  ├── animated/   (motion/react components)");
 console.log("  ├── static/     (CSS-only + Base UI components)");
 console.log("  └── registry.json");
 

@@ -206,6 +206,94 @@ const SelectSeparator = React.forwardRef<
 SelectSeparator.displayName = "SelectSeparator";
 
 // =============================================================================
+// SELECT ARROW
+// =============================================================================
+
+const SelectArrow = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Select.Arrow>
+>(({ className, ...props }, ref) => (
+  <Select.Arrow
+    ref={ref}
+    className={cn(
+      "relative -top-px -z-10",
+      "[&>svg]:fill-popover [&>svg]:stroke-border",
+      className
+    )}
+    {...props}
+  />
+));
+SelectArrow.displayName = "SelectArrow";
+
+// =============================================================================
+// SELECT BACKDROP
+// =============================================================================
+
+const SelectBackdrop = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Select.Backdrop>
+>(({ className, ...props }, ref) => (
+  <Select.Backdrop
+    ref={ref}
+    className={cn("fixed inset-0 z-50", className)}
+    {...props}
+  />
+));
+SelectBackdrop.displayName = "SelectBackdrop";
+
+// =============================================================================
+// SELECT ICON
+// =============================================================================
+
+const SelectIcon = Select.Icon;
+
+// =============================================================================
+// SELECT ITEM INDICATOR
+// =============================================================================
+
+const SelectItemIndicator = Select.ItemIndicator;
+
+// =============================================================================
+// SELECT ITEM TEXT
+// =============================================================================
+
+const SelectItemText = Select.ItemText;
+
+// =============================================================================
+// SELECT SCROLL ARROWS
+// =============================================================================
+
+const SelectScrollUpArrow = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Select.ScrollUpArrow>
+>(({ className, ...props }, ref) => (
+  <Select.ScrollUpArrow
+    ref={ref}
+    className={cn(
+      "flex cursor-default items-center justify-center py-1",
+      className
+    )}
+    {...props}
+  />
+));
+SelectScrollUpArrow.displayName = "SelectScrollUpArrow";
+
+const SelectScrollDownArrow = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<typeof Select.ScrollDownArrow>
+>(({ className, ...props }, ref) => (
+  <Select.ScrollDownArrow
+    ref={ref}
+    className={cn(
+      "flex cursor-default items-center justify-center py-1",
+      className
+    )}
+    {...props}
+  />
+));
+SelectScrollDownArrow.displayName = "SelectScrollDownArrow";
+
+// =============================================================================
 // EXPORTS
 // =============================================================================
 
@@ -221,4 +309,11 @@ export {
   SelectGroup,
   SelectGroupLabel,
   SelectSeparator,
+  SelectArrow,
+  SelectBackdrop,
+  SelectIcon,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectScrollUpArrow,
+  SelectScrollDownArrow,
 };
