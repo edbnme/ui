@@ -5,9 +5,7 @@
   "title": "Pagination",
   "description": "Pagination component with previous, next, links, and ellipsis.",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

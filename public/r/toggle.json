@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Toggle",
   "description": "Static toggle button built on Base UI Toggle with CVA variants.",
-  "dependencies": [
-    "@base-ui/react",
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "class-variance-authority"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

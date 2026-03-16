@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Tooltip",
   "description": "A tooltip component with smooth animations and configurable positioning.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

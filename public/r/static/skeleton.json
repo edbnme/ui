@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/static/skeleton.tsx",
-      "content": "/**\r\n * Skeleton Component\r\n *\r\n * A loading placeholder component with pulse animation for content loading states.\r\n * Use to indicate loading content while maintaining layout structure.\r\n *\r\n * @packageDocumentation\r\n */\r\n\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst Skeleton = React.forwardRef<\r\n  HTMLDivElement,\r\n  React.HTMLAttributes<HTMLDivElement>\r\n>(({ className, ...props }, ref) => (\r\n  <div\r\n    ref={ref}\r\n    data-slot=\"skeleton\"\r\n    className={cn(\"bg-accent animate-pulse rounded-md\", className)}\r\n    {...props}\r\n  />\r\n));\r\n\r\nSkeleton.displayName = \"Skeleton\";\r\n\r\nexport { Skeleton };\r\n",
+      "content": "/**\n * Skeleton Component\n *\n * A loading placeholder component with pulse animation for content loading states.\n * Use to indicate loading content while maintaining layout structure.\n *\n * @packageDocumentation\n */\n\n\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nconst Skeleton = React.forwardRef<\n  HTMLDivElement,\n  React.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n  <div\n    ref={ref}\n    data-slot=\"skeleton\"\n    className={cn(\"bg-accent animate-pulse rounded-md\", className)}\n    {...props}\n  />\n));\n\nSkeleton.displayName = \"Skeleton\";\n\nexport { Skeleton };\n",
       "type": "registry:ui"
     }
   ]

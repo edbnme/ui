@@ -43,7 +43,7 @@ const TabsList = React.forwardRef<
   <Tabs.List
     ref={ref}
     className={cn(
-      "inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground",
+      "relative inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground",
       className
     )}
     {...props}
@@ -84,7 +84,8 @@ const TabsIndicator = React.forwardRef<
   <Tabs.Indicator
     ref={ref}
     className={cn(
-      "absolute inset-0 rounded-md bg-background shadow transition-all duration-200",
+      "absolute left-(--active-tab-left) top-(--active-tab-top) w-(--active-tab-width) h-(--active-tab-height)",
+      "rounded-md bg-background shadow transition-all duration-200",
       className
     )}
     {...props}

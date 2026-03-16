@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Card",
   "description": "Card component with header, title, description, content, and footer sub-components.",
-  "dependencies": [
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

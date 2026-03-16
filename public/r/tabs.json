@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Tabs",
   "description": "Static tabs built on Base UI Tabs with animated indicator.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

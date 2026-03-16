@@ -4,14 +4,8 @@
   "type": "registry:ui",
   "title": "Checkbox Group",
   "description": "Static checkbox group built on Base UI CheckboxGroup for parent-child checkbox control.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils",
-    "checkbox"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils", "checkbox"],
   "variant": "static",
   "files": [
     {

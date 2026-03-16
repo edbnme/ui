@@ -5,9 +5,7 @@
   "title": "Breadcrumb",
   "description": "Breadcrumb navigation component with list, item, link, page, separator, and ellipsis.",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

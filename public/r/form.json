@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Form",
   "description": "Static form built on Base UI Form.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

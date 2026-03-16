@@ -5,9 +5,7 @@
   "title": "Textarea",
   "description": "A styled textarea component with auto-resize support.",
   "dependencies": [],
-  "registryDependencies": [
-    "utils"
-  ],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

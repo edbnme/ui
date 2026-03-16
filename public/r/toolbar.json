@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Toolbar",
   "description": "Static toolbar built on Base UI Toolbar with button, group, link, input, and separator.",
-  "dependencies": [
-    "@base-ui/react",
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "class-variance-authority"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

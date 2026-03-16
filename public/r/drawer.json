@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Drawer",
   "description": "Static drawer/bottom sheet component built on Base UI Dialog with snap points and nested support.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

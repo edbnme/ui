@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Slider",
   "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

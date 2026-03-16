@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Input OTP",
   "description": "Static OTP/verification code input built on input-otp with customizable slots.",
-  "dependencies": [
-    "input-otp",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["input-otp", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

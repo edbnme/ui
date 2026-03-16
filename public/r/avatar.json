@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Avatar",
   "description": "Composable avatar component with sizes, status indicators, and group stacking support.",
-  "dependencies": [
-    "@base-ui/react",
-    "class-variance-authority"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "class-variance-authority"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

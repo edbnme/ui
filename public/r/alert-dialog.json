@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Alert Dialog",
   "description": "Static alert dialog built on Base UI AlertDialog with CSS transitions.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

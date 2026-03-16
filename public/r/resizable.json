@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Resizable",
   "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
-  "dependencies": [
-    "react-resizable-panels",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["react-resizable-panels", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

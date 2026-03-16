@@ -201,7 +201,8 @@ console.log(`[INFO] Using registry at: ${registryDir}`);
 console.log("");
 
 const jsonFiles = readdirSync(registryDir).filter(
-  (f) => f.endsWith(".json") && f !== "registry.json"
+  (f) =>
+    f.endsWith(".json") && f !== "registry.json" && f !== "demo-sources.json"
 );
 
 console.log(`[INFO] Found ${jsonFiles.length} registry items to validate\n`);

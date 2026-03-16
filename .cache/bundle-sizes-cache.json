@@ -7,18 +7,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1772969565099
-  },
-  "@ncdai/react-wheel-picker": {
-    "data": {
-      "name": "@ncdai/react-wheel-picker",
-      "version": "1.2.0",
-      "size": 11468,
-      "gzip": 4393,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1772969565912
+    "timestamp": 1773599569800
   },
   "@phosphor-icons/react": {
     "data": {
@@ -29,7 +18,7 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1772969565913
+    "timestamp": 1773599569800
   },
   "class-variance-authority": {
     "data": {
@@ -39,7 +28,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1772969565913
+    "timestamp": 1773599569800
   },
   "clsx": {
     "data": {
@@ -49,7 +38,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1772969565913
+    "timestamp": 1773599569800
   },
   "embla-carousel-react": {
     "data": {
@@ -60,7 +49,7 @@
       "dependencyCount": 2,
       "source": "bundlephobia"
     },
-    "timestamp": 1772969566443
+    "timestamp": 1773599570418
   },
   "input-otp": {
     "data": {
@@ -71,17 +60,7 @@
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1772969566909
-  },
-  "motion": {
-    "data": {
-      "name": "motion",
-      "size": 150000,
-      "gzip": 45000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1772969566909
+    "timestamp": 1773599570918
   },
   "react-day-picker": {
     "data": {
@@ -92,29 +71,29 @@
       "dependencyCount": 4,
       "source": "bundlephobia"
     },
-    "timestamp": 1772969567294
+    "timestamp": 1773599571317
   },
   "react-resizable-panels": {
     "data": {
       "name": "react-resizable-panels",
-      "version": "4.7.2",
-      "size": 31443,
-      "gzip": 10406,
+      "version": "4.7.3",
+      "size": 31414,
+      "gzip": 10392,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1772969567736
+    "timestamp": 1773599571823
   },
   "recharts": {
     "data": {
       "name": "recharts",
-      "version": "3.7.0",
-      "size": 508317,
-      "gzip": 134969,
+      "version": "3.8.0",
+      "size": 523379,
+      "gzip": 138121,
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "timestamp": 1772969567886
+    "timestamp": 1773599572327
   },
   "tailwind-merge": {
     "data": {
@@ -124,7 +103,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1772969567887
+    "timestamp": 1773599572327
   },
   "tw-animate-css": {
     "data": {
@@ -134,6 +113,6 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1772969567887
+    "timestamp": 1773599572327
   }
 }

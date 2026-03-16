@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Popover",
   "description": "Static popover built on Base UI Popover with CSS transitions.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

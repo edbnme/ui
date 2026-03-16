@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Fieldset",
   "description": "Static fieldset built on Base UI Fieldset with root and legend.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Context Menu",
   "description": "Static context menu built on Base UI ContextMenu with right-click trigger.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

@@ -9,13 +9,13 @@
     "sharedComponents": 0,
     "largestDependency": {
       "name": "recharts",
-      "version": "3.7.0",
-      "size": 508317,
-      "gzip": 134969,
+      "version": "3.8.0",
+      "size": 523379,
+      "gzip": 138121,
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-03-12T12:34:18.448Z"
+    "computedAt": "2026-03-15T18:50:10.884Z"
   },
   "packages": [
     {
@@ -73,17 +73,17 @@
     },
     {
       "name": "react-resizable-panels",
-      "version": "4.7.2",
-      "size": 31443,
-      "gzip": 10406,
+      "version": "4.7.3",
+      "size": 31414,
+      "gzip": 10392,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
     {
       "name": "recharts",
-      "version": "3.7.0",
-      "size": 508317,
-      "gzip": 134969,
+      "version": "3.8.0",
+      "size": 523379,
+      "gzip": 138121,
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
@@ -1011,17 +1011,17 @@
       "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
       "variant": "static",
       "sizes": {
-        "minified": 32643,
-        "gzipped": 10806,
+        "minified": 32614,
+        "gzipped": 10792,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "react-resizable-panels",
-          "size": 31443,
-          "gzip": 10406,
-          "version": "4.7.2",
+          "size": 31414,
+          "gzip": 10392,
+          "version": "4.7.3",
           "source": "bundlephobia"
         },
         {
@@ -1156,17 +1156,17 @@
       "description": "Composable, themed chart components built on Recharts with CSS variable theming, pre-styled tooltips, and legends.",
       "variant": "static",
       "sizes": {
-        "minified": 508317,
-        "gzipped": 134969,
+        "minified": 523379,
+        "gzipped": 138121,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "recharts",
-          "size": 508317,
-          "gzip": 134969,
-          "version": "3.7.0",
+          "size": 523379,
+          "gzip": 138121,
+          "version": "3.8.0",
           "source": "bundlephobia"
         }
       ],

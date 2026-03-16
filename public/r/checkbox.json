@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Checkbox",
   "description": "Static checkbox built on Base UI Checkbox with indeterminate support.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

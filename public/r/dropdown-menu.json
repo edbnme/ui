@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Dropdown Menu",
   "description": "Static dropdown menu built on Base UI Menu with full sub-menu support.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

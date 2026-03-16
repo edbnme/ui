@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Separator",
   "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

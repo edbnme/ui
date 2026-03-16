@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Chart",
   "description": "Composable, themed chart components built on Recharts with CSS variable theming, pre-styled tooltips, and legends.",
-  "dependencies": [
-    "recharts"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["recharts"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

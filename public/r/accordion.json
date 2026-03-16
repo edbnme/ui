@@ -4,13 +4,8 @@
   "type": "registry:ui",
   "title": "Accordion",
   "description": "Static accordion built on Base UI Accordion with CSS height transitions.",
-  "dependencies": [
-    "@base-ui/react",
-    "@phosphor-icons/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {

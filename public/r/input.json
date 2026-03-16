@@ -4,12 +4,8 @@
   "type": "registry:ui",
   "title": "Input",
   "description": "A styled input component with focus states, validation support, and file input styling.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "utils"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["utils"],
   "variant": "static",
   "files": [
     {
