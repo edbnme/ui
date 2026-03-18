@@ -1239,6 +1239,36 @@
           "type": "registry:hook"
         }
       ]
+    },
+    {
+      "name": "use-focus-trap",
+      "type": "registry:hook",
+      "title": "useFocusTrap",
+      "description": "Hook to trap focus within a container element for accessibility in modals, dialogs, and sheets.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "hooks/use-focus-trap.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-prevent-scroll",
+      "type": "registry:hook",
+      "title": "usePreventScroll",
+      "description": "Hook to prevent body scrolling while active, with nested lock support.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "hooks/use-prevent-scroll.ts",
+          "type": "registry:hook"
+        }
+      ]
     }
   ]
 }

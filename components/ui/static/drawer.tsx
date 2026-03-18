@@ -74,8 +74,8 @@ const DrawerBackdrop = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed inset-0 z-50 bg-black/60 backdrop-blur-sm",
-      "transition-opacity duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]",
-      "data-[swiping]:duration-0",
+      "transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)]",
+      "data-swiping:duration-0",
       "data-starting-style:opacity-0 data-ending-style:opacity-0",
       className
     )}
@@ -116,9 +116,9 @@ const DrawerPopup = React.forwardRef<
     className={cn(
       "w-full max-h-[85vh] rounded-t-2xl bg-background border border-border border-b-0 shadow-lg",
       "overflow-y-auto overscroll-contain",
-      "[transform:translateY(var(--drawer-swipe-movement-y))]",
-      "transition-transform duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]",
-      "data-[swiping]:select-none data-[swiping]:duration-0",
+      "transform-[translateY(var(--drawer-swipe-movement-y))]",
+      "transition-transform duration-450 ease-[cubic-bezier(0.32,0.72,0,1)]",
+      "data-swiping:select-none data-swiping:duration-0",
       "data-starting-style:translate-y-full data-ending-style:translate-y-full",
       className
     )}

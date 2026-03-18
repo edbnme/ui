@@ -41,23 +41,21 @@ const RadioItem = React.forwardRef<
   HTMLButtonElement,
   React.ComponentPropsWithRef<typeof Radio.Root> & { label?: string }
 >(({ className, label, children, ...props }, ref) => (
-  <label className="flex items-center gap-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+  <label className="flex items-center gap-2 text-sm font-medium leading-none data-disabled:cursor-not-allowed data-disabled:opacity-70">
     <Radio.Root
       ref={ref}
       className={cn(
-        "aspect-square h-4 w-4 shrink-0 rounded-full border border-primary shadow",
+        "peer flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-primary shadow-sm transition-colors",
         "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+        "data-checked:border-primary data-checked:bg-primary",
         className
       )}
       {...props}
     >
-      <Radio.Indicator
-        className={cn(
-          "flex items-center justify-center",
-          "after:h-2 after:w-2 after:rounded-full after:bg-primary"
-        )}
-      />
+      <Radio.Indicator className="flex items-center justify-center">
+        <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground" />
+      </Radio.Indicator>
     </Radio.Root>
     {label || children}
   </label>
@@ -69,18 +67,16 @@ RadioItem.displayName = "RadioItem";
 // =============================================================================
 
 const RadioIndicator = React.forwardRef<
-  HTMLDivElement,
+  HTMLSpanElement,
   React.ComponentPropsWithRef<typeof Radio.Indicator>
 >(({ className, ...props }, ref) => (
   <Radio.Indicator
     ref={ref}
-    className={cn(
-      "flex items-center justify-center",
-      "after:h-2 after:w-2 after:rounded-full after:bg-primary",
-      className
-    )}
+    className={cn("flex items-center justify-center", className)}
     {...props}
-  />
+  >
+    <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground" />
+  </Radio.Indicator>
 ));
 RadioIndicator.displayName = "RadioIndicator";
 

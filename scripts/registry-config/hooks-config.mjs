@@ -57,4 +57,26 @@ export const hookComponents = {
     files: [{ path: "hooks/use-mobile.ts", type: "registry:hook" }],
     variant: "static",
   },
+  "use-focus-trap": {
+    type: "registry:hook",
+    title: "useFocusTrap",
+    description:
+      "Hook to trap focus within a container element for accessibility in modals, dialogs, and sheets.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-focus-trap.ts", type: "registry:hook" }],
+    variant: "static",
+  },
+  "use-prevent-scroll": {
+    type: "registry:hook",
+    title: "usePreventScroll",
+    description:
+      "Hook to prevent body scrolling while active, with nested lock support.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-prevent-scroll.ts", type: "registry:hook" }],
+    variant: "static",
+  },
 };
