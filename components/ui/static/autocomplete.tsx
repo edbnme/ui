@@ -44,20 +44,20 @@ const AutocompleteInput = React.forwardRef<
     showSearchIcon?: boolean;
   }
 >(({ className, showSearchIcon = true, ...props }, ref) => (
-  <div
-    className={cn(
-      "flex h-9 w-full items-center gap-2 rounded-md border border-input bg-transparent px-3 text-sm shadow-sm",
-      "focus-within:ring-1 focus-within:ring-ring"
-    )}
-  >
+  <div className="relative w-full">
     {showSearchIcon && (
-      <MagnifyingGlass className="h-4 w-4 shrink-0 opacity-50" />
+      <MagnifyingGlass className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50" />
     )}
     <Combobox.Input
       ref={ref}
       className={cn(
-        "flex-1 bg-transparent outline-none placeholder:text-muted-foreground",
+        "flex h-10 w-full rounded-lg border border-input bg-background text-sm",
+        "shadow-xs ring-offset-background",
+        "focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/20",
+        "transition-[border-color,box-shadow] duration-150",
+        "placeholder:text-muted-foreground/50",
         "disabled:cursor-not-allowed disabled:opacity-50",
+        showSearchIcon ? "pl-10 pr-3.5" : "px-3.5",
         className
       )}
       {...props}
@@ -121,10 +121,12 @@ const AutocompletePopup = React.forwardRef<
   <Combobox.Popup
     ref={ref}
     className={cn(
-      "z-50 min-w-[var(--anchor-width)] overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
-      "origin-(--transform-origin) transition-all duration-150",
-      "data-starting-style:scale-95 data-starting-style:opacity-0",
-      "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "z-50 w-(--anchor-width) overflow-hidden rounded-lg border border-border/60 bg-popover p-1.5 text-popover-foreground",
+      "shadow-lg ring-1 ring-black/3 dark:ring-white/6",
+      "origin-(--transform-origin) transform-gpu transition-[scale,opacity] duration-200",
+      "data-starting-style:scale-[0.97] data-starting-style:opacity-0",
+      "data-ending-style:scale-[0.97] data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}
@@ -142,7 +144,11 @@ const AutocompleteList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Combobox.List
     ref={ref}
-    className={cn("max-h-72 overflow-y-auto", className)}
+    className={cn(
+      "max-h-60 overflow-y-auto overscroll-contain py-0.5",
+      "[&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-foreground/8 [&::-webkit-scrollbar-track]:bg-transparent",
+      className
+    )}
     {...props}
   />
 ));
@@ -159,7 +165,8 @@ const AutocompleteItem = React.forwardRef<
   <Combobox.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none",
+      "relative flex w-full cursor-default select-none items-center rounded-md py-2 pl-3 pr-8 text-sm outline-none",
+      "transition-colors duration-75",
       "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
       "data-disabled:pointer-events-none data-disabled:opacity-50",
       className
@@ -167,7 +174,7 @@ const AutocompleteItem = React.forwardRef<
     {...props}
   >
     {children}
-    <span className="absolute right-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute right-2.5 flex size-4 items-center justify-center">
       <Combobox.ItemIndicator>
         <Check className="h-4 w-4" weight="bold" />
       </Combobox.ItemIndicator>
@@ -192,7 +199,10 @@ const AutocompleteGroupLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Combobox.GroupLabel
     ref={ref}
-    className={cn("px-2 py-1.5 text-sm font-semibold", className)}
+    className={cn(
+      "px-3 py-2 text-xs font-medium text-muted-foreground/70 uppercase tracking-wider",
+      className
+    )}
     {...props}
   />
 ));
@@ -208,7 +218,10 @@ const AutocompleteEmpty = React.forwardRef<
 >(({ className, children = "No results found.", ...props }, ref) => (
   <Combobox.Empty
     ref={ref}
-    className={cn("py-6 text-center text-sm text-muted-foreground", className)}
+    className={cn(
+      "py-8 text-center text-[13px] text-muted-foreground/60",
+      className
+    )}
     {...props}
   >
     {children}

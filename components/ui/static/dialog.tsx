@@ -74,7 +74,7 @@ const DialogBackdrop = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed inset-0 z-50 bg-black/60 backdrop-blur-sm",
-      "transition-all duration-200",
+      "transition-opacity duration-200",
       "data-starting-style:opacity-0 data-ending-style:opacity-0",
       className
     )}
@@ -115,9 +115,10 @@ const DialogPopup = React.forwardRef<
     className={cn(
       "fixed top-1/2 left-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2",
       "rounded-lg border border-border bg-background p-6 shadow-lg",
-      "transition-all duration-200",
+      "transform-gpu transition-[scale,opacity] duration-200",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

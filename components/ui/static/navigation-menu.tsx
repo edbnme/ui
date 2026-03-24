@@ -84,11 +84,13 @@ const NavMenuTrigger = React.forwardRef<
   <NavigationMenu.Trigger
     ref={ref}
     className={cn(
-      "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors",
+      "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium",
+      "transition-[colors,transform] duration-150 ease-out",
       "hover:bg-accent hover:text-accent-foreground",
       "focus:bg-accent focus:text-accent-foreground focus:outline-none",
+      "active:scale-[0.97]",
       "disabled:pointer-events-none disabled:opacity-50",
-      "data-[state=open]:bg-accent/50",
+      "data-popup-open:bg-accent/50",
       className
     )}
     {...props}
@@ -110,7 +112,7 @@ const NavMenuIcon = React.forwardRef<
     ref={ref}
     className={cn(
       "relative top-px ml-1 h-3 w-3 transition-transform duration-200",
-      "group-data-[state=open]:rotate-180",
+      "group-data-popup-open:rotate-180",
       className
     )}
     {...props}
@@ -204,10 +206,11 @@ const NavMenuPopup = React.forwardRef<
   <NavigationMenu.Popup
     ref={ref}
     className={cn(
-      "left-0 top-0 w-full overflow-hidden rounded-md border border-border bg-popover text-popover-foreground shadow-lg",
-      "transition-[transform,scale,opacity] duration-200",
+      "left-0 top-0 w-full overflow-hidden transform-gpu rounded-md border border-border bg-popover text-popover-foreground shadow-lg",
+      "transition-[scale,opacity] duration-200",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

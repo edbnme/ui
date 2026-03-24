@@ -39,7 +39,7 @@ const CollapsibleTrigger = React.forwardRef<
   <Collapsible.Trigger
     ref={ref}
     className={cn(
-      "flex w-full items-center justify-between py-4 font-medium transition-all",
+      "flex w-full items-center justify-between py-4 font-medium",
       "hover:underline",
       "data-panel-open:[&>svg]:rotate-180",
       className

@@ -80,7 +80,7 @@ const MeterIndicator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Meter.Indicator
     ref={ref}
-    className={cn("h-full bg-primary transition-all", className)}
+    className={cn("h-full bg-primary transition-[width]", className)}
     {...props}
   />
 ));

@@ -67,8 +67,10 @@ const MenubarTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       "flex cursor-default select-none items-center rounded-sm px-3 py-1 text-sm font-medium outline-none",
+      "transition-[colors,transform] duration-150 ease-out",
       "hover:bg-accent hover:text-accent-foreground",
       "focus:bg-accent focus:text-accent-foreground",
+      "active:scale-[0.97]",
       "data-popup-open:bg-accent data-popup-open:text-accent-foreground",
       className
     )}
@@ -112,10 +114,11 @@ const MenubarPopup = React.forwardRef<
   <Menu.Popup
     ref={ref}
     className={cn(
-      "min-w-48 origin-(--transform-origin) rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
-      "transition-[transform,scale,opacity] duration-150",
+      "min-w-48 origin-(--transform-origin) transform-gpu rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
+      "transition-[scale,opacity] duration-150",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

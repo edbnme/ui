@@ -154,9 +154,10 @@ const ComboboxPopup = React.forwardRef<
     ref={ref}
     className={cn(
       "z-50 min-w-32 overflow-hidden rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
-      "origin-(--transform-origin) transition-all duration-150",
+      "origin-(--transform-origin) transform-gpu transition-[scale,opacity] duration-150",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

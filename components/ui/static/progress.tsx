@@ -64,7 +64,10 @@ const ProgressIndicator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Progress.Indicator
     ref={ref}
-    className={cn("h-full w-full flex-1 bg-primary transition-all", className)}
+    className={cn(
+      "h-full w-full flex-1 bg-primary transition-[width]",
+      className
+    )}
     {...props}
   />
 ));

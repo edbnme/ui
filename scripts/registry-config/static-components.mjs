@@ -387,7 +387,17 @@ export const staticComponents = {
       "tooltip",
     ],
     inlineDependencies: ["use-mobile", "primitives"],
-    files: [{ path: "components/ui/static/sidebar.tsx", type: "registry:ui" }],
+    files: [
+      { path: "components/ui/static/sidebar.tsx", type: "registry:ui" },
+      { path: "components/ui/static/sidebar-context.tsx", type: "registry:ui" },
+      { path: "components/ui/static/sidebar-group.tsx", type: "registry:ui" },
+      { path: "components/ui/static/sidebar-menu.tsx", type: "registry:ui" },
+      {
+        path: "components/ui/static/sidebar-menu-sub.tsx",
+        type: "registry:ui",
+      },
+      { path: "components/ui/static/sidebar-rail.tsx", type: "registry:ui" },
+    ],
     variant: "static",
   },
   drawer: {

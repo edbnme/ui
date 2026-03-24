@@ -41,8 +41,10 @@ const MenuTrigger = React.forwardRef<
   <Menu.Trigger
     ref={ref}
     className={cn(
-      "inline-flex h-10 items-center justify-center gap-2 rounded-md border border-border bg-background px-4 text-sm font-medium text-foreground transition-colors select-none",
-      "hover:bg-muted focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-ring active:bg-muted/80",
+      "inline-flex h-10 items-center justify-center gap-2 rounded-md border border-border bg-background px-4 text-sm font-medium text-foreground select-none",
+      "transition-[colors,transform] duration-150 ease-out",
+      "hover:bg-muted focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-ring",
+      "active:scale-[0.97] active:bg-muted/80",
       "data-popup-open:bg-muted",
       className
     )}
@@ -85,10 +87,11 @@ const MenuPopup = React.forwardRef<
   <Menu.Popup
     ref={ref}
     className={cn(
-      "min-w-32 origin-(--transform-origin) rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
-      "transition-[transform,scale,opacity] duration-150",
+      "min-w-32 origin-(--transform-origin) transform-gpu rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
+      "transition-[scale,opacity] duration-150",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

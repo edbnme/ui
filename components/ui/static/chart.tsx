@@ -20,6 +20,7 @@
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
 import { cn } from "@/lib/utils";
+import { createComponentContext } from "@/lib/create-component-context";
 
 // =============================================================================
 // CHART CONFIG
@@ -40,15 +41,8 @@ type ChartContextProps = {
   config: ChartConfig;
 };
 
-const ChartContext = React.createContext<ChartContextProps | null>(null);
-
-function useChart() {
-  const context = React.useContext(ChartContext);
-  if (!context) {
-    throw new Error("useChart must be used within a <ChartContainer />");
-  }
-  return context;
-}
+const [ChartProvider, useChart] =
+  createComponentContext<ChartContextProps>("ChartContainer");
 
 // =============================================================================
 // CHART CONTAINER
@@ -67,10 +61,11 @@ const ChartContainer = React.forwardRef<
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
 
   return (
-    <ChartContext.Provider value={{ config }}>
+    <ChartProvider value={{ config }}>
       <div
         data-chart={chartId}
         ref={ref}
+        role="img"
         className={cn(
           "flex aspect-video justify-center text-xs",
           "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground",
@@ -94,7 +89,7 @@ const ChartContainer = React.forwardRef<
           {children}
         </RechartsPrimitive.ResponsiveContainer>
       </div>
-    </ChartContext.Provider>
+    </ChartProvider>
   );
 });
 ChartContainer.displayName = "ChartContainer";
