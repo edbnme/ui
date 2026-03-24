@@ -146,6 +146,7 @@ function ChevronRightIcon(props: React.ComponentProps<"svg">) {
     </svg>
   );
 }
+ChevronRightIcon.displayName = "ChevronRightIcon";
 
 function EllipsisIcon(props: React.ComponentProps<"svg">) {
   return (
@@ -167,6 +168,7 @@ function EllipsisIcon(props: React.ComponentProps<"svg">) {
     </svg>
   );
 }
+EllipsisIcon.displayName = "EllipsisIcon";
 
 // =============================================================================
 // Exports

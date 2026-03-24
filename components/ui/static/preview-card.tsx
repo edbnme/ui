@@ -82,9 +82,10 @@ const PreviewCardPopup = React.forwardRef<
     ref={ref}
     className={cn(
       "z-50 w-80 rounded-lg border border-border bg-popover p-4 text-popover-foreground shadow-md outline-none",
-      "origin-(--transform-origin) transition-all duration-200",
+      "origin-(--transform-origin) transform-gpu transition-[scale,opacity] duration-200",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

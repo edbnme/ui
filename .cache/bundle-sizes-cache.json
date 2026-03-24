@@ -7,7 +7,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1773599569800
+    "timestamp": 1774296194785
   },
   "@phosphor-icons/react": {
     "data": {
@@ -18,7 +18,7 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1773599569800
+    "timestamp": 1774296194785
   },
   "class-variance-authority": {
     "data": {
@@ -28,7 +28,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1773599569800
+    "timestamp": 1774296194785
   },
   "clsx": {
     "data": {
@@ -38,7 +38,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1773599569800
+    "timestamp": 1774296194785
   },
   "embla-carousel-react": {
     "data": {
@@ -49,7 +49,7 @@
       "dependencyCount": 2,
       "source": "bundlephobia"
     },
-    "timestamp": 1773599570418
+    "timestamp": 1774296195373
   },
   "input-otp": {
     "data": {
@@ -60,7 +60,7 @@
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1773599570918
+    "timestamp": 1774296195873
   },
   "react-day-picker": {
     "data": {
@@ -71,18 +71,18 @@
       "dependencyCount": 4,
       "source": "bundlephobia"
     },
-    "timestamp": 1773599571317
+    "timestamp": 1774296196300
   },
   "react-resizable-panels": {
     "data": {
       "name": "react-resizable-panels",
-      "version": "4.7.3",
-      "size": 31414,
-      "gzip": 10392,
+      "version": "4.7.5",
+      "size": 31636,
+      "gzip": 10477,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1773599571823
+    "timestamp": 1774296196830
   },
   "recharts": {
     "data": {
@@ -93,7 +93,7 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "timestamp": 1773599572327
+    "timestamp": 1774296197251
   },
   "tailwind-merge": {
     "data": {
@@ -103,7 +103,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1773599572327
+    "timestamp": 1774296197251
   },
   "tw-animate-css": {
     "data": {
@@ -113,6 +113,6 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1773599572327
+    "timestamp": 1774296197251
   }
 }

@@ -79,10 +79,11 @@ const ContextMenuPopup = React.forwardRef<
   <ContextMenu.Popup
     ref={ref}
     className={cn(
-      "min-w-32 origin-(--transform-origin) rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
-      "transition-[transform,scale,opacity] duration-150",
+      "min-w-32 origin-(--transform-origin) transform-gpu rounded-md border border-border bg-popover p-1 text-popover-foreground shadow-md",
+      "transition-[scale,opacity] duration-150",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

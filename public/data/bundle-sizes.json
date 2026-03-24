@@ -15,7 +15,7 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-03-15T18:50:10.884Z"
+    "computedAt": "2026-03-23T20:03:17.255Z"
   },
   "packages": [
     {
@@ -73,9 +73,9 @@
     },
     {
       "name": "react-resizable-panels",
-      "version": "4.7.3",
-      "size": 31414,
-      "gzip": 10392,
+      "version": "4.7.5",
+      "size": 31636,
+      "gzip": 10477,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
@@ -1011,17 +1011,17 @@
       "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
       "variant": "static",
       "sizes": {
-        "minified": 32614,
-        "gzipped": 10792,
+        "minified": 32836,
+        "gzipped": 10877,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "react-resizable-panels",
-          "size": 31414,
-          "gzip": 10392,
-          "version": "4.7.3",
+          "size": 31636,
+          "gzip": 10477,
+          "version": "4.7.5",
           "source": "bundlephobia"
         },
         {

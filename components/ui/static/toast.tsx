@@ -53,7 +53,7 @@ const ToastRoot = React.forwardRef<
   <Toast.Root
     ref={ref}
     className={cn(
-      "group pointer-events-auto relative flex w-full items-center justify-between space-x-2 overflow-hidden rounded-md border border-border bg-background p-4 pr-6 shadow-lg transition-all",
+      "group pointer-events-auto relative flex w-full items-center justify-between space-x-2 overflow-hidden rounded-md border border-border bg-background p-4 pr-6 shadow-lg transition-[opacity,translate]",
       "data-swipe-cancel:translate-x-0",
       "data-swipe-end:translate-x-(--toast-swipe-end-x)",
       "data-swipe-move:translate-x-(--toast-swipe-move-x)",

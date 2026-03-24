@@ -84,10 +84,11 @@ const HoverCardPopup = React.forwardRef<
     ref={ref}
     className={cn(
       "w-72 rounded-lg border border-border bg-background p-4 shadow-md",
-      "origin-(--transform-origin)",
-      "transition-all duration-200",
+      "origin-(--transform-origin) transform-gpu",
+      "transition-[scale,opacity] duration-200",
       "data-starting-style:scale-95 data-starting-style:opacity-0",
       "data-ending-style:scale-95 data-ending-style:opacity-0",
+      "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
       className
     )}
     {...props}

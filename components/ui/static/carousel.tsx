@@ -22,6 +22,7 @@ import useEmblaCarousel, {
 } from "embla-carousel-react";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
+import { createComponentContext } from "@/lib/create-component-context";
 
 // =============================================================================
 // TYPES
@@ -39,6 +40,8 @@ type CarouselContextProps = {
   scrollNext: () => void;
   canScrollPrev: boolean;
   canScrollNext: boolean;
+  currentSlide: number;
+  totalSlides: number;
 } & CarouselProps;
 
 type CarouselProps = {
@@ -52,15 +55,8 @@ type CarouselProps = {
 // CONTEXT
 // =============================================================================
 
-const CarouselContext = React.createContext<CarouselContextProps | null>(null);
-
-function useCarousel() {
-  const context = React.useContext(CarouselContext);
-  if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel />");
-  }
-  return context;
-}
+const [CarouselProvider, useCarousel] =
+  createComponentContext<CarouselContextProps>("Carousel");
 
 // =============================================================================
 // CAROUSEL ROOT
@@ -91,11 +87,15 @@ const Carousel = React.forwardRef<
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
+    const [currentSlide, setCurrentSlide] = React.useState(0);
+    const [totalSlides, setTotalSlides] = React.useState(0);
 
     const onSelect = React.useCallback((emblaApi: CarouselApi) => {
       if (!emblaApi) return;
       setCanScrollPrev(emblaApi.canScrollPrev());
       setCanScrollNext(emblaApi.canScrollNext());
+      setCurrentSlide(emblaApi.selectedScrollSnap() + 1);
+      setTotalSlides(emblaApi.scrollSnapList().length);
     }, []);
 
     const scrollPrev = React.useCallback(() => {
@@ -136,7 +136,7 @@ const Carousel = React.forwardRef<
     }, [api, onSelect]);
 
     return (
-      <CarouselContext.Provider
+      <CarouselProvider
         value={{
           carouselRef,
           api,
@@ -147,6 +147,8 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          currentSlide,
+          totalSlides,
         }}
       >
         <div
@@ -159,7 +161,7 @@ const Carousel = React.forwardRef<
         >
           {children}
         </div>
-      </CarouselContext.Provider>
+      </CarouselProvider>
     );
   }
 );
@@ -173,7 +175,7 @@ const CarouselContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  const { carouselRef, orientation } = useCarousel();
+  const { carouselRef, orientation, currentSlide, totalSlides } = useCarousel();
 
   return (
     <div ref={carouselRef} className="overflow-hidden">
@@ -186,6 +188,11 @@ const CarouselContent = React.forwardRef<
         )}
         {...props}
       />
+      {totalSlides > 0 && (
+        <div aria-live="polite" className="sr-only">
+          Slide {currentSlide} of {totalSlides}
+        </div>
+      )}
     </div>
   );
 });
