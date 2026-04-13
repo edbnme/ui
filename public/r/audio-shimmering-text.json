@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "audio-shimmering-text",
+  "type": "registry:ui",
+  "title": "Shimmering Text",
+  "description": "Animated gradient shimmer text effect with viewport-triggered animation.",
+  "dependencies": [
+    "motion/react",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "audio",
+  "files": [
+    {
+      "path": "components/ui/audio/shimmering-text-audio.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { motion, useInView } from \"motion/react\";\r\nimport { cva, type VariantProps } from \"class-variance-authority\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// TYPES\r\n// =============================================================================\r\n\r\ninterface ShimmeringTextAudioProps extends VariantProps<\r\n  typeof shimmerVariants\r\n> {\r\n  /** The text to display with shimmer effect */\r\n  text: string;\r\n  /** Speed multiplier for the shimmer animation. Default: 1 */\r\n  speed?: number;\r\n  /** Color of the shimmer highlight. Default: uses primary-foreground */\r\n  shimmerColor?: string;\r\n  /** Whether to trigger only when in viewport. Default: true */\r\n  triggerOnView?: boolean;\r\n  /** Additional class names */\r\n  className?: string;\r\n  /** Additional inline styles */\r\n  style?: React.CSSProperties;\r\n}\r\n\r\n// =============================================================================\r\n// VARIANTS\r\n// =============================================================================\r\n\r\nconst shimmerVariants = cva(\"inline-block\", {\r\n  variants: {\r\n    size: {\r\n      sm: \"text-sm\",\r\n      md: \"text-base\",\r\n      lg: \"text-lg\",\r\n      xl: \"text-2xl\",\r\n    },\r\n  },\r\n  defaultVariants: {\r\n    size: \"md\",\r\n  },\r\n});\r\n\r\n// =============================================================================\r\n// COMPONENT\r\n// =============================================================================\r\n\r\nfunction ShimmeringTextAudio({\r\n  text,\r\n  speed = 1,\r\n  shimmerColor,\r\n  triggerOnView = true,\r\n  size,\r\n  className,\r\n  style,\r\n}: ShimmeringTextAudioProps) {\r\n  const ref = React.useRef<HTMLDivElement>(null);\r\n  const isInView = useInView(ref, { once: true, amount: 0.5 });\r\n\r\n  const shouldAnimate = triggerOnView ? isInView : true;\r\n\r\n  const shimmerHighlight =\r\n    shimmerColor || \"var(--color-primary-foreground, #fff)\";\r\n\r\n  return (\r\n    <motion.div\r\n      ref={ref}\r\n      data-slot=\"shimmering-text-audio\"\r\n      className={cn(shimmerVariants({ size }), className)}\r\n      style={{\r\n        backgroundImage: shouldAnimate\r\n          ? `linear-gradient(\r\n              90deg,\r\n              currentColor 0%,\r\n              currentColor 35%,\r\n              ${shimmerHighlight} 50%,\r\n              currentColor 65%,\r\n              currentColor 100%\r\n            )`\r\n          : undefined,\r\n        backgroundSize: \"200% 100%\",\r\n        WebkitBackgroundClip: \"text\",\r\n        backgroundClip: \"text\",\r\n        WebkitTextFillColor: shouldAnimate ? \"transparent\" : undefined,\r\n        color: shouldAnimate ? \"transparent\" : undefined,\r\n        ...style,\r\n      }}\r\n      animate={\r\n        shouldAnimate\r\n          ? {\r\n              backgroundPosition: [\"100% 0%\", \"-100% 0%\"],\r\n            }\r\n          : undefined\r\n      }\r\n      transition={{\r\n        duration: 2.5 / speed,\r\n        repeat: Infinity,\r\n        ease: \"linear\",\r\n      }}\r\n    >\r\n      {text}\r\n    </motion.div>\r\n  );\r\n}\r\n\r\nShimmeringTextAudio.displayName = \"ShimmeringTextAudio\";\r\n\r\nexport { ShimmeringTextAudio, shimmerVariants };\r\nexport type { ShimmeringTextAudioProps };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

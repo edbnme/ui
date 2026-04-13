@@ -13,6 +13,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { Slot } from "@/lib/slot";
 
 // =============================================================================
 // BUTTON VARIANTS
@@ -69,8 +70,9 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
     return (
-      <button
+      <Comp
         ref={ref}
         data-slot="button"
         className={cn(buttonVariants({ variant, size }), className)}

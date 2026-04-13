@@ -46,4 +46,15 @@ export const libraryComponents = {
     files: [{ path: "lib/utils.ts", type: "registry:lib" }],
     variant: "static",
   },
+  "motion-lib": {
+    type: "registry:lib",
+    title: "Motion Library",
+    description:
+      "Spring presets and animation utilities for motion/react components.",
+    dependencies: ["motion/react"],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "lib/motion.ts", type: "registry:lib" }],
+    variant: "audio",
+  },
 };

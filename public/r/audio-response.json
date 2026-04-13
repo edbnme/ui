@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "audio-response",
+  "type": "registry:ui",
+  "title": "Response",
+  "description": "Streaming markdown response renderer using streamdown with syntax highlighting.",
+  "dependencies": [
+    "streamdown",
+    "@streamdown/code"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "audio",
+  "files": [
+    {
+      "path": "components/ui/audio/response.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Streamdown } from \"streamdown\";\r\nimport { code } from \"@streamdown/code\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// TYPES\r\n// =============================================================================\r\n\r\ninterface ResponseProps extends React.ComponentProps<\"div\"> {\r\n  /** The markdown content to render */\r\n  children: string;\r\n  /** Whether the content is currently being streamed */\r\n  isAnimating?: boolean;\r\n  /** Animation configuration. true = defaults, or custom options. */\r\n  animated?:\r\n    | boolean\r\n    | {\r\n        animation?: \"fadeIn\" | \"blurIn\" | \"slideUp\";\r\n        duration?: number;\r\n        easing?: string;\r\n        sep?: \"word\" | \"char\";\r\n      };\r\n  /** Shiki themes for code highlighting [light, dark] */\r\n  shikiTheme?: [string, string];\r\n  /** Show line numbers in code blocks */\r\n  lineNumbers?: boolean;\r\n  /** Controls configuration for code blocks and tables */\r\n  controls?: {\r\n    code?: boolean | { copy?: boolean; download?: boolean };\r\n    table?:\r\n      | boolean\r\n      | { copy?: boolean; download?: boolean; fullscreen?: boolean };\r\n  };\r\n  /** Called when streaming animation starts */\r\n  onAnimationStart?: () => void;\r\n  /** Called when streaming animation ends */\r\n  onAnimationEnd?: () => void;\r\n}\r\n\r\n// =============================================================================\r\n// COMPONENT\r\n// =============================================================================\r\n\r\nfunction Response({\r\n  children,\r\n  isAnimating = false,\r\n  animated = true,\r\n  shikiTheme,\r\n  lineNumbers = true,\r\n  controls,\r\n  className,\r\n  onAnimationStart,\r\n  onAnimationEnd,\r\n  ...props\r\n}: ResponseProps) {\r\n  return (\r\n    <div\r\n      data-slot=\"response\"\r\n      className={cn(\"prose prose-sm dark:prose-invert max-w-none\", className)}\r\n      {...props}\r\n    >\r\n      <Streamdown\r\n        isAnimating={isAnimating}\r\n        animated={animated}\r\n        plugins={{ code }}\r\n        shikiTheme={\r\n          shikiTheme as\r\n            | [import(\"shiki\").BundledTheme, import(\"shiki\").BundledTheme]\r\n            | undefined\r\n        }\r\n        lineNumbers={lineNumbers}\r\n        controls={controls}\r\n        onAnimationStart={onAnimationStart}\r\n        onAnimationEnd={onAnimationEnd}\r\n      >\r\n        {children}\r\n      </Streamdown>\r\n    </div>\r\n  );\r\n}\r\n\r\nResponse.displayName = \"Response\";\r\n\r\nexport { Response };\r\nexport type { ResponseProps };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

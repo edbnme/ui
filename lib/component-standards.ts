@@ -37,7 +37,7 @@ export interface RegistryItemContract {
   /** shadcn registry type */
   type: "registry:ui" | "registry:component" | "registry:lib" | "registry:hook";
   /** Component variant tier */
-  variant: "animated" | "static" | "shared" | "maps";
+  variant: "static" | "audio";
   /** npm dependencies (external packages) */
   dependencies: string[];
   /** Other registry items this item depends on */

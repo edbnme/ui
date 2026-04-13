@@ -507,4 +507,15 @@ export const staticComponents = {
     files: [{ path: "components/ui/static/chart.tsx", type: "registry:ui" }],
     variant: "static",
   },
+  combobox: {
+    type: "registry:ui",
+    title: "Combobox",
+    description:
+      "Searchable dropdown for filtering and selecting from a list, built on Base UI Combobox.",
+    dependencies: ["@base-ui/react", "@phosphor-icons/react"],
+    registryDependencies: ["utils"],
+    inlineDependencies: [],
+    files: [{ path: "components/ui/static/combobox.tsx", type: "registry:ui" }],
+    variant: "static",
+  },
 };

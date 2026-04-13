@@ -31,6 +31,8 @@ import { staticComponents } from "./registry-config/static-components.mjs";
 import { staticSharedComponents } from "./registry-config/shared-components.mjs";
 import { libraryComponents } from "./registry-config/library-components.mjs";
 import { hookComponents } from "./registry-config/hooks-config.mjs";
+import { audioComponents } from "./registry-config/audio-components.mjs";
+import { audioHookComponents } from "./registry-config/audio-hooks-config.mjs";
 import { cssVarsLight, cssVarsDark } from "./registry-config/css-vars.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -47,6 +49,8 @@ const allEntries = [
   ...Object.entries(staticSharedComponents),
   ...Object.entries(libraryComponents),
   ...Object.entries(hookComponents),
+  ...Object.entries(audioComponents),
+  ...Object.entries(audioHookComponents),
 ];
 
 // Lookup map for inline dependency resolution.
@@ -55,6 +59,7 @@ const allEntries = [
 const inlineLookup = {
   ...libraryComponents,
   ...hookComponents,
+  ...audioHookComponents,
 };
 
 // =============================================================================
@@ -162,6 +167,13 @@ function updateMainRegistry(outputDir) {
         dependencies: [],
         cssImport: "@/lib/styles/static.css",
       },
+      audio: {
+        name: "Audio",
+        description:
+          "AI chat and audio components with Web Audio API and motion animations",
+        dependencies: ["class-variance-authority"],
+        cssImport: null,
+      },
     },
     items,
   };
@@ -198,6 +210,7 @@ const outputDir = join(root, "public", "r");
 // Ensure output directories exist
 ensureDir(outputDir);
 ensureDir(join(outputDir, "static"));
+ensureDir(join(outputDir, "audio"));
 
 // Update individual component registry files
 allEntries.forEach(([name, config]) => {
@@ -219,6 +232,7 @@ console.log("\n[DONE] Registry update complete!");
 console.log("\nOutput structure:");
 console.log("  public/r/");
 console.log("  ├── static/     (CSS-only + Base UI components)");
+console.log("  ├── audio/      (Audio/AI chat components)");
 console.log("  └── registry.json");
 
 // =============================================================================

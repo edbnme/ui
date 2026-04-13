@@ -114,5 +114,92 @@
       "source": "fallback"
     },
     "timestamp": 1774296197251
+  },
+  "@react-three/drei": {
+    "data": {
+      "name": "@react-three/drei",
+      "version": "10.7.7",
+      "size": 1604829,
+      "gzip": 496190,
+      "dependencyCount": 21,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1774378860711
+  },
+  "@react-three/fiber": {
+    "data": {
+      "name": "@react-three/fiber",
+      "version": "9.5.0",
+      "size": 159105,
+      "gzip": 50712,
+      "dependencyCount": 10,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1774378861187
+  },
+  "@streamdown/code": {
+    "data": {
+      "name": "@streamdown/code",
+      "version": "1.1.1",
+      "size": 197921,
+      "gzip": 31485,
+      "dependencyCount": 1,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1774378861857
+  },
+  "motion/react": {
+    "data": {
+      "name": "motion/react",
+      "size": 50000,
+      "gzip": 15000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1774378866380
+  },
+  "shiki": {
+    "data": {
+      "name": "shiki",
+      "version": "4.0.2",
+      "size": 109061,
+      "gzip": 34024,
+      "dependencyCount": 8,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1774378866786
+  },
+  "streamdown": {
+    "data": {
+      "name": "streamdown",
+      "version": "2.5.0",
+      "size": 464290,
+      "gzip": 141349,
+      "dependencyCount": 16,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1774378867278
+  },
+  "three": {
+    "data": {
+      "name": "three",
+      "version": "0.183.2",
+      "size": 717051,
+      "gzip": 179358,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1774378867682
+  },
+  "use-stick-to-bottom": {
+    "data": {
+      "name": "use-stick-to-bottom",
+      "version": "1.1.3",
+      "size": 6649,
+      "gzip": 2502,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1774378869189
   }
 }

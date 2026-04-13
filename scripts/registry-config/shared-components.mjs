@@ -131,19 +131,6 @@ export const staticSharedComponents = {
     ],
     variant: "static",
   },
-  "scroll-area": {
-    type: "registry:ui",
-    title: "Scroll Area",
-    description:
-      "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
-    dependencies: ["@base-ui/react"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [
-      { path: "components/ui/static/scroll-area.tsx", type: "registry:ui" },
-    ],
-    variant: "static",
-  },
   separator: {
     type: "registry:ui",
     title: "Separator",
@@ -166,28 +153,6 @@ export const staticSharedComponents = {
     registryDependencies: ["utils"],
     inlineDependencies: [],
     files: [{ path: "components/ui/static/skeleton.tsx", type: "registry:ui" }],
-    variant: "static",
-  },
-  slider: {
-    type: "registry:ui",
-    title: "Slider",
-    description:
-      "A range slider component with single or multiple thumbs, built on Base UI Slider.",
-    dependencies: ["@base-ui/react"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/static/slider.tsx", type: "registry:ui" }],
-    variant: "static",
-  },
-  tooltip: {
-    type: "registry:ui",
-    title: "Tooltip",
-    description:
-      "A tooltip component with smooth animations and configurable positioning.",
-    dependencies: ["@base-ui/react"],
-    registryDependencies: ["utils"],
-    inlineDependencies: [],
-    files: [{ path: "components/ui/static/tooltip.tsx", type: "registry:ui" }],
     variant: "static",
   },
 };

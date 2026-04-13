@@ -2,20 +2,20 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 11,
-    "totalComponents": 53,
+    "totalPackages": 19,
+    "totalComponents": 77,
     "animatedComponents": 0,
     "staticComponents": 53,
     "sharedComponents": 0,
     "largestDependency": {
-      "name": "recharts",
-      "version": "3.8.0",
-      "size": 523379,
-      "gzip": 138121,
-      "dependencyCount": 11,
+      "name": "@react-three/drei",
+      "version": "10.7.7",
+      "size": 1604829,
+      "gzip": 496190,
+      "dependencyCount": 21,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-03-23T20:03:17.255Z"
+    "computedAt": "2026-03-24T20:10:44.929Z"
   },
   "packages": [
     {
@@ -32,6 +32,30 @@
       "version": "latest",
       "source": "fallback",
       "note": "Per icon, tree-shakable"
+    },
+    {
+      "name": "@react-three/drei",
+      "version": "10.7.7",
+      "size": 1604829,
+      "gzip": 496190,
+      "dependencyCount": 21,
+      "source": "bundlephobia"
+    },
+    {
+      "name": "@react-three/fiber",
+      "version": "9.5.0",
+      "size": 159105,
+      "gzip": 50712,
+      "dependencyCount": 10,
+      "source": "bundlephobia"
+    },
+    {
+      "name": "@streamdown/code",
+      "version": "1.1.1",
+      "size": 197921,
+      "gzip": 31485,
+      "dependencyCount": 1,
+      "source": "bundlephobia"
     },
     {
       "name": "class-variance-authority",
@@ -64,6 +88,13 @@
       "source": "bundlephobia"
     },
     {
+      "name": "motion/react",
+      "size": 50000,
+      "gzip": 15000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    {
       "name": "react-day-picker",
       "version": "9.14.0",
       "size": 67432,
@@ -88,6 +119,22 @@
       "source": "bundlephobia"
     },
     {
+      "name": "shiki",
+      "version": "4.0.2",
+      "size": 109061,
+      "gzip": 34024,
+      "dependencyCount": 8,
+      "source": "bundlephobia"
+    },
+    {
+      "name": "streamdown",
+      "version": "2.5.0",
+      "size": 464290,
+      "gzip": 141349,
+      "dependencyCount": 16,
+      "source": "bundlephobia"
+    },
+    {
       "name": "tailwind-merge",
       "size": 28000,
       "gzip": 8000,
@@ -95,11 +142,27 @@
       "source": "fallback"
     },
     {
+      "name": "three",
+      "version": "0.183.2",
+      "size": 717051,
+      "gzip": 179358,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    {
       "name": "tw-animate-css",
       "size": 18000,
       "gzip": 5000,
       "version": "latest",
       "source": "fallback"
+    },
+    {
+      "name": "use-stick-to-bottom",
+      "version": "1.1.3",
+      "size": 6649,
+      "gzip": 2502,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     }
   ],
   "components": {
@@ -1408,6 +1471,611 @@
       },
       "dependencies": [],
       "dependencyCount": 0
+    },
+    "audio/audio-message": {
+      "name": "audio-message",
+      "title": "Message",
+      "description": "Chat message bubble with role-based styling (user/assistant), avatar, and alignment.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-conversation": {
+      "name": "audio-conversation",
+      "title": "Conversation",
+      "description": "Scrollable message container with auto-scroll to bottom using use-stick-to-bottom.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 6649,
+        "gzipped": 2502,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "use-stick-to-bottom",
+          "size": 6649,
+          "gzip": 2502,
+          "version": "1.1.3",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-response": {
+      "name": "audio-response",
+      "title": "Response",
+      "description": "Streaming markdown response renderer using streamdown with syntax highlighting.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 662211,
+        "gzipped": 172834,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "streamdown",
+          "size": 464290,
+          "gzip": 141349,
+          "version": "2.5.0",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@streamdown/code",
+          "size": 197921,
+          "gzip": 31485,
+          "version": "1.1.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "audio/audio-chat-input": {
+      "name": "audio-chat-input",
+      "title": "Chat Input",
+      "description": "Multi-modal chat input with auto-resize textarea, voice toggle, file attachments, and submit on Enter.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-thinking-indicator": {
+      "name": "audio-thinking-indicator",
+      "title": "Thinking Indicator",
+      "description": "Animated thinking indicator with three variants: bouncing dots, pulse ring, and shimmer line.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 54500,
+        "gzipped": 16500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "motion/react",
+          "size": 50000,
+          "gzip": 15000,
+          "version": "unknown",
+          "source": "estimate"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "audio/audio-prompt-suggestions": {
+      "name": "audio-prompt-suggestions",
+      "title": "Prompt Suggestions",
+      "description": "Grid of clickable prompt suggestion cards with icons and descriptions.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-feedback": {
+      "name": "audio-feedback",
+      "title": "Feedback",
+      "description": "Thumbs up/down action bar with copy and regenerate for AI messages.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-token-counter": {
+      "name": "audio-token-counter",
+      "title": "Token Counter",
+      "description": "Token usage progress bar with model info badge and cost display.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-player": {
+      "name": "audio-player",
+      "title": "Audio Player",
+      "description": "Full-featured audio player with play/pause, scrubbing, volume, and speed controls.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-scrub-bar": {
+      "name": "audio-scrub-bar",
+      "title": "Scrub Bar",
+      "description": "Audio timeline scrubber with progress display and click-to-seek.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-live-waveform": {
+      "name": "audio-live-waveform",
+      "title": "Live Waveform",
+      "description": "Real-time waveform visualization from a live audio stream using Web Audio API.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-bar-visualizer": {
+      "name": "audio-bar-visualizer",
+      "title": "Bar Visualizer",
+      "description": "Multi-band frequency bar equalizer visualization with customizable band count.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-waveform": {
+      "name": "audio-waveform",
+      "title": "Waveform",
+      "description": "Static waveform display for pre-recorded audio with progress overlay.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-recorder": {
+      "name": "audio-recorder",
+      "title": "Audio Recorder",
+      "description": "Audio recording component with timer, pause/resume, levels visualization, and download.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-mic-selector": {
+      "name": "audio-mic-selector",
+      "title": "Mic Selector",
+      "description": "Microphone input device selector dropdown with permission handling.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-voice-button": {
+      "name": "audio-voice-button",
+      "title": "Voice Button",
+      "description": "Push-to-talk style voice button with idle/listening/speaking states and mini waveform.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-matrix": {
+      "name": "audio-matrix",
+      "title": "Matrix",
+      "description": "SVG dot-matrix display with animated presets (idle, thinking, speaking, off).",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-shimmering-text": {
+      "name": "audio-shimmering-text",
+      "title": "Shimmering Text",
+      "description": "Animated gradient shimmer text effect with viewport-triggered animation.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 54500,
+        "gzipped": 16500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "motion/react",
+          "size": 50000,
+          "gzip": 15000,
+          "version": "unknown",
+          "source": "estimate"
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "audio/audio-code-block": {
+      "name": "audio-code-block",
+      "title": "Code Block",
+      "description": "Syntax-highlighted code block with copy button, line numbers, and language badge. Requires shiki and a useShikiHighlight hook.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 114761,
+        "gzipped": 35924,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "shiki",
+          "size": 109061,
+          "gzip": 34024,
+          "version": "4.0.2",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "audio/audio-speech-input": {
+      "name": "audio-speech-input",
+      "title": "Speech Input",
+      "description": "Web Speech API powered speech-to-text input with permission handling and error states.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 5700,
+        "gzipped": 1900,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "audio/audio-conversation-bar": {
+      "name": "audio-conversation-bar",
+      "title": "Conversation Bar",
+      "description": "Text input with send button and connection toggle for voice/chat sessions.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 5700,
+        "gzipped": 1900,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "audio/audio-transcript-viewer": {
+      "name": "audio-transcript-viewer",
+      "title": "Transcript Viewer",
+      "description": "Real-time transcript display with per-character highlighting, auto-scroll, and timestamp seek.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 4500,
+        "gzipped": 1500,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "audio/audio-voice-picker": {
+      "name": "audio-voice-picker",
+      "title": "Voice Picker",
+      "description": "Selectable voice list with labels, descriptions, and audio preview playback.",
+      "variant": "audio",
+      "sizes": {
+        "minified": 5700,
+        "gzipped": 1900,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "audio/audio-orb": {
+      "name": "audio-orb",
+      "title": "Orb",
+      "description": "Three.js animated orb with state-driven distortion and CSS-only fallback. Optional — adds ~1MB bundle (three + @react-three/fiber + @react-three/drei).",
+      "variant": "audio",
+      "sizes": {
+        "minified": 2485485,
+        "gzipped": 727760,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 4500,
+          "gzip": 1500,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@react-three/fiber",
+          "size": 159105,
+          "gzip": 50712,
+          "version": "9.5.0",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-three/drei",
+          "size": 1604829,
+          "gzip": 496190,
+          "version": "10.7.7",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "three",
+          "size": 717051,
+          "gzip": 179358,
+          "version": "0.183.2",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 4
     }
   },
   "comparisons": {}
