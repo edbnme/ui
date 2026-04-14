@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DropdownMenuSub / SubTrigger / SubContent — Nested submenu system with
  * directional slide animations and keyboard navigation.
  * @module dropdown-menu/dropdown-menu-sub
@@ -14,9 +14,7 @@ import { cn } from "@/lib/utils";
 import { useDropdownMenu } from "./dropdown-menu-context";
 import { itemVariants, subMenuVariants } from "./dropdown-menu-animations";
 
-// =============================================================================
-// DROPDOWN MENU SUB
-// =============================================================================
+// ---- DROPDOWN MENU SUB ------------------------------------------------------
 
 /**
  * DropdownMenuSub props
@@ -71,9 +69,7 @@ function DropdownMenuSub({
 
 DropdownMenuSub.displayName = "DropdownMenuSub";
 
-// =============================================================================
-// DROPDOWN MENU SUB TRIGGER
-// =============================================================================
+// ---- DROPDOWN MENU SUB TRIGGER ----------------------------------------------
 
 /**
  * DropdownMenuSubTrigger props
@@ -151,9 +147,7 @@ const DropdownMenuSubTrigger = forwardRef<
 
 DropdownMenuSubTrigger.displayName = "DropdownMenuSubTrigger";
 
-// =============================================================================
-// DROPDOWN MENU SUB CONTENT
-// =============================================================================
+// ---- DROPDOWN MENU SUB CONTENT ----------------------------------------------
 
 /**
  * DropdownMenuSubContent props
@@ -266,8 +260,6 @@ const DropdownMenuSubContent = forwardRef<
 
 DropdownMenuSubContent.displayName = "DropdownMenuSubContent";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent };

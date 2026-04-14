@@ -67,4 +67,28 @@ export const audioHookComponents = {
     files: [{ path: "hooks/use-bar-animator.ts", type: "registry:hook" }],
     variant: "audio",
   },
+
+  "use-transcript-viewer": {
+    type: "registry:hook",
+    title: "useTranscriptViewer",
+    description:
+      "Hook for transcript playback, word timing, scrubbing, and current-word tracking.",
+    dependencies: [],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "hooks/use-transcript-viewer.ts", type: "registry:hook" }],
+    variant: "audio",
+  },
+
+  "use-shiki-highlight": {
+    type: "registry:hook",
+    title: "useShikiHighlight",
+    description:
+      "Client-side Shiki highlighting hook with lazy loading and JSX rendering.",
+    dependencies: ["hast-util-to-jsx-runtime", "shiki"],
+    registryDependencies: [],
+    inlineDependencies: ["shiki-config"],
+    files: [{ path: "hooks/use-shiki-highlight.tsx", type: "registry:hook" }],
+    variant: "audio",
+  },
 };

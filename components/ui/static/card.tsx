@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Card — Content container with variant styles.
  * Supports default, solid, ghost, and elevated variants.
  *
@@ -18,9 +18,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-// =============================================================================
-// Card Variants
-// =============================================================================
+// ---- Card Variants ----------------------------------------------------------
 
 const cardVariants = cva(
   // Base styles shared across all variants
@@ -54,9 +52,7 @@ const cardVariants = cva(
   }
 );
 
-// =============================================================================
-// Card
-// =============================================================================
+// ---- Card -------------------------------------------------------------------
 
 export interface CardProps
   extends
@@ -75,9 +71,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
 );
 Card.displayName = "Card";
 
-// =============================================================================
-// Card Header
-// =============================================================================
+// ---- Card Header ------------------------------------------------------------
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
@@ -99,9 +93,7 @@ const CardHeader = React.forwardRef<
 ));
 CardHeader.displayName = "CardHeader";
 
-// =============================================================================
-// Card Title
-// =============================================================================
+// ---- Card Title -------------------------------------------------------------
 
 const CardTitle = React.forwardRef<
   HTMLDivElement,
@@ -116,9 +108,7 @@ const CardTitle = React.forwardRef<
 ));
 CardTitle.displayName = "CardTitle";
 
-// =============================================================================
-// Card Description
-// =============================================================================
+// ---- Card Description -------------------------------------------------------
 
 const CardDescription = React.forwardRef<
   HTMLDivElement,
@@ -133,9 +123,7 @@ const CardDescription = React.forwardRef<
 ));
 CardDescription.displayName = "CardDescription";
 
-// =============================================================================
-// Card Content
-// =============================================================================
+// ---- Card Content -----------------------------------------------------------
 
 const CardContent = React.forwardRef<
   HTMLDivElement,
@@ -150,9 +138,7 @@ const CardContent = React.forwardRef<
 ));
 CardContent.displayName = "CardContent";
 
-// =============================================================================
-// Card Footer
-// =============================================================================
+// ---- Card Footer ------------------------------------------------------------
 
 const CardFooter = React.forwardRef<
   HTMLDivElement,
@@ -174,9 +160,7 @@ const CardFooter = React.forwardRef<
 ));
 CardFooter.displayName = "CardFooter";
 
-// =============================================================================
-// Exports
-// =============================================================================
+// ---- Exports ----------------------------------------------------------------
 
 export {
   Card,

@@ -12,9 +12,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// AUDIO ANALYSER UTILITIES
-// =============================================================================
+// ---- AUDIO ANALYSER UTILITIES -----------------------------------------------
 
 export interface AudioAnalyserOptions {
   fftSize?: number;
@@ -49,9 +47,7 @@ function createAudioAnalyser(
   };
 }
 
-// =============================================================================
-// useAudioVolume
-// =============================================================================
+// ---- useAudioVolume ---------------------------------------------------------
 
 /**
  * Hook for tracking the volume of an audio stream using the Web Audio API.
@@ -125,9 +121,7 @@ export function useAudioVolume(
   return volume;
 }
 
-// =============================================================================
-// useMultibandVolume
-// =============================================================================
+// ---- useMultibandVolume -----------------------------------------------------
 
 export interface MultiBandVolumeOptions {
   bands?: number;
@@ -253,9 +247,7 @@ export function useMultibandVolume(
   return frequencyBands;
 }
 
-// =============================================================================
-// useBarAnimator
-// =============================================================================
+// ---- useBarAnimator ---------------------------------------------------------
 
 type AnimationState =
   | "connecting"
@@ -339,9 +331,7 @@ export const useBarAnimator = (
   return currentFrame;
 };
 
-// =============================================================================
-// TYPES & COMPONENT
-// =============================================================================
+// ---- TYPES & COMPONENT ------------------------------------------------------
 
 export type AgentState =
   | "connecting"

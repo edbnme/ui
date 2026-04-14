@@ -4,9 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/primitives";
 
-// =============================================================================
-// SIDEBAR MENU SUB
-// =============================================================================
+// ---- SIDEBAR MENU SUB -------------------------------------------------------
 
 function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
   return (
@@ -25,9 +23,7 @@ function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
 
 SidebarMenuSub.displayName = "SidebarMenuSub";
 
-// =============================================================================
-// SIDEBAR MENU SUB ITEM
-// =============================================================================
+// ---- SIDEBAR MENU SUB ITEM --------------------------------------------------
 
 function SidebarMenuSubItem({
   className,
@@ -45,9 +41,7 @@ function SidebarMenuSubItem({
 
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
 
-// =============================================================================
-// SIDEBAR MENU SUB BUTTON
-// =============================================================================
+// ---- SIDEBAR MENU SUB BUTTON ------------------------------------------------
 
 function SidebarMenuSubButton({
   asChild = false,
@@ -83,8 +77,6 @@ function SidebarMenuSubButton({
 
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { SidebarMenuSub, SidebarMenuSubItem, SidebarMenuSubButton };

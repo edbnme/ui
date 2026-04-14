@@ -1,4 +1,4 @@
-/**
+﻿/**
  * usePreventScroll — Prevents body scrolling while active (e.g., when a modal is open).
  * Supports nested locks via a global reference counter.
  *

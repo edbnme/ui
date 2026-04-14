@@ -1,19 +1,15 @@
-"use client";
+﻿"use client";
 
 import { memo, type ComponentProps } from "react";
 import { Streamdown } from "streamdown";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 type ResponseProps = ComponentProps<typeof Streamdown>;
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 /**
  * Memoized wrapper around Streamdown for rendering streaming markdown.

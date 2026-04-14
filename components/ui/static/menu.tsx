@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Menu — Dropdown menu with items, checkboxes, radios, groups, and submenus.
  * Built on @base-ui/react Menu primitive.
  *
@@ -24,15 +24,11 @@ import { Menu } from "@base-ui/react/menu";
 import { cn } from "@/lib/utils";
 import { Check, CaretRight } from "@phosphor-icons/react";
 
-// =============================================================================
-// MENU ROOT
-// =============================================================================
+// ---- MENU ROOT --------------------------------------------------------------
 
 const MenuRoot = Menu.Root;
 
-// =============================================================================
-// MENU TRIGGER
-// =============================================================================
+// ---- MENU TRIGGER -----------------------------------------------------------
 
 const MenuTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -53,15 +49,11 @@ const MenuTrigger = React.forwardRef<
 ));
 MenuTrigger.displayName = "MenuTrigger";
 
-// =============================================================================
-// MENU PORTAL
-// =============================================================================
+// ---- MENU PORTAL ------------------------------------------------------------
 
 const MenuPortal = Menu.Portal;
 
-// =============================================================================
-// MENU POSITIONER
-// =============================================================================
+// ---- MENU POSITIONER --------------------------------------------------------
 
 const MenuPositioner = React.forwardRef<
   HTMLDivElement,
@@ -76,9 +68,7 @@ const MenuPositioner = React.forwardRef<
 ));
 MenuPositioner.displayName = "MenuPositioner";
 
-// =============================================================================
-// MENU POPUP
-// =============================================================================
+// ---- MENU POPUP -------------------------------------------------------------
 
 const MenuPopup = React.forwardRef<
   HTMLDivElement,
@@ -99,9 +89,7 @@ const MenuPopup = React.forwardRef<
 ));
 MenuPopup.displayName = "MenuPopup";
 
-// =============================================================================
-// MENU ITEM
-// =============================================================================
+// ---- MENU ITEM --------------------------------------------------------------
 
 const MenuItem = React.forwardRef<
   HTMLDivElement,
@@ -120,9 +108,7 @@ const MenuItem = React.forwardRef<
 ));
 MenuItem.displayName = "MenuItem";
 
-// =============================================================================
-// MENU CHECKBOX ITEM
-// =============================================================================
+// ---- MENU CHECKBOX ITEM -----------------------------------------------------
 
 const MenuCheckboxItem = React.forwardRef<
   HTMLDivElement,
@@ -148,15 +134,11 @@ const MenuCheckboxItem = React.forwardRef<
 ));
 MenuCheckboxItem.displayName = "MenuCheckboxItem";
 
-// =============================================================================
-// MENU RADIO GROUP
-// =============================================================================
+// ---- MENU RADIO GROUP -------------------------------------------------------
 
 const MenuRadioGroup = Menu.RadioGroup;
 
-// =============================================================================
-// MENU RADIO ITEM
-// =============================================================================
+// ---- MENU RADIO ITEM --------------------------------------------------------
 
 const MenuRadioItem = React.forwardRef<
   HTMLDivElement,
@@ -182,15 +164,11 @@ const MenuRadioItem = React.forwardRef<
 ));
 MenuRadioItem.displayName = "MenuRadioItem";
 
-// =============================================================================
-// MENU GROUP
-// =============================================================================
+// ---- MENU GROUP -------------------------------------------------------------
 
 const MenuGroup = Menu.Group;
 
-// =============================================================================
-// MENU GROUP LABEL
-// =============================================================================
+// ---- MENU GROUP LABEL -------------------------------------------------------
 
 const MenuGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -207,9 +185,7 @@ const MenuGroupLabel = React.forwardRef<
 ));
 MenuGroupLabel.displayName = "MenuGroupLabel";
 
-// =============================================================================
-// MENU SEPARATOR
-// =============================================================================
+// ---- MENU SEPARATOR ---------------------------------------------------------
 
 const MenuSeparator = React.forwardRef<
   HTMLDivElement,
@@ -223,15 +199,11 @@ const MenuSeparator = React.forwardRef<
 ));
 MenuSeparator.displayName = "MenuSeparator";
 
-// =============================================================================
-// MENU SUBMENU
-// =============================================================================
+// ---- MENU SUBMENU -----------------------------------------------------------
 
 const MenuSubmenuRoot = Menu.Root;
 
-// =============================================================================
-// MENU SUBMENU TRIGGER
-// =============================================================================
+// ---- MENU SUBMENU TRIGGER ---------------------------------------------------
 
 const MenuSubmenuTrigger = React.forwardRef<
   HTMLDivElement,
@@ -252,9 +224,7 @@ const MenuSubmenuTrigger = React.forwardRef<
 ));
 MenuSubmenuTrigger.displayName = "MenuSubmenuTrigger";
 
-// =============================================================================
-// MENU SHORTCUT
-// =============================================================================
+// ---- MENU SHORTCUT ----------------------------------------------------------
 
 const MenuShortcut = ({
   className,
@@ -272,9 +242,7 @@ const MenuShortcut = ({
 };
 MenuShortcut.displayName = "MenuShortcut";
 
-// =============================================================================
-// MENU BACKDROP
-// =============================================================================
+// ---- MENU BACKDROP ----------------------------------------------------------
 
 const MenuBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -288,9 +256,7 @@ const MenuBackdrop = React.forwardRef<
 ));
 MenuBackdrop.displayName = "MenuBackdrop";
 
-// =============================================================================
-// MENU ARROW
-// =============================================================================
+// ---- MENU ARROW -------------------------------------------------------------
 
 const MenuArrow = React.forwardRef<
   HTMLDivElement,
@@ -308,9 +274,7 @@ const MenuArrow = React.forwardRef<
 ));
 MenuArrow.displayName = "MenuArrow";
 
-// =============================================================================
-// MENU LINK ITEM
-// =============================================================================
+// ---- MENU LINK ITEM ---------------------------------------------------------
 
 const MenuLinkItem = React.forwardRef<
   HTMLAnchorElement,
@@ -330,16 +294,12 @@ const MenuLinkItem = React.forwardRef<
 ));
 MenuLinkItem.displayName = "MenuLinkItem";
 
-// =============================================================================
-// MENU HANDLE
-// =============================================================================
+// ---- MENU HANDLE ------------------------------------------------------------
 
 const MenuHandle = Menu.Handle;
 const createMenuHandle = Menu.createHandle;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   MenuRoot,

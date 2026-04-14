@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Toast — Notification toasts with provider, viewport, and configurable actions.
  * Built on @base-ui/react Toast primitive.
  *
@@ -17,15 +17,11 @@ import { Toast } from "@base-ui/react/toast";
 import { cn } from "@/lib/utils";
 import { X } from "@phosphor-icons/react";
 
-// =============================================================================
-// TOAST PROVIDER
-// =============================================================================
+// ---- TOAST PROVIDER ---------------------------------------------------------
 
 const ToastProvider = Toast.Provider;
 
-// =============================================================================
-// TOAST VIEWPORT
-// =============================================================================
+// ---- TOAST VIEWPORT ---------------------------------------------------------
 
 const ToastViewport = React.forwardRef<
   HTMLDivElement,
@@ -42,9 +38,7 @@ const ToastViewport = React.forwardRef<
 ));
 ToastViewport.displayName = "ToastViewport";
 
-// =============================================================================
-// TOAST ROOT
-// =============================================================================
+// ---- TOAST ROOT -------------------------------------------------------------
 
 const ToastRoot = React.forwardRef<
   HTMLDivElement,
@@ -66,9 +60,7 @@ const ToastRoot = React.forwardRef<
 ));
 ToastRoot.displayName = "ToastRoot";
 
-// =============================================================================
-// TOAST CONTENT
-// =============================================================================
+// ---- TOAST CONTENT ----------------------------------------------------------
 
 const ToastContent = React.forwardRef<
   HTMLDivElement,
@@ -78,9 +70,7 @@ const ToastContent = React.forwardRef<
 ));
 ToastContent.displayName = "ToastContent";
 
-// =============================================================================
-// TOAST TITLE
-// =============================================================================
+// ---- TOAST TITLE ------------------------------------------------------------
 
 const ToastTitle = React.forwardRef<
   HTMLDivElement,
@@ -94,9 +84,7 @@ const ToastTitle = React.forwardRef<
 ));
 ToastTitle.displayName = "ToastTitle";
 
-// =============================================================================
-// TOAST DESCRIPTION
-// =============================================================================
+// ---- TOAST DESCRIPTION ------------------------------------------------------
 
 const ToastDescription = React.forwardRef<
   HTMLDivElement,
@@ -110,9 +98,7 @@ const ToastDescription = React.forwardRef<
 ));
 ToastDescription.displayName = "ToastDescription";
 
-// =============================================================================
-// TOAST CLOSE
-// =============================================================================
+// ---- TOAST CLOSE ------------------------------------------------------------
 
 const ToastClose = React.forwardRef<
   HTMLButtonElement,
@@ -134,9 +120,7 @@ const ToastClose = React.forwardRef<
 ));
 ToastClose.displayName = "ToastClose";
 
-// =============================================================================
-// TOAST ACTION
-// =============================================================================
+// ---- TOAST ACTION -----------------------------------------------------------
 
 const ToastAction = React.forwardRef<
   HTMLButtonElement,
@@ -156,22 +140,16 @@ const ToastAction = React.forwardRef<
 ));
 ToastAction.displayName = "ToastAction";
 
-// =============================================================================
-// TOAST MANAGER (imperative API re-exports)
-// =============================================================================
+// ---- TOAST MANAGER (imperative API re-exports) ------------------------------
 
 const createToastManager = Toast.createToastManager;
 const useToastManager = Toast.useToastManager;
 
-// =============================================================================
-// TOAST PORTAL
-// =============================================================================
+// ---- TOAST PORTAL -----------------------------------------------------------
 
 const ToastPortal = Toast.Portal;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ToastProvider,

@@ -4,7 +4,7 @@
  * Compound component with provider context:
  * SlideToUnlock (root), SlideToUnlockTrack, SlideToUnlockText, SlideToUnlockHandle
  *
- * Uses motion/react for drag gestures — in JSDOM, motion.div renders as a regular div.
+ * Uses motion/react for drag gestures  in JSDOM, motion.div renders as a regular div.
  * We test structure, styling, context provision, and error boundaries.
  *
  * @see oss/components/ui/animated/slide-to-unlock.tsx
@@ -19,9 +19,7 @@ import {
 } from "@/components/ui/animated/slide-to-unlock";
 import { render, screen } from "@/test/utils/test-utils";
 
-// =============================================================================
-// HELPERS
-// =============================================================================
+// ---- HELPERS ----------------------------------------------------------------
 
 function renderSlideToUnlock(
   props: {
@@ -40,9 +38,7 @@ function renderSlideToUnlock(
   );
 }
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 describe("SlideToUnlock", () => {
   describe("Exports", () => {
@@ -54,9 +50,7 @@ describe("SlideToUnlock", () => {
     });
   });
 
-  // ===========================================================================
-  // ROOT
-  // ===========================================================================
+  // ---- ROOT -----------------------------------------------------------------
 
   describe("SlideToUnlock Root", () => {
     it("should render without crashing", () => {
@@ -89,9 +83,7 @@ describe("SlideToUnlock", () => {
     });
   });
 
-  // ===========================================================================
-  // TRACK
-  // ===========================================================================
+  // ---- TRACK ----------------------------------------------------------------
 
   describe("SlideToUnlockTrack", () => {
     it("should render track element", () => {
@@ -123,9 +115,7 @@ describe("SlideToUnlock", () => {
     });
   });
 
-  // ===========================================================================
-  // TEXT
-  // ===========================================================================
+  // ---- TEXT -----------------------------------------------------------------
 
   describe("SlideToUnlockText", () => {
     it("should render text content", () => {
@@ -164,9 +154,7 @@ describe("SlideToUnlock", () => {
     });
   });
 
-  // ===========================================================================
-  // HANDLE
-  // ===========================================================================
+  // ---- HANDLE ---------------------------------------------------------------
 
   describe("SlideToUnlockHandle", () => {
     it("should render handle element", () => {
@@ -209,7 +197,7 @@ describe("SlideToUnlock", () => {
           <SlideToUnlockTrack>
             <SlideToUnlockText>Slide</SlideToUnlockText>
             <SlideToUnlockHandle data-testid="handle">
-              <span data-testid="custom-icon">→</span>
+              <span data-testid="custom-icon">ΓåÆ</span>
             </SlideToUnlockHandle>
           </SlideToUnlockTrack>
         </SlideToUnlock>
@@ -223,9 +211,7 @@ describe("SlideToUnlock", () => {
     });
   });
 
-  // ===========================================================================
-  // CONTEXT ERROR
-  // ===========================================================================
+  // ---- CONTEXT ERROR --------------------------------------------------------
 
   describe("Context Error", () => {
     it("should throw when track is used outside provider", () => {
@@ -235,9 +221,7 @@ describe("SlideToUnlock", () => {
     });
   });
 
-  // ===========================================================================
-  // COMPOSITION
-  // ===========================================================================
+  // ---- COMPOSITION ----------------------------------------------------------
 
   describe("Composition", () => {
     it("should render complete slide-to-unlock component", () => {

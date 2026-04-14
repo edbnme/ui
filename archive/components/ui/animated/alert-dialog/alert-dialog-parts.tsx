@@ -8,9 +8,7 @@ import { cn } from "@/lib/utils";
 
 import { useAlertDialog, dialogSprings } from "./alert-dialog-context";
 
-// =============================================================================
-// ALERT DIALOG HEADER
-// =============================================================================
+// ---- ALERT DIALOG HEADER ----------------------------------------------------
 
 /**
  * AlertDialogHeader props
@@ -61,9 +59,7 @@ export function AlertDialogHeader({
 
 AlertDialogHeader.displayName = "AlertDialogHeader";
 
-// =============================================================================
-// ALERT DIALOG BODY
-// =============================================================================
+// ---- ALERT DIALOG BODY ------------------------------------------------------
 
 /**
  * AlertDialogBody props
@@ -109,9 +105,7 @@ export function AlertDialogBody({ children, className }: AlertDialogBodyProps) {
 
 AlertDialogBody.displayName = "AlertDialogBody";
 
-// =============================================================================
-// ALERT DIALOG FOOTER
-// =============================================================================
+// ---- ALERT DIALOG FOOTER ----------------------------------------------------
 
 /**
  * AlertDialogFooter props
@@ -145,9 +139,7 @@ export function AlertDialogFooter({
 
 AlertDialogFooter.displayName = "AlertDialogFooter";
 
-// =============================================================================
-// ALERT DIALOG TITLE
-// =============================================================================
+// ---- ALERT DIALOG TITLE -----------------------------------------------------
 
 /**
  * AlertDialogTitle props
@@ -189,9 +181,7 @@ export function AlertDialogTitle({
 
 AlertDialogTitle.displayName = "AlertDialogTitle";
 
-// =============================================================================
-// ALERT DIALOG SUBTITLE
-// =============================================================================
+// ---- ALERT DIALOG SUBTITLE --------------------------------------------------
 
 /**
  * AlertDialogSubtitle props
@@ -246,9 +236,7 @@ export function AlertDialogSubtitle({
 
 AlertDialogSubtitle.displayName = "AlertDialogSubtitle";
 
-// =============================================================================
-// ALERT DIALOG DESCRIPTION
-// =============================================================================
+// ---- ALERT DIALOG DESCRIPTION -----------------------------------------------
 
 /**
  * AlertDialogDescription props
@@ -290,9 +278,7 @@ export function AlertDialogDescription({
 
 AlertDialogDescription.displayName = "AlertDialogDescription";
 
-// =============================================================================
-// ALERT DIALOG IMAGE
-// =============================================================================
+// ---- ALERT DIALOG IMAGE -----------------------------------------------------
 
 /**
  * AlertDialogImage props

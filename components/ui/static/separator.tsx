@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Separator — Visual divider between content sections.
  * Built on @base-ui/react Separator primitive.
  *
@@ -13,9 +13,7 @@ import * as React from "react";
 import { Separator } from "@base-ui/react/separator";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// SEPARATOR
-// =============================================================================
+// ---- SEPARATOR --------------------------------------------------------------
 
 const SeparatorRoot = React.forwardRef<
   HTMLDivElement,
@@ -35,9 +33,7 @@ const SeparatorRoot = React.forwardRef<
 ));
 SeparatorRoot.displayName = "SeparatorRoot";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { SeparatorRoot };
 

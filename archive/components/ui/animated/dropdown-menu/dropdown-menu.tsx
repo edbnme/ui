@@ -14,9 +14,7 @@
 
 "use client";
 
-// =============================================================================
-// IMPORTS
-// =============================================================================
+// ---- IMPORTS ----------------------------------------------------------------
 
 import * as React from "react";
 import { forwardRef, useMemo, useCallback, type ReactNode } from "react";
@@ -37,9 +35,7 @@ import {
   DEFAULT_MENU_VARIANTS,
 } from "./dropdown-menu-animations";
 
-// =============================================================================
-// DROPDOWN MENU ROOT
-// =============================================================================
+// ---- DROPDOWN MENU ROOT -----------------------------------------------------
 
 /**
  * DropdownMenu props
@@ -150,9 +146,7 @@ function DropdownMenu({
 
 DropdownMenu.displayName = "DropdownMenu";
 
-// =============================================================================
-// DROPDOWN MENU PORTAL
-// =============================================================================
+// ---- DROPDOWN MENU PORTAL ---------------------------------------------------
 
 /**
  * DropdownMenuPortal props
@@ -177,9 +171,7 @@ function DropdownMenuPortal({ children, container }: DropdownMenuPortalProps) {
 
 DropdownMenuPortal.displayName = "DropdownMenuPortal";
 
-// =============================================================================
-// DROPDOWN MENU TRIGGER
-// =============================================================================
+// ---- DROPDOWN MENU TRIGGER --------------------------------------------------
 
 /**
  * DropdownMenuTrigger props
@@ -221,8 +213,6 @@ const DropdownMenuTrigger = forwardRef<
 
 DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { DropdownMenu, DropdownMenuPortal, DropdownMenuTrigger };

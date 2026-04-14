@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Radio — Radio button group for single-choice selection.
  * Built on @base-ui/react RadioGroup and Radio primitives.
  *
@@ -17,9 +17,7 @@ import { RadioGroup } from "@base-ui/react/radio-group";
 import { Radio } from "@base-ui/react/radio";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// RADIO GROUP ROOT
-// =============================================================================
+// ---- RADIO GROUP ROOT -------------------------------------------------------
 
 const RadioGroupRoot = React.forwardRef<
   HTMLDivElement,
@@ -33,9 +31,7 @@ const RadioGroupRoot = React.forwardRef<
 ));
 RadioGroupRoot.displayName = "RadioGroupRoot";
 
-// =============================================================================
-// RADIO ITEM
-// =============================================================================
+// ---- RADIO ITEM -------------------------------------------------------------
 
 const RadioItem = React.forwardRef<
   HTMLButtonElement,
@@ -62,9 +58,7 @@ const RadioItem = React.forwardRef<
 ));
 RadioItem.displayName = "RadioItem";
 
-// =============================================================================
-// RADIO INDICATOR
-// =============================================================================
+// ---- RADIO INDICATOR --------------------------------------------------------
 
 const RadioIndicator = React.forwardRef<
   HTMLSpanElement,
@@ -80,8 +74,6 @@ const RadioIndicator = React.forwardRef<
 ));
 RadioIndicator.displayName = "RadioIndicator";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { RadioGroupRoot, RadioItem, RadioIndicator };

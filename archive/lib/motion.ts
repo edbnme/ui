@@ -1,9 +1,6 @@
 import type { Transition, Variants } from "motion/react";
 
-// =============================================================================
-// SPRING PRESETS
-// Spring physics configurations for animations
-// =============================================================================
+// ---- SPRING PRESETS ---------------------------------------------------------
 
 /**
  * Spring presets for consistent animations
@@ -65,10 +62,7 @@ export const springPresets = {
   },
 } as const;
 
-// =============================================================================
-// TRANSITION PRESETS
-// Pre-configured transitions for common use cases
-// =============================================================================
+// ---- TRANSITION PRESETS -----------------------------------------------------
 
 export const transitions = {
   /** Standard transition using snappy spring */
@@ -128,10 +122,7 @@ export const transitions = {
   } as Transition,
 } as const;
 
-// =============================================================================
-// VARIANT FACTORIES
-// Create animation variants for common patterns
-// =============================================================================
+// ---- VARIANT FACTORIES ------------------------------------------------------
 
 /**
  * Creates scale variants for press/tap interactions
@@ -329,10 +320,7 @@ export function createPopoverVariants(options?: {
   };
 }
 
-// =============================================================================
-// GESTURE PRESETS
-// Common gesture configurations
-// =============================================================================
+// ---- GESTURE PRESETS --------------------------------------------------------
 
 export const gestures = {
   /** Standard button tap feedback */
@@ -365,10 +353,7 @@ export const gestures = {
   },
 } as const;
 
-// =============================================================================
-// DRAG CONFIGURATION
-// For swipeable/draggable components
-// =============================================================================
+// ---- DRAG CONFIGURATION -----------------------------------------------------
 
 export const dragConfig = {
   /** Sheet swipe-to-dismiss threshold */
@@ -384,10 +369,7 @@ export const dragConfig = {
   },
 } as const;
 
-// =============================================================================
-// EASING FUNCTIONS
-// Cubic-bezier curves for animations
-// =============================================================================
+// ---- EASING FUNCTIONS -------------------------------------------------------
 
 export const easings = {
   /** Standard curve */
@@ -402,10 +384,7 @@ export const easings = {
   linear: [0, 0, 1, 1],
 } as const;
 
-// =============================================================================
-// DURATION PRESETS
-// Consistent timing values
-// =============================================================================
+// ---- DURATION PRESETS -------------------------------------------------------
 
 export const durations = {
   instant: 0,
@@ -416,9 +395,7 @@ export const durations = {
   slowest: 0.8,
 } as const;
 
-// =============================================================================
-// UTILITY FUNCTIONS
-// =============================================================================
+// ---- UTILITY FUNCTIONS ------------------------------------------------------
 
 /**
  * Combines multiple variant objects

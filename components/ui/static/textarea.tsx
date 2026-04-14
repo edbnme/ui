@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Textarea — Multi-line text input with optional auto-resize.
  *
  * @example

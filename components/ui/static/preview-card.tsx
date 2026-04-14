@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PreviewCard — Hover-triggered preview card (like GitHub user cards).
  * Built on @base-ui/react PreviewCard primitive.
  *
@@ -20,15 +20,11 @@ import * as React from "react";
 import { PreviewCard } from "@base-ui/react/preview-card";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// PREVIEW CARD ROOT
-// =============================================================================
+// ---- PREVIEW CARD ROOT ------------------------------------------------------
 
 const PreviewCardRoot = PreviewCard.Root;
 
-// =============================================================================
-// PREVIEW CARD TRIGGER
-// =============================================================================
+// ---- PREVIEW CARD TRIGGER ---------------------------------------------------
 
 const PreviewCardTrigger = React.forwardRef<
   HTMLAnchorElement,
@@ -47,15 +43,11 @@ const PreviewCardTrigger = React.forwardRef<
 ));
 PreviewCardTrigger.displayName = "PreviewCardTrigger";
 
-// =============================================================================
-// PREVIEW CARD PORTAL
-// =============================================================================
+// ---- PREVIEW CARD PORTAL ----------------------------------------------------
 
 const PreviewCardPortal = PreviewCard.Portal;
 
-// =============================================================================
-// PREVIEW CARD POSITIONER
-// =============================================================================
+// ---- PREVIEW CARD POSITIONER ------------------------------------------------
 
 const PreviewCardPositioner = React.forwardRef<
   HTMLDivElement,
@@ -70,9 +62,7 @@ const PreviewCardPositioner = React.forwardRef<
 ));
 PreviewCardPositioner.displayName = "PreviewCardPositioner";
 
-// =============================================================================
-// PREVIEW CARD POPUP
-// =============================================================================
+// ---- PREVIEW CARD POPUP -----------------------------------------------------
 
 const PreviewCardPopup = React.forwardRef<
   HTMLDivElement,
@@ -93,9 +83,7 @@ const PreviewCardPopup = React.forwardRef<
 ));
 PreviewCardPopup.displayName = "PreviewCardPopup";
 
-// =============================================================================
-// PREVIEW CARD ARROW
-// =============================================================================
+// ---- PREVIEW CARD ARROW -----------------------------------------------------
 
 const PreviewCardArrow = React.forwardRef<
   HTMLDivElement,
@@ -113,9 +101,7 @@ const PreviewCardArrow = React.forwardRef<
 ));
 PreviewCardArrow.displayName = "PreviewCardArrow";
 
-// =============================================================================
-// PREVIEW CARD VIEWPORT (optional — for multi-trigger animated content transitions)
-// =============================================================================
+// ---- PREVIEW CARD VIEWPORT (optional — for multi-trigger animated content transitions) -
 
 const PreviewCardViewport = React.forwardRef<
   HTMLDivElement,
@@ -125,9 +111,7 @@ const PreviewCardViewport = React.forwardRef<
 ));
 PreviewCardViewport.displayName = "PreviewCardViewport";
 
-// =============================================================================
-// PREVIEW CARD BACKDROP
-// =============================================================================
+// ---- PREVIEW CARD BACKDROP --------------------------------------------------
 
 const PreviewCardBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -141,16 +125,12 @@ const PreviewCardBackdrop = React.forwardRef<
 ));
 PreviewCardBackdrop.displayName = "PreviewCardBackdrop";
 
-// =============================================================================
-// PREVIEW CARD HANDLE
-// =============================================================================
+// ---- PREVIEW CARD HANDLE ----------------------------------------------------
 
 const PreviewCardHandle = PreviewCard.Handle;
 const createPreviewCardHandle = PreviewCard.createHandle;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   PreviewCardRoot,

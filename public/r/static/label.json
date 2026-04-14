@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/static/label.tsx",
-      "content": "/**\n * Label — Accessible form label with disabled state styling.\n *\n * @example\n * <Label htmlFor=\"email\">Email address</Label>\n */\n\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport type LabelProps = React.ComponentProps<\"label\">;\n\nfunction Label({ className, ...props }: LabelProps) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm font-medium leading-none select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        \"group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nLabel.displayName = \"Label\";\n\nexport { Label };\n",
+      "content": "﻿/**\n * Label — Accessible form label with disabled state styling.\n *\n * @example\n * <Label htmlFor=\"email\">Email address</Label>\n */\n\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport type LabelProps = React.ComponentProps<\"label\">;\n\nfunction Label({ className, ...props }: LabelProps) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm font-medium leading-none select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        \"group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\n\nLabel.displayName = \"Label\";\n\nexport { Label };\n",
       "type": "registry:ui"
     }
   ]

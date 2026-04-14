@@ -1,4 +1,4 @@
-/**
+﻿/**
  * CheckboxGroup — Group of related checkboxes with shared state.
  * Built on @base-ui/react CheckboxGroup primitive.
  *
@@ -19,9 +19,7 @@ import { Checkbox } from "@base-ui/react/checkbox";
 import { cn } from "@/lib/utils";
 import { Check } from "@phosphor-icons/react";
 
-// =============================================================================
-// CHECKBOX GROUP ROOT
-// =============================================================================
+// ---- CHECKBOX GROUP ROOT ----------------------------------------------------
 
 const CheckboxGroupRoot = React.forwardRef<
   HTMLDivElement,
@@ -35,9 +33,7 @@ const CheckboxGroupRoot = React.forwardRef<
 ));
 CheckboxGroupRoot.displayName = "CheckboxGroupRoot";
 
-// =============================================================================
-// CHECKBOX GROUP ITEM
-// =============================================================================
+// ---- CHECKBOX GROUP ITEM ----------------------------------------------------
 
 interface CheckboxGroupItemProps extends React.ComponentPropsWithoutRef<
   typeof Checkbox.Root
@@ -70,9 +66,7 @@ const CheckboxGroupItem = React.forwardRef<
 ));
 CheckboxGroupItem.displayName = "CheckboxGroupItem";
 
-// =============================================================================
-// CHECKBOX GROUP LABEL
-// =============================================================================
+// ---- CHECKBOX GROUP LABEL ---------------------------------------------------
 
 const CheckboxGroupLabel = React.forwardRef<
   HTMLLabelElement,
@@ -89,8 +83,6 @@ const CheckboxGroupLabel = React.forwardRef<
 ));
 CheckboxGroupLabel.displayName = "CheckboxGroupLabel";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { CheckboxGroupRoot, CheckboxGroupItem, CheckboxGroupLabel };

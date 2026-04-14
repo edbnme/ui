@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DropdownMenuContext — Shared context, types, and hook for the DropdownMenu component tree.
  * @module dropdown-menu/dropdown-menu-context
  */
@@ -7,9 +7,7 @@
 import { createContext, useContext } from "react";
 import type { Transition, Variants } from "motion/react";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 /**
  * Context value for DropdownMenu state management
@@ -27,9 +25,7 @@ export interface DropdownMenuContextValue {
   itemTransition: Transition;
 }
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 export const DropdownMenuContext =
   createContext<DropdownMenuContextValue | null>(null);

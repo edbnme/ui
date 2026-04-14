@@ -2,9 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface UseBarAnimatorOptions {
   /** Target bar heights (0-1 normalized). Length determines bar count. */
@@ -20,9 +18,7 @@ interface UseBarAnimatorReturn {
   currentHeights: number[];
 }
 
-// =============================================================================
-// HOOK
-// =============================================================================
+// ---- HOOK -------------------------------------------------------------------
 
 /**
  * Smoothly interpolates bar heights toward target values using

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Label — Accessible form label with disabled state styling.
  *
  * @example

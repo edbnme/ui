@@ -29,9 +29,7 @@ import { render, RenderOptions, screen, within } from "@testing-library/react";
 import userEvent, { UserEvent } from "@testing-library/user-event";
 import { ReactElement, ReactNode } from "react";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 /**
  * Extended render result with user event instance
@@ -46,9 +44,7 @@ export interface CustomRenderResult extends ReturnType<typeof render> {
  */
 export type CustomRenderOptions = Omit<RenderOptions, "wrapper">;
 
-// =============================================================================
-// WRAPPER COMPONENT
-// =============================================================================
+// ---- WRAPPER COMPONENT ------------------------------------------------------
 
 /**
  * Simple wrapper component for tests
@@ -70,9 +66,7 @@ function TestWrapper({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
 
-// =============================================================================
-// CUSTOM RENDER
-// =============================================================================
+// ---- CUSTOM RENDER ----------------------------------------------------------
 
 /**
  * Custom render function with automatic user event setup
@@ -101,9 +95,7 @@ export function customRender(
   };
 }
 
-// =============================================================================
-// KEYBOARD HELPERS
-// =============================================================================
+// ---- KEYBOARD HELPERS -------------------------------------------------------
 
 /**
  * Simulate pressing the Escape key
@@ -224,9 +216,7 @@ export async function pressEnd(user: UserEvent): Promise<void> {
   await user.keyboard("{End}");
 }
 
-// =============================================================================
-// WAIT UTILITIES
-// =============================================================================
+// ---- WAIT UTILITIES ---------------------------------------------------------
 
 /**
  * Wait for a specified duration
@@ -246,9 +236,7 @@ export async function waitForAnimation(ms: number = 100): Promise<void> {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// =============================================================================
-// FOCUS HELPERS
-// =============================================================================
+// ---- FOCUS HELPERS ----------------------------------------------------------
 
 /**
  * Check if an element contains the currently focused element
@@ -275,9 +263,7 @@ export function getFocusedElement(): Element | null {
   return document.activeElement;
 }
 
-// =============================================================================
-// ACCESSIBILITY HELPERS
-// =============================================================================
+// ---- ACCESSIBILITY HELPERS --------------------------------------------------
 
 /**
  * Check if an element is visible to screen readers
@@ -302,9 +288,7 @@ export function getByAriaRole(role: string): HTMLElement[] {
   return Array.from(document.querySelectorAll(`[role="${role}"]`));
 }
 
-// =============================================================================
-// RE-EXPORTS
-// =============================================================================
+// ---- RE-EXPORTS -------------------------------------------------------------
 
 // Re-export everything from React Testing Library
 export * from "@testing-library/react";

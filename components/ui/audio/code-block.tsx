@@ -7,9 +7,7 @@ import { CopyIcon, CheckIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { useShikiHighlight } from "@/hooks/use-shiki-highlight";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface CodeBlockProps
   extends React.ComponentProps<"div">, VariantProps<typeof codeBlockVariants> {
@@ -27,9 +25,7 @@ interface CodeBlockProps
   maxHeight?: number | string;
 }
 
-// =============================================================================
-// VARIANTS
-// =============================================================================
+// ---- VARIANTS ---------------------------------------------------------------
 
 const codeBlockVariants = cva(
   "flex flex-col overflow-hidden rounded-xl ring-1 ring-border ring-inset text-sm font-mono",
@@ -47,9 +43,7 @@ const codeBlockVariants = cva(
   }
 );
 
-// =============================================================================
-// COPY BUTTON
-// =============================================================================
+// ---- COPY BUTTON ------------------------------------------------------------
 
 function CopyButton({ code }: { code: string }) {
   const [copied, setCopied] = React.useState(false);
@@ -76,9 +70,7 @@ function CopyButton({ code }: { code: string }) {
   );
 }
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 function CodeBlock({
   code,

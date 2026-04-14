@@ -2,9 +2,7 @@
 
 import { useMemo } from "react";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface UseMultibandVolumeOptions {
   /** Number of frequency bands to split into. Default: 5 */
@@ -18,9 +16,7 @@ interface UseMultibandVolumeReturn {
   bandVolumes: number[];
 }
 
-// =============================================================================
-// HOOK
-// =============================================================================
+// ---- HOOK -------------------------------------------------------------------
 
 /**
  * Splits raw frequency data (Uint8Array from AnalyserNode.getByteFrequencyData)

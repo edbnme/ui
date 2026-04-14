@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Toggle — Pressable toggle button with group support.
  * Built on @base-ui/react Toggle and ToggleGroup primitives.
  *
@@ -21,9 +21,7 @@ import { ToggleGroup } from "@base-ui/react/toggle-group";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-// =============================================================================
-// TOGGLE VARIANTS
-// =============================================================================
+// ---- TOGGLE VARIANTS --------------------------------------------------------
 
 const toggleVariants = cva(
   [
@@ -54,9 +52,7 @@ const toggleVariants = cva(
   }
 );
 
-// =============================================================================
-// TOGGLE ROOT
-// =============================================================================
+// ---- TOGGLE ROOT ------------------------------------------------------------
 
 const ToggleRoot = React.forwardRef<
   HTMLButtonElement,
@@ -71,9 +67,7 @@ const ToggleRoot = React.forwardRef<
 ));
 ToggleRoot.displayName = "ToggleRoot";
 
-// =============================================================================
-// TOGGLE GROUP ROOT
-// =============================================================================
+// ---- TOGGLE GROUP ROOT ------------------------------------------------------
 
 const ToggleGroupRoot = React.forwardRef<
   HTMLDivElement,
@@ -87,9 +81,7 @@ const ToggleGroupRoot = React.forwardRef<
 ));
 ToggleGroupRoot.displayName = "ToggleGroupRoot";
 
-// =============================================================================
-// TOGGLE GROUP ITEM
-// =============================================================================
+// ---- TOGGLE GROUP ITEM ------------------------------------------------------
 
 const ToggleGroupItem = React.forwardRef<
   HTMLButtonElement,
@@ -104,8 +96,6 @@ const ToggleGroupItem = React.forwardRef<
 ));
 ToggleGroupItem.displayName = "ToggleGroupItem";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { ToggleRoot, ToggleGroupRoot, ToggleGroupItem, toggleVariants };

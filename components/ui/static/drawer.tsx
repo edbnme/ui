@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Drawer — Bottom sheet / drawer component built on @base-ui/react Drawer.
  * Supports swipe-to-dismiss, snap points, and nested drawers.
  *
@@ -30,15 +30,11 @@ import * as React from "react";
 import { DrawerPreview as Drawer } from "@base-ui/react/drawer";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// DRAWER ROOT
-// =============================================================================
+// ---- DRAWER ROOT ------------------------------------------------------------
 
 const DrawerRoot = Drawer.Root;
 
-// =============================================================================
-// DRAWER TRIGGER
-// =============================================================================
+// ---- DRAWER TRIGGER ---------------------------------------------------------
 
 const DrawerTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -56,15 +52,11 @@ const DrawerTrigger = React.forwardRef<
 ));
 DrawerTrigger.displayName = "DrawerTrigger";
 
-// =============================================================================
-// DRAWER PORTAL
-// =============================================================================
+// ---- DRAWER PORTAL ----------------------------------------------------------
 
 const DrawerPortal = Drawer.Portal;
 
-// =============================================================================
-// DRAWER BACKDROP
-// =============================================================================
+// ---- DRAWER BACKDROP --------------------------------------------------------
 
 const DrawerBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -84,9 +76,7 @@ const DrawerBackdrop = React.forwardRef<
 ));
 DrawerBackdrop.displayName = "DrawerBackdrop";
 
-// =============================================================================
-// DRAWER VIEWPORT
-// =============================================================================
+// ---- DRAWER VIEWPORT --------------------------------------------------------
 
 const DrawerViewport = React.forwardRef<
   HTMLDivElement,
@@ -103,9 +93,7 @@ const DrawerViewport = React.forwardRef<
 ));
 DrawerViewport.displayName = "DrawerViewport";
 
-// =============================================================================
-// DRAWER POPUP
-// =============================================================================
+// ---- DRAWER POPUP -----------------------------------------------------------
 
 const DrawerPopup = React.forwardRef<
   HTMLDivElement,
@@ -127,9 +115,7 @@ const DrawerPopup = React.forwardRef<
 ));
 DrawerPopup.displayName = "DrawerPopup";
 
-// =============================================================================
-// DRAWER HANDLE (drag indicator)
-// =============================================================================
+// ---- DRAWER HANDLE (drag indicator) -----------------------------------------
 
 const DrawerHandle = ({
   className,
@@ -146,15 +132,11 @@ const DrawerHandle = ({
 );
 DrawerHandle.displayName = "DrawerHandle";
 
-// =============================================================================
-// DRAWER CONTENT
-// =============================================================================
+// ---- DRAWER CONTENT ---------------------------------------------------------
 
 const DrawerContent = Drawer.Content;
 
-// =============================================================================
-// DRAWER TITLE
-// =============================================================================
+// ---- DRAWER TITLE -----------------------------------------------------------
 
 const DrawerTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -168,9 +150,7 @@ const DrawerTitle = React.forwardRef<
 ));
 DrawerTitle.displayName = "DrawerTitle";
 
-// =============================================================================
-// DRAWER DESCRIPTION
-// =============================================================================
+// ---- DRAWER DESCRIPTION -----------------------------------------------------
 
 const DrawerDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -184,9 +164,7 @@ const DrawerDescription = React.forwardRef<
 ));
 DrawerDescription.displayName = "DrawerDescription";
 
-// =============================================================================
-// DRAWER CLOSE
-// =============================================================================
+// ---- DRAWER CLOSE -----------------------------------------------------------
 
 const DrawerClose = React.forwardRef<
   HTMLButtonElement,
@@ -204,9 +182,7 @@ const DrawerClose = React.forwardRef<
 ));
 DrawerClose.displayName = "DrawerClose";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   DrawerRoot,

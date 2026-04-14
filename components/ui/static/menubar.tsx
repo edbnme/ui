@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Menubar — Horizontal menu bar with keyboard navigation and submenus.
  * Built on @base-ui/react Menubar and Menu primitives.
  *
@@ -30,9 +30,7 @@ import { Menu } from "@base-ui/react/menu";
 import { cn } from "@/lib/utils";
 import { Check, CaretRight } from "@phosphor-icons/react";
 
-// =============================================================================
-// MENUBAR ROOT
-// =============================================================================
+// ---- MENUBAR ROOT -----------------------------------------------------------
 
 const MenubarRoot = React.forwardRef<
   HTMLDivElement,
@@ -49,15 +47,11 @@ const MenubarRoot = React.forwardRef<
 ));
 MenubarRoot.displayName = "MenubarRoot";
 
-// =============================================================================
-// MENUBAR MENU
-// =============================================================================
+// ---- MENUBAR MENU -----------------------------------------------------------
 
 const MenubarMenu = Menu.Root;
 
-// =============================================================================
-// MENUBAR TRIGGER
-// =============================================================================
+// ---- MENUBAR TRIGGER --------------------------------------------------------
 
 const MenubarTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -79,15 +73,11 @@ const MenubarTrigger = React.forwardRef<
 ));
 MenubarTrigger.displayName = "MenubarTrigger";
 
-// =============================================================================
-// MENUBAR PORTAL
-// =============================================================================
+// ---- MENUBAR PORTAL ---------------------------------------------------------
 
 const MenubarPortal = Menu.Portal;
 
-// =============================================================================
-// MENUBAR POSITIONER
-// =============================================================================
+// ---- MENUBAR POSITIONER -----------------------------------------------------
 
 const MenubarPositioner = React.forwardRef<
   HTMLDivElement,
@@ -103,9 +93,7 @@ const MenubarPositioner = React.forwardRef<
 ));
 MenubarPositioner.displayName = "MenubarPositioner";
 
-// =============================================================================
-// MENUBAR POPUP
-// =============================================================================
+// ---- MENUBAR POPUP ----------------------------------------------------------
 
 const MenubarPopup = React.forwardRef<
   HTMLDivElement,
@@ -126,9 +114,7 @@ const MenubarPopup = React.forwardRef<
 ));
 MenubarPopup.displayName = "MenubarPopup";
 
-// =============================================================================
-// MENUBAR ITEM
-// =============================================================================
+// ---- MENUBAR ITEM -----------------------------------------------------------
 
 const MenubarItem = React.forwardRef<
   HTMLDivElement,
@@ -148,9 +134,7 @@ const MenubarItem = React.forwardRef<
 ));
 MenubarItem.displayName = "MenubarItem";
 
-// =============================================================================
-// MENUBAR CHECKBOX ITEM
-// =============================================================================
+// ---- MENUBAR CHECKBOX ITEM --------------------------------------------------
 
 const MenubarCheckboxItem = React.forwardRef<
   HTMLDivElement,
@@ -176,15 +160,11 @@ const MenubarCheckboxItem = React.forwardRef<
 ));
 MenubarCheckboxItem.displayName = "MenubarCheckboxItem";
 
-// =============================================================================
-// MENUBAR RADIO GROUP
-// =============================================================================
+// ---- MENUBAR RADIO GROUP ----------------------------------------------------
 
 const MenubarRadioGroup = Menu.RadioGroup;
 
-// =============================================================================
-// MENUBAR RADIO ITEM
-// =============================================================================
+// ---- MENUBAR RADIO ITEM -----------------------------------------------------
 
 const MenubarRadioItem = React.forwardRef<
   HTMLDivElement,
@@ -210,15 +190,11 @@ const MenubarRadioItem = React.forwardRef<
 ));
 MenubarRadioItem.displayName = "MenubarRadioItem";
 
-// =============================================================================
-// MENUBAR GROUP
-// =============================================================================
+// ---- MENUBAR GROUP ----------------------------------------------------------
 
 const MenubarGroup = Menu.Group;
 
-// =============================================================================
-// MENUBAR GROUP LABEL
-// =============================================================================
+// ---- MENUBAR GROUP LABEL ----------------------------------------------------
 
 const MenubarGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -236,9 +212,7 @@ const MenubarGroupLabel = React.forwardRef<
 ));
 MenubarGroupLabel.displayName = "MenubarGroupLabel";
 
-// =============================================================================
-// MENUBAR SEPARATOR
-// =============================================================================
+// ---- MENUBAR SEPARATOR ------------------------------------------------------
 
 const MenubarSeparator = React.forwardRef<
   HTMLDivElement,
@@ -252,9 +226,7 @@ const MenubarSeparator = React.forwardRef<
 ));
 MenubarSeparator.displayName = "MenubarSeparator";
 
-// =============================================================================
-// MENUBAR SUB MENU
-// =============================================================================
+// ---- MENUBAR SUB MENU -------------------------------------------------------
 
 const MenubarSubmenuRoot = Menu.Root;
 
@@ -280,9 +252,7 @@ const MenubarSubmenuTrigger = React.forwardRef<
 ));
 MenubarSubmenuTrigger.displayName = "MenubarSubmenuTrigger";
 
-// =============================================================================
-// MENUBAR SHORTCUT
-// =============================================================================
+// ---- MENUBAR SHORTCUT -------------------------------------------------------
 
 const MenubarShortcut = ({
   className,
@@ -298,9 +268,7 @@ const MenubarShortcut = ({
 );
 MenubarShortcut.displayName = "MenubarShortcut";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   MenubarRoot,

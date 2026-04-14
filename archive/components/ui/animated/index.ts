@@ -1,6 +1,4 @@
-// =============================================================================
-// ANIMATED UI COMPONENTS - with motion/react
-// =============================================================================
+// ---- ANIMATED UI COMPONENTS - with motion/react -----------------------------
 //
 // These components use motion/react for spring animations and transitions.
 // For static alternatives without motion dependencies, see ../static/

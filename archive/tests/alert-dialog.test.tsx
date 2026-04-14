@@ -47,9 +47,7 @@ import {
   fireEvent as _fireEvent,
 } from "@/test/utils/test-utils";
 
-// =============================================================================
-// HELPER FUNCTIONS
-// =============================================================================
+// ---- HELPER FUNCTIONS -------------------------------------------------------
 
 /**
  * Helper to render a complete AlertDialog with all common subcomponents
@@ -100,9 +98,7 @@ function renderAlertDialog(
   );
 }
 
-// =============================================================================
-// HELPER: Get trigger element
-// =============================================================================
+// ---- HELPER: Get trigger element --------------------------------------------
 
 /**
  * The AlertDialogTrigger wraps children in a div with role="button",
@@ -115,9 +111,7 @@ function _getTrigger() {
   );
 }
 
-// =============================================================================
-// RENDERING TESTS
-// =============================================================================
+// ---- RENDERING TESTS --------------------------------------------------------
 
 describe("AlertDialog", () => {
   describe("Rendering", () => {
@@ -193,9 +187,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // INTERACTION TESTS
-  // ===========================================================================
+  // ---- INTERACTION TESTS ----------------------------------------------------
 
   describe("Interactions", () => {
     it("should open when trigger is clicked", async () => {
@@ -287,9 +279,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // KEYBOARD NAVIGATION TESTS
-  // ===========================================================================
+  // ---- KEYBOARD NAVIGATION TESTS --------------------------------------------
 
   describe("Keyboard Navigation", () => {
     it("should close when Escape is pressed by default (shadcn-compatible behavior)", async () => {
@@ -347,9 +337,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // ACCESSIBILITY TESTS
-  // ===========================================================================
+  // ---- ACCESSIBILITY TESTS --------------------------------------------------
 
   describe("Accessibility", () => {
     it("should have alertdialog role", async () => {
@@ -392,9 +380,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // CONTROLLED STATE TESTS
-  // ===========================================================================
+  // ---- CONTROLLED STATE TESTS -----------------------------------------------
 
   describe("Controlled State", () => {
     it("should work with controlled open state", async () => {
@@ -442,9 +428,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // DESTRUCTIVE ACTION TESTS
-  // ===========================================================================
+  // ---- DESTRUCTIVE ACTION TESTS ---------------------------------------------
 
   describe("Destructive Action", () => {
     it("should apply destructive styling when variant is destructive", async () => {
@@ -468,9 +452,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // ANIMATION TESTS
-  // ===========================================================================
+  // ---- ANIMATION TESTS ------------------------------------------------------
 
   describe("Animation", () => {
     it("should render with animation disabled", async () => {
@@ -482,9 +464,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // EDGE CASE TESTS
-  // ===========================================================================
+  // ---- EDGE CASE TESTS ------------------------------------------------------
 
   describe("Edge Cases", () => {
     it("should handle onOpenChange being called", async () => {
@@ -559,9 +539,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // TRIGGER VARIANTS TESTS
-  // ===========================================================================
+  // ---- TRIGGER VARIANTS TESTS -----------------------------------------------
 
   describe("Trigger Variants", () => {
     it("should open dialog with keyboard Enter on trigger", async () => {
@@ -668,9 +646,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // OVERLAY AND PORTAL TESTS
-  // ===========================================================================
+  // ---- OVERLAY AND PORTAL TESTS ---------------------------------------------
 
   describe("Overlay and Portal", () => {
     it("should render backdrop with blur styling", async () => {
@@ -695,9 +671,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // CONTENT VARIANTS TESTS
-  // ===========================================================================
+  // ---- CONTENT VARIANTS TESTS -----------------------------------------------
 
   describe("Content Variants", () => {
     it("should render non-animated content when disableAnimation is true", async () => {
@@ -810,9 +784,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // ACTION AND CANCEL BUTTON TESTS
-  // ===========================================================================
+  // ---- ACTION AND CANCEL BUTTON TESTS ---------------------------------------
 
   describe("Action and Cancel Buttons", () => {
     it("should call onClick callback on action button", async () => {
@@ -930,9 +902,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // ARIA AND ACCESSIBILITY TESTS
-  // ===========================================================================
+  // ---- ARIA AND ACCESSIBILITY TESTS -----------------------------------------
 
   describe("Advanced Accessibility", () => {
     it("should have proper aria-haspopup on trigger", async () => {
@@ -991,9 +961,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // ADDITIONAL SUBCOMPONENT TESTS FOR FULL COVERAGE
-  // ===========================================================================
+  // ---- ADDITIONAL SUBCOMPONENT TESTS FOR FULL COVERAGE ----------------------
 
   describe("Additional Subcomponents", () => {
     it("should render AlertDialogSubtitle with animation", async () => {
@@ -1115,9 +1083,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // CONTEXT ERROR TESTS
-  // ===========================================================================
+  // ---- CONTEXT ERROR TESTS --------------------------------------------------
 
   describe("Context Error", () => {
     it("should throw error when useAlertDialog is used outside AlertDialog", () => {
@@ -1132,9 +1098,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // FOCUS TRAP TESTS
-  // ===========================================================================
+  // ---- FOCUS TRAP TESTS -----------------------------------------------------
 
   describe("Focus Trap", () => {
     it("should trap focus with Shift+Tab cycling to last focusable", async () => {
@@ -1170,9 +1134,7 @@ describe("AlertDialog", () => {
     // The preventOutsideClose=true case IS tested in "Content Variants" tests.
   });
 
-  // ===========================================================================
-  // ALERTDIALOGHEADER TESTS
-  // ===========================================================================
+  // ---- ALERTDIALOGHEADER TESTS ----------------------------------------------
 
   describe("AlertDialogHeader", () => {
     it("should render children correctly", () => {
@@ -1225,7 +1187,7 @@ describe("AlertDialog", () => {
           <AlertDialogContainer>
             <AlertDialogContent>
               <AlertDialogHeader
-                icon={<span data-testid="header-icon">🎉</span>}
+                icon={<span data-testid="header-icon">≡ƒÄë</span>}
               >
                 <span>Header Content</span>
               </AlertDialogHeader>
@@ -1246,7 +1208,7 @@ describe("AlertDialog", () => {
           <AlertDialogContainer>
             <AlertDialogContent>
               <AlertDialogHeader
-                icon={<span data-testid="header-icon">🎉</span>}
+                icon={<span data-testid="header-icon">≡ƒÄë</span>}
                 iconClassName="custom-icon-class"
               >
                 <span>Header Content</span>
@@ -1285,9 +1247,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // ALERTDIALOGFOOTER TESTS
-  // ===========================================================================
+  // ---- ALERTDIALOGFOOTER TESTS ----------------------------------------------
 
   describe("AlertDialogFooter", () => {
     it("should render children correctly", () => {
@@ -1351,9 +1311,7 @@ describe("AlertDialog", () => {
     });
   });
 
-  // ===========================================================================
-  // ALERTDIALOGBODY TESTS
-  // ===========================================================================
+  // ---- ALERTDIALOGBODY TESTS ------------------------------------------------
 
   describe("AlertDialogBody", () => {
     it("should render children correctly", () => {

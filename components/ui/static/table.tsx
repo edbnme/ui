@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Table — Semantic HTML table with styled header, body, footer, and caption.
  *
  * @example
@@ -16,9 +16,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// Table
-// =============================================================================
+// ---- Table ------------------------------------------------------------------
 
 const Table = React.forwardRef<
   HTMLTableElement,
@@ -138,9 +136,7 @@ const TableCaption = React.forwardRef<
 ));
 TableCaption.displayName = "TableCaption";
 
-// =============================================================================
-// Exports
-// =============================================================================
+// ---- Exports ----------------------------------------------------------------
 
 export {
   Table,

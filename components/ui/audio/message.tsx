@@ -1,11 +1,9 @@
-import type { HTMLAttributes } from "react";
+﻿import type { HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// MESSAGE
-// =============================================================================
+// ---- MESSAGE ----------------------------------------------------------------
 
 export type MessageProps = HTMLAttributes<HTMLDivElement> & {
   /** Determines alignment and styling. Required. */
@@ -36,9 +34,7 @@ export function Message({ className, from, ...props }: MessageProps) {
 
 Message.displayName = "Message";
 
-// =============================================================================
-// MESSAGE CONTENT
-// =============================================================================
+// ---- MESSAGE CONTENT --------------------------------------------------------
 
 const messageContentVariants = cva(
   "flex flex-col gap-2 overflow-hidden rounded-2xl text-sm",
@@ -89,9 +85,7 @@ export function MessageContent({
 
 MessageContent.displayName = "MessageContent";
 
-// =============================================================================
-// MESSAGE AVATAR
-// =============================================================================
+// ---- MESSAGE AVATAR ---------------------------------------------------------
 
 export type MessageAvatarProps = HTMLAttributes<HTMLDivElement> & {
   /** Avatar image URL. */
@@ -137,8 +131,6 @@ export function MessageAvatar({
 
 MessageAvatar.displayName = "MessageAvatar";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { messageContentVariants };

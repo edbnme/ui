@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Checkbox — Checkbox input with indeterminate state support.
  * Built on @base-ui/react Checkbox primitive.
  *
@@ -19,9 +19,7 @@ import { Checkbox } from "@base-ui/react/checkbox";
 import { cn } from "@/lib/utils";
 import { Check, Minus } from "@phosphor-icons/react";
 
-// =============================================================================
-// CHECKBOX ROOT
-// =============================================================================
+// ---- CHECKBOX ROOT ----------------------------------------------------------
 
 interface CheckboxRootProps extends React.ComponentPropsWithoutRef<
   typeof Checkbox.Root
@@ -48,9 +46,7 @@ const CheckboxRoot = React.forwardRef<HTMLButtonElement, CheckboxRootProps>(
 );
 CheckboxRoot.displayName = "CheckboxRoot";
 
-// =============================================================================
-// CHECKBOX INDICATOR
-// =============================================================================
+// ---- CHECKBOX INDICATOR -----------------------------------------------------
 
 const CheckboxIndicator = React.forwardRef<
   HTMLSpanElement,
@@ -72,9 +68,7 @@ const CheckboxIndicator = React.forwardRef<
 ));
 CheckboxIndicator.displayName = "CheckboxIndicator";
 
-// =============================================================================
-// CHECKBOX LABEL
-// =============================================================================
+// ---- CHECKBOX LABEL ---------------------------------------------------------
 
 const CheckboxLabel = React.forwardRef<
   HTMLLabelElement,
@@ -91,9 +85,7 @@ const CheckboxLabel = React.forwardRef<
 ));
 CheckboxLabel.displayName = "CheckboxLabel";
 
-// =============================================================================
-// CHECKBOX GROUP
-// =============================================================================
+// ---- CHECKBOX GROUP ---------------------------------------------------------
 
 const CheckboxGroup = React.forwardRef<
   HTMLDivElement,
@@ -103,8 +95,6 @@ const CheckboxGroup = React.forwardRef<
 ));
 CheckboxGroup.displayName = "CheckboxGroup";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { CheckboxRoot, CheckboxIndicator, CheckboxLabel, CheckboxGroup };

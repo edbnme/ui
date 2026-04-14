@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Breadcrumb — Navigation trail showing the current page location.
  *
  * @example
@@ -20,9 +20,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/slot";
 
-// =============================================================================
-// Breadcrumb
-// =============================================================================
+// ---- Breadcrumb -------------------------------------------------------------
 
 const Breadcrumb = React.forwardRef<
   HTMLElement,
@@ -174,9 +172,7 @@ function EllipsisIcon(props: React.ComponentProps<"svg">) {
 }
 EllipsisIcon.displayName = "EllipsisIcon";
 
-// =============================================================================
-// Exports
-// =============================================================================
+// ---- Exports ----------------------------------------------------------------
 
 export {
   Breadcrumb,

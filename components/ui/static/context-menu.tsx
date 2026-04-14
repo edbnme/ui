@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ContextMenu — Right-click context menu with items, checkboxes, radios, and submenus.
  * Built on @base-ui/react ContextMenu primitive.
  *
@@ -24,15 +24,11 @@ import { ContextMenu } from "@base-ui/react/context-menu";
 import { cn } from "@/lib/utils";
 import { Check, CaretRight } from "@phosphor-icons/react";
 
-// =============================================================================
-// CONTEXT MENU ROOT
-// =============================================================================
+// ---- CONTEXT MENU ROOT ------------------------------------------------------
 
 const ContextMenuRoot = ContextMenu.Root;
 
-// =============================================================================
-// CONTEXT MENU TRIGGER
-// =============================================================================
+// ---- CONTEXT MENU TRIGGER ---------------------------------------------------
 
 const ContextMenuTrigger = React.forwardRef<
   HTMLDivElement,
@@ -46,15 +42,11 @@ const ContextMenuTrigger = React.forwardRef<
 ));
 ContextMenuTrigger.displayName = "ContextMenuTrigger";
 
-// =============================================================================
-// CONTEXT MENU PORTAL
-// =============================================================================
+// ---- CONTEXT MENU PORTAL ----------------------------------------------------
 
 const ContextMenuPortal = ContextMenu.Portal;
 
-// =============================================================================
-// CONTEXT MENU POSITIONER
-// =============================================================================
+// ---- CONTEXT MENU POSITIONER ------------------------------------------------
 
 const ContextMenuPositioner = React.forwardRef<
   HTMLDivElement,
@@ -68,9 +60,7 @@ const ContextMenuPositioner = React.forwardRef<
 ));
 ContextMenuPositioner.displayName = "ContextMenuPositioner";
 
-// =============================================================================
-// CONTEXT MENU POPUP
-// =============================================================================
+// ---- CONTEXT MENU POPUP -----------------------------------------------------
 
 const ContextMenuPopup = React.forwardRef<
   HTMLDivElement,
@@ -91,9 +81,7 @@ const ContextMenuPopup = React.forwardRef<
 ));
 ContextMenuPopup.displayName = "ContextMenuPopup";
 
-// =============================================================================
-// CONTEXT MENU ITEM
-// =============================================================================
+// ---- CONTEXT MENU ITEM ------------------------------------------------------
 
 const ContextMenuItem = React.forwardRef<
   HTMLDivElement,
@@ -112,9 +100,7 @@ const ContextMenuItem = React.forwardRef<
 ));
 ContextMenuItem.displayName = "ContextMenuItem";
 
-// =============================================================================
-// CONTEXT MENU CHECKBOX ITEM
-// =============================================================================
+// ---- CONTEXT MENU CHECKBOX ITEM ---------------------------------------------
 
 const ContextMenuCheckboxItem = React.forwardRef<
   HTMLDivElement,
@@ -140,15 +126,11 @@ const ContextMenuCheckboxItem = React.forwardRef<
 ));
 ContextMenuCheckboxItem.displayName = "ContextMenuCheckboxItem";
 
-// =============================================================================
-// CONTEXT MENU RADIO GROUP
-// =============================================================================
+// ---- CONTEXT MENU RADIO GROUP -----------------------------------------------
 
 const ContextMenuRadioGroup = ContextMenu.RadioGroup;
 
-// =============================================================================
-// CONTEXT MENU RADIO ITEM
-// =============================================================================
+// ---- CONTEXT MENU RADIO ITEM ------------------------------------------------
 
 const ContextMenuRadioItem = React.forwardRef<
   HTMLDivElement,
@@ -174,15 +156,11 @@ const ContextMenuRadioItem = React.forwardRef<
 ));
 ContextMenuRadioItem.displayName = "ContextMenuRadioItem";
 
-// =============================================================================
-// CONTEXT MENU GROUP
-// =============================================================================
+// ---- CONTEXT MENU GROUP -----------------------------------------------------
 
 const ContextMenuGroup = ContextMenu.Group;
 
-// =============================================================================
-// CONTEXT MENU GROUP LABEL
-// =============================================================================
+// ---- CONTEXT MENU GROUP LABEL -----------------------------------------------
 
 const ContextMenuGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -199,9 +177,7 @@ const ContextMenuGroupLabel = React.forwardRef<
 ));
 ContextMenuGroupLabel.displayName = "ContextMenuGroupLabel";
 
-// =============================================================================
-// CONTEXT MENU SEPARATOR
-// =============================================================================
+// ---- CONTEXT MENU SEPARATOR -------------------------------------------------
 
 const ContextMenuSeparator = React.forwardRef<
   HTMLDivElement,
@@ -215,15 +191,11 @@ const ContextMenuSeparator = React.forwardRef<
 ));
 ContextMenuSeparator.displayName = "ContextMenuSeparator";
 
-// =============================================================================
-// CONTEXT MENU SUBMENU
-// =============================================================================
+// ---- CONTEXT MENU SUBMENU ---------------------------------------------------
 
 const ContextMenuSubmenuRoot = ContextMenu.Root;
 
-// =============================================================================
-// CONTEXT MENU SUBMENU TRIGGER
-// =============================================================================
+// ---- CONTEXT MENU SUBMENU TRIGGER -------------------------------------------
 
 const ContextMenuSubmenuTrigger = React.forwardRef<
   HTMLDivElement,
@@ -244,9 +216,7 @@ const ContextMenuSubmenuTrigger = React.forwardRef<
 ));
 ContextMenuSubmenuTrigger.displayName = "ContextMenuSubmenuTrigger";
 
-// =============================================================================
-// CONTEXT MENU SHORTCUT
-// =============================================================================
+// ---- CONTEXT MENU SHORTCUT --------------------------------------------------
 
 const ContextMenuShortcut = ({
   className,
@@ -264,9 +234,7 @@ const ContextMenuShortcut = ({
 };
 ContextMenuShortcut.displayName = "ContextMenuShortcut";
 
-// =============================================================================
-// CONTEXT MENU BACKDROP
-// =============================================================================
+// ---- CONTEXT MENU BACKDROP --------------------------------------------------
 
 const ContextMenuBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -280,9 +248,7 @@ const ContextMenuBackdrop = React.forwardRef<
 ));
 ContextMenuBackdrop.displayName = "ContextMenuBackdrop";
 
-// =============================================================================
-// CONTEXT MENU ARROW
-// =============================================================================
+// ---- CONTEXT MENU ARROW -----------------------------------------------------
 
 const ContextMenuArrow = React.forwardRef<
   HTMLDivElement,
@@ -300,9 +266,7 @@ const ContextMenuArrow = React.forwardRef<
 ));
 ContextMenuArrow.displayName = "ContextMenuArrow";
 
-// =============================================================================
-// CONTEXT MENU LINK ITEM
-// =============================================================================
+// ---- CONTEXT MENU LINK ITEM -------------------------------------------------
 
 const ContextMenuLinkItem = React.forwardRef<
   HTMLAnchorElement,
@@ -322,9 +286,7 @@ const ContextMenuLinkItem = React.forwardRef<
 ));
 ContextMenuLinkItem.displayName = "ContextMenuLinkItem";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ContextMenuRoot,

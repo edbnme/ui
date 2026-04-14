@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PullDownItem / PullDownCheckboxItem / PullDownRadioItem — Interactive menu items
  * with optional check/radio indicators, keyboard selection, and ripple effects.
  * @module pull-down/pull-down-items
@@ -33,9 +33,7 @@ import {
 } from "./pull-down-context";
 import { REDUCED_MOTION_SPRING } from "./pull-down-utils";
 
-// =============================================================================
-// ITEM COMPONENT
-// =============================================================================
+// ---- ITEM COMPONENT ---------------------------------------------------------
 
 export const Item = forwardRef<HTMLDivElement, PullDownItemProps>(
   function PullDownItem(
@@ -130,9 +128,7 @@ export const Item = forwardRef<HTMLDivElement, PullDownItemProps>(
 
 Item.displayName = "PullDownItem";
 
-// =============================================================================
-// PORTAL COMPONENT
-// =============================================================================
+// ---- PORTAL COMPONENT -------------------------------------------------------
 
 export function Portal({
   children,
@@ -154,9 +150,7 @@ export function Portal({
 
 Portal.displayName = "PullDownPortal";
 
-// =============================================================================
-// OVERLAY COMPONENT
-// =============================================================================
+// ---- OVERLAY COMPONENT ------------------------------------------------------
 
 export const Overlay = forwardRef<HTMLDivElement, PullDownOverlayProps>(
   function PullDownOverlay({ className, style, onClick }, ref) {
@@ -215,9 +209,7 @@ export const Overlay = forwardRef<HTMLDivElement, PullDownOverlayProps>(
 
 Overlay.displayName = "PullDownOverlay";
 
-// =============================================================================
-// SEPARATOR COMPONENT
-// =============================================================================
+// ---- SEPARATOR COMPONENT ----------------------------------------------------
 
 export const Separator = forwardRef<
   HTMLDivElement,
@@ -235,9 +227,7 @@ export const Separator = forwardRef<
 
 Separator.displayName = "PullDownSeparator";
 
-// =============================================================================
-// LABEL COMPONENT
-// =============================================================================
+// ---- LABEL COMPONENT --------------------------------------------------------
 
 export const Label = forwardRef<
   HTMLDivElement,

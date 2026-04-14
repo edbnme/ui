@@ -4,9 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/primitives";
 
-// =============================================================================
-// SIDEBAR GROUP
-// =============================================================================
+// ---- SIDEBAR GROUP ----------------------------------------------------------
 
 function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -21,9 +19,7 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
 
 SidebarGroup.displayName = "SidebarGroup";
 
-// =============================================================================
-// SIDEBAR GROUP LABEL
-// =============================================================================
+// ---- SIDEBAR GROUP LABEL ----------------------------------------------------
 
 function SidebarGroupLabel({
   className,
@@ -48,9 +44,7 @@ function SidebarGroupLabel({
 
 SidebarGroupLabel.displayName = "SidebarGroupLabel";
 
-// =============================================================================
-// SIDEBAR GROUP ACTION
-// =============================================================================
+// ---- SIDEBAR GROUP ACTION ---------------------------------------------------
 
 function SidebarGroupAction({
   className,
@@ -76,9 +70,7 @@ function SidebarGroupAction({
 
 SidebarGroupAction.displayName = "SidebarGroupAction";
 
-// =============================================================================
-// SIDEBAR GROUP CONTENT
-// =============================================================================
+// ---- SIDEBAR GROUP CONTENT --------------------------------------------------
 
 function SidebarGroupContent({
   className,
@@ -96,9 +88,7 @@ function SidebarGroupContent({
 
 SidebarGroupContent.displayName = "SidebarGroupContent";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SidebarGroup,

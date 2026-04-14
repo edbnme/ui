@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Alert — Static alert banner with variant styles.
  * Supports default, destructive, success, warning, and info variants.
  *
@@ -14,9 +14,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// Alert Variants
-// =============================================================================
+// ---- Alert Variants ---------------------------------------------------------
 
 const alertVariants = cva(
   "relative w-full rounded-lg border border-border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7",
@@ -39,9 +37,7 @@ const alertVariants = cva(
   }
 );
 
-// =============================================================================
-// Alert
-// =============================================================================
+// ---- Alert ------------------------------------------------------------------
 
 export type AlertProps = React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof alertVariants>;
@@ -59,9 +55,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
 );
 Alert.displayName = "Alert";
 
-// =============================================================================
-// Alert Title
-// =============================================================================
+// ---- Alert Title ------------------------------------------------------------
 
 const AlertTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -76,9 +70,7 @@ const AlertTitle = React.forwardRef<
 ));
 AlertTitle.displayName = "AlertTitle";
 
-// =============================================================================
-// Alert Description
-// =============================================================================
+// ---- Alert Description ------------------------------------------------------
 
 const AlertDescription = React.forwardRef<
   HTMLDivElement,
@@ -93,8 +85,6 @@ const AlertDescription = React.forwardRef<
 ));
 AlertDescription.displayName = "AlertDescription";
 
-// =============================================================================
-// Exports
-// =============================================================================
+// ---- Exports ----------------------------------------------------------------
 
 export { Alert, AlertTitle, AlertDescription, alertVariants };

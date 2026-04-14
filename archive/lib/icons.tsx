@@ -12,10 +12,7 @@ import type { Icon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { springPresets } from "@/lib/motion";
 
-// =============================================================================
-// ANIMATED ICON WRAPPER
-// Wraps Phosphor icons with Motion for smooth transitions
-// =============================================================================
+// ---- ANIMATED ICON WRAPPER --------------------------------------------------
 
 type AnimationTarget = boolean | TargetAndTransition | VariantLabels;
 
@@ -107,9 +104,7 @@ export function AnimatedIcon({
   );
 }
 
-// =============================================================================
-// ICON MORPH - Morphs between two icons
-// =============================================================================
+// ---- ICON MORPH - Morphs between two icons ----------------------------------
 
 export type IconMorphProps = {
   /** First icon (shown when isActive is false) */
@@ -190,10 +185,7 @@ export function IconMorph({
   );
 }
 
-// =============================================================================
-// LOADING SPINNER
-// Animated spinning loader
-// =============================================================================
+// ---- LOADING SPINNER --------------------------------------------------------
 
 export type LoadingSpinnerProps = {
   /** Size of the spinner */
@@ -249,10 +241,7 @@ export function LoadingSpinner({
   );
 }
 
-// =============================================================================
-// CHECKMARK ICON
-// Animated check mark for success states
-// =============================================================================
+// ---- CHECKMARK ICON ---------------------------------------------------------
 
 export type AnimatedCheckProps = {
   /** Size of the checkmark */
@@ -308,10 +297,7 @@ export function AnimatedCheck({
   );
 }
 
-// =============================================================================
-// CLOSE BUTTON
-// Circular close button with animation
-// =============================================================================
+// ---- CLOSE BUTTON -----------------------------------------------------------
 
 export type CloseButtonProps = {
   /** Click handler */
@@ -387,10 +373,7 @@ export function CloseButton({
   );
 }
 
-// =============================================================================
-// CHEVRON ICON
-// Rotatable chevron for expandable sections
-// =============================================================================
+// ---- CHEVRON ICON -----------------------------------------------------------
 
 export type AnimatedChevronProps = {
   /** Direction/rotation state */
@@ -447,10 +430,7 @@ export function AnimatedChevron({
   );
 }
 
-// =============================================================================
-// DRAG HANDLE
-// Pill indicator for draggable sheets
-// =============================================================================
+// ---- DRAG HANDLE ------------------------------------------------------------
 
 export type DragHandleProps = {
   /** Additional className */

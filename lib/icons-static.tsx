@@ -16,10 +16,7 @@ import * as React from "react";
 import type { Icon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// STATIC LOADING SPINNER
-// CSS-only spinning loader
-// =============================================================================
+// ---- STATIC LOADING SPINNER -------------------------------------------------
 
 export interface StaticLoadingSpinnerProps {
   /** Size of the spinner in pixels */
@@ -74,10 +71,7 @@ export function StaticLoadingSpinner({
   );
 }
 
-// =============================================================================
-// STATIC CHECKMARK ICON
-// CSS-only check mark for success states
-// =============================================================================
+// ---- STATIC CHECKMARK ICON --------------------------------------------------
 
 export interface StaticCheckProps {
   /** Size of the checkmark in pixels */
@@ -124,10 +118,7 @@ export function StaticCheck({
   );
 }
 
-// =============================================================================
-// STATIC CLOSE BUTTON
-// CSS-only close button
-// =============================================================================
+// ---- STATIC CLOSE BUTTON ----------------------------------------------------
 
 export interface StaticCloseButtonProps {
   /** Click handler */
@@ -194,10 +185,7 @@ export function StaticCloseButton({
   );
 }
 
-// =============================================================================
-// STATIC ICON WRAPPER
-// Wraps Phosphor icons with optional CSS transitions
-// =============================================================================
+// ---- STATIC ICON WRAPPER ----------------------------------------------------
 
 export interface StaticIconProps extends React.SVGProps<SVGSVGElement> {
   /** The Phosphor icon component to render */
@@ -234,10 +222,7 @@ export function StaticIcon({
   );
 }
 
-// =============================================================================
-// STATIC ICON MORPH
-// Switches between icons with CSS transition
-// =============================================================================
+// ---- STATIC ICON MORPH ------------------------------------------------------
 
 export interface StaticIconMorphProps {
   /** First icon (shown when isActive is false) */
@@ -287,10 +272,7 @@ export function StaticIconMorph({
   );
 }
 
-// =============================================================================
-// STATIC CHEVRON
-// Rotatable chevron with CSS transitions
-// =============================================================================
+// ---- STATIC CHEVRON ---------------------------------------------------------
 
 export interface StaticChevronProps {
   /** Direction/rotation state */
@@ -338,10 +320,7 @@ export function StaticChevron({
   );
 }
 
-// =============================================================================
-// LOADING DOTS
-// CSS-only animated loading dots
-// =============================================================================
+// ---- LOADING DOTS -----------------------------------------------------------
 
 export interface StaticLoadingDotsProps {
   /** Size of each dot */

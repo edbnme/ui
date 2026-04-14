@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Accordion — Collapsible content sections for grouping related information.
  * Built on @base-ui/react Accordion primitive.
  *
@@ -21,9 +21,7 @@ import { Accordion } from "@base-ui/react/accordion";
 import { cn } from "@/lib/utils";
 import { CaretDown } from "@phosphor-icons/react";
 
-// =============================================================================
-// ACCORDION ROOT
-// =============================================================================
+// ---- ACCORDION ROOT ---------------------------------------------------------
 
 const AccordionRoot = React.forwardRef<
   HTMLDivElement,
@@ -33,9 +31,7 @@ const AccordionRoot = React.forwardRef<
 ));
 AccordionRoot.displayName = "AccordionRoot";
 
-// =============================================================================
-// ACCORDION ITEM
-// =============================================================================
+// ---- ACCORDION ITEM ---------------------------------------------------------
 
 const AccordionItem = React.forwardRef<
   HTMLDivElement,
@@ -49,9 +45,7 @@ const AccordionItem = React.forwardRef<
 ));
 AccordionItem.displayName = "AccordionItem";
 
-// =============================================================================
-// ACCORDION HEADER
-// =============================================================================
+// ---- ACCORDION HEADER -------------------------------------------------------
 
 const AccordionHeader = React.forwardRef<
   HTMLHeadingElement,
@@ -61,9 +55,7 @@ const AccordionHeader = React.forwardRef<
 ));
 AccordionHeader.displayName = "AccordionHeader";
 
-// =============================================================================
-// ACCORDION TRIGGER
-// =============================================================================
+// ---- ACCORDION TRIGGER ------------------------------------------------------
 
 const AccordionTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -85,9 +77,7 @@ const AccordionTrigger = React.forwardRef<
 ));
 AccordionTrigger.displayName = "AccordionTrigger";
 
-// =============================================================================
-// ACCORDION PANEL
-// =============================================================================
+// ---- ACCORDION PANEL --------------------------------------------------------
 
 const AccordionPanel = React.forwardRef<
   HTMLDivElement,
@@ -106,9 +96,7 @@ const AccordionPanel = React.forwardRef<
 ));
 AccordionPanel.displayName = "AccordionPanel";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   AccordionRoot,

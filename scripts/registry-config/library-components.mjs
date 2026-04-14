@@ -57,4 +57,15 @@ export const libraryComponents = {
     files: [{ path: "lib/motion.ts", type: "registry:lib" }],
     variant: "audio",
   },
+  "shiki-config": {
+    type: "registry:lib",
+    title: "Shiki Config",
+    description:
+      "Shared Shiki theme and pre-style configuration for code highlighting.",
+    dependencies: ["shiki"],
+    registryDependencies: [],
+    inlineDependencies: [],
+    files: [{ path: "lib/shiki-config.ts", type: "registry:lib" }],
+    variant: "audio",
+  },
 };

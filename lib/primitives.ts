@@ -10,24 +10,15 @@
  * @packageDocumentation
  */
 
-// =============================================================================
-// SLOT (Polymorphic rendering)
-// Used by: Button (animated + static), Sidebar, Popover (static)
-// Vendored implementation at oss/lib/slot.ts
-// =============================================================================
+// ---- SLOT (Polymorphic rendering) -------------------------------------------
 
 export { Slot } from "./slot";
 
-// =============================================================================
-// AVATAR (Base UI)
-// Used by: Avatar
-// =============================================================================
+// ---- AVATAR (Base UI) -------------------------------------------------------
 
 export { Avatar as AvatarPrimitive } from "@base-ui/react/avatar";
 
-// =============================================================================
-// BASE UI PRIMITIVES
-// =============================================================================
+// ---- BASE UI PRIMITIVES -----------------------------------------------------
 
 export { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 export { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog";

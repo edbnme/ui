@@ -3,9 +3,7 @@
 import * as React from "react";
 import { createContext, useContext, useSyncExternalStore } from "react";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 /**
  * Context value for AlertDialog state management
@@ -27,9 +25,7 @@ export interface AlertDialogContextValue {
   onOpenChange?: (open: boolean) => void;
 }
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 export const AlertDialogContext = createContext<AlertDialogContextValue | null>(
   null
@@ -50,9 +46,7 @@ export function useAlertDialog(): AlertDialogContextValue {
   return context;
 }
 
-// =============================================================================
-// SPRING PRESETS FOR DIALOG
-// =============================================================================
+// ---- SPRING PRESETS FOR DIALOG ----------------------------------------------
 
 export const dialogSprings = {
   /** Morphing animation between trigger and content */
@@ -76,9 +70,7 @@ export const dialogSprings = {
   contentFadeDelay: 0.15,
 } as const;
 
-// =============================================================================
-// UTILITY HOOKS
-// =============================================================================
+// ---- UTILITY HOOKS ----------------------------------------------------------
 
 /**
  * SSR-safe check for client-side rendering
@@ -96,9 +88,7 @@ export function useIsMounted(): boolean {
   );
 }
 
-// =============================================================================
-// BODY SCROLL LOCK
-// =============================================================================
+// ---- BODY SCROLL LOCK -------------------------------------------------------
 
 export function lockBodyScroll(doc: Document) {
   const body = doc.body;

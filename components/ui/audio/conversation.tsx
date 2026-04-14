@@ -5,9 +5,7 @@ import { StickToBottom, useStickToBottomContext } from "use-stick-to-bottom";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// CONVERSATION
-// =============================================================================
+// ---- CONVERSATION -----------------------------------------------------------
 
 export type ConversationProps = React.ComponentProps<typeof StickToBottom>;
 
@@ -30,9 +28,7 @@ export function Conversation({ className, ...props }: ConversationProps) {
 
 Conversation.displayName = "Conversation";
 
-// =============================================================================
-// CONVERSATION CONTENT
-// =============================================================================
+// ---- CONVERSATION CONTENT ---------------------------------------------------
 
 export type ConversationContentProps = React.ComponentProps<
   typeof StickToBottom.Content
@@ -53,9 +49,7 @@ export function ConversationContent({
 
 ConversationContent.displayName = "ConversationContent";
 
-// =============================================================================
-// CONVERSATION EMPTY STATE
-// =============================================================================
+// ---- CONVERSATION EMPTY STATE -----------------------------------------------
 
 export type ConversationEmptyStateProps = Omit<
   React.ComponentProps<"div">,
@@ -113,9 +107,7 @@ export function ConversationEmptyState({
 
 ConversationEmptyState.displayName = "ConversationEmptyState";
 
-// =============================================================================
-// CONVERSATION SCROLL BUTTON
-// =============================================================================
+// ---- CONVERSATION SCROLL BUTTON ---------------------------------------------
 
 export type ConversationScrollButtonProps = React.ComponentProps<"button">;
 
@@ -172,8 +164,6 @@ export function ConversationScrollButton({
 
 ConversationScrollButton.displayName = "ConversationScrollButton";
 
-// =============================================================================
-// RE-EXPORT
-// =============================================================================
+// ---- RE-EXPORT --------------------------------------------------------------
 
 export { useStickToBottomContext };

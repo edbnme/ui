@@ -5,9 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface TokenCounterProps
   extends
@@ -27,9 +25,7 @@ interface TokenCounterProps
   formatNumber?: (n: number) => string;
 }
 
-// =============================================================================
-// VARIANTS
-// =============================================================================
+// ---- VARIANTS ---------------------------------------------------------------
 
 const tokenCounterVariants = cva("inline-flex items-center gap-3 text-sm", {
   variants: {
@@ -44,9 +40,7 @@ const tokenCounterVariants = cva("inline-flex items-center gap-3 text-sm", {
   },
 });
 
-// =============================================================================
-// HELPERS
-// =============================================================================
+// ---- HELPERS ----------------------------------------------------------------
 
 function defaultFormatNumber(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
@@ -66,9 +60,7 @@ function getUsageTextColor(percentage: number): string {
   return "text-muted-foreground";
 }
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 function TokenCounter({
   used,

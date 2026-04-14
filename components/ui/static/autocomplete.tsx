@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Autocomplete — Searchable dropdown with filtering support.
  * Built on @base-ui/react Combobox primitive with filtering.
  *
@@ -28,15 +28,11 @@ import { Combobox } from "@base-ui/react/combobox";
 import { cn } from "@/lib/utils";
 import { CaretUpDown, Check, MagnifyingGlass } from "@phosphor-icons/react";
 
-// =============================================================================
-// AUTOCOMPLETE ROOT
-// =============================================================================
+// ---- AUTOCOMPLETE ROOT ------------------------------------------------------
 
 const AutocompleteRoot = Combobox.Root;
 
-// =============================================================================
-// AUTOCOMPLETE INPUT
-// =============================================================================
+// ---- AUTOCOMPLETE INPUT -----------------------------------------------------
 
 const AutocompleteInput = React.forwardRef<
   HTMLInputElement,
@@ -66,9 +62,7 @@ const AutocompleteInput = React.forwardRef<
 ));
 AutocompleteInput.displayName = "AutocompleteInput";
 
-// =============================================================================
-// AUTOCOMPLETE TRIGGER
-// =============================================================================
+// ---- AUTOCOMPLETE TRIGGER ---------------------------------------------------
 
 const AutocompleteTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -87,15 +81,11 @@ const AutocompleteTrigger = React.forwardRef<
 ));
 AutocompleteTrigger.displayName = "AutocompleteTrigger";
 
-// =============================================================================
-// AUTOCOMPLETE PORTAL
-// =============================================================================
+// ---- AUTOCOMPLETE PORTAL ----------------------------------------------------
 
 const AutocompletePortal = Combobox.Portal;
 
-// =============================================================================
-// AUTOCOMPLETE POSITIONER
-// =============================================================================
+// ---- AUTOCOMPLETE POSITIONER ------------------------------------------------
 
 const AutocompletePositioner = React.forwardRef<
   HTMLDivElement,
@@ -110,9 +100,7 @@ const AutocompletePositioner = React.forwardRef<
 ));
 AutocompletePositioner.displayName = "AutocompletePositioner";
 
-// =============================================================================
-// AUTOCOMPLETE POPUP
-// =============================================================================
+// ---- AUTOCOMPLETE POPUP -----------------------------------------------------
 
 const AutocompletePopup = React.forwardRef<
   HTMLDivElement,
@@ -134,9 +122,7 @@ const AutocompletePopup = React.forwardRef<
 ));
 AutocompletePopup.displayName = "AutocompletePopup";
 
-// =============================================================================
-// AUTOCOMPLETE LIST
-// =============================================================================
+// ---- AUTOCOMPLETE LIST ------------------------------------------------------
 
 const AutocompleteList = React.forwardRef<
   HTMLDivElement,
@@ -154,9 +140,7 @@ const AutocompleteList = React.forwardRef<
 ));
 AutocompleteList.displayName = "AutocompleteList";
 
-// =============================================================================
-// AUTOCOMPLETE ITEM
-// =============================================================================
+// ---- AUTOCOMPLETE ITEM ------------------------------------------------------
 
 const AutocompleteItem = React.forwardRef<
   HTMLDivElement,
@@ -183,15 +167,11 @@ const AutocompleteItem = React.forwardRef<
 ));
 AutocompleteItem.displayName = "AutocompleteItem";
 
-// =============================================================================
-// AUTOCOMPLETE GROUP
-// =============================================================================
+// ---- AUTOCOMPLETE GROUP -----------------------------------------------------
 
 const AutocompleteGroup = Combobox.Group;
 
-// =============================================================================
-// AUTOCOMPLETE GROUP LABEL
-// =============================================================================
+// ---- AUTOCOMPLETE GROUP LABEL -----------------------------------------------
 
 const AutocompleteGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -208,9 +188,7 @@ const AutocompleteGroupLabel = React.forwardRef<
 ));
 AutocompleteGroupLabel.displayName = "AutocompleteGroupLabel";
 
-// =============================================================================
-// AUTOCOMPLETE EMPTY
-// =============================================================================
+// ---- AUTOCOMPLETE EMPTY -----------------------------------------------------
 
 const AutocompleteEmpty = React.forwardRef<
   HTMLDivElement,
@@ -229,9 +207,7 @@ const AutocompleteEmpty = React.forwardRef<
 ));
 AutocompleteEmpty.displayName = "AutocompleteEmpty";
 
-// =============================================================================
-// AUTOCOMPLETE ADDITIONAL SUB-COMPONENTS (via Combobox wrapping)
-// =============================================================================
+// ---- AUTOCOMPLETE ADDITIONAL SUB-COMPONENTS (via Combobox wrapping) ---------
 
 const AutocompleteArrow = React.forwardRef<
   HTMLDivElement,
@@ -278,9 +254,7 @@ AutocompleteSeparator.displayName = "AutocompleteSeparator";
 
 const AutocompleteStatus = Combobox.Status;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   AutocompleteRoot,

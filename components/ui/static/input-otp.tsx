@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Input OTP — Verification code input with customizable slots.
  * Built on the `input-otp` library.
  *
@@ -26,9 +26,7 @@ import { OTPInput, OTPInputContext } from "input-otp";
 import { MinusIcon } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// INPUT OTP ROOT
-// =============================================================================
+// ---- INPUT OTP ROOT ---------------------------------------------------------
 
 type InputOTPProps = React.ComponentPropsWithoutRef<typeof OTPInput>;
 
@@ -48,9 +46,7 @@ const InputOTP = React.forwardRef<
 ));
 InputOTP.displayName = "InputOTP";
 
-// =============================================================================
-// INPUT OTP GROUP
-// =============================================================================
+// ---- INPUT OTP GROUP --------------------------------------------------------
 
 const InputOTPGroup = React.forwardRef<
   HTMLDivElement,
@@ -60,9 +56,7 @@ const InputOTPGroup = React.forwardRef<
 ));
 InputOTPGroup.displayName = "InputOTPGroup";
 
-// =============================================================================
-// INPUT OTP SLOT
-// =============================================================================
+// ---- INPUT OTP SLOT ---------------------------------------------------------
 
 interface InputOTPSlotProps extends React.ComponentPropsWithoutRef<"div"> {
   index: number;
@@ -101,9 +95,7 @@ const InputOTPSlot = React.forwardRef<HTMLDivElement, InputOTPSlotProps>(
 );
 InputOTPSlot.displayName = "InputOTPSlot";
 
-// =============================================================================
-// INPUT OTP SEPARATOR
-// =============================================================================
+// ---- INPUT OTP SEPARATOR ----------------------------------------------------
 
 const InputOTPSeparator = React.forwardRef<
   HTMLDivElement,
@@ -115,8 +107,6 @@ const InputOTPSeparator = React.forwardRef<
 ));
 InputOTPSeparator.displayName = "InputOTPSeparator";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator };

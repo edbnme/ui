@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Input — Styled text input field.
  * Built on @base-ui/react Input primitive.
  *
@@ -13,9 +13,7 @@ import * as React from "react";
 import { Input as InputPrimitive } from "@base-ui/react/input";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// INPUT
-// =============================================================================
+// ---- INPUT ------------------------------------------------------------------
 
 const InputRoot = React.forwardRef<HTMLInputElement, InputPrimitive.Props>(
   ({ className, ...props }, ref) => (
@@ -36,9 +34,7 @@ const InputRoot = React.forwardRef<HTMLInputElement, InputPrimitive.Props>(
 );
 InputRoot.displayName = "InputRoot";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { InputRoot };
 

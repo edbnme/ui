@@ -5,12 +5,14 @@
   "title": "Aspect Ratio",
   "description": "A CSS aspect-ratio wrapper component for maintaining consistent proportions.",
   "dependencies": [],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {
       "path": "components/ui/static/aspect-ratio.tsx",
-      "content": "/**\r\n * AspectRatio — Maintains a consistent width-to-height ratio for content.\r\n *\r\n * @example\r\n * <AspectRatio ratio={16 / 9}>\r\n *   <img src=\"/photo.jpg\" alt=\"Landscape\" />\r\n * </AspectRatio>\r\n */\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport interface AspectRatioProps extends React.ComponentProps<\"div\"> {\r\n  ratio?: number;\r\n}\r\n\r\nfunction AspectRatio({\r\n  ratio = 1,\r\n  className,\r\n  style,\r\n  children,\r\n  ...props\r\n}: AspectRatioProps) {\r\n  return (\r\n    <div\r\n      data-slot=\"aspect-ratio\"\r\n      className={cn(\"relative w-full\", className)}\r\n      style={{ aspectRatio: `${ratio}`, ...style }}\r\n      {...props}\r\n    >\r\n      {children}\r\n    </div>\r\n  );\r\n}\r\n\r\nAspectRatio.displayName = \"AspectRatio\";\r\n\r\nexport { AspectRatio };\r\n",
+      "content": "﻿/**\n * AspectRatio — Maintains a consistent width-to-height ratio for content.\n *\n * @example\n * <AspectRatio ratio={16 / 9}>\n *   <img src=\"/photo.jpg\" alt=\"Landscape\" />\n * </AspectRatio>\n */\n\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface AspectRatioProps extends React.ComponentProps<\"div\"> {\n  ratio?: number;\n}\n\nfunction AspectRatio({\n  ratio = 1,\n  className,\n  style,\n  children,\n  ...props\n}: AspectRatioProps) {\n  return (\n    <div\n      data-slot=\"aspect-ratio\"\n      className={cn(\"relative w-full\", className)}\n      style={{ aspectRatio: `${ratio}`, ...style }}\n      {...props}\n    >\n      {children}\n    </div>\n  );\n}\n\nAspectRatio.displayName = \"AspectRatio\";\n\nexport { AspectRatio };\n",
       "type": "registry:ui"
     }
   ]

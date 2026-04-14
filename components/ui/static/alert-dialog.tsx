@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AlertDialog (Static) — CSS-only alert dialog (no motion animations).
  * Built on @base-ui/react AlertDialog primitive.
  *
@@ -25,15 +25,11 @@ import * as React from "react";
 import { AlertDialog } from "@base-ui/react/alert-dialog";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// ALERT DIALOG ROOT
-// =============================================================================
+// ---- ALERT DIALOG ROOT ------------------------------------------------------
 
 const AlertDialogRoot = AlertDialog.Root;
 
-// =============================================================================
-// ALERT DIALOG TRIGGER
-// =============================================================================
+// ---- ALERT DIALOG TRIGGER ---------------------------------------------------
 
 const AlertDialogTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -51,15 +47,11 @@ const AlertDialogTrigger = React.forwardRef<
 ));
 AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
-// =============================================================================
-// ALERT DIALOG PORTAL
-// =============================================================================
+// ---- ALERT DIALOG PORTAL ----------------------------------------------------
 
 const AlertDialogPortal = AlertDialog.Portal;
 
-// =============================================================================
-// ALERT DIALOG BACKDROP
-// =============================================================================
+// ---- ALERT DIALOG BACKDROP --------------------------------------------------
 
 const AlertDialogBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -78,9 +70,7 @@ const AlertDialogBackdrop = React.forwardRef<
 ));
 AlertDialogBackdrop.displayName = "AlertDialogBackdrop";
 
-// =============================================================================
-// ALERT DIALOG VIEWPORT
-// =============================================================================
+// ---- ALERT DIALOG VIEWPORT --------------------------------------------------
 
 const AlertDialogViewport = React.forwardRef<
   HTMLDivElement,
@@ -97,9 +87,7 @@ const AlertDialogViewport = React.forwardRef<
 ));
 AlertDialogViewport.displayName = "AlertDialogViewport";
 
-// =============================================================================
-// ALERT DIALOG POPUP
-// =============================================================================
+// ---- ALERT DIALOG POPUP -----------------------------------------------------
 
 const AlertDialogPopup = React.forwardRef<
   HTMLDivElement,
@@ -121,9 +109,7 @@ const AlertDialogPopup = React.forwardRef<
 ));
 AlertDialogPopup.displayName = "AlertDialogPopup";
 
-// =============================================================================
-// ALERT DIALOG TITLE
-// =============================================================================
+// ---- ALERT DIALOG TITLE -----------------------------------------------------
 
 const AlertDialogTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -137,9 +123,7 @@ const AlertDialogTitle = React.forwardRef<
 ));
 AlertDialogTitle.displayName = "AlertDialogTitle";
 
-// =============================================================================
-// ALERT DIALOG DESCRIPTION
-// =============================================================================
+// ---- ALERT DIALOG DESCRIPTION -----------------------------------------------
 
 const AlertDialogDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -153,9 +137,7 @@ const AlertDialogDescription = React.forwardRef<
 ));
 AlertDialogDescription.displayName = "AlertDialogDescription";
 
-// =============================================================================
-// ALERT DIALOG CLOSE
-// =============================================================================
+// ---- ALERT DIALOG CLOSE -----------------------------------------------------
 
 const AlertDialogClose = React.forwardRef<
   HTMLButtonElement,
@@ -173,9 +155,7 @@ const AlertDialogClose = React.forwardRef<
 ));
 AlertDialogClose.displayName = "AlertDialogClose";
 
-// =============================================================================
-// ALERT DIALOG ACTION (Destructive action button)
-// =============================================================================
+// ---- ALERT DIALOG ACTION (Destructive action button) ------------------------
 
 const AlertDialogAction = React.forwardRef<
   HTMLButtonElement,
@@ -193,9 +173,7 @@ const AlertDialogAction = React.forwardRef<
 ));
 AlertDialogAction.displayName = "AlertDialogAction";
 
-// =============================================================================
-// ALERT DIALOG HEADER
-// =============================================================================
+// ---- ALERT DIALOG HEADER ----------------------------------------------------
 
 const AlertDialogHeader = React.forwardRef<
   HTMLDivElement,
@@ -209,9 +187,7 @@ const AlertDialogHeader = React.forwardRef<
 ));
 AlertDialogHeader.displayName = "AlertDialogHeader";
 
-// =============================================================================
-// ALERT DIALOG FOOTER
-// =============================================================================
+// ---- ALERT DIALOG FOOTER ----------------------------------------------------
 
 const AlertDialogFooter = React.forwardRef<
   HTMLDivElement,
@@ -225,16 +201,12 @@ const AlertDialogFooter = React.forwardRef<
 ));
 AlertDialogFooter.displayName = "AlertDialogFooter";
 
-// =============================================================================
-// ALERT DIALOG HANDLE (for programmatic open/close from detached triggers)
-// =============================================================================
+// ---- ALERT DIALOG HANDLE (for programmatic open/close from detached triggers) -
 
 const AlertDialogHandle = AlertDialog.Handle;
 const createAlertDialogHandle = AlertDialog.createHandle;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   AlertDialogRoot,

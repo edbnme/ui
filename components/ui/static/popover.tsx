@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Popover — CSS-only popover (no motion animations).
  * Built on @base-ui/react Popover primitive.
  *
@@ -23,15 +23,11 @@ import * as React from "react";
 import { Popover } from "@base-ui/react/popover";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// POPOVER ROOT
-// =============================================================================
+// ---- POPOVER ROOT -----------------------------------------------------------
 
 const PopoverRoot = Popover.Root;
 
-// =============================================================================
-// POPOVER TRIGGER
-// =============================================================================
+// ---- POPOVER TRIGGER --------------------------------------------------------
 
 const PopoverTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -51,16 +47,12 @@ const PopoverTrigger = React.forwardRef<
 ));
 PopoverTrigger.displayName = "PopoverTrigger";
 
-// =============================================================================
-// POPOVER PORTAL
-// =============================================================================
+// ---- POPOVER PORTAL ---------------------------------------------------------
 
 const PopoverPortal = Popover.Portal;
 PopoverPortal.displayName = "PopoverPortal";
 
-// =============================================================================
-// POPOVER BACKDROP
-// =============================================================================
+// ---- POPOVER BACKDROP -------------------------------------------------------
 
 const PopoverBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -74,9 +66,7 @@ const PopoverBackdrop = React.forwardRef<
 ));
 PopoverBackdrop.displayName = "PopoverBackdrop";
 
-// =============================================================================
-// POPOVER POSITIONER
-// =============================================================================
+// ---- POPOVER POSITIONER -----------------------------------------------------
 
 const PopoverPositioner = React.forwardRef<
   HTMLDivElement,
@@ -86,9 +76,7 @@ const PopoverPositioner = React.forwardRef<
 ));
 PopoverPositioner.displayName = "PopoverPositioner";
 
-// =============================================================================
-// POPOVER POPUP
-// =============================================================================
+// ---- POPOVER POPUP ----------------------------------------------------------
 
 const PopoverPopup = React.forwardRef<HTMLDivElement, Popover.Popup.Props>(
   ({ className, ...props }, ref) => (
@@ -108,9 +96,7 @@ const PopoverPopup = React.forwardRef<HTMLDivElement, Popover.Popup.Props>(
 );
 PopoverPopup.displayName = "PopoverPopup";
 
-// =============================================================================
-// POPOVER ARROW
-// =============================================================================
+// ---- POPOVER ARROW ----------------------------------------------------------
 
 const PopoverArrow = React.forwardRef<HTMLDivElement, Popover.Arrow.Props>(
   ({ className, ...props }, ref) => (
@@ -127,9 +113,7 @@ const PopoverArrow = React.forwardRef<HTMLDivElement, Popover.Arrow.Props>(
 );
 PopoverArrow.displayName = "PopoverArrow";
 
-// =============================================================================
-// POPOVER TITLE
-// =============================================================================
+// ---- POPOVER TITLE ----------------------------------------------------------
 
 const PopoverTitle = React.forwardRef<HTMLHeadingElement, Popover.Title.Props>(
   ({ className, ...props }, ref) => (
@@ -142,9 +126,7 @@ const PopoverTitle = React.forwardRef<HTMLHeadingElement, Popover.Title.Props>(
 );
 PopoverTitle.displayName = "PopoverTitle";
 
-// =============================================================================
-// POPOVER DESCRIPTION
-// =============================================================================
+// ---- POPOVER DESCRIPTION ----------------------------------------------------
 
 const PopoverDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -158,9 +140,7 @@ const PopoverDescription = React.forwardRef<
 ));
 PopoverDescription.displayName = "PopoverDescription";
 
-// =============================================================================
-// POPOVER CLOSE
-// =============================================================================
+// ---- POPOVER CLOSE ----------------------------------------------------------
 
 const PopoverClose = React.forwardRef<HTMLButtonElement, Popover.Close.Props>(
   ({ className, ...props }, ref) => (
@@ -179,9 +159,7 @@ const PopoverClose = React.forwardRef<HTMLButtonElement, Popover.Close.Props>(
 );
 PopoverClose.displayName = "PopoverClose";
 
-// =============================================================================
-// POPOVER VIEWPORT (optional — for multi-trigger animated content transitions)
-// =============================================================================
+// ---- POPOVER VIEWPORT (optional — for multi-trigger animated content transitions) -
 
 const PopoverViewport = React.forwardRef<
   HTMLDivElement,
@@ -191,16 +169,12 @@ const PopoverViewport = React.forwardRef<
 ));
 PopoverViewport.displayName = "PopoverViewport";
 
-// =============================================================================
-// POPOVER HANDLE
-// =============================================================================
+// ---- POPOVER HANDLE ---------------------------------------------------------
 
 const PopoverHandle = Popover.Handle;
 const createPopoverHandle = Popover.createHandle;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   PopoverRoot,

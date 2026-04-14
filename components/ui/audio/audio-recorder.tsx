@@ -5,9 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 type RecorderState = "idle" | "recording" | "paused" | "stopped";
 
@@ -31,9 +29,7 @@ interface AudioRecorderProps
   showLevel?: boolean;
 }
 
-// =============================================================================
-// VARIANTS
-// =============================================================================
+// ---- VARIANTS ---------------------------------------------------------------
 
 const audioRecorderVariants = cva(
   "inline-flex items-center gap-3 rounded-xl border border-border/50 bg-background px-4 py-3 shadow-xs shadow-black/5",
@@ -51,9 +47,7 @@ const audioRecorderVariants = cva(
   }
 );
 
-// =============================================================================
-// HELPERS
-// =============================================================================
+// ---- HELPERS ----------------------------------------------------------------
 
 function formatDuration(seconds: number): string {
   const m = Math.floor(seconds / 60);
@@ -75,9 +69,7 @@ function getPreferredMimeType(preferred?: string): string {
   return types.find((t) => MediaRecorder.isTypeSupported(t)) || "";
 }
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 function AudioRecorder({
   onRecordingComplete,
@@ -101,6 +93,10 @@ function AudioRecorder({
   const chunksRef = React.useRef<Blob[]>([]);
   const timerRef = React.useRef<ReturnType<typeof setInterval> | null>(null);
   const analyserRef = React.useRef<AnalyserNode | null>(null);
+  const levelMeterContextRef = React.useRef<AudioContext | null>(null);
+  const levelMeterSourceRef = React.useRef<MediaStreamAudioSourceNode | null>(
+    null
+  );
   const rafRef = React.useRef<number | null>(null);
 
   const updateState = React.useCallback(
@@ -111,21 +107,60 @@ function AudioRecorder({
     [onStateChange]
   );
 
+  const stopLevelMeter = React.useCallback(() => {
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+
+    const source = levelMeterSourceRef.current;
+    if (source) {
+      try {
+        source.disconnect();
+      } catch {
+        // Ignore disconnect errors during teardown.
+      }
+      levelMeterSourceRef.current = null;
+    }
+
+    const audioContext = levelMeterContextRef.current;
+    levelMeterContextRef.current = null;
+
+    analyserRef.current = null;
+    setLevel(0);
+
+    if (audioContext) {
+      void audioContext.close().catch(() => {
+        // Ignore close errors during teardown.
+      });
+    }
+  }, []);
+
   // Level meter animation
   const startLevelMeter = React.useCallback(
     (stream: MediaStream) => {
       if (!showLevel) return;
+
+      stopLevelMeter();
+
+      let audioContext: AudioContext | null = null;
+      let source: MediaStreamAudioSourceNode | null = null;
 
       try {
         const AudioContextClass =
           window.AudioContext ||
           (window as unknown as { webkitAudioContext: typeof AudioContext })
             .webkitAudioContext;
-        const audioCtx = new AudioContextClass();
-        const source = audioCtx.createMediaStreamSource(stream);
-        const analyser = audioCtx.createAnalyser();
+
+        audioContext = new AudioContextClass();
+        source = audioContext.createMediaStreamSource(stream);
+
+        const analyser = audioContext.createAnalyser();
         analyser.fftSize = 256;
         source.connect(analyser);
+
+        levelMeterContextRef.current = audioContext;
+        levelMeterSourceRef.current = source;
         analyserRef.current = analyser;
 
         const dataArray = new Uint8Array(analyser.frequencyBinCount);
@@ -143,20 +178,23 @@ function AudioRecorder({
 
         rafRef.current = requestAnimationFrame(updateLevel);
       } catch {
-        // Level meter is optional; don't fail
+        if (source) {
+          try {
+            source.disconnect();
+          } catch {
+            // Ignore disconnect errors during failed setup.
+          }
+        }
+
+        if (audioContext) {
+          void audioContext.close().catch(() => {
+            // Ignore close errors during failed setup.
+          });
+        }
       }
     },
-    [showLevel]
+    [showLevel, stopLevelMeter]
   );
-
-  const stopLevelMeter = React.useCallback(() => {
-    if (rafRef.current !== null) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-    analyserRef.current = null;
-    setLevel(0);
-  }, []);
 
   const startRecording = React.useCallback(async () => {
     if (
@@ -390,7 +428,7 @@ function AudioRecorder({
 
       {/* Error */}
       {error && (
-        <span className="text-xs text-destructive truncate max-w-[200px]">
+        <span className="text-xs text-destructive truncate max-w-50">
           {error}
         </span>
       )}

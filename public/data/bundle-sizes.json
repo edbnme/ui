@@ -2,20 +2,20 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 19,
-    "totalComponents": 77,
+    "totalPackages": 20,
+    "totalComponents": 78,
     "animatedComponents": 0,
-    "staticComponents": 53,
+    "staticComponents": 54,
     "sharedComponents": 0,
     "largestDependency": {
-      "name": "@react-three/drei",
-      "version": "10.7.7",
-      "size": 1604829,
-      "gzip": 496190,
-      "dependencyCount": 21,
+      "name": "three",
+      "version": "0.183.2",
+      "size": 717051,
+      "gzip": 179962,
+      "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-03-24T20:10:44.929Z"
+    "computedAt": "2026-04-13T19:31:43.991Z"
   },
   "packages": [
     {
@@ -35,11 +35,10 @@
     },
     {
       "name": "@react-three/drei",
-      "version": "10.7.7",
-      "size": 1604829,
-      "gzip": 496190,
-      "dependencyCount": 21,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     },
     {
       "name": "@react-three/fiber",
@@ -51,11 +50,10 @@
     },
     {
       "name": "@streamdown/code",
-      "version": "1.1.1",
-      "size": 197921,
-      "gzip": 31485,
-      "dependencyCount": 1,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     },
     {
       "name": "class-variance-authority",
@@ -73,19 +71,24 @@
     },
     {
       "name": "embla-carousel-react",
-      "version": "8.6.0",
-      "size": 17975,
-      "gzip": 7277,
-      "dependencyCount": 2,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    {
+      "name": "hast-util-to-jsx-runtime",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     },
     {
       "name": "input-otp",
-      "version": "1.4.2",
-      "size": 9599,
-      "gzip": 3860,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     },
     {
       "name": "motion/react",
@@ -104,35 +107,33 @@
     },
     {
       "name": "react-resizable-panels",
-      "version": "4.7.5",
-      "size": 31636,
-      "gzip": 10477,
+      "version": "4.9.0",
+      "size": 32482,
+      "gzip": 10727,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
     {
       "name": "recharts",
-      "version": "3.8.0",
-      "size": 523379,
-      "gzip": 138121,
+      "version": "3.8.1",
+      "size": 527502,
+      "gzip": 139272,
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
     {
       "name": "shiki",
-      "version": "4.0.2",
-      "size": 109061,
-      "gzip": 34024,
-      "dependencyCount": 8,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     },
     {
       "name": "streamdown",
-      "version": "2.5.0",
-      "size": 464290,
-      "gzip": 141349,
-      "dependencyCount": 16,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     },
     {
       "name": "tailwind-merge",
@@ -145,7 +146,7 @@
       "name": "three",
       "version": "0.183.2",
       "size": 717051,
-      "gzip": 179358,
+      "gzip": 179962,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
@@ -158,11 +159,10 @@
     },
     {
       "name": "use-stick-to-bottom",
-      "version": "1.1.3",
-      "size": 6649,
-      "gzip": 2502,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     }
   ],
   "components": {
@@ -386,7 +386,7 @@
     "static/tooltip": {
       "name": "tooltip",
       "title": "Tooltip",
-      "description": "A tooltip component with smooth animations and configurable positioning.",
+      "description": "Static tooltip built on Base UI Tooltip with arrow and CSS transitions.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -568,7 +568,7 @@
     "static/slider": {
       "name": "slider",
       "title": "Slider",
-      "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
+      "description": "Static slider built on Base UI Slider with track, thumb, and value display.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -838,7 +838,7 @@
     "static/scroll-area": {
       "name": "scroll-area",
       "title": "Scroll Area",
-      "description": "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
+      "description": "Static scroll area built on Base UI ScrollArea with custom scrollbars.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -1023,18 +1023,18 @@
       "description": "Static OTP/verification code input built on input-otp with customizable slots.",
       "variant": "static",
       "sizes": {
-        "minified": 10799,
-        "gzipped": 4260,
+        "minified": 11200,
+        "gzipped": 3400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "input-otp",
-          "size": 9599,
-          "gzip": 3860,
-          "version": "1.4.2",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         },
         {
           "name": "@phosphor-icons/react",
@@ -1074,17 +1074,17 @@
       "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
       "variant": "static",
       "sizes": {
-        "minified": 32836,
-        "gzipped": 10877,
+        "minified": 33682,
+        "gzipped": 11127,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "react-resizable-panels",
-          "size": 31636,
-          "gzip": 10477,
-          "version": "4.7.5",
+          "size": 32482,
+          "gzip": 10727,
+          "version": "4.9.0",
           "source": "bundlephobia"
         },
         {
@@ -1190,18 +1190,18 @@
       "description": "Static accessible carousel with touch/swipe support, loop mode, and keyboard navigation built on Embla Carousel.",
       "variant": "static",
       "sizes": {
-        "minified": 19175,
-        "gzipped": 7677,
+        "minified": 11200,
+        "gzipped": 3400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "embla-carousel-react",
-          "size": 17975,
-          "gzip": 7277,
-          "version": "8.6.0",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         },
         {
           "name": "@phosphor-icons/react",
@@ -1219,21 +1219,50 @@
       "description": "Composable, themed chart components built on Recharts with CSS variable theming, pre-styled tooltips, and legends.",
       "variant": "static",
       "sizes": {
-        "minified": 523379,
-        "gzipped": 138121,
+        "minified": 527502,
+        "gzipped": 139272,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "recharts",
-          "size": 523379,
-          "gzip": 138121,
-          "version": "3.8.0",
+          "size": 527502,
+          "gzip": 139272,
+          "version": "3.8.1",
           "source": "bundlephobia"
         }
       ],
       "dependencyCount": 1
+    },
+    "static/combobox": {
+      "name": "combobox",
+      "title": "Combobox",
+      "description": "Searchable dropdown for filtering and selecting from a list, built on Base UI Combobox.",
+      "variant": "static",
+      "sizes": {
+        "minified": 86200,
+        "gzipped": 25400,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
+        }
+      ],
+      "dependencyCount": 2
     },
     "static/alert": {
       "name": "alert",
@@ -1500,18 +1529,18 @@
       "description": "Scrollable message container with auto-scroll to bottom using use-stick-to-bottom.",
       "variant": "audio",
       "sizes": {
-        "minified": 6649,
-        "gzipped": 2502,
+        "minified": 10000,
+        "gzipped": 3000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "use-stick-to-bottom",
-          "size": 6649,
-          "gzip": 2502,
-          "version": "1.1.3",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         }
       ],
       "dependencyCount": 1
@@ -1522,25 +1551,25 @@
       "description": "Streaming markdown response renderer using streamdown with syntax highlighting.",
       "variant": "audio",
       "sizes": {
-        "minified": 662211,
-        "gzipped": 172834,
+        "minified": 20000,
+        "gzipped": 6000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "streamdown",
-          "size": 464290,
-          "gzip": 141349,
-          "version": "2.5.0",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         },
         {
           "name": "@streamdown/code",
-          "size": 197921,
-          "gzip": 31485,
-          "version": "1.1.1",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         }
       ],
       "dependencyCount": 2
@@ -1895,8 +1924,8 @@
       "description": "Syntax-highlighted code block with copy button, line numbers, and language badge. Requires shiki and a useShikiHighlight hook.",
       "variant": "audio",
       "sizes": {
-        "minified": 114761,
-        "gzipped": 35924,
+        "minified": 15700,
+        "gzipped": 4900,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1917,10 +1946,10 @@
         },
         {
           "name": "shiki",
-          "size": 109061,
-          "gzip": 34024,
-          "version": "4.0.2",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         }
       ],
       "dependencyCount": 3
@@ -2037,11 +2066,11 @@
     "audio/audio-orb": {
       "name": "audio-orb",
       "title": "Orb",
-      "description": "Three.js animated orb with state-driven distortion and CSS-only fallback. Optional — adds ~1MB bundle (three + @react-three/fiber + @react-three/drei).",
+      "description": "Three.js animated orb with state-driven distortion and CSS-only fallback. Optional  adds ~1MB bundle (three + @react-three/fiber + @react-three/drei).",
       "variant": "audio",
       "sizes": {
-        "minified": 2485485,
-        "gzipped": 727760,
+        "minified": 890656,
+        "gzipped": 235174,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -2062,15 +2091,15 @@
         },
         {
           "name": "@react-three/drei",
-          "size": 1604829,
-          "gzip": 496190,
-          "version": "10.7.7",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         },
         {
           "name": "three",
           "size": 717051,
-          "gzip": 179358,
+          "gzip": 179962,
           "version": "0.183.2",
           "source": "bundlephobia"
         }

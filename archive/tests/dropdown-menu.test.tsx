@@ -50,9 +50,7 @@ import {
   pressArrowUp,
 } from "@/test/utils/test-utils";
 
-// =============================================================================
-// HELPER FUNCTIONS
-// =============================================================================
+// ---- HELPER FUNCTIONS -------------------------------------------------------
 
 /**
  * Helper to render a complete DropdownMenu with common subcomponents
@@ -93,9 +91,7 @@ function renderDropdownMenu(
   );
 }
 
-// =============================================================================
-// RENDERING TESTS
-// =============================================================================
+// ---- RENDERING TESTS --------------------------------------------------------
 
 describe("DropdownMenu", () => {
   describe("Rendering", () => {
@@ -171,9 +167,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // INTERACTION TESTS
-  // ===========================================================================
+  // ---- INTERACTION TESTS ----------------------------------------------------
 
   describe("Interactions", () => {
     it("should open when trigger is clicked", async () => {
@@ -254,9 +248,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // KEYBOARD NAVIGATION TESTS
-  // ===========================================================================
+  // ---- KEYBOARD NAVIGATION TESTS --------------------------------------------
 
   describe("Keyboard Navigation", () => {
     it("should close when Escape is pressed", async () => {
@@ -300,9 +292,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // CHECKBOX ITEM TESTS
-  // ===========================================================================
+  // ---- CHECKBOX ITEM TESTS --------------------------------------------------
 
   describe("Checkbox Items", () => {
     it("should render checkbox items", async () => {
@@ -382,9 +372,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // RADIO ITEM TESTS
-  // ===========================================================================
+  // ---- RADIO ITEM TESTS -----------------------------------------------------
 
   describe("Radio Items", () => {
     it("should render radio items", async () => {
@@ -497,9 +485,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // SUBMENU TESTS
-  // ===========================================================================
+  // ---- SUBMENU TESTS --------------------------------------------------------
 
   describe("Submenus", () => {
     it("should render submenu trigger", async () => {
@@ -553,9 +539,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // SHORTCUT TESTS
-  // ===========================================================================
+  // ---- SHORTCUT TESTS -------------------------------------------------------
 
   describe("Shortcuts", () => {
     it("should render keyboard shortcut", async () => {
@@ -567,14 +551,14 @@ describe("DropdownMenu", () => {
           <DropdownMenuContent>
             <DropdownMenuItem>
               Copy
-              <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
+              <DropdownMenuShortcut>ΓîÿC</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
 
       await waitFor(() => {
-        expect(screen.getByText("⌘C")).toBeInTheDocument();
+        expect(screen.getByText("ΓîÿC")).toBeInTheDocument();
       });
     });
 
@@ -587,22 +571,20 @@ describe("DropdownMenu", () => {
           <DropdownMenuContent>
             <DropdownMenuItem>
               Paste
-              <DropdownMenuShortcut>⌘V</DropdownMenuShortcut>
+              <DropdownMenuShortcut>ΓîÿV</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
 
       await waitFor(() => {
-        const shortcut = screen.getByText("⌘V");
+        const shortcut = screen.getByText("ΓîÿV");
         expect(shortcut).toHaveAttribute("data-slot", "dropdown-menu-shortcut");
       });
     });
   });
 
-  // ===========================================================================
-  // ACCESSIBILITY TESTS
-  // ===========================================================================
+  // ---- ACCESSIBILITY TESTS --------------------------------------------------
 
   describe("Accessibility", () => {
     it("should have correct trigger data-slot", () => {
@@ -675,9 +657,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // ANIMATION TESTS
-  // ===========================================================================
+  // ---- ANIMATION TESTS ------------------------------------------------------
 
   describe("Animation", () => {
     it("should render with animation disabled", async () => {
@@ -708,9 +688,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // CONTROLLED STATE TESTS
-  // ===========================================================================
+  // ---- CONTROLLED STATE TESTS -----------------------------------------------
 
   describe("Controlled State", () => {
     it("should work with controlled open state", async () => {
@@ -731,9 +709,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // MODAL TESTS
-  // ===========================================================================
+  // ---- MODAL TESTS ----------------------------------------------------------
 
   describe("Modal", () => {
     it("should support modal prop", async () => {
@@ -754,9 +730,7 @@ describe("DropdownMenu", () => {
     });
   });
 
-  // ===========================================================================
-  // PORTAL TESTS
-  // ===========================================================================
+  // ---- PORTAL TESTS ---------------------------------------------------------
 
   describe("Portal", () => {
     it("should render DropdownMenuPortal component", async () => {

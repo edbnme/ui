@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ScrollArea — Custom scrollbar overlay for scrollable content.
  * Built on @base-ui/react ScrollArea primitive.
  *
@@ -16,9 +16,7 @@ import * as React from "react";
 import { ScrollArea as ScrollAreaPrimitive } from "@base-ui/react/scroll-area";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// SCROLL AREA ROOT
-// =============================================================================
+// ---- SCROLL AREA ROOT -------------------------------------------------------
 
 const ScrollAreaRoot = React.forwardRef<
   HTMLDivElement,
@@ -32,9 +30,7 @@ const ScrollAreaRoot = React.forwardRef<
 ));
 ScrollAreaRoot.displayName = "ScrollAreaRoot";
 
-// =============================================================================
-// SCROLL AREA VIEWPORT
-// =============================================================================
+// ---- SCROLL AREA VIEWPORT ---------------------------------------------------
 
 const ScrollAreaViewport = React.forwardRef<
   HTMLDivElement,
@@ -48,9 +44,7 @@ const ScrollAreaViewport = React.forwardRef<
 ));
 ScrollAreaViewport.displayName = "ScrollAreaViewport";
 
-// =============================================================================
-// SCROLL AREA CONTENT
-// =============================================================================
+// ---- SCROLL AREA CONTENT ----------------------------------------------------
 
 const ScrollAreaContent = React.forwardRef<
   HTMLDivElement,
@@ -64,9 +58,7 @@ const ScrollAreaContent = React.forwardRef<
 ));
 ScrollAreaContent.displayName = "ScrollAreaContent";
 
-// =============================================================================
-// SCROLL AREA SCROLLBAR
-// =============================================================================
+// ---- SCROLL AREA SCROLLBAR --------------------------------------------------
 
 const ScrollAreaScrollbar = React.forwardRef<
   HTMLDivElement,
@@ -87,9 +79,7 @@ const ScrollAreaScrollbar = React.forwardRef<
 ));
 ScrollAreaScrollbar.displayName = "ScrollAreaScrollbar";
 
-// =============================================================================
-// SCROLL AREA THUMB
-// =============================================================================
+// ---- SCROLL AREA THUMB ------------------------------------------------------
 
 const ScrollAreaThumb = React.forwardRef<
   HTMLDivElement,
@@ -103,9 +93,7 @@ const ScrollAreaThumb = React.forwardRef<
 ));
 ScrollAreaThumb.displayName = "ScrollAreaThumb";
 
-// =============================================================================
-// SCROLL AREA CORNER
-// =============================================================================
+// ---- SCROLL AREA CORNER -----------------------------------------------------
 
 const ScrollAreaCorner = React.forwardRef<
   HTMLDivElement,
@@ -119,9 +107,7 @@ const ScrollAreaCorner = React.forwardRef<
 ));
 ScrollAreaCorner.displayName = "ScrollAreaCorner";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ScrollAreaRoot,

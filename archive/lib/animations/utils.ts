@@ -10,9 +10,7 @@
 import type { Transition, Variants } from "motion/react";
 import { transitions } from "./presets";
 
-// =============================================================================
-// UTILITY FUNCTIONS
-// =============================================================================
+// ---- UTILITY FUNCTIONS ------------------------------------------------------
 
 /**
  * Combines multiple variant objects into one

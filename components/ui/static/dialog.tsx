@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Dialog — CSS-only modal dialog for overlaying content.
  * Built on @base-ui/react Dialog primitive.
  *
@@ -30,15 +30,11 @@ import { Dialog } from "@base-ui/react/dialog";
 import { cn } from "@/lib/utils";
 import { X } from "@phosphor-icons/react";
 
-// =============================================================================
-// DIALOG ROOT
-// =============================================================================
+// ---- DIALOG ROOT ------------------------------------------------------------
 
 const DialogRoot = Dialog.Root;
 
-// =============================================================================
-// DIALOG TRIGGER
-// =============================================================================
+// ---- DIALOG TRIGGER ---------------------------------------------------------
 
 const DialogTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -56,15 +52,11 @@ const DialogTrigger = React.forwardRef<
 ));
 DialogTrigger.displayName = "DialogTrigger";
 
-// =============================================================================
-// DIALOG PORTAL
-// =============================================================================
+// ---- DIALOG PORTAL ----------------------------------------------------------
 
 const DialogPortal = Dialog.Portal;
 
-// =============================================================================
-// DIALOG BACKDROP
-// =============================================================================
+// ---- DIALOG BACKDROP --------------------------------------------------------
 
 const DialogBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -83,9 +75,7 @@ const DialogBackdrop = React.forwardRef<
 ));
 DialogBackdrop.displayName = "DialogBackdrop";
 
-// =============================================================================
-// DIALOG VIEWPORT
-// =============================================================================
+// ---- DIALOG VIEWPORT --------------------------------------------------------
 
 const DialogViewport = React.forwardRef<
   HTMLDivElement,
@@ -102,9 +92,7 @@ const DialogViewport = React.forwardRef<
 ));
 DialogViewport.displayName = "DialogViewport";
 
-// =============================================================================
-// DIALOG POPUP
-// =============================================================================
+// ---- DIALOG POPUP -----------------------------------------------------------
 
 const DialogPopup = React.forwardRef<
   HTMLDivElement,
@@ -126,9 +114,7 @@ const DialogPopup = React.forwardRef<
 ));
 DialogPopup.displayName = "DialogPopup";
 
-// =============================================================================
-// DIALOG TITLE
-// =============================================================================
+// ---- DIALOG TITLE -----------------------------------------------------------
 
 const DialogTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -142,9 +128,7 @@ const DialogTitle = React.forwardRef<
 ));
 DialogTitle.displayName = "DialogTitle";
 
-// =============================================================================
-// DIALOG DESCRIPTION
-// =============================================================================
+// ---- DIALOG DESCRIPTION -----------------------------------------------------
 
 const DialogDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -158,9 +142,7 @@ const DialogDescription = React.forwardRef<
 ));
 DialogDescription.displayName = "DialogDescription";
 
-// =============================================================================
-// DIALOG CLOSE
-// =============================================================================
+// ---- DIALOG CLOSE -----------------------------------------------------------
 
 const DialogClose = React.forwardRef<
   HTMLButtonElement,
@@ -180,9 +162,7 @@ const DialogClose = React.forwardRef<
 ));
 DialogClose.displayName = "DialogClose";
 
-// =============================================================================
-// DIALOG HEADER
-// =============================================================================
+// ---- DIALOG HEADER ----------------------------------------------------------
 
 const DialogHeader = ({
   className,
@@ -198,9 +178,7 @@ const DialogHeader = ({
 );
 DialogHeader.displayName = "DialogHeader";
 
-// =============================================================================
-// DIALOG FOOTER
-// =============================================================================
+// ---- DIALOG FOOTER ----------------------------------------------------------
 
 const DialogFooter = ({
   className,
@@ -216,16 +194,12 @@ const DialogFooter = ({
 );
 DialogFooter.displayName = "DialogFooter";
 
-// =============================================================================
-// DIALOG HANDLE (for programmatic open/close from detached triggers)
-// =============================================================================
+// ---- DIALOG HANDLE (for programmatic open/close from detached triggers) -----
 
 const DialogHandle = Dialog.Handle;
 const createDialogHandle = Dialog.createHandle;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   DialogRoot,

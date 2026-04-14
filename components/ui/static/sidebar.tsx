@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Sidebar (Static) — Responsive sidebar with collapsible sections,
  * menu items, groups, and mobile sheet support.
  * Built on static sheet, tooltip, and button components — no motion dependency.
@@ -87,9 +87,7 @@ export {
 // Re-export context hook
 export { useSidebar };
 
-// =============================================================================
-// SIDEBAR PROVIDER
-// =============================================================================
+// ---- SIDEBAR PROVIDER -------------------------------------------------------
 
 function SidebarProvider({
   defaultOpen = true,
@@ -186,9 +184,7 @@ function SidebarProvider({
 
 SidebarProvider.displayName = "SidebarProvider";
 
-// =============================================================================
-// SIDEBAR
-// =============================================================================
+// ---- SIDEBAR ----------------------------------------------------------------
 
 function Sidebar({
   side = "left",
@@ -292,9 +288,7 @@ function Sidebar({
 
 Sidebar.displayName = "Sidebar";
 
-// =============================================================================
-// SIDEBAR TRIGGER
-// =============================================================================
+// ---- SIDEBAR TRIGGER --------------------------------------------------------
 
 function SidebarTrigger({
   className,
@@ -327,9 +321,7 @@ function SidebarTrigger({
 
 SidebarTrigger.displayName = "SidebarTrigger";
 
-// =============================================================================
-// SIDEBAR INSET
-// =============================================================================
+// ---- SIDEBAR INSET ----------------------------------------------------------
 
 function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
   return (
@@ -347,8 +339,6 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
 
 SidebarInset.displayName = "SidebarInset";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { SidebarProvider, Sidebar, SidebarTrigger, SidebarInset };

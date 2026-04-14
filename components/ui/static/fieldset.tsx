@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Fieldset — Groups related form fields with a legend.
  * Built on @base-ui/react Fieldset primitive.
  *
@@ -17,9 +17,7 @@ import * as React from "react";
 import { Fieldset } from "@base-ui/react/fieldset";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// FIELDSET ROOT
-// =============================================================================
+// ---- FIELDSET ROOT ----------------------------------------------------------
 
 const FieldsetRoot = React.forwardRef<
   HTMLFieldSetElement,
@@ -29,9 +27,7 @@ const FieldsetRoot = React.forwardRef<
 ));
 FieldsetRoot.displayName = "FieldsetRoot";
 
-// =============================================================================
-// FIELDSET LEGEND
-// =============================================================================
+// ---- FIELDSET LEGEND --------------------------------------------------------
 
 const FieldsetLegend = React.forwardRef<
   HTMLLegendElement,
@@ -49,8 +45,6 @@ const FieldsetLegend = React.forwardRef<
 ));
 FieldsetLegend.displayName = "FieldsetLegend";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { FieldsetRoot, FieldsetLegend };

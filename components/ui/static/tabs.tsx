@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Tabs — Tabbed interface for switching between content panels.
  * Built on @base-ui/react Tabs primitive.
  *
@@ -20,9 +20,7 @@ import * as React from "react";
 import { Tabs } from "@base-ui/react/tabs";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TABS ROOT
-// =============================================================================
+// ---- TABS ROOT --------------------------------------------------------------
 
 const TabsRoot = React.forwardRef<
   HTMLDivElement,
@@ -32,9 +30,7 @@ const TabsRoot = React.forwardRef<
 ));
 TabsRoot.displayName = "TabsRoot";
 
-// =============================================================================
-// TABS LIST
-// =============================================================================
+// ---- TABS LIST --------------------------------------------------------------
 
 const TabsList = React.forwardRef<
   HTMLDivElement,
@@ -51,9 +47,7 @@ const TabsList = React.forwardRef<
 ));
 TabsList.displayName = "TabsList";
 
-// =============================================================================
-// TABS TAB
-// =============================================================================
+// ---- TABS TAB ---------------------------------------------------------------
 
 const TabsTab = React.forwardRef<
   HTMLButtonElement,
@@ -73,9 +67,7 @@ const TabsTab = React.forwardRef<
 ));
 TabsTab.displayName = "TabsTab";
 
-// =============================================================================
-// TABS INDICATOR
-// =============================================================================
+// ---- TABS INDICATOR ---------------------------------------------------------
 
 const TabsIndicator = React.forwardRef<
   HTMLSpanElement,
@@ -93,9 +85,7 @@ const TabsIndicator = React.forwardRef<
 ));
 TabsIndicator.displayName = "TabsIndicator";
 
-// =============================================================================
-// TABS PANEL
-// =============================================================================
+// ---- TABS PANEL -------------------------------------------------------------
 
 const TabsPanel = React.forwardRef<
   HTMLDivElement,
@@ -112,8 +102,6 @@ const TabsPanel = React.forwardRef<
 ));
 TabsPanel.displayName = "TabsPanel";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { TabsRoot, TabsList, TabsTab, TabsIndicator, TabsPanel };

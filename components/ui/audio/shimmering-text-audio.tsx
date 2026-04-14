@@ -5,9 +5,7 @@ import { motion, useInView, type UseInViewOptions } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface ShimmeringTextProps {
   /** Text to display with shimmer effect */
@@ -36,9 +34,7 @@ interface ShimmeringTextProps {
   shimmerColor?: string;
 }
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 function ShimmeringText({
   text,

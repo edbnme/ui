@@ -5,9 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface ChatInputProps extends Omit<React.ComponentProps<"div">, "onSubmit"> {
   /** Placeholder text for the textarea */
@@ -38,9 +36,7 @@ interface ChatInputActionProps extends React.ComponentProps<"button"> {
   variant?: "default" | "primary";
 }
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 interface ChatInputContextValue {
   value: string;
@@ -65,9 +61,7 @@ function useChatInputContext() {
   return context;
 }
 
-// =============================================================================
-// VARIANTS
-// =============================================================================
+// ---- VARIANTS ---------------------------------------------------------------
 
 const chatInputActionVariants = cva(
   "flex items-center justify-center rounded-xl p-2.5 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none",
@@ -84,9 +78,7 @@ const chatInputActionVariants = cva(
   }
 );
 
-// =============================================================================
-// AUTO-RESIZE HOOK
-// =============================================================================
+// ---- AUTO-RESIZE HOOK -------------------------------------------------------
 
 function useAutoResize(
   textareaRef: React.RefObject<HTMLTextAreaElement | null>,
@@ -112,9 +104,7 @@ function useAutoResize(
   }, [textareaRef, value, maxRows]);
 }
 
-// =============================================================================
-// COMPONENTS
-// =============================================================================
+// ---- COMPONENTS -------------------------------------------------------------
 
 function ChatInputRoot({
   placeholder = "Type a message...",
@@ -234,9 +224,7 @@ function ChatInputAction({
   );
 }
 
-// =============================================================================
-// COMPOUND COMPONENT
-// =============================================================================
+// ---- COMPOUND COMPONENT -----------------------------------------------------
 
 ChatInputRoot.displayName = "ChatInput";
 ChatInputTextarea.displayName = "ChatInput.Textarea";

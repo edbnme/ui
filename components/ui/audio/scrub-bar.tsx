@@ -11,9 +11,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// UTILITIES
-// =============================================================================
+// ---- UTILITIES --------------------------------------------------------------
 
 function formatTimestamp(value: number) {
   if (!Number.isFinite(value) || value < 0) return "0:00";
@@ -23,9 +21,7 @@ function formatTimestamp(value: number) {
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 interface ScrubBarContextValue {
   duration: number;
@@ -48,9 +44,7 @@ function useScrubBarContext() {
   return context;
 }
 
-// =============================================================================
-// CONTAINER
-// =============================================================================
+// ---- CONTAINER --------------------------------------------------------------
 
 interface ScrubBarContainerProps extends HTMLAttributes<HTMLDivElement> {
   duration: number;
@@ -95,9 +89,7 @@ function ScrubBarContainer({
 }
 ScrubBarContainer.displayName = "ScrubBarContainer";
 
-// =============================================================================
-// TRACK
-// =============================================================================
+// ---- TRACK ------------------------------------------------------------------
 
 type ScrubBarTrackProps = HTMLAttributes<HTMLDivElement>;
 
@@ -170,9 +162,7 @@ function ScrubBarTrack({ className, children, ...props }: ScrubBarTrackProps) {
 }
 ScrubBarTrack.displayName = "ScrubBarTrack";
 
-// =============================================================================
-// PROGRESS
-// =============================================================================
+// ---- PROGRESS ---------------------------------------------------------------
 
 interface ScrubBarProgressProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -193,9 +183,7 @@ function ScrubBarProgress({ className, ...props }: ScrubBarProgressProps) {
 }
 ScrubBarProgress.displayName = "ScrubBarProgress";
 
-// =============================================================================
-// THUMB
-// =============================================================================
+// ---- THUMB ------------------------------------------------------------------
 
 type ScrubBarThumbProps = HTMLAttributes<HTMLDivElement>;
 
@@ -217,9 +205,7 @@ function ScrubBarThumb({ className, children, ...props }: ScrubBarThumbProps) {
 }
 ScrubBarThumb.displayName = "ScrubBarThumb";
 
-// =============================================================================
-// TIME LABEL
-// =============================================================================
+// ---- TIME LABEL -------------------------------------------------------------
 
 interface ScrubBarTimeLabelProps extends HTMLAttributes<HTMLSpanElement> {
   time: number;
@@ -244,9 +230,7 @@ function ScrubBarTimeLabel({
 }
 ScrubBarTimeLabel.displayName = "ScrubBarTimeLabel";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ScrubBarContainer,

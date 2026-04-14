@@ -4,9 +4,7 @@ import { useEffect, useRef, type HTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 export type LiveWaveformProps = HTMLAttributes<HTMLDivElement> & {
   /** Whether microphone capture is active. Default: false */
@@ -51,9 +49,7 @@ export type LiveWaveformProps = HTMLAttributes<HTMLDivElement> & {
   onStreamEnd?: () => void;
 };
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 export const LiveWaveform = ({
   active = false,

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Tooltip — Informational popup shown on hover/focus.
  * Built on @base-ui/react Tooltip primitive.
  *
@@ -22,33 +22,23 @@ import * as React from "react";
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TOOLTIP PROVIDER
-// =============================================================================
+// ---- TOOLTIP PROVIDER -------------------------------------------------------
 
 const TooltipProvider = TooltipPrimitive.Provider;
 
-// =============================================================================
-// TOOLTIP ROOT
-// =============================================================================
+// ---- TOOLTIP ROOT -----------------------------------------------------------
 
 const TooltipRoot = TooltipPrimitive.Root;
 
-// =============================================================================
-// TOOLTIP TRIGGER
-// =============================================================================
+// ---- TOOLTIP TRIGGER --------------------------------------------------------
 
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
-// =============================================================================
-// TOOLTIP PORTAL
-// =============================================================================
+// ---- TOOLTIP PORTAL ---------------------------------------------------------
 
 const TooltipPortal = TooltipPrimitive.Portal;
 
-// =============================================================================
-// TOOLTIP POSITIONER
-// =============================================================================
+// ---- TOOLTIP POSITIONER -----------------------------------------------------
 
 const TooltipPositioner = React.forwardRef<
   HTMLDivElement,
@@ -63,9 +53,7 @@ const TooltipPositioner = React.forwardRef<
 ));
 TooltipPositioner.displayName = "TooltipPositioner";
 
-// =============================================================================
-// TOOLTIP POPUP
-// =============================================================================
+// ---- TOOLTIP POPUP ----------------------------------------------------------
 
 const TooltipPopup = React.forwardRef<
   HTMLDivElement,
@@ -87,9 +75,7 @@ const TooltipPopup = React.forwardRef<
 ));
 TooltipPopup.displayName = "TooltipPopup";
 
-// =============================================================================
-// TOOLTIP ARROW
-// =============================================================================
+// ---- TOOLTIP ARROW ----------------------------------------------------------
 
 const TooltipArrow = React.forwardRef<
   HTMLDivElement,
@@ -111,9 +97,7 @@ const TooltipArrow = React.forwardRef<
 ));
 TooltipArrow.displayName = "TooltipArrow";
 
-// =============================================================================
-// TOOLTIP VIEWPORT (optional — for multi-trigger animated content transitions)
-// =============================================================================
+// ---- TOOLTIP VIEWPORT (optional — for multi-trigger animated content transitions) -
 
 const TooltipViewport = React.forwardRef<
   HTMLDivElement,
@@ -123,16 +107,12 @@ const TooltipViewport = React.forwardRef<
 ));
 TooltipViewport.displayName = "TooltipViewport";
 
-// =============================================================================
-// TOOLTIP HANDLE
-// =============================================================================
+// ---- TOOLTIP HANDLE ---------------------------------------------------------
 
 const TooltipHandle = TooltipPrimitive.Handle;
 const createTooltipHandle = TooltipPrimitive.createHandle;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   TooltipProvider,

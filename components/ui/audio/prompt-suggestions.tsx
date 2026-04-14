@@ -5,9 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface Suggestion {
   /** Display text for the suggestion */
@@ -40,9 +38,7 @@ interface PromptSuggestionItemProps extends Omit<
   onSelect?: (value: string) => void;
 }
 
-// =============================================================================
-// VARIANTS
-// =============================================================================
+// ---- VARIANTS ---------------------------------------------------------------
 
 const promptSuggestionsVariants = cva("w-full", {
   variants: {
@@ -62,9 +58,7 @@ const promptSuggestionsVariants = cva("w-full", {
   },
 });
 
-// =============================================================================
-// COMPONENTS
-// =============================================================================
+// ---- COMPONENTS -------------------------------------------------------------
 
 function PromptSuggestionItem({
   suggestion,

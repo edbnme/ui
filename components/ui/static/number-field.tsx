@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NumberField — Numeric input with increment/decrement controls and scrub area.
  * Built on @base-ui/react NumberField primitive.
  *
@@ -20,9 +20,7 @@ import { NumberField } from "@base-ui/react/number-field";
 import { cn } from "@/lib/utils";
 import { Minus, Plus } from "@phosphor-icons/react";
 
-// =============================================================================
-// NUMBER FIELD ROOT
-// =============================================================================
+// ---- NUMBER FIELD ROOT ------------------------------------------------------
 
 const NumberFieldRoot = React.forwardRef<
   HTMLDivElement,
@@ -36,9 +34,7 @@ const NumberFieldRoot = React.forwardRef<
 ));
 NumberFieldRoot.displayName = "NumberFieldRoot";
 
-// =============================================================================
-// NUMBER FIELD GROUP
-// =============================================================================
+// ---- NUMBER FIELD GROUP -----------------------------------------------------
 
 const NumberFieldGroup = React.forwardRef<
   HTMLDivElement,
@@ -48,9 +44,7 @@ const NumberFieldGroup = React.forwardRef<
 ));
 NumberFieldGroup.displayName = "NumberFieldGroup";
 
-// =============================================================================
-// NUMBER FIELD DECREMENT
-// =============================================================================
+// ---- NUMBER FIELD DECREMENT -------------------------------------------------
 
 const NumberFieldDecrement = React.forwardRef<
   HTMLButtonElement,
@@ -73,9 +67,7 @@ const NumberFieldDecrement = React.forwardRef<
 ));
 NumberFieldDecrement.displayName = "NumberFieldDecrement";
 
-// =============================================================================
-// NUMBER FIELD INPUT
-// =============================================================================
+// ---- NUMBER FIELD INPUT -----------------------------------------------------
 
 const NumberFieldInput = React.forwardRef<
   HTMLInputElement,
@@ -93,9 +85,7 @@ const NumberFieldInput = React.forwardRef<
 ));
 NumberFieldInput.displayName = "NumberFieldInput";
 
-// =============================================================================
-// NUMBER FIELD INCREMENT
-// =============================================================================
+// ---- NUMBER FIELD INCREMENT -------------------------------------------------
 
 const NumberFieldIncrement = React.forwardRef<
   HTMLButtonElement,
@@ -118,9 +108,7 @@ const NumberFieldIncrement = React.forwardRef<
 ));
 NumberFieldIncrement.displayName = "NumberFieldIncrement";
 
-// =============================================================================
-// NUMBER FIELD SCRUB AREA
-// =============================================================================
+// ---- NUMBER FIELD SCRUB AREA ------------------------------------------------
 
 const NumberFieldScrubArea = React.forwardRef<
   HTMLDivElement,
@@ -134,15 +122,11 @@ const NumberFieldScrubArea = React.forwardRef<
 ));
 NumberFieldScrubArea.displayName = "NumberFieldScrubArea";
 
-// =============================================================================
-// NUMBER FIELD SCRUB AREA CURSOR
-// =============================================================================
+// ---- NUMBER FIELD SCRUB AREA CURSOR -----------------------------------------
 
 const NumberFieldScrubAreaCursor = NumberField.ScrubAreaCursor;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   NumberFieldRoot,

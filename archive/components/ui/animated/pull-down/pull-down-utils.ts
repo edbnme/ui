@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PullDown animation utilities — Constants, spring configs, blur helpers, and
  * CSS variable builders shared across pull-down sub-components.
  * @module pull-down/pull-down-utils
@@ -13,9 +13,7 @@ import type {
   PullDownSpringConfig,
 } from "./pull-down-context";
 
-// =============================================================================
-// ANIMATION CONSTANTS
-// =============================================================================
+// ---- ANIMATION CONSTANTS ----------------------------------------------------
 
 export const DEFAULT_ANIMATION_CONFIG: Required<PullDownAnimationConfig> = {
   morphStiffness: 382,
@@ -35,9 +33,7 @@ export const REDUCED_MOTION_SPRING: PullDownSpringConfig = {
 
 export const CONTENT_BLUR = 8;
 
-// =============================================================================
-// UTILITY FUNCTIONS
-// =============================================================================
+// ---- UTILITY FUNCTIONS ------------------------------------------------------
 
 /** Calculate base position styles based on direction */
 export function getPositionStyles(direction: PullDownDirection): CSSProperties {

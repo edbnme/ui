@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Slider — Range input for selecting numeric values within a range.
  * Built on @base-ui/react Slider primitive.
  *
@@ -13,9 +13,7 @@ import * as React from "react";
 import { Slider } from "@base-ui/react/slider";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// SLIDER ROOT
-// =============================================================================
+// ---- SLIDER ROOT ------------------------------------------------------------
 
 const SliderRoot = React.forwardRef<HTMLDivElement, Slider.Root.Props>(
   ({ className, ...props }, ref) => (
@@ -31,9 +29,7 @@ const SliderRoot = React.forwardRef<HTMLDivElement, Slider.Root.Props>(
 );
 SliderRoot.displayName = "SliderRoot";
 
-// =============================================================================
-// SLIDER CONTROL
-// =============================================================================
+// ---- SLIDER CONTROL ---------------------------------------------------------
 
 const SliderControl = React.forwardRef<HTMLDivElement, Slider.Control.Props>(
   ({ className, ...props }, ref) => (
@@ -49,9 +45,7 @@ const SliderControl = React.forwardRef<HTMLDivElement, Slider.Control.Props>(
 );
 SliderControl.displayName = "SliderControl";
 
-// =============================================================================
-// SLIDER TRACK
-// =============================================================================
+// ---- SLIDER TRACK -----------------------------------------------------------
 
 const SliderTrack = React.forwardRef<HTMLDivElement, Slider.Track.Props>(
   ({ className, ...props }, ref) => (
@@ -67,9 +61,7 @@ const SliderTrack = React.forwardRef<HTMLDivElement, Slider.Track.Props>(
 );
 SliderTrack.displayName = "SliderTrack";
 
-// =============================================================================
-// SLIDER INDICATOR
-// =============================================================================
+// ---- SLIDER INDICATOR -------------------------------------------------------
 
 const SliderIndicator = React.forwardRef<
   HTMLDivElement,
@@ -83,9 +75,7 @@ const SliderIndicator = React.forwardRef<
 ));
 SliderIndicator.displayName = "SliderIndicator";
 
-// =============================================================================
-// SLIDER THUMB
-// =============================================================================
+// ---- SLIDER THUMB -----------------------------------------------------------
 
 const SliderThumb = React.forwardRef<HTMLDivElement, Slider.Thumb.Props>(
   ({ className, ...props }, ref) => (
@@ -104,9 +94,7 @@ const SliderThumb = React.forwardRef<HTMLDivElement, Slider.Thumb.Props>(
 );
 SliderThumb.displayName = "SliderThumb";
 
-// =============================================================================
-// SLIDER VALUE
-// =============================================================================
+// ---- SLIDER VALUE -----------------------------------------------------------
 
 const SliderValue = React.forwardRef<HTMLOutputElement, Slider.Value.Props>(
   ({ className, ...props }, ref) => (
@@ -119,9 +107,7 @@ const SliderValue = React.forwardRef<HTMLOutputElement, Slider.Value.Props>(
 );
 SliderValue.displayName = "SliderValue";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SliderRoot,

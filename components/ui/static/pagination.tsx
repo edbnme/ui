@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Pagination — Page navigation with previous, next, and page number links.
  *
  * @example
@@ -15,9 +15,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// Pagination
-// =============================================================================
+// ---- Pagination -------------------------------------------------------------
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -211,9 +209,7 @@ function EllipsisIcon(props: React.ComponentProps<"svg">) {
   );
 }
 
-// =============================================================================
-// Exports
-// =============================================================================
+// ---- Exports ----------------------------------------------------------------
 
 export {
   Pagination,

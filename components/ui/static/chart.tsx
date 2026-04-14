@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Chart — Composable, themed chart components built on Recharts.
  * CSS variable theming with pre-styled tooltips and legends.
  *
@@ -22,9 +22,7 @@ import * as RechartsPrimitive from "recharts";
 import { cn } from "@/lib/utils";
 import { createComponentContext } from "@/lib/create-component-context";
 
-// =============================================================================
-// CHART CONFIG
-// =============================================================================
+// ---- CHART CONFIG -----------------------------------------------------------
 
 export type ChartConfig = Record<
   string,
@@ -44,9 +42,7 @@ type ChartContextProps = {
 const [ChartProvider, useChart] =
   createComponentContext<ChartContextProps>("ChartContainer");
 
-// =============================================================================
-// CHART CONTAINER
-// =============================================================================
+// ---- CHART CONTAINER --------------------------------------------------------
 
 const ChartContainer = React.forwardRef<
   HTMLDivElement,
@@ -94,9 +90,7 @@ const ChartContainer = React.forwardRef<
 });
 ChartContainer.displayName = "ChartContainer";
 
-// =============================================================================
-// CHART STYLE (CSS VARIABLE INJECTION)
-// =============================================================================
+// ---- CHART STYLE (CSS VARIABLE INJECTION) -----------------------------------
 
 function ChartStyle({ id, config }: { id: string; config: ChartConfig }) {
   const colorConfig = Object.entries(config).filter(
@@ -131,15 +125,11 @@ ${colorConfig
 
 const THEMES = { light: "", dark: ".dark" } as const;
 
-// =============================================================================
-// CHART TOOLTIP
-// =============================================================================
+// ---- CHART TOOLTIP ----------------------------------------------------------
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
-// =============================================================================
-// CHART TOOLTIP CONTENT
-// =============================================================================
+// ---- CHART TOOLTIP CONTENT --------------------------------------------------
 
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
@@ -320,15 +310,11 @@ const ChartTooltipContent = React.forwardRef<
 );
 ChartTooltipContent.displayName = "ChartTooltipContent";
 
-// =============================================================================
-// CHART LEGEND
-// =============================================================================
+// ---- CHART LEGEND -----------------------------------------------------------
 
 const ChartLegend = RechartsPrimitive.Legend;
 
-// =============================================================================
-// CHART LEGEND CONTENT
-// =============================================================================
+// ---- CHART LEGEND CONTENT ---------------------------------------------------
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
@@ -392,9 +378,7 @@ const ChartLegendContent = React.forwardRef<
 );
 ChartLegendContent.displayName = "ChartLegendContent";
 
-// =============================================================================
-// HELPERS
-// =============================================================================
+// ---- HELPERS ----------------------------------------------------------------
 
 function getPayloadConfigFromPayload(
   config: ChartConfig,
@@ -425,9 +409,7 @@ function getPayloadConfigFromPayload(
   return configLabelKey in config ? config[configLabelKey] : config[key];
 }
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ChartContainer,

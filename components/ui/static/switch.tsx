@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Switch — Toggle switch for binary on/off states.
  * Built on @base-ui/react Switch primitive.
  *
@@ -18,9 +18,7 @@ import * as React from "react";
 import { Switch } from "@base-ui/react/switch";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// SWITCH ROOT
-// =============================================================================
+// ---- SWITCH ROOT ------------------------------------------------------------
 
 const SwitchRoot = React.forwardRef<
   HTMLButtonElement,
@@ -40,9 +38,7 @@ const SwitchRoot = React.forwardRef<
 ));
 SwitchRoot.displayName = "SwitchRoot";
 
-// =============================================================================
-// SWITCH THUMB
-// =============================================================================
+// ---- SWITCH THUMB -----------------------------------------------------------
 
 const SwitchThumb = React.forwardRef<
   HTMLSpanElement,
@@ -60,8 +56,6 @@ const SwitchThumb = React.forwardRef<
 ));
 SwitchThumb.displayName = "SwitchThumb";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { SwitchRoot, SwitchThumb };

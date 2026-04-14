@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Badge — Inline status indicator with variant and size options.
  *
  * @example

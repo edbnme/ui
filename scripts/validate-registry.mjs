@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Registry Validation Script
  *
  * Build-time validation for edbn-ui registry JSON files.
@@ -19,9 +19,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = join(__dirname, "..", "..");
 
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
+// ---- CONFIGURATION ----------------------------------------------------------
 
 /** Registry output directories (check both, prefer public/r/) */
 const REGISTRY_DIRS = [
@@ -39,9 +37,7 @@ const COLOR_EXEMPTIONS = [
   "maps/",
 ];
 
-// =============================================================================
-// VALIDATION PATTERNS
-// =============================================================================
+// ---- VALIDATION PATTERNS ----------------------------------------------------
 
 const patterns = {
   useClient: /^["']use client["'];?\s*$/m,
@@ -53,9 +49,7 @@ const patterns = {
     /\b(?:bg|text|border|ring|shadow|outline|fill|stroke)-(?:white|black|slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)(?:-\d+)?(?:\/\d+)?\b/g,
 };
 
-// =============================================================================
-// HELPERS
-// =============================================================================
+// ---- HELPERS ----------------------------------------------------------------
 
 let errors = 0;
 let warnings = 0;
@@ -89,9 +83,7 @@ function isColorExempt(filePath) {
   return COLOR_EXEMPTIONS.some((exemption) => filePath.includes(exemption));
 }
 
-// =============================================================================
-// VALIDATORS
-// =============================================================================
+// ---- VALIDATORS -------------------------------------------------------------
 
 function validateFileContent(item, file) {
   if (!file.content || file.content.trim().length === 0) {
@@ -177,9 +169,7 @@ function validateHardcodedColors(item, file) {
   }
 }
 
-// =============================================================================
-// MAIN
-// =============================================================================
+// ---- MAIN -------------------------------------------------------------------
 
 console.log("");
 console.log("   ╔═══════════════════════════════════════╗");
@@ -263,9 +253,7 @@ if (registryIndex) {
   }
 }
 
-// =============================================================================
-// SUMMARY
-// =============================================================================
+// ---- SUMMARY ----------------------------------------------------------------
 
 console.log("\n" + "=".repeat(50));
 console.log(`  Validation complete: ${jsonFiles.length} items checked`);

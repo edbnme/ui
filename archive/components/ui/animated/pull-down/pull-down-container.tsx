@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PullDownContainer — Animated container that morphs from the trigger dimensions.
  * Handles layout measurement, blur transitions, and spring sizing.
  * @module pull-down/pull-down-container
@@ -29,9 +29,7 @@ import {
   getAnchorOffset,
 } from "./pull-down-utils";
 
-// =============================================================================
-// CONTAINER COMPONENT
-// =============================================================================
+// ---- CONTAINER COMPONENT ----------------------------------------------------
 
 export const Container = forwardRef<HTMLDivElement, PullDownContainerProps>(
   function PullDownContainer(

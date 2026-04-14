@@ -7,9 +7,7 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useLowPowerDevice } from "@/hooks/use-low-power-device";
 import { transitions } from "@/lib/motion";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 export type ReducedMotionSetting = "user" | "always" | "never";
 
@@ -42,9 +40,7 @@ export type MotionProviderProps = {
   className?: string;
 };
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 const MotionContext = createContext<MotionContextValue | null>(null);
 
@@ -133,9 +129,7 @@ export function useAnimationTransition(
   return transition;
 }
 
-// =============================================================================
-// PROVIDER COMPONENT
-// =============================================================================
+// ---- PROVIDER COMPONENT -----------------------------------------------------
 
 /**
  * MotionProvider - Global animation configuration provider
@@ -242,8 +236,6 @@ export function MotionProvider({
   );
 }
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { MotionContext };

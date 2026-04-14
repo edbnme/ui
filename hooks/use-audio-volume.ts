@@ -1,10 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-// =============================================================================
-// AUDIO CONTEXT SINGLETON
-// =============================================================================
+// ---- AUDIO CONTEXT SINGLETON ------------------------------------------------
 
 let sharedAudioContext: AudioContext | null = null;
 
@@ -33,9 +31,7 @@ function getAudioContext(): AudioContext {
   return sharedAudioContext;
 }
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface UseAudioVolumeOptions {
   /** The MediaStream to analyse (e.g., from getUserMedia) */
@@ -61,9 +57,7 @@ interface UseAudioVolumeReturn {
   error: string | null;
 }
 
-// =============================================================================
-// HOOK
-// =============================================================================
+// ---- HOOK -------------------------------------------------------------------
 
 export function useAudioVolume(
   options: UseAudioVolumeOptions = {}

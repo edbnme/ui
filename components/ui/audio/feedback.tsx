@@ -5,9 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 type FeedbackValue = "positive" | "negative" | null;
 
@@ -26,9 +24,7 @@ interface FeedbackProps extends React.ComponentProps<"div"> {
   showRegenerate?: boolean;
 }
 
-// =============================================================================
-// INLINE ICONS
-// =============================================================================
+// ---- INLINE ICONS -----------------------------------------------------------
 
 function ThumbsUpIcon({
   filled,
@@ -137,9 +133,7 @@ function RefreshIcon({ className }: { className?: string }) {
   );
 }
 
-// =============================================================================
-// VARIANTS
-// =============================================================================
+// ---- VARIANTS ---------------------------------------------------------------
 
 const feedbackButtonVariants = cva(
   "inline-flex items-center justify-center rounded-lg p-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -157,9 +151,7 @@ const feedbackButtonVariants = cva(
   }
 );
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 function Feedback({
   value,

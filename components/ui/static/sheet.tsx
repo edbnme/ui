@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Sheet — CSS-only slide-out panel built on @base-ui/react Dialog.
  * Supports directional slide from top, right, bottom, left.
  *
@@ -32,15 +32,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// SHEET ROOT
-// =============================================================================
+// ---- SHEET ROOT -------------------------------------------------------------
 
 const SheetRoot = Dialog.Root;
 
-// =============================================================================
-// SHEET TRIGGER
-// =============================================================================
+// ---- SHEET TRIGGER ----------------------------------------------------------
 
 const SheetTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -58,15 +54,11 @@ const SheetTrigger = React.forwardRef<
 ));
 SheetTrigger.displayName = "SheetTrigger";
 
-// =============================================================================
-// SHEET PORTAL
-// =============================================================================
+// ---- SHEET PORTAL -----------------------------------------------------------
 
 const SheetPortal = Dialog.Portal;
 
-// =============================================================================
-// SHEET BACKDROP
-// =============================================================================
+// ---- SHEET BACKDROP ---------------------------------------------------------
 
 const SheetBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -85,9 +77,7 @@ const SheetBackdrop = React.forwardRef<
 ));
 SheetBackdrop.displayName = "SheetBackdrop";
 
-// =============================================================================
-// SHEET VIEWPORT
-// =============================================================================
+// ---- SHEET VIEWPORT ---------------------------------------------------------
 
 const SheetViewport = React.forwardRef<
   HTMLDivElement,
@@ -101,9 +91,7 @@ const SheetViewport = React.forwardRef<
 ));
 SheetViewport.displayName = "SheetViewport";
 
-// =============================================================================
-// SHEET POPUP VARIANTS
-// =============================================================================
+// ---- SHEET POPUP VARIANTS ---------------------------------------------------
 
 const sheetVariants = cva(
   [
@@ -138,9 +126,7 @@ const sheetVariants = cva(
   }
 );
 
-// =============================================================================
-// SHEET POPUP
-// =============================================================================
+// ---- SHEET POPUP ------------------------------------------------------------
 
 interface SheetPopupProps
   extends
@@ -158,9 +144,7 @@ const SheetPopup = React.forwardRef<HTMLDivElement, SheetPopupProps>(
 );
 SheetPopup.displayName = "SheetPopup";
 
-// =============================================================================
-// SHEET CLOSE
-// =============================================================================
+// ---- SHEET CLOSE ------------------------------------------------------------
 
 const SheetClose = React.forwardRef<
   HTMLButtonElement,
@@ -185,9 +169,7 @@ const SheetClose = React.forwardRef<
 ));
 SheetClose.displayName = "SheetClose";
 
-// =============================================================================
-// SHEET HEADER
-// =============================================================================
+// ---- SHEET HEADER -----------------------------------------------------------
 
 const SheetHeader = ({
   className,
@@ -200,9 +182,7 @@ const SheetHeader = ({
 );
 SheetHeader.displayName = "SheetHeader";
 
-// =============================================================================
-// SHEET TITLE
-// =============================================================================
+// ---- SHEET TITLE ------------------------------------------------------------
 
 const SheetTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -216,9 +196,7 @@ const SheetTitle = React.forwardRef<
 ));
 SheetTitle.displayName = "SheetTitle";
 
-// =============================================================================
-// SHEET DESCRIPTION
-// =============================================================================
+// ---- SHEET DESCRIPTION ------------------------------------------------------
 
 const SheetDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -232,9 +210,7 @@ const SheetDescription = React.forwardRef<
 ));
 SheetDescription.displayName = "SheetDescription";
 
-// =============================================================================
-// SHEET BODY
-// =============================================================================
+// ---- SHEET BODY -------------------------------------------------------------
 
 const SheetBody = ({
   className,
@@ -244,9 +220,7 @@ const SheetBody = ({
 );
 SheetBody.displayName = "SheetBody";
 
-// =============================================================================
-// SHEET FOOTER
-// =============================================================================
+// ---- SHEET FOOTER -----------------------------------------------------------
 
 const SheetFooter = ({
   className,
@@ -262,9 +236,7 @@ const SheetFooter = ({
 );
 SheetFooter.displayName = "SheetFooter";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SheetRoot,

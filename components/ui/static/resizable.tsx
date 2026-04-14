@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Resizable — Draggable panel groups with resize handles.
  * Built on react-resizable-panels library.
  *
@@ -22,9 +22,7 @@ import {
 import { DotsSixVertical } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// RESIZABLE PANEL GROUP
-// =============================================================================
+// ---- RESIZABLE PANEL GROUP --------------------------------------------------
 
 function ResizablePanelGroup({
   className,
@@ -42,15 +40,11 @@ function ResizablePanelGroup({
 }
 ResizablePanelGroup.displayName = "ResizablePanelGroup";
 
-// =============================================================================
-// RESIZABLE PANEL
-// =============================================================================
+// ---- RESIZABLE PANEL --------------------------------------------------------
 
 const ResizablePanel = Panel;
 
-// =============================================================================
-// RESIZABLE HANDLE
-// =============================================================================
+// ---- RESIZABLE HANDLE -------------------------------------------------------
 
 function ResizableHandle({
   withHandle,
@@ -81,8 +75,6 @@ function ResizableHandle({
 
 ResizableHandle.displayName = "ResizableHandle";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { ResizablePanelGroup, ResizablePanel, ResizableHandle };

@@ -5,9 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { LiveWaveform } from "./live-waveform";
 
-// =============================================================================
-// ICONS
-// =============================================================================
+// ---- ICONS ------------------------------------------------------------------
 
 function MicIcon({ className }: { className?: string }) {
   return (
@@ -81,9 +79,7 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 export interface AudioDevice {
   deviceId: string;
@@ -100,9 +96,7 @@ export interface MicSelectorProps {
   className?: string;
 }
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 export function MicSelector({
   value,
@@ -282,9 +276,7 @@ export function MicSelector({
 
 MicSelector.displayName = "MicSelector";
 
-// =============================================================================
-// HOOK: useAudioDevices
-// =============================================================================
+// ---- HOOK: useAudioDevices --------------------------------------------------
 
 export function useAudioDevices() {
   const [devices, setDevices] = useState<AudioDevice[]>([]);

@@ -6,9 +6,7 @@ import { cn } from "@/lib/utils";
 import useClickOutside from "@/hooks/use-click-outside";
 import { usePopover } from "./popover-context";
 
-// =============================================================================
-// POPOVER CONTENT
-// =============================================================================
+// ---- POPOVER CONTENT --------------------------------------------------------
 
 /**
  * PopoverContent props

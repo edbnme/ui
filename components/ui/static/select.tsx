@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Select — Dropdown select menu for single-value selection.
  * Built on @base-ui/react Select primitive.
  *
@@ -28,15 +28,11 @@ import { Select } from "@base-ui/react/select";
 import { cn } from "@/lib/utils";
 import { Check, CaretUpDown } from "@phosphor-icons/react";
 
-// =============================================================================
-// SELECT ROOT
-// =============================================================================
+// ---- SELECT ROOT ------------------------------------------------------------
 
 const SelectRoot = Select.Root;
 
-// =============================================================================
-// SELECT TRIGGER
-// =============================================================================
+// ---- SELECT TRIGGER ---------------------------------------------------------
 
 const SelectTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -62,9 +58,7 @@ const SelectTrigger = React.forwardRef<
 ));
 SelectTrigger.displayName = "SelectTrigger";
 
-// =============================================================================
-// SELECT VALUE
-// =============================================================================
+// ---- SELECT VALUE -----------------------------------------------------------
 
 const SelectValue = React.forwardRef<
   HTMLSpanElement,
@@ -78,15 +72,11 @@ const SelectValue = React.forwardRef<
 ));
 SelectValue.displayName = "SelectValue";
 
-// =============================================================================
-// SELECT PORTAL
-// =============================================================================
+// ---- SELECT PORTAL ----------------------------------------------------------
 
 const SelectPortal = Select.Portal;
 
-// =============================================================================
-// SELECT POSITIONER
-// =============================================================================
+// ---- SELECT POSITIONER ------------------------------------------------------
 
 const SelectPositioner = React.forwardRef<
   HTMLDivElement,
@@ -101,9 +91,7 @@ const SelectPositioner = React.forwardRef<
 ));
 SelectPositioner.displayName = "SelectPositioner";
 
-// =============================================================================
-// SELECT POPUP
-// =============================================================================
+// ---- SELECT POPUP -----------------------------------------------------------
 
 const SelectPopup = React.forwardRef<
   HTMLDivElement,
@@ -124,9 +112,7 @@ const SelectPopup = React.forwardRef<
 ));
 SelectPopup.displayName = "SelectPopup";
 
-// =============================================================================
-// SELECT LIST
-// =============================================================================
+// ---- SELECT LIST ------------------------------------------------------------
 
 const SelectList = React.forwardRef<
   HTMLDivElement,
@@ -140,9 +126,7 @@ const SelectList = React.forwardRef<
 ));
 SelectList.displayName = "SelectList";
 
-// =============================================================================
-// SELECT ITEM
-// =============================================================================
+// ---- SELECT ITEM ------------------------------------------------------------
 
 const SelectItem = React.forwardRef<
   HTMLDivElement,
@@ -168,15 +152,11 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = "SelectItem";
 
-// =============================================================================
-// SELECT GROUP
-// =============================================================================
+// ---- SELECT GROUP -----------------------------------------------------------
 
 const SelectGroup = Select.Group;
 
-// =============================================================================
-// SELECT GROUP LABEL
-// =============================================================================
+// ---- SELECT GROUP LABEL -----------------------------------------------------
 
 const SelectGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -190,9 +170,7 @@ const SelectGroupLabel = React.forwardRef<
 ));
 SelectGroupLabel.displayName = "SelectGroupLabel";
 
-// =============================================================================
-// SELECT SEPARATOR
-// =============================================================================
+// ---- SELECT SEPARATOR -------------------------------------------------------
 
 const SelectSeparator = React.forwardRef<
   HTMLDivElement,
@@ -206,9 +184,7 @@ const SelectSeparator = React.forwardRef<
 ));
 SelectSeparator.displayName = "SelectSeparator";
 
-// =============================================================================
-// SELECT ARROW
-// =============================================================================
+// ---- SELECT ARROW -----------------------------------------------------------
 
 const SelectArrow = React.forwardRef<
   HTMLDivElement,
@@ -226,9 +202,7 @@ const SelectArrow = React.forwardRef<
 ));
 SelectArrow.displayName = "SelectArrow";
 
-// =============================================================================
-// SELECT BACKDROP
-// =============================================================================
+// ---- SELECT BACKDROP --------------------------------------------------------
 
 const SelectBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -242,27 +216,19 @@ const SelectBackdrop = React.forwardRef<
 ));
 SelectBackdrop.displayName = "SelectBackdrop";
 
-// =============================================================================
-// SELECT ICON
-// =============================================================================
+// ---- SELECT ICON ------------------------------------------------------------
 
 const SelectIcon = Select.Icon;
 
-// =============================================================================
-// SELECT ITEM INDICATOR
-// =============================================================================
+// ---- SELECT ITEM INDICATOR --------------------------------------------------
 
 const SelectItemIndicator = Select.ItemIndicator;
 
-// =============================================================================
-// SELECT ITEM TEXT
-// =============================================================================
+// ---- SELECT ITEM TEXT -------------------------------------------------------
 
 const SelectItemText = Select.ItemText;
 
-// =============================================================================
-// SELECT SCROLL ARROWS
-// =============================================================================
+// ---- SELECT SCROLL ARROWS ---------------------------------------------------
 
 const SelectScrollUpArrow = React.forwardRef<
   HTMLDivElement,
@@ -294,9 +260,7 @@ const SelectScrollDownArrow = React.forwardRef<
 ));
 SelectScrollDownArrow.displayName = "SelectScrollDownArrow";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SelectRoot,

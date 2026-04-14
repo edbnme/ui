@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Meter — Displays a value within a known range (e.g., disk usage, signal strength).
  * Built on @base-ui/react Meter primitive.
  *
@@ -19,9 +19,7 @@ import * as React from "react";
 import { Meter } from "@base-ui/react/meter";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// METER ROOT
-// =============================================================================
+// ---- METER ROOT -------------------------------------------------------------
 
 const MeterRoot = React.forwardRef<
   HTMLDivElement,
@@ -35,9 +33,7 @@ const MeterRoot = React.forwardRef<
 ));
 MeterRoot.displayName = "MeterRoot";
 
-// =============================================================================
-// METER LABEL
-// =============================================================================
+// ---- METER LABEL ------------------------------------------------------------
 
 const MeterLabel = React.forwardRef<
   HTMLLabelElement,
@@ -51,9 +47,7 @@ const MeterLabel = React.forwardRef<
 ));
 MeterLabel.displayName = "MeterLabel";
 
-// =============================================================================
-// METER TRACK
-// =============================================================================
+// ---- METER TRACK ------------------------------------------------------------
 
 const MeterTrack = React.forwardRef<
   HTMLDivElement,
@@ -70,9 +64,7 @@ const MeterTrack = React.forwardRef<
 ));
 MeterTrack.displayName = "MeterTrack";
 
-// =============================================================================
-// METER INDICATOR
-// =============================================================================
+// ---- METER INDICATOR --------------------------------------------------------
 
 const MeterIndicator = React.forwardRef<
   HTMLDivElement,
@@ -86,9 +78,7 @@ const MeterIndicator = React.forwardRef<
 ));
 MeterIndicator.displayName = "MeterIndicator";
 
-// =============================================================================
-// METER VALUE
-// =============================================================================
+// ---- METER VALUE ------------------------------------------------------------
 
 const MeterValue = React.forwardRef<
   HTMLSpanElement,
@@ -102,8 +92,6 @@ const MeterValue = React.forwardRef<
 ));
 MeterValue.displayName = "MeterValue";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { MeterRoot, MeterLabel, MeterTrack, MeterIndicator, MeterValue };

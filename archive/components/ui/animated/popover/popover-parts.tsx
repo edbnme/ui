@@ -6,9 +6,7 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { usePopover } from "./popover-context";
 
-// =============================================================================
-// POPOVER HEADER
-// =============================================================================
+// ---- POPOVER HEADER ---------------------------------------------------------
 
 /**
  * PopoverHeader props
@@ -75,9 +73,7 @@ export function PopoverHeader({
 
 PopoverHeader.displayName = "PopoverHeader";
 
-// =============================================================================
-// POPOVER TITLE
-// =============================================================================
+// ---- POPOVER TITLE ----------------------------------------------------------
 
 /**
  * PopoverTitle props
@@ -136,9 +132,7 @@ export function PopoverTitle({
 
 PopoverTitle.displayName = "PopoverTitle";
 
-// =============================================================================
-// POPOVER DESCRIPTION
-// =============================================================================
+// ---- POPOVER DESCRIPTION ----------------------------------------------------
 
 /**
  * PopoverDescription props
@@ -196,9 +190,7 @@ export function PopoverDescription({
 
 PopoverDescription.displayName = "PopoverDescription";
 
-// =============================================================================
-// POPOVER BODY
-// =============================================================================
+// ---- POPOVER BODY -----------------------------------------------------------
 
 /**
  * PopoverBody props
@@ -260,9 +252,7 @@ export function PopoverBody({ children, className, style }: PopoverBodyProps) {
 
 PopoverBody.displayName = "PopoverBody";
 
-// =============================================================================
-// POPOVER FOOTER
-// =============================================================================
+// ---- POPOVER FOOTER ---------------------------------------------------------
 
 /**
  * PopoverFooter props
@@ -334,9 +324,7 @@ export function PopoverFooter({
 
 PopoverFooter.displayName = "PopoverFooter";
 
-// =============================================================================
-// POPOVER CLOSE
-// =============================================================================
+// ---- POPOVER CLOSE ----------------------------------------------------------
 
 /**
  * PopoverClose props

@@ -18,9 +18,7 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach, beforeAll, vi } from "vitest";
 
-// =============================================================================
-// CLEANUP
-// =============================================================================
+// ---- CLEANUP ----------------------------------------------------------------
 
 /**
  * Clean up DOM and React state after each test
@@ -30,9 +28,7 @@ afterEach(() => {
   cleanup();
 });
 
-// =============================================================================
-// BROWSER API MOCKS
-// =============================================================================
+// ---- BROWSER API MOCKS ------------------------------------------------------
 
 /**
  * Mock window.matchMedia
@@ -162,9 +158,7 @@ window.getComputedStyle = vi.fn().mockImplementation((element: Element) => {
   return originalGetComputedStyle(element);
 });
 
-// =============================================================================
-// POINTER EVENTS MOCK
-// =============================================================================
+// ---- POINTER EVENTS MOCK ----------------------------------------------------
 
 /**
  * Mock PointerEvent
@@ -206,9 +200,7 @@ class PointerEventMock extends MouseEvent {
 
 global.PointerEvent = PointerEventMock as unknown as typeof PointerEvent;
 
-// =============================================================================
-// CONSOLE SUPPRESSIONS
-// =============================================================================
+// ---- CONSOLE SUPPRESSIONS ---------------------------------------------------
 
 /**
  * Suppress known console warnings that clutter test output

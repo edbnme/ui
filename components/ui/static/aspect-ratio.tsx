@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AspectRatio — Maintains a consistent width-to-height ratio for content.
  *
  * @example

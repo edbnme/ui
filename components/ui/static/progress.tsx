@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Progress — Progress bar for tracking async operation completion.
  * Built on @base-ui/react Progress primitive.
  *
@@ -19,9 +19,7 @@ import * as React from "react";
 import { Progress } from "@base-ui/react/progress";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// PROGRESS ROOT
-// =============================================================================
+// ---- PROGRESS ROOT ----------------------------------------------------------
 
 const ProgressRoot = React.forwardRef<
   HTMLDivElement,
@@ -35,9 +33,7 @@ const ProgressRoot = React.forwardRef<
 ));
 ProgressRoot.displayName = "ProgressRoot";
 
-// =============================================================================
-// PROGRESS TRACK
-// =============================================================================
+// ---- PROGRESS TRACK ---------------------------------------------------------
 
 const ProgressTrack = React.forwardRef<
   HTMLDivElement,
@@ -54,9 +50,7 @@ const ProgressTrack = React.forwardRef<
 ));
 ProgressTrack.displayName = "ProgressTrack";
 
-// =============================================================================
-// PROGRESS INDICATOR
-// =============================================================================
+// ---- PROGRESS INDICATOR -----------------------------------------------------
 
 const ProgressIndicator = React.forwardRef<
   HTMLDivElement,
@@ -73,9 +67,7 @@ const ProgressIndicator = React.forwardRef<
 ));
 ProgressIndicator.displayName = "ProgressIndicator";
 
-// =============================================================================
-// PROGRESS LABEL (for screen readers)
-// =============================================================================
+// ---- PROGRESS LABEL (for screen readers) ------------------------------------
 
 const ProgressLabel = React.forwardRef<
   HTMLSpanElement,
@@ -89,9 +81,7 @@ const ProgressLabel = React.forwardRef<
 ));
 ProgressLabel.displayName = "ProgressLabel";
 
-// =============================================================================
-// PROGRESS VALUE
-// =============================================================================
+// ---- PROGRESS VALUE ---------------------------------------------------------
 
 const ProgressValue = React.forwardRef<
   HTMLSpanElement,
@@ -105,9 +95,7 @@ const ProgressValue = React.forwardRef<
 ));
 ProgressValue.displayName = "ProgressValue";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ProgressRoot,

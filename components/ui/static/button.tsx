@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Button — CSS-only button with CVA variants. No motion dependency.
  *
  * @example
@@ -15,9 +15,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/slot";
 
-// =============================================================================
-// BUTTON VARIANTS
-// =============================================================================
+// ---- BUTTON VARIANTS --------------------------------------------------------
 
 const buttonVariants = cva(
   [
@@ -56,9 +54,7 @@ const buttonVariants = cva(
   }
 );
 
-// =============================================================================
-// BUTTON
-// =============================================================================
+// ---- BUTTON -----------------------------------------------------------------
 
 export interface ButtonProps
   extends
@@ -83,9 +79,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-// =============================================================================
-// ICON BUTTON (convenience wrapper)
-// =============================================================================
+// ---- ICON BUTTON (convenience wrapper) --------------------------------------
 
 export interface IconButtonProps extends ButtonProps {}
 
@@ -101,8 +95,6 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
 );
 IconButton.displayName = "IconButton";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { Button, IconButton, buttonVariants };

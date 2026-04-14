@@ -4,13 +4,17 @@
   "type": "registry:ui",
   "title": "Form",
   "description": "Static form built on Base UI Form.",
-  "dependencies": ["@base-ui/react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "variant": "static",
   "files": [
     {
       "path": "components/ui/static/form.tsx",
-      "content": "/**\r\n * Form — Form container with consistent spacing.\r\n * Built on @base-ui/react Form primitive.\r\n *\r\n * @example\r\n * <FormRoot onSubmit={handleSubmit}>\r\n *   <FieldRoot name=\"email\">\r\n *     <FieldLabel>Email</FieldLabel>\r\n *     <FieldControl render={<Input />} />\r\n *   </FieldRoot>\r\n * </FormRoot>\r\n *\r\n * @see https://base-ui.com/react/components/form\r\n */\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Form } from \"@base-ui/react/form\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// =============================================================================\r\n// FORM ROOT\r\n// =============================================================================\r\n\r\nconst FormRoot = React.forwardRef<\r\n  HTMLFormElement,\r\n  React.ComponentPropsWithRef<typeof Form>\r\n>(({ className, ...props }, ref) => (\r\n  <Form ref={ref} className={cn(\"space-y-6\", className)} {...props} />\r\n));\r\nFormRoot.displayName = \"FormRoot\";\r\n\r\n// =============================================================================\r\n// EXPORTS\r\n// =============================================================================\r\n\r\nexport { FormRoot };\r\n",
+      "content": "﻿/**\n * Form — Form container with consistent spacing.\n * Built on @base-ui/react Form primitive.\n *\n * @example\n * <FormRoot onSubmit={handleSubmit}>\n *   <FieldRoot name=\"email\">\n *     <FieldLabel>Email</FieldLabel>\n *     <FieldControl render={<Input />} />\n *   </FieldRoot>\n * </FormRoot>\n *\n * @see https://base-ui.com/react/components/form\n */\n\"use client\";\n\nimport * as React from \"react\";\nimport { Form } from \"@base-ui/react/form\";\nimport { cn } from \"@/lib/utils\";\n\n// ---- FORM ROOT --------------------------------------------------------------\n\nconst FormRoot = React.forwardRef<\n  HTMLFormElement,\n  React.ComponentPropsWithRef<typeof Form>\n>(({ className, ...props }, ref) => (\n  <Form ref={ref} className={cn(\"space-y-6\", className)} {...props} />\n));\nFormRoot.displayName = \"FormRoot\";\n\n// ---- EXPORTS ----------------------------------------------------------------\n\nexport { FormRoot };\n",
       "type": "registry:ui"
     }
   ]

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Toggle Group — Group of toggle buttons with single/multiple selection.
  * Built on @base-ui/react Toggle and ToggleGroup primitives.
  *
@@ -18,9 +18,7 @@ import { ToggleGroup } from "@base-ui/react/toggle-group";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-// =============================================================================
-// TOGGLE GROUP ITEM VARIANTS
-// =============================================================================
+// ---- TOGGLE GROUP ITEM VARIANTS ---------------------------------------------
 
 const toggleGroupItemVariants = cva(
   [
@@ -51,9 +49,7 @@ const toggleGroupItemVariants = cva(
   }
 );
 
-// =============================================================================
-// TOGGLE GROUP ROOT
-// =============================================================================
+// ---- TOGGLE GROUP ROOT ------------------------------------------------------
 
 const ToggleGroupRoot = React.forwardRef<
   HTMLDivElement,
@@ -67,9 +63,7 @@ const ToggleGroupRoot = React.forwardRef<
 ));
 ToggleGroupRoot.displayName = "ToggleGroupRoot";
 
-// =============================================================================
-// TOGGLE GROUP ITEM
-// =============================================================================
+// ---- TOGGLE GROUP ITEM ------------------------------------------------------
 
 const ToggleGroupItem = React.forwardRef<
   HTMLButtonElement,
@@ -84,8 +78,6 @@ const ToggleGroupItem = React.forwardRef<
 ));
 ToggleGroupItem.displayName = "ToggleGroupItem";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { ToggleGroupRoot, ToggleGroupItem, toggleGroupItemVariants };

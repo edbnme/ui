@@ -5,9 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface WaveformProps
   extends React.ComponentProps<"div">, VariantProps<typeof waveformVariants> {
@@ -29,9 +27,7 @@ interface WaveformProps
   onSeek?: (position: number) => void;
 }
 
-// =============================================================================
-// VARIANTS
-// =============================================================================
+// ---- VARIANTS ---------------------------------------------------------------
 
 const waveformVariants = cva(
   "flex items-center justify-center w-full overflow-hidden",
@@ -49,9 +45,7 @@ const waveformVariants = cva(
   }
 );
 
-// =============================================================================
-// HELPERS
-// =============================================================================
+// ---- HELPERS ----------------------------------------------------------------
 
 /**
  * Downsample audio data to target bar count by averaging chunks.
@@ -81,9 +75,7 @@ function downsample(
   return result.map((v) => v / max);
 }
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 function Waveform({
   data,

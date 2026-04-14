@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Hover Card — Preview card triggered by hover.
  * Built on @base-ui/react PreviewCard primitive.
  *
@@ -23,15 +23,11 @@ import * as React from "react";
 import { PreviewCard } from "@base-ui/react/preview-card";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// HOVER CARD ROOT
-// =============================================================================
+// ---- HOVER CARD ROOT --------------------------------------------------------
 
 const HoverCardRoot = PreviewCard.Root;
 
-// =============================================================================
-// HOVER CARD TRIGGER
-// =============================================================================
+// ---- HOVER CARD TRIGGER -----------------------------------------------------
 
 const HoverCardTrigger = React.forwardRef<
   HTMLAnchorElement,
@@ -49,15 +45,11 @@ const HoverCardTrigger = React.forwardRef<
 ));
 HoverCardTrigger.displayName = "HoverCardTrigger";
 
-// =============================================================================
-// HOVER CARD PORTAL
-// =============================================================================
+// ---- HOVER CARD PORTAL ------------------------------------------------------
 
 const HoverCardPortal = PreviewCard.Portal;
 
-// =============================================================================
-// HOVER CARD POSITIONER
-// =============================================================================
+// ---- HOVER CARD POSITIONER --------------------------------------------------
 
 const HoverCardPositioner = React.forwardRef<
   HTMLDivElement,
@@ -72,9 +64,7 @@ const HoverCardPositioner = React.forwardRef<
 ));
 HoverCardPositioner.displayName = "HoverCardPositioner";
 
-// =============================================================================
-// HOVER CARD POPUP
-// =============================================================================
+// ---- HOVER CARD POPUP -------------------------------------------------------
 
 const HoverCardPopup = React.forwardRef<
   HTMLDivElement,
@@ -96,9 +86,7 @@ const HoverCardPopup = React.forwardRef<
 ));
 HoverCardPopup.displayName = "HoverCardPopup";
 
-// =============================================================================
-// HOVER CARD ARROW
-// =============================================================================
+// ---- HOVER CARD ARROW -------------------------------------------------------
 
 const HoverCardArrow = React.forwardRef<
   HTMLDivElement,
@@ -126,9 +114,7 @@ const HoverCardArrow = React.forwardRef<
 ));
 HoverCardArrow.displayName = "HoverCardArrow";
 
-// =============================================================================
-// HOVER CARD VIEWPORT (optional — for multi-trigger animated content transitions)
-// =============================================================================
+// ---- HOVER CARD VIEWPORT (optional — for multi-trigger animated content transitions) -
 
 const HoverCardViewport = React.forwardRef<
   HTMLDivElement,
@@ -138,9 +124,7 @@ const HoverCardViewport = React.forwardRef<
 ));
 HoverCardViewport.displayName = "HoverCardViewport";
 
-// =============================================================================
-// HOVER CARD BACKDROP
-// =============================================================================
+// ---- HOVER CARD BACKDROP ----------------------------------------------------
 
 const HoverCardBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -154,16 +138,12 @@ const HoverCardBackdrop = React.forwardRef<
 ));
 HoverCardBackdrop.displayName = "HoverCardBackdrop";
 
-// =============================================================================
-// HOVER CARD HANDLE
-// =============================================================================
+// ---- HOVER CARD HANDLE ------------------------------------------------------
 
 const HoverCardHandle = PreviewCard.Handle;
 const createHoverCardHandle = PreviewCard.createHandle;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   HoverCardRoot,

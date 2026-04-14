@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Navigation Menu — Horizontal navigation with dropdown content panels.
  * Built on @base-ui/react NavigationMenu primitive.
  *
@@ -29,9 +29,7 @@ import * as React from "react";
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// NAV MENU ROOT
-// =============================================================================
+// ---- NAV MENU ROOT ----------------------------------------------------------
 
 const NavMenuRoot = React.forwardRef<
   HTMLElement,
@@ -48,9 +46,7 @@ const NavMenuRoot = React.forwardRef<
 ));
 NavMenuRoot.displayName = "NavMenuRoot";
 
-// =============================================================================
-// NAV MENU LIST
-// =============================================================================
+// ---- NAV MENU LIST ----------------------------------------------------------
 
 const NavMenuList = React.forwardRef<
   HTMLUListElement,
@@ -67,15 +63,11 @@ const NavMenuList = React.forwardRef<
 ));
 NavMenuList.displayName = "NavMenuList";
 
-// =============================================================================
-// NAV MENU ITEM
-// =============================================================================
+// ---- NAV MENU ITEM ----------------------------------------------------------
 
 const NavMenuItem = NavigationMenu.Item;
 
-// =============================================================================
-// NAV MENU TRIGGER
-// =============================================================================
+// ---- NAV MENU TRIGGER -------------------------------------------------------
 
 const NavMenuTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -100,9 +92,7 @@ const NavMenuTrigger = React.forwardRef<
 ));
 NavMenuTrigger.displayName = "NavMenuTrigger";
 
-// =============================================================================
-// NAV MENU ICON
-// =============================================================================
+// ---- NAV MENU ICON ----------------------------------------------------------
 
 const NavMenuIcon = React.forwardRef<
   HTMLSpanElement,
@@ -120,9 +110,7 @@ const NavMenuIcon = React.forwardRef<
 ));
 NavMenuIcon.displayName = "NavMenuIcon";
 
-// =============================================================================
-// NAV MENU CONTENT
-// =============================================================================
+// ---- NAV MENU CONTENT -------------------------------------------------------
 
 const NavMenuContent = React.forwardRef<
   HTMLDivElement,
@@ -136,9 +124,7 @@ const NavMenuContent = React.forwardRef<
 ));
 NavMenuContent.displayName = "NavMenuContent";
 
-// =============================================================================
-// NAV MENU LINK
-// =============================================================================
+// ---- NAV MENU LINK ----------------------------------------------------------
 
 const NavMenuLink = React.forwardRef<
   HTMLAnchorElement,
@@ -157,15 +143,11 @@ const NavMenuLink = React.forwardRef<
 ));
 NavMenuLink.displayName = "NavMenuLink";
 
-// =============================================================================
-// NAV MENU PORTAL
-// =============================================================================
+// ---- NAV MENU PORTAL --------------------------------------------------------
 
 const NavMenuPortal = NavigationMenu.Portal;
 
-// =============================================================================
-// NAV MENU BACKDROP
-// =============================================================================
+// ---- NAV MENU BACKDROP ------------------------------------------------------
 
 const NavMenuBackdrop = React.forwardRef<
   HTMLDivElement,
@@ -179,9 +161,7 @@ const NavMenuBackdrop = React.forwardRef<
 ));
 NavMenuBackdrop.displayName = "NavMenuBackdrop";
 
-// =============================================================================
-// NAV MENU POSITIONER
-// =============================================================================
+// ---- NAV MENU POSITIONER ----------------------------------------------------
 
 const NavMenuPositioner = React.forwardRef<
   HTMLDivElement,
@@ -195,9 +175,7 @@ const NavMenuPositioner = React.forwardRef<
 ));
 NavMenuPositioner.displayName = "NavMenuPositioner";
 
-// =============================================================================
-// NAV MENU POPUP
-// =============================================================================
+// ---- NAV MENU POPUP ---------------------------------------------------------
 
 const NavMenuPopup = React.forwardRef<
   HTMLDivElement,
@@ -218,9 +196,7 @@ const NavMenuPopup = React.forwardRef<
 ));
 NavMenuPopup.displayName = "NavMenuPopup";
 
-// =============================================================================
-// NAV MENU ARROW
-// =============================================================================
+// ---- NAV MENU ARROW ---------------------------------------------------------
 
 const NavMenuArrow = React.forwardRef<
   HTMLDivElement,
@@ -237,9 +213,7 @@ const NavMenuArrow = React.forwardRef<
 ));
 NavMenuArrow.displayName = "NavMenuArrow";
 
-// =============================================================================
-// NAV MENU VIEWPORT
-// =============================================================================
+// ---- NAV MENU VIEWPORT ------------------------------------------------------
 
 const NavMenuViewport = React.forwardRef<
   HTMLDivElement,
@@ -257,9 +231,7 @@ const NavMenuViewport = React.forwardRef<
 ));
 NavMenuViewport.displayName = "NavMenuViewport";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   NavMenuRoot,

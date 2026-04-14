@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Form — Form container with consistent spacing.
  * Built on @base-ui/react Form primitive.
  *
@@ -18,9 +18,7 @@ import * as React from "react";
 import { Form } from "@base-ui/react/form";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// FORM ROOT
-// =============================================================================
+// ---- FORM ROOT --------------------------------------------------------------
 
 const FormRoot = React.forwardRef<
   HTMLFormElement,
@@ -30,8 +28,6 @@ const FormRoot = React.forwardRef<
 ));
 FormRoot.displayName = "FormRoot";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { FormRoot };

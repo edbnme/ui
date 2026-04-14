@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Button Component
  *
  * A production-grade button with animations, loading states, and full accessibility.
@@ -10,9 +10,7 @@
 
 "use client";
 
-// =============================================================================
-// IMPORTS
-// =============================================================================
+// ---- IMPORTS ----------------------------------------------------------------
 
 // 1. React imports
 import * as React from "react";
@@ -36,10 +34,7 @@ import { LoadingSpinner, AnimatedCheck } from "@/lib/icons";
 import { useShouldDisableAnimation } from "@/components/motion-provider";
 import { useRipple } from "@/hooks/use-ripple";
 
-// =============================================================================
-// VARIANTS (CVA)
-// Defined outside component for performance
-// =============================================================================
+// ---- VARIANTS (CVA) ---------------------------------------------------------
 
 /**
  * Button variants using class-variance-authority
@@ -133,9 +128,7 @@ const buttonVariants = cva(
   }
 );
 
-// =============================================================================
-// COMPONENT PROPS
-// =============================================================================
+// ---- COMPONENT PROPS --------------------------------------------------------
 
 /**
  * Button component props
@@ -188,9 +181,7 @@ export interface ButtonProps
   disableAnimation?: boolean;
 }
 
-// =============================================================================
-// BUTTON COMPONENT
-// =============================================================================
+// ---- BUTTON COMPONENT -------------------------------------------------------
 
 /**
  * Button - Unified button component with animations and rich features.
@@ -271,14 +262,10 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       [loading, success, showRipple, createRipple, onClick]
     );
 
-    // =========================================================================
-    // Determine icon sizes based on button size
-    // =========================================================================
+    // ---- Determine icon sizes based on button size --------------------------
     const iconSize = size === "sm" || size === "icon-sm" ? 14 : 16;
 
-    // =========================================================================
-    // Icon content - stable rendering without AnimatePresence
-    // =========================================================================
+    // ---- Icon content - stable rendering without AnimatePresence ------------
     const iconStartContent =
       IconStart && !loading && !success ? (
         <IconStart
@@ -317,9 +304,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
         />
       ) : null;
 
-    // =========================================================================
-    // Content wrapper with icons and children
-    // =========================================================================
+    // ---- Content wrapper with icons and children ----------------------------
     const buttonContent = (
       <>
         <span className="relative z-10 flex items-center justify-center gap-2">
@@ -359,9 +344,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       </>
     );
 
-    // =========================================================================
-    // Common props for all button variations
-    // =========================================================================
+    // ---- Common props for all button variations -----------------------------
     const commonProps = {
       "data-slot": "button",
       "data-loading": loading || undefined,
@@ -377,9 +360,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       ...props,
     };
 
-    // =========================================================================
-    // Render: asChild pattern using Slot
-    // =========================================================================
+    // ---- Render: asChild pattern using Slot ---------------------------------
     if (asChild) {
       return (
         <Slot ref={ref} {...commonProps}>
@@ -388,9 +369,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       );
     }
 
-    // =========================================================================
-    // Render: Non-animated version
-    // =========================================================================
+    // ---- Render: Non-animated version ---------------------------------------
     if (shouldDisableAnimation) {
       return (
         <button ref={ref} {...commonProps}>
@@ -399,9 +378,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
       );
     }
 
-    // =========================================================================
-    // Render: Animated version with motion.button
-    // =========================================================================
+    // ---- Render: Animated version with motion.button ------------------------
     // Extract motion-conflicting props
     const {
       onAnimationStart: _onAnimationStart,
@@ -427,10 +404,7 @@ const Button = forwardRef<ElementRef<"button">, ButtonProps>(
 
 Button.displayName = "Button";
 
-// =============================================================================
-// ICON BUTTON COMPONENT
-// Specialized button for icon-only usage
-// =============================================================================
+// ---- ICON BUTTON COMPONENT --------------------------------------------------
 
 /**
  * IconButton component props
@@ -468,9 +442,7 @@ const IconButton = forwardRef<ElementRef<"button">, IconButtonProps>(
 
 IconButton.displayName = "IconButton";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { Button, IconButton, buttonVariants };
 export type { ButtonProps as ButtonRootProps };

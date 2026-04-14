@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Avatar — User avatar with image and fallback support.
  * Built on @base-ui/react Avatar primitive.
  *
@@ -13,9 +13,7 @@ import * as React from "react";
 import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// AVATAR ROOT
-// =============================================================================
+// ---- AVATAR ROOT ------------------------------------------------------------
 
 const AvatarRoot = React.forwardRef<
   HTMLSpanElement,
@@ -32,9 +30,7 @@ const AvatarRoot = React.forwardRef<
 ));
 AvatarRoot.displayName = "AvatarRoot";
 
-// =============================================================================
-// AVATAR IMAGE
-// =============================================================================
+// ---- AVATAR IMAGE -----------------------------------------------------------
 
 const AvatarImage = React.forwardRef<
   HTMLImageElement,
@@ -48,9 +44,7 @@ const AvatarImage = React.forwardRef<
 ));
 AvatarImage.displayName = "AvatarImage";
 
-// =============================================================================
-// AVATAR FALLBACK
-// =============================================================================
+// ---- AVATAR FALLBACK --------------------------------------------------------
 
 const AvatarFallback = React.forwardRef<
   HTMLSpanElement,
@@ -67,9 +61,7 @@ const AvatarFallback = React.forwardRef<
 ));
 AvatarFallback.displayName = "AvatarFallback";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { AvatarRoot, AvatarImage, AvatarFallback };
 

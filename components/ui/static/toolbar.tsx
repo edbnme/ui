@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Toolbar — Grouped set of controls (buttons, toggles, separators, links).
  * Built on @base-ui/react Toolbar primitive.
  *
@@ -18,9 +18,7 @@ import { Toolbar } from "@base-ui/react/toolbar";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-// =============================================================================
-// TOOLBAR VARIANTS
-// =============================================================================
+// ---- TOOLBAR VARIANTS -------------------------------------------------------
 
 const toolbarButtonVariants = cva(
   [
@@ -49,9 +47,7 @@ const toolbarButtonVariants = cva(
   }
 );
 
-// =============================================================================
-// TOOLBAR ROOT
-// =============================================================================
+// ---- TOOLBAR ROOT -----------------------------------------------------------
 
 const ToolbarRoot = React.forwardRef<
   HTMLDivElement,
@@ -68,9 +64,7 @@ const ToolbarRoot = React.forwardRef<
 ));
 ToolbarRoot.displayName = "ToolbarRoot";
 
-// =============================================================================
-// TOOLBAR BUTTON
-// =============================================================================
+// ---- TOOLBAR BUTTON ---------------------------------------------------------
 
 const ToolbarButton = React.forwardRef<
   HTMLButtonElement,
@@ -85,9 +79,7 @@ const ToolbarButton = React.forwardRef<
 ));
 ToolbarButton.displayName = "ToolbarButton";
 
-// =============================================================================
-// TOOLBAR SEPARATOR
-// =============================================================================
+// ---- TOOLBAR SEPARATOR ------------------------------------------------------
 
 const ToolbarSeparator = React.forwardRef<
   HTMLDivElement,
@@ -101,9 +93,7 @@ const ToolbarSeparator = React.forwardRef<
 ));
 ToolbarSeparator.displayName = "ToolbarSeparator";
 
-// =============================================================================
-// TOOLBAR LINK
-// =============================================================================
+// ---- TOOLBAR LINK -----------------------------------------------------------
 
 const ToolbarLink = React.forwardRef<
   HTMLAnchorElement,
@@ -122,9 +112,7 @@ const ToolbarLink = React.forwardRef<
 ));
 ToolbarLink.displayName = "ToolbarLink";
 
-// =============================================================================
-// TOOLBAR GROUP
-// =============================================================================
+// ---- TOOLBAR GROUP ----------------------------------------------------------
 
 const ToolbarGroup = React.forwardRef<
   HTMLDivElement,
@@ -138,9 +126,7 @@ const ToolbarGroup = React.forwardRef<
 ));
 ToolbarGroup.displayName = "ToolbarGroup";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ToolbarRoot,

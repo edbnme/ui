@@ -7,11 +7,7 @@
  * @packageDocumentation
  */
 
-// =============================================================================
-// COLOR SYSTEM
-// Using OKLCH for better perceptual uniformity
-// Colors are semantic - use these, not raw values
-// =============================================================================
+// ---- COLOR SYSTEM -----------------------------------------------------------
 
 export const colors = {
   /**
@@ -75,10 +71,7 @@ export const colors = {
   },
 } as const;
 
-// =============================================================================
-// SPACING SCALE
-// 4px base, 4px increments (1 unit = 4px)
-// =============================================================================
+// ---- SPACING SCALE ----------------------------------------------------------
 
 export const spacing = {
   0: "0",
@@ -107,10 +100,7 @@ export const spacing = {
   32: "8rem", // 128px
 } as const;
 
-// =============================================================================
-// BORDER RADIUS
-// 8px base with 4px increments
-// =============================================================================
+// ---- BORDER RADIUS ----------------------------------------------------------
 
 export const radius = {
   none: "0",
@@ -124,9 +114,7 @@ export const radius = {
   full: "9999px",
 } as const;
 
-// =============================================================================
-// TYPOGRAPHY SCALE
-// =============================================================================
+// ---- TYPOGRAPHY SCALE -------------------------------------------------------
 
 export const typography = {
   /**
@@ -185,10 +173,7 @@ export const typography = {
   },
 } as const;
 
-// =============================================================================
-// SHADOW ELEVATIONS
-// 0-5 levels following Material Design elevation philosophy
-// =============================================================================
+// ---- SHADOW ELEVATIONS ------------------------------------------------------
 
 export const shadows = {
   none: "none",
@@ -202,10 +187,7 @@ export const shadows = {
   inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.05)",
 } as const;
 
-// =============================================================================
-// Z-INDEX LAYERS
-// Prevents z-index wars - use these, never raw numbers
-// =============================================================================
+// ---- Z-INDEX LAYERS ---------------------------------------------------------
 
 export const zIndex = {
   auto: "auto",
@@ -220,10 +202,7 @@ export const zIndex = {
   toast: 1700,
 } as const;
 
-// =============================================================================
-// ANIMATION DURATIONS
-// Standardized timing values
-// =============================================================================
+// ---- ANIMATION DURATIONS ----------------------------------------------------
 
 export const durations = {
   instant: 0,
@@ -235,10 +214,7 @@ export const durations = {
   slowest: 800,
 } as const;
 
-// =============================================================================
-// EASING FUNCTIONS
-// Cubic-bezier curves for CSS transitions
-// =============================================================================
+// ---- EASING FUNCTIONS -------------------------------------------------------
 
 export const easings = {
   linear: "linear",
@@ -256,10 +232,7 @@ export const easings = {
   smooth: "var(--spring-smooth)",
 } as const;
 
-// =============================================================================
-// BREAKPOINTS
-// Responsive design breakpoints
-// =============================================================================
+// ---- BREAKPOINTS ------------------------------------------------------------
 
 export const breakpoints = {
   sm: "640px",
@@ -269,10 +242,7 @@ export const breakpoints = {
   "2xl": "1536px",
 } as const;
 
-// =============================================================================
-// SIZES
-// Component size presets
-// =============================================================================
+// ---- SIZES ------------------------------------------------------------------
 
 export const sizes = {
   /** Touch target minimum (44px iOS, 48dp Android) */
@@ -303,10 +273,7 @@ export const sizes = {
   },
 } as const;
 
-// =============================================================================
-// OPACITY VALUES
-// Consistent transparency levels
-// =============================================================================
+// ---- OPACITY VALUES ---------------------------------------------------------
 
 export const opacity = {
   0: "0",
@@ -327,10 +294,7 @@ export const opacity = {
   100: "1",
 } as const;
 
-// =============================================================================
-// BLUR VALUES
-// For glassmorphism and backdrop effects
-// =============================================================================
+// ---- BLUR VALUES ------------------------------------------------------------
 
 export const blur = {
   none: "0",
@@ -342,10 +306,7 @@ export const blur = {
   "2xl": "var(--blur-2xl)", // 32px
 } as const;
 
-// =============================================================================
-// TYPE EXPORTS
-// For use in component prop types
-// =============================================================================
+// ---- TYPE EXPORTS -----------------------------------------------------------
 
 export type Spacing = keyof typeof spacing;
 export type Radius = keyof typeof radius;
@@ -359,9 +320,7 @@ export type ButtonSize = keyof typeof sizes.button;
 export type Opacity = keyof typeof opacity;
 export type Blur = keyof typeof blur;
 
-// =============================================================================
-// TOKEN ACCESS HELPERS
-// =============================================================================
+// ---- TOKEN ACCESS HELPERS ---------------------------------------------------
 
 /**
  * Gets a spacing value by key

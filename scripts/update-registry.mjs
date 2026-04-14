@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Registry Update Script
  *
  * This script generates the component registry JSON files for
@@ -39,9 +39,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = join(__dirname, "..");
 
-// =============================================================================
-// COMPONENT REGISTRY — Entry-list approach (avoids name collisions between variants)
-// =============================================================================
+// ---- COMPONENT REGISTRY — Entry-list approach (avoids name collisions between variants) -
 
 // Build a flat list of [name, config] entries from all component sets.
 const allEntries = [
@@ -62,9 +60,7 @@ const inlineLookup = {
   ...audioHookComponents,
 };
 
-// =============================================================================
-// HELPER FUNCTIONS
-// =============================================================================
+// ---- HELPER FUNCTIONS -------------------------------------------------------
 
 function ensureDir(dirPath) {
   if (!existsSync(dirPath)) {
@@ -135,9 +131,7 @@ function updateRegistryFile(name, config, outputDir) {
 
   // Also write to flat structure for backwards compatibility
   const flatPath = join(outputDir, `${name}.json`);
-  if (!existsSync(flatPath)) {
-    writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
-  }
+  writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
 
   console.log(`[OK] Updated ${config.variant}/${name}.json`);
 }
@@ -187,9 +181,7 @@ function updateMainRegistry(outputDir) {
   console.log("[OK] Updated public/r/registry.json");
 }
 
-// =============================================================================
-// MAIN EXECUTION
-// =============================================================================
+// ---- MAIN EXECUTION ---------------------------------------------------------
 
 // ASCII Art Banner - EDBN UI
 const banner = [
@@ -235,9 +227,7 @@ console.log("  ├── static/     (CSS-only + Base UI components)");
 console.log("  ├── audio/      (Audio/AI chat components)");
 console.log("  └── registry.json");
 
-// =============================================================================
-// BUNDLE SIZE COMPUTATION
-// =============================================================================
+// ---- BUNDLE SIZE COMPUTATION ------------------------------------------------
 
 console.log("\n[BUNDLE] Computing bundle sizes...\n");
 

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Combobox — Searchable dropdown for filtering and selecting from a list.
  * Built on @base-ui/react Combobox primitive.
  *
@@ -28,15 +28,11 @@ import { Combobox } from "@base-ui/react/combobox";
 import { cn } from "@/lib/utils";
 import { CaretUpDown, Check } from "@phosphor-icons/react";
 
-// =============================================================================
-// COMBOBOX ROOT
-// =============================================================================
+// ---- COMBOBOX ROOT ----------------------------------------------------------
 
 const ComboboxRoot = Combobox.Root;
 
-// =============================================================================
-// COMBOBOX INPUT WRAPPER (for styling the input container)
-// =============================================================================
+// ---- COMBOBOX INPUT WRAPPER (for styling the input container) ---------------
 
 const ComboboxInputWrapper = ({
   className,
@@ -56,9 +52,7 @@ const ComboboxInputWrapper = ({
 );
 ComboboxInputWrapper.displayName = "ComboboxInputWrapper";
 
-// =============================================================================
-// COMBOBOX INPUT
-// =============================================================================
+// ---- COMBOBOX INPUT ---------------------------------------------------------
 
 const ComboboxInput = React.forwardRef<
   HTMLInputElement,
@@ -76,9 +70,7 @@ const ComboboxInput = React.forwardRef<
 ));
 ComboboxInput.displayName = "ComboboxInput";
 
-// =============================================================================
-// COMBOBOX TRIGGER
-// =============================================================================
+// ---- COMBOBOX TRIGGER -------------------------------------------------------
 
 const ComboboxTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -98,9 +90,7 @@ const ComboboxTrigger = React.forwardRef<
 ));
 ComboboxTrigger.displayName = "ComboboxTrigger";
 
-// =============================================================================
-// COMBOBOX CLEAR
-// =============================================================================
+// ---- COMBOBOX CLEAR ---------------------------------------------------------
 
 const ComboboxClear = React.forwardRef<
   HTMLButtonElement,
@@ -119,15 +109,11 @@ const ComboboxClear = React.forwardRef<
 ));
 ComboboxClear.displayName = "ComboboxClear";
 
-// =============================================================================
-// COMBOBOX PORTAL
-// =============================================================================
+// ---- COMBOBOX PORTAL --------------------------------------------------------
 
 const ComboboxPortal = Combobox.Portal;
 
-// =============================================================================
-// COMBOBOX POSITIONER
-// =============================================================================
+// ---- COMBOBOX POSITIONER ----------------------------------------------------
 
 const ComboboxPositioner = React.forwardRef<
   HTMLDivElement,
@@ -142,9 +128,7 @@ const ComboboxPositioner = React.forwardRef<
 ));
 ComboboxPositioner.displayName = "ComboboxPositioner";
 
-// =============================================================================
-// COMBOBOX POPUP
-// =============================================================================
+// ---- COMBOBOX POPUP ---------------------------------------------------------
 
 const ComboboxPopup = React.forwardRef<
   HTMLDivElement,
@@ -165,9 +149,7 @@ const ComboboxPopup = React.forwardRef<
 ));
 ComboboxPopup.displayName = "ComboboxPopup";
 
-// =============================================================================
-// COMBOBOX LIST
-// =============================================================================
+// ---- COMBOBOX LIST ----------------------------------------------------------
 
 const ComboboxList = React.forwardRef<
   HTMLDivElement,
@@ -181,9 +163,7 @@ const ComboboxList = React.forwardRef<
 ));
 ComboboxList.displayName = "ComboboxList";
 
-// =============================================================================
-// COMBOBOX ITEM
-// =============================================================================
+// ---- COMBOBOX ITEM ----------------------------------------------------------
 
 const ComboboxItem = React.forwardRef<
   HTMLDivElement,
@@ -209,15 +189,11 @@ const ComboboxItem = React.forwardRef<
 ));
 ComboboxItem.displayName = "ComboboxItem";
 
-// =============================================================================
-// COMBOBOX GROUP
-// =============================================================================
+// ---- COMBOBOX GROUP ---------------------------------------------------------
 
 const ComboboxGroup = Combobox.Group;
 
-// =============================================================================
-// COMBOBOX GROUP LABEL
-// =============================================================================
+// ---- COMBOBOX GROUP LABEL ---------------------------------------------------
 
 const ComboboxGroupLabel = React.forwardRef<
   HTMLDivElement,
@@ -231,9 +207,7 @@ const ComboboxGroupLabel = React.forwardRef<
 ));
 ComboboxGroupLabel.displayName = "ComboboxGroupLabel";
 
-// =============================================================================
-// COMBOBOX EMPTY (No results)
-// =============================================================================
+// ---- COMBOBOX EMPTY (No results) --------------------------------------------
 
 const ComboboxEmpty = React.forwardRef<
   HTMLDivElement,
@@ -249,9 +223,7 @@ const ComboboxEmpty = React.forwardRef<
 ));
 ComboboxEmpty.displayName = "ComboboxEmpty";
 
-// =============================================================================
-// COMBOBOX ADDITIONAL SUB-COMPONENTS
-// =============================================================================
+// ---- COMBOBOX ADDITIONAL SUB-COMPONENTS -------------------------------------
 
 const ComboboxArrow = React.forwardRef<
   HTMLDivElement,
@@ -301,9 +273,7 @@ const ComboboxChip = Combobox.Chip;
 const ComboboxChips = Combobox.Chips;
 const ComboboxChipRemove = Combobox.ChipRemove;
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   ComboboxRoot,

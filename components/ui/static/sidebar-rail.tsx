@@ -6,9 +6,7 @@ import { useSidebar } from "@/components/ui/static/sidebar-context";
 import { Input } from "@/components/ui/static/input";
 import { Separator } from "@/components/ui/static/separator";
 
-// =============================================================================
-// SIDEBAR RAIL
-// =============================================================================
+// ---- SIDEBAR RAIL -----------------------------------------------------------
 
 function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
   const { toggleSidebar } = useSidebar();
@@ -37,9 +35,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 
 SidebarRail.displayName = "SidebarRail";
 
-// =============================================================================
-// SIDEBAR INPUT
-// =============================================================================
+// ---- SIDEBAR INPUT ----------------------------------------------------------
 
 function SidebarInput({
   className,
@@ -57,9 +53,7 @@ function SidebarInput({
 
 SidebarInput.displayName = "SidebarInput";
 
-// =============================================================================
-// SIDEBAR HEADER
-// =============================================================================
+// ---- SIDEBAR HEADER ---------------------------------------------------------
 
 function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -74,9 +68,7 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
 
 SidebarHeader.displayName = "SidebarHeader";
 
-// =============================================================================
-// SIDEBAR FOOTER
-// =============================================================================
+// ---- SIDEBAR FOOTER ---------------------------------------------------------
 
 function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -91,9 +83,7 @@ function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
 
 SidebarFooter.displayName = "SidebarFooter";
 
-// =============================================================================
-// SIDEBAR SEPARATOR
-// =============================================================================
+// ---- SIDEBAR SEPARATOR ------------------------------------------------------
 
 function SidebarSeparator({
   className,
@@ -111,9 +101,7 @@ function SidebarSeparator({
 
 SidebarSeparator.displayName = "SidebarSeparator";
 
-// =============================================================================
-// SIDEBAR CONTENT
-// =============================================================================
+// ---- SIDEBAR CONTENT --------------------------------------------------------
 
 function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -131,9 +119,7 @@ function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
 
 SidebarContent.displayName = "SidebarContent";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SidebarRail,

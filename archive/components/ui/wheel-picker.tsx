@@ -1,4 +1,4 @@
-/**
+﻿/**
  * WheelPicker — iOS-style scrollable wheel picker for value selection.
  * Styled wrapper around @ncdai/react-wheel-picker.
  *

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Carousel — Accessible carousel with touch/swipe, loop mode, and keyboard nav.
  * Built on Embla Carousel.
  *
@@ -24,9 +24,7 @@ import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { createComponentContext } from "@/lib/create-component-context";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -51,16 +49,12 @@ type CarouselProps = {
   setApi?: (api: CarouselApi) => void;
 };
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 const [CarouselProvider, useCarousel] =
   createComponentContext<CarouselContextProps>("Carousel");
 
-// =============================================================================
-// CAROUSEL ROOT
-// =============================================================================
+// ---- CAROUSEL ROOT ----------------------------------------------------------
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
@@ -167,9 +161,7 @@ const Carousel = React.forwardRef<
 );
 Carousel.displayName = "Carousel";
 
-// =============================================================================
-// CAROUSEL CONTENT
-// =============================================================================
+// ---- CAROUSEL CONTENT -------------------------------------------------------
 
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
@@ -198,9 +190,7 @@ const CarouselContent = React.forwardRef<
 });
 CarouselContent.displayName = "CarouselContent";
 
-// =============================================================================
-// CAROUSEL ITEM
-// =============================================================================
+// ---- CAROUSEL ITEM ----------------------------------------------------------
 
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
@@ -224,9 +214,7 @@ const CarouselItem = React.forwardRef<
 });
 CarouselItem.displayName = "CarouselItem";
 
-// =============================================================================
-// CAROUSEL PREVIOUS
-// =============================================================================
+// ---- CAROUSEL PREVIOUS ------------------------------------------------------
 
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
@@ -257,9 +245,7 @@ const CarouselPrevious = React.forwardRef<
 });
 CarouselPrevious.displayName = "CarouselPrevious";
 
-// =============================================================================
-// CAROUSEL NEXT
-// =============================================================================
+// ---- CAROUSEL NEXT ----------------------------------------------------------
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
@@ -290,9 +276,7 @@ const CarouselNext = React.forwardRef<
 });
 CarouselNext.displayName = "CarouselNext";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   type CarouselApi,

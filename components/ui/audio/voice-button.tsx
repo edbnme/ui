@@ -5,9 +5,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { LiveWaveform } from "./live-waveform";
 
-// =============================================================================
-// ICONS
-// =============================================================================
+// ---- ICONS ------------------------------------------------------------------
 
 function CheckSvg({ className }: { className?: string }) {
   return (
@@ -42,9 +40,7 @@ function XSvg({ className }: { className?: string }) {
   );
 }
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 export type VoiceButtonState =
   | "idle"
@@ -74,9 +70,7 @@ export interface VoiceButtonProps extends Omit<
   feedbackDuration?: number;
 }
 
-// =============================================================================
-// VARIANT STYLING
-// =============================================================================
+// ---- VARIANT STYLING --------------------------------------------------------
 
 const variantClasses: Record<string, string> = {
   default: "bg-primary text-primary-foreground hover:bg-primary/90",
@@ -96,9 +90,7 @@ const sizeClasses: Record<string, string> = {
   icon: "h-9 w-9",
 };
 
-// =============================================================================
-// COMPONENT
-// =============================================================================
+// ---- COMPONENT --------------------------------------------------------------
 
 export const VoiceButton = React.forwardRef<
   HTMLButtonElement,

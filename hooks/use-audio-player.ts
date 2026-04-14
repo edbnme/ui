@@ -2,9 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useMemo } from "react";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 interface AudioPlayerState {
   /** Whether audio is currently playing */
@@ -69,9 +67,7 @@ type UseAudioPlayerReturn = AudioPlayerState &
     audioRef: React.RefObject<HTMLAudioElement | null>;
   };
 
-// =============================================================================
-// HOOK
-// =============================================================================
+// ---- HOOK -------------------------------------------------------------------
 
 export function useAudioPlayer(
   options: UseAudioPlayerOptions = {}

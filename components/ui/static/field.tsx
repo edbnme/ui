@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Field — Form field wrapper with label, description, and error support.
  * Built on @base-ui/react Field primitive.
  *
@@ -18,9 +18,7 @@ import * as React from "react";
 import { Field } from "@base-ui/react/field";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// FIELD ROOT
-// =============================================================================
+// ---- FIELD ROOT -------------------------------------------------------------
 
 const FieldRoot = React.forwardRef<HTMLDivElement, Field.Root.Props>(
   ({ className, ...props }, ref) => (
@@ -29,9 +27,7 @@ const FieldRoot = React.forwardRef<HTMLDivElement, Field.Root.Props>(
 );
 FieldRoot.displayName = "FieldRoot";
 
-// =============================================================================
-// FIELD LABEL
-// =============================================================================
+// ---- FIELD LABEL ------------------------------------------------------------
 
 const FieldLabel = React.forwardRef<HTMLLabelElement, Field.Label.Props>(
   ({ className, ...props }, ref) => (
@@ -48,9 +44,7 @@ const FieldLabel = React.forwardRef<HTMLLabelElement, Field.Label.Props>(
 );
 FieldLabel.displayName = "FieldLabel";
 
-// =============================================================================
-// FIELD CONTROL
-// =============================================================================
+// ---- FIELD CONTROL ----------------------------------------------------------
 
 const FieldControl = React.forwardRef<HTMLInputElement, Field.Control.Props>(
   ({ className, ...props }, ref) => (
@@ -72,9 +66,7 @@ const FieldControl = React.forwardRef<HTMLInputElement, Field.Control.Props>(
 );
 FieldControl.displayName = "FieldControl";
 
-// =============================================================================
-// FIELD DESCRIPTION
-// =============================================================================
+// ---- FIELD DESCRIPTION ------------------------------------------------------
 
 const FieldDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -88,9 +80,7 @@ const FieldDescription = React.forwardRef<
 ));
 FieldDescription.displayName = "FieldDescription";
 
-// =============================================================================
-// FIELD ERROR
-// =============================================================================
+// ---- FIELD ERROR ------------------------------------------------------------
 
 const FieldError = React.forwardRef<HTMLDivElement, Field.Error.Props>(
   ({ className, ...props }, ref) => (
@@ -103,16 +93,12 @@ const FieldError = React.forwardRef<HTMLDivElement, Field.Error.Props>(
 );
 FieldError.displayName = "FieldError";
 
-// =============================================================================
-// FIELD VALIDITY
-// =============================================================================
+// ---- FIELD VALIDITY ---------------------------------------------------------
 
 const FieldValidity = Field.Validity;
 FieldValidity.displayName = "FieldValidity";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   FieldRoot,

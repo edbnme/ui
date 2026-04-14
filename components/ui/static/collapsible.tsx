@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Collapsible — Expandable/collapsible content region.
  * Built on @base-ui/react Collapsible primitive.
  *
@@ -16,9 +16,7 @@ import * as React from "react";
 import { Collapsible } from "@base-ui/react/collapsible";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// COLLAPSIBLE ROOT
-// =============================================================================
+// ---- COLLAPSIBLE ROOT -------------------------------------------------------
 
 const CollapsibleRoot = React.forwardRef<
   HTMLDivElement,
@@ -28,9 +26,7 @@ const CollapsibleRoot = React.forwardRef<
 ));
 CollapsibleRoot.displayName = "CollapsibleRoot";
 
-// =============================================================================
-// COLLAPSIBLE TRIGGER
-// =============================================================================
+// ---- COLLAPSIBLE TRIGGER ----------------------------------------------------
 
 const CollapsibleTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -51,9 +47,7 @@ const CollapsibleTrigger = React.forwardRef<
 ));
 CollapsibleTrigger.displayName = "CollapsibleTrigger";
 
-// =============================================================================
-// COLLAPSIBLE PANEL
-// =============================================================================
+// ---- COLLAPSIBLE PANEL ------------------------------------------------------
 
 const CollapsiblePanel = React.forwardRef<
   HTMLDivElement,
@@ -72,8 +66,6 @@ const CollapsiblePanel = React.forwardRef<
 ));
 CollapsiblePanel.displayName = "CollapsiblePanel";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { CollapsibleRoot, CollapsibleTrigger, CollapsiblePanel };

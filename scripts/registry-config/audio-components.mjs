@@ -8,9 +8,7 @@
  */
 
 export const audioComponents = {
-  // ===========================================================================
-  // Phase 2 — Core Chat Components
-  // ===========================================================================
+  // ---- Phase 2  Core Chat Components -------------------------------------
 
   "audio-message": {
     type: "registry:ui",
@@ -124,9 +122,7 @@ export const audioComponents = {
     variant: "audio",
   },
 
-  // ===========================================================================
-  // Phase 3 — Audio Components
-  // ===========================================================================
+  // ---- Phase 3  Audio Components -----------------------------------------
 
   "audio-player": {
     type: "registry:ui",
@@ -242,9 +238,7 @@ export const audioComponents = {
     variant: "audio",
   },
 
-  // ===========================================================================
-  // Phase 4 — Display & Interaction Components
-  // ===========================================================================
+  // ---- Phase 4  Display & Interaction Components -------------------------
 
   "audio-matrix": {
     type: "registry:ui",
@@ -355,15 +349,13 @@ export const audioComponents = {
     variant: "audio",
   },
 
-  // ===========================================================================
-  // Phase 5 — Orb (Optional Heavy)
-  // ===========================================================================
+  // ---- Phase 5  Orb (Optional Heavy) -------------------------------------
 
   "audio-orb": {
     type: "registry:ui",
     title: "Orb",
     description:
-      "Three.js animated orb with state-driven distortion and CSS-only fallback. Optional — adds ~1MB bundle (three + @react-three/fiber + @react-three/drei).",
+      "Three.js animated orb with state-driven distortion and CSS-only fallback. Optional  adds ~1MB bundle (three + @react-three/fiber + @react-three/drei).",
     dependencies: [
       "class-variance-authority",
       "@react-three/fiber",

@@ -836,6 +836,26 @@
       ]
     },
     {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Searchable dropdown for filtering and selecting from a list, built on Base UI Combobox.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
@@ -1034,25 +1054,6 @@
       ]
     },
     {
-      "name": "scroll-area",
-      "type": "registry:ui",
-      "title": "Scroll Area",
-      "description": "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/scroll-area.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
@@ -1084,44 +1085,6 @@
       "files": [
         {
           "path": "components/ui/static/skeleton.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "slider",
-      "type": "registry:ui",
-      "title": "Slider",
-      "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/slider.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "tooltip",
-      "type": "registry:ui",
-      "title": "Tooltip",
-      "description": "A tooltip component with smooth animations and configurable positioning.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/tooltip.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1206,6 +1169,23 @@
       "files": [
         {
           "path": "lib/motion.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "shiki-config",
+      "type": "registry:lib",
+      "title": "Shiki Config",
+      "description": "Shared Shiki theme and pre-style configuration for code highlighting.",
+      "dependencies": [
+        "shiki"
+      ],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "lib/shiki-config.ts",
           "type": "registry:lib"
         }
       ]
@@ -1764,7 +1744,7 @@
       "name": "audio-orb",
       "type": "registry:ui",
       "title": "Orb",
-      "description": "Three.js animated orb with state-driven distortion and CSS-only fallback. Optional — adds ~1MB bundle (three + @react-three/fiber + @react-three/drei).",
+      "description": "Three.js animated orb with state-driven distortion and CSS-only fallback. Optional  adds ~1MB bundle (three + @react-three/fiber + @react-three/drei).",
       "dependencies": [
         "class-variance-authority",
         "@react-three/fiber",
@@ -1853,6 +1833,39 @@
       "files": [
         {
           "path": "hooks/use-bar-animator.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-transcript-viewer",
+      "type": "registry:hook",
+      "title": "useTranscriptViewer",
+      "description": "Hook for transcript playback, word timing, scrubbing, and current-word tracking.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-transcript-viewer.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-shiki-highlight",
+      "type": "registry:hook",
+      "title": "useShikiHighlight",
+      "description": "Client-side Shiki highlighting hook with lazy loading and JSX rendering.",
+      "dependencies": [
+        "hast-util-to-jsx-runtime",
+        "shiki"
+      ],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-shiki-highlight.tsx",
           "type": "registry:hook"
         }
       ]

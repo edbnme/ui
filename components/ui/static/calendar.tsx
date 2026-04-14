@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Calendar — Date picker with single, multiple, and range selection.
  * Built on react-day-picker library.
  *
@@ -14,9 +14,7 @@ import { DayPicker } from "react-day-picker";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// CALENDAR
-// =============================================================================
+// ---- CALENDAR ---------------------------------------------------------------
 
 type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
@@ -87,8 +85,6 @@ function Calendar({
 
 Calendar.displayName = "Calendar";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { Calendar, type CalendarProps };
