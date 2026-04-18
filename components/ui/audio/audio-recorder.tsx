@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * Audio Recorder
+ * @registryCategory audio
+ */
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 

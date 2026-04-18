@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { memo, type ComponentProps } from "react";
 import { Streamdown } from "streamdown";
@@ -17,6 +17,7 @@ type ResponseProps = ComponentProps<typeof Streamdown>;
  *
  * Only re-renders when `children` (the markdown content) changes,
  * preventing unnecessary work during streaming.
+ * @registryCategory chat
  */
 const Response = memo(
   ({ className, ...props }: ResponseProps) => (

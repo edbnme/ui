@@ -1,5 +1,12 @@
 "use client";
 
+
+/**
+ * useAudioPlayer
+ * @registryDescription Hook for controlling audio playback with play, pause, seek, volume, and speed.
+ * @registryVariant audio
+ */
+
 import { useCallback, useEffect, useRef, useState, useMemo } from "react";
 
 // ---- TYPES ------------------------------------------------------------------

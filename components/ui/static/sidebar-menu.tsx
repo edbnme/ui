@@ -1,3 +1,20 @@
+/**
+ * Sidebar Menu — Core list + button primitives for a sidebar
+ * (`Menu`, `MenuItem`, `MenuButton`, `MenuAction`, `MenuBadge`,
+ * `MenuSkeleton`).
+ *
+ * Exposes `sidebarMenuButtonVariants` (cva) so consumers can compose
+ * custom buttons with matching variant tokens. The button supports an
+ * optional tooltip when the sidebar collapses to icon mode.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryPartOf sidebar
+ */
+
 "use client";
 
 import * as React from "react";
@@ -6,7 +23,7 @@ import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/primitives";
 import { useSidebar } from "@/components/ui/static/sidebar-context";
 import {
-  Tooltip,
+  TooltipRoot,
   TooltipPopup,
   TooltipPositioner,
   TooltipTrigger,
@@ -102,7 +119,7 @@ function SidebarMenuButton({
     typeof tooltip === "string" ? { children: tooltip } : tooltip;
 
   return (
-    <Tooltip>
+    <TooltipRoot>
       <TooltipTrigger render={button} />
       <TooltipPositioner side="right">
         <TooltipPopup
@@ -110,7 +127,7 @@ function SidebarMenuButton({
           {...tooltipProps}
         />
       </TooltipPositioner>
-    </Tooltip>
+    </TooltipRoot>
   );
 }
 

@@ -12,6 +12,7 @@ export type ConversationProps = React.ComponentProps<typeof StickToBottom>;
 /**
  * Scrolling conversation container with auto-scroll and sticky-to-bottom
  * behavior. Built on `use-stick-to-bottom`.
+ * @registryCategory chat
  */
 export function Conversation({ className, ...props }: ConversationProps) {
   return (

@@ -1,11 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+/**
+ * Mic Selector
+ * @registryCategory audio
+ */
 
+import { useEffect, useRef, useState } from "react";
+
+import { useAudioDevices as useSharedAudioDevices } from "@/hooks/use-audio-devices";
 import { cn } from "@/lib/utils";
 import { LiveWaveform } from "./live-waveform";
 
-// ---- ICONS ------------------------------------------------------------------
+// ---- ICONS -----------------------------------------------------------------
 
 function MicIcon({ className }: { className?: string }) {
   return (
@@ -79,7 +85,7 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-// ---- TYPES ------------------------------------------------------------------
+// ---- TYPES -----------------------------------------------------------------
 
 export interface AudioDevice {
   deviceId: string;
@@ -96,7 +102,7 @@ export interface MicSelectorProps {
   className?: string;
 }
 
-// ---- COMPONENT --------------------------------------------------------------
+// ---- COMPONENT -------------------------------------------------------------
 
 export function MicSelector({
   value,
@@ -122,22 +128,25 @@ export function MicSelector({
   }, [value]);
 
   const defaultDeviceId = devices[0]?.deviceId || "";
+
   useEffect(() => {
     if (!selectedDevice && defaultDeviceId) {
-      const newDevice = defaultDeviceId;
-      setSelectedDevice(newDevice);
-      onValueChange?.(newDevice);
+      setSelectedDevice(defaultDeviceId);
+      onValueChange?.(defaultDeviceId);
     }
-  }, [defaultDeviceId, selectedDevice, onValueChange]);
+  }, [defaultDeviceId, onValueChange, selectedDevice]);
 
-  const currentDevice = devices.find((d) => d.deviceId === selectedDevice) ||
+  const currentDevice = devices.find(
+    (device) => device.deviceId === selectedDevice
+  ) ||
     devices[0] || {
       label: loading ? "Loading..." : "No microphone",
       deviceId: "",
+      groupId: "",
     };
 
-  const handleDeviceSelect = (deviceId: string, e?: React.MouseEvent) => {
-    e?.preventDefault();
+  const handleDeviceSelect = (deviceId: string, event?: React.MouseEvent) => {
+    event?.preventDefault();
     setSelectedDevice(deviceId);
     onValueChange?.(deviceId);
   };
@@ -150,36 +159,44 @@ export function MicSelector({
   };
 
   const toggleMute = () => {
-    const newMuted = !isMuted;
+    const nextMuted = !isMuted;
     if (muted === undefined) {
-      setInternalMuted(newMuted);
+      setInternalMuted(nextMuted);
     }
-    onMutedChange?.(newMuted);
+    onMutedChange?.(nextMuted);
   };
 
   const isPreviewActive = isDropdownOpen && !isMuted;
 
-  // Click outside to close dropdown
   useEffect(() => {
-    if (!isDropdownOpen) return;
-    const handleClick = (e: MouseEvent) => {
+    if (!isDropdownOpen) {
+      return;
+    }
+
+    const handleClick = (event: MouseEvent) => {
       if (
         containerRef.current &&
-        !containerRef.current.contains(e.target as Node)
+        !containerRef.current.contains(event.target as Node)
       ) {
         setIsDropdownOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isDropdownOpen]);
 
-  // Close on Escape
   useEffect(() => {
-    if (!isDropdownOpen) return;
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsDropdownOpen(false);
+    if (!isDropdownOpen) {
+      return;
+    }
+
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsDropdownOpen(false);
+      }
     };
+
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
   }, [isDropdownOpen]);
@@ -192,7 +209,7 @@ export function MicSelector({
     >
       <button
         type="button"
-        onClick={() => handleDropdownOpenChange(!isDropdownOpen)}
+        onClick={() => void handleDropdownOpenChange(!isDropdownOpen)}
         disabled={loading || disabled}
         className={cn(
           "hover:bg-accent flex w-40 min-w-0 shrink cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5 text-sm transition-colors sm:w-48",
@@ -226,7 +243,7 @@ export function MicSelector({
               <button
                 key={device.deviceId}
                 type="button"
-                onClick={(e) => handleDeviceSelect(device.deviceId, e)}
+                onClick={(event) => handleDeviceSelect(device.deviceId, event)}
                 className="flex w-full items-center justify-between rounded-sm px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"
               >
                 <span className="truncate">{device.label}</span>
@@ -242,8 +259,8 @@ export function MicSelector({
               <div className="flex items-center gap-2 p-2">
                 <button
                   type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
+                  onClick={(event) => {
+                    event.preventDefault();
                     toggleMute();
                   }}
                   className="inline-flex h-8 items-center gap-2 rounded-md px-3 text-sm hover:bg-accent"
@@ -276,114 +293,27 @@ export function MicSelector({
 
 MicSelector.displayName = "MicSelector";
 
-// ---- HOOK: useAudioDevices --------------------------------------------------
+// ---- HOOK: useAudioDevices -------------------------------------------------
 
 export function useAudioDevices() {
-  const [devices, setDevices] = useState<AudioDevice[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [hasPermission, setHasPermission] = useState(false);
-
-  const loadDevicesWithoutPermission = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-
-      const deviceList = await navigator.mediaDevices.enumerateDevices();
-
-      const audioInputs = deviceList
-        .filter((device) => device.kind === "audioinput")
-        .map((device) => {
-          let cleanLabel =
-            device.label || `Microphone ${device.deviceId.slice(0, 8)}`;
-          cleanLabel = cleanLabel.replace(/\s*\([^)]*\)/g, "").trim();
-
-          return {
-            deviceId: device.deviceId,
-            label: cleanLabel,
-            groupId: device.groupId,
-          };
-        });
-
-      setDevices(audioInputs);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to get audio devices"
-      );
-      console.error("Error getting audio devices:", err);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  const loadDevicesWithPermission = useCallback(async () => {
-    if (loading) return;
-
-    try {
-      setLoading(true);
-      setError(null);
-
-      const tempStream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-      });
-      tempStream.getTracks().forEach((track) => track.stop());
-
-      const deviceList = await navigator.mediaDevices.enumerateDevices();
-
-      const audioInputs = deviceList
-        .filter((device) => device.kind === "audioinput")
-        .map((device) => {
-          let cleanLabel =
-            device.label || `Microphone ${device.deviceId.slice(0, 8)}`;
-          cleanLabel = cleanLabel.replace(/\s*\([^)]*\)/g, "").trim();
-
-          return {
-            deviceId: device.deviceId,
-            label: cleanLabel,
-            groupId: device.groupId,
-          };
-        });
-
-      setDevices(audioInputs);
-      setHasPermission(true);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Failed to get audio devices"
-      );
-      console.error("Error getting audio devices:", err);
-    } finally {
-      setLoading(false);
-    }
-  }, [loading]);
-
-  useEffect(() => {
-    loadDevicesWithoutPermission();
-  }, [loadDevicesWithoutPermission]);
-
-  useEffect(() => {
-    const handleDeviceChange = () => {
-      if (hasPermission) {
-        loadDevicesWithPermission();
-      } else {
-        loadDevicesWithoutPermission();
-      }
-    };
-
-    navigator.mediaDevices.addEventListener("devicechange", handleDeviceChange);
-
-    return () => {
-      navigator.mediaDevices.removeEventListener(
-        "devicechange",
-        handleDeviceChange
-      );
-    };
-  }, [hasPermission, loadDevicesWithPermission, loadDevicesWithoutPermission]);
+  const {
+    devices,
+    error,
+    hasEnumerated,
+    hasPermission,
+    isRequesting,
+    requestPermission,
+  } = useSharedAudioDevices({ kind: "audioinput" });
 
   return {
-    devices,
-    loading,
+    devices: devices.map((device) => ({
+      deviceId: device.deviceId,
+      label: device.label,
+      groupId: device.groupId,
+    })),
+    loading: !hasEnumerated || isRequesting,
     error,
     hasPermission,
-    loadDevices: loadDevicesWithPermission,
+    loadDevices: requestPermission,
   };
 }

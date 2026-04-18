@@ -6,6 +6,7 @@
  * and as documentation for contributors.
  *
  * @packageDocumentation
+ * @registryDescription Shared component standard utilities (class composition, data attribute helpers).
  */
 
 // ---- COMPONENT CONTRACT TYPES -----------------------------------------------

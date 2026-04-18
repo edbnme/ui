@@ -8,6 +8,7 @@
  * Slot is vendored locally (oss/lib/slot.ts).
  *
  * @packageDocumentation
+ * @registryDescription Re-exports of headless UI primitives (Base UI, Slot) used across edbn-ui components.
  */
 
 // ---- SLOT (Polymorphic rendering) -------------------------------------------

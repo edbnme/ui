@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * Code Block
+ * @registryCategory display
+ */
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { CopyIcon, CheckIcon } from "@phosphor-icons/react";

@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * Orb
+ * @registryCategory display
+ */
+
 import { useEffect, useMemo, useRef, type RefObject } from "react";
 import dynamic from "next/dynamic";
 

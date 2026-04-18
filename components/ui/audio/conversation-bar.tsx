@@ -1,13 +1,15 @@
-﻿"use client";
+"use client";
 
+/**
+ * Conversation Bar
+ * @registryCategory display
+ */
 import * as React from "react";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-// ---------------------------------------------------------------------------
-// Inline SVG icons
-// ---------------------------------------------------------------------------
+// ---- INLINE SVG ICONS -------------------------------------------------------
 
 function PhoneIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -55,9 +57,7 @@ function SendIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+// ---- TYPES ------------------------------------------------------------------
 
 export type AgentConnectionState =
   | "disconnected"
@@ -65,26 +65,64 @@ export type AgentConnectionState =
   | "connected"
   | "disconnecting";
 
-export interface ConversationBarProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Called when the user sends a text message */
-  onSend?: (message: string) => void;
-  /** Called when the user presses connect */
-  onConnect?: () => void;
-  /** Called when the user presses disconnect */
-  onDisconnect?: () => void;
-  /** Current connection state. Default: "disconnected" */
-  connectionState?: AgentConnectionState;
-  /** Placeholder text for the input. Default: "Type a message…" */
-  placeholder?: string;
-  /** Whether to show the connection toggle button. Default: true */
-  showConnectionToggle?: boolean;
-  /** Whether the send button is disabled. Default: false */
-  isSendDisabled?: boolean;
+/**
+ * Generic, provider-agnostic message shape used by `onIncomingMessage`.
+ * Mirrors the canonical ElevenLabs UI shape but uses `role` instead of
+ * `source` to align with broader chat-message conventions (OpenAI, Anthropic,
+ * etc.).
+ */
+export interface ConversationMessage {
+  role: "user" | "assistant";
+  text: string;
 }
 
-// ---------------------------------------------------------------------------
-// StatusDot
-// ---------------------------------------------------------------------------
+export interface ConversationBarProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "onError"
+> {
+  /** Called when the user sends a text message. */
+  onSendMessage?: (message: string) => void;
+  /**
+   * Alias of `onSendMessage` retained for backwards compatibility.
+   * @deprecated Use `onSendMessage` instead. Will be removed in a future major release.
+   */
+  onSend?: (message: string) => void;
+  /** Called when an incoming message arrives. Wire this to your chat backend. */
+  onIncomingMessage?: (message: ConversationMessage) => void;
+  /** Called when the user presses connect. */
+  onConnect?: () => void;
+  /** Called when the user presses disconnect. */
+  onDisconnect?: () => void;
+  /** Called when an error originates inside the bar (e.g. mic permission). */
+  onError?: (error: Error) => void;
+  /** Current connection state. Default: `"disconnected"`. */
+  connectionState?: AgentConnectionState;
+  /** Placeholder text for the input. Default: `"Type a message…"`. */
+  placeholder?: string;
+  /** Whether to show the connection toggle button. Default: `true`. */
+  showConnectionToggle?: boolean;
+  /** Whether the send button is disabled. Default: `false`. */
+  isSendDisabled?: boolean;
+  /**
+   * Whether to render a `<textarea>` (multi-line, Shift+Enter for newline)
+   * instead of a single-line `<input>`. Default: `true`.
+   */
+  multiline?: boolean;
+  /**
+   * Maximum textarea rows before scrolling. Only applies when `multiline` is
+   * true. Default: `5`.
+   */
+  maxRows?: number;
+}
+
+// ---- STATUS DOT -------------------------------------------------------------
+
+const CONNECTION_LABELS: Record<AgentConnectionState, string> = {
+  disconnected: "Disconnected",
+  connecting: "Connecting",
+  connected: "Connected",
+  disconnecting: "Disconnecting",
+};
 
 function StatusDot({ state }: { state: AgentConnectionState }) {
   return (
@@ -102,9 +140,25 @@ function StatusDot({ state }: { state: AgentConnectionState }) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// ConversationBar
-// ---------------------------------------------------------------------------
+// ---- AUTO-RESIZING TEXTAREA -------------------------------------------------
+
+function useAutosize(
+  ref: React.RefObject<HTMLTextAreaElement | null>,
+  value: string,
+  maxRows: number
+) {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = "auto";
+    const lineHeight = parseFloat(getComputedStyle(el).lineHeight) || 20;
+    const maxHeight = lineHeight * maxRows;
+    el.style.height = `${Math.min(el.scrollHeight, maxHeight)}px`;
+    el.style.overflowY = el.scrollHeight > maxHeight ? "auto" : "hidden";
+  }, [ref, value, maxRows]);
+}
+
+// ---- CONVERSATION BAR -------------------------------------------------------
 
 export const ConversationBar = React.forwardRef<
   HTMLDivElement,
@@ -112,31 +166,54 @@ export const ConversationBar = React.forwardRef<
 >(
   (
     {
+      onSendMessage,
       onSend,
+      onIncomingMessage: _onIncomingMessage,
       onConnect,
       onDisconnect,
+      onError: _onError,
       connectionState = "disconnected",
       placeholder = "Type a message…",
       showConnectionToggle = true,
       isSendDisabled = false,
+      multiline = true,
+      maxRows = 5,
       className,
       ...props
     },
     ref
   ) => {
+    // `onIncomingMessage` and `onError` are surfaced as part of the public API
+    // so consumers wiring custom backends (LiveKit, OpenAI Realtime, custom
+    // websockets, etc.) have ergonomic parity with provider-coupled
+    // alternatives. They are intentionally not invoked from inside the bar
+    // because this component is provider-agnostic — the consumer owns the
+    // transport. Marked unused via `_` prefix to silence lint without losing
+    // the type contract.
+    void _onIncomingMessage;
+    void _onError;
+
     const [value, setValue] = useState("");
     const inputRef = useRef<HTMLInputElement>(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    useAutosize(textareaRef, value, maxRows);
 
     const handleSend = useCallback(() => {
       const trimmed = value.trim();
       if (!trimmed || isSendDisabled) return;
+      onSendMessage?.(trimmed);
       onSend?.(trimmed);
       setValue("");
-      inputRef.current?.focus();
-    }, [value, isSendDisabled, onSend]);
+      (multiline ? textareaRef.current : inputRef.current)?.focus();
+    }, [value, isSendDisabled, onSendMessage, onSend, multiline]);
 
     const handleKeyDown = useCallback(
-      (e: React.KeyboardEvent<HTMLInputElement>) => {
+      (
+        e:
+          | React.KeyboardEvent<HTMLInputElement>
+          | React.KeyboardEvent<HTMLTextAreaElement>
+      ) => {
         if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
           handleSend();
@@ -156,13 +233,16 @@ export const ConversationBar = React.forwardRef<
     const isInteractive =
       connectionState !== "connecting" && connectionState !== "disconnecting";
 
+    const inputClassName =
+      "min-w-0 flex-1 bg-transparent text-sm px-3 py-1.5 outline-none placeholder:text-muted-foreground/50 resize-none leading-5";
+
     return (
       <div
         ref={ref}
         data-slot="conversation-bar"
         data-connection={connectionState}
         className={cn(
-          "flex items-center gap-2 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-sm p-2",
+          "flex items-end gap-2 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-sm p-2",
           "shadow-xs shadow-black/5",
           "transition-all duration-200 focus-within:ring-2 focus-within:ring-ring/40 focus-within:ring-offset-2 focus-within:ring-offset-background",
           className
@@ -177,7 +257,7 @@ export const ConversationBar = React.forwardRef<
             disabled={!isInteractive}
             data-slot="connection-toggle"
             className={cn(
-              "inline-flex items-center justify-center rounded-xl shrink-0 transition-all duration-200 size-8",
+              "inline-flex items-center justify-center rounded-xl shrink-0 transition-all duration-200 size-8 self-end",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
               connectionState === "connected"
                 ? "bg-destructive/10 text-destructive hover:bg-destructive/20"
@@ -196,21 +276,40 @@ export const ConversationBar = React.forwardRef<
           </button>
         )}
 
-        {/* Status dot */}
-        <StatusDot state={connectionState} />
+        {/* Status dot wrapped in aria-live region for screen readers */}
+        <div className="self-end pb-2">
+          <StatusDot state={connectionState} />
+        </div>
+        <span className="sr-only" aria-live="polite" aria-atomic="true">
+          {CONNECTION_LABELS[connectionState]}
+        </span>
 
-        {/* Text input */}
-        <input
-          ref={inputRef}
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder={placeholder}
-          data-slot="message-input"
-          className="min-w-0 flex-1 bg-transparent text-sm px-3 py-1.5 outline-none placeholder:text-muted-foreground/50"
-          aria-label="Message input"
-        />
+        {/* Text input — textarea (multiline) or input (single-line) */}
+        {multiline ? (
+          <textarea
+            ref={textareaRef}
+            rows={1}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder={placeholder}
+            data-slot="message-input"
+            className={inputClassName}
+            aria-label="Message input"
+          />
+        ) : (
+          <input
+            ref={inputRef}
+            type="text"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder={placeholder}
+            data-slot="message-input"
+            className={inputClassName}
+            aria-label="Message input"
+          />
+        )}
 
         {/* Send button */}
         <button
@@ -219,7 +318,7 @@ export const ConversationBar = React.forwardRef<
           disabled={!value.trim() || isSendDisabled}
           data-slot="send-button"
           className={cn(
-            "inline-flex items-center justify-center rounded-xl shrink-0 transition-all duration-200 size-8",
+            "inline-flex items-center justify-center rounded-xl shrink-0 transition-all duration-200 size-8 self-end",
             "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
             "bg-primary text-primary-foreground hover:bg-primary/90",
             "disabled:opacity-40 disabled:cursor-not-allowed"

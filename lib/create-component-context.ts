@@ -1,3 +1,9 @@
+/**
+ * create-component-context — typed React context factory.
+ *
+ * @registryDescription Factory for creating strict React contexts with typed hooks and display-name friendly debugging.
+ */
+
 import * as React from "react";
 
 /**

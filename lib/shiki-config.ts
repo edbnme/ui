@@ -1,3 +1,9 @@
+/**
+ * Shiki Config
+ * @registryDescription Shared Shiki theme and pre-style configuration for code highlighting.
+ * @registryVariant audio
+ */
+
 import type { CSSProperties, ReactNode } from "react";
 import type { BundledLanguage, BundledTheme } from "shiki";
 

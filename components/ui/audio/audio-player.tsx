@@ -1,5 +1,10 @@
-﻿"use client";
+"use client";
 
+/**
+ * Audio Player
+ * @registryCategory audio
+ */
+import * as React from "react";
 import {
   createContext,
   type HTMLProps,
@@ -12,8 +17,54 @@ import {
   useRef,
   useState,
 } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { Gear } from "@phosphor-icons/react";
 
 import { cn } from "@/lib/utils";
+import {
+  MenuRoot,
+  MenuTrigger,
+  MenuPortal,
+  MenuPositioner,
+  MenuPopup,
+  MenuRadioGroup,
+  MenuRadioItem,
+} from "@/components/ui/static/menu";
+
+// ---- VARIANTS ---------------------------------------------------------------
+
+const audioPlayerButtonVariants = cva(
+  "relative inline-flex items-center justify-center rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default:
+          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+        outline:
+          "border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90",
+      },
+      size: {
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-lg px-3 text-xs",
+        lg: "h-10 rounded-xl px-8",
+        icon: "size-9",
+      },
+    },
+    defaultVariants: {
+      variant: "outline",
+      size: "default",
+    },
+  }
+);
+
+export type AudioPlayerButtonVariantProps = VariantProps<
+  typeof audioPlayerButtonVariants
+>;
 
 // ---------------------------------------------------------------------------
 // Enums
@@ -91,7 +142,7 @@ export interface AudioPlayerItem<TData = unknown> {
   data?: TData;
 }
 
-interface AudioPlayerApi<TData = unknown> {
+export interface AudioPlayerApi<TData = unknown> {
   ref: RefObject<HTMLAudioElement | null>;
   activeItem: AudioPlayerItem<TData> | null;
   duration: number | undefined;
@@ -348,37 +399,58 @@ export function AudioPlayerProvider<TData = unknown>({
 // AudioPlayerProgress – custom slider (no Radix dependency)
 // ---------------------------------------------------------------------------
 
+export interface AudioPlayerProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Seek granularity in seconds for keyboard arrow keys. Default: 0.25 */
+  step?: number;
+  /** Called whenever the user seeks (pointer or keyboard) with the new time. */
+  onSeek?: (time: number) => void;
+  /** Forces the slider into the disabled state. */
+  disabled?: boolean;
+}
+
 export const AudioPlayerProgress = ({
   className,
+  step = 0.25,
+  onSeek,
+  disabled: disabledProp,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+}: AudioPlayerProgressProps) => {
   const player = useAudioPlayer();
   const time = useAudioPlayerTime();
   const wasPlayingRef = useRef(false);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  const progress =
-    player.duration && Number.isFinite(player.duration) && player.duration > 0
-      ? (time / player.duration) * 100
-      : 0;
+  const duration = player.duration;
+  const hasValidDuration =
+    duration !== undefined && Number.isFinite(duration) && duration > 0;
 
-  const disabled =
-    player.duration === undefined ||
-    !Number.isFinite(player.duration) ||
-    Number.isNaN(player.duration);
+  const progress = hasValidDuration ? (time / (duration as number)) * 100 : 0;
+
+  const intrinsicDisabled = !hasValidDuration;
+  const disabled = disabledProp ?? intrinsicDisabled;
+
+  const seekTo = useCallback(
+    (target: number) => {
+      if (!hasValidDuration) return;
+      const clamped = Math.max(0, Math.min(duration as number, target));
+      player.seek(clamped);
+      onSeek?.(clamped);
+    },
+    [hasValidDuration, duration, player, onSeek]
+  );
 
   const seekFromPointer = useCallback(
     (clientX: number) => {
       const el = trackRef.current;
-      if (!el || disabled) return;
+      if (!el || disabled || !hasValidDuration) return;
       const rect = el.getBoundingClientRect();
       const ratio = Math.max(
         0,
         Math.min(1, (clientX - rect.left) / rect.width)
       );
-      player.seek(ratio * (player.duration ?? 0));
+      seekTo(ratio * (duration as number));
     },
-    [disabled, player]
+    [disabled, hasValidDuration, duration, seekTo]
   );
 
   const handlePointerDown = useCallback(
@@ -402,14 +474,56 @@ export const AudioPlayerProgress = ({
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.key === " ") {
-        e.preventDefault();
-        if (!player.isPlaying) player.play();
-        else player.pause();
+      if (disabled) return;
+      const dur = duration ?? 0;
+      const bigStep = Math.max(step, dur * 0.1);
+      switch (e.key) {
+        case " ": {
+          e.preventDefault();
+          if (!player.isPlaying) player.play();
+          else player.pause();
+          break;
+        }
+        case "ArrowRight":
+        case "ArrowUp": {
+          e.preventDefault();
+          seekTo(time + (e.shiftKey ? bigStep : step));
+          break;
+        }
+        case "ArrowLeft":
+        case "ArrowDown": {
+          e.preventDefault();
+          seekTo(time - (e.shiftKey ? bigStep : step));
+          break;
+        }
+        case "Home": {
+          e.preventDefault();
+          seekTo(0);
+          break;
+        }
+        case "End": {
+          e.preventDefault();
+          if (hasValidDuration) seekTo(duration as number);
+          break;
+        }
+        case "PageUp": {
+          e.preventDefault();
+          seekTo(time + 10);
+          break;
+        }
+        case "PageDown": {
+          e.preventDefault();
+          seekTo(time - 10);
+          break;
+        }
       }
     },
-    [player]
+    [disabled, duration, hasValidDuration, player, seekTo, step, time]
   );
+
+  const valueText = hasValidDuration
+    ? `${formatTime(time)} of ${formatTime(duration as number)}`
+    : formatTime(time);
 
   return (
     <div
@@ -417,20 +531,22 @@ export const AudioPlayerProgress = ({
       role="slider"
       aria-valuenow={Math.round(time)}
       aria-valuemin={0}
-      aria-valuemax={Math.round(player.duration ?? 0)}
+      aria-valuemax={Math.round(duration ?? 0)}
+      aria-valuetext={valueText}
       aria-label="Audio progress"
+      aria-disabled={disabled || undefined}
       tabIndex={disabled ? -1 : 0}
       data-slot="audio-player-progress"
       data-disabled={disabled || undefined}
       className={cn(
-        "group/player relative flex h-4 touch-none items-center select-none data-[disabled]:opacity-50",
+        "group/player relative flex h-4 touch-none items-center select-none data-disabled:opacity-50",
         className
       )}
       onPointerDown={handlePointerDown}
       onKeyDown={handleKeyDown}
       {...props}
     >
-      <div className="bg-muted relative h-[4px] w-full grow overflow-hidden rounded-full">
+      <div className="bg-muted relative h-1 w-full grow overflow-hidden rounded-full">
         <div
           className="bg-primary absolute h-full"
           style={{ width: `${progress}%` }}
@@ -460,7 +576,7 @@ export const AudioPlayerTime = ({
     <span
       data-slot="audio-player-time"
       {...props}
-      className={cn("text-muted-foreground/70 text-sm tabular-nums", className)}
+      className={cn("text-muted-foreground text-sm tabular-nums", className)}
     >
       {formatTime(time)}
     </span>
@@ -476,7 +592,7 @@ export const AudioPlayerDuration = ({
     <span
       data-slot="audio-player-duration"
       {...props}
-      className={cn("text-muted-foreground/70 text-sm tabular-nums", className)}
+      className={cn("text-muted-foreground text-sm tabular-nums", className)}
     >
       {player.duration !== null &&
       player.duration !== undefined &&
@@ -510,7 +626,10 @@ function Spinner({ className }: { className?: string }) {
 // Internal PlayButton
 // ---------------------------------------------------------------------------
 
-interface InternalPlayButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface InternalPlayButtonProps
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    AudioPlayerButtonVariantProps {
   playing: boolean;
   onPlayingChange: (playing: boolean) => void;
   loading?: boolean;
@@ -522,6 +641,8 @@ const InternalPlayButton = ({
   className,
   onClick,
   loading,
+  variant,
+  size,
   ...otherProps
 }: InternalPlayButtonProps) => {
   return (
@@ -532,10 +653,7 @@ const InternalPlayButton = ({
         onPlayingChange(!playing);
         onClick?.(e);
       }}
-      className={cn(
-        "relative inline-flex items-center justify-center rounded-xl border border-input bg-background px-4 py-2 text-sm font-medium shadow-xs transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
-        className
-      )}
+      className={cn(audioPlayerButtonVariants({ variant, size }), className)}
       aria-label={playing ? "Pause" : "Play"}
     >
       {playing ? (
@@ -562,12 +680,11 @@ const InternalPlayButton = ({
 // AudioPlayerButton
 // ---------------------------------------------------------------------------
 
-export interface AudioPlayerButtonProps<
-  TData = unknown,
-> extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface AudioPlayerButtonProps<TData = unknown>
+  extends
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size">,
+    AudioPlayerButtonVariantProps {
   item?: AudioPlayerItem<TData>;
-  variant?: string;
-  size?: string;
 }
 
 export function AudioPlayerButton<TData = unknown>({
@@ -611,77 +728,49 @@ export function AudioPlayerButton<TData = unknown>({
 
 const PLAYBACK_SPEEDS = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] as const;
 
-export interface AudioPlayerSpeedProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface AudioPlayerSpeedProps
+  extends
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "size">,
+    AudioPlayerButtonVariantProps {
   speeds?: readonly number[];
-  variant?: string;
-  size?: string;
 }
 
 export function AudioPlayerSpeed({
   speeds = PLAYBACK_SPEEDS,
   className,
+  variant = "outline",
+  size = "icon",
   ...props
 }: AudioPlayerSpeedProps) {
   const player = useAudioPlayer();
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const handleClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
-    };
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("mousedown", handleClick);
-    window.addEventListener("keydown", handleKey);
-    return () => {
-      window.removeEventListener("mousedown", handleClick);
-      window.removeEventListener("keydown", handleKey);
-    };
-  }, [open]);
-
-  const label =
-    player.playbackRate === 1 ? "Normal" : `${player.playbackRate}x`;
 
   return (
-    <div ref={ref} className="relative inline-block">
-      <button
+    <MenuRoot>
+      <MenuTrigger
         type="button"
-        className={cn(
-          "inline-flex items-center justify-center rounded-md border border-input bg-background px-3 py-2 text-xs font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-          className
-        )}
-        onClick={() => setOpen((v) => !v)}
         aria-label="Playback speed"
+        className={cn(audioPlayerButtonVariants({ variant, size }), className)}
         {...props}
       >
-        {label}
-      </button>
-      {open && (
-        <div className="bg-popover text-popover-foreground absolute bottom-full left-1/2 z-50 mb-1 -translate-x-1/2 overflow-hidden rounded-md border shadow-md">
-          {speeds.map((speed) => (
-            <button
-              key={speed}
-              type="button"
-              className={cn(
-                "flex w-full items-center gap-2 px-3 py-1.5 text-xs transition-colors hover:bg-accent",
-                player.playbackRate === speed && "bg-accent font-semibold"
-              )}
-              onClick={() => {
-                player.setPlaybackRate(speed);
-                setOpen(false);
-              }}
+        <Gear className="size-4" aria-hidden="true" />
+      </MenuTrigger>
+      <MenuPortal>
+        <MenuPositioner sideOffset={4} align="end">
+          <MenuPopup className="min-w-32">
+            <MenuRadioGroup
+              value={String(player.playbackRate)}
+              onValueChange={(value) => player.setPlaybackRate(Number(value))}
             >
-              {speed === 1 ? "Normal" : `${speed}x`}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
+              {speeds.map((speed) => (
+                <MenuRadioItem key={speed} value={String(speed)}>
+                  {speed === 1 ? "Normal" : `${speed}x`}
+                </MenuRadioItem>
+              ))}
+            </MenuRadioGroup>
+          </MenuPopup>
+        </MenuPositioner>
+      </MenuPortal>
+    </MenuRoot>
   );
 }
 
@@ -711,21 +800,26 @@ export function AudioPlayerSpeedButtonGroup({
       aria-label="Playback speed controls"
       {...props}
     >
-      {speeds.map((speed) => (
-        <button
-          key={speed}
-          type="button"
-          className={cn(
-            "min-w-[50px] rounded-md border px-2 py-1 font-mono text-xs transition-colors",
-            currentSpeed === speed
-              ? "border-primary bg-primary text-primary-foreground"
-              : "border-input bg-background hover:bg-accent"
-          )}
-          onClick={() => player.setPlaybackRate(speed)}
-        >
-          {speed}x
-        </button>
-      ))}
+      {speeds.map((speed) => {
+        const isActive = currentSpeed === speed;
+        return (
+          <button
+            key={speed}
+            type="button"
+            aria-pressed={isActive}
+            className={cn(
+              audioPlayerButtonVariants({
+                variant: isActive ? "default" : "outline",
+                size: "sm",
+              }),
+              "min-w-12.5 font-mono"
+            )}
+            onClick={() => player.setPlaybackRate(speed)}
+          >
+            {speed}x
+          </button>
+        );
+      })}
     </div>
   );
 }

@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * Token Counter
+ * @registryCategory chat
+ */
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 

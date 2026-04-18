@@ -1,8 +1,13 @@
-﻿/**
- * Input OTP — Verification code input with customizable slots.
- * Built on the `input-otp` library.
+/**
+ * Input OTP — One-time password / verification-code input with
+ * customizable slots. Built on the `input-otp` library.
  *
- * @example
+ * Each character lives in a separate visual slot that animates its
+ * active / filled / caret states. Group + separator composition lets
+ * you render patterns like `000 - 000` for 6-digit codes.
+ *
+ * Anatomy:
+ * ```tsx
  * <InputOTP maxLength={6}>
  *   <InputOTPGroup>
  *     <InputOTPSlot index={0} />
@@ -16,95 +21,153 @@
  *     <InputOTPSlot index={5} />
  *   </InputOTPGroup>
  * </InputOTP>
+ * ```
  *
- * @see https://input-otp.rodz.dev
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/input-otp
+ * @upstream   input-otp — https://input-otp.rodz.dev
+ * @registryDescription One-time password input with auto-focus, paste support, and separators.
+ * @registryTitle Input OTP
+ * @registryIsNew
  */
+
 "use client";
 
 import * as React from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { MinusIcon } from "@phosphor-icons/react";
+
 import { cn } from "@/lib/utils";
 
-// ---- INPUT OTP ROOT ---------------------------------------------------------
+// ---- ROOT -------------------------------------------------------------------
 
-type InputOTPProps = React.ComponentPropsWithoutRef<typeof OTPInput>;
+export type InputOTPProps = React.ComponentPropsWithoutRef<typeof OTPInput>;
 
-const InputOTP = React.forwardRef<
-  React.ComponentRef<typeof OTPInput>,
-  InputOTPProps
->(({ className, containerClassName, ...props }, ref) => (
-  <OTPInput
-    ref={ref}
-    containerClassName={cn(
-      "flex items-center gap-2 has-disabled:opacity-50",
-      containerClassName
-    )}
-    className={cn("disabled:cursor-not-allowed", className)}
-    {...props}
-  />
-));
+/**
+ * The OTP input root. Forwards all `OTPInput` props (incl. `maxLength`,
+ * `value`, `onChange`, `pattern`).
+ *
+ * @since 0.1.0
+ */
+function InputOTP({
+  className,
+  containerClassName,
+  ...props
+}: InputOTPProps) {
+  return (
+    <OTPInput
+      data-slot="input-otp"
+      containerClassName={cn(
+        "flex items-center gap-2 has-disabled:opacity-50",
+        containerClassName
+      )}
+      className={cn("disabled:cursor-not-allowed", className)}
+      {...props}
+    />
+  );
+}
 InputOTP.displayName = "InputOTP";
 
-// ---- INPUT OTP GROUP --------------------------------------------------------
+// ---- GROUP ------------------------------------------------------------------
 
-const InputOTPGroup = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<"div">
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center", className)} {...props} />
-));
+export type InputOTPGroupProps = React.ComponentPropsWithoutRef<"div">;
+
+/**
+ * Visually groups a run of consecutive slots (gives them shared rounded
+ * corners & connected borders).
+ *
+ * @since 0.1.0
+ */
+function InputOTPGroup({ className, ...props }: InputOTPGroupProps) {
+  return (
+    <div
+      data-slot="input-otp-group"
+      className={cn("flex items-center", className)}
+      {...props}
+    />
+  );
+}
 InputOTPGroup.displayName = "InputOTPGroup";
 
-// ---- INPUT OTP SLOT ---------------------------------------------------------
+// ---- SLOT -------------------------------------------------------------------
 
-interface InputOTPSlotProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface InputOTPSlotProps
+  extends React.ComponentPropsWithoutRef<"div"> {
+  /** Which character index in the OTP value this slot displays. */
   index: number;
 }
 
-const InputOTPSlot = React.forwardRef<HTMLDivElement, InputOTPSlotProps>(
-  ({ index, className, ...props }, ref) => {
-    const inputOTPContext = React.useContext(OTPInputContext);
-    const slot = inputOTPContext.slots[index];
+/**
+ * A single-character slot. Pulls its char / active / caret state from the
+ * surrounding `OTPInput` via context.
+ *
+ * @since 0.1.0
+ */
+function InputOTPSlot({ index, className, ...props }: InputOTPSlotProps) {
+  const inputOTPContext = React.useContext(OTPInputContext);
+  const slot = inputOTPContext?.slots[index];
 
-    if (!slot) return null;
+  if (!slot) return null;
 
-    const { char, hasFakeCaret, isActive } = slot;
+  const { char, hasFakeCaret, isActive } = slot;
 
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "relative flex h-10 w-10 items-center justify-center border border-border text-sm font-medium transition-shadow",
-          "first:rounded-l-md first:border-l last:rounded-r-md",
-          "[&:not(:first-child)]:border-l-0",
-          isActive && "z-10 ring-2 ring-ring ring-offset-background",
-          className
-        )}
-        {...props}
-      >
-        {char}
-        {hasFakeCaret && (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <div className="h-4 w-px animate-pulse bg-foreground duration-1000" />
-          </div>
-        )}
-      </div>
-    );
-  }
-);
+  return (
+    <div
+      data-slot="input-otp-slot"
+      data-active={isActive ? "" : undefined}
+      className={cn(
+        "relative flex h-10 w-10 items-center justify-center border border-border text-sm font-medium",
+        "transition-[box-shadow,border-color] duration-150 ease-out motion-reduce:transition-none",
+        "first:rounded-l-md first:border-l last:rounded-r-md",
+        "[&:not(:first-child)]:border-l-0",
+        isActive && "z-10 ring-2 ring-ring ring-offset-background",
+        className
+      )}
+      {...props}
+    >
+      {char}
+      {hasFakeCaret && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="h-4 w-px animate-pulse bg-foreground duration-1000 motion-reduce:animate-none" />
+        </div>
+      )}
+    </div>
+  );
+}
 InputOTPSlot.displayName = "InputOTPSlot";
 
-// ---- INPUT OTP SEPARATOR ----------------------------------------------------
+// ---- SEPARATOR --------------------------------------------------------------
 
-const InputOTPSeparator = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<"div">
->(({ ...props }, ref) => (
-  <div ref={ref} role="separator" {...props}>
-    <MinusIcon className="h-4 w-4 text-muted-foreground" />
-  </div>
-));
+export type InputOTPSeparatorProps = React.ComponentPropsWithoutRef<"div">;
+
+/**
+ * Visual divider rendered between two `InputOTPGroup`s. Default content
+ * is a minus icon — override by passing children.
+ *
+ * @since 0.1.0
+ */
+function InputOTPSeparator({
+  children,
+  className,
+  ...props
+}: InputOTPSeparatorProps) {
+  return (
+    <div
+      role="separator"
+      aria-hidden="true"
+      data-slot="input-otp-separator"
+      className={cn("flex items-center justify-center", className)}
+      {...props}
+    >
+      {children ?? (
+        <MinusIcon className="h-4 w-4 text-muted-foreground" aria-hidden />
+      )}
+    </div>
+  );
+}
 InputOTPSeparator.displayName = "InputOTPSeparator";
 
 // ---- EXPORTS ----------------------------------------------------------------

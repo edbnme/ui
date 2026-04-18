@@ -1,5 +1,12 @@
 "use client";
 
+
+/**
+ * useMultibandVolume
+ * @registryDescription Hook that splits audio frequency data into configurable bands for equalizer visualization.
+ * @registryVariant audio
+ */
+
 import { useMemo } from "react";
 
 // ---- TYPES ------------------------------------------------------------------

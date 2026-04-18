@@ -8,6 +8,8 @@
  * when using the static variant.
  *
  * @packageDocumentation
+ * @registryDescription CSS-only icon components for static variants.
+ * @registryTitle Static Icons
  */
 
 "use client";

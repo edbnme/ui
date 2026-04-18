@@ -1,4 +1,6 @@
-﻿import type { HTMLAttributes } from "react";
+"use client";
+
+import type { HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
@@ -15,6 +17,7 @@ export type MessageProps = HTMLAttributes<HTMLDivElement> & {
  * so child components style themselves based on the sender — no React context needed.
  *
  * User messages align right; assistant messages align left via `flex-row-reverse`.
+ * @registryCategory chat
  */
 export function Message({ className, from, ...props }: MessageProps) {
   return (

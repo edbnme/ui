@@ -1,26 +1,43 @@
-﻿/**
+/**
  * Button — CSS-only button with CVA variants. No motion dependency.
  *
- * @example
- * <Button variant="default" size="md">Click me</Button>
- * <Button variant="outline" size="sm">Outline</Button>
- * <Button variant="ghost" size="icon"><PlusIcon /></Button>
+ * A zero-dependency button that composes `class-variance-authority` for
+ * variants (`default`, `destructive`, `outline`, `secondary`, `ghost`,
+ * `link`) and sizes (`sm`, `md`, `lg`, `icon`). Pass `asChild` to render
+ * the styles on any child (e.g. a `next/link` `<a>`) via the `Slot`
+ * primitive. An `IconButton` convenience wrapper is also exported with
+ * `size="icon"` and a rounded-full default.
  *
- * @see Built without Base UI primitive (custom implementation)
+ * Anatomy:
+ * ```tsx
+ * <Button variant="default" size="md">Save</Button>
+ * <Button variant="outline" size="sm">Cancel</Button>
+ * <Button asChild><Link href="/x">Go</Link></Button>
+ * <IconButton aria-label="Add"><PlusIcon /></IconButton>
+ * ```
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/button
+ * @registryDescription Static button component with CSS transitions only. No motion dependency required.
  */
+
 "use client";
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/slot";
 
-// ---- BUTTON VARIANTS --------------------------------------------------------
+// ---- VARIANTS ---------------------------------------------------------------
 
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium",
-    "transition-colors duration-150",
+    "transition-colors duration-150 motion-reduce:transition-none",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
     "disabled:pointer-events-none disabled:opacity-50",
     "select-none cursor-pointer",
@@ -57,42 +74,56 @@ const buttonVariants = cva(
 // ---- BUTTON -----------------------------------------------------------------
 
 export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  /** Render as a child element (e.g. a Link) */
+  /** Render the button styles onto the single child element. */
   asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        ref={ref}
-        data-slot="button"
-        className={cn(buttonVariants({ variant, size }), className)}
-        {...props}
-      />
-    );
-  }
-);
+/**
+ * Themed button with CVA variants. Pass `asChild` to style any child
+ * element (e.g. a link) without adding an extra DOM node.
+ *
+ * @since 0.1.0
+ */
+function Button({
+  className,
+  variant,
+  size,
+  asChild,
+  ...props
+}: ButtonProps) {
+  const Comp = asChild ? Slot : "button";
+  return (
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({ variant, size }), className)}
+      {...props}
+    />
+  );
+}
 Button.displayName = "Button";
 
-// ---- ICON BUTTON (convenience wrapper) --------------------------------------
+// ---- ICON BUTTON ------------------------------------------------------------
 
-export interface IconButtonProps extends ButtonProps {}
+export type IconButtonProps = ButtonProps;
 
-const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ className, size = "icon", ...props }, ref) => (
+/**
+ * Convenience wrapper around `Button` with `size="icon"` and a
+ * rounded-full default. Always pass an `aria-label`.
+ *
+ * @since 0.1.0
+ */
+function IconButton({ className, size = "icon", ...props }: IconButtonProps) {
+  return (
     <Button
-      ref={ref}
+      data-slot="icon-button"
       size={size}
       className={cn("rounded-full", className)}
       {...props}
     />
-  )
-);
+  );
+}
 IconButton.displayName = "IconButton";
 
 // ---- EXPORTS ----------------------------------------------------------------

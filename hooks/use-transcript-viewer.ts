@@ -1,80 +1,158 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+/**
+ * useTranscriptViewer
+ * @registryDescription Hook for transcript playback, word timing, scrubbing, and current-word tracking.
+ * @registryVariant audio
+ */
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type RefObject,
+} from "react";
 
-interface AlignmentCharacter {
+// ---- TYPES -----------------------------------------------------------------
+
+type AlignmentPayload = {
+  characters?: string[];
+  characterStartTimesSeconds?: number[];
+  characterEndTimesSeconds?: number[];
+  character_start_times_seconds?: number[];
+  character_end_times_seconds?: number[];
+};
+
+type AlignmentCharacter = {
   character: string;
-  start_time_ms: number;
-  end_time_ms: number;
+  startTimeMs: number;
+  endTimeMs: number;
+};
+
+/** Supports both the repo's nested alignment shape and the upstream top-level shape. */
+export interface CharacterAlignmentResponseModel extends AlignmentPayload {
+  alignment?: AlignmentPayload;
+  normalized_alignment?: AlignmentPayload;
+  normalizedAlignment?: AlignmentPayload;
 }
 
-/** Subset of the ElevenLabs character-alignment response shape. */
-export interface CharacterAlignmentResponseModel {
-  alignment: {
-    characters: string[];
-    character_start_times_seconds: number[];
-    character_end_times_seconds: number[];
-  };
-  normalized_alignment?: {
-    characters: string[];
-    character_start_times_seconds: number[];
-    character_end_times_seconds: number[];
-  };
-}
+export type ComposeSegmentsOptions = {
+  hideAudioTags?: boolean;
+};
 
-export interface TranscriptWord {
-  kind: "word";
+type BaseSegment = {
+  segmentIndex: number;
   text: string;
+};
+
+export type TranscriptWord = BaseSegment & {
+  kind: "word";
   wordIndex: number;
   startTime: number;
   endTime: number;
-}
+};
 
-interface GapSegment {
+export type TranscriptGap = BaseSegment & {
   kind: "gap";
-  startTime: number;
-  endTime: number;
-}
+};
 
-export type TranscriptSegment = TranscriptWord | GapSegment;
+export type TranscriptSegment = TranscriptWord | TranscriptGap;
 
-/** User-supplied function to parse custom alignment data into character timings. */
+export type ComposeSegmentsResult = {
+  segments: TranscriptSegment[];
+  words: TranscriptWord[];
+};
+
 export type SegmentComposer = (
-  data: CharacterAlignmentResponseModel
+  alignment: CharacterAlignmentResponseModel
+) => ComposeSegmentsResult;
+
+type CharacterComposer = (
+  alignment: CharacterAlignmentResponseModel
 ) => AlignmentCharacter[];
 
-// ---------------------------------------------------------------------------
-// composeSegments
-// ---------------------------------------------------------------------------
+// ---- HELPERS ---------------------------------------------------------------
 
-function defaultComposer(
-  data: CharacterAlignmentResponseModel
+function getAlignmentSource(
+  alignment: CharacterAlignmentResponseModel | undefined
+): AlignmentPayload | undefined {
+  return (
+    alignment?.normalizedAlignment ??
+    alignment?.normalized_alignment ??
+    alignment?.alignment ??
+    alignment
+  );
+}
+
+function toAlignmentCharacters(
+  alignment: CharacterAlignmentResponseModel,
+  composer?: CharacterComposer
 ): AlignmentCharacter[] {
-  const alignment = data.normalized_alignment ?? data.alignment;
-  const chars = alignment.characters;
-  const starts = alignment.character_start_times_seconds;
-  const ends = alignment.character_end_times_seconds;
+  if (composer) {
+    return composer(alignment);
+  }
 
-  return chars.map((char, i) => ({
-    character: char,
-    start_time_ms: starts[i] * 1000,
-    end_time_ms: ends[i] * 1000,
+  const source = getAlignmentSource(alignment);
+  const characters = source?.characters ?? [];
+  const starts =
+    source?.characterStartTimesSeconds ??
+    source?.character_start_times_seconds ??
+    [];
+  const ends =
+    source?.characterEndTimesSeconds ??
+    source?.character_end_times_seconds ??
+    [];
+
+  return characters.map((character, index) => ({
+    character,
+    startTimeMs: (starts[index] ?? 0) * 1000,
+    endTimeMs: (ends[index] ?? starts[index] ?? 0) * 1000,
   }));
 }
 
-export function composeSegments(
-  data: CharacterAlignmentResponseModel,
-  options?: {
-    hideAudioTags?: boolean;
-    composer?: SegmentComposer;
+function composeTextSegments(text: string): ComposeSegmentsResult {
+  const segments: TranscriptSegment[] = [];
+  const words: TranscriptWord[] = [];
+  const tokens = text.match(/\S+|\s+/g) ?? [];
+
+  let segmentIndex = 0;
+  let wordIndex = 0;
+
+  for (const token of tokens) {
+    if (/\s+/.test(token)) {
+      segments.push({
+        kind: "gap",
+        segmentIndex: segmentIndex++,
+        text: token,
+      });
+      continue;
+    }
+
+    const word: TranscriptWord = {
+      kind: "word",
+      segmentIndex: segmentIndex++,
+      wordIndex: wordIndex++,
+      text: token,
+      startTime: 0,
+      endTime: 0,
+    };
+
+    segments.push(word);
+    words.push(word);
   }
-): { segments: TranscriptSegment[]; words: TranscriptWord[] } {
-  const composer = options?.composer ?? defaultComposer;
-  const characters = composer(data);
+
+  return { segments, words };
+}
+
+// ---- SEGMENT COMPOSITION ---------------------------------------------------
+
+export function composeSegments(
+  alignment: CharacterAlignmentResponseModel,
+  options: ComposeSegmentsOptions & { composer?: CharacterComposer } = {}
+): ComposeSegmentsResult {
+  const characters = toAlignmentCharacters(alignment, options.composer);
 
   if (characters.length === 0) {
     return { segments: [], words: [] };
@@ -83,310 +161,463 @@ export function composeSegments(
   const segments: TranscriptSegment[] = [];
   const words: TranscriptWord[] = [];
 
-  let currentWord = "";
+  let wordBuffer = "";
+  let whitespaceBuffer = "";
   let wordStart = 0;
   let wordEnd = 0;
-  let wordStarted = false;
-  let inAudioTag = false;
+  let segmentIndex = 0;
   let wordIndex = 0;
+  let insideAudioTag = false;
+
+  const hideAudioTags = options.hideAudioTags ?? false;
+
+  const flushWhitespace = () => {
+    if (!whitespaceBuffer) {
+      return;
+    }
+
+    segments.push({
+      kind: "gap",
+      segmentIndex: segmentIndex++,
+      text: whitespaceBuffer,
+    });
+    whitespaceBuffer = "";
+  };
 
   const flushWord = () => {
-    if (!wordStarted || currentWord.length === 0) return;
-
-    const trimmed = currentWord.trim();
-    if (trimmed.length === 0) {
-      wordStarted = false;
-      currentWord = "";
+    if (!wordBuffer) {
       return;
     }
 
     const word: TranscriptWord = {
       kind: "word",
-      text: trimmed,
-      wordIndex,
+      segmentIndex: segmentIndex++,
+      wordIndex: wordIndex++,
+      text: wordBuffer,
       startTime: wordStart / 1000,
       endTime: wordEnd / 1000,
     };
+
     segments.push(word);
     words.push(word);
-    wordIndex++;
-    wordStarted = false;
-    currentWord = "";
+    wordBuffer = "";
   };
 
-  for (let i = 0; i < characters.length; i++) {
-    const char = characters[i];
+  for (const character of characters) {
+    if (hideAudioTags) {
+      if (character.character === "[") {
+        flushWord();
+        whitespaceBuffer = "";
+        insideAudioTag = true;
+        continue;
+      }
 
-    // Handle audio tags like [AudioTag]
-    if (options?.hideAudioTags && char.character === "[") {
-      flushWord();
-      inAudioTag = true;
-      continue;
-    }
-    if (inAudioTag) {
-      if (char.character === "]") inAudioTag = false;
-      continue;
-    }
-
-    if (
-      char.character === " " ||
-      char.character === "\n" ||
-      char.character === "\t"
-    ) {
-      flushWord();
-
-      // Add gap if there's a time gap
-      if (segments.length > 0 && i + 1 < characters.length) {
-        const nextNonSpace = characters
-          .slice(i + 1)
-          .find(
-            (c) =>
-              c.character !== " " &&
-              c.character !== "\n" &&
-              c.character !== "\t"
-          );
-        if (
-          nextNonSpace &&
-          nextNonSpace.start_time_ms - char.end_time_ms > 100
-        ) {
-          segments.push({
-            kind: "gap",
-            startTime: char.end_time_ms / 1000,
-            endTime: nextNonSpace.start_time_ms / 1000,
-          });
+      if (insideAudioTag) {
+        if (character.character === "]") {
+          insideAudioTag = false;
         }
+        continue;
       }
-    } else {
-      if (!wordStarted) {
-        wordStart = char.start_time_ms;
-        wordStarted = true;
-        currentWord = "";
-      }
-      currentWord += char.character;
-      wordEnd = char.end_time_ms;
     }
+
+    if (/\s/.test(character.character)) {
+      flushWord();
+      whitespaceBuffer += character.character;
+      continue;
+    }
+
+    if (whitespaceBuffer) {
+      flushWhitespace();
+    }
+
+    if (!wordBuffer) {
+      wordBuffer = character.character;
+      wordStart = character.startTimeMs;
+      wordEnd = character.endTimeMs;
+      continue;
+    }
+
+    wordBuffer += character.character;
+    wordEnd = character.endTimeMs;
   }
 
   flushWord();
+  flushWhitespace();
 
   return { segments, words };
 }
 
-// ---------------------------------------------------------------------------
-// useTranscriptViewer hook
-// ---------------------------------------------------------------------------
+// ---- HOOK ------------------------------------------------------------------
 
 export interface UseTranscriptViewerProps {
-  /** Character alignment data from ElevenLabs API. */
   alignment?: CharacterAlignmentResponseModel;
-  /** Raw text to display when no alignment is available. */
   text?: string;
-  /** Custom segment composer. */
-  composer?: SegmentComposer;
-  /** Hide [AudioTag] markers. Default: true */
+  segmentComposer?: SegmentComposer;
+  composer?: CharacterComposer;
   hideAudioTags?: boolean;
-  /** Called when playback time updates. */
+  onPlay?: () => void;
+  onPause?: () => void;
   onTimeUpdate?: (time: number) => void;
+  onEnded?: () => void;
+  onDurationChange?: (duration: number) => void;
 }
 
 export interface UseTranscriptViewerResult {
-  audioRef: React.RefObject<HTMLAudioElement | null>;
   segments: TranscriptSegment[];
   words: TranscriptWord[];
+  spokenSegments: TranscriptSegment[];
+  unspokenSegments: TranscriptSegment[];
+  currentWord: TranscriptWord | null;
+  currentSegmentIndex: number;
   currentWordIndex: number;
-  currentTime: number;
-  duration: number;
+  seekToTime: (time: number) => void;
+  seekToWord: (word: number | TranscriptWord) => void;
+  audioRef: RefObject<HTMLAudioElement | null>;
   isPlaying: boolean;
   isScrubbing: boolean;
+  duration: number;
+  currentTime: number;
   play: () => void;
   pause: () => void;
-  seekToTime: (time: number) => void;
-  seekToWord: (wordIndex: number) => void;
   startScrubbing: () => void;
   endScrubbing: (time?: number) => void;
 }
 
-export function useTranscriptViewer(
-  props: UseTranscriptViewerProps
-): UseTranscriptViewerResult {
-  const {
-    alignment,
-    text,
-    composer,
-    hideAudioTags = true,
-    onTimeUpdate,
-  } = props;
-
+export function useTranscriptViewer({
+  alignment,
+  text,
+  segmentComposer,
+  composer,
+  hideAudioTags = true,
+  onPlay,
+  onPause,
+  onTimeUpdate,
+  onEnded,
+  onDurationChange,
+}: UseTranscriptViewerProps): UseTranscriptViewerResult {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const rafRef = useRef<number | undefined>(undefined);
-  const handleTimeUpdateRef = useRef(onTimeUpdate);
-  handleTimeUpdateRef.current = onTimeUpdate;
+  const rafRef = useRef<number | null>(null);
+  const handleTimeUpdateRef = useRef<(time: number) => void>(() => {});
+  const onDurationChangeRef = useRef<(duration: number) => void>(() => {});
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isScrubbing, setIsScrubbing] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
-  // Parse segments & words
   const { segments, words } = useMemo(() => {
+    if (alignment && segmentComposer) {
+      return segmentComposer(alignment);
+    }
+
     if (alignment) {
       return composeSegments(alignment, { hideAudioTags, composer });
     }
 
-    // Fallback: plain text
     if (text) {
-      const textWords = text.split(/\s+/).filter(Boolean);
-      const wordSegments: TranscriptWord[] = textWords.map((w, i) => ({
-        kind: "word" as const,
-        text: w,
-        wordIndex: i,
-        startTime: 0,
-        endTime: 0,
-      }));
-      return {
-        segments: wordSegments as TranscriptSegment[],
-        words: wordSegments,
-      };
+      return composeTextSegments(text);
     }
 
     return { segments: [], words: [] };
-  }, [alignment, text, hideAudioTags, composer]);
+  }, [alignment, segmentComposer, hideAudioTags, composer, text]);
 
-  // Guess duration from alignment data if audio doesn't report it
   const guessedDuration = useMemo(() => {
-    if (words.length === 0) return 0;
-    const lastWord = words[words.length - 1];
-    return lastWord.endTime;
-  }, [words]);
+    const source = getAlignmentSource(alignment);
+    const ends =
+      source?.characterEndTimesSeconds ?? source?.character_end_times_seconds;
 
-  // Binary search for current word
+    if (Array.isArray(ends) && ends.length > 0) {
+      const last = ends[ends.length - 1];
+      return Number.isFinite(last) ? last : 0;
+    }
+
+    if (words.length > 0) {
+      const lastWord = words[words.length - 1];
+      return Number.isFinite(lastWord.endTime) ? lastWord.endTime : 0;
+    }
+
+    return 0;
+  }, [alignment, words]);
+
+  const [currentWordIndex, setCurrentWordIndex] = useState<number>(() =>
+    words.length > 0 ? 0 : -1
+  );
+
   const findWordIndex = useCallback(
-    (time: number): number => {
-      if (words.length === 0) return -1;
+    (time: number) => {
+      if (words.length === 0) {
+        return -1;
+      }
 
-      let lo = 0;
-      let hi = words.length - 1;
+      let low = 0;
+      let high = words.length - 1;
+      let answer = -1;
 
-      while (lo <= hi) {
-        const mid = Math.floor((lo + hi) / 2);
-        const word = words[mid];
+      while (low <= high) {
+        const middle = Math.floor((low + high) / 2);
+        const word = words[middle];
 
-        if (time >= word.startTime && time <= word.endTime) {
-          return mid;
+        if (time >= word.startTime && time < word.endTime) {
+          answer = middle;
+          break;
         }
+
         if (time < word.startTime) {
-          hi = mid - 1;
+          high = middle - 1;
         } else {
-          lo = mid + 1;
+          low = middle + 1;
         }
       }
 
-      // If not exactly in a word, find the closest previous word
-      if (lo > 0 && lo <= words.length) {
-        const prev = words[lo - 1];
-        // If we're close to the previous word's end, return it
-        if (time - prev.endTime < 0.15) return lo - 1;
-      }
-
-      return -1;
+      return answer;
     },
     [words]
   );
 
-  const currentWordIndex = useMemo(
-    () => findWordIndex(currentTime),
-    [findWordIndex, currentTime]
+  const handleWordTracking = useCallback(
+    (nextTime: number) => {
+      if (words.length === 0) {
+        setCurrentWordIndex(-1);
+        return;
+      }
+
+      const activeWord =
+        currentWordIndex >= 0 && currentWordIndex < words.length
+          ? words[currentWordIndex]
+          : undefined;
+
+      if (!activeWord) {
+        const found = findWordIndex(nextTime);
+        if (found !== -1) {
+          setCurrentWordIndex(found);
+        }
+        return;
+      }
+
+      let nextIndex = currentWordIndex;
+
+      if (
+        nextTime >= activeWord.endTime &&
+        currentWordIndex + 1 < words.length
+      ) {
+        while (
+          nextIndex + 1 < words.length &&
+          nextTime >= words[nextIndex + 1].startTime
+        ) {
+          nextIndex += 1;
+        }
+
+        if (nextTime < words[nextIndex].endTime) {
+          setCurrentWordIndex(nextIndex);
+          return;
+        }
+
+        setCurrentWordIndex(nextIndex);
+        return;
+      }
+
+      if (nextTime < activeWord.startTime) {
+        const found = findWordIndex(nextTime);
+        if (found !== -1) {
+          setCurrentWordIndex(found);
+        }
+        return;
+      }
+
+      const found = findWordIndex(nextTime);
+      if (found !== -1 && found !== currentWordIndex) {
+        setCurrentWordIndex(found);
+      }
+    },
+    [currentWordIndex, findWordIndex, words]
   );
 
-  // rAF loop for time tracking
-  const startRaf = useCallback(() => {
-    const tick = () => {
-      const audio = audioRef.current;
-      if (audio && !isScrubbing) {
-        const time = audio.currentTime;
-        setCurrentTime(time);
-        handleTimeUpdateRef.current?.(time);
-      }
-      rafRef.current = requestAnimationFrame(tick);
+  useEffect(() => {
+    handleTimeUpdateRef.current = (time) => {
+      handleWordTracking(time);
+      onTimeUpdate?.(time);
     };
-    rafRef.current = requestAnimationFrame(tick);
-  }, [isScrubbing]);
+  }, [handleWordTracking, onTimeUpdate]);
+
+  useEffect(() => {
+    onDurationChangeRef.current = onDurationChange ?? (() => {});
+  }, [onDurationChange]);
+
+  useEffect(() => {
+    setCurrentTime(0);
+    setDuration(guessedDuration);
+    setIsPlaying(false);
+    setIsScrubbing(false);
+    setCurrentWordIndex(words.length > 0 ? 0 : -1);
+  }, [alignment, text, guessedDuration, words.length]);
 
   const stopRaf = useCallback(() => {
-    if (rafRef.current !== undefined) {
+    if (rafRef.current !== null) {
       cancelAnimationFrame(rafRef.current);
-      rafRef.current = undefined;
+      rafRef.current = null;
     }
   }, []);
 
-  // Audio event listeners
+  const startRaf = useCallback(() => {
+    if (rafRef.current !== null) {
+      return;
+    }
+
+    const tick = () => {
+      const node = audioRef.current;
+      if (!node) {
+        rafRef.current = null;
+        return;
+      }
+
+      const nextTime = node.currentTime;
+      setCurrentTime(nextTime);
+      handleTimeUpdateRef.current(nextTime);
+
+      if (Number.isFinite(node.duration) && node.duration > 0) {
+        setDuration((previousDuration) => {
+          if (!previousDuration) {
+            onDurationChangeRef.current(node.duration);
+            return node.duration;
+          }
+          return previousDuration;
+        });
+      }
+
+      if (node.paused) {
+        rafRef.current = null;
+        return;
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+  }, []);
+
   useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio) {
+      return;
+    }
+
+    const syncPlayback = () => {
+      setIsPlaying(!audio.paused);
+    };
+
+    const syncTime = () => {
+      setCurrentTime(audio.currentTime);
+    };
+
+    const syncDuration = () => {
+      setDuration(Number.isFinite(audio.duration) ? audio.duration : 0);
+    };
 
     const handlePlay = () => {
-      setIsPlaying(true);
+      syncPlayback();
       startRaf();
+      onPlay?.();
     };
+
     const handlePause = () => {
-      setIsPlaying(false);
+      syncPlayback();
+      syncTime();
       stopRaf();
+      onPause?.();
     };
+
     const handleEnded = () => {
-      setIsPlaying(false);
+      syncPlayback();
+      syncTime();
       stopRaf();
+      onEnded?.();
     };
-    const handleDurationChange = () => {
-      setDuration(audio.duration || guessedDuration);
+
+    const handleTimeUpdateEvent = () => {
+      syncTime();
+      handleTimeUpdateRef.current(audio.currentTime);
     };
-    const handleLoadedMetadata = () => {
-      setDuration(audio.duration || guessedDuration);
+
+    const handleSeeked = () => {
+      syncTime();
+      handleTimeUpdateRef.current(audio.currentTime);
     };
+
+    const handleDuration = () => {
+      syncDuration();
+      onDurationChange?.(audio.duration);
+    };
+
+    syncPlayback();
+    syncTime();
+    syncDuration();
+
+    if (!audio.paused) {
+      startRaf();
+    } else {
+      stopRaf();
+    }
 
     audio.addEventListener("play", handlePlay);
     audio.addEventListener("pause", handlePause);
     audio.addEventListener("ended", handleEnded);
-    audio.addEventListener("durationchange", handleDurationChange);
-    audio.addEventListener("loadedmetadata", handleLoadedMetadata);
-
-    // Set initial duration
-    if (audio.duration) setDuration(audio.duration);
+    audio.addEventListener("timeupdate", handleTimeUpdateEvent);
+    audio.addEventListener("seeked", handleSeeked);
+    audio.addEventListener("durationchange", handleDuration);
+    audio.addEventListener("loadedmetadata", handleDuration);
 
     return () => {
+      stopRaf();
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
       audio.removeEventListener("ended", handleEnded);
-      audio.removeEventListener("durationchange", handleDurationChange);
-      audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      stopRaf();
+      audio.removeEventListener("timeupdate", handleTimeUpdateEvent);
+      audio.removeEventListener("seeked", handleSeeked);
+      audio.removeEventListener("durationchange", handleDuration);
+      audio.removeEventListener("loadedmetadata", handleDuration);
     };
-  }, [startRaf, stopRaf, guessedDuration]);
-
-  const play = useCallback(() => {
-    audioRef.current?.play()?.catch(() => {});
-  }, []);
-
-  const pause = useCallback(() => {
-    audioRef.current?.pause();
-  }, []);
+  }, [onDurationChange, onEnded, onPause, onPlay, startRaf, stopRaf]);
 
   const seekToTime = useCallback((time: number) => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.currentTime = time;
-      setCurrentTime(time);
-      handleTimeUpdateRef.current?.(time);
+    const node = audioRef.current;
+    if (!node) {
+      return;
     }
+
+    setCurrentTime(time);
+    node.currentTime = time;
+    handleTimeUpdateRef.current(time);
   }, []);
 
   const seekToWord = useCallback(
-    (wordIndex: number) => {
-      if (wordIndex >= 0 && wordIndex < words.length) {
-        seekToTime(words[wordIndex].startTime);
+    (word: number | TranscriptWord) => {
+      const target = typeof word === "number" ? words[word] : word;
+      if (!target) {
+        return;
       }
+
+      seekToTime(target.startTime);
     },
-    [words, seekToTime]
+    [seekToTime, words]
   );
+
+  const play = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) {
+      return;
+    }
+
+    if (audio.paused) {
+      void audio.play();
+    }
+  }, []);
+
+  const pause = useCallback(() => {
+    const audio = audioRef.current;
+    if (audio && !audio.paused) {
+      audio.pause();
+    }
+  }, []);
 
   const startScrubbing = useCallback(() => {
     setIsScrubbing(true);
@@ -395,30 +626,68 @@ export function useTranscriptViewer(
 
   const endScrubbing = useCallback(
     (time?: number) => {
-      setIsScrubbing(false);
-      if (time !== undefined) {
+      if (typeof time === "number") {
         seekToTime(time);
       }
-      if (isPlaying) {
+
+      setIsScrubbing(false);
+
+      const node = audioRef.current;
+      if (node && !node.paused) {
         startRaf();
       }
     },
-    [isPlaying, seekToTime, startRaf]
+    [seekToTime, startRaf]
   );
 
+  const currentWord =
+    currentWordIndex >= 0 && currentWordIndex < words.length
+      ? words[currentWordIndex]
+      : null;
+
+  const currentSegmentIndex = currentWord?.segmentIndex ?? -1;
+
+  const spokenSegments = useMemo(() => {
+    if (segments.length === 0 || currentSegmentIndex <= 0) {
+      return [];
+    }
+
+    return segments.slice(0, currentSegmentIndex);
+  }, [segments, currentSegmentIndex]);
+
+  const unspokenSegments = useMemo(() => {
+    if (segments.length === 0) {
+      return [];
+    }
+
+    if (currentSegmentIndex === -1) {
+      return segments;
+    }
+
+    if (currentSegmentIndex + 1 >= segments.length) {
+      return [];
+    }
+
+    return segments.slice(currentSegmentIndex + 1);
+  }, [segments, currentSegmentIndex]);
+
   return {
-    audioRef,
     segments,
     words,
+    spokenSegments,
+    unspokenSegments,
+    currentWord,
+    currentSegmentIndex,
     currentWordIndex,
-    currentTime,
-    duration: duration || guessedDuration,
-    isPlaying,
-    isScrubbing,
-    play,
-    pause,
     seekToTime,
     seekToWord,
+    audioRef,
+    isPlaying,
+    isScrubbing,
+    duration: duration || guessedDuration,
+    currentTime,
+    play,
+    pause,
     startScrubbing,
     endScrubbing,
   };

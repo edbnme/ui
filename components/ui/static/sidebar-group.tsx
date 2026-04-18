@@ -1,3 +1,19 @@
+/**
+ * Sidebar Group — Named section inside a sidebar (`Group`, `GroupLabel`,
+ * `GroupAction`, `GroupContent`).
+ *
+ * Each group renders a subtree of menu items with optional collapsed-
+ * icon styling. Part of the `Sidebar` composition — see `sidebar.tsx`
+ * for the full anatomy.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryPartOf sidebar
+ */
+
 "use client";
 
 import * as React from "react";

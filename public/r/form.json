@@ -3,7 +3,7 @@
   "name": "form",
   "type": "registry:ui",
   "title": "Form",
-  "description": "Static form built on Base UI Form.",
+  "description": "Accessible form wrapper with Base UI validation integration.",
   "dependencies": [
     "@base-ui/react"
   ],
@@ -14,7 +14,7 @@
   "files": [
     {
       "path": "components/ui/static/form.tsx",
-      "content": "﻿/**\n * Form — Form container with consistent spacing.\n * Built on @base-ui/react Form primitive.\n *\n * @example\n * <FormRoot onSubmit={handleSubmit}>\n *   <FieldRoot name=\"email\">\n *     <FieldLabel>Email</FieldLabel>\n *     <FieldControl render={<Input />} />\n *   </FieldRoot>\n * </FormRoot>\n *\n * @see https://base-ui.com/react/components/form\n */\n\"use client\";\n\nimport * as React from \"react\";\nimport { Form } from \"@base-ui/react/form\";\nimport { cn } from \"@/lib/utils\";\n\n// ---- FORM ROOT --------------------------------------------------------------\n\nconst FormRoot = React.forwardRef<\n  HTMLFormElement,\n  React.ComponentPropsWithRef<typeof Form>\n>(({ className, ...props }, ref) => (\n  <Form ref={ref} className={cn(\"space-y-6\", className)} {...props} />\n));\nFormRoot.displayName = \"FormRoot\";\n\n// ---- EXPORTS ----------------------------------------------------------------\n\nexport { FormRoot };\n",
+      "content": "/**\r\n * Form — Form container with consistent spacing.\r\n * Built on `@base-ui/react` Form primitive.\r\n *\r\n * A thin wrapper around Base UI's accessible `Form` primitive that\r\n * supplies consistent vertical spacing between fields. Compose with\r\n * `FieldRoot` / `FieldLabel` / `FieldControl` / `FieldError` from\r\n * `./field` to build accessible forms with built-in error wiring.\r\n *\r\n * Anatomy:\r\n * ```tsx\r\n * <FormRoot onSubmit={handleSubmit}>\r\n *   <FieldRoot name=\"email\">\r\n *     <FieldLabel>Email</FieldLabel>\r\n *     <FieldControl render={<Input />} />\r\n *     <FieldError />\r\n *   </FieldRoot>\r\n *   <Button type=\"submit\">Sign up</Button>\r\n * </FormRoot>\r\n * ```\r\n *\r\n * @package    @edbn/ui\r\n * @version    0.3.0\r\n * @since      0.1.0\r\n * @brand      edbn/ui — https://ui.edbn.me\r\n * @docs       https://ui.edbn.me/docs/components/form\r\n * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/form\n * @registryDescription Accessible form wrapper with Base UI validation integration.\n * @registryIsNew\n */\r\n\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Form } from \"@base-ui/react/form\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// ---- FORM ROOT --------------------------------------------------------------\r\n\r\nexport type FormRootProps = React.ComponentPropsWithoutRef<typeof Form>;\r\n\r\n/**\r\n * Accessible form container with consistent vertical spacing.\r\n *\r\n * @since 0.1.0\r\n */\r\nfunction FormRoot({ className, ...props }: FormRootProps) {\r\n  return (\r\n    <Form\r\n      data-slot=\"form-root\"\r\n      className={cn(\"space-y-6\", className)}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\nFormRoot.displayName = \"FormRoot\";\r\n\r\n// ---- EXPORTS ----------------------------------------------------------------\r\n\r\nexport { FormRoot };\r\n",
       "type": "registry:ui"
     }
   ]

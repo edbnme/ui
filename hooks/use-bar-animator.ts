@@ -1,5 +1,12 @@
 "use client";
 
+
+/**
+ * useBarAnimator
+ * @registryDescription Hook that provides smooth bar animation for audio visualizers with decay and randomization.
+ * @registryVariant audio
+ */
+
 import { useEffect, useRef, useState } from "react";
 
 // ---- TYPES ------------------------------------------------------------------

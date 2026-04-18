@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * useMergedRefs
+ * @registryDescription Hook to merge multiple refs into a single callback ref.
+ */
+
 import {
   useCallback,
   type Ref,

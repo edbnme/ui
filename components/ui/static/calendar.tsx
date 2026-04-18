@@ -1,23 +1,46 @@
-﻿/**
+/**
  * Calendar — Date picker with single, multiple, and range selection.
- * Built on react-day-picker library.
+ * Built on the `react-day-picker` library.
  *
- * @example
+ * Styling is applied via the `classNames` map so every day, weekday,
+ * nav button, and range-end cell can be targeted with Tailwind utility
+ * classes without ejecting. Forwards all `DayPicker` props — pass
+ * `mode="single" | "multiple" | "range"` to choose selection semantics.
+ *
+ * Anatomy:
+ * ```tsx
+ * const [date, setDate] = React.useState<Date | undefined>(new Date());
+ *
  * <Calendar mode="single" selected={date} onSelect={setDate} />
+ * ```
  *
- * @see https://daypicker.dev
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/calendar
+ * @upstream   react-day-picker — https://daypicker.dev
+ * @registryDescription Date picker with single, multiple, and range selection via react-day-picker.
+ * @registryIsNew
  */
+
 "use client";
 
 import * as React from "react";
 import { DayPicker } from "react-day-picker";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+
 import { cn } from "@/lib/utils";
 
 // ---- CALENDAR ---------------------------------------------------------------
 
-type CalendarProps = React.ComponentProps<typeof DayPicker>;
+export type CalendarProps = React.ComponentPropsWithoutRef<typeof DayPicker>;
 
+/**
+ * Calendar — accessible date picker.
+ *
+ * @since 0.1.0
+ */
 function Calendar({
   className,
   classNames,
@@ -26,19 +49,25 @@ function Calendar({
 }: CalendarProps) {
   return (
     <DayPicker
+      data-slot="calendar"
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
         months: "flex flex-col sm:flex-row gap-2",
         month: "flex flex-col gap-4",
-        month_caption: "flex justify-center pt-1 relative items-center w-full",
+        month_caption:
+          "flex justify-center pt-1 relative items-center w-full",
         caption_label: "text-sm font-medium",
         nav: "flex items-center gap-1",
         button_previous: cn(
-          "absolute left-1 top-0 inline-flex h-7 w-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50 hover:opacity-100"
+          "absolute left-1 top-0 inline-flex h-7 w-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50",
+          "transition-opacity duration-150 ease-out motion-reduce:transition-none",
+          "hover:opacity-100"
         ),
         button_next: cn(
-          "absolute right-1 top-0 inline-flex h-7 w-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50 hover:opacity-100"
+          "absolute right-1 top-0 inline-flex h-7 w-7 items-center justify-center rounded-md border border-input bg-transparent p-0 opacity-50",
+          "transition-opacity duration-150 ease-out motion-reduce:transition-none",
+          "hover:opacity-100"
         ),
         month_grid: "w-full border-collapse space-x-1",
         weekdays: "flex",
@@ -52,7 +81,8 @@ function Calendar({
             : "[&:has([aria-selected])]:rounded-md"
         ),
         day_button: cn(
-          "inline-flex h-8 w-8 items-center justify-center rounded-md p-0 font-normal transition-colors",
+          "inline-flex h-8 w-8 items-center justify-center rounded-md p-0 font-normal",
+          "transition-colors duration-150 ease-out motion-reduce:transition-none",
           "hover:bg-accent hover:text-accent-foreground",
           "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
           "aria-selected:opacity-100"
@@ -73,18 +103,17 @@ function Calendar({
       components={{
         Chevron: ({ orientation }) =>
           orientation === "left" ? (
-            <CaretLeft className="h-4 w-4" />
+            <CaretLeft className="h-4 w-4" aria-hidden />
           ) : (
-            <CaretRight className="h-4 w-4" />
+            <CaretRight className="h-4 w-4" aria-hidden />
           ),
       }}
       {...props}
     />
   );
 }
-
 Calendar.displayName = "Calendar";
 
 // ---- EXPORTS ----------------------------------------------------------------
 
-export { Calendar, type CalendarProps };
+export { Calendar };

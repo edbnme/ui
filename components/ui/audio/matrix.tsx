@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * Matrix
+ * @registryCategory display
+ */
+
 import * as React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 

@@ -21,6 +21,8 @@ export {
   AlertDialogAction,
   AlertDialogHeader,
   AlertDialogFooter,
+  AlertDialogHandle,
+  createAlertDialogHandle,
 } from "./alert-dialog";
 
 // Checkbox
@@ -42,8 +44,11 @@ export {
   DialogTitle,
   DialogDescription,
   DialogClose,
+  DialogCloseIconButton,
   DialogHeader,
   DialogFooter,
+  DialogHandle,
+  createDialogHandle,
 } from "./dialog";
 
 // Menu
@@ -51,9 +56,12 @@ export {
   MenuRoot,
   MenuTrigger,
   MenuPortal,
+  MenuBackdrop,
   MenuPositioner,
   MenuPopup,
+  MenuArrow,
   MenuItem,
+  MenuLinkItem,
   MenuCheckboxItem,
   MenuRadioGroup,
   MenuRadioItem,
@@ -63,6 +71,8 @@ export {
   MenuSubmenuRoot,
   MenuSubmenuTrigger,
   MenuShortcut,
+  MenuHandle,
+  createMenuHandle,
 } from "./menu";
 
 // Progress
@@ -79,14 +89,21 @@ export {
   SelectRoot,
   SelectTrigger,
   SelectValue,
+  SelectIcon,
   SelectPortal,
+  SelectBackdrop,
   SelectPositioner,
   SelectPopup,
+  SelectArrow,
   SelectList,
   SelectItem,
+  SelectItemText,
+  SelectItemIndicator,
   SelectGroup,
   SelectGroupLabel,
   SelectSeparator,
+  SelectScrollUpArrow,
+  SelectScrollDownArrow,
 } from "./select";
 
 // Switch
@@ -104,8 +121,9 @@ export {
   TooltipPositioner,
   TooltipPopup,
   TooltipArrow,
-  Tooltip,
-  TooltipContent,
+  TooltipViewport,
+  TooltipHandle,
+  createTooltipHandle,
 } from "./tooltip";
 
 // Collapsible
@@ -141,6 +159,10 @@ export {
   PopoverTitle,
   PopoverDescription,
   PopoverClose,
+  PopoverCloseIconButton,
+  PopoverViewport,
+  PopoverHandle,
+  createPopoverHandle,
 } from "./popover";
 
 // Input
@@ -220,9 +242,13 @@ export {
   PreviewCardRoot,
   PreviewCardTrigger,
   PreviewCardPortal,
+  PreviewCardBackdrop,
   PreviewCardPositioner,
   PreviewCardPopup,
   PreviewCardArrow,
+  PreviewCardViewport,
+  PreviewCardHandle,
+  createPreviewCardHandle,
 } from "./preview-card";
 
 // Meter
@@ -239,9 +265,12 @@ export {
   ContextMenuRoot,
   ContextMenuTrigger,
   ContextMenuPortal,
+  ContextMenuBackdrop,
   ContextMenuPositioner,
   ContextMenuPopup,
+  ContextMenuArrow,
   ContextMenuItem,
+  ContextMenuLinkItem,
   ContextMenuCheckboxItem,
   ContextMenuRadioGroup,
   ContextMenuRadioItem,
@@ -261,13 +290,25 @@ export {
   ComboboxTrigger,
   ComboboxClear,
   ComboboxPortal,
+  ComboboxBackdrop,
   ComboboxPositioner,
   ComboboxPopup,
   ComboboxList,
   ComboboxItem,
+  ComboboxRow,
+  ComboboxCollection,
   ComboboxGroup,
   ComboboxGroupLabel,
   ComboboxEmpty,
+  ComboboxArrow,
+  ComboboxSeparator,
+  ComboboxIcon,
+  ComboboxValue,
+  ComboboxItemIndicator,
+  ComboboxStatus,
+  ComboboxChips,
+  ComboboxChip,
+  ComboboxChipRemove,
 } from "./combobox";
 
 // Fieldset
@@ -280,6 +321,7 @@ export {
   ToolbarSeparator,
   ToolbarLink,
   ToolbarGroup,
+  ToolbarInput,
   toolbarButtonVariants,
 } from "./toolbar";
 
@@ -343,6 +385,7 @@ export {
 
 // Drawer
 export {
+  DrawerProvider,
   DrawerRoot,
   DrawerTrigger,
   DrawerPortal,
@@ -354,6 +397,10 @@ export {
   DrawerTitle,
   DrawerDescription,
   DrawerClose,
+  DrawerCloseIconButton,
+  DrawerIndent,
+  DrawerIndentBackground,
+  createDrawerHandle,
 } from "./drawer";
 
 // Hover Card
@@ -361,9 +408,13 @@ export {
   HoverCardRoot,
   HoverCardTrigger,
   HoverCardPortal,
+  HoverCardBackdrop,
   HoverCardPositioner,
   HoverCardPopup,
   HoverCardArrow,
+  HoverCardViewport,
+  HoverCardHandle,
+  createHoverCardHandle,
 } from "./hover-card";
 
 // Input OTP
@@ -387,9 +438,12 @@ export {
   MenubarMenu,
   MenubarTrigger,
   MenubarPortal,
+  MenubarBackdrop,
   MenubarPositioner,
   MenubarPopup,
+  MenubarArrow,
   MenubarItem,
+  MenubarLinkItem,
   MenubarCheckboxItem,
   MenubarRadioGroup,
   MenubarRadioItem,
@@ -430,14 +484,24 @@ export {
   AutocompleteRoot,
   AutocompleteInput,
   AutocompleteTrigger,
+  AutocompleteClear,
   AutocompletePortal,
+  AutocompleteBackdrop,
   AutocompletePositioner,
   AutocompletePopup,
   AutocompleteList,
   AutocompleteItem,
+  AutocompleteRow,
+  AutocompleteCollection,
   AutocompleteGroup,
   AutocompleteGroupLabel,
   AutocompleteEmpty,
+  AutocompleteArrow,
+  AutocompleteSeparator,
+  AutocompleteIcon,
+  AutocompleteValue,
+  AutocompleteItemIndicator,
+  AutocompleteStatus,
 } from "./autocomplete";
 
 // Calendar

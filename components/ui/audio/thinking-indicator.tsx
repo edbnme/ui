@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * Thinking Indicator
+ * @registryCategory chat
+ */
+
 import * as React from "react";
 import { motion } from "motion/react";
 import { cva, type VariantProps } from "class-variance-authority";

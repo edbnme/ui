@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * useStableId
+ * @registryDescription SSR-safe hook for generating stable unique IDs for accessibility attributes.
+ */
+
 import { useId, useMemo } from "react";
 
 // Global counter for SSR-safe IDs when useId is not available

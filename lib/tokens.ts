@@ -5,6 +5,8 @@
  * Always reference tokens instead of hardcoding values.
  *
  * @packageDocumentation
+ * @registryDescription Centralized design tokens for colors, spacing, typography, shadows, and more.
+ * @registryTitle Design Tokens
  */
 
 // ---- COLOR SYSTEM -----------------------------------------------------------

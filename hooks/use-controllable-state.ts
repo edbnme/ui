@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * useControllableState
+ * @registryDescription Hook for handling controlled/uncontrolled state pattern in components.
+ */
+
 import {
   useState,
   useCallback,

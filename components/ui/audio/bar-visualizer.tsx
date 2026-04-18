@@ -54,6 +54,7 @@ function createAudioAnalyser(
  * @param mediaStream - The MediaStream to analyze
  * @param options - Audio analyser options
  * @returns The current volume level (0-1)
+ * @registryCategory audio
  */
 export function useAudioVolume(
   mediaStream?: MediaStream | null,

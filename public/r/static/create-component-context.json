@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "create-component-context",
+  "type": "registry:lib",
+  "title": "Create Component Context",
+  "description": "Factory for creating strict React contexts with typed hooks and display-name friendly debugging.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "variant": "static",
+  "files": [
+    {
+      "path": "lib/create-component-context.ts",
+      "content": "/**\r\n * create-component-context — typed React context factory.\r\n *\r\n * @registryDescription Factory for creating strict React contexts with typed hooks and display-name friendly debugging.\r\n */\r\n\r\nimport * as React from \"react\";\r\n\r\n/**\r\n * Creates a typed React context with a hook that throws if used outside its provider.\r\n * Shared utility for components that follow the Provider → useContext pattern.\r\n *\r\n * @example\r\n * const [CarouselProvider, useCarousel] = createComponentContext<CarouselContextProps>(\"Carousel\");\r\n */\r\nexport function createComponentContext<T>(name: string) {\r\n  const Ctx = React.createContext<T | null>(null);\r\n  Ctx.displayName = name;\r\n\r\n  const useCtx = () => {\r\n    const ctx = React.useContext(Ctx);\r\n    if (!ctx) {\r\n      throw new Error(`use${name} must be used within <${name}>`);\r\n    }\r\n    return ctx;\r\n  };\r\n\r\n  return [Ctx.Provider, useCtx] as const;\r\n}\r\n",
+      "type": "registry:lib"
+    }
+  ]
+}

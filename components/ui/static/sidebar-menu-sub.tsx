@@ -1,3 +1,16 @@
+/**
+ * Sidebar Menu Sub — Nested sub-menu primitives (`MenuSub`,
+ * `MenuSubItem`, `MenuSubButton`). Renders a rail-style indented list
+ * that hides automatically when the sidebar collapses to icon mode.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryPartOf sidebar
+ */
+
 "use client";
 
 import * as React from "react";

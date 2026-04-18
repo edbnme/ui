@@ -1,5 +1,12 @@
 "use client";
 
+
+/**
+ * useShikiHighlight
+ * @registryDescription Client-side Shiki highlighting hook with lazy loading and JSX rendering.
+ * @registryVariant audio
+ */
+
 import { useEffect, useState, type CSSProperties, type JSX } from "react";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";

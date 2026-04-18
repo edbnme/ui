@@ -1,8 +1,14 @@
 "use client";
 
+/**
+ * useAudioDevices
+ * @registryDescription Hook for enumerating audio input devices with permission handling.
+ * @registryVariant audio
+ */
+
 import { useCallback, useEffect, useState } from "react";
 
-// ---- TYPES ------------------------------------------------------------------
+// ---- TYPES -----------------------------------------------------------------
 
 interface AudioDevice {
   /** Unique device identifier */
@@ -33,6 +39,8 @@ interface UseAudioDevicesReturn {
   hasPermission: boolean;
   /** Whether we're requesting permission */
   isRequesting: boolean;
+  /** Whether the initial device enumeration has completed */
+  hasEnumerated: boolean;
   /** Error message */
   error: string | null;
   /** Request microphone permission and enumerate devices */
@@ -43,7 +51,23 @@ interface UseAudioDevicesReturn {
   stopStream: () => void;
 }
 
-// ---- HOOK -------------------------------------------------------------------
+// ---- HELPERS ---------------------------------------------------------------
+
+function formatDeviceLabel(device: MediaDeviceInfo, kind: MediaDeviceKind) {
+  const fallbackPrefix = kind === "audioinput" ? "Microphone" : "Speaker";
+  const fallback = `${fallbackPrefix} ${device.deviceId.slice(0, 8)}`;
+  return (device.label || fallback).replace(/\s*\([^)]*\)/g, "").trim();
+}
+
+function stopTracks(stream: MediaStream | null) {
+  if (!stream) {
+    return;
+  }
+
+  stream.getTracks().forEach((track) => track.stop());
+}
+
+// ---- HOOK ------------------------------------------------------------------
 
 export function useAudioDevices(
   options: UseAudioDevicesOptions = {}
@@ -55,37 +79,48 @@ export function useAudioDevices(
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [hasPermission, setHasPermission] = useState(false);
   const [isRequesting, setIsRequesting] = useState(false);
+  const [hasEnumerated, setHasEnumerated] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Enumerate devices (only returns labels after permission is granted)
   const enumerateDevices = useCallback(async () => {
     if (
       typeof navigator === "undefined" ||
       !navigator.mediaDevices?.enumerateDevices
     ) {
       setError("MediaDevices API not available");
+      setHasEnumerated(true);
       return;
     }
 
     try {
       const allDevices = await navigator.mediaDevices.enumerateDevices();
       const filtered = allDevices
-        .filter((d) => d.kind === kind)
-        .map((d) => ({
-          deviceId: d.deviceId,
-          label:
-            d.label ||
-            `${kind === "audioinput" ? "Microphone" : "Speaker"} ${d.deviceId.slice(0, 5)}`,
-          kind: d.kind,
-          groupId: d.groupId,
+        .filter((device) => device.kind === kind)
+        .map((device) => ({
+          deviceId: device.deviceId,
+          label: formatDeviceLabel(device, kind),
+          kind: device.kind,
+          groupId: device.groupId,
         }));
+
       setDevices(filtered);
+      setActiveDeviceId((currentDeviceId) => {
+        if (
+          currentDeviceId &&
+          filtered.some((device) => device.deviceId === currentDeviceId)
+        ) {
+          return currentDeviceId;
+        }
+
+        return filtered[0]?.deviceId ?? null;
+      });
+      setHasEnumerated(true);
     } catch {
       setError("Failed to enumerate devices");
+      setHasEnumerated(true);
     }
   }, [kind]);
 
-  // Request permission
   const requestPermission = useCallback(async () => {
     if (
       typeof navigator === "undefined" ||
@@ -99,22 +134,23 @@ export function useAudioDevices(
     setError(null);
 
     try {
-      const constraints: MediaStreamConstraints =
-        kind === "audioinput" ? { audio: true } : { audio: true };
+      stopTracks(stream);
 
+      const constraints: MediaStreamConstraints = {
+        audio: kind === "audioinput" ? true : true,
+      };
       const mediaStream =
         await navigator.mediaDevices.getUserMedia(constraints);
+
       setStream(mediaStream);
       setHasPermission(true);
 
-      // Get the active device ID from the track
       const tracks = mediaStream.getAudioTracks();
       if (tracks.length > 0) {
         const settings = tracks[0].getSettings();
         setActiveDeviceId(settings.deviceId || null);
       }
 
-      // Now enumerate with labels available
       await enumerateDevices();
     } catch (err) {
       if (err instanceof DOMException) {
@@ -136,10 +172,10 @@ export function useAudioDevices(
       }
     } finally {
       setIsRequesting(false);
+      setHasEnumerated(true);
     }
-  }, [kind, enumerateDevices]);
+  }, [enumerateDevices, kind, stream]);
 
-  // Select a specific device
   const selectDevice = useCallback(
     async (deviceId: string) => {
       if (
@@ -149,54 +185,50 @@ export function useAudioDevices(
         return;
       }
 
-      // Stop existing stream
-      if (stream) {
-        stream.getTracks().forEach((t) => t.stop());
-      }
-
+      stopTracks(stream);
       setError(null);
       setIsRequesting(true);
 
       try {
-        const constraints: MediaStreamConstraints = {
+        const mediaStream = await navigator.mediaDevices.getUserMedia({
           audio: { deviceId: { exact: deviceId } },
-        };
-        const mediaStream =
-          await navigator.mediaDevices.getUserMedia(constraints);
+        });
         setStream(mediaStream);
         setActiveDeviceId(deviceId);
+        setHasPermission(true);
+        await enumerateDevices();
       } catch {
         setError("Failed to switch device");
       } finally {
         setIsRequesting(false);
+        setHasEnumerated(true);
       }
     },
-    [stream]
+    [enumerateDevices, stream]
   );
 
-  // Stop stream
   const stopStream = useCallback(() => {
-    if (stream) {
-      stream.getTracks().forEach((t) => t.stop());
-      setStream(null);
-      setActiveDeviceId(null);
-    }
+    stopTracks(stream);
+    setStream(null);
+    setActiveDeviceId(null);
   }, [stream]);
 
-  // Request on mount if option is set
   useEffect(() => {
     if (requestOnMount) {
-      requestPermission();
+      void requestPermission();
+      return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  // Listen for device changes (hot-plug)
+    void enumerateDevices();
+  }, [enumerateDevices, requestOnMount, requestPermission]);
+
   useEffect(() => {
-    if (typeof navigator === "undefined" || !navigator.mediaDevices) return;
+    if (typeof navigator === "undefined" || !navigator.mediaDevices) {
+      return;
+    }
 
     const handler = () => {
-      enumerateDevices();
+      void enumerateDevices();
     };
 
     navigator.mediaDevices.addEventListener("devicechange", handler);
@@ -205,15 +237,11 @@ export function useAudioDevices(
     };
   }, [enumerateDevices]);
 
-  // Cleanup stream on unmount
   useEffect(() => {
     return () => {
-      if (stream) {
-        stream.getTracks().forEach((t) => t.stop());
-      }
+      stopTracks(stream);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [stream]);
 
   return {
     devices,
@@ -221,6 +249,7 @@ export function useAudioDevices(
     stream,
     hasPermission,
     isRequesting,
+    hasEnumerated,
     error,
     requestPermission,
     selectDevice,

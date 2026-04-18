@@ -5,6 +5,7 @@
  * No motion/react dependency - uses pure CSS transitions and animations.
  *
  * @packageDocumentation
+ * @registryDescription CSS-only transition utilities for static components.
  */
 
 // ---- CSS EASING PRESETS -----------------------------------------------------

@@ -1,9 +1,15 @@
-﻿/**
- * Sidebar (Static) — Responsive sidebar with collapsible sections,
- * menu items, groups, and mobile sheet support.
- * Built on static sheet, tooltip, and button components — no motion dependency.
+﻿﻿/**
+ * Sidebar — Responsive sidebar with collapsible sections, menu items,
+ * groups, and mobile sheet support.
  *
- * @example
+ * Built on top of the static sheet + tooltip primitives; no motion
+ * dependency. Persists open/closed state in a cookie so SSR hydration
+ * matches the user's previous session. Exposes a keyboard shortcut
+ * (default: `Ctrl/Cmd + B`) that toggles the sidebar from anywhere in
+ * the app.
+ *
+ * Anatomy:
+ * ```tsx
  * <SidebarProvider>
  *   <Sidebar>
  *     <SidebarHeader />
@@ -25,7 +31,17 @@
  *     <main>Content</main>
  *   </SidebarInset>
  * </SidebarProvider>
+ * ```
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryDescription Responsive sidebar with collapsible sections, menu items, groups, and mobile support.
+ * @registryIsNew
  */
+
 "use client";
 
 import * as React from "react";

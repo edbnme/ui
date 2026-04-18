@@ -1,4 +1,11 @@
-﻿"use client";
+"use client";
+
+
+/**
+ * useAudioVolume
+ * @registryDescription Hook that tracks real-time volume level from an audio source using Web Audio API AnalyserNode.
+ * @registryVariant audio
+ */
 
 import { useCallback, useEffect, useRef, useState } from "react";
 

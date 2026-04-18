@@ -1,3 +1,11 @@
+/**
+ * Motion Library
+ * @registrySlug motion-lib
+ * @registryDescription Spring presets and animation utilities for motion/react components.
+ * @registryVariant audio
+ * @registryTitle Motion Library
+ */
+
 import type { Transition, Variants } from "motion/react";
 
 // ---- SPRING PRESETS ---------------------------------------------------------

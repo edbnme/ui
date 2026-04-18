@@ -1,5 +1,10 @@
-﻿"use client";
+"use client";
 
+
+/**
+ * Speech Input
+ * @registryCategory display
+ */
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 

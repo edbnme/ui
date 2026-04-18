@@ -1,3 +1,8 @@
+/**
+ * useMobile
+ * @registryDescription Hook to detect mobile viewport based on media query.
+ */
+
 import * as React from "react";
 
 /** Breakpoint in pixels for mobile detection */

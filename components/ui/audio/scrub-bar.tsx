@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * Scrub Bar
+ * @registryCategory audio
+ */
+
 import * as React from "react";
 import {
   createContext,

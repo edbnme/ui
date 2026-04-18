@@ -1,23 +1,62 @@
-﻿/**
- * Pagination — Page navigation with previous, next, and page number links.
+/**
+ * Pagination — Page navigation with previous, next, and numbered pages.
  *
- * @example
+ * A pure-CSS component (it's just `<nav aria-label="pagination">` + a
+ * styled `<ul>` of links — no library primitive is required). Inline
+ * icons for zero-dependency portability.
+ *
+ * Anatomy:
+ * ```tsx
  * <Pagination>
  *   <PaginationContent>
- *     <PaginationItem><PaginationPrevious href="/page/1" /></PaginationItem>
- *     <PaginationItem><PaginationLink href="/page/2">2</PaginationLink></PaginationItem>
- *     <PaginationItem><PaginationNext href="/page/3" /></PaginationItem>
+ *     <PaginationItem>
+ *       <PaginationPrevious href="/page/1" />
+ *     </PaginationItem>
+ *     <PaginationItem>
+ *       <PaginationLink href="/page/2">2</PaginationLink>
+ *     </PaginationItem>
+ *     <PaginationItem>
+ *       <PaginationLink href="/page/3" isActive>3</PaginationLink>
+ *     </PaginationItem>
+ *     <PaginationItem>
+ *       <PaginationEllipsis />
+ *     </PaginationItem>
+ *     <PaginationItem>
+ *       <PaginationNext href="/page/4" />
+ *     </PaginationItem>
  *   </PaginationContent>
  * </Pagination>
+ * ```
+ *
+ * Accessibility: the root is `<nav aria-label="pagination">`. The active
+ * page's link carries `aria-current="page"`. Prev / Next carry their own
+ * `aria-label`. Ellipsis uses `aria-hidden` plus a visually-hidden
+ * "More pages" label.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/pagination
+ * @registryDescription Page navigation with previous/next and numbered pages.
  */
+
 "use client";
 
 import * as React from "react";
+
 import { cn } from "@/lib/utils";
 
-// ---- Pagination -------------------------------------------------------------
+// ---- ROOT -------------------------------------------------------------------
 
-function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
+export type PaginationProps = React.ComponentPropsWithoutRef<"nav">;
+
+/**
+ * The pagination landmark.
+ *
+ * @since 0.1.0
+ */
+function Pagination({ className, ...props }: PaginationProps) {
   return (
     <nav
       role="navigation"
@@ -30,37 +69,63 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
 }
 Pagination.displayName = "Pagination";
 
-const PaginationContent = React.forwardRef<
-  HTMLUListElement,
-  React.ComponentPropsWithoutRef<"ul">
->(({ className, ...props }, ref) => (
-  <ul
-    ref={ref}
-    data-slot="pagination-content"
-    className={cn("flex flex-row items-center gap-1", className)}
-    {...props}
-  />
-));
+// ---- CONTENT ----------------------------------------------------------------
+
+export type PaginationContentProps = React.ComponentPropsWithoutRef<"ul">;
+
+/**
+ * Row of pagination items.
+ *
+ * @since 0.1.0
+ */
+function PaginationContent({ className, ...props }: PaginationContentProps) {
+  return (
+    <ul
+      data-slot="pagination-content"
+      className={cn("flex flex-row items-center gap-1", className)}
+      {...props}
+    />
+  );
+}
 PaginationContent.displayName = "PaginationContent";
 
-const PaginationItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    data-slot="pagination-item"
-    className={cn("", className)}
-    {...props}
-  />
-));
+// ---- ITEM -------------------------------------------------------------------
+
+export type PaginationItemProps = React.ComponentPropsWithoutRef<"li">;
+
+/**
+ * A single item wrapper. Wraps `PaginationLink`, `PaginationPrevious`,
+ * `PaginationNext`, or `PaginationEllipsis`.
+ *
+ * @since 0.1.0
+ */
+function PaginationItem({ className, ...props }: PaginationItemProps) {
+  return (
+    <li
+      data-slot="pagination-item"
+      className={cn(className)}
+      {...props}
+    />
+  );
+}
 PaginationItem.displayName = "PaginationItem";
 
-interface PaginationLinkProps extends React.ComponentPropsWithoutRef<"a"> {
+// ---- LINK -------------------------------------------------------------------
+
+export interface PaginationLinkProps
+  extends React.ComponentPropsWithoutRef<"a"> {
+  /** Marks this link as the current page — applies `aria-current` + active styles. */
   isActive?: boolean;
+  /** Visual size preset. */
   size?: "default" | "sm" | "lg" | "icon";
 }
 
+/**
+ * A numbered page link. Pair with a framework link (wrap with `<Link>`
+ * using the `legacyBehavior` pattern, or roll your own wrapper).
+ *
+ * @since 0.1.0
+ */
 function PaginationLink({
   className,
   isActive,
@@ -73,7 +138,8 @@ function PaginationLink({
       data-slot="pagination-link"
       data-active={isActive ? "" : undefined}
       className={cn(
-        "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors",
+        "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium",
+        "transition-colors duration-150 ease-out motion-reduce:transition-none",
         "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
         "disabled:pointer-events-none disabled:opacity-50",
         {
@@ -93,10 +159,21 @@ function PaginationLink({
 }
 PaginationLink.displayName = "PaginationLink";
 
+// ---- PREVIOUS ---------------------------------------------------------------
+
+export type PaginationPreviousProps = React.ComponentPropsWithoutRef<
+  typeof PaginationLink
+>;
+
+/**
+ * "Go to previous page" link.
+ *
+ * @since 0.1.0
+ */
 function PaginationPrevious({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: PaginationPreviousProps) {
   return (
     <PaginationLink
       aria-label="Go to previous page"
@@ -112,10 +189,18 @@ function PaginationPrevious({
 }
 PaginationPrevious.displayName = "PaginationPrevious";
 
-function PaginationNext({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+// ---- NEXT -------------------------------------------------------------------
+
+export type PaginationNextProps = React.ComponentPropsWithoutRef<
+  typeof PaginationLink
+>;
+
+/**
+ * "Go to next page" link.
+ *
+ * @since 0.1.0
+ */
+function PaginationNext({ className, ...props }: PaginationNextProps) {
   return (
     <PaginationLink
       aria-label="Go to next page"
@@ -131,10 +216,20 @@ function PaginationNext({
 }
 PaginationNext.displayName = "PaginationNext";
 
+// ---- ELLIPSIS ---------------------------------------------------------------
+
+export type PaginationEllipsisProps = React.ComponentPropsWithoutRef<"span">;
+
+/**
+ * Collapsed pages indicator — usually rendered between the first and
+ * current-adjacent pages.
+ *
+ * @since 0.1.0
+ */
 function PaginationEllipsis({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: PaginationEllipsisProps) {
   return (
     <span
       aria-hidden
@@ -149,8 +244,9 @@ function PaginationEllipsis({
 }
 PaginationEllipsis.displayName = "PaginationEllipsis";
 
-// Inline icons
-function ChevronLeftIcon(props: React.ComponentProps<"svg">) {
+// ---- INLINE ICONS -----------------------------------------------------------
+
+function ChevronLeftIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +265,7 @@ function ChevronLeftIcon(props: React.ComponentProps<"svg">) {
   );
 }
 
-function ChevronRightIcon(props: React.ComponentProps<"svg">) {
+function ChevronRightIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +284,7 @@ function ChevronRightIcon(props: React.ComponentProps<"svg">) {
   );
 }
 
-function EllipsisIcon(props: React.ComponentProps<"svg">) {
+function EllipsisIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +305,7 @@ function EllipsisIcon(props: React.ComponentProps<"svg">) {
   );
 }
 
-// ---- Exports ----------------------------------------------------------------
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   Pagination,

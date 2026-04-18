@@ -204,5 +204,25 @@
       "source": "estimate"
     },
     "timestamp": 1776091335605
+  },
+  "motion": {
+    "data": {
+      "name": "motion",
+      "size": 150000,
+      "gzip": 45000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1776460463068
+  },
+  "next": {
+    "data": {
+      "name": "next",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1776460467610
   }
 }

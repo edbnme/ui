@@ -1,3 +1,19 @@
+/**
+ * Sidebar Rail — Peripheral chrome for the sidebar: the drag-to-toggle
+ * rail itself plus `SidebarInput`, `SidebarHeader`, `SidebarFooter`,
+ * `SidebarSeparator`, and `SidebarContent`.
+ *
+ * These pieces all sit on the edge of (or wrap) the main menu area, so
+ * they're collected here to keep the main `sidebar.tsx` lean.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryPartOf sidebar
+ */
+
 "use client";
 
 import * as React from "react";

@@ -3,10 +3,9 @@
   "name": "audio-response",
   "type": "registry:ui",
   "title": "Response",
-  "description": "Streaming markdown response renderer using streamdown with syntax highlighting.",
+  "description": "Response component.",
   "dependencies": [
-    "streamdown",
-    "@streamdown/code"
+    "streamdown"
   ],
   "registryDependencies": [
     "utils"
@@ -15,7 +14,7 @@
   "files": [
     {
       "path": "components/ui/audio/response.tsx",
-      "content": "﻿\"use client\";\r\n\r\nimport { memo, type ComponentProps } from \"react\";\r\nimport { Streamdown } from \"streamdown\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// ---- TYPES ------------------------------------------------------------------\n\r\ntype ResponseProps = ComponentProps<typeof Streamdown>;\r\n\r\n// ---- COMPONENT --------------------------------------------------------------\n\r\n/**\r\n * Memoized wrapper around Streamdown for rendering streaming markdown.\r\n * Passes through all Streamdown props — see Streamdown docs for full API.\r\n *\r\n * Only re-renders when `children` (the markdown content) changes,\r\n * preventing unnecessary work during streaming.\r\n */\r\nconst Response = memo(\r\n  ({ className, ...props }: ResponseProps) => (\r\n    <Streamdown\r\n      data-slot=\"response\"\r\n      className={cn(\r\n        \"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  ),\r\n  (prevProps, nextProps) => prevProps.children === nextProps.children\r\n);\r\n\r\nResponse.displayName = \"Response\";\r\n\r\nexport { Response };\r\nexport type { ResponseProps };\r\n",
+      "content": "\"use client\";\r\n\r\nimport { memo, type ComponentProps } from \"react\";\r\nimport { Streamdown } from \"streamdown\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// ---- TYPES ------------------------------------------------------------------\r\n\r\ntype ResponseProps = ComponentProps<typeof Streamdown>;\r\n\r\n// ---- COMPONENT --------------------------------------------------------------\r\n\r\n/**\r\n * Memoized wrapper around Streamdown for rendering streaming markdown.\r\n * Passes through all Streamdown props — see Streamdown docs for full API.\r\n *\r\n * Only re-renders when `children` (the markdown content) changes,\r\n * preventing unnecessary work during streaming.\r\n * @registryCategory chat\r\n */\r\nconst Response = memo(\r\n  ({ className, ...props }: ResponseProps) => (\r\n    <Streamdown\r\n      data-slot=\"response\"\r\n      className={cn(\r\n        \"size-full [&>*:first-child]:mt-0 [&>*:last-child]:mb-0\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  ),\r\n  (prevProps, nextProps) => prevProps.children === nextProps.children\r\n);\r\n\r\nResponse.displayName = \"Response\";\r\n\r\nexport { Response };\r\nexport type { ResponseProps };\r\n",
       "type": "registry:ui"
     }
   ]

@@ -1,5 +1,10 @@
 "use client";
 
+/**
+ * Live Waveform
+ * @registryCategory audio
+ */
+
 import { useEffect, useRef, type HTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
@@ -84,6 +89,8 @@ export const LiveWaveform = ({
   const animationRef = useRef<number>(0);
   const lastUpdateRef = useRef<number>(0);
   const processingAnimationRef = useRef<number | null>(null);
+  const fadeAnimationRef = useRef<number | null>(null);
+  const lastActiveDataRef = useRef<number[]>([]);
   const processingBarsRef = useRef<number[]>([]);
   const needsRedrawRef = useRef(true);
   const cachedGradientRef = useRef<{
@@ -93,21 +100,25 @@ export const LiveWaveform = ({
 
   const heightStyle = typeof height === "number" ? `${height}px` : height;
 
+  const teardownAudioCapture = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+      onStreamEnd?.();
+    }
+
+    if (audioContextRef.current && audioContextRef.current.state !== "closed") {
+      void audioContextRef.current.close();
+    }
+
+    audioContextRef.current = null;
+    analyserRef.current = null;
+  };
+
   // Set up microphone capture
   useEffect(() => {
     if (!active) {
-      // Cleanup when deactivated
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach((t) => t.stop());
-        streamRef.current = null;
-        onStreamEnd?.();
-      }
-      if (audioContextRef.current) {
-        audioContextRef.current.close();
-        audioContextRef.current = null;
-      }
-      analyserRef.current = null;
-      historyRef.current = [];
+      teardownAudioCapture();
       return;
     }
 
@@ -116,7 +127,12 @@ export const LiveWaveform = ({
     const setup = async () => {
       try {
         const constraints: MediaStreamConstraints = {
-          audio: deviceId ? { deviceId: { exact: deviceId } } : true,
+          audio: {
+            ...(deviceId ? { deviceId: { exact: deviceId } } : {}),
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+          },
         };
 
         const stream = await navigator.mediaDevices.getUserMedia(constraints);
@@ -149,16 +165,7 @@ export const LiveWaveform = ({
 
     return () => {
       cancelled = true;
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach((t) => t.stop());
-        streamRef.current = null;
-        onStreamEnd?.();
-      }
-      if (audioContextRef.current) {
-        audioContextRef.current.close();
-        audioContextRef.current = null;
-      }
-      analyserRef.current = null;
+      teardownAudioCapture();
     };
   }, [
     active,
@@ -173,6 +180,10 @@ export const LiveWaveform = ({
   // Processing animation
   useEffect(() => {
     if (!processing) {
+      if (processingBarsRef.current.length > 0 && mode === "static") {
+        historyRef.current = [...processingBarsRef.current];
+      }
+
       if (processingAnimationRef.current) {
         cancelAnimationFrame(processingAnimationRef.current);
         processingAnimationRef.current = null;
@@ -182,24 +193,83 @@ export const LiveWaveform = ({
       return;
     }
 
+    if (active) {
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const step = barWidth + barGap;
-    const barCount = Math.floor(rect.width / step);
-    const halfCount = Math.floor(barCount / 2);
+
+    let time = 0;
+    let transitionProgress = 0;
 
     const animateProcessing = () => {
-      const time = Date.now() / 1000;
-      const newBars: number[] = [];
+      time += 0.03;
+      transitionProgress = Math.min(1, transitionProgress + 0.02);
 
-      for (let i = 0; i < barCount; i++) {
-        const distFromCenter = Math.abs(i - halfCount) / halfCount;
-        const wave = Math.sin(time * 4 + i * 0.3) * 0.3 * (1 - distFromCenter);
-        newBars.push(Math.max(0.05, 0.15 + wave));
+      const rect = containerRef.current?.getBoundingClientRect();
+      const barCount = Math.floor((rect?.width || 200) / (barWidth + barGap));
+      const processingData: number[] = [];
+
+      if (mode === "static") {
+        const halfCount = Math.floor(barCount / 2);
+
+        for (let i = 0; i < barCount; i++) {
+          const normalizedPosition = (i - halfCount) / halfCount;
+          const centerWeight = 1 - Math.abs(normalizedPosition) * 0.4;
+
+          const wave1 = Math.sin(time * 1.5 + normalizedPosition * 3) * 0.25;
+          const wave2 = Math.sin(time * 0.8 - normalizedPosition * 2) * 0.2;
+          const wave3 = Math.cos(time * 2 + normalizedPosition) * 0.15;
+          const processingValue = (0.2 + wave1 + wave2 + wave3) * centerWeight;
+
+          let finalValue = processingValue;
+
+          if (lastActiveDataRef.current.length > 0 && transitionProgress < 1) {
+            const lastDataIndex = Math.min(
+              i,
+              lastActiveDataRef.current.length - 1
+            );
+            const lastValue = lastActiveDataRef.current[lastDataIndex] || 0;
+
+            finalValue =
+              lastValue * (1 - transitionProgress) +
+              processingValue * transitionProgress;
+          }
+
+          processingData.push(Math.max(0.05, Math.min(1, finalValue)));
+        }
+
+        processingBarsRef.current = processingData;
+      } else {
+        for (let i = 0; i < barCount; i++) {
+          const normalizedPosition = (i - barCount / 2) / (barCount / 2);
+          const centerWeight = 1 - Math.abs(normalizedPosition) * 0.4;
+
+          const wave1 = Math.sin(time * 1.5 + i * 0.15) * 0.25;
+          const wave2 = Math.sin(time * 0.8 - i * 0.1) * 0.2;
+          const wave3 = Math.cos(time * 2 + i * 0.05) * 0.15;
+          const processingValue = (0.2 + wave1 + wave2 + wave3) * centerWeight;
+
+          let finalValue = processingValue;
+
+          if (lastActiveDataRef.current.length > 0 && transitionProgress < 1) {
+            const lastDataIndex = Math.floor(
+              (i / Math.max(barCount, 1)) * lastActiveDataRef.current.length
+            );
+            const lastValue = lastActiveDataRef.current[lastDataIndex] || 0;
+
+            finalValue =
+              lastValue * (1 - transitionProgress) +
+              processingValue * transitionProgress;
+          }
+
+          processingData.push(Math.max(0.05, Math.min(1, finalValue)));
+        }
+
+        historyRef.current = processingData;
       }
 
-      processingBarsRef.current = newBars;
       needsRedrawRef.current = true;
       processingAnimationRef.current = requestAnimationFrame(animateProcessing);
     };
@@ -211,7 +281,46 @@ export const LiveWaveform = ({
         cancelAnimationFrame(processingAnimationRef.current);
       }
     };
-  }, [processing, barWidth, barGap]);
+  }, [processing, active, barWidth, barGap, mode]);
+
+  useEffect(() => {
+    if (fadeAnimationRef.current) {
+      cancelAnimationFrame(fadeAnimationRef.current);
+      fadeAnimationRef.current = null;
+    }
+
+    if (active || processing || historyRef.current.length === 0) {
+      return;
+    }
+
+    let fadeProgress = 0;
+
+    const fadeToIdle = () => {
+      fadeProgress += 0.03;
+
+      if (fadeProgress < 1) {
+        historyRef.current = historyRef.current.map(
+          (value) => value * (1 - fadeProgress)
+        );
+        needsRedrawRef.current = true;
+        fadeAnimationRef.current = requestAnimationFrame(fadeToIdle);
+        return;
+      }
+
+      historyRef.current = [];
+      needsRedrawRef.current = true;
+      fadeAnimationRef.current = null;
+    };
+
+    fadeAnimationRef.current = requestAnimationFrame(fadeToIdle);
+
+    return () => {
+      if (fadeAnimationRef.current) {
+        cancelAnimationFrame(fadeAnimationRef.current);
+        fadeAnimationRef.current = null;
+      }
+    };
+  }, [active, processing, mode]);
 
   // Canvas rendering loop
   useEffect(() => {
@@ -289,6 +398,7 @@ export const LiveWaveform = ({
             }
 
             historyRef.current = newBars;
+            lastActiveDataRef.current = newBars;
           } else {
             // Scrolling mode: push average volume to history
             let sum = 0;
@@ -301,6 +411,8 @@ export const LiveWaveform = ({
             if (historyRef.current.length > historySize) {
               historyRef.current.shift();
             }
+
+            lastActiveDataRef.current = [...historyRef.current];
           }
           needsRedrawRef.current = true;
         }
@@ -428,11 +540,26 @@ export const LiveWaveform = ({
     <div
       ref={containerRef}
       data-slot="live-waveform"
-      className={cn("relative", className)}
+      className={cn("relative h-full w-full", className)}
+      aria-label={
+        active
+          ? "Live audio waveform"
+          : processing
+            ? "Processing audio"
+            : "Audio waveform idle"
+      }
+      role="img"
       style={{ height: heightStyle }}
       {...props}
     >
-      <canvas ref={canvasRef} className="block h-full w-full" />
+      {!active && !processing && (
+        <div className="border-muted-foreground/20 absolute top-1/2 right-0 left-0 -translate-y-1/2 border-t-2 border-dotted" />
+      )}
+      <canvas
+        ref={canvasRef}
+        className="block h-full w-full"
+        aria-hidden="true"
+      />
     </div>
   );
 };

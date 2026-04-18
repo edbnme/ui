@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * Shimmering Text Audio
+ * @registrySlug audio-shimmering-text
+ * @registryCategory display
+ */
+
 import { useMemo, useRef } from "react";
 import { motion, useInView, type UseInViewOptions } from "motion/react";
 
