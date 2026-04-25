@@ -2,7 +2,7 @@
  * Tests for ShimmeringText component (oss/components/ui/animated/shimmering-text.tsx)
  *
  * Animated text component that creates per-character color shimmer effect.
- * Uses motion/react for animation — in JSDOM, motion components render as
+ * Uses motion/react for animation  in JSDOM, motion components render as
  * regular DOM elements.
  *
  * @see oss/components/ui/animated/shimmering-text.tsx
@@ -12,9 +12,7 @@ import { describe, it, expect } from "vitest";
 import { ShimmeringText } from "@/components/ui/animated/shimmering-text";
 import { render } from "@/test/utils/test-utils";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 describe("ShimmeringText", () => {
   describe("Exports", () => {
@@ -23,9 +21,7 @@ describe("ShimmeringText", () => {
     });
   });
 
-  // ===========================================================================
-  // RENDERING
-  // ===========================================================================
+  // ---- RENDERING ------------------------------------------------------------
 
   describe("Rendering", () => {
     it("should render the text content", () => {
@@ -77,9 +73,7 @@ describe("ShimmeringText", () => {
     });
   });
 
-  // ===========================================================================
-  // STYLING
-  // ===========================================================================
+  // ---- STYLING --------------------------------------------------------------
 
   describe("Styling", () => {
     it("should apply default classes", () => {
@@ -97,9 +91,7 @@ describe("ShimmeringText", () => {
     });
   });
 
-  // ===========================================================================
-  // PROPS
-  // ===========================================================================
+  // ---- PROPS ----------------------------------------------------------------
 
   describe("Props", () => {
     it("should accept duration prop without crashing", () => {
@@ -136,9 +128,7 @@ describe("ShimmeringText", () => {
     });
   });
 
-  // ===========================================================================
-  // DISPLAY NAME
-  // ===========================================================================
+  // ---- DISPLAY NAME ---------------------------------------------------------
 
   describe("DisplayName", () => {
     it("should have correct displayName", () => {

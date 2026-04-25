@@ -8,9 +8,7 @@ import { cn } from "@/lib/utils";
 
 import { useAlertDialog } from "./alert-dialog-context";
 
-// =============================================================================
-// ALERT DIALOG ACTION BUTTON
-// =============================================================================
+// ---- ALERT DIALOG ACTION BUTTON ---------------------------------------------
 
 /**
  * AlertDialogAction props
@@ -91,9 +89,7 @@ export function AlertDialogAction({
 
 AlertDialogAction.displayName = "AlertDialogAction";
 
-// =============================================================================
-// ALERT DIALOG CANCEL BUTTON
-// =============================================================================
+// ---- ALERT DIALOG CANCEL BUTTON ---------------------------------------------
 
 /**
  * AlertDialogCancel props
@@ -162,9 +158,7 @@ export function AlertDialogCancel({
 
 AlertDialogCancel.displayName = "AlertDialogCancel";
 
-// =============================================================================
-// ALERT DIALOG CLOSE BUTTON (X ICON)
-// =============================================================================
+// ---- ALERT DIALOG CLOSE BUTTON (X ICON) -------------------------------------
 
 /**
  * AlertDialogClose props

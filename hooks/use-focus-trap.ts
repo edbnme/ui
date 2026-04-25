@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * useFocusTrap
+ * @registryDescription Hook to trap focus within a container element for accessibility in modals, dialogs, and sheets.
+ */
+
 import { RefObject, useEffect, useRef, useCallback } from "react";
 
 /**

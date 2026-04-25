@@ -37,9 +37,7 @@ import {
 } from "@/components/ui/animated/popover";
 import { render, screen, waitFor, pressEscape } from "@/test/utils/test-utils";
 
-// =============================================================================
-// HELPER FUNCTIONS
-// =============================================================================
+// ---- HELPER FUNCTIONS -------------------------------------------------------
 
 /**
  * Helper to render a complete Popover with common subcomponents
@@ -80,9 +78,7 @@ function renderPopover(
   );
 }
 
-// =============================================================================
-// RENDERING TESTS
-// =============================================================================
+// ---- RENDERING TESTS --------------------------------------------------------
 
 describe("Popover", () => {
   describe("Rendering", () => {
@@ -135,9 +131,7 @@ describe("Popover", () => {
     });
   });
 
-  // ===========================================================================
-  // INTERACTION TESTS
-  // ===========================================================================
+  // ---- INTERACTION TESTS ----------------------------------------------------
 
   describe("Interactions", () => {
     it("should open when trigger is clicked", async () => {
@@ -216,9 +210,7 @@ describe("Popover", () => {
     });
   });
 
-  // ===========================================================================
-  // KEYBOARD NAVIGATION TESTS
-  // ===========================================================================
+  // ---- KEYBOARD NAVIGATION TESTS --------------------------------------------
 
   describe("Keyboard Navigation", () => {
     it("should close when Escape is pressed", async () => {
@@ -275,9 +267,7 @@ describe("Popover", () => {
     });
   });
 
-  // ===========================================================================
-  // ACCESSIBILITY TESTS
-  // ===========================================================================
+  // ---- ACCESSIBILITY TESTS --------------------------------------------------
 
   describe("Accessibility", () => {
     it("should have aria-expanded on trigger when closed", async () => {
@@ -329,9 +319,7 @@ describe("Popover", () => {
     });
   });
 
-  // ===========================================================================
-  // CONTROLLED STATE TESTS
-  // ===========================================================================
+  // ---- CONTROLLED STATE TESTS -----------------------------------------------
 
   describe("Controlled State", () => {
     it("should work with controlled open state", async () => {
@@ -444,9 +432,7 @@ describe("Popover", () => {
     });
   });
 
-  // ===========================================================================
-  // EDGE CASE TESTS
-  // ===========================================================================
+  // ---- EDGE CASE TESTS ------------------------------------------------------
 
   describe("Edge Cases", () => {
     it("should handle rapid open/close", async () => {
@@ -632,9 +618,7 @@ describe("Popover", () => {
     });
   });
 
-  // ===========================================================================
-  // SUBCOMPONENT TESTS FOR FULL COVERAGE
-  // ===========================================================================
+  // ---- SUBCOMPONENT TESTS FOR FULL COVERAGE ---------------------------------
 
   describe("Subcomponents", () => {
     it("should render PopoverLabel component", async () => {

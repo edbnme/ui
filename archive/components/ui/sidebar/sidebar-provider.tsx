@@ -14,9 +14,7 @@ import {
   SIDEBAR_KEYBOARD_SHORTCUT,
 } from "./sidebar-context";
 
-// =============================================================================
-// SIDEBAR PROVIDER
-// =============================================================================
+// ---- SIDEBAR PROVIDER -------------------------------------------------------
 
 function SidebarProvider({
   defaultOpen = true,

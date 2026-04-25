@@ -1,12 +1,10 @@
-/**
+﻿/**
  * PullDownContext — Shared context, types, and hooks for the PullDown component tree.
  * @module pull-down/pull-down-context
  */
 "use client";
 
-// =============================================================================
-// IMPORTS
-// =============================================================================
+// ---- IMPORTS ----------------------------------------------------------------
 
 import * as React from "react";
 import {
@@ -24,9 +22,7 @@ import {
   type MutableRefObject,
 } from "react";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 /** Direction the menu expands from trigger */
 export type PullDownDirection = "top" | "bottom" | "left" | "right";
@@ -214,9 +210,7 @@ export interface PullDownSubMenuContextValue {
   triggerRef: MutableRefObject<HTMLDivElement | null>;
 }
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 export const PullDownContext = createContext<PullDownContextValue | null>(null);
 
@@ -247,9 +241,7 @@ export function useSubMenuContext(): PullDownSubMenuContextValue {
   return context;
 }
 
-// =============================================================================
-// HOOKS
-// =============================================================================
+// ---- HOOKS ------------------------------------------------------------------
 
 /**
  * Hook for controlled/uncontrolled state pattern

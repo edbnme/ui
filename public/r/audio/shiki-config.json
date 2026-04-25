@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shiki-config",
+  "type": "registry:lib",
+  "title": "Shiki Config",
+  "description": "Shared Shiki theme and pre-style configuration for code highlighting.",
+  "dependencies": [
+    "shiki"
+  ],
+  "registryDependencies": [],
+  "variant": "audio",
+  "files": [
+    {
+      "path": "lib/shiki-config.ts",
+      "content": "/**\n * Shiki Config\n * @registryDescription Shared Shiki theme and pre-style configuration for code highlighting.\n * @registryVariant audio\n */\n\nimport type { CSSProperties, ReactNode } from \"react\";\r\nimport type { BundledLanguage, BundledTheme } from \"shiki\";\r\n\r\nexport const SHIKI_THEMES = {\r\n  light: \"github-light\" as BundledTheme,\r\n  dark: \"github-dark-dimmed\" as BundledTheme,\r\n};\r\n\r\nexport const SHIKI_OPTIONS = {\r\n  themes: SHIKI_THEMES,\r\n  defaultColor: false as const,\r\n};\r\n\r\nexport function shikiOptionsForLang(lang: string) {\r\n  return {\r\n    lang: lang as BundledLanguage,\r\n    ...SHIKI_OPTIONS,\r\n  };\r\n}\r\n\r\nexport const PRE_STYLES = {\r\n  base: {\r\n    margin: 0,\r\n    background: \"transparent\",\r\n    fontSize: \"inherit\",\r\n    lineHeight: \"inherit\",\r\n    whiteSpace: \"pre\",\r\n    wordBreak: \"normal\",\r\n    overflowWrap: \"normal\",\r\n    maxWidth: \"100%\",\r\n  } satisfies CSSProperties,\r\n\r\n  codeBlock: {\r\n    padding: \"0.75rem\",\r\n  } satisfies CSSProperties,\r\n\r\n  server: {\r\n    padding: 0,\r\n    overflow: \"visible\",\r\n    tabSize: 2,\r\n  } satisfies CSSProperties,\r\n\r\n  mapPreview: {\r\n    padding: \"1rem\",\r\n    fontSize: \"0.8125rem\",\r\n    lineHeight: \"1.5\",\r\n  } satisfies CSSProperties,\r\n} as const;\r\n\r\nexport function preStyle(\r\n  variant: keyof typeof PRE_STYLES,\r\n  existingStyle?: CSSProperties\r\n): CSSProperties {\r\n  if (variant === \"base\") {\r\n    return { ...PRE_STYLES.base, ...existingStyle };\r\n  }\r\n\r\n  return { ...PRE_STYLES.base, ...PRE_STYLES[variant], ...existingStyle };\r\n}\r\n\r\nexport type PreComponentProps = {\r\n  style?: CSSProperties;\r\n  children?: ReactNode;\r\n  className?: string;\r\n  [key: string]: unknown;\r\n};\r\n",
+      "type": "registry:lib"
+    }
+  ]
+}

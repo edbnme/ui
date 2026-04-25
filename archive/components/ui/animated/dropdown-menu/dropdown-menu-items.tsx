@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DropdownMenuItem / CheckboxItem / RadioItem — Interactive menu items with
  * keyboard selection, check/radio indicators, and ripple effects.
  * @module dropdown-menu/dropdown-menu-items
@@ -18,9 +18,7 @@ import {
   indicatorTransition,
 } from "./dropdown-menu-animations";
 
-// =============================================================================
-// DROPDOWN MENU ITEM
-// =============================================================================
+// ---- DROPDOWN MENU ITEM -----------------------------------------------------
 
 /**
  * DropdownMenuItem props
@@ -130,9 +128,7 @@ const DropdownMenuItem = forwardRef<HTMLDivElement, DropdownMenuItemProps>(
 
 DropdownMenuItem.displayName = "DropdownMenuItem";
 
-// =============================================================================
-// DROPDOWN MENU CHECKBOX ITEM
-// =============================================================================
+// ---- DROPDOWN MENU CHECKBOX ITEM --------------------------------------------
 
 /**
  * DropdownMenuCheckboxItem props
@@ -236,9 +232,7 @@ const DropdownMenuCheckboxItem = forwardRef<
 
 DropdownMenuCheckboxItem.displayName = "DropdownMenuCheckboxItem";
 
-// =============================================================================
-// DROPDOWN MENU RADIO GROUP
-// =============================================================================
+// ---- DROPDOWN MENU RADIO GROUP ----------------------------------------------
 
 /**
  * DropdownMenuRadioGroup props
@@ -278,9 +272,7 @@ function DropdownMenuRadioGroup({
 
 DropdownMenuRadioGroup.displayName = "DropdownMenuRadioGroup";
 
-// =============================================================================
-// DROPDOWN MENU RADIO ITEM
-// =============================================================================
+// ---- DROPDOWN MENU RADIO ITEM -----------------------------------------------
 
 /**
  * DropdownMenuRadioItem props
@@ -379,9 +371,7 @@ const DropdownMenuRadioItem = forwardRef<
 
 DropdownMenuRadioItem.displayName = "DropdownMenuRadioItem";
 
-// =============================================================================
-// DROPDOWN MENU LABEL
-// =============================================================================
+// ---- DROPDOWN MENU LABEL ----------------------------------------------------
 
 /**
  * DropdownMenuLabel props
@@ -418,9 +408,7 @@ const DropdownMenuLabel = forwardRef<HTMLDivElement, DropdownMenuLabelProps>(
 
 DropdownMenuLabel.displayName = "DropdownMenuLabel";
 
-// =============================================================================
-// DROPDOWN MENU SEPARATOR
-// =============================================================================
+// ---- DROPDOWN MENU SEPARATOR ------------------------------------------------
 
 /**
  * DropdownMenuSeparator props
@@ -446,9 +434,7 @@ const DropdownMenuSeparator = forwardRef<
 
 DropdownMenuSeparator.displayName = "DropdownMenuSeparator";
 
-// =============================================================================
-// DROPDOWN MENU SHORTCUT
-// =============================================================================
+// ---- DROPDOWN MENU SHORTCUT -------------------------------------------------
 
 /**
  * DropdownMenuShortcut props
@@ -477,9 +463,7 @@ function DropdownMenuShortcut({
 
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   DropdownMenuItem,

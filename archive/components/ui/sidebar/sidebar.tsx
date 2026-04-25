@@ -13,9 +13,7 @@ import {
 } from "@/components/ui/animated/sheet";
 import { useSidebar, SIDEBAR_WIDTH_MOBILE } from "./sidebar-context";
 
-// =============================================================================
-// SIDEBAR
-// =============================================================================
+// ---- SIDEBAR ----------------------------------------------------------------
 
 function Sidebar({
   side = "left",
@@ -121,9 +119,7 @@ function Sidebar({
 
 Sidebar.displayName = "Sidebar";
 
-// =============================================================================
-// SIDEBAR TRIGGER
-// =============================================================================
+// ---- SIDEBAR TRIGGER --------------------------------------------------------
 
 function SidebarTrigger({
   className,
@@ -153,9 +149,7 @@ function SidebarTrigger({
 
 SidebarTrigger.displayName = "SidebarTrigger";
 
-// =============================================================================
-// SIDEBAR RAIL
-// =============================================================================
+// ---- SIDEBAR RAIL -----------------------------------------------------------
 
 function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
   const { toggleSidebar } = useSidebar();
@@ -184,9 +178,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 
 SidebarRail.displayName = "SidebarRail";
 
-// =============================================================================
-// SIDEBAR INSET
-// =============================================================================
+// ---- SIDEBAR INSET ----------------------------------------------------------
 
 function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
   return (

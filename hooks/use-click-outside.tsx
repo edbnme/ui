@@ -1,5 +1,11 @@
 "use client";
 
+
+/**
+ * useClickOutside
+ * @registryDescription Hook to detect clicks outside a referenced element.
+ */
+
 import { RefObject, useEffect, useLayoutEffect, useRef } from "react";
 
 /**

@@ -1,12 +1,26 @@
+/**
+ * Sidebar Group — Named section inside a sidebar (`Group`, `GroupLabel`,
+ * `GroupAction`, `GroupContent`).
+ *
+ * Each group renders a subtree of menu items with optional collapsed-
+ * icon styling. Part of the `Sidebar` composition — see `sidebar.tsx`
+ * for the full anatomy.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryPartOf sidebar
+ */
+
 "use client";
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/primitives";
 
-// =============================================================================
-// SIDEBAR GROUP
-// =============================================================================
+// ---- SIDEBAR GROUP ----------------------------------------------------------
 
 function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -21,9 +35,7 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
 
 SidebarGroup.displayName = "SidebarGroup";
 
-// =============================================================================
-// SIDEBAR GROUP LABEL
-// =============================================================================
+// ---- SIDEBAR GROUP LABEL ----------------------------------------------------
 
 function SidebarGroupLabel({
   className,
@@ -48,9 +60,7 @@ function SidebarGroupLabel({
 
 SidebarGroupLabel.displayName = "SidebarGroupLabel";
 
-// =============================================================================
-// SIDEBAR GROUP ACTION
-// =============================================================================
+// ---- SIDEBAR GROUP ACTION ---------------------------------------------------
 
 function SidebarGroupAction({
   className,
@@ -76,9 +86,7 @@ function SidebarGroupAction({
 
 SidebarGroupAction.displayName = "SidebarGroupAction";
 
-// =============================================================================
-// SIDEBAR GROUP CONTENT
-// =============================================================================
+// ---- SIDEBAR GROUP CONTENT --------------------------------------------------
 
 function SidebarGroupContent({
   className,
@@ -96,9 +104,7 @@ function SidebarGroupContent({
 
 SidebarGroupContent.displayName = "SidebarGroupContent";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SidebarGroup,

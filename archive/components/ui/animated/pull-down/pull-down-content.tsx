@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PullDownContent — Content panel that renders inside the morphing container.
  * Handles directional navigation, keyboard events, and focus management.
  * @module pull-down/pull-down-content
@@ -27,9 +27,7 @@ import {
 } from "./pull-down-context";
 import { REDUCED_MOTION_SPRING } from "./pull-down-utils";
 
-// =============================================================================
-// TRIGGER COMPONENT
-// =============================================================================
+// ---- TRIGGER COMPONENT ------------------------------------------------------
 
 export const Trigger = forwardRef<HTMLDivElement, PullDownTriggerProps>(
   function PullDownTrigger(
@@ -144,9 +142,7 @@ export const Trigger = forwardRef<HTMLDivElement, PullDownTriggerProps>(
 
 Trigger.displayName = "PullDownTrigger";
 
-// =============================================================================
-// CONTENT COMPONENT
-// =============================================================================
+// ---- CONTENT COMPONENT ------------------------------------------------------
 
 export const Content = forwardRef<HTMLDivElement, PullDownContentProps>(
   function PullDownContent(

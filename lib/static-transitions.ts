@@ -5,12 +5,10 @@
  * No motion/react dependency - uses pure CSS transitions and animations.
  *
  * @packageDocumentation
+ * @registryDescription CSS-only transition utilities for static components.
  */
 
-// =============================================================================
-// CSS EASING PRESETS
-// Standard easing curves (no spring physics)
-// =============================================================================
+// ---- CSS EASING PRESETS -----------------------------------------------------
 
 /**
  * CSS easing curves for transitions
@@ -47,9 +45,7 @@ export const easingPresets = {
   ease: "ease",
 } as const;
 
-// =============================================================================
-// DURATION PRESETS
-// =============================================================================
+// ---- DURATION PRESETS -------------------------------------------------------
 
 /**
  * Duration presets in milliseconds
@@ -67,9 +63,7 @@ export const durationPresets = {
   slower: 500,
 } as const;
 
-// =============================================================================
-// TRANSITION HELPERS
-// =============================================================================
+// ---- TRANSITION HELPERS -----------------------------------------------------
 
 export type TransitionProperty =
   | "all"
@@ -130,10 +124,7 @@ export const transitions = {
   none: "none",
 } as const;
 
-// =============================================================================
-// ANIMATION KEYFRAME DEFINITIONS (for reference/documentation)
-// These are defined in static.css, this provides TypeScript constants
-// =============================================================================
+// ---- ANIMATION KEYFRAME DEFINITIONS (for reference/documentation) -----------
 
 /**
  * Available CSS animation names (defined in static.css)
@@ -161,9 +152,7 @@ export const animations = {
   slideFromRight: "slide-in-from-right-2",
 } as const;
 
-// =============================================================================
-// UTILITY FUNCTIONS
-// =============================================================================
+// ---- UTILITY FUNCTIONS ------------------------------------------------------
 
 /**
  * Check if user prefers reduced motion
@@ -182,10 +171,7 @@ export function getAccessibleDuration(duration: DurationType | number): number {
   return typeof duration === "number" ? duration : durationPresets[duration];
 }
 
-// =============================================================================
-// BASE UI TRANSITION CLASS PRESETS
-// Reusable Tailwind class strings for Base UI data-attribute animations
-// =============================================================================
+// ---- BASE UI TRANSITION CLASS PRESETS ---------------------------------------
 
 export const popupTransitionClasses = [
   "origin-[var(--transform-origin)]",

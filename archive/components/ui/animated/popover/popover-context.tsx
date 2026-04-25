@@ -5,9 +5,7 @@ import { createContext, useContext } from "react";
 import { type Transition, type Variants } from "motion/react";
 import { createMorphingPopoverVariants } from "@/lib/animations";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 /**
  * Context value for Popover state management
@@ -35,9 +33,7 @@ export interface PopoverContextValue {
   variants: Variants;
 }
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 export const PopoverContext = createContext<PopoverContextValue | null>(null);
 
@@ -56,9 +52,7 @@ export function usePopover(
   return context;
 }
 
-// =============================================================================
-// SPRING PRESETS FOR POPOVER
-// =============================================================================
+// ---- SPRING PRESETS FOR POPOVER ---------------------------------------------
 
 export const popoverTransition: Transition = {
   type: "spring" as const,

@@ -15,9 +15,7 @@ import {
 } from "./alert-dialog-context";
 import { AlertDialogClose } from "./alert-dialog-actions";
 
-// =============================================================================
-// ALERT DIALOG CONTENT
-// =============================================================================
+// ---- ALERT DIALOG CONTENT ---------------------------------------------------
 
 /**
  * AlertDialogContent props

@@ -1,12 +1,23 @@
+/**
+ * Sidebar Menu Sub — Nested sub-menu primitives (`MenuSub`,
+ * `MenuSubItem`, `MenuSubButton`). Renders a rail-style indented list
+ * that hides automatically when the sidebar collapses to icon mode.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryPartOf sidebar
+ */
+
 "use client";
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/primitives";
 
-// =============================================================================
-// SIDEBAR MENU SUB
-// =============================================================================
+// ---- SIDEBAR MENU SUB -------------------------------------------------------
 
 function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
   return (
@@ -25,9 +36,7 @@ function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
 
 SidebarMenuSub.displayName = "SidebarMenuSub";
 
-// =============================================================================
-// SIDEBAR MENU SUB ITEM
-// =============================================================================
+// ---- SIDEBAR MENU SUB ITEM --------------------------------------------------
 
 function SidebarMenuSubItem({
   className,
@@ -45,9 +54,7 @@ function SidebarMenuSubItem({
 
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
 
-// =============================================================================
-// SIDEBAR MENU SUB BUTTON
-// =============================================================================
+// ---- SIDEBAR MENU SUB BUTTON ------------------------------------------------
 
 function SidebarMenuSubButton({
   asChild = false,
@@ -83,8 +90,6 @@ function SidebarMenuSubButton({
 
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { SidebarMenuSub, SidebarMenuSubItem, SidebarMenuSubButton };

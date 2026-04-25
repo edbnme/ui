@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DropdownMenu animation presets — Spring transitions, motion variants, and
  * timing constants for the dropdown menu system.
  * @module dropdown-menu/dropdown-menu-animations
@@ -7,9 +7,7 @@
 
 import type { Transition, Variants } from "motion/react";
 
-// =============================================================================
-// ANIMATION CONSTANTS & VARIANTS
-// =============================================================================
+// ---- ANIMATION CONSTANTS & VARIANTS -----------------------------------------
 
 /**
  * PREMIUM ANIMATION SYSTEM

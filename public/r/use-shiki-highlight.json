@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-shiki-highlight",
+  "type": "registry:hook",
+  "title": "useShikiHighlight",
+  "description": "Client-side Shiki highlighting hook with lazy loading and JSX rendering.",
+  "dependencies": [
+    "hast-util-to-jsx-runtime",
+    "shiki"
+  ],
+  "registryDependencies": [],
+  "variant": "audio",
+  "files": [
+    {
+      "path": "hooks/use-shiki-highlight.tsx",
+      "content": "\"use client\";\r\n\r\n\n/**\n * useShikiHighlight\n * @registryDescription Client-side Shiki highlighting hook with lazy loading and JSX rendering.\n * @registryVariant audio\n */\n\nimport { useEffect, useState, type CSSProperties, type JSX } from \"react\";\r\nimport { toJsxRuntime } from \"hast-util-to-jsx-runtime\";\r\nimport { Fragment, jsx, jsxs } from \"react/jsx-runtime\";\r\n\r\nimport {\r\n  preStyle,\r\n  shikiOptionsForLang,\r\n  type PreComponentProps,\r\n} from \"@/lib/shiki-config\";\r\n\r\nexport type PreStyleVariant = \"base\" | \"codeBlock\" | \"server\" | \"mapPreview\";\r\n\r\ninterface UseShikiHighlightOptions {\r\n  preVariant?: PreStyleVariant;\r\n  skip?: boolean;\r\n}\r\n\r\nexport function useShikiHighlight(\r\n  code: string,\r\n  lang: string,\r\n  options: UseShikiHighlightOptions = {}\r\n): JSX.Element | null {\r\n  const { preVariant = \"codeBlock\", skip = false } = options;\r\n  const [highlighted, setHighlighted] = useState<JSX.Element | null>(null);\r\n\r\n  useEffect(() => {\r\n    if (skip) return;\r\n\r\n    let cancelled = false;\r\n\r\n    async function highlight() {\r\n      try {\r\n        const { codeToHast } = await import(\"shiki\");\r\n        if (cancelled) return;\r\n\r\n        const hast = await codeToHast(code.trim(), shikiOptionsForLang(lang));\r\n        if (cancelled) return;\r\n\r\n        const rendered = toJsxRuntime(hast, {\r\n          Fragment,\r\n          jsx,\r\n          jsxs,\r\n          components: {\r\n            pre: ({ style, children, ...rest }: PreComponentProps) => (\r\n              <pre\r\n                {...rest}\r\n                style={preStyle(preVariant, style as CSSProperties)}\r\n              >\r\n                {children}\r\n              </pre>\r\n            ),\r\n          },\r\n        }) as JSX.Element;\r\n\r\n        setHighlighted(rendered);\r\n      } catch {\r\n        setHighlighted(null);\r\n      }\r\n    }\r\n\r\n    void highlight();\r\n\r\n    return () => {\r\n      cancelled = true;\r\n    };\r\n  }, [code, lang, preVariant, skip]);\r\n\r\n  return skip ? null : highlighted;\r\n}\r\n",
+      "type": "registry:hook"
+    },
+    {
+      "path": "lib/shiki-config.ts",
+      "content": "/**\n * Shiki Config\n * @registryDescription Shared Shiki theme and pre-style configuration for code highlighting.\n * @registryVariant audio\n */\n\nimport type { CSSProperties, ReactNode } from \"react\";\r\nimport type { BundledLanguage, BundledTheme } from \"shiki\";\r\n\r\nexport const SHIKI_THEMES = {\r\n  light: \"github-light\" as BundledTheme,\r\n  dark: \"github-dark-dimmed\" as BundledTheme,\r\n};\r\n\r\nexport const SHIKI_OPTIONS = {\r\n  themes: SHIKI_THEMES,\r\n  defaultColor: false as const,\r\n};\r\n\r\nexport function shikiOptionsForLang(lang: string) {\r\n  return {\r\n    lang: lang as BundledLanguage,\r\n    ...SHIKI_OPTIONS,\r\n  };\r\n}\r\n\r\nexport const PRE_STYLES = {\r\n  base: {\r\n    margin: 0,\r\n    background: \"transparent\",\r\n    fontSize: \"inherit\",\r\n    lineHeight: \"inherit\",\r\n    whiteSpace: \"pre\",\r\n    wordBreak: \"normal\",\r\n    overflowWrap: \"normal\",\r\n    maxWidth: \"100%\",\r\n  } satisfies CSSProperties,\r\n\r\n  codeBlock: {\r\n    padding: \"0.75rem\",\r\n  } satisfies CSSProperties,\r\n\r\n  server: {\r\n    padding: 0,\r\n    overflow: \"visible\",\r\n    tabSize: 2,\r\n  } satisfies CSSProperties,\r\n\r\n  mapPreview: {\r\n    padding: \"1rem\",\r\n    fontSize: \"0.8125rem\",\r\n    lineHeight: \"1.5\",\r\n  } satisfies CSSProperties,\r\n} as const;\r\n\r\nexport function preStyle(\r\n  variant: keyof typeof PRE_STYLES,\r\n  existingStyle?: CSSProperties\r\n): CSSProperties {\r\n  if (variant === \"base\") {\r\n    return { ...PRE_STYLES.base, ...existingStyle };\r\n  }\r\n\r\n  return { ...PRE_STYLES.base, ...PRE_STYLES[variant], ...existingStyle };\r\n}\r\n\r\nexport type PreComponentProps = {\r\n  style?: CSSProperties;\r\n  children?: ReactNode;\r\n  className?: string;\r\n  [key: string]: unknown;\r\n};\r\n",
+      "type": "registry:lib"
+    }
+  ]
+}

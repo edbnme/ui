@@ -9,6 +9,7 @@
  * - Early-return pattern: `if (asChild) return <Slot>{children}</Slot>`
  *
  * @packageDocumentation
+ * @registryPartOf primitives
  */
 
 import * as React from "react";

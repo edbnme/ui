@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PullDown — Root component managing open/close state and morphing animation.
  * Renders trigger, container, and content with spring physics.
  * @module pull-down/pull-down
@@ -17,9 +17,7 @@ import {
 } from "./pull-down-context";
 import { DEFAULT_ANIMATION_CONFIG } from "./pull-down-utils";
 
-// =============================================================================
-// ROOT COMPONENT
-// =============================================================================
+// ---- ROOT COMPONENT ---------------------------------------------------------
 
 export const Root = forwardRef<HTMLDivElement, PullDownProps>(
   function PullDownRoot(

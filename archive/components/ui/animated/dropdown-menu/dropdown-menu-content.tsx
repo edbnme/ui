@@ -1,4 +1,4 @@
-/**
+﻿/**
  * DropdownMenuContent — Animated popup content with morphing open/close transitions.
  * @module dropdown-menu/dropdown-menu-content
  */
@@ -11,9 +11,7 @@ import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useDropdownMenu } from "./dropdown-menu-context";
 
-// =============================================================================
-// DROPDOWN MENU CONTENT
-// =============================================================================
+// ---- DROPDOWN MENU CONTENT --------------------------------------------------
 
 /**
  * DropdownMenuContent props
@@ -152,9 +150,7 @@ const DropdownMenuContent = forwardRef<
 
 DropdownMenuContent.displayName = "DropdownMenuContent";
 
-// =============================================================================
-// DROPDOWN MENU GROUP
-// =============================================================================
+// ---- DROPDOWN MENU GROUP ----------------------------------------------------
 
 /**
  * DropdownMenuGroup props
@@ -176,8 +172,6 @@ function DropdownMenuGroup({ className, ...props }: DropdownMenuGroupProps) {
 
 DropdownMenuGroup.displayName = "DropdownMenuGroup";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { DropdownMenuContent, DropdownMenuGroup };

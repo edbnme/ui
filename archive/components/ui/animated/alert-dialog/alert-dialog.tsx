@@ -34,9 +34,7 @@ import {
   useIsMounted,
 } from "./alert-dialog-context";
 
-// =============================================================================
-// ALERT DIALOG ROOT
-// =============================================================================
+// ---- ALERT DIALOG ROOT ------------------------------------------------------
 
 /**
  * AlertDialogRoot props
@@ -119,9 +117,7 @@ export function AlertDialogRoot({
 
 AlertDialogRoot.displayName = "AlertDialogRoot";
 
-// =============================================================================
-// ALERT DIALOG TRIGGER
-// =============================================================================
+// ---- ALERT DIALOG TRIGGER ---------------------------------------------------
 
 /**
  * AlertDialogTrigger props
@@ -296,9 +292,7 @@ export function AlertDialogTrigger({
 
 AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
-// =============================================================================
-// ALERT DIALOG CONTAINER (PORTAL)
-// =============================================================================
+// ---- ALERT DIALOG CONTAINER (PORTAL) ----------------------------------------
 
 /**
  * AlertDialogContainer props

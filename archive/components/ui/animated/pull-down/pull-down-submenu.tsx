@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PullDownSub / PullDownSubTrigger / PullDownSubContent — Nested submenu system
  * with directional animations based on menu depth.
  * @module pull-down/pull-down-submenu
@@ -38,9 +38,7 @@ import {
 } from "./pull-down-context";
 import { REDUCED_MOTION_SPRING, CONTENT_BLUR } from "./pull-down-utils";
 
-// =============================================================================
-// SUBMENU COMPONENT
-// =============================================================================
+// ---- SUBMENU COMPONENT ------------------------------------------------------
 
 export function SubMenu({ children, id }: PullDownSubMenuProps): ReactNode {
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -55,9 +53,7 @@ export function SubMenu({ children, id }: PullDownSubMenuProps): ReactNode {
 
 SubMenu.displayName = "PullDownSubMenu";
 
-// =============================================================================
-// SUBMENU TRIGGER COMPONENT
-// =============================================================================
+// ---- SUBMENU TRIGGER COMPONENT ----------------------------------------------
 
 export const SubMenuTrigger = forwardRef<
   HTMLDivElement,
@@ -170,9 +166,7 @@ export const SubMenuTrigger = forwardRef<
 
 SubMenuTrigger.displayName = "PullDownSubMenuTrigger";
 
-// =============================================================================
-// SUBMENU CONTENT COMPONENT
-// =============================================================================
+// ---- SUBMENU CONTENT COMPONENT ----------------------------------------------
 
 export const SubMenuContent = forwardRef<
   HTMLDivElement,
@@ -355,9 +349,7 @@ export const SubMenuContent = forwardRef<
 
 SubMenuContent.displayName = "PullDownSubMenuContent";
 
-// =============================================================================
-// ICON COMPONENT (for submenu indicator)
-// =============================================================================
+// ---- ICON COMPONENT (for submenu indicator) ---------------------------------
 
 interface PullDownChevronProps {
   isActive?: boolean;

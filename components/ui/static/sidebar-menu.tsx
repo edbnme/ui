@@ -1,3 +1,20 @@
+/**
+ * Sidebar Menu — Core list + button primitives for a sidebar
+ * (`Menu`, `MenuItem`, `MenuButton`, `MenuAction`, `MenuBadge`,
+ * `MenuSkeleton`).
+ *
+ * Exposes `sidebarMenuButtonVariants` (cva) so consumers can compose
+ * custom buttons with matching variant tokens. The button supports an
+ * optional tooltip when the sidebar collapses to icon mode.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/sidebar
+ * @registryPartOf sidebar
+ */
+
 "use client";
 
 import * as React from "react";
@@ -6,16 +23,14 @@ import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/primitives";
 import { useSidebar } from "@/components/ui/static/sidebar-context";
 import {
-  Tooltip,
+  TooltipRoot,
   TooltipPopup,
   TooltipPositioner,
   TooltipTrigger,
 } from "@/components/ui/static/tooltip";
 import { Skeleton } from "@/components/ui/static/skeleton";
 
-// =============================================================================
-// SIDEBAR MENU
-// =============================================================================
+// ---- SIDEBAR MENU -----------------------------------------------------------
 
 function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
   return (
@@ -30,9 +45,7 @@ function SidebarMenu({ className, ...props }: React.ComponentProps<"ul">) {
 
 SidebarMenu.displayName = "SidebarMenu";
 
-// =============================================================================
-// SIDEBAR MENU ITEM
-// =============================================================================
+// ---- SIDEBAR MENU ITEM ------------------------------------------------------
 
 function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
   return (
@@ -47,9 +60,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 
 SidebarMenuItem.displayName = "SidebarMenuItem";
 
-// =============================================================================
-// SIDEBAR MENU BUTTON VARIANTS
-// =============================================================================
+// ---- SIDEBAR MENU BUTTON VARIANTS -------------------------------------------
 
 const sidebarMenuButtonVariants = cva(
   "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-panel-open:hover:bg-sidebar-accent data-panel-open:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
@@ -73,9 +84,7 @@ const sidebarMenuButtonVariants = cva(
   }
 );
 
-// =============================================================================
-// SIDEBAR MENU BUTTON
-// =============================================================================
+// ---- SIDEBAR MENU BUTTON ----------------------------------------------------
 
 function SidebarMenuButton({
   asChild = false,
@@ -110,7 +119,7 @@ function SidebarMenuButton({
     typeof tooltip === "string" ? { children: tooltip } : tooltip;
 
   return (
-    <Tooltip>
+    <TooltipRoot>
       <TooltipTrigger render={button} />
       <TooltipPositioner side="right">
         <TooltipPopup
@@ -118,15 +127,13 @@ function SidebarMenuButton({
           {...tooltipProps}
         />
       </TooltipPositioner>
-    </Tooltip>
+    </TooltipRoot>
   );
 }
 
 SidebarMenuButton.displayName = "SidebarMenuButton";
 
-// =============================================================================
-// SIDEBAR MENU ACTION
-// =============================================================================
+// ---- SIDEBAR MENU ACTION ----------------------------------------------------
 
 function SidebarMenuAction({
   className,
@@ -161,9 +168,7 @@ function SidebarMenuAction({
 
 SidebarMenuAction.displayName = "SidebarMenuAction";
 
-// =============================================================================
-// SIDEBAR MENU BADGE
-// =============================================================================
+// ---- SIDEBAR MENU BADGE -----------------------------------------------------
 
 function SidebarMenuBadge({
   className,
@@ -189,9 +194,7 @@ function SidebarMenuBadge({
 
 SidebarMenuBadge.displayName = "SidebarMenuBadge";
 
-// =============================================================================
-// SIDEBAR MENU SKELETON
-// =============================================================================
+// ---- SIDEBAR MENU SKELETON --------------------------------------------------
 
 function SidebarMenuSkeleton({
   className,
@@ -238,9 +241,7 @@ function SidebarMenuSkeleton({
 
 SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SidebarMenu,

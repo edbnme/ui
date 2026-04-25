@@ -10,10 +10,7 @@
 import type { Transition } from "motion/react";
 import { durations } from "../tokens";
 
-// =============================================================================
-// SPRING PRESETS
-// Physics-based spring configurations for natural animations
-// =============================================================================
+// ---- SPRING PRESETS ---------------------------------------------------------
 
 /**
  * Spring presets for consistent animations across the library.
@@ -93,10 +90,7 @@ export const springPresets = {
   },
 } as const;
 
-// =============================================================================
-// TRANSITION PRESETS
-// Pre-configured transitions for common use cases
-// =============================================================================
+// ---- TRANSITION PRESETS -----------------------------------------------------
 
 /**
  * Transition presets for various component types.
@@ -177,10 +171,7 @@ export const transitions = {
   } as Transition,
 } as const;
 
-// =============================================================================
-// EASING FUNCTIONS
-// Cubic-bezier curves for tween animations
-// =============================================================================
+// ---- EASING FUNCTIONS -------------------------------------------------------
 
 /**
  * Easing curves for tween animations.
@@ -201,9 +192,6 @@ export const easings = {
   overshoot: [0.34, 1.56, 0.64, 1] as const,
 } as const;
 
-// =============================================================================
-// DURATION CONSTANTS
-// Consistent timing values (mirrors tokens.durations)
-// =============================================================================
+// ---- DURATION CONSTANTS -----------------------------------------------------
 
 export { durations };

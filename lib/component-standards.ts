@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Component Standards Contract
  *
  * Defines the enforced conventions for all edbn-ui components.
@@ -6,11 +6,10 @@
  * and as documentation for contributors.
  *
  * @packageDocumentation
+ * @registryDescription Shared component standard utilities (class composition, data attribute helpers).
  */
 
-// =============================================================================
-// COMPONENT CONTRACT TYPES
-// =============================================================================
+// ---- COMPONENT CONTRACT TYPES -----------------------------------------------
 
 /**
  * Every UI component MUST satisfy this contract.
@@ -37,7 +36,7 @@ export interface RegistryItemContract {
   /** shadcn registry type */
   type: "registry:ui" | "registry:component" | "registry:lib" | "registry:hook";
   /** Component variant tier */
-  variant: "animated" | "static" | "shared" | "maps";
+  variant: "static" | "audio";
   /** npm dependencies (external packages) */
   dependencies: string[];
   /** Other registry items this item depends on */
@@ -48,9 +47,7 @@ export interface RegistryItemContract {
   files: Array<{ path: string; type: string }>;
 }
 
-// =============================================================================
-// VALIDATION PATTERNS (regex for build-time static analysis)
-// =============================================================================
+// ---- VALIDATION PATTERNS (regex for build-time static analysis) -------------
 
 /**
  * Patterns used by validate-registry.mjs to check component source files.
@@ -108,9 +105,7 @@ export const hardcodedColorExemptions: Record<string, string> = {
   "maps/": "Maps components use MapLibre-specific color tokens",
 };
 
-// =============================================================================
-// CSS RULES
-// =============================================================================
+// ---- CSS RULES --------------------------------------------------------------
 
 /**
  * CSS styling rules all components must follow.
@@ -196,9 +191,7 @@ export const cssRules = {
   ],
 } as const;
 
-// =============================================================================
-// EXPORT CONVENTIONS
-// =============================================================================
+// ---- EXPORT CONVENTIONS -----------------------------------------------------
 
 /**
  * File and export naming conventions:
@@ -233,9 +226,7 @@ export const exportConventions = {
   requireDisplayName: true,
 } as const;
 
-// =============================================================================
-// BASE UI MIGRATION ORDER
-// =============================================================================
+// ---- BASE UI MIGRATION ORDER ------------------------------------------------
 
 /**
  * Migration plan from legacy primitives to Base UI (MUI headless).

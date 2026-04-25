@@ -1,182 +1,201 @@
 /**
  * Card — Content container with variant styles.
- * Supports default, solid, ghost, and elevated variants.
  *
- * @example
+ * A composable card surface with four visual styles: `default` (subtle
+ * gradient ring), `solid` (opaque bg + shadow), `ghost` (transparent),
+ * and `elevated` (stronger shadow with hover lift). Compose with
+ * `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, and
+ * `CardFooter` for a polished layout with contrasting header/footer
+ * bands.
+ *
+ * Anatomy:
+ * ```tsx
  * <Card variant="elevated">
  *   <CardHeader>
- *     <CardTitle>Title</CardTitle>
- *     <CardDescription>Description</CardDescription>
+ *     <CardTitle>Billing</CardTitle>
+ *     <CardDescription>Manage your subscription.</CardDescription>
  *   </CardHeader>
  *   <CardContent>Body content</CardContent>
- *   <CardFooter>Footer</CardFooter>
+ *   <CardFooter>
+ *     <Button>Upgrade</Button>
+ *   </CardFooter>
  * </Card>
+ * ```
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/card
+ * @registryDescription Container component with header, content, and footer sections.
  */
+
 "use client";
 
 import * as React from "react";
-import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-// =============================================================================
-// Card Variants
-// =============================================================================
+import { cn } from "@/lib/utils";
+
+// ---- VARIANTS ---------------------------------------------------------------
 
 const cardVariants = cva(
-  // Base styles shared across all variants
-  "rounded-2xl text-card-foreground overflow-hidden transition-colors duration-200",
+  "rounded-2xl text-card-foreground overflow-hidden transition-colors duration-200 motion-reduce:transition-none",
   {
     variants: {
       variant: {
         default: [
-          // Translucent gradient background matching showcase aesthetic
           "bg-linear-to-br from-muted/30 via-background/80 to-background/95",
-          // Ring border — cleaner at rounded corners than border
           "ring-1 ring-border ring-inset",
         ],
-        solid: [
-          // Traditional opaque card
-          "bg-card border border-border shadow-sm",
-        ],
-        ghost: [
-          // No visible boundary — blends into background
-          "bg-transparent",
-        ],
+        solid: ["bg-card border border-border shadow-sm"],
+        ghost: ["bg-transparent"],
         elevated: [
-          // Raised card with stronger shadow
           "bg-card border border-border shadow-md hover:shadow-lg",
         ],
       },
     },
-    defaultVariants: {
-      variant: "default",
-    },
+    defaultVariants: { variant: "default" },
   }
 );
 
-// =============================================================================
-// Card
-// =============================================================================
+// ---- CARD -------------------------------------------------------------------
 
 export interface CardProps
-  extends
-    React.HTMLAttributes<HTMLDivElement>,
+  extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof cardVariants> {}
 
-const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, ...props }, ref) => (
+/**
+ * Themed container surface. Use the sub-parts (`CardHeader`, `CardTitle`,
+ * `CardDescription`, `CardContent`, `CardFooter`) to compose a consistent
+ * layout.
+ *
+ * @since 0.1.0
+ */
+function Card({ className, variant, ...props }: CardProps) {
+  return (
     <div
-      ref={ref}
       data-slot="card"
       className={cn(cardVariants({ variant }), className)}
       {...props}
     />
-  )
-);
+  );
+}
 Card.displayName = "Card";
 
-// =============================================================================
-// Card Header
-// =============================================================================
+// ---- HEADER -----------------------------------------------------------------
 
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="card-header"
-    className={cn(
-      "flex flex-col gap-1.5 px-5 py-4",
-      // Contrasting background for visual separation
-      "bg-muted/40 dark:bg-muted/30",
-      // Bottom separator
-      "border-b border-border/50",
-      className
-    )}
-    {...props}
-  />
-));
+export type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Header band with a contrasting background and bottom separator.
+ *
+ * @since 0.1.0
+ */
+function CardHeader({ className, ...props }: CardHeaderProps) {
+  return (
+    <div
+      data-slot="card-header"
+      className={cn(
+        "flex flex-col gap-1.5 px-5 py-4",
+        "bg-muted/40 dark:bg-muted/30",
+        "border-b border-border/50",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 CardHeader.displayName = "CardHeader";
 
-// =============================================================================
-// Card Title
-// =============================================================================
+// ---- TITLE ------------------------------------------------------------------
 
-const CardTitle = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="card-title"
-    className={cn("font-semibold leading-none tracking-tight", className)}
-    {...props}
-  />
-));
+export type CardTitleProps = React.HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Card title — renders a visually-prominent heading. Upgrade to a real
+ * heading element via `asChild` if you need an `<h2>`.
+ *
+ * @since 0.1.0
+ */
+function CardTitle({ className, ...props }: CardTitleProps) {
+  return (
+    <div
+      data-slot="card-title"
+      className={cn("font-semibold leading-none tracking-tight", className)}
+      {...props}
+    />
+  );
+}
 CardTitle.displayName = "CardTitle";
 
-// =============================================================================
-// Card Description
-// =============================================================================
+// ---- DESCRIPTION ------------------------------------------------------------
 
-const CardDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="card-description"
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-));
+export type CardDescriptionProps = React.HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Muted supporting copy that pairs with `CardTitle`.
+ *
+ * @since 0.1.0
+ */
+function CardDescription({ className, ...props }: CardDescriptionProps) {
+  return (
+    <div
+      data-slot="card-description"
+      className={cn("text-sm text-muted-foreground", className)}
+      {...props}
+    />
+  );
+}
 CardDescription.displayName = "CardDescription";
 
-// =============================================================================
-// Card Content
-// =============================================================================
+// ---- CONTENT ----------------------------------------------------------------
 
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="card-content"
-    className={cn("p-5 pt-4", className)}
-    {...props}
-  />
-));
+export type CardContentProps = React.HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Main body of the card.
+ *
+ * @since 0.1.0
+ */
+function CardContent({ className, ...props }: CardContentProps) {
+  return (
+    <div
+      data-slot="card-content"
+      className={cn("p-5 pt-4", className)}
+      {...props}
+    />
+  );
+}
 CardContent.displayName = "CardContent";
 
-// =============================================================================
-// Card Footer
-// =============================================================================
+// ---- FOOTER -----------------------------------------------------------------
 
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="card-footer"
-    className={cn(
-      "flex items-center gap-2 px-5 py-4",
-      // Contrasting background for visual separation
-      "bg-muted/40 dark:bg-muted/30",
-      // Top separator
-      "border-t border-border/50",
-      className
-    )}
-    {...props}
-  />
-));
+export type CardFooterProps = React.HTMLAttributes<HTMLDivElement>;
+
+/**
+ * Footer band with a contrasting background and top separator. Ideal
+ * for action rows.
+ *
+ * @since 0.1.0
+ */
+function CardFooter({ className, ...props }: CardFooterProps) {
+  return (
+    <div
+      data-slot="card-footer"
+      className={cn(
+        "flex items-center gap-2 px-5 py-4",
+        "bg-muted/40 dark:bg-muted/30",
+        "border-t border-border/50",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 CardFooter.displayName = "CardFooter";
 
-// =============================================================================
-// Exports
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   Card,

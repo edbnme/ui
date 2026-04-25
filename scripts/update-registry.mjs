@@ -1,23 +1,20 @@
-/**
+﻿/**
  * Registry Update Script
  *
- * This script generates the component registry JSON files for
- * static (CSS-only) component variants.
+ * Generates component registry JSON files for every variant (static, audio,
+ * hooks, lib). Registry config is DERIVED from the component source files
+ * themselves via `registry-config/discover.mjs` — there is no hand-authored
+ * config to keep in sync.
  *
- * CROSS-REFERENCE: The docs/explorer presentation registry is in
- * src/components/site/docs/explorer/component-registry.ts.
- * When adding a new component, ensure it's registered in BOTH files:
- *   - Here (registry-config/): files, dependencies, devDependencies (build/distribution)
- *   - There: slug, name, description, demos (presentation/docs)
+ * To change a component's registry metadata, edit the component's JSDoc
+ * header tags (see `registry-config/discover.mjs` for the full tag reference).
  *
  * Output Structure:
  *   public/r/
- *   ├── static/
- *   │   ├── button.json
- *   │   ├── alert-dialog.json
- *   │   └── ...
- *   ├── registry.json (main index)
- *   └── [legacy flat structure for backwards compatibility]
+ *   ├── static/          variant-specific copies
+ *   ├── audio/
+ *   ├── <slug>.json      flat root-level (loaded by the frontend)
+ *   └── registry.json    main index
  *
  * @packageDocumentation
  */
@@ -26,27 +23,46 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
-// Registry configuration imports (split into separate files for maintainability)
-import { staticComponents } from "./registry-config/static-components.mjs";
-import { staticSharedComponents } from "./registry-config/shared-components.mjs";
-import { libraryComponents } from "./registry-config/library-components.mjs";
-import { hookComponents } from "./registry-config/hooks-config.mjs";
+import { discoverAll } from "./registry-config/discover.mjs";
 import { cssVarsLight, cssVarsDark } from "./registry-config/css-vars.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = join(__dirname, "..");
 
-// =============================================================================
-// COMPONENT REGISTRY — Entry-list approach (avoids name collisions between variants)
-// =============================================================================
+// ---- SINGLE SOURCE OF TRUTH — derived from source files -------------------
+
+const { all: allConfig } = discoverAll(root);
+
+// Split by type for the orchestrator's downstream logic. The buckets preserve
+// backwards-compatible names so the rest of this script (and any external
+// tooling) continues to work without changes.
+const partition = (pred) =>
+  Object.fromEntries(Object.entries(allConfig).filter(([, c]) => pred(c)));
+
+const staticComponents = partition(
+  (c) => c.type === "registry:ui" && c.variant === "static"
+);
+const audioComponents = partition(
+  (c) => c.type === "registry:ui" && c.variant === "audio"
+);
+const libraryComponents = partition((c) => c.type === "registry:lib");
+const hookComponents = partition(
+  (c) => c.type === "registry:hook" && c.variant === "static"
+);
+const audioHookComponents = partition(
+  (c) => c.type === "registry:hook" && c.variant === "audio"
+);
+
+// ---- COMPONENT REGISTRY — Entry-list approach (avoids name collisions between variants) -
 
 // Build a flat list of [name, config] entries from all component sets.
 const allEntries = [
   ...Object.entries(staticComponents),
-  ...Object.entries(staticSharedComponents),
   ...Object.entries(libraryComponents),
   ...Object.entries(hookComponents),
+  ...Object.entries(audioComponents),
+  ...Object.entries(audioHookComponents),
 ];
 
 // Lookup map for inline dependency resolution.
@@ -55,11 +71,61 @@ const allEntries = [
 const inlineLookup = {
   ...libraryComponents,
   ...hookComponents,
+  ...audioHookComponents,
 };
 
-// =============================================================================
-// HELPER FUNCTIONS
-// =============================================================================
+// ---- HELPER FUNCTIONS -------------------------------------------------------
+
+function sortedUnique(values) {
+  return Array.from(new Set(values)).sort();
+}
+
+function collectInlineConfigs(config, seen = new Set()) {
+  const collected = [];
+
+  for (const depName of config.inlineDependencies || []) {
+    if (seen.has(depName)) continue;
+    seen.add(depName);
+
+    const depConfig = inlineLookup[depName];
+    if (!depConfig) continue;
+
+    collected.push(depConfig);
+    collected.push(...collectInlineConfigs(depConfig, seen));
+  }
+
+  return collected;
+}
+
+function collectRegistryFiles(config) {
+  const inlineConfigs = collectInlineConfigs(config);
+  const filesByPath = new Map();
+
+  for (const file of config.files) {
+    filesByPath.set(file.path, file);
+  }
+
+  for (const depConfig of inlineConfigs) {
+    for (const file of depConfig.files) {
+      if (!filesByPath.has(file.path)) {
+        filesByPath.set(file.path, file);
+      }
+    }
+  }
+
+  return Array.from(filesByPath.values());
+}
+
+function collectRegistryDependencies(config) {
+  const inlineConfigs = collectInlineConfigs(config);
+  const dependencies = [...(config.dependencies || [])];
+
+  for (const depConfig of inlineConfigs) {
+    dependencies.push(...(depConfig.dependencies || []));
+  }
+
+  return sortedUnique(dependencies);
+}
 
 function ensureDir(dirPath) {
   if (!existsSync(dirPath)) {
@@ -72,17 +138,8 @@ function escapeContent(content) {
 }
 
 function updateRegistryFile(name, config, outputDir) {
-  const allFiles = [...config.files];
-
-  // Add files from inline dependencies (resolved from library/hook components)
-  if (config.inlineDependencies && config.inlineDependencies.length > 0) {
-    config.inlineDependencies.forEach((depName) => {
-      const depConfig = inlineLookup[depName];
-      if (depConfig) {
-        allFiles.push(...depConfig.files);
-      }
-    });
-  }
+  const allFiles = collectRegistryFiles(config);
+  const dependencies = collectRegistryDependencies(config);
 
   const registryItem = {
     $schema: "https://ui.shadcn.com/schema/registry-item.json",
@@ -90,7 +147,7 @@ function updateRegistryFile(name, config, outputDir) {
     type: config.type,
     title: config.title,
     description: config.description,
-    dependencies: config.dependencies,
+    dependencies,
     registryDependencies: config.registryDependencies,
     variant: config.variant,
     files: allFiles.map((file) => {
@@ -130,9 +187,7 @@ function updateRegistryFile(name, config, outputDir) {
 
   // Also write to flat structure for backwards compatibility
   const flatPath = join(outputDir, `${name}.json`);
-  if (!existsSync(flatPath)) {
-    writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
-  }
+  writeFileSync(flatPath, JSON.stringify(registryItem, null, 2), "utf-8");
 
   console.log(`[OK] Updated ${config.variant}/${name}.json`);
 }
@@ -144,7 +199,7 @@ function updateMainRegistry(outputDir) {
     type: config.type,
     title: config.title,
     description: config.description,
-    dependencies: config.dependencies,
+    dependencies: collectRegistryDependencies(config),
     registryDependencies: config.registryDependencies,
     variant: config.variant,
     files: config.files.map((f) => ({ path: f.path, type: f.type })),
@@ -162,6 +217,13 @@ function updateMainRegistry(outputDir) {
         dependencies: [],
         cssImport: "@/lib/styles/static.css",
       },
+      audio: {
+        name: "Audio",
+        description:
+          "AI chat and audio components with Web Audio API and motion animations",
+        dependencies: ["class-variance-authority"],
+        cssImport: null,
+      },
     },
     items,
   };
@@ -175,9 +237,7 @@ function updateMainRegistry(outputDir) {
   console.log("[OK] Updated public/r/registry.json");
 }
 
-// =============================================================================
-// MAIN EXECUTION
-// =============================================================================
+// ---- MAIN EXECUTION ---------------------------------------------------------
 
 // ASCII Art Banner - EDBN UI
 const banner = [
@@ -198,6 +258,7 @@ const outputDir = join(root, "public", "r");
 // Ensure output directories exist
 ensureDir(outputDir);
 ensureDir(join(outputDir, "static"));
+ensureDir(join(outputDir, "audio"));
 
 // Update individual component registry files
 allEntries.forEach(([name, config]) => {
@@ -219,11 +280,10 @@ console.log("\n[DONE] Registry update complete!");
 console.log("\nOutput structure:");
 console.log("  public/r/");
 console.log("  ├── static/     (CSS-only + Base UI components)");
+console.log("  ├── audio/      (Audio/AI chat components)");
 console.log("  └── registry.json");
 
-// =============================================================================
-// BUNDLE SIZE COMPUTATION
-// =============================================================================
+// ---- BUNDLE SIZE COMPUTATION ------------------------------------------------
 
 console.log("\n[BUNDLE] Computing bundle sizes...\n");
 

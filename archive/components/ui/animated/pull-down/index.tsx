@@ -47,9 +47,7 @@ import {
   PullDownChevron,
 } from "./pull-down-submenu";
 
-// =============================================================================
-// COMPOUND EXPORT
-// =============================================================================
+// ---- COMPOUND EXPORT --------------------------------------------------------
 
 export const PullDown = Object.assign(Root, {
   Container,
@@ -66,9 +64,7 @@ export const PullDown = Object.assign(Root, {
   Chevron: PullDownChevron,
 });
 
-// =============================================================================
-// INDIVIDUAL EXPORTS
-// =============================================================================
+// ---- INDIVIDUAL EXPORTS -----------------------------------------------------
 
 export {
   Root as PullDownRoot,

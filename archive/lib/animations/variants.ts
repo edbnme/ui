@@ -10,10 +10,7 @@
 import type { Variants } from "motion/react";
 import { springPresets, easings } from "./presets";
 
-// =============================================================================
-// VARIANT FACTORIES
-// Create animation variants for common patterns
-// =============================================================================
+// ---- VARIANT FACTORIES ------------------------------------------------------
 
 /**
  * Creates scale variants for press/tap interactions
@@ -356,10 +353,7 @@ export function createIndicatorVariants(): Variants {
   };
 }
 
-// =============================================================================
-// GESTURE PRESETS
-// Common gesture configurations
-// =============================================================================
+// ---- GESTURE PRESETS --------------------------------------------------------
 
 /**
  * Gesture presets for interactive elements.
@@ -400,10 +394,7 @@ export const gestures = {
   },
 } as const;
 
-// =============================================================================
-// DRAG CONFIGURATION
-// For swipeable/draggable components
-// =============================================================================
+// ---- DRAG CONFIGURATION -----------------------------------------------------
 
 /**
  * Drag configurations for swipeable components.

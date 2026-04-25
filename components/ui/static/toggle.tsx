@@ -1,34 +1,54 @@
 /**
- * Toggle — Pressable toggle button with group support.
- * Built on @base-ui/react Toggle and ToggleGroup primitives.
+ * Toggle — Pressable two-state button.
  *
- * @example
- * <ToggleRoot>Bold</ToggleRoot>
+ * Built on the Base UI `Toggle` primitive. Behaves like a checkbox in
+ * button form — ideal for formatting controls (Bold / Italic), filter
+ * chips, or any binary "on / off" action that reads better as a button
+ * than a switch.
  *
- * <ToggleGroupRoot>
- *   <ToggleGroupItem value="left">Left</ToggleGroupItem>
- *   <ToggleGroupItem value="center">Center</ToggleGroupItem>
- * </ToggleGroupRoot>
+ * Anatomy:
+ * ```tsx
+ * <ToggleRoot aria-label="Toggle bold">
+ *   <BoldIcon />
+ * </ToggleRoot>
  *
- * @see https://base-ui.com/react/components/toggle
- * @see https://base-ui.com/react/components/toggle-group
+ * // Controlled
+ * <ToggleRoot pressed={on} onPressedChange={setOn}>Bold</ToggleRoot>
+ * ```
+ *
+ * Accessibility: renders a `<button>` with `aria-pressed` and
+ * `data-pressed` attributes. Space / Enter toggles. Always provide an
+ * `aria-label` for icon-only toggles.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/toggle
+ * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/toggle
+ * @registryDescription Pressable toggle button with on/off state.
  */
+
 "use client";
 
 import * as React from "react";
 import { Toggle } from "@base-ui/react/toggle";
 import { ToggleGroup } from "@base-ui/react/toggle-group";
-import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-// =============================================================================
-// TOGGLE VARIANTS
-// =============================================================================
+import { cn } from "@/lib/utils";
 
+// ---- VARIANTS ---------------------------------------------------------------
+
+/**
+ * Shared styling contract for `ToggleRoot` and `ToggleGroupItem`.
+ *
+ * @since 0.1.0
+ */
 const toggleVariants = cva(
   [
     "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background",
-    "transition-colors",
+    "transition-colors duration-150 ease-out motion-reduce:transition-none",
     "hover:bg-muted hover:text-muted-foreground",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
@@ -54,58 +74,83 @@ const toggleVariants = cva(
   }
 );
 
-// =============================================================================
-// TOGGLE ROOT
-// =============================================================================
+// ---- ROOT -------------------------------------------------------------------
 
-const ToggleRoot = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithRef<typeof Toggle> &
-    VariantProps<typeof toggleVariants>
->(({ className, variant, size, ...props }, ref) => (
-  <Toggle
-    ref={ref}
-    className={cn(toggleVariants({ variant, size }), className)}
-    {...props}
-  />
-));
+export type ToggleRootProps = React.ComponentPropsWithoutRef<typeof Toggle> &
+  VariantProps<typeof toggleVariants>;
+
+/**
+ * Standalone toggle button.
+ *
+ * Data attributes:
+ * - `data-pressed` — present when pressed
+ * - `data-disabled`
+ *
+ * @since 0.1.0
+ */
+function ToggleRoot({ className, variant, size, ...props }: ToggleRootProps) {
+  return (
+    <Toggle
+      data-slot="toggle-root"
+      className={cn(toggleVariants({ variant, size }), className)}
+      {...props}
+    />
+  );
+}
 ToggleRoot.displayName = "ToggleRoot";
 
-// =============================================================================
-// TOGGLE GROUP ROOT
-// =============================================================================
+// ---- GROUP ROOT -------------------------------------------------------------
 
-const ToggleGroupRoot = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithRef<typeof ToggleGroup>
->(({ className, ...props }, ref) => (
-  <ToggleGroup
-    ref={ref}
-    className={cn("flex items-center gap-1", className)}
-    {...props}
-  />
-));
+export type ToggleGroupRootProps = React.ComponentPropsWithoutRef<
+  typeof ToggleGroup
+>;
+
+/**
+ * Convenience re-export of the coordinating `ToggleGroup`. Prefer the
+ * dedicated `toggle-group` module for richer group usage — this export is
+ * kept so the common "a few toggles in a row" pattern ships with just the
+ * toggle import.
+ *
+ * @since 0.1.0
+ */
+function ToggleGroupRoot({ className, ...props }: ToggleGroupRootProps) {
+  return (
+    <ToggleGroup
+      data-slot="toggle-group-root"
+      className={cn("flex items-center gap-1", className)}
+      {...props}
+    />
+  );
+}
 ToggleGroupRoot.displayName = "ToggleGroupRoot";
 
-// =============================================================================
-// TOGGLE GROUP ITEM
-// =============================================================================
+// ---- GROUP ITEM -------------------------------------------------------------
 
-const ToggleGroupItem = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentPropsWithRef<typeof Toggle> &
-    VariantProps<typeof toggleVariants>
->(({ className, variant, size, ...props }, ref) => (
-  <Toggle
-    ref={ref}
-    className={cn(toggleVariants({ variant, size }), className)}
-    {...props}
-  />
-));
+export type ToggleGroupItemProps = React.ComponentPropsWithoutRef<typeof Toggle> &
+  VariantProps<typeof toggleVariants>;
+
+/**
+ * A toggle inside a `ToggleGroupRoot`. Looks up its pressed state from the
+ * group via its `value` prop.
+ *
+ * @since 0.1.0
+ */
+function ToggleGroupItem({
+  className,
+  variant,
+  size,
+  ...props
+}: ToggleGroupItemProps) {
+  return (
+    <Toggle
+      data-slot="toggle-group-item"
+      className={cn(toggleVariants({ variant, size }), className)}
+      {...props}
+    />
+  );
+}
 ToggleGroupItem.displayName = "ToggleGroupItem";
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export { ToggleRoot, ToggleGroupRoot, ToggleGroupItem, toggleVariants };

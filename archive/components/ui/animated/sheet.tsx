@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Sheet Component
  *
  * A slide-out panel component that appears from any edge of the screen.
@@ -19,10 +19,7 @@ import { cn } from "@/lib/utils";
 import { DragHandle, CloseButton } from "@/lib/icons";
 import { useShouldDisableAnimation } from "@/components/motion-provider";
 
-// =============================================================================
-// SHEET VARIANTS (CVA)
-// side panels
-// =============================================================================
+// ---- SHEET VARIANTS (CVA) ---------------------------------------------------
 
 const sheetVariants = cva(
   [
@@ -49,9 +46,7 @@ const sheetVariants = cva(
   }
 );
 
-// =============================================================================
-// SHEET CONTEXT
-// =============================================================================
+// ---- SHEET CONTEXT ----------------------------------------------------------
 
 type SheetContextValue = {
   disableAnimation: boolean;
@@ -65,9 +60,7 @@ const SheetContext = React.createContext<SheetContextValue>({
   enableDrag: true,
 });
 
-// =============================================================================
-// SHEET ROOT
-// =============================================================================
+// ---- SHEET ROOT -------------------------------------------------------------
 
 export type SheetProps = {
   /** Disable animations for this sheet */
@@ -141,9 +134,7 @@ function Sheet({
   );
 }
 
-// =============================================================================
-// SHEET TRIGGER
-// =============================================================================
+// ---- SHEET TRIGGER ----------------------------------------------------------
 
 export type SheetTriggerProps = {
   /** Render as child element (for custom trigger components) */
@@ -179,9 +170,7 @@ const SheetTrigger = React.forwardRef<HTMLButtonElement, SheetTriggerProps>(
 
 SheetTrigger.displayName = "SheetTrigger";
 
-// =============================================================================
-// SHEET CLOSE
-// =============================================================================
+// ---- SHEET CLOSE ------------------------------------------------------------
 
 export type SheetCloseProps = {
   /** Render as child element (for custom close components) */
@@ -217,9 +206,7 @@ const SheetClose = React.forwardRef<HTMLButtonElement, SheetCloseProps>(
 
 SheetClose.displayName = "SheetClose";
 
-// =============================================================================
-// SHEET PORTAL
-// =============================================================================
+// ---- SHEET PORTAL -----------------------------------------------------------
 
 function SheetPortal({
   children,
@@ -232,10 +219,7 @@ function SheetPortal({
   );
 }
 
-// =============================================================================
-// SHEET OVERLAY
-// backdrop with blur
-// =============================================================================
+// ---- SHEET OVERLAY ----------------------------------------------------------
 
 const SheetOverlay = React.forwardRef<
   HTMLDivElement,
@@ -268,10 +252,7 @@ const SheetOverlay = React.forwardRef<
 
 SheetOverlay.displayName = "SheetOverlay";
 
-// =============================================================================
-// SHEET CONTENT
-// Main sheet panel with drag-to-dismiss
-// =============================================================================
+// ---- SHEET CONTENT ----------------------------------------------------------
 
 export type SheetContentProps = {
   /** Show the Modern drag handle indicator */
@@ -368,10 +349,7 @@ const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
 
 SheetContent.displayName = "SheetContent";
 
-// =============================================================================
-// SHEET HEADER
-// header with border separator
-// =============================================================================
+// ---- SHEET HEADER -----------------------------------------------------------
 
 function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -387,10 +365,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-// =============================================================================
-// SHEET FOOTER
-// footer with action buttons
-// =============================================================================
+// ---- SHEET FOOTER -----------------------------------------------------------
 
 function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -407,10 +382,7 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-// =============================================================================
-// SHEET TITLE
-// title
-// =============================================================================
+// ---- SHEET TITLE ------------------------------------------------------------
 
 const SheetTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -430,10 +402,7 @@ const SheetTitle = React.forwardRef<
 
 SheetTitle.displayName = "SheetTitle";
 
-// =============================================================================
-// SHEET DESCRIPTION
-// description
-// =============================================================================
+// ---- SHEET DESCRIPTION ------------------------------------------------------
 
 const SheetDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -452,10 +421,7 @@ const SheetDescription = React.forwardRef<
 
 SheetDescription.displayName = "SheetDescription";
 
-// =============================================================================
-// SHEET BODY
-// Scrollable content area with padding
-// =============================================================================
+// ---- SHEET BODY -------------------------------------------------------------
 
 function SheetBody({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -472,9 +438,7 @@ function SheetBody({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-// =============================================================================
-// EXPORTS
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   Sheet,

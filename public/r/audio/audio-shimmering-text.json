@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "audio-shimmering-text",
+  "type": "registry:ui",
+  "title": "Shimmering Text Audio",
+  "description": "Shimmering Text Audio",
+  "dependencies": [
+    "motion"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "variant": "audio",
+  "files": [
+    {
+      "path": "components/ui/audio/shimmering-text-audio.tsx",
+      "content": "\"use client\";\r\n\r\n/**\r\n * Shimmering Text Audio\r\n * @registrySlug audio-shimmering-text\r\n * @registryCategory display\r\n */\r\n\r\nimport { useMemo, useRef } from \"react\";\r\nimport { motion, useInView, type UseInViewOptions } from \"motion/react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// ---- TYPES ------------------------------------------------------------------\r\n\r\ninterface ShimmeringTextProps {\r\n  /** Text to display with shimmer effect */\r\n  text: string;\r\n  /** Animation duration in seconds. Default: 2 */\r\n  duration?: number;\r\n  /** Delay before starting animation. Default: 0 */\r\n  delay?: number;\r\n  /** Whether to repeat the animation. Default: true */\r\n  repeat?: boolean;\r\n  /** Pause duration between repeats in seconds. Default: 0.5 */\r\n  repeatDelay?: number;\r\n  /** Custom className */\r\n  className?: string;\r\n  /** Whether to start animation when component enters viewport. Default: true */\r\n  startOnView?: boolean;\r\n  /** Whether to animate only once. Default: false */\r\n  once?: boolean;\r\n  /** Margin for in-view detection (rootMargin) */\r\n  inViewMargin?: UseInViewOptions[\"margin\"];\r\n  /** Shimmer spread multiplier. Default: 2 */\r\n  spread?: number;\r\n  /** Base text color */\r\n  color?: string;\r\n  /** Shimmer gradient color */\r\n  shimmerColor?: string;\r\n}\r\n\r\n// ---- COMPONENT --------------------------------------------------------------\r\n\r\nfunction ShimmeringText({\r\n  text,\r\n  duration = 2,\r\n  delay = 0,\r\n  repeat = true,\r\n  repeatDelay = 0.5,\r\n  className,\r\n  startOnView = true,\r\n  once = false,\r\n  inViewMargin,\r\n  spread = 2,\r\n  color,\r\n  shimmerColor,\r\n}: ShimmeringTextProps) {\r\n  const ref = useRef<HTMLSpanElement>(null);\r\n  const isInView = useInView(ref, { once, margin: inViewMargin });\r\n\r\n  const dynamicSpread = useMemo(() => {\r\n    return text.length * spread;\r\n  }, [text, spread]);\r\n\r\n  const shouldAnimate = !startOnView || isInView;\r\n\r\n  return (\r\n    <motion.span\r\n      ref={ref}\r\n      data-slot=\"shimmering-text\"\r\n      className={cn(\r\n        \"relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-transparent\",\r\n        \"[--base-color:var(--muted-foreground)] [--shimmer-color:var(--foreground)]\",\r\n        \"[background-repeat:no-repeat,padding-box]\",\r\n        \"[--shimmer-bg:linear-gradient(90deg,transparent_calc(50%-var(--spread)),var(--shimmer-color),transparent_calc(50%+var(--spread)))]\",\r\n        \"dark:[--base-color:var(--muted-foreground)] dark:[--shimmer-color:var(--foreground)]\",\r\n        className\r\n      )}\r\n      style={\r\n        {\r\n          \"--spread\": `${dynamicSpread}px`,\r\n          ...(color && { \"--base-color\": color }),\r\n          ...(shimmerColor && { \"--shimmer-color\": shimmerColor }),\r\n          backgroundImage: `var(--shimmer-bg), linear-gradient(var(--base-color), var(--base-color))`,\r\n        } as React.CSSProperties\r\n      }\r\n      initial={{\r\n        backgroundPosition: \"100% center\",\r\n        opacity: 0,\r\n      }}\r\n      animate={\r\n        shouldAnimate\r\n          ? {\r\n              backgroundPosition: \"0% center\",\r\n              opacity: 1,\r\n            }\r\n          : {}\r\n      }\r\n      transition={{\r\n        backgroundPosition: {\r\n          repeat: repeat ? Infinity : 0,\r\n          duration,\r\n          delay,\r\n          repeatDelay,\r\n          ease: \"linear\",\r\n        },\r\n        opacity: {\r\n          duration: 0.3,\r\n          delay,\r\n        },\r\n      }}\r\n    >\r\n      {text}\r\n    </motion.span>\r\n  );\r\n}\r\n\r\nShimmeringText.displayName = \"ShimmeringText\";\r\n\r\nexport { ShimmeringText };\r\nexport type { ShimmeringTextProps };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

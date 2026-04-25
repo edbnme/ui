@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Bundle Size Computation Script
  *
  * Fetches bundle size data from Bundlephobia API for all component dependencies,
@@ -24,9 +24,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const root = join(__dirname, "..");
 
-// =============================================================================
-// CONFIGURATION
-// =============================================================================
+// ---- CONFIGURATION ----------------------------------------------------------
 
 const BUNDLEPHOBIA_API = "https://bundlephobia.com/api/size";
 const CACHE_FILE = join(root, ".cache", "bundle-sizes-cache.json");
@@ -54,9 +52,7 @@ const FALLBACK_SIZES = {
   },
 };
 
-// =============================================================================
-// CACHE MANAGEMENT
-// =============================================================================
+// ---- CACHE MANAGEMENT -------------------------------------------------------
 
 let cache = {};
 
@@ -94,9 +90,7 @@ function saveCache() {
   }
 }
 
-// =============================================================================
-// API FETCHING
-// =============================================================================
+// ---- API FETCHING -----------------------------------------------------------
 
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -217,9 +211,7 @@ function estimatePackageSize(packageName) {
   };
 }
 
-// =============================================================================
-// REGISTRY PARSING
-// =============================================================================
+// ---- REGISTRY PARSING -------------------------------------------------------
 
 function loadRegistry() {
   const registryPath = join(root, "registry.json");
@@ -243,9 +235,7 @@ function extractAllDependencies(registry) {
   return Array.from(allDeps).sort();
 }
 
-// =============================================================================
-// SIZE COMPUTATION
-// =============================================================================
+// ---- SIZE COMPUTATION -------------------------------------------------------
 
 function computeComponentSizes(registry, packageSizes) {
   const components = {};
@@ -339,9 +329,7 @@ function computeVariantComparisons(components) {
   return comparisons;
 }
 
-// =============================================================================
-// UTILITIES
-// =============================================================================
+// ---- UTILITIES --------------------------------------------------------------
 
 function formatBytes(bytes) {
   if (bytes < 1024) return `${bytes} B`;
@@ -355,9 +343,7 @@ function ensureDir(dirPath) {
   }
 }
 
-// =============================================================================
-// MAIN EXECUTION
-// =============================================================================
+// ---- MAIN EXECUTION ---------------------------------------------------------
 
 async function main() {
   console.log("[BUNDLE] Computing bundle sizes...\n");

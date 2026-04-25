@@ -16,9 +16,7 @@ import { motion, type HTMLMotionProps, type Variants } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 export type ShimmeringTextProps = Omit<HTMLMotionProps<"span">, "children"> & {
   /** The text content to display with the shimmering effect */
@@ -29,9 +27,7 @@ export type ShimmeringTextProps = Omit<HTMLMotionProps<"span">, "children"> & {
   isStopped?: boolean;
 };
 
-// =============================================================================
-// SHIMMERING TEXT COMPONENT
-// =============================================================================
+// ---- SHIMMERING TEXT COMPONENT ----------------------------------------------
 
 /**
  * ShimmeringText - Animated text with per-character color shimmer

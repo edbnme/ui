@@ -30,9 +30,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-// =============================================================================
-// TYPES
-// =============================================================================
+// ---- TYPES ------------------------------------------------------------------
 
 type SlideToUnlockContextValue = {
   x: MotionValue<number>;
@@ -44,9 +42,7 @@ type SlideToUnlockContextValue = {
   onDragEnd: () => void;
 };
 
-// =============================================================================
-// CONTEXT
-// =============================================================================
+// ---- CONTEXT ----------------------------------------------------------------
 
 const SlideToUnlockContext = createContext<SlideToUnlockContextValue | null>(
   null
@@ -62,9 +58,7 @@ function useSlideToUnlock() {
   return context;
 }
 
-// =============================================================================
-// ROOT COMPONENT
-// =============================================================================
+// ---- ROOT COMPONENT ---------------------------------------------------------
 
 export type SlideToUnlockProps = React.ComponentProps<"div"> & {
   /** Width of the draggable handle in pixels */
@@ -150,9 +144,7 @@ export function SlideToUnlock({
 
 SlideToUnlock.displayName = "SlideToUnlock";
 
-// =============================================================================
-// TRACK COMPONENT
-// =============================================================================
+// ---- TRACK COMPONENT --------------------------------------------------------
 
 export type SlideToUnlockTrackProps = React.ComponentProps<"div">;
 
@@ -185,9 +177,7 @@ export function SlideToUnlockTrack({
 
 SlideToUnlockTrack.displayName = "SlideToUnlockTrack";
 
-// =============================================================================
-// TEXT COMPONENT
-// =============================================================================
+// ---- TEXT COMPONENT ---------------------------------------------------------
 
 export type SlideToUnlockTextProps = Omit<
   HTMLMotionProps<"div">,
@@ -237,9 +227,7 @@ export function SlideToUnlockText({
 
 SlideToUnlockText.displayName = "SlideToUnlockText";
 
-// =============================================================================
-// HANDLE COMPONENT
-// =============================================================================
+// ---- HANDLE COMPONENT -------------------------------------------------------
 
 export type SlideToUnlockHandleProps = HTMLMotionProps<"div">;
 

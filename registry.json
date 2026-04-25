@@ -9,450 +9,22 @@
       "description": "Components with CSS-only animations (lighter bundle)",
       "dependencies": [],
       "cssImport": "@/lib/styles/static.css"
+    },
+    "audio": {
+      "name": "Audio",
+      "description": "AI chat and audio components with Web Audio API and motion animations",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "cssImport": null
     }
   },
   "items": [
     {
-      "name": "button",
-      "type": "registry:ui",
-      "title": "Button",
-      "description": "Static button component with CSS transitions only. No motion dependency required.",
-      "dependencies": [
-        "class-variance-authority",
-        "@phosphor-icons/react",
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "alert-dialog",
-      "type": "registry:ui",
-      "title": "Alert Dialog",
-      "description": "Static alert dialog built on Base UI AlertDialog with CSS transitions.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/alert-dialog.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "popover",
-      "type": "registry:ui",
-      "title": "Popover",
-      "description": "Static popover built on Base UI Popover with CSS transitions.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/popover.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "dropdown-menu",
-      "type": "registry:ui",
-      "title": "Dropdown Menu",
-      "description": "Static dropdown menu built on Base UI Menu with full sub-menu support.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/menu.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "context-menu",
-      "type": "registry:ui",
-      "title": "Context Menu",
-      "description": "Static context menu built on Base UI ContextMenu with right-click trigger.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/context-menu.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "sheet",
-      "type": "registry:ui",
-      "title": "Sheet",
-      "description": "Static slide-out panel built on Base UI Dialog with directional CSS transitions.",
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/sheet.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "dialog",
-      "type": "registry:ui",
-      "title": "Dialog",
-      "description": "Static dialog/modal built on Base UI Dialog with CSS transitions.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/dialog.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "tooltip",
-      "type": "registry:ui",
-      "title": "Tooltip",
-      "description": "Static tooltip built on Base UI Tooltip with arrow and CSS transitions.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/tooltip.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "checkbox",
-      "type": "registry:ui",
-      "title": "Checkbox",
-      "description": "Static checkbox built on Base UI Checkbox with indeterminate support.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/checkbox.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "checkbox-group",
-      "type": "registry:ui",
-      "title": "Checkbox Group",
-      "description": "Static checkbox group built on Base UI CheckboxGroup for parent-child checkbox control.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils",
-        "checkbox"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/checkbox-group.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "radio-group",
-      "type": "registry:ui",
-      "title": "Radio Group",
-      "description": "Static radio group built on Base UI RadioGroup.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/radio.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "switch",
-      "type": "registry:ui",
-      "title": "Switch",
-      "description": "Static switch/toggle built on Base UI Switch.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/switch.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "toggle",
-      "type": "registry:ui",
-      "title": "Toggle",
-      "description": "Static toggle button built on Base UI Toggle with CVA variants.",
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/toggle.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "toggle-group",
-      "type": "registry:ui",
-      "title": "Toggle Group",
-      "description": "Static toggle group built on Base UI ToggleGroup.",
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
-      ],
-      "registryDependencies": [
-        "utils",
-        "toggle"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/toggle-group.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "slider",
-      "type": "registry:ui",
-      "title": "Slider",
-      "description": "Static slider built on Base UI Slider with track, thumb, and value display.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/slider.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "number-field",
-      "type": "registry:ui",
-      "title": "Number Field",
-      "description": "Static number field built on Base UI NumberField with increment/decrement.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/number-field.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "field",
-      "type": "registry:ui",
-      "title": "Field",
-      "description": "Static form field built on Base UI Field with label, description, error, and validity.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/field.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "fieldset",
-      "type": "registry:ui",
-      "title": "Fieldset",
-      "description": "Static fieldset built on Base UI Fieldset with root and legend.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/fieldset.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "form",
-      "type": "registry:ui",
-      "title": "Form",
-      "description": "Static form built on Base UI Form.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/form.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "progress",
-      "type": "registry:ui",
-      "title": "Progress",
-      "description": "Static progress bar built on Base UI Progress with indeterminate state.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/progress.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "meter",
-      "type": "registry:ui",
-      "title": "Meter",
-      "description": "Static meter/gauge built on Base UI Meter with track, indicator, label, and value.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/meter.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "toast",
-      "type": "registry:ui",
-      "title": "Toast",
-      "description": "Static toast notifications built on Base UI Toast with CVA variants.",
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/toast.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "description": "Static accordion built on Base UI Accordion with CSS height transitions.",
+      "description": "Vertically collapsible content panels with smooth height animations.",
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react"
@@ -469,10 +41,10 @@
       ]
     },
     {
-      "name": "collapsible",
+      "name": "alert-dialog",
       "type": "registry:ui",
-      "title": "Collapsible",
-      "description": "Static collapsible built on Base UI Collapsible with CSS height transitions.",
+      "title": "Alert Dialog",
+      "description": "Accessible alert dialog with focus trap, keyboard handling, and portal rendering.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -482,327 +54,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/collapsible.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "tabs",
-      "type": "registry:ui",
-      "title": "Tabs",
-      "description": "Static tabs built on Base UI Tabs with animated indicator.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/tabs.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "scroll-area",
-      "type": "registry:ui",
-      "title": "Scroll Area",
-      "description": "Static scroll area built on Base UI ScrollArea with custom scrollbars.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/scroll-area.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "select",
-      "type": "registry:ui",
-      "title": "Select",
-      "description": "Static select built on Base UI Select with scroll arrows.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/select.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "toolbar",
-      "type": "registry:ui",
-      "title": "Toolbar",
-      "description": "Static toolbar built on Base UI Toolbar with button, group, link, input, and separator.",
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/toolbar.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "navigation-menu",
-      "type": "registry:ui",
-      "title": "Navigation Menu",
-      "description": "Static navigation menu built on Base UI NavigationMenu with viewport and CSS transitions.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/navigation-menu.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "preview-card",
-      "type": "registry:ui",
-      "title": "Preview Card",
-      "description": "Static preview card built on Base UI PreviewCard with hover trigger and arrow.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/preview-card.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "sidebar",
-      "type": "registry:ui",
-      "title": "Sidebar",
-      "description": "A responsive sidebar component with Base UI sheet and tooltip. No motion dependency required.",
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils",
-        "button",
-        "input",
-        "separator",
-        "sheet",
-        "skeleton",
-        "tooltip"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/sidebar.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "drawer",
-      "type": "registry:ui",
-      "title": "Drawer",
-      "description": "Static drawer/bottom sheet component built on Base UI Dialog with snap points and nested support.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/drawer.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "input-otp",
-      "type": "registry:ui",
-      "title": "Input OTP",
-      "description": "Static OTP/verification code input built on input-otp with customizable slots.",
-      "dependencies": [
-        "input-otp",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/input-otp.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "hover-card",
-      "type": "registry:ui",
-      "title": "Hover Card",
-      "description": "Static hover card built on Base UI PreviewCard with arrow and CSS transitions.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/hover-card.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "resizable",
-      "type": "registry:ui",
-      "title": "Resizable",
-      "description": "Static resizable panel groups with drag handles built on react-resizable-panels.",
-      "dependencies": [
-        "react-resizable-panels",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/resizable.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "menubar",
-      "type": "registry:ui",
-      "title": "Menubar",
-      "description": "Static menubar built on Base UI Menubar and Menu with keyboard navigation and sub-menus.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/menubar.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "autocomplete",
-      "type": "registry:ui",
-      "title": "Autocomplete",
-      "description": "Static autocomplete/combobox built on Base UI Autocomplete with filtering and groups.",
-      "dependencies": [
-        "@base-ui/react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/autocomplete.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "calendar",
-      "type": "registry:ui",
-      "title": "Calendar",
-      "description": "Static date picker calendar with single, multiple, and range selection modes built on react-day-picker.",
-      "dependencies": [
-        "react-day-picker",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/calendar.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "carousel",
-      "type": "registry:ui",
-      "title": "Carousel",
-      "description": "Static accessible carousel with touch/swipe support, loop mode, and keyboard navigation built on Embla Carousel.",
-      "dependencies": [
-        "embla-carousel-react",
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/carousel.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "chart",
-      "type": "registry:ui",
-      "title": "Chart",
-      "description": "Composable, themed chart components built on Recharts with CSS variable theming, pre-styled tooltips, and legends.",
-      "dependencies": [
-        "recharts"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/chart.tsx",
+          "path": "components/ui/static/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -811,7 +63,7 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "description": "Alert component with CVA variants for default, destructive, success, warning, and info states.",
+      "description": "Feedback alerts with 5 variants: default, destructive, success, warning, and info.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -844,13 +96,32 @@
       ]
     },
     {
+      "name": "autocomplete",
+      "type": "registry:ui",
+      "title": "Autocomplete",
+      "description": "Searchable dropdown with filtering, keyboard navigation, and empty state.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/autocomplete.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "description": "Composable avatar component with sizes, status indicators, and group stacking support.",
+      "description": "Composable avatar with image support and fallback initials.",
       "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+        "@base-ui/react"
       ],
       "registryDependencies": [
         "utils"
@@ -864,10 +135,378 @@
       ]
     },
     {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Small status indicator with variant styles.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Navigation breadcrumb trail with separator support.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Static button component with CSS transitions only. No motion dependency required.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Date picker with single, multiple, and range selection via react-day-picker.",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Container component with header, content, and footer sections.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Horizontal scroll carousel with navigation controls via Embla Carousel.",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "embla-carousel-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Composable chart components with Recharts integration and theme support.",
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "description": "Grouped checkboxes with shared label and accessible parent state.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/checkbox-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Accessible checkbox with indeterminate state support.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Expandable/collapsible content section with CSS transitions.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Searchable dropdown for filtering and selecting from a list, built on Base UI Combobox.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Right-click context menu with items, checkboxes, radio groups, and submenus.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal dialog with focus trap, backdrop, and controlled state.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Bottom sheet drawer with swipe-to-dismiss and smooth spring animations.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Form field with label, description, error message, and validation.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "fieldset",
+      "type": "registry:ui",
+      "title": "Fieldset",
+      "description": "Semantic form grouping with accessible legend for related fields.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/fieldset.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "Accessible form wrapper with Base UI validation integration.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Rich content card that appears on hover, built on Base UI PreviewCard.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "description": "One-time password input with auto-focus, paste support, and separators.",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "input-otp"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "A styled input component with focus states, validation support, and file input styling.",
+      "description": "Styled text input with variants for email, password, and more.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -900,12 +539,13 @@
       ]
     },
     {
-      "name": "badge",
+      "name": "dropdown-menu",
       "type": "registry:ui",
-      "title": "Badge",
-      "description": "Badge component with CVA variants for default, secondary, destructive, and outline styles.",
+      "title": "Dropdown Menu",
+      "description": "Dropdown menu with items, separators, and keyboard navigation.",
       "dependencies": [
-        "class-variance-authority"
+        "@base-ui/react",
+        "@phosphor-icons/react"
       ],
       "registryDependencies": [
         "utils"
@@ -913,35 +553,19 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/badge.tsx",
+          "path": "components/ui/static/menu.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "textarea",
+      "name": "menubar",
       "type": "registry:ui",
-      "title": "Textarea",
-      "description": "A styled textarea component with auto-resize support.",
-      "dependencies": [],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "components/ui/static/textarea.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "card",
-      "type": "registry:ui",
-      "title": "Card",
-      "description": "Card component with header, title, description, content, and footer sub-components.",
+      "title": "Menubar",
+      "description": "Horizontal menu bar with keyboard navigation, checkbox items, and submenus.",
       "dependencies": [
-        "class-variance-authority"
+        "@base-ui/react",
+        "@phosphor-icons/react"
       ],
       "registryDependencies": [
         "utils"
@@ -949,41 +573,65 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/card.tsx",
+          "path": "components/ui/static/menubar.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "table",
+      "name": "meter",
       "type": "registry:ui",
-      "title": "Table",
-      "description": "Table component with header, body, footer, row, head, cell, and caption sub-components.",
-      "dependencies": [],
+      "title": "Meter",
+      "description": "Visual indicator for scalar measurements within a known range.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "utils"
       ],
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/table.tsx",
+          "path": "components/ui/static/meter.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "breadcrumb",
+      "name": "navigation-menu",
       "type": "registry:ui",
-      "title": "Breadcrumb",
-      "description": "Breadcrumb navigation component with list, item, link, page, separator, and ellipsis.",
-      "dependencies": [],
+      "title": "Navigation Menu",
+      "description": "Horizontal navigation menu with dropdown content panels and links.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "registryDependencies": [
         "utils"
       ],
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/breadcrumb.tsx",
+          "path": "components/ui/static/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "Numeric input with increment/decrement buttons and min/max constraints.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/number-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -992,7 +640,7 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "description": "Pagination component with previous, next, links, and ellipsis.",
+      "description": "Page navigation with previous/next and numbered pages.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1006,10 +654,107 @@
       ]
     },
     {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Floating popover with auto-positioning and focus management.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "preview-card",
+      "type": "registry:ui",
+      "title": "Preview Card",
+      "description": "Link preview card with rich content and auto-positioning on hover.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/preview-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress bar with determinate and indeterminate states.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Radio group with accessible keyboard navigation.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/radio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable panel groups with drag handles for flexible layouts.",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
-      "description": "A scrollable area with custom scrollbars built on Base UI ScrollArea.",
+      "description": "Custom scrollbar container with cross-browser styling.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -1025,10 +770,30 @@
       ]
     },
     {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Accessible select dropdown with search and keyboard navigation.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "description": "A visual separator for dividing content, supporting horizontal and vertical orientations.",
+      "description": "Visual divider for separating content sections.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -1044,10 +809,76 @@
       ]
     },
     {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Static slide-out panel built on Base UI Dialog with directional CSS transitions.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Responsive sidebar with collapsible sections, menu items, groups, and mobile support.",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "input",
+        "separator",
+        "sheet",
+        "skeleton",
+        "tooltip",
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/sidebar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/static/sidebar-context.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/static/sidebar-group.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/static/sidebar-menu-sub.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/static/sidebar-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/static/sidebar-rail.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "description": "A loading placeholder component with pulse animation for content loading states.",
+      "description": "Loading placeholder with pulse animation.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1064,7 +895,7 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "A range slider component with single or multiple thumbs, built on Base UI Slider.",
+      "description": "Range slider with single or multi-thumb support.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -1080,10 +911,162 @@
       ]
     },
     {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Toggle switch with accessible on/off states.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Data table with header, body, and cell components.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabbed interface with accessible panel switching.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input with auto-resize support.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Notification toasts with auto-dismiss, actions, and stacking.",
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Exclusive or multi-select toggle buttons for switching between options.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Pressable toggle button with on/off state.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "Horizontal toolbar with buttons, toggles, and grouped actions.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "components/ui/static/toolbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "description": "A tooltip component with smooth animations and configurable positioning.",
+      "description": "Accessible tooltip with auto-positioning and delay.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -1095,6 +1078,108 @@
         {
           "path": "components/ui/static/tooltip.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "component-standards",
+      "type": "registry:lib",
+      "title": "Component Standards",
+      "description": "Shared component standard utilities (class composition, data attribute helpers).",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "lib/component-standards.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "create-component-context",
+      "type": "registry:lib",
+      "title": "Create Component Context",
+      "description": "Factory for creating strict React contexts with typed hooks and display-name friendly debugging.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "lib/create-component-context.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "icons-static",
+      "type": "registry:lib",
+      "title": "Static Icons",
+      "description": "CSS-only icon components for static variants.",
+      "dependencies": [
+        "@phosphor-icons/react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "static",
+      "files": [
+        {
+          "path": "lib/icons-static.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "motion-lib",
+      "type": "registry:lib",
+      "title": "Motion Library",
+      "description": "Spring presets and animation utilities for motion/react components.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "lib/motion.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "primitives",
+      "type": "registry:lib",
+      "title": "Primitives",
+      "description": "Re-exports of headless UI primitives (Base UI, Slot) used across edbn-ui components.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "lib/primitives.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/slot.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "shiki-config",
+      "type": "registry:lib",
+      "title": "Shiki Config",
+      "description": "Shared Shiki theme and pre-style configuration for code highlighting.",
+      "dependencies": [
+        "shiki"
+      ],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "lib/shiki-config.ts",
+          "type": "registry:lib"
         }
       ]
     },
@@ -1124,25 +1209,6 @@
       "files": [
         {
           "path": "lib/tokens.ts",
-          "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "icons-static",
-      "type": "registry:lib",
-      "title": "Static Icons",
-      "description": "CSS-only icon components for static variants.",
-      "dependencies": [
-        "@phosphor-icons/react"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "variant": "static",
-      "files": [
-        {
-          "path": "lib/icons-static.tsx",
           "type": "registry:lib"
         }
       ]
@@ -1181,21 +1247,6 @@
       ]
     },
     {
-      "name": "use-stable-id",
-      "type": "registry:hook",
-      "title": "useStableId",
-      "description": "SSR-safe hook for generating stable unique IDs for accessibility attributes.",
-      "dependencies": [],
-      "registryDependencies": [],
-      "variant": "static",
-      "files": [
-        {
-          "path": "hooks/use-stable-id.ts",
-          "type": "registry:hook"
-        }
-      ]
-    },
-    {
       "name": "use-controllable-state",
       "type": "registry:hook",
       "title": "useControllableState",
@@ -1206,6 +1257,21 @@
       "files": [
         {
           "path": "hooks/use-controllable-state.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-focus-trap",
+      "type": "registry:hook",
+      "title": "useFocusTrap",
+      "description": "Hook to trap focus within a container element for accessibility in modals, dialogs, and sheets.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "hooks/use-focus-trap.ts",
           "type": "registry:hook"
         }
       ]
@@ -1241,21 +1307,6 @@
       ]
     },
     {
-      "name": "use-focus-trap",
-      "type": "registry:hook",
-      "title": "useFocusTrap",
-      "description": "Hook to trap focus within a container element for accessibility in modals, dialogs, and sheets.",
-      "dependencies": [],
-      "registryDependencies": [],
-      "variant": "static",
-      "files": [
-        {
-          "path": "hooks/use-focus-trap.ts",
-          "type": "registry:hook"
-        }
-      ]
-    },
-    {
       "name": "use-prevent-scroll",
       "type": "registry:hook",
       "title": "usePreventScroll",
@@ -1266,6 +1317,574 @@
       "files": [
         {
           "path": "hooks/use-prevent-scroll.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-stable-id",
+      "type": "registry:hook",
+      "title": "useStableId",
+      "description": "SSR-safe hook for generating stable unique IDs for accessibility attributes.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "static",
+      "files": [
+        {
+          "path": "hooks/use-stable-id.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "audio-player",
+      "type": "registry:ui",
+      "title": "Audio Player",
+      "description": "Audio Player",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "dropdown-menu",
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/audio-player.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-recorder",
+      "type": "registry:ui",
+      "title": "Audio Recorder",
+      "description": "Audio Recorder",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/audio-recorder.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-bar-visualizer",
+      "type": "registry:ui",
+      "title": "Bar Visualizer",
+      "description": "Bar Visualizer component.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/bar-visualizer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-chat-input",
+      "type": "registry:ui",
+      "title": "Chat Input",
+      "description": "Chat Input",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/chat-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Code Block",
+      "dependencies": [
+        "@phosphor-icons/react",
+        "class-variance-authority",
+        "hast-util-to-jsx-runtime",
+        "shiki"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-conversation-bar",
+      "type": "registry:ui",
+      "title": "Conversation Bar",
+      "description": "Conversation Bar",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/conversation-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-conversation",
+      "type": "registry:ui",
+      "title": "Conversation",
+      "description": "Conversation component.",
+      "dependencies": [
+        "use-stick-to-bottom"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/conversation.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-feedback",
+      "type": "registry:ui",
+      "title": "Feedback",
+      "description": "Feedback",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/feedback.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-live-waveform",
+      "type": "registry:ui",
+      "title": "Live Waveform",
+      "description": "Live Waveform",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/live-waveform.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-matrix",
+      "type": "registry:ui",
+      "title": "Matrix",
+      "description": "Matrix",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/matrix.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Message component.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-mic-selector",
+      "type": "registry:ui",
+      "title": "Mic Selector",
+      "description": "Mic Selector",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/mic-selector.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-orb",
+      "type": "registry:ui",
+      "title": "Orb",
+      "description": "Orb",
+      "dependencies": [
+        "@react-three/drei",
+        "@react-three/fiber",
+        "next",
+        "three"
+      ],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/orb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-prompt-suggestions",
+      "type": "registry:ui",
+      "title": "Prompt Suggestions",
+      "description": "Prompt Suggestions",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/prompt-suggestions.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-response",
+      "type": "registry:ui",
+      "title": "Response",
+      "description": "Response component.",
+      "dependencies": [
+        "streamdown"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/response.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-scrub-bar",
+      "type": "registry:ui",
+      "title": "Scrub Bar",
+      "description": "Scrub Bar",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/scrub-bar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-shimmering-text",
+      "type": "registry:ui",
+      "title": "Shimmering Text Audio",
+      "description": "Shimmering Text Audio",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/shimmering-text-audio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-speech-input",
+      "type": "registry:ui",
+      "title": "Speech Input",
+      "description": "Speech Input",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/speech-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-thinking-indicator",
+      "type": "registry:ui",
+      "title": "Thinking Indicator",
+      "description": "Thinking Indicator",
+      "dependencies": [
+        "class-variance-authority",
+        "motion"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/thinking-indicator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-token-counter",
+      "type": "registry:ui",
+      "title": "Token Counter",
+      "description": "Token Counter",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/token-counter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-transcript-viewer",
+      "type": "registry:ui",
+      "title": "Transcript Viewer",
+      "description": "Transcript Viewer",
+      "dependencies": [],
+      "registryDependencies": [
+        "audio-scrub-bar",
+        "button",
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/transcript-viewer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-voice-button",
+      "type": "registry:ui",
+      "title": "Voice Button",
+      "description": "Voice Button",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/voice-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-voice-picker",
+      "type": "registry:ui",
+      "title": "Voice Picker",
+      "description": "Voice Picker",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/voice-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-waveform",
+      "type": "registry:ui",
+      "title": "Waveform",
+      "description": "Waveform component.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "components/ui/audio/waveform.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "use-audio-devices",
+      "type": "registry:hook",
+      "title": "useAudioDevices",
+      "description": "Hook for enumerating audio input devices with permission handling.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-audio-devices.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-audio-player",
+      "type": "registry:hook",
+      "title": "useAudioPlayer",
+      "description": "Hook for controlling audio playback with play, pause, seek, volume, and speed.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-audio-player.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-audio-volume",
+      "type": "registry:hook",
+      "title": "useAudioVolume",
+      "description": "Hook that tracks real-time volume level from an audio source using Web Audio API AnalyserNode.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-audio-volume.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-bar-animator",
+      "type": "registry:hook",
+      "title": "useBarAnimator",
+      "description": "Hook that provides smooth bar animation for audio visualizers with decay and randomization.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-bar-animator.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-multiband-volume",
+      "type": "registry:hook",
+      "title": "useMultibandVolume",
+      "description": "Hook that splits audio frequency data into configurable bands for equalizer visualization.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-multiband-volume.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-shiki-highlight",
+      "type": "registry:hook",
+      "title": "useShikiHighlight",
+      "description": "Client-side Shiki highlighting hook with lazy loading and JSX rendering.",
+      "dependencies": [
+        "hast-util-to-jsx-runtime",
+        "shiki"
+      ],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-shiki-highlight.tsx",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-transcript-viewer",
+      "type": "registry:hook",
+      "title": "useTranscriptViewer",
+      "description": "Hook for transcript playback, word timing, scrubbing, and current-word tracking.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "variant": "audio",
+      "files": [
+        {
+          "path": "hooks/use-transcript-viewer.ts",
           "type": "registry:hook"
         }
       ]

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Toaster — Sonner toast notification wrapper with theme integration.
  * Styled wrapper around the `sonner` library that inherits the current theme.
  *

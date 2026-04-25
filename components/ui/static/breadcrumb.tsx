@@ -1,7 +1,14 @@
 /**
- * Breadcrumb — Navigation trail showing the current page location.
+ * Breadcrumb — Navigation trail showing the user's location in a
+ * hierarchical site.
  *
- * @example
+ * A pure-CSS component (the semantics of `<nav aria-label="breadcrumb">`
+ * combined with `<ol>` are more appropriate than any library primitive).
+ * Inline icons are used so this component can be copied into any project
+ * without extra dependencies.
+ *
+ * Anatomy:
+ * ```tsx
  * <Breadcrumb>
  *   <BreadcrumbList>
  *     <BreadcrumbItem>
@@ -9,97 +16,176 @@
  *     </BreadcrumbItem>
  *     <BreadcrumbSeparator />
  *     <BreadcrumbItem>
- *       <BreadcrumbPage>Current</BreadcrumbPage>
+ *       <BreadcrumbLink href="/docs">Docs</BreadcrumbLink>
+ *     </BreadcrumbItem>
+ *     <BreadcrumbSeparator />
+ *     <BreadcrumbItem>
+ *       <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
  *     </BreadcrumbItem>
  *   </BreadcrumbList>
  * </Breadcrumb>
+ * ```
+ *
+ * Accessibility: the root is `<nav aria-label="breadcrumb">`; the current
+ * page uses `aria-current="page"` and `aria-disabled="true"`. Separators
+ * are `aria-hidden`.
+ *
+ * @package    @edbn/ui
+ * @version    0.3.0
+ * @since      0.1.0
+ * @brand      edbn/ui — https://ui.edbn.me
+ * @docs       https://ui.edbn.me/docs/components/breadcrumb
+ * @registryDescription Navigation breadcrumb trail with separator support.
  */
+
 "use client";
 
 import * as React from "react";
+
 import { cn } from "@/lib/utils";
+import { Slot } from "@/lib/slot";
 
-// =============================================================================
-// Breadcrumb
-// =============================================================================
+// ---- ROOT -------------------------------------------------------------------
 
-const Breadcrumb = React.forwardRef<
-  HTMLElement,
-  React.ComponentPropsWithoutRef<"nav"> & { separator?: React.ReactNode }
->(({ ...props }, ref) => (
-  <nav ref={ref} aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
-));
+export type BreadcrumbProps = React.ComponentPropsWithoutRef<"nav"> & {
+  /** Custom separator element. When omitted, a chevron-right is used. */
+  separator?: React.ReactNode;
+};
+
+/**
+ * The breadcrumb landmark.
+ *
+ * @since 0.1.0
+ */
+function Breadcrumb({ separator: _separator, ...props }: BreadcrumbProps) {
+  // `separator` is reserved for future API — destructure to keep it off DOM.
+  return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />;
+}
 Breadcrumb.displayName = "Breadcrumb";
 
-const BreadcrumbList = React.forwardRef<
-  HTMLOListElement,
-  React.ComponentPropsWithoutRef<"ol">
->(({ className, ...props }, ref) => (
-  <ol
-    ref={ref}
-    data-slot="breadcrumb-list"
-    className={cn(
-      "flex flex-wrap items-center gap-1.5 wrap-break-word text-sm text-muted-foreground sm:gap-2.5",
-      className
-    )}
-    {...props}
-  />
-));
+// ---- LIST -------------------------------------------------------------------
+
+export type BreadcrumbListProps = React.ComponentPropsWithoutRef<"ol">;
+
+/**
+ * Ordered list of breadcrumb items.
+ *
+ * @since 0.1.0
+ */
+function BreadcrumbList({ className, ...props }: BreadcrumbListProps) {
+  return (
+    <ol
+      data-slot="breadcrumb-list"
+      className={cn(
+        "flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 BreadcrumbList.displayName = "BreadcrumbList";
 
-const BreadcrumbItem = React.forwardRef<
-  HTMLLIElement,
-  React.ComponentPropsWithoutRef<"li">
->(({ className, ...props }, ref) => (
-  <li
-    ref={ref}
-    data-slot="breadcrumb-item"
-    className={cn("inline-flex items-center gap-1.5", className)}
-    {...props}
-  />
-));
+// ---- ITEM -------------------------------------------------------------------
+
+export type BreadcrumbItemProps = React.ComponentPropsWithoutRef<"li">;
+
+/**
+ * Individual breadcrumb cell. Wraps a `BreadcrumbLink` or
+ * `BreadcrumbPage`.
+ *
+ * @since 0.1.0
+ */
+function BreadcrumbItem({ className, ...props }: BreadcrumbItemProps) {
+  return (
+    <li
+      data-slot="breadcrumb-item"
+      className={cn("inline-flex items-center gap-1.5", className)}
+      {...props}
+    />
+  );
+}
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
-const BreadcrumbLink = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"a"> & { asChild?: boolean }
->(({ className, ...props }, ref) => (
-  <a
-    ref={ref}
-    data-slot="breadcrumb-link"
-    className={cn("transition-colors hover:text-foreground", className)}
-    {...props}
-  />
-));
+// ---- LINK -------------------------------------------------------------------
+
+export type BreadcrumbLinkProps = React.ComponentPropsWithoutRef<"a"> & {
+  /** When `true`, passes props to the child instead of rendering an `<a>`. */
+  asChild?: boolean;
+};
+
+/**
+ * A navigable breadcrumb. Supports `asChild` to compose with
+ * framework-specific link components (e.g. `next/link`).
+ *
+ * @since 0.1.0
+ */
+function BreadcrumbLink({
+  className,
+  asChild,
+  ...props
+}: BreadcrumbLinkProps) {
+  const Comp = asChild ? Slot : "a";
+  return (
+    <Comp
+      data-slot="breadcrumb-link"
+      className={cn(
+        "transition-colors duration-150 ease-out motion-reduce:transition-none",
+        "hover:text-foreground",
+        "focus-visible:outline-none focus-visible:text-foreground focus-visible:underline underline-offset-4",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 BreadcrumbLink.displayName = "BreadcrumbLink";
 
-const BreadcrumbPage = React.forwardRef<
-  HTMLSpanElement,
-  React.ComponentPropsWithoutRef<"span">
->(({ className, ...props }, ref) => (
-  <span
-    ref={ref}
-    role="link"
-    aria-disabled="true"
-    aria-current="page"
-    data-slot="breadcrumb-page"
-    className={cn("font-normal text-foreground", className)}
-    {...props}
-  />
-));
+// ---- PAGE -------------------------------------------------------------------
+
+export type BreadcrumbPageProps = React.ComponentPropsWithoutRef<"span">;
+
+/**
+ * The current page's label. Non-interactive; `aria-current="page"`
+ * identifies it to assistive tech.
+ *
+ * @since 0.1.0
+ */
+function BreadcrumbPage({ className, ...props }: BreadcrumbPageProps) {
+  return (
+    <span
+      role="link"
+      aria-disabled="true"
+      aria-current="page"
+      data-slot="breadcrumb-page"
+      className={cn("font-normal text-foreground", className)}
+      {...props}
+    />
+  );
+}
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
+// ---- SEPARATOR --------------------------------------------------------------
+
+export type BreadcrumbSeparatorProps = React.ComponentPropsWithoutRef<"li">;
+
+/**
+ * Visual divider between items. Renders a chevron by default; pass
+ * `children` to override.
+ *
+ * @since 0.1.0
+ */
 function BreadcrumbSeparator({
   children,
   className,
   ...props
-}: React.ComponentProps<"li">) {
+}: BreadcrumbSeparatorProps) {
   return (
     <li
       role="presentation"
       aria-hidden="true"
       data-slot="breadcrumb-separator"
-      className={cn("[&>svg]:h-3.5 [&>svg]:w-3.5", className)}
+      className={cn("[&>svg]:size-3.5", className)}
       {...props}
     >
       {children ?? <ChevronRightIcon />}
@@ -108,10 +194,20 @@ function BreadcrumbSeparator({
 }
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
+// ---- ELLIPSIS ---------------------------------------------------------------
+
+export type BreadcrumbEllipsisProps = React.ComponentPropsWithoutRef<"span">;
+
+/**
+ * Collapsed-items indicator. Useful when the trail is too long — render
+ * this in place of middle items with a popover / menu of the hidden ones.
+ *
+ * @since 0.1.0
+ */
 function BreadcrumbEllipsis({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: BreadcrumbEllipsisProps) {
   return (
     <span
       role="presentation"
@@ -127,8 +223,9 @@ function BreadcrumbEllipsis({
 }
 BreadcrumbEllipsis.displayName = "BreadcrumbEllipsis";
 
-// Inline icons
-function ChevronRightIcon(props: React.ComponentProps<"svg">) {
+// ---- INLINE ICONS -----------------------------------------------------------
+
+function ChevronRightIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -146,9 +243,8 @@ function ChevronRightIcon(props: React.ComponentProps<"svg">) {
     </svg>
   );
 }
-ChevronRightIcon.displayName = "ChevronRightIcon";
 
-function EllipsisIcon(props: React.ComponentProps<"svg">) {
+function EllipsisIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -168,11 +264,8 @@ function EllipsisIcon(props: React.ComponentProps<"svg">) {
     </svg>
   );
 }
-EllipsisIcon.displayName = "EllipsisIcon";
 
-// =============================================================================
-// Exports
-// =============================================================================
+// ---- EXPORTS ----------------------------------------------------------------
 
 export {
   Breadcrumb,
