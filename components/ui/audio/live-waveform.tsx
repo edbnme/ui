@@ -2,11 +2,11 @@
 
 /**
  * Live Waveform
+ * @registryDescription Canvas waveform for live microphone input, processing animations, and idle audio states.
  * @registryCategory audio
  */
 
-import { useEffect, useRef, type HTMLAttributes } from "react";
-
+import { useCallback, useEffect, useRef, type HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
@@ -54,6 +54,20 @@ export type LiveWaveformProps = HTMLAttributes<HTMLDivElement> & {
   onStreamEnd?: () => void;
 };
 
+type AudioContextConstructor = new (
+  contextOptions?: AudioContextOptions
+) => AudioContext;
+
+// ---- HELPERS ---------------------------------------------------------------
+
+function getAudioContextConstructor() {
+  const browserWindow = window as typeof window & {
+    webkitAudioContext?: AudioContextConstructor;
+  };
+
+  return window.AudioContext ?? browserWindow.webkitAudioContext;
+}
+
 // ---- COMPONENT --------------------------------------------------------------
 
 export const LiveWaveform = ({
@@ -100,7 +114,7 @@ export const LiveWaveform = ({
 
   const heightStyle = typeof height === "number" ? `${height}px` : height;
 
-  const teardownAudioCapture = () => {
+  const teardownAudioCapture = useCallback(() => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach((track) => track.stop());
       streamRef.current = null;
@@ -113,7 +127,7 @@ export const LiveWaveform = ({
 
     audioContextRef.current = null;
     analyserRef.current = null;
-  };
+  }, [onStreamEnd]);
 
   // Set up microphone capture
   useEffect(() => {
@@ -125,7 +139,18 @@ export const LiveWaveform = ({
     let cancelled = false;
 
     const setup = async () => {
+      let capturedStream: MediaStream | null = null;
+
       try {
+        if (!navigator.mediaDevices?.getUserMedia) {
+          throw new Error("MediaDevices API not available");
+        }
+
+        const AudioContextCtor = getAudioContextConstructor();
+        if (!AudioContextCtor) {
+          throw new Error("AudioContext API not available");
+        }
+
         const constraints: MediaStreamConstraints = {
           audio: {
             ...(deviceId ? { deviceId: { exact: deviceId } } : {}),
@@ -135,26 +160,27 @@ export const LiveWaveform = ({
           },
         };
 
-        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        capturedStream = await navigator.mediaDevices.getUserMedia(constraints);
 
         if (cancelled) {
-          stream.getTracks().forEach((t) => t.stop());
+          capturedStream.getTracks().forEach((track) => track.stop());
           return;
         }
 
-        streamRef.current = stream;
-        onStreamReady?.(stream);
+        const audioContext = new AudioContextCtor();
 
-        const audioContext = new AudioContext();
-        audioContextRef.current = audioContext;
-
-        const source = audioContext.createMediaStreamSource(stream);
+        const source = audioContext.createMediaStreamSource(capturedStream);
         const analyser = audioContext.createAnalyser();
         analyser.fftSize = fftSize;
         analyser.smoothingTimeConstant = smoothingTimeConstant;
         source.connect(analyser);
+
+        streamRef.current = capturedStream;
+        audioContextRef.current = audioContext;
         analyserRef.current = analyser;
+        onStreamReady?.(capturedStream);
       } catch (err) {
+        capturedStream?.getTracks().forEach((track) => track.stop());
         if (!cancelled) {
           onError?.(err instanceof Error ? err : new Error(String(err)));
         }
@@ -174,7 +200,7 @@ export const LiveWaveform = ({
     smoothingTimeConstant,
     onError,
     onStreamReady,
-    onStreamEnd,
+    teardownAudioCapture,
   ]);
 
   // Processing animation
@@ -331,20 +357,36 @@ export const LiveWaveform = ({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const { width, height: h } = entry.contentRect;
-        const dpr = window.devicePixelRatio || 1;
-        canvas.width = width * dpr;
-        canvas.height = h * dpr;
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${h}px`;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        needsRedrawRef.current = true;
-        cachedGradientRef.current = { width: 0, gradient: null };
-      }
-    });
-    resizeObserver.observe(container);
+    const resizeCanvas = (width: number, h: number) => {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      needsRedrawRef.current = true;
+      cachedGradientRef.current = { width: 0, gradient: null };
+    };
+
+    const resizeFromBounds = () => {
+      const rect = container.getBoundingClientRect();
+      resizeCanvas(rect.width, rect.height);
+    };
+
+    let resizeObserver: ResizeObserver | null = null;
+
+    if (typeof ResizeObserver === "undefined") {
+      resizeFromBounds();
+      window.addEventListener("resize", resizeFromBounds);
+    } else {
+      resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const { width, height: h } = entry.contentRect;
+          resizeCanvas(width, h);
+        }
+      });
+      resizeObserver.observe(container);
+    }
 
     const updateInterval = 1000 / updateRate;
 
@@ -518,7 +560,8 @@ export const LiveWaveform = ({
 
     return () => {
       cancelAnimationFrame(animationRef.current);
-      resizeObserver.disconnect();
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", resizeFromBounds);
     };
   }, [
     active,

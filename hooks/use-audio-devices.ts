@@ -67,6 +67,40 @@ function stopTracks(stream: MediaStream | null) {
   stream.getTracks().forEach((track) => track.stop());
 }
 
+function getPermissionConstraints(
+  kind: MediaDeviceKind
+): MediaStreamConstraints {
+  if (kind === "videoinput") {
+    return { video: true };
+  }
+
+  return { audio: true };
+}
+
+function getDeviceConstraints(
+  kind: MediaDeviceKind,
+  deviceId: string
+): MediaStreamConstraints {
+  if (kind === "videoinput") {
+    return { video: { deviceId: { exact: deviceId } } };
+  }
+
+  return { audio: { deviceId: { exact: deviceId } } };
+}
+
+function getSettingsDeviceId(stream: MediaStream, kind: MediaDeviceKind) {
+  const tracks =
+    kind === "videoinput" ? stream.getVideoTracks() : stream.getAudioTracks();
+
+  return tracks[0]?.getSettings().deviceId || null;
+}
+
+function getDeviceLabel(kind: MediaDeviceKind) {
+  if (kind === "videoinput") return "Camera";
+  if (kind === "audiooutput") return "Audio output";
+  return "Microphone";
+}
+
 // ---- HOOK ------------------------------------------------------------------
 
 export function useAudioDevices(
@@ -136,39 +170,34 @@ export function useAudioDevices(
     try {
       stopTracks(stream);
 
-      const constraints: MediaStreamConstraints = {
-        audio: kind === "audioinput" ? true : true,
-      };
-      const mediaStream =
-        await navigator.mediaDevices.getUserMedia(constraints);
+      const mediaStream = await navigator.mediaDevices.getUserMedia(
+        getPermissionConstraints(kind)
+      );
 
       setStream(mediaStream);
       setHasPermission(true);
 
-      const tracks = mediaStream.getAudioTracks();
-      if (tracks.length > 0) {
-        const settings = tracks[0].getSettings();
-        setActiveDeviceId(settings.deviceId || null);
-      }
+      setActiveDeviceId(getSettingsDeviceId(mediaStream, kind));
 
       await enumerateDevices();
     } catch (err) {
+      const deviceLabel = getDeviceLabel(kind);
       if (err instanceof DOMException) {
         switch (err.name) {
           case "NotAllowedError":
-            setError("Microphone permission denied");
+            setError(`${deviceLabel} permission denied`);
             break;
           case "NotFoundError":
-            setError("No microphone found");
+            setError(`No ${deviceLabel.toLowerCase()} found`);
             break;
           case "NotReadableError":
-            setError("Microphone is in use by another application");
+            setError(`${deviceLabel} is in use by another application`);
             break;
           default:
-            setError(`Microphone error: ${err.message}`);
+            setError(`${deviceLabel} error: ${err.message}`);
         }
       } else {
-        setError("Failed to access microphone");
+        setError(`Failed to access ${deviceLabel.toLowerCase()}`);
       }
     } finally {
       setIsRequesting(false);
@@ -187,12 +216,19 @@ export function useAudioDevices(
 
       stopTracks(stream);
       setError(null);
+
+      if (kind === "audiooutput") {
+        setActiveDeviceId(deviceId);
+        await enumerateDevices();
+        return;
+      }
+
       setIsRequesting(true);
 
       try {
-        const mediaStream = await navigator.mediaDevices.getUserMedia({
-          audio: { deviceId: { exact: deviceId } },
-        });
+        const mediaStream = await navigator.mediaDevices.getUserMedia(
+          getDeviceConstraints(kind, deviceId)
+        );
         setStream(mediaStream);
         setActiveDeviceId(deviceId);
         setHasPermission(true);
@@ -204,7 +240,7 @@ export function useAudioDevices(
         setHasEnumerated(true);
       }
     },
-    [enumerateDevices, stream]
+    [enumerateDevices, kind, stream]
   );
 
   const stopStream = useCallback(() => {

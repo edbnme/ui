@@ -1,17 +1,16 @@
 "use client";
 
-
 /**
  * Code Block
+ * @registryDescription Syntax-highlighted code block for generated answers, terminal snippets, and compact examples.
  * @registryCategory display
  */
 
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
 import { CopyIcon, CheckIcon } from "@phosphor-icons/react";
-
-import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import { useShikiHighlight } from "@/hooks/use-shiki-highlight";
+import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
 
@@ -64,7 +63,7 @@ function CopyButton({ code }: { code: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="rounded-md p-1.5 text-muted-foreground/50 hover:text-foreground hover:bg-accent/60 transition-all duration-200"
+      className="rounded-md p-1.5 text-muted-foreground/50 hover:text-foreground hover:bg-accent/60 transition-[background-color,color] duration-200 ease-out"
       aria-label={copied ? "Copied" : "Copy code"}
     >
       {copied ? (
@@ -145,7 +144,7 @@ function CodeBlock({
       >
         <div
           className={cn(
-            "flex leading-[20px] transition-opacity duration-150",
+            "flex leading-5 transition-opacity duration-150",
             highlighted ? "opacity-100" : "opacity-40"
           )}
         >
@@ -157,7 +156,7 @@ function CodeBlock({
               aria-hidden="true"
             >
               {Array.from({ length: lineCount }, (_, i) => (
-                <div key={i} className="h-[20px]">
+                <div key={i} className="h-5">
                   {i + 1}
                 </div>
               ))}
@@ -167,11 +166,11 @@ function CodeBlock({
           {/* Code content */}
           <div className="min-w-0 flex-1 p-3">
             {highlighted ? (
-              <div className="[&_pre]:bg-transparent! [&_pre]:m-0! [&_pre]:p-0! [&_pre]:text-inherit! [&_pre]:leading-[20px]! [&_code]:bg-transparent! [&_.shiki]:bg-transparent! [&_pre]:whitespace-pre!">
+              <div className="[&_pre]:bg-transparent! [&_pre]:m-0! [&_pre]:p-0! [&_pre]:text-inherit! [&_pre]:leading-5! [&_code]:bg-transparent! [&_.shiki]:bg-transparent! [&_pre]:whitespace-pre!">
                 {highlighted}
               </div>
             ) : (
-              <pre className="m-0 whitespace-pre bg-transparent p-0 leading-[20px] text-foreground/80">
+              <pre className="m-0 whitespace-pre bg-transparent p-0 leading-5 text-foreground/80">
                 <code>{normalizedCode}</code>
               </pre>
             )}

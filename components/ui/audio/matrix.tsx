@@ -1,14 +1,13 @@
 "use client";
 
-
 /**
  * Matrix
+ * @registryDescription Dot-matrix animation presets for compact loaders, voice activity, and ambient status.
  * @registryCategory display
  */
 
 import * as React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
-
 import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
@@ -89,11 +88,12 @@ function useAnimation(
   const frameIdRef = useRef<number | undefined>(undefined);
   const lastTimeRef = useRef<number>(0);
   const accumulatorRef = useRef<number>(0);
+  const { autoplay, fps, loop, onFrame } = options;
 
   useEffect(() => {
     if (!frames || frames.length === 0 || !isPlaying) return;
 
-    const frameInterval = 1000 / options.fps;
+    const frameInterval = 1000 / fps;
 
     const animate = (currentTime: number) => {
       if (lastTimeRef.current === 0) {
@@ -108,15 +108,15 @@ function useAnimation(
         setFrameIndex((prev) => {
           const next = prev + 1;
           if (next >= frames.length) {
-            if (options.loop) {
-              options.onFrame?.(0);
+            if (loop) {
+              onFrame?.(0);
               return 0;
             } else {
               setIsPlaying(false);
               return prev;
             }
           }
-          options.onFrame?.(next);
+          onFrame?.(next);
           return next;
         });
       }
@@ -128,14 +128,18 @@ function useAnimation(
     return () => {
       if (frameIdRef.current) cancelAnimationFrame(frameIdRef.current);
     };
-  }, [frames, isPlaying, options.fps, options.loop, options.onFrame]);
+  }, [frames, isPlaying, fps, loop, onFrame]);
 
   useEffect(() => {
-    setFrameIndex(0);
-    setIsPlaying(options.autoplay);
     lastTimeRef.current = 0;
     accumulatorRef.current = 0;
-  }, [frames, options.autoplay]);
+    const resetFrame = requestAnimationFrame(() => {
+      setFrameIndex(0);
+      setIsPlaying(autoplay);
+    });
+
+    return () => cancelAnimationFrame(resetFrame);
+  }, [frames, autoplay]);
 
   return { frameIndex, isPlaying };
 }

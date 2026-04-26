@@ -2,13 +2,13 @@
 
 /**
  * Shimmering Text Audio
+ * @registryDescription Motion-aware shimmering text for generated speech, transcript, and response pending states.
  * @registrySlug audio-shimmering-text
  * @registryCategory display
  */
 
 import { useMemo, useRef } from "react";
 import { motion, useInView, type UseInViewOptions } from "motion/react";
-
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
@@ -70,7 +70,7 @@ function ShimmeringText({
       ref={ref}
       data-slot="shimmering-text"
       className={cn(
-        "relative inline-block bg-[length:250%_100%,auto] bg-clip-text text-transparent",
+        "relative inline-block bg-size-[250%_100%,auto] bg-clip-text text-transparent",
         "[--base-color:var(--muted-foreground)] [--shimmer-color:var(--foreground)]",
         "[background-repeat:no-repeat,padding-box]",
         "[--shimmer-bg:linear-gradient(90deg,transparent_calc(50%-var(--spread)),var(--shimmer-color),transparent_calc(50%+var(--spread)))]",

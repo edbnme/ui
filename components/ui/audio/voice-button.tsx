@@ -1,13 +1,12 @@
 "use client";
 
-
 /**
  * Voice Button
+ * @registryDescription Voice action button with waveform, recording, processing, success, and error feedback.
  * @registryCategory audio
  */
 
 import * as React from "react";
-
 import { cn } from "@/lib/utils";
 import { LiveWaveform } from "./live-waveform";
 
@@ -96,6 +95,14 @@ const sizeClasses: Record<string, string> = {
   icon: "h-9 w-9",
 };
 
+const stateLabels: Record<VoiceButtonState, string> = {
+  idle: "Start voice input",
+  recording: "Stop voice input",
+  processing: "Processing voice input",
+  success: "Voice input complete",
+  error: "Voice input error",
+};
+
 // ---- COMPONENT --------------------------------------------------------------
 
 export const VoiceButton = React.forwardRef<
@@ -116,7 +123,9 @@ export const VoiceButton = React.forwardRef<
       feedbackDuration = 1500,
       disabled,
       onClick,
-      ...props
+      "aria-label": ariaLabel,
+      "aria-pressed": ariaPressed,
+      ...buttonProps
     },
     ref
   ) => {
@@ -148,6 +157,8 @@ export const VoiceButton = React.forwardRef<
 
     const shouldShowWaveform = isRecording || isProcessing || showFeedback;
     const shouldShowTrailing = !shouldShowWaveform && trailing;
+    const accessibleLabel =
+      ariaLabel ?? (typeof label === "string" ? label : stateLabels[state]);
 
     return (
       <button
@@ -157,7 +168,7 @@ export const VoiceButton = React.forwardRef<
         onClick={handleClick}
         disabled={isDisabled}
         className={cn(
-          "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all",
+          "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out active:scale-[0.98]",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "disabled:pointer-events-none disabled:opacity-50",
           variantClasses[variant] ?? variantClasses.outline,
@@ -165,8 +176,9 @@ export const VoiceButton = React.forwardRef<
           size === "icon" && "relative",
           className
         )}
-        aria-label="Voice Button"
-        {...props}
+        aria-label={accessibleLabel}
+        aria-pressed={ariaPressed ?? isRecording}
+        {...buttonProps}
       >
         {size !== "icon" && label && (
           <span className="inline-flex shrink-0 items-center justify-start">
@@ -176,7 +188,7 @@ export const VoiceButton = React.forwardRef<
 
         <div
           className={cn(
-            "relative box-content flex shrink-0 items-center justify-center overflow-hidden transition-all duration-300",
+            "relative box-content flex shrink-0 items-center justify-center overflow-hidden transition-[background-color,border-color,opacity] duration-200 ease-out",
             size === "icon"
               ? "absolute inset-0 rounded-sm border-0"
               : "h-5 w-24 rounded-sm border",

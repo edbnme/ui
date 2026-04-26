@@ -1,8 +1,13 @@
 "use client";
 
+/**
+ * Message
+ * @registryDescription Sender-aware chat message primitives with avatars and user or assistant alignment.
+ * @registryCategory chat
+ */
+
 import type { HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 // ---- MESSAGE ----------------------------------------------------------------
@@ -117,6 +122,7 @@ export function MessageAvatar({
       {...props}
     >
       {src ? (
+        // eslint-disable-next-line @next/next/no-img-element -- registry components cannot depend on next/image.
         <img
           alt=""
           src={src}

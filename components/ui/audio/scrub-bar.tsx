@@ -1,8 +1,8 @@
 "use client";
 
-
 /**
  * Scrub Bar
+ * @registryDescription Composable scrub bar primitives for playback progress, seeking, thumbs, and time labels.
  * @registryCategory audio
  */
 
@@ -14,7 +14,6 @@ import {
   useRef,
   type HTMLAttributes,
 } from "react";
-
 import { cn } from "@/lib/utils";
 
 // ---- UTILITIES --------------------------------------------------------------
@@ -170,7 +169,7 @@ ScrubBarTrack.displayName = "ScrubBarTrack";
 
 // ---- PROGRESS ---------------------------------------------------------------
 
-interface ScrubBarProgressProps extends HTMLAttributes<HTMLDivElement> {}
+type ScrubBarProgressProps = HTMLAttributes<HTMLDivElement>;
 
 function ScrubBarProgress({ className, ...props }: ScrubBarProgressProps) {
   const { progress } = useScrubBarContext();

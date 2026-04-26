@@ -1,8 +1,13 @@
 "use client";
 
+/**
+ * Waveform
+ * @registryDescription Static, scrolling, microphone, recording, and scrubber waveform primitives for audio timelines.
+ * @registryCategory audio
+ */
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 import { LiveWaveform, type LiveWaveformProps } from "./live-waveform";
 
@@ -92,7 +97,9 @@ export type RecordingWaveformProps = Omit<
 
 // ---- VARIANTS --------------------------------------------------------------
 
-const waveformVariants = cva("flex w-full items-end overflow-hidden", {
+const waveformBaseClass = "flex w-full items-end overflow-hidden";
+
+const waveformVariants = cva(waveformBaseClass, {
   variants: {
     size: {
       sm: "h-8",
@@ -251,17 +258,19 @@ function useMicrophoneHistory({
   captureAudio = false,
   savedHistoryRef,
 }: MicrophoneHistoryOptions) {
-  const internalHistoryRef = React.useRef<number[]>(
-    savedHistoryRef?.current ?? []
-  );
+  // eslint-disable-next-line react-hooks/refs
+  const initialSavedHistory = savedHistoryRef?.current ?? [];
+  const internalHistoryRef = React.useRef<number[]>(initialSavedHistory);
   const historyRef = savedHistoryRef ?? internalHistoryRef;
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
   const chunksRef = React.useRef<Blob[]>([]);
   const previousUrlRef = React.useRef<string | null>(null);
 
+  /* eslint-disable react-hooks/refs -- Seed state from persisted waveform history. */
   const [history, setHistory] = React.useState<number[]>(
     () => historyRef.current
   );
+  /* eslint-enable react-hooks/refs */
   const [audioUrl, setAudioUrl] = React.useState<string | null>(null);
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
@@ -561,7 +570,7 @@ function Waveform({
       ref={containerRef}
       data-slot="waveform"
       className={cn(
-        height ? undefined : waveformVariants({ size }),
+        height ? waveformBaseClass : waveformVariants({ size }),
         heightClassName,
         onSeek && "cursor-pointer",
         className
@@ -818,26 +827,19 @@ function LiveMicrophoneWaveform({
   deviceId,
   ...props
 }: LiveMicrophoneWaveformProps) {
-  const {
-    audioRef,
-    audioUrl,
-    currentTime,
-    duration,
-    history,
-    setCurrentTime,
-    setDuration,
-  } = useMicrophoneHistory({
-    active,
-    deviceId,
-    fftSize,
-    smoothingTimeConstant,
-    sensitivity,
-    historySize,
-    updateRate,
-    onError,
-    captureAudio: enableAudioPlayback,
-    savedHistoryRef,
-  });
+  const { audioRef, audioUrl, currentTime, duration, history, setCurrentTime } =
+    useMicrophoneHistory({
+      active,
+      deviceId,
+      fftSize,
+      smoothingTimeConstant,
+      sensitivity,
+      historySize,
+      updateRate,
+      onError,
+      captureAudio: enableAudioPlayback,
+      savedHistoryRef,
+    });
 
   const externalTime =
     typeof dragOffset === "number" && history.length > 0

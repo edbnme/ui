@@ -1,13 +1,12 @@
 "use client";
 
-
 /**
  * Voice Picker
+ * @registryDescription Searchable voice selection component for generated speech and narration workflows.
  * @registryCategory display
  */
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-
 import { cn } from "@/lib/utils";
 
 // ---------------------------------------------------------------------------
@@ -224,7 +223,7 @@ export function VoicePickerItem({
     <div
       data-slot="voice-picker-item"
       className={cn(
-        "flex items-center gap-3 rounded-xl px-3 py-2 cursor-pointer transition-all duration-200",
+        "flex items-center gap-3 rounded-xl px-3 py-2 cursor-pointer transition-[background-color,border-color,box-shadow,transform] duration-200 ease-out active:scale-[0.99]",
         "hover:bg-accent/50",
         isSelected && "bg-accent ring-1 ring-ring"
       )}
@@ -277,7 +276,11 @@ export function VoicePickerItem({
           type="button"
           onClick={(e) => {
             e.stopPropagation();
-            isPlaying ? onPreviewStop() : onPreviewPlay();
+            if (isPlaying) {
+              onPreviewStop();
+            } else {
+              onPreviewPlay();
+            }
           }}
           data-slot="preview-button"
           className={cn(
@@ -317,12 +320,20 @@ export function VoicePicker({
   const [search, setSearch] = useState("");
   const [internalOpen, setInternalOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const listboxId = React.useId();
 
   const isControlled = open !== undefined;
   const isOpen = isControlled ? open : internalOpen;
-  const setIsOpen = isControlled
-    ? (v: boolean) => onOpenChange?.(v)
-    : setInternalOpen;
+  const setIsOpen = useCallback(
+    (nextOpen: boolean) => {
+      if (isControlled) {
+        onOpenChange?.(nextOpen);
+      } else {
+        setInternalOpen(nextOpen);
+      }
+    },
+    [isControlled, onOpenChange]
+  );
 
   const selectedVoice = voices.find((v) => v.voiceId === value);
 
@@ -366,11 +377,13 @@ export function VoicePicker({
       <button
         type="button"
         role="combobox"
+        aria-controls={listboxId}
         aria-expanded={isOpen}
+        aria-haspopup="listbox"
         data-slot="voice-picker-trigger"
         className={cn(
           "flex w-full items-center justify-between rounded-xl border border-border/50 bg-background px-3 py-2 text-sm",
-          "hover:bg-accent/50 transition-all duration-200",
+          "hover:bg-accent/50 transition-[background-color,color,box-shadow] duration-200 ease-out",
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
           className
         )}
@@ -390,7 +403,7 @@ export function VoicePicker({
           data-slot="voice-picker-dropdown"
           className={cn(
             "absolute z-50 mt-1 w-full rounded-xl border border-border/50 bg-background shadow-lg",
-            "max-h-[300px] flex flex-col overflow-hidden"
+            "flex max-h-75 flex-col overflow-hidden"
           )}
         >
           {/* Search */}
@@ -408,6 +421,7 @@ export function VoicePicker({
 
           {/* Voice list */}
           <div
+            id={listboxId}
             className="overflow-y-auto p-1"
             role="listbox"
             aria-label="Select a voice"

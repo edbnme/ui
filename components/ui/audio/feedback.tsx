@@ -1,14 +1,13 @@
 "use client";
 
-
 /**
  * Feedback
+ * @registryDescription Inline response feedback actions for copy, regenerate, and positive or negative ratings.
  * @registryCategory chat
  */
 
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-
+import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
@@ -142,7 +141,7 @@ function RefreshIcon({ className }: { className?: string }) {
 // ---- VARIANTS ---------------------------------------------------------------
 
 const feedbackButtonVariants = cva(
-  "inline-flex items-center justify-center rounded-lg p-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+  "inline-flex items-center justify-center rounded-lg p-2 transition-[background-color,color,box-shadow,transform] duration-200 ease-out active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
   {
     variants: {
       state: {

@@ -1,17 +1,15 @@
 "use client";
 
-
 /**
  * Thinking Indicator
+ * @registryDescription Dots, pulse, and shimmer indicators for assistant thinking and generation states.
  * @registryCategory chat
  */
 
 import * as React from "react";
-import { motion } from "motion/react";
 import { cva, type VariantProps } from "class-variance-authority";
-
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { springPresets } from "@/lib/motion";
 
 // ---- TYPES ------------------------------------------------------------------
 

@@ -2,6 +2,7 @@
 
 /**
  * Transcript Viewer
+ * @registryDescription Playback-aligned transcript primitives with word highlighting and scrub controls.
  * @registryCategory display
  */
 
@@ -10,12 +11,9 @@ import {
   useContext,
   useMemo,
   type ComponentPropsWithoutRef,
-  type ComponentPropsWithRef,
   type HTMLAttributes,
   type ReactNode,
 } from "react";
-
-import { Button } from "@/components/ui/static/button";
 import {
   ScrubBarContainer,
   ScrubBarProgress,
@@ -23,6 +21,7 @@ import {
   ScrubBarTimeLabel,
   ScrubBarTrack,
 } from "@/components/ui/audio/scrub-bar";
+import { Button } from "@/components/ui/static/button";
 import {
   useTranscriptViewer,
   type CharacterAlignmentResponseModel,
@@ -68,7 +67,8 @@ function PauseIcon({ className, ...props }: ComponentPropsWithoutRef<"svg">) {
 
 type TranscriptViewerContextValue = UseTranscriptViewerResult & {
   alignment?: CharacterAlignmentResponseModel;
-  audioProps: ComponentPropsWithRef<"audio">;
+  audioSrc?: string;
+  audioType: AudioMimeType;
 };
 
 const TranscriptViewerContext =
@@ -158,29 +158,16 @@ function TranscriptViewerContainer({
     onDurationChange,
   });
 
-  const { audioRef } = viewerState;
   const resolvedAudioSrc = audioSrc ?? src;
-
-  const audioProps = useMemo(
-    () => ({
-      ref: audioRef,
-      controls: false,
-      preload: "metadata" as const,
-      src: resolvedAudioSrc,
-      children: resolvedAudioSrc ? (
-        <source src={resolvedAudioSrc} type={audioType} />
-      ) : undefined,
-    }),
-    [audioRef, resolvedAudioSrc, audioType]
-  );
 
   const contextValue = useMemo(
     () => ({
       ...viewerState,
       alignment,
-      audioProps,
+      audioSrc: resolvedAudioSrc,
+      audioType,
     }),
-    [viewerState, alignment, audioProps]
+    [viewerState, alignment, resolvedAudioSrc, audioType]
   );
 
   return (
@@ -358,19 +345,23 @@ function TranscriptViewerWords({
 function TranscriptViewerAudio({
   ...props
 }: ComponentPropsWithoutRef<"audio">) {
-  const { audioProps } = useTranscriptViewerContext();
+  const { audioRef, audioSrc, audioType } = useTranscriptViewerContext();
 
-  if (!audioProps.src) {
+  if (!audioSrc) {
     return null;
   }
 
   return (
     <audio
       data-slot="transcript-audio"
-      {...audioProps}
       {...props}
-      ref={audioProps.ref}
-    />
+      ref={audioRef}
+      controls={false}
+      preload="metadata"
+      src={audioSrc}
+    >
+      <source src={audioSrc} type={audioType} />
+    </audio>
   );
 }
 

@@ -299,6 +299,7 @@ export function useTranscriptViewer({
   const rafRef = useRef<number | null>(null);
   const handleTimeUpdateRef = useRef<(time: number) => void>(() => {});
   const onDurationChangeRef = useRef<(duration: number) => void>(() => {});
+  const hasMountedResetRef = useRef(false);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isScrubbing, setIsScrubbing] = useState(false);
@@ -444,11 +445,20 @@ export function useTranscriptViewer({
   }, [onDurationChange]);
 
   useEffect(() => {
-    setCurrentTime(0);
-    setDuration(guessedDuration);
-    setIsPlaying(false);
-    setIsScrubbing(false);
-    setCurrentWordIndex(words.length > 0 ? 0 : -1);
+    if (!hasMountedResetRef.current) {
+      hasMountedResetRef.current = true;
+      return;
+    }
+
+    const resetFrame = requestAnimationFrame(() => {
+      setCurrentTime(0);
+      setDuration(guessedDuration);
+      setIsPlaying(false);
+      setIsScrubbing(false);
+      setCurrentWordIndex(words.length > 0 ? 0 : -1);
+    });
+
+    return () => cancelAnimationFrame(resetFrame);
   }, [alignment, text, guessedDuration, words.length]);
 
   const stopRaf = useCallback(() => {

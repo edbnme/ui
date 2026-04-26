@@ -1,5 +1,11 @@
 "use client";
 
+/**
+ * Bar Visualizer
+ * @registryDescription Animated audio bars for microphone levels, agent states, and ambient voice activity.
+ * @registryCategory audio
+ */
+
 import {
   forwardRef,
   memo,
@@ -9,7 +15,6 @@ import {
   useState,
   type HTMLAttributes,
 } from "react";
-
 import { cn } from "@/lib/utils";
 
 // ---- AUDIO ANALYSER UTILITIES -----------------------------------------------
@@ -301,12 +306,8 @@ export const useBarAnimator = (
   }, [state, columns]);
 
   useEffect(() => {
-    indexRef.current = 0;
-    setCurrentFrame(sequence[0] || []);
-  }, [sequence]);
-
-  useEffect(() => {
-    let startTime = performance.now();
+    indexRef.current = -1;
+    let startTime = performance.now() - interval;
 
     const animate = (time: DOMHighResTimeStamp) => {
       const timeElapsed = time - startTime;
@@ -387,14 +388,16 @@ const BarVisualizerComponent = forwardRef<HTMLDivElement, BarVisualizerProps>(
       new Array(barCount).fill(0.2)
     );
     const fakeAnimationRef = useRef<number | undefined>(undefined);
+    const idleFakeVolumeBands = useMemo(
+      () => new Array(barCount).fill(0.2),
+      [barCount]
+    );
 
     useEffect(() => {
       if (!demo) return;
 
       if (state !== "speaking" && state !== "listening") {
-        const bands = new Array(barCount).fill(0.2);
-        fakeVolumeBandsRef.current = bands;
-        setFakeVolumeBands(bands);
+        fakeVolumeBandsRef.current = idleFakeVolumeBands;
         return;
       }
 
@@ -439,11 +442,16 @@ const BarVisualizerComponent = forwardRef<HTMLDivElement, BarVisualizerProps>(
           cancelAnimationFrame(fakeAnimationRef.current);
         }
       };
-    }, [demo, state, barCount]);
+    }, [demo, state, barCount, idleFakeVolumeBands]);
 
     const volumeBands = useMemo(
-      () => (demo ? fakeVolumeBands : realVolumeBands),
-      [demo, fakeVolumeBands, realVolumeBands]
+      () =>
+        demo
+          ? state === "speaking" || state === "listening"
+            ? fakeVolumeBands
+            : idleFakeVolumeBands
+          : realVolumeBands,
+      [demo, fakeVolumeBands, idleFakeVolumeBands, realVolumeBands, state]
     );
 
     // Animation sequencing
@@ -462,9 +470,10 @@ const BarVisualizerComponent = forwardRef<HTMLDivElement, BarVisualizerProps>(
     return (
       <div
         ref={ref}
+        data-slot="bar-visualizer"
         data-state={state}
         className={cn(
-          "relative flex justify-center gap-1.5",
+          "relative flex justify-center gap-1",
           centerAlign ? "items-center" : "items-end",
           "bg-muted h-32 w-full overflow-hidden rounded-lg p-4",
           className
@@ -502,7 +511,7 @@ const Bar = memo<{
   <div
     data-highlighted={isHighlighted}
     className={cn(
-      "max-w-[12px] min-w-[8px] flex-1 transition-all duration-150",
+      "min-w-0 max-w-3 flex-1 transition-[height,opacity,transform] duration-150 ease-out",
       "rounded-full",
       "bg-border data-[highlighted=true]:bg-primary",
       state === "speaking" && "bg-primary",

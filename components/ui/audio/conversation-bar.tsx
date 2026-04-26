@@ -2,11 +2,11 @@
 
 /**
  * Conversation Bar
+ * @registryDescription Provider-agnostic realtime conversation bar with connection, message, and send controls.
  * @registryCategory display
  */
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-
 import { cn } from "@/lib/utils";
 
 // ---- INLINE SVG ICONS -------------------------------------------------------
@@ -244,7 +244,7 @@ export const ConversationBar = React.forwardRef<
         className={cn(
           "flex items-end gap-2 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-sm p-2",
           "shadow-xs shadow-black/5",
-          "transition-all duration-200 focus-within:ring-2 focus-within:ring-ring/40 focus-within:ring-offset-2 focus-within:ring-offset-background",
+          "transition-[background-color,border-color,box-shadow] duration-200 ease-out focus-within:ring-2 focus-within:ring-ring/40 focus-within:ring-offset-2 focus-within:ring-offset-background",
           className
         )}
         {...props}
@@ -257,7 +257,7 @@ export const ConversationBar = React.forwardRef<
             disabled={!isInteractive}
             data-slot="connection-toggle"
             className={cn(
-              "inline-flex items-center justify-center rounded-xl shrink-0 transition-all duration-200 size-8 self-end",
+              "inline-flex items-center justify-center rounded-xl shrink-0 transition-[background-color,color,opacity,transform] duration-150 ease-out active:scale-[0.96] size-8 self-end",
               "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
               connectionState === "connected"
                 ? "bg-destructive/10 text-destructive hover:bg-destructive/20"
@@ -318,7 +318,7 @@ export const ConversationBar = React.forwardRef<
           disabled={!value.trim() || isSendDisabled}
           data-slot="send-button"
           className={cn(
-            "inline-flex items-center justify-center rounded-xl shrink-0 transition-all duration-200 size-8 self-end",
+            "inline-flex items-center justify-center rounded-xl shrink-0 transition-[background-color,color,opacity,transform] duration-150 ease-out active:scale-[0.96] size-8 self-end",
             "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
             "bg-primary text-primary-foreground hover:bg-primary/90",
             "disabled:opacity-40 disabled:cursor-not-allowed"

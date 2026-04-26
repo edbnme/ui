@@ -1,14 +1,13 @@
 "use client";
 
-
 /**
  * Audio Recorder
+ * @registryDescription Microphone recorder with elapsed time, pause/resume controls, and completion callbacks.
  * @registryCategory audio
  */
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
@@ -202,6 +201,28 @@ function AudioRecorder({
     [showLevel, stopLevelMeter]
   );
 
+  const stopRecording = React.useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+
+    stopLevelMeter();
+
+    const recorder = mediaRecorderRef.current;
+    if (recorder && recorder.state !== "inactive") {
+      recorder.stop();
+    }
+
+    const stream = streamRef.current;
+    if (stream) {
+      stream.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+    }
+
+    updateState("stopped");
+  }, [updateState, stopLevelMeter]);
+
   const startRecording = React.useCallback(async () => {
     if (
       typeof navigator === "undefined" ||
@@ -282,29 +303,8 @@ function AudioRecorder({
     onError,
     updateState,
     startLevelMeter,
+    stopRecording,
   ]);
-
-  const stopRecording = React.useCallback(() => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-
-    stopLevelMeter();
-
-    const recorder = mediaRecorderRef.current;
-    if (recorder && recorder.state !== "inactive") {
-      recorder.stop();
-    }
-
-    const stream = streamRef.current;
-    if (stream) {
-      stream.getTracks().forEach((t) => t.stop());
-      streamRef.current = null;
-    }
-
-    updateState("stopped");
-  }, [updateState, stopLevelMeter]);
 
   const pauseRecording = React.useCallback(() => {
     const recorder = mediaRecorderRef.current;
@@ -366,7 +366,7 @@ function AudioRecorder({
         type="button"
         onClick={isIdle ? startRecording : stopRecording}
         className={cn(
-          "shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200",
+          "shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-[background-color,color,box-shadow,transform] duration-200 ease-out active:scale-[0.96]",
           isRecording || isPaused
             ? "bg-destructive text-destructive-foreground hover:bg-destructive/90 ring-2 ring-destructive/30"
             : "bg-destructive text-destructive-foreground hover:bg-destructive/90"

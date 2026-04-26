@@ -1365,7 +1365,7 @@
       "name": "audio-player",
       "type": "registry:ui",
       "title": "Audio Player",
-      "description": "Audio Player",
+      "description": "Composable audio playback primitives for buttons, progress, duration, and speed controls.",
       "dependencies": [
         "@phosphor-icons/react",
         "class-variance-authority"
@@ -1386,7 +1386,7 @@
       "name": "audio-recorder",
       "type": "registry:ui",
       "title": "Audio Recorder",
-      "description": "Audio Recorder",
+      "description": "Microphone recorder with elapsed time, pause/resume controls, and completion callbacks.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -1405,7 +1405,7 @@
       "name": "audio-bar-visualizer",
       "type": "registry:ui",
       "title": "Bar Visualizer",
-      "description": "Bar Visualizer component.",
+      "description": "Animated audio bars for microphone levels, agent states, and ambient voice activity.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1422,7 +1422,7 @@
       "name": "audio-chat-input",
       "type": "registry:ui",
       "title": "Chat Input",
-      "description": "Chat Input",
+      "description": "Composable assistant input with autosizing text, leading actions, and send controls.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -1441,7 +1441,7 @@
       "name": "audio-code-block",
       "type": "registry:ui",
       "title": "Code Block",
-      "description": "Code Block",
+      "description": "Syntax-highlighted code block for generated answers, terminal snippets, and compact examples.",
       "dependencies": [
         "@phosphor-icons/react",
         "class-variance-authority",
@@ -1463,7 +1463,7 @@
       "name": "audio-conversation-bar",
       "type": "registry:ui",
       "title": "Conversation Bar",
-      "description": "Conversation Bar",
+      "description": "Provider-agnostic realtime conversation bar with connection, message, and send controls.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1480,7 +1480,7 @@
       "name": "audio-conversation",
       "type": "registry:ui",
       "title": "Conversation",
-      "description": "Conversation component.",
+      "description": "Auto-scrolling conversation container with sticky-to-bottom behavior and scroll affordance.",
       "dependencies": [
         "use-stick-to-bottom"
       ],
@@ -1499,7 +1499,7 @@
       "name": "audio-feedback",
       "type": "registry:ui",
       "title": "Feedback",
-      "description": "Feedback",
+      "description": "Inline response feedback actions for copy, regenerate, and positive or negative ratings.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -1518,7 +1518,7 @@
       "name": "audio-live-waveform",
       "type": "registry:ui",
       "title": "Live Waveform",
-      "description": "Live Waveform",
+      "description": "Canvas waveform for live microphone input, processing animations, and idle audio states.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1535,7 +1535,7 @@
       "name": "audio-matrix",
       "type": "registry:ui",
       "title": "Matrix",
-      "description": "Matrix",
+      "description": "Dot-matrix animation presets for compact loaders, voice activity, and ambient status.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1552,7 +1552,7 @@
       "name": "audio-message",
       "type": "registry:ui",
       "title": "Message",
-      "description": "Message component.",
+      "description": "Sender-aware chat message primitives with avatars and user or assistant alignment.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -1571,7 +1571,7 @@
       "name": "audio-mic-selector",
       "type": "registry:ui",
       "title": "Mic Selector",
-      "description": "Mic Selector",
+      "description": "Microphone selector with permission-aware device enumeration, mute toggle, and live input preview.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1588,14 +1588,11 @@
       "name": "audio-orb",
       "type": "registry:ui",
       "title": "Orb",
-      "description": "Orb",
-      "dependencies": [
-        "@react-three/drei",
-        "@react-three/fiber",
-        "next",
-        "three"
+      "description": "Lightweight canvas agent orb for listening, talking, thinking, and idle voice states.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
       ],
-      "registryDependencies": [],
       "variant": "audio",
       "files": [
         {
@@ -1608,7 +1605,7 @@
       "name": "audio-prompt-suggestions",
       "type": "registry:ui",
       "title": "Prompt Suggestions",
-      "description": "Prompt Suggestions",
+      "description": "List and grid prompt suggestions for assistant empty states and quick actions.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -1627,7 +1624,7 @@
       "name": "audio-response",
       "type": "registry:ui",
       "title": "Response",
-      "description": "Response component.",
+      "description": "Streaming markdown response renderer for assistant output, code, lists, and rich text.",
       "dependencies": [
         "streamdown"
       ],
@@ -1646,7 +1643,7 @@
       "name": "audio-scrub-bar",
       "type": "registry:ui",
       "title": "Scrub Bar",
-      "description": "Scrub Bar",
+      "description": "Composable scrub bar primitives for playback progress, seeking, thumbs, and time labels.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1663,7 +1660,7 @@
       "name": "audio-shimmering-text",
       "type": "registry:ui",
       "title": "Shimmering Text Audio",
-      "description": "Shimmering Text Audio",
+      "description": "Motion-aware shimmering text for generated speech, transcript, and response pending states.",
       "dependencies": [
         "motion"
       ],
@@ -1682,7 +1679,7 @@
       "name": "audio-speech-input",
       "type": "registry:ui",
       "title": "Speech Input",
-      "description": "Speech Input",
+      "description": "Web Speech API trigger with listening, processing, error, and unsupported states.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1699,7 +1696,7 @@
       "name": "audio-thinking-indicator",
       "type": "registry:ui",
       "title": "Thinking Indicator",
-      "description": "Thinking Indicator",
+      "description": "Dots, pulse, and shimmer indicators for assistant thinking and generation states.",
       "dependencies": [
         "class-variance-authority",
         "motion"
@@ -1719,7 +1716,7 @@
       "name": "audio-token-counter",
       "type": "registry:ui",
       "title": "Token Counter",
-      "description": "Token Counter",
+      "description": "Token usage meter with limits, model labels, progress, and cost estimates.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -1738,7 +1735,7 @@
       "name": "audio-transcript-viewer",
       "type": "registry:ui",
       "title": "Transcript Viewer",
-      "description": "Transcript Viewer",
+      "description": "Playback-aligned transcript primitives with word highlighting and scrub controls.",
       "dependencies": [],
       "registryDependencies": [
         "audio-scrub-bar",
@@ -1757,7 +1754,7 @@
       "name": "audio-voice-button",
       "type": "registry:ui",
       "title": "Voice Button",
-      "description": "Voice Button",
+      "description": "Voice action button with waveform, recording, processing, success, and error feedback.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1774,7 +1771,7 @@
       "name": "audio-voice-picker",
       "type": "registry:ui",
       "title": "Voice Picker",
-      "description": "Voice Picker",
+      "description": "Searchable voice selection component for generated speech and narration workflows.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -1791,7 +1788,7 @@
       "name": "audio-waveform",
       "type": "registry:ui",
       "title": "Waveform",
-      "description": "Waveform component.",
+      "description": "Static, scrolling, microphone, recording, and scrubber waveform primitives for audio timelines.",
       "dependencies": [
         "class-variance-authority"
       ],

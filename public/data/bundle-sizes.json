@@ -2,20 +2,20 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 22,
+    "totalPackages": 18,
     "totalComponents": 102,
     "animatedComponents": 0,
     "staticComponents": 54,
     "sharedComponents": 0,
     "largestDependency": {
-      "name": "@react-three/drei",
-      "version": "10.7.7",
-      "size": 1604829,
-      "gzip": 496190,
-      "dependencyCount": 21,
+      "name": "@react-pdf/renderer",
+      "version": "4.5.1",
+      "size": 1423451,
+      "gzip": 471456,
+      "dependencyCount": 13,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-04-26T08:45:17.542Z"
+    "computedAt": "2026-04-26T15:11:36.418Z"
   },
   "packages": [
     {
@@ -47,22 +47,6 @@
       "size": 1382,
       "gzip": 429,
       "dependencyCount": 3,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "@react-three/drei",
-      "version": "10.7.7",
-      "size": 1604829,
-      "gzip": 496190,
-      "dependencyCount": 21,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "@react-three/fiber",
-      "version": "9.6.0",
-      "size": 159334,
-      "gzip": 50792,
-      "dependencyCount": 10,
       "source": "bundlephobia"
     },
     {
@@ -109,13 +93,6 @@
       "gzip": 45000,
       "version": "latest",
       "source": "fallback"
-    },
-    {
-      "name": "next",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
     },
     {
       "name": "qrcode",
@@ -171,14 +148,6 @@
       "gzip": 8000,
       "version": "latest",
       "source": "fallback"
-    },
-    {
-      "name": "three",
-      "version": "0.184.0",
-      "size": 724189,
-      "gzip": 181947,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
     },
     {
       "name": "use-stick-to-bottom",
@@ -1493,7 +1462,7 @@
     "audio/audio-player": {
       "name": "audio-player",
       "title": "Audio Player",
-      "description": "Audio Player",
+      "description": "Composable audio playback primitives for buttons, progress, duration, and speed controls.",
       "variant": "audio",
       "sizes": {
         "minified": 5700,
@@ -1522,7 +1491,7 @@
     "audio/audio-recorder": {
       "name": "audio-recorder",
       "title": "Audio Recorder",
-      "description": "Audio Recorder",
+      "description": "Microphone recorder with elapsed time, pause/resume controls, and completion callbacks.",
       "variant": "audio",
       "sizes": {
         "minified": 4500,
@@ -1544,7 +1513,7 @@
     "audio/audio-bar-visualizer": {
       "name": "audio-bar-visualizer",
       "title": "Bar Visualizer",
-      "description": "Bar Visualizer component.",
+      "description": "Animated audio bars for microphone levels, agent states, and ambient voice activity.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1558,7 +1527,7 @@
     "audio/audio-chat-input": {
       "name": "audio-chat-input",
       "title": "Chat Input",
-      "description": "Chat Input",
+      "description": "Composable assistant input with autosizing text, leading actions, and send controls.",
       "variant": "audio",
       "sizes": {
         "minified": 4500,
@@ -1580,7 +1549,7 @@
     "audio/audio-code-block": {
       "name": "audio-code-block",
       "title": "Code Block",
-      "description": "Code Block",
+      "description": "Syntax-highlighted code block for generated answers, terminal snippets, and compact examples.",
       "variant": "audio",
       "sizes": {
         "minified": 143434,
@@ -1623,7 +1592,7 @@
     "audio/audio-conversation-bar": {
       "name": "audio-conversation-bar",
       "title": "Conversation Bar",
-      "description": "Conversation Bar",
+      "description": "Provider-agnostic realtime conversation bar with connection, message, and send controls.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1637,7 +1606,7 @@
     "audio/audio-conversation": {
       "name": "audio-conversation",
       "title": "Conversation",
-      "description": "Conversation component.",
+      "description": "Auto-scrolling conversation container with sticky-to-bottom behavior and scroll affordance.",
       "variant": "audio",
       "sizes": {
         "minified": 6649,
@@ -1659,7 +1628,7 @@
     "audio/audio-feedback": {
       "name": "audio-feedback",
       "title": "Feedback",
-      "description": "Feedback",
+      "description": "Inline response feedback actions for copy, regenerate, and positive or negative ratings.",
       "variant": "audio",
       "sizes": {
         "minified": 4500,
@@ -1681,7 +1650,7 @@
     "audio/audio-live-waveform": {
       "name": "audio-live-waveform",
       "title": "Live Waveform",
-      "description": "Live Waveform",
+      "description": "Canvas waveform for live microphone input, processing animations, and idle audio states.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1695,7 +1664,7 @@
     "audio/audio-matrix": {
       "name": "audio-matrix",
       "title": "Matrix",
-      "description": "Matrix",
+      "description": "Dot-matrix animation presets for compact loaders, voice activity, and ambient status.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1709,7 +1678,7 @@
     "audio/audio-message": {
       "name": "audio-message",
       "title": "Message",
-      "description": "Message component.",
+      "description": "Sender-aware chat message primitives with avatars and user or assistant alignment.",
       "variant": "audio",
       "sizes": {
         "minified": 4500,
@@ -1731,7 +1700,7 @@
     "audio/audio-mic-selector": {
       "name": "audio-mic-selector",
       "title": "Mic Selector",
-      "description": "Mic Selector",
+      "description": "Microphone selector with permission-aware device enumeration, mute toggle, and live input preview.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1745,50 +1714,21 @@
     "audio/audio-orb": {
       "name": "audio-orb",
       "title": "Orb",
-      "description": "Orb",
+      "description": "Lightweight canvas agent orb for listening, talking, thinking, and idle voice states.",
       "variant": "audio",
       "sizes": {
-        "minified": 2498352,
-        "gzipped": 731929,
+        "minified": 0,
+        "gzipped": 0,
         "selfSize": 2000,
         "selfGzip": 600
       },
-      "dependencies": [
-        {
-          "name": "@react-three/drei",
-          "size": 1604829,
-          "gzip": 496190,
-          "version": "10.7.7",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-three/fiber",
-          "size": 159334,
-          "gzip": 50792,
-          "version": "9.6.0",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "next",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
-        },
-        {
-          "name": "three",
-          "size": 724189,
-          "gzip": 181947,
-          "version": "0.184.0",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 4
+      "dependencies": [],
+      "dependencyCount": 0
     },
     "audio/audio-prompt-suggestions": {
       "name": "audio-prompt-suggestions",
       "title": "Prompt Suggestions",
-      "description": "Prompt Suggestions",
+      "description": "List and grid prompt suggestions for assistant empty states and quick actions.",
       "variant": "audio",
       "sizes": {
         "minified": 4500,
@@ -1810,7 +1750,7 @@
     "audio/audio-response": {
       "name": "audio-response",
       "title": "Response",
-      "description": "Response component.",
+      "description": "Streaming markdown response renderer for assistant output, code, lists, and rich text.",
       "variant": "audio",
       "sizes": {
         "minified": 464290,
@@ -1832,7 +1772,7 @@
     "audio/audio-scrub-bar": {
       "name": "audio-scrub-bar",
       "title": "Scrub Bar",
-      "description": "Scrub Bar",
+      "description": "Composable scrub bar primitives for playback progress, seeking, thumbs, and time labels.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1846,7 +1786,7 @@
     "audio/audio-shimmering-text": {
       "name": "audio-shimmering-text",
       "title": "Shimmering Text Audio",
-      "description": "Shimmering Text Audio",
+      "description": "Motion-aware shimmering text for generated speech, transcript, and response pending states.",
       "variant": "audio",
       "sizes": {
         "minified": 150000,
@@ -1868,7 +1808,7 @@
     "audio/audio-speech-input": {
       "name": "audio-speech-input",
       "title": "Speech Input",
-      "description": "Speech Input",
+      "description": "Web Speech API trigger with listening, processing, error, and unsupported states.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1882,7 +1822,7 @@
     "audio/audio-thinking-indicator": {
       "name": "audio-thinking-indicator",
       "title": "Thinking Indicator",
-      "description": "Thinking Indicator",
+      "description": "Dots, pulse, and shimmer indicators for assistant thinking and generation states.",
       "variant": "audio",
       "sizes": {
         "minified": 154500,
@@ -1911,7 +1851,7 @@
     "audio/audio-token-counter": {
       "name": "audio-token-counter",
       "title": "Token Counter",
-      "description": "Token Counter",
+      "description": "Token usage meter with limits, model labels, progress, and cost estimates.",
       "variant": "audio",
       "sizes": {
         "minified": 4500,
@@ -1933,7 +1873,7 @@
     "audio/audio-transcript-viewer": {
       "name": "audio-transcript-viewer",
       "title": "Transcript Viewer",
-      "description": "Transcript Viewer",
+      "description": "Playback-aligned transcript primitives with word highlighting and scrub controls.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1947,7 +1887,7 @@
     "audio/audio-voice-button": {
       "name": "audio-voice-button",
       "title": "Voice Button",
-      "description": "Voice Button",
+      "description": "Voice action button with waveform, recording, processing, success, and error feedback.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1961,7 +1901,7 @@
     "audio/audio-voice-picker": {
       "name": "audio-voice-picker",
       "title": "Voice Picker",
-      "description": "Voice Picker",
+      "description": "Searchable voice selection component for generated speech and narration workflows.",
       "variant": "audio",
       "sizes": {
         "minified": 0,
@@ -1975,7 +1915,7 @@
     "audio/audio-waveform": {
       "name": "audio-waveform",
       "title": "Waveform",
-      "description": "Waveform component.",
+      "description": "Static, scrolling, microphone, recording, and scrubber waveform primitives for audio timelines.",
       "variant": "audio",
       "sizes": {
         "minified": 4500,

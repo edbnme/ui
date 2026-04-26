@@ -1,14 +1,13 @@
 "use client";
 
-
 /**
  * Prompt Suggestions
+ * @registryDescription List and grid prompt suggestions for assistant empty states and quick actions.
  * @registryCategory chat
  */
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
@@ -82,7 +81,7 @@ function PromptSuggestionItem({
         "border border-border/50 bg-background",
         "shadow-xs shadow-black/5",
         "hover:bg-muted/40 hover:shadow-sm hover:-translate-y-0.5",
-        "transition-all duration-200",
+        "transition-[background-color,border-color,box-shadow,transform] duration-200 ease-out active:scale-[0.99]",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className
       )}
@@ -133,7 +132,7 @@ function PromptSuggestions({
           layout === "list" && "grid-cols-1"
         )}
       >
-        {suggestions.map((suggestion, i) => (
+        {suggestions.map((suggestion) => (
           <PromptSuggestionItem
             key={suggestion.value ?? suggestion.title}
             suggestion={suggestion}

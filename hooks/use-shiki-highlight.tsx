@@ -10,7 +10,6 @@
 import { useEffect, useState, type CSSProperties, type JSX } from "react";
 import { toJsxRuntime } from "hast-util-to-jsx-runtime";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-
 import {
   preStyle,
   shikiOptionsForLang,

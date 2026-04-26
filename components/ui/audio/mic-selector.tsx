@@ -2,11 +2,11 @@
 
 /**
  * Mic Selector
+ * @registryDescription Microphone selector with permission-aware device enumeration, mute toggle, and live input preview.
  * @registryCategory audio
  */
 
 import { useEffect, useRef, useState } from "react";
-
 import { useAudioDevices as useSharedAudioDevices } from "@/hooks/use-audio-devices";
 import { cn } from "@/lib/utils";
 import { LiveWaveform } from "./live-waveform";
@@ -114,30 +114,25 @@ export function MicSelector({
 }: MicSelectorProps) {
   const { devices, loading, error, hasPermission, loadDevices } =
     useAudioDevices();
-  const [selectedDevice, setSelectedDevice] = useState<string>(value || "");
+  const [internalSelectedDevice, setInternalSelectedDevice] = useState("");
   const [internalMuted, setInternalMuted] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const isMuted = muted !== undefined ? muted : internalMuted;
 
-  useEffect(() => {
-    if (value !== undefined) {
-      setSelectedDevice(value);
-    }
-  }, [value]);
-
   const defaultDeviceId = devices[0]?.deviceId || "";
+  const selectedDevice = value ?? internalSelectedDevice;
+  const resolvedSelectedDevice = selectedDevice || defaultDeviceId;
 
   useEffect(() => {
-    if (!selectedDevice && defaultDeviceId) {
-      setSelectedDevice(defaultDeviceId);
+    if (value === undefined && !internalSelectedDevice && defaultDeviceId) {
       onValueChange?.(defaultDeviceId);
     }
-  }, [defaultDeviceId, onValueChange, selectedDevice]);
+  }, [defaultDeviceId, internalSelectedDevice, onValueChange, value]);
 
   const currentDevice = devices.find(
-    (device) => device.deviceId === selectedDevice
+    (device) => device.deviceId === resolvedSelectedDevice
   ) ||
     devices[0] || {
       label: loading ? "Loading..." : "No microphone",
@@ -147,7 +142,9 @@ export function MicSelector({
 
   const handleDeviceSelect = (deviceId: string, event?: React.MouseEvent) => {
     event?.preventDefault();
-    setSelectedDevice(deviceId);
+    if (value === undefined) {
+      setInternalSelectedDevice(deviceId);
+    }
     onValueChange?.(deviceId);
   };
 
@@ -218,14 +215,14 @@ export function MicSelector({
         )}
       >
         {isMuted ? (
-          <MicOffIcon className="h-4 w-4 flex-shrink-0" />
+          <MicOffIcon className="h-4 w-4 shrink-0" />
         ) : (
-          <MicIcon className="h-4 w-4 flex-shrink-0" />
+          <MicIcon className="h-4 w-4 shrink-0" />
         )}
         <span className="min-w-0 flex-1 truncate text-left text-xs sm:text-sm">
           {currentDevice.label}
         </span>
-        <ChevronUpDownIcon className="h-3 w-3 flex-shrink-0" />
+        <ChevronUpDownIcon className="h-3 w-3 shrink-0" />
       </button>
 
       {isDropdownOpen && (
@@ -247,8 +244,8 @@ export function MicSelector({
                 className="flex w-full items-center justify-between rounded-sm px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"
               >
                 <span className="truncate">{device.label}</span>
-                {selectedDevice === device.deviceId && (
-                  <CheckIcon className="h-4 w-4 flex-shrink-0" />
+                {resolvedSelectedDevice === device.deviceId && (
+                  <CheckIcon className="h-4 w-4 shrink-0" />
                 )}
               </button>
             ))
@@ -275,7 +272,7 @@ export function MicSelector({
                 <div className="bg-accent ml-auto w-16 overflow-hidden rounded-md p-1.5">
                   <LiveWaveform
                     active={isPreviewActive}
-                    deviceId={selectedDevice || defaultDeviceId}
+                    deviceId={resolvedSelectedDevice}
                     mode="static"
                     height={15}
                     barWidth={3}

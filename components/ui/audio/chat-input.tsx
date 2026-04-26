@@ -1,14 +1,13 @@
 "use client";
 
-
 /**
  * Chat Input
+ * @registryDescription Composable assistant input with autosizing text, leading actions, and send controls.
  * @registryCategory chat
  */
 
 import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-
+import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
@@ -32,10 +31,10 @@ interface ChatInputProps extends Omit<React.ComponentProps<"div">, "onSubmit"> {
   trailing?: React.ReactNode;
 }
 
-interface ChatInputTextareaProps extends Omit<
+type ChatInputTextareaProps = Omit<
   React.ComponentProps<"textarea">,
   "value" | "onChange"
-> {}
+>;
 
 interface ChatInputActionProps extends React.ComponentProps<"button"> {
   /** Visual variant */
@@ -70,7 +69,7 @@ function useChatInputContext() {
 // ---- VARIANTS ---------------------------------------------------------------
 
 const chatInputActionVariants = cva(
-  "flex items-center justify-center rounded-xl p-2.5 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none",
+  "flex items-center justify-center rounded-xl p-2.5 transition-[background-color,color,box-shadow,transform] duration-200 ease-out active:scale-[0.96] disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {

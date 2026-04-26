@@ -1,14 +1,13 @@
 "use client";
 
-
 /**
  * Token Counter
+ * @registryDescription Token usage meter with limits, model labels, progress, and cost estimates.
  * @registryCategory chat
  */
 
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------
@@ -122,7 +121,7 @@ function TokenCounter({
         >
           <div
             className={cn(
-              "absolute inset-y-0 left-0 rounded-full transition-all duration-500",
+              "absolute inset-y-0 left-0 rounded-full transition-[width,background-color] duration-500 ease-out",
               getUsageColor(percentage)
             )}
             style={{ width: `${percentage}%` }}

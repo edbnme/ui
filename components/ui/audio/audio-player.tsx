@@ -2,6 +2,7 @@
 
 /**
  * Audio Player
+ * @registryDescription Composable audio playback primitives for buttons, progress, duration, and speed controls.
  * @registryCategory audio
  */
 import * as React from "react";
@@ -17,10 +18,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { cva, type VariantProps } from "class-variance-authority";
 import { Gear } from "@phosphor-icons/react";
-
-import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 import {
   MenuRoot,
   MenuTrigger,
@@ -30,11 +29,12 @@ import {
   MenuRadioGroup,
   MenuRadioItem,
 } from "@/components/ui/static/menu";
+import { cn } from "@/lib/utils";
 
 // ---- VARIANTS ---------------------------------------------------------------
 
 const audioPlayerButtonVariants = cva(
-  "relative inline-flex items-center justify-center rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+  "relative inline-flex items-center justify-center rounded-xl text-sm font-medium transition-[background-color,color,box-shadow,transform] duration-200 ease-out active:scale-[0.96] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -828,55 +828,58 @@ export function AudioPlayerSpeedButtonGroup({
 // Example tracks
 // ---------------------------------------------------------------------------
 
+const embeddedSampleAudioSrc =
+  "data:audio/wav;base64,UklGRuQDAABXQVZFZm10IBAAAAABAAEAoA8AAEAfAAACABAAZGF0YcADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACaL6oYaPaN2M3Mjdho9qoYmi+xMG8blfmu2ufMlNZE880VUy6XMRgeyfz03DXNxtQu8NkS3ixLMqMgAABd37XNItMn7dIPOivLMgwjNwPo4WnOrdEz6rwMbCkZM1IlawaR5E/PZtBW55gJcyczM3MnmAlW52bQT8+R5GsGUiUZM2wpvAwz6q3Rac7o4TcDDCPLMjor0g8n7SLTtc1d3wAAoyBLMt4s2RIu8MbUNc303Mn8GB6XMVMuzRVE85TW58yu2pX5bxuxMJovqhho9o3YzcyN2Gj2qhiaL7EwbxuV+a7a58yU1kTzzRVTLpcxGB7J/PTcNc3G1C7w2RLeLEsyoyAAAF3ftc0i0yft0g86K8syDCM3A+jhac6t0TPqvAxsKRkzUiVrBpHkT89m0FbnmAlzJzMzcyeYCVbnZtBPz5HkawZSJRkzbCm8DDPqrdFpzujhNwMMI8syOivSDyftItO1zV3fAACjIEsy3izZEi7wxtQ1zfTcyfwYHpcxUy7NFUTzlNbnzK7alflvG7Ewmi+qGGj2jdjNzI3YaPaqGJovsTBvG5X5rtrnzJTWRPPNFVMulzEYHsn89Nw1zcbULvDZEt4sSzKjIAAAXd+1zSLTJ+3SDzoryzIMIzcD6OFpzq3RM+q8DGwpGTNSJWsGkeRPz2bQVueYCXMnMzNzJ5gJVudm0E/PkeRrBlIlGTNsKbwMM+qt0WnO6OE3AwwjyzI6K9IPJ+0i07XNXd8AAKMgSzLeLNkSLvDG1DXN9NzJ/BgelzFTLs0VRPOU1ufMrtqV+W8bsTCaL6oYaPaN2M3Mjdho9qoYmi+xMG8blfmu2ufMlNZE880VUy6XMRgeyfz03DXNxtQu8NkS3ixLMqMgAABd37XNItMn7dIPOivLMgwjNwPo4WnOrdEz6rwMbCkZM1IlawaR5E/PZtBW55gJcyczM3MnmAlW52bQT8+R5GsGUiUZM2wpvAwz6q3Rac7o4TcDDCPLMjor0g8n7SLTtc1d3wAAoyBLMt4s2RIu8MbUNc303Mn8GB6XMVMuzRVE85TW58yu2pX5bxuxMJovqhho9o3YzcyN2Gj2qhiaL7EwbxuV+a7a58yU1kTzzRVTLpcxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+
 export const exampleTracks: AudioPlayerItem<{ name: string }>[] = [
   {
     id: "0",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/00.mp3",
-    data: { name: "II - 00" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Sample voice note" },
   },
   {
     id: "1",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/01.mp3",
-    data: { name: "II - 01" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Follow-up clip" },
   },
   {
     id: "2",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/02.mp3",
-    data: { name: "II - 02" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Generated reply" },
   },
   {
     id: "3",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/03.mp3",
-    data: { name: "II - 03" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Review marker" },
   },
   {
     id: "4",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/04.mp3",
-    data: { name: "II - 04" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Short note" },
   },
   {
     id: "5",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/05.mp3",
-    data: { name: "II - 05" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Audio memo" },
   },
   {
     id: "6",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/06.mp3",
-    data: { name: "II - 06" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Voice capture" },
   },
   {
     id: "7",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/07.mp3",
-    data: { name: "II - 07" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Playback sample" },
   },
   {
     id: "8",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/08.mp3",
-    data: { name: "II - 08" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Transcript cue" },
   },
   {
     id: "9",
-    src: "https://storage.googleapis.com/eleven-public-cdn/audio/ui-elevenlabs-io/09.mp3",
-    data: { name: "II - 09" },
+    src: embeddedSampleAudioSrc,
+    data: { name: "Final sample" },
   },
 ];

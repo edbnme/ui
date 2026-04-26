@@ -1,8 +1,13 @@
 "use client";
 
+/**
+ * Response
+ * @registryDescription Streaming markdown response renderer for assistant output, code, lists, and rich text.
+ * @registryCategory chat
+ */
+
 import { memo, type ComponentProps } from "react";
 import { Streamdown } from "streamdown";
-
 import { cn } from "@/lib/utils";
 
 // ---- TYPES ------------------------------------------------------------------

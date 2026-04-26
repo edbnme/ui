@@ -1,18 +1,15 @@
 "use client";
 
-
 /**
  * Speech Input
+ * @registryDescription Web Speech API trigger with listening, processing, error, and unsupported states.
  * @registryCategory display
  */
 import * as React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-
 import { cn } from "@/lib/utils";
 
-// ---------------------------------------------------------------------------
-// Inline SVG icons
-// ---------------------------------------------------------------------------
+// ---- INLINE SVG ICONS -------------------------------------------------------
 
 function MicIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -45,9 +42,7 @@ function StopIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+// ---- TYPES -----------------------------------------------------------------
 
 export type SpeechInputState =
   | "idle"
@@ -76,23 +71,46 @@ export interface SpeechInputProps extends Omit<
   children?: (state: SpeechInputState, toggle: () => void) => React.ReactNode;
 }
 
-// ---------------------------------------------------------------------------
-// Speech support check
-// ---------------------------------------------------------------------------
+interface SpeechRecognitionResultLike {
+  isFinal: boolean;
+  0: { transcript: string };
+}
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SpeechRecognitionConstructor = any;
+interface SpeechRecognitionEventLike {
+  results: ArrayLike<SpeechRecognitionResultLike>;
+}
+
+interface SpeechRecognitionErrorEventLike {
+  error: string;
+}
+
+interface SpeechRecognitionLike {
+  continuous: boolean;
+  lang: string;
+  interimResults: boolean;
+  maxAlternatives: number;
+  onresult: ((event: SpeechRecognitionEventLike) => void) | null;
+  onspeechend: (() => void) | null;
+  onend: (() => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEventLike) => void) | null;
+  start: () => void;
+  stop: () => void;
+}
+
+type SpeechRecognitionConstructor = new () => SpeechRecognitionLike;
+
+// ---- SPEECH SUPPORT CHECK ---------------------------------------------------
 
 function getSpeechRecognition(): SpeechRecognitionConstructor | null {
   if (typeof window === "undefined") return null;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const win = window as any;
+  const win = window as typeof window & {
+    SpeechRecognition?: SpeechRecognitionConstructor;
+    webkitSpeechRecognition?: SpeechRecognitionConstructor;
+  };
   return win.SpeechRecognition || win.webkitSpeechRecognition || null;
 }
 
-// ---------------------------------------------------------------------------
-// SpeechInput
-// ---------------------------------------------------------------------------
+// ---- SPEECH INPUT -----------------------------------------------------------
 
 export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
   (
@@ -110,11 +128,12 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
     ref
   ) => {
     const [state, setState] = useState<SpeechInputState>("idle");
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const recognitionRef = useRef<any>(null);
+    const stateRef = useRef<SpeechInputState>("idle");
+    const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
 
     const updateState = useCallback(
       (newState: SpeechInputState) => {
+        stateRef.current = newState;
         setState(newState);
         onStateChange?.(newState);
       },
@@ -131,8 +150,9 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
 
     const stop = useCallback(() => {
       if (recognitionRef.current) {
-        recognitionRef.current.stop();
+        const recognition = recognitionRef.current;
         recognitionRef.current = null;
+        recognition.stop();
       }
       updateState("idle");
     }, [updateState]);
@@ -154,8 +174,7 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
       recognition.interimResults = interimResults;
       recognition.maxAlternatives = 1;
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      recognition.onresult = (event: any) => {
+      recognition.onresult = (event) => {
         const result = event.results[event.results.length - 1];
         if (result) {
           const transcript = result[0].transcript;
@@ -171,14 +190,20 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
       };
 
       recognition.onend = () => {
+        if (recognitionRef.current !== recognition) {
+          return;
+        }
+
         recognitionRef.current = null;
-        if (state === "listening") {
+        if (
+          stateRef.current === "listening" ||
+          stateRef.current === "processing"
+        ) {
           updateState("idle");
         }
       };
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      recognition.onerror = (event: any) => {
+      recognition.onerror = (event) => {
         const errorMessage = event.error;
 
         if (errorMessage === "no-speech") {
@@ -198,7 +223,9 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
         }
 
         updateState("error");
-        recognitionRef.current = null;
+        if (recognitionRef.current === recognition) {
+          recognitionRef.current = null;
+        }
       };
 
       try {
@@ -209,15 +236,7 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
         onError?.("Failed to start speech recognition");
         updateState("error");
       }
-    }, [
-      continuous,
-      lang,
-      interimResults,
-      onTranscript,
-      onError,
-      updateState,
-      state,
-    ]);
+    }, [continuous, lang, interimResults, onTranscript, onError, updateState]);
 
     const toggle = useCallback(() => {
       if (state === "listening") {
@@ -246,6 +265,7 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
         {...props}
       >
         {children ? (
+          // eslint-disable-next-line react-hooks/refs
           children(state, toggle)
         ) : (
           <>
@@ -255,7 +275,7 @@ export const SpeechInput = React.forwardRef<HTMLDivElement, SpeechInputProps>(
               disabled={state === "unsupported"}
               data-slot="speech-toggle"
               className={cn(
-                "inline-flex items-center justify-center rounded-full transition-colors size-10",
+                "inline-flex items-center justify-center rounded-full transition-[background-color,color,opacity,transform] duration-150 ease-out active:scale-[0.96] size-10",
                 "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
                 state === "listening"
                   ? "bg-destructive text-destructive-foreground hover:bg-destructive/90"

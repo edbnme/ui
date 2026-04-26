@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/pdf/page-break.tsx",
-      "content": "/**\n * PageBreak — explicit page break for React PDF documents.\n *\n * @registryTitle PDF Page Break\n * @registryDescription Insert an explicit React PDF page break in flowing documents.\n * @registryCategory layout\n * @registryDemos basic=Basic\n */\n\nimport { View } from \"@react-pdf/renderer\";\n\nexport function PdfPageBreak() {\n  return <View break />;\n}\n",
+      "content": "/**\r\n * PageBreak — explicit page break for React PDF documents.\r\n *\r\n * @registryTitle PDF Page Break\r\n * @registryDescription Insert an explicit React PDF page break in flowing documents.\r\n * @registryCategory layout\r\n * @registryDemos basic=Basic\r\n */\r\n\r\nimport { View } from \"@react-pdf/renderer\";\r\n\r\nexport function PdfPageBreak() {\r\n  return <View break />;\r\n}\r\n",
       "type": "registry:ui"
     }
   ]

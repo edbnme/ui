@@ -1,8 +1,13 @@
 "use client";
 
+/**
+ * Conversation
+ * @registryDescription Auto-scrolling conversation container with sticky-to-bottom behavior and scroll affordance.
+ * @registryCategory chat
+ */
+
 import * as React from "react";
 import { StickToBottom, useStickToBottomContext } from "use-stick-to-bottom";
-
 import { cn } from "@/lib/utils";
 
 // ---- CONVERSATION -----------------------------------------------------------
@@ -12,7 +17,6 @@ export type ConversationProps = React.ComponentProps<typeof StickToBottom>;
 /**
  * Scrolling conversation container with auto-scroll and sticky-to-bottom
  * behavior. Built on `use-stick-to-bottom`.
- * @registryCategory chat
  */
 export function Conversation({ className, ...props }: ConversationProps) {
   return (
@@ -139,7 +143,7 @@ export function ConversationScrollButton({
         "inline-flex size-9 items-center justify-center",
         "backdrop-blur-lg bg-background/80 border border-border/50",
         "text-muted-foreground hover:text-foreground",
-        "transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40",
+        "transition-[background-color,color,box-shadow,transform,opacity] duration-200 ease-out active:scale-[0.96] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40",
         className
       )}
       {...props}

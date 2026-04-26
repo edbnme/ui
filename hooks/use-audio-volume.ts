@@ -1,13 +1,12 @@
 "use client";
 
-
 /**
  * useAudioVolume
  * @registryDescription Hook that tracks real-time volume level from an audio source using Web Audio API AnalyserNode.
  * @registryVariant audio
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // ---- AUDIO CONTEXT SINGLETON ------------------------------------------------
 
@@ -79,7 +78,6 @@ export function useAudioVolume(
 
   const [data, setData] = useState<Uint8Array | null>(null);
   const [analyserNode, setAnalyserNode] = useState<AnalyserNode | null>(null);
-  const [isActive, setIsActive] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const rafRef = useRef<number | null>(null);
@@ -89,8 +87,24 @@ export function useAudioVolume(
 
   // Set up AudioContext + AnalyserNode when stream changes
   useEffect(() => {
+    let effectActive = true;
+    const setErrorDeferred = (message: string | null) => {
+      queueMicrotask(() => {
+        if (effectActive) {
+          setError(message);
+        }
+      });
+    };
+    const setAnalyserNodeDeferred = (node: AnalyserNode | null) => {
+      queueMicrotask(() => {
+        if (effectActive) {
+          setAnalyserNode(node);
+        }
+      });
+    };
+
     if (!stream || !enabled) {
-      setIsActive(false);
+      effectActive = false;
       return;
     }
 
@@ -98,10 +112,12 @@ export function useAudioVolume(
     try {
       audioCtx = getAudioContext();
     } catch (err) {
-      setError(
+      setErrorDeferred(
         err instanceof Error ? err.message : "Failed to create AudioContext"
       );
-      return;
+      return () => {
+        effectActive = false;
+      };
     }
 
     // Resume AudioContext if suspended (autoplay policy)
@@ -122,8 +138,10 @@ export function useAudioVolume(
     try {
       source = audioCtx.createMediaStreamSource(stream);
     } catch {
-      setError("Failed to create media stream source");
-      return;
+      setErrorDeferred("Failed to create media stream source");
+      return () => {
+        effectActive = false;
+      };
     }
 
     source.connect(analyser);
@@ -132,9 +150,8 @@ export function useAudioVolume(
     sourceRef.current = source;
     analyserRef.current = analyser;
     dataArrayRef.current = dataArray;
-    setAnalyserNode(analyser);
-    setIsActive(true);
-    setError(null);
+    setAnalyserNodeDeferred(analyser);
+    setErrorDeferred(null);
 
     // RAF loop
     const draw = () => {
@@ -158,14 +175,17 @@ export function useAudioVolume(
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
+      effectActive = false;
       source.disconnect();
       analyser.disconnect();
       sourceRef.current = null;
       analyserRef.current = null;
       dataArrayRef.current = null;
-      setIsActive(false);
+      setAnalyserNode(null);
     };
   }, [stream, fftSize, frequencyMode, smoothingTimeConstant, enabled]);
+
+  const isActive = Boolean(stream && enabled && analyserNode);
 
   return { data, analyser: analyserNode, isActive, error };
 }
