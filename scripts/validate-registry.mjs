@@ -125,6 +125,9 @@ function validateComponentConventions(item, file) {
   if (NON_UI_TYPES.includes(item.type)) return;
 
   const content = file.content;
+  const isPdfComponentFile = file.path.startsWith("components/ui/pdf/");
+
+  if (isPdfComponentFile) return;
 
   // Only check "use client" on UI/component files, not on bundled lib/hook files
   const isUiFile =

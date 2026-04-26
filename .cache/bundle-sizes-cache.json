@@ -7,7 +7,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1776091090328
+    "timestamp": 1777190134173
   },
   "@phosphor-icons/react": {
     "data": {
@@ -18,38 +18,29 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1776091090328
+    "timestamp": 1777190134173
   },
   "@react-three/drei": {
     "data": {
       "name": "@react-three/drei",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "10.7.7",
+      "size": 1604829,
+      "gzip": 496190,
+      "dependencyCount": 21,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776091094385
+    "timestamp": 1777190134766
   },
   "@react-three/fiber": {
     "data": {
       "name": "@react-three/fiber",
-      "version": "9.5.0",
-      "size": 159105,
-      "gzip": 50712,
+      "version": "9.6.0",
+      "size": 159334,
+      "gzip": 50792,
       "dependencyCount": 10,
       "source": "bundlephobia"
     },
-    "timestamp": 1776091094790
-  },
-  "@streamdown/code": {
-    "data": {
-      "name": "@streamdown/code",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
-    },
-    "timestamp": 1776091098710
+    "timestamp": 1777190135486
   },
   "class-variance-authority": {
     "data": {
@@ -59,7 +50,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1776091098710
+    "timestamp": 1777190135487
   },
   "clsx": {
     "data": {
@@ -69,37 +60,60 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1776091098710
+    "timestamp": 1777190135487
   },
   "embla-carousel-react": {
     "data": {
       "name": "embla-carousel-react",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "8.6.0",
+      "size": 17975,
+      "gzip": 7277,
+      "dependencyCount": 2,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776091102637
+    "timestamp": 1777190135914
+  },
+  "hast-util-to-jsx-runtime": {
+    "data": {
+      "name": "hast-util-to-jsx-runtime",
+      "version": "2.3.6",
+      "size": 28673,
+      "gzip": 9977,
+      "dependencyCount": 15,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1777190136422
   },
   "input-otp": {
     "data": {
       "name": "input-otp",
+      "version": "1.4.2",
+      "size": 9599,
+      "gzip": 3860,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1777190136825
+  },
+  "motion": {
+    "data": {
+      "name": "motion",
+      "size": 150000,
+      "gzip": 45000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1777190136825
+  },
+  "next": {
+    "data": {
+      "name": "next",
       "size": 10000,
       "gzip": 3000,
       "version": "unknown",
       "source": "estimate"
     },
-    "timestamp": 1776091106555
-  },
-  "motion/react": {
-    "data": {
-      "name": "motion/react",
-      "size": 50000,
-      "gzip": 15000,
-      "version": "unknown",
-      "source": "estimate"
-    },
-    "timestamp": 1776091110491
+    "timestamp": 1777190144235
   },
   "react-day-picker": {
     "data": {
@@ -110,18 +124,18 @@
       "dependencyCount": 4,
       "source": "bundlephobia"
     },
-    "timestamp": 1776091110876
+    "timestamp": 1777190144649
   },
   "react-resizable-panels": {
     "data": {
       "name": "react-resizable-panels",
-      "version": "4.9.0",
-      "size": 32482,
-      "gzip": 10727,
+      "version": "4.10.0",
+      "size": 32580,
+      "gzip": 10774,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1776091111260
+    "timestamp": 1777190145233
   },
   "recharts": {
     "data": {
@@ -132,27 +146,29 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "timestamp": 1776091111635
+    "timestamp": 1777190145651
   },
   "shiki": {
     "data": {
       "name": "shiki",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "4.0.2",
+      "size": 109061,
+      "gzip": 34024,
+      "dependencyCount": 8,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776091115556
+    "timestamp": 1777190146065
   },
   "streamdown": {
     "data": {
       "name": "streamdown",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "2.5.0",
+      "size": 464290,
+      "gzip": 141349,
+      "dependencyCount": 16,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776091119511
+    "timestamp": 1777190146473
   },
   "tailwind-merge": {
     "data": {
@@ -162,67 +178,61 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1776091119511
+    "timestamp": 1777190146473
   },
   "three": {
     "data": {
       "name": "three",
-      "version": "0.183.2",
-      "size": 717051,
-      "gzip": 179962,
+      "version": "0.184.0",
+      "size": 724189,
+      "gzip": 181947,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1776091119899
-  },
-  "tw-animate-css": {
-    "data": {
-      "name": "tw-animate-css",
-      "size": 18000,
-      "gzip": 5000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1776091119899
+    "timestamp": 1777190146873
   },
   "use-stick-to-bottom": {
     "data": {
       "name": "use-stick-to-bottom",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "1.1.3",
+      "size": 6649,
+      "gzip": 2502,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776091123815
+    "timestamp": 1777190147443
   },
-  "hast-util-to-jsx-runtime": {
+  "@react-pdf/renderer": {
     "data": {
-      "name": "hast-util-to-jsx-runtime",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "name": "@react-pdf/renderer",
+      "version": "4.5.1",
+      "size": 1423451,
+      "gzip": 471456,
+      "dependencyCount": 13,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776091335605
+    "timestamp": 1777192643600
   },
-  "motion": {
+  "@react-pdf/types": {
     "data": {
-      "name": "motion",
-      "size": 150000,
-      "gzip": 45000,
-      "version": "latest",
-      "source": "fallback"
+      "name": "@react-pdf/types",
+      "version": "2.11.1",
+      "size": 1382,
+      "gzip": 429,
+      "dependencyCount": 3,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776460463068
+    "timestamp": 1777192644181
   },
-  "next": {
+  "qrcode": {
     "data": {
-      "name": "next",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "name": "qrcode",
+      "version": "1.5.4",
+      "size": 23456,
+      "gzip": 8750,
+      "dependencyCount": 3,
+      "source": "bundlephobia"
     },
-    "timestamp": 1776460467610
+    "timestamp": 1777192644670
   }
 }
