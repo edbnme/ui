@@ -158,6 +158,14 @@ export interface AudioPlayerApi<TData = unknown> {
   setPlaybackRate: (rate: number) => void;
 }
 
+export interface AudioPlayerProviderProps<TData = unknown> {
+  children: ReactNode;
+  onError?: (
+    error: MediaError | null,
+    item: AudioPlayerItem<TData> | null
+  ) => void;
+}
+
 // ---------------------------------------------------------------------------
 // Context
 // ---------------------------------------------------------------------------
@@ -224,9 +232,8 @@ function useAnimationFrame(callback: Callback) {
 
 export function AudioPlayerProvider<TData = unknown>({
   children,
-}: {
-  children: ReactNode;
-}) {
+  onError,
+}: AudioPlayerProviderProps<TData>) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const itemRef = useRef<AudioPlayerItem<TData> | null>(null);
   const playPromiseRef = useRef<Promise<void> | null>(null);
@@ -249,6 +256,7 @@ export function AudioPlayerProvider<TData = unknown>({
       const currentRate = audioRef.current.playbackRate;
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
+      setError(null);
       if (item === null) {
         audioRef.current.removeAttribute("src");
       } else {
@@ -289,6 +297,7 @@ export function AudioPlayerProvider<TData = unknown>({
         audioRef.current.pause();
       }
       audioRef.current.currentTime = 0;
+      setError(null);
       if (item === null) {
         audioRef.current.removeAttribute("src");
       } else {
@@ -333,6 +342,12 @@ export function AudioPlayerProvider<TData = unknown>({
     },
     [activeItem]
   );
+
+  const handleError = useCallback(() => {
+    const mediaError = audioRef.current?.error ?? null;
+    setError(mediaError);
+    onError?.(mediaError, itemRef.current);
+  }, [onError]);
 
   useAnimationFrame(() => {
     if (audioRef.current) {
@@ -388,7 +403,12 @@ export function AudioPlayerProvider<TData = unknown>({
   return (
     <AudioPlayerContext.Provider value={api as AudioPlayerApi<unknown>}>
       <AudioPlayerTimeContext.Provider value={time}>
-        <audio ref={audioRef} className="hidden" crossOrigin="anonymous" />
+        <audio
+          ref={audioRef}
+          className="hidden"
+          crossOrigin="anonymous"
+          onError={handleError}
+        />
         {children}
       </AudioPlayerTimeContext.Provider>
     </AudioPlayerContext.Provider>
@@ -419,6 +439,7 @@ export const AudioPlayerProgress = ({
   const time = useAudioPlayerTime();
   const wasPlayingRef = useRef(false);
   const trackRef = useRef<HTMLDivElement>(null);
+  const activePointerRef = useRef<number | null>(null);
 
   const duration = player.duration;
   const hasValidDuration =
@@ -456,20 +477,52 @@ export const AudioPlayerProgress = ({
   const handlePointerDown = useCallback(
     (e: React.PointerEvent) => {
       if (disabled) return;
+      if (e.button !== 0 && e.pointerType === "mouse") return;
       wasPlayingRef.current = player.isPlaying;
+      activePointerRef.current = e.pointerId;
       player.pause();
       seekFromPointer(e.clientX);
 
-      const onMove = (ev: PointerEvent) => seekFromPointer(ev.clientX);
-      const onUp = () => {
-        window.removeEventListener("pointermove", onMove);
-        window.removeEventListener("pointerup", onUp);
-        if (wasPlayingRef.current) player.play();
-      };
-      window.addEventListener("pointermove", onMove);
-      window.addEventListener("pointerup", onUp);
+      try {
+        e.currentTarget.setPointerCapture(e.pointerId);
+      } catch {
+        // Dragging still works through local pointer handlers if capture fails.
+      }
     },
     [disabled, player, seekFromPointer]
+  );
+
+  const finishPointerDrag = useCallback(
+    (resumePlayback: boolean) => {
+      activePointerRef.current = null;
+      if (resumePlayback && wasPlayingRef.current) {
+        void player.play();
+      }
+      wasPlayingRef.current = false;
+    },
+    [player]
+  );
+
+  const handlePointerMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (activePointerRef.current !== e.pointerId) return;
+      seekFromPointer(e.clientX);
+    },
+    [seekFromPointer]
+  );
+
+  const handlePointerUp = useCallback(
+    (e: React.PointerEvent) => {
+      if (activePointerRef.current !== e.pointerId) return;
+      seekFromPointer(e.clientX);
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {
+        // The browser may already have released capture.
+      }
+      finishPointerDrag(true);
+    },
+    [finishPointerDrag, seekFromPointer]
   );
 
   const handleKeyDown = useCallback(
@@ -543,6 +596,10 @@ export const AudioPlayerProgress = ({
         className
       )}
       onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={() => finishPointerDrag(false)}
+      onLostPointerCapture={() => finishPointerDrag(true)}
       onKeyDown={handleKeyDown}
       {...props}
     >

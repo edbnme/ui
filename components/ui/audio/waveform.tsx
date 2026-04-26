@@ -686,14 +686,15 @@ function AudioScrubber({
   ...props
 }: AudioScrubberProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const activePointerRef = React.useRef<number | null>(null);
   const [isDragging, setIsDragging] = React.useState(false);
   const [localProgress, setLocalProgress] = React.useState(() =>
-    duration > 0 ? currentTime / duration : 0
+    duration > 0 ? clamp(currentTime / duration, 0, 1) : 0
   );
 
   React.useEffect(() => {
     if (!isDragging && duration > 0) {
-      setLocalProgress(currentTime / duration);
+      setLocalProgress(clamp(currentTime / duration, 0, 1));
     }
   }, [currentTime, duration, isDragging]);
 
@@ -713,53 +714,71 @@ function AudioScrubber({
     [duration, onSeek]
   );
 
-  React.useEffect(() => {
-    if (!isDragging) {
-      return;
-    }
-
-    const handleMouseMove = (event: MouseEvent) => {
-      handleScrub(event.clientX);
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseup", handleMouseUp);
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [handleScrub, isDragging]);
+  const endDrag = React.useCallback(() => {
+    activePointerRef.current = null;
+    setIsDragging(false);
+  }, []);
 
   return (
     <div
       ref={containerRef}
       data-slot="audio-scrubber"
+      data-dragging={isDragging || undefined}
       role="slider"
       tabIndex={0}
       aria-label="Audio waveform scrubber"
       aria-valuenow={currentTime}
       aria-valuemin={0}
       aria-valuemax={duration}
-      className={cn("relative cursor-pointer select-none", className)}
-      onMouseDown={(event) => {
+      className={cn(
+        "group/scrubber relative cursor-pointer touch-none select-none",
+        className
+      )}
+      onPointerDown={(event) => {
+        // Only primary button / single contact, ignore right-click.
+        if (event.button !== 0 && event.pointerType === "mouse") return;
         event.preventDefault();
+        activePointerRef.current = event.pointerId;
+        try {
+          (event.currentTarget as Element).setPointerCapture(event.pointerId);
+        } catch {
+          // setPointerCapture can throw in rare cases (e.g. detached element);
+          // dragging still works via the pointermove handler below.
+        }
         setIsDragging(true);
         handleScrub(event.clientX);
       }}
+      onPointerMove={(event) => {
+        if (activePointerRef.current !== event.pointerId) return;
+        handleScrub(event.clientX);
+      }}
+      onPointerUp={(event) => {
+        if (activePointerRef.current !== event.pointerId) return;
+        try {
+          (event.currentTarget as Element).releasePointerCapture(
+            event.pointerId
+          );
+        } catch {
+          // Already released — no-op.
+        }
+        endDrag();
+      }}
+      onPointerCancel={() => endDrag()}
+      onLostPointerCapture={() => endDrag()}
       onKeyDown={(event) => {
         const step = duration / 20 || 1;
-        if (event.key === "ArrowLeft") {
+        const bigStep = Math.max(step, duration * 0.1);
+        if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
           event.preventDefault();
-          onSeek?.(clamp(currentTime - step, 0, duration));
+          onSeek?.(
+            clamp(currentTime - (event.shiftKey ? bigStep : step), 0, duration)
+          );
         }
-        if (event.key === "ArrowRight") {
+        if (event.key === "ArrowRight" || event.key === "ArrowUp") {
           event.preventDefault();
-          onSeek?.(clamp(currentTime + step, 0, duration));
+          onSeek?.(
+            clamp(currentTime + (event.shiftKey ? bigStep : step), 0, duration)
+          );
         }
         if (event.key === "Home") {
           event.preventDefault();
@@ -781,7 +800,8 @@ function AudioScrubber({
       {showHandle && (
         <div
           data-slot="audio-scrubber-handle"
-          className="bg-primary absolute top-1/2 h-full w-0.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
+          aria-hidden="true"
+          className="bg-primary pointer-events-none absolute top-1/2 h-full w-0.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-transform duration-150 ease-out group-data-dragging/scrubber:scale-y-110"
           style={{ left: `${localProgress * 100}%` }}
         />
       )}
