@@ -29,6 +29,9 @@
  *   @registryCategory <name>              sidebar grouping key (e.g. "chat",
  *                                         "audio", "display"). Consumers
  *                                         read this to split the sidebar.
+ *   @registryTier <free|pro>              paywall tier. Defaults to "free".
+ *                                         Consumed by the /blocks page and
+ *                                         any UI that gates premium content.
  *
  * @packageDocumentation
  */
@@ -55,6 +58,12 @@ export const SOURCE_DIRS = [
     type: "registry:ui",
     variant: "audio",
     prefix: "audio-",
+  },
+  {
+    dir: "components/ui/pdf",
+    type: "registry:ui",
+    variant: "pdf",
+    prefix: "pdf-",
   },
   { dir: "hooks", type: "registry:hook", variant: "static", prefix: "" },
   { dir: "lib", type: "registry:lib", variant: "static", prefix: "" },
@@ -207,6 +216,15 @@ function parseJsDocTags(jsdoc) {
 
   const category = get("registryCategory");
   if (category) tags.category = category;
+
+  const tierRaw = get("registryTier");
+  if (tierRaw) {
+    const tier = tierRaw.toLowerCase();
+    if (tier === "pro" || tier === "free") {
+      tags.tier = tier;
+    }
+    // Unknown tier values are silently dropped — default is "free" downstream.
+  }
 
   tags.extraDependencies = csv(get("registryDependencies"));
   tags.extraRegistryDependencies = csv(get("registryRegistryDependencies"));
@@ -605,6 +623,8 @@ function resolveEntry(main, lookup, scanned) {
   if (main.tags.isNew) entry.isNew = true;
   if (main.tags.demos) entry.demos = main.tags.demos;
   if (main.tags.category) entry.category = main.tags.category;
+  // Tier: "free" (default) or "pro". Only emitted when explicitly set.
+  if (main.tags.tier) entry.tier = main.tags.tier;
 
   return entry;
 }

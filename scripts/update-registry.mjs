@@ -46,6 +46,9 @@ const staticComponents = partition(
 const audioComponents = partition(
   (c) => c.type === "registry:ui" && c.variant === "audio"
 );
+const pdfComponents = partition(
+  (c) => c.type === "registry:ui" && c.variant === "pdf"
+);
 const libraryComponents = partition((c) => c.type === "registry:lib");
 const hookComponents = partition(
   (c) => c.type === "registry:hook" && c.variant === "static"
@@ -62,6 +65,7 @@ const allEntries = [
   ...Object.entries(libraryComponents),
   ...Object.entries(hookComponents),
   ...Object.entries(audioComponents),
+  ...Object.entries(pdfComponents),
   ...Object.entries(audioHookComponents),
 ];
 
@@ -224,6 +228,13 @@ function updateMainRegistry(outputDir) {
         dependencies: ["class-variance-authority"],
         cssImport: null,
       },
+      pdf: {
+        name: "PDF",
+        description:
+          "React PDF components for invoices, reports, certificates, and generated documents",
+        dependencies: ["@react-pdf/renderer"],
+        cssImport: null,
+      },
     },
     items,
   };
@@ -259,6 +270,7 @@ const outputDir = join(root, "public", "r");
 ensureDir(outputDir);
 ensureDir(join(outputDir, "static"));
 ensureDir(join(outputDir, "audio"));
+ensureDir(join(outputDir, "pdf"));
 
 // Update individual component registry files
 allEntries.forEach(([name, config]) => {
@@ -281,6 +293,7 @@ console.log("\nOutput structure:");
 console.log("  public/r/");
 console.log("  ├── static/     (CSS-only + Base UI components)");
 console.log("  ├── audio/      (Audio/AI chat components)");
+console.log("  ├── pdf/        (React PDF document components)");
 console.log("  └── registry.json");
 
 // ---- BUNDLE SIZE COMPUTATION ------------------------------------------------

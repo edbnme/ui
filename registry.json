@@ -17,6 +17,14 @@
         "class-variance-authority"
       ],
       "cssImport": null
+    },
+    "pdf": {
+      "name": "PDF",
+      "description": "React PDF components for invoices, reports, certificates, and generated documents",
+      "dependencies": [
+        "@react-pdf/renderer"
+      ],
+      "cssImport": null
     }
   },
   "items": [
@@ -1148,6 +1156,23 @@
       ]
     },
     {
+      "name": "pdf-theme",
+      "type": "registry:lib",
+      "title": "PDF Theme",
+      "description": "Theme provider, default tokens, and style helpers for PDF components.",
+      "dependencies": [
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "lib/pdf-theme.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "primitives",
       "type": "registry:lib",
       "title": "Primitives",
@@ -1777,6 +1802,440 @@
       "files": [
         {
           "path": "components/ui/audio/waveform.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-alert",
+      "type": "registry:ui",
+      "title": "PDF Alert",
+      "description": "Callout message with title, body, and tone-based border color.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-badge",
+      "type": "registry:ui",
+      "title": "PDF Badge",
+      "description": "Compact status badge with neutral, primary, success, warning, and destructive tones.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-card",
+      "type": "registry:ui",
+      "title": "PDF Card",
+      "description": "Bordered card container with title, description, and footer slots.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-data-table",
+      "type": "registry:ui",
+      "title": "PDF Data Table",
+      "description": "Render rows from typed data with empty-state handling, alignment, widths, and custom accessors.",
+      "dependencies": [
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [
+        "pdf-table",
+        "pdf-text"
+      ],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-divider",
+      "type": "registry:ui",
+      "title": "PDF Divider",
+      "description": "Theme-aware PDF divider with horizontal and vertical orientations.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/divider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-form",
+      "type": "registry:ui",
+      "title": "PDF Form",
+      "description": "Printable text and checkbox fields for generated PDF forms.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-graph",
+      "type": "registry:ui",
+      "title": "PDF Graph",
+      "description": "Lightweight bar graph rendered with React PDF SVG primitives.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/graph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-heading",
+      "type": "registry:ui",
+      "title": "PDF Heading",
+      "description": "Document headings with semantic levels and stable PDF typography.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/heading.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-image",
+      "type": "registry:ui",
+      "title": "PDF Image",
+      "description": "Image wrapper with alt metadata, fit controls, dimensions, and fallback text.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/image.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-keep-together",
+      "type": "registry:ui",
+      "title": "PDF Keep Together",
+      "description": "Wrap content with React PDF `wrap={false}` to keep a fragment on one page.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/keep-together.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-key-value",
+      "type": "registry:ui",
+      "title": "PDF Key Value",
+      "description": "Key-value rows for summaries, totals, and metadata blocks.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/key-value.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-link",
+      "type": "registry:ui",
+      "title": "PDF Link",
+      "description": "Clickable PDF link with theme-aware styling and safe fallback text.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/link.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-list",
+      "type": "registry:ui",
+      "title": "PDF List",
+      "description": "Ordered and unordered list component with empty-state handling.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/list.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-page-break",
+      "type": "registry:ui",
+      "title": "PDF Page Break",
+      "description": "Insert an explicit React PDF page break in flowing documents.",
+      "dependencies": [
+        "@react-pdf/renderer"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/page-break.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-page-footer",
+      "type": "registry:ui",
+      "title": "PDF Page Footer",
+      "description": "Fixed or flowing page footer with left and right text areas.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/page-footer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-page-header",
+      "type": "registry:ui",
+      "title": "PDF Page Header",
+      "description": "Fixed or flowing page header with title, subtitle, and metadata.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/page-header.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-page-number",
+      "type": "registry:ui",
+      "title": "PDF Page Number",
+      "description": "Dynamic page number using React PDF render callbacks and format tokens.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/page-number.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-qrcode",
+      "type": "registry:ui",
+      "title": "PDF QR Code",
+      "description": "Real QR code matrix rendering for React PDF using the qrcode package.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types",
+        "qrcode"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/qrcode.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-section",
+      "type": "registry:ui",
+      "title": "PDF Section",
+      "description": "Titled document section with optional description and wrapping controls.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/section.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-signature",
+      "type": "registry:ui",
+      "title": "PDF Signature",
+      "description": "Signature block with label, signer text, date, and optional image signature.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/signature.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-stack",
+      "type": "registry:ui",
+      "title": "PDF Stack",
+      "description": "Flexbox stack layout for PDF rows, columns, spacing, and wrapping.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/stack.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-table",
+      "type": "registry:ui",
+      "title": "PDF Table",
+      "description": "Composable PDF table primitives with header, body, rows, cells, widths, and alignment.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-text",
+      "type": "registry:ui",
+      "title": "PDF Text",
+      "description": "Theme-aware text with size, tone, weight, and margin controls.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-watermark",
+      "type": "registry:ui",
+      "title": "PDF Watermark",
+      "description": "Fixed centered watermark text for drafts, confidential documents, and samples.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/watermark.tsx",
           "type": "registry:ui"
         }
       ]

@@ -2,20 +2,20 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 19,
-    "totalComponents": 78,
+    "totalPackages": 22,
+    "totalComponents": 102,
     "animatedComponents": 0,
     "staticComponents": 54,
     "sharedComponents": 0,
     "largestDependency": {
-      "name": "three",
-      "version": "0.183.2",
-      "size": 717051,
-      "gzip": 179962,
-      "dependencyCount": 0,
+      "name": "@react-three/drei",
+      "version": "10.7.7",
+      "size": 1604829,
+      "gzip": 496190,
+      "dependencyCount": 21,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-04-18T13:43:47.316Z"
+    "computedAt": "2026-04-26T08:45:17.542Z"
   },
   "packages": [
     {
@@ -34,17 +34,34 @@
       "note": "Per icon, tree-shakable"
     },
     {
+      "name": "@react-pdf/renderer",
+      "version": "4.5.1",
+      "size": 1423451,
+      "gzip": 471456,
+      "dependencyCount": 13,
+      "source": "bundlephobia"
+    },
+    {
+      "name": "@react-pdf/types",
+      "version": "2.11.1",
+      "size": 1382,
+      "gzip": 429,
+      "dependencyCount": 3,
+      "source": "bundlephobia"
+    },
+    {
       "name": "@react-three/drei",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "10.7.7",
+      "size": 1604829,
+      "gzip": 496190,
+      "dependencyCount": 21,
+      "source": "bundlephobia"
     },
     {
       "name": "@react-three/fiber",
-      "version": "9.5.0",
-      "size": 159105,
-      "gzip": 50712,
+      "version": "9.6.0",
+      "size": 159334,
+      "gzip": 50792,
       "dependencyCount": 10,
       "source": "bundlephobia"
     },
@@ -64,24 +81,27 @@
     },
     {
       "name": "embla-carousel-react",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "8.6.0",
+      "size": 17975,
+      "gzip": 7277,
+      "dependencyCount": 2,
+      "source": "bundlephobia"
     },
     {
       "name": "hast-util-to-jsx-runtime",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "2.3.6",
+      "size": 28673,
+      "gzip": 9977,
+      "dependencyCount": 15,
+      "source": "bundlephobia"
     },
     {
       "name": "input-otp",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "1.4.2",
+      "size": 9599,
+      "gzip": 3860,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     },
     {
       "name": "motion",
@@ -98,6 +118,14 @@
       "source": "estimate"
     },
     {
+      "name": "qrcode",
+      "version": "1.5.4",
+      "size": 23456,
+      "gzip": 8750,
+      "dependencyCount": 3,
+      "source": "bundlephobia"
+    },
+    {
       "name": "react-day-picker",
       "version": "9.14.0",
       "size": 67432,
@@ -107,9 +135,9 @@
     },
     {
       "name": "react-resizable-panels",
-      "version": "4.9.0",
-      "size": 32482,
-      "gzip": 10727,
+      "version": "4.10.0",
+      "size": 32580,
+      "gzip": 10774,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
@@ -123,17 +151,19 @@
     },
     {
       "name": "shiki",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "4.0.2",
+      "size": 109061,
+      "gzip": 34024,
+      "dependencyCount": 8,
+      "source": "bundlephobia"
     },
     {
       "name": "streamdown",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "2.5.0",
+      "size": 464290,
+      "gzip": 141349,
+      "dependencyCount": 16,
+      "source": "bundlephobia"
     },
     {
       "name": "tailwind-merge",
@@ -144,18 +174,19 @@
     },
     {
       "name": "three",
-      "version": "0.183.2",
-      "size": 717051,
-      "gzip": 179962,
+      "version": "0.184.0",
+      "size": 724189,
+      "gzip": 181947,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
     {
       "name": "use-stick-to-bottom",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
+      "version": "1.1.3",
+      "size": 6649,
+      "gzip": 2502,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
     }
   ],
   "components": {
@@ -412,8 +443,8 @@
       "description": "Horizontal scroll carousel with navigation controls via Embla Carousel.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 19175,
+        "gzipped": 7677,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -427,10 +458,10 @@
         },
         {
           "name": "embla-carousel-react",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 17975,
+          "gzip": 7277,
+          "version": "8.6.0",
+          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 2
@@ -747,8 +778,8 @@
       "description": "One-time password input with auto-focus, paste support, and separators.",
       "variant": "static",
       "sizes": {
-        "minified": 11200,
-        "gzipped": 3400,
+        "minified": 10799,
+        "gzipped": 4260,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -762,10 +793,10 @@
         },
         {
           "name": "input-otp",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 9599,
+          "gzip": 3860,
+          "version": "1.4.2",
+          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 2
@@ -1052,8 +1083,8 @@
       "description": "Resizable panel groups with drag handles for flexible layouts.",
       "variant": "static",
       "sizes": {
-        "minified": 33682,
-        "gzipped": 11127,
+        "minified": 33780,
+        "gzipped": 11174,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1067,9 +1098,9 @@
         },
         {
           "name": "react-resizable-panels",
-          "size": 32482,
-          "gzip": 10727,
-          "version": "4.9.0",
+          "size": 32580,
+          "gzip": 10774,
+          "version": "4.10.0",
           "source": "bundlephobia"
         }
       ],
@@ -1552,8 +1583,8 @@
       "description": "Code Block",
       "variant": "audio",
       "sizes": {
-        "minified": 25700,
-        "gzipped": 7900,
+        "minified": 143434,
+        "gzipped": 45901,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1574,17 +1605,17 @@
         },
         {
           "name": "hast-util-to-jsx-runtime",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 28673,
+          "gzip": 9977,
+          "version": "2.3.6",
+          "source": "bundlephobia"
         },
         {
           "name": "shiki",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 109061,
+          "gzip": 34024,
+          "version": "4.0.2",
+          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 4
@@ -1609,18 +1640,18 @@
       "description": "Conversation component.",
       "variant": "audio",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 6649,
+        "gzipped": 2502,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "use-stick-to-bottom",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 6649,
+          "gzip": 2502,
+          "version": "1.1.3",
+          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 1
@@ -1717,24 +1748,24 @@
       "description": "Orb",
       "variant": "audio",
       "sizes": {
-        "minified": 896156,
-        "gzipped": 236674,
+        "minified": 2498352,
+        "gzipped": 731929,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "@react-three/drei",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 1604829,
+          "gzip": 496190,
+          "version": "10.7.7",
+          "source": "bundlephobia"
         },
         {
           "name": "@react-three/fiber",
-          "size": 159105,
-          "gzip": 50712,
-          "version": "9.5.0",
+          "size": 159334,
+          "gzip": 50792,
+          "version": "9.6.0",
           "source": "bundlephobia"
         },
         {
@@ -1746,9 +1777,9 @@
         },
         {
           "name": "three",
-          "size": 717051,
-          "gzip": 179962,
-          "version": "0.183.2",
+          "size": 724189,
+          "gzip": 181947,
+          "version": "0.184.0",
           "source": "bundlephobia"
         }
       ],
@@ -1782,18 +1813,18 @@
       "description": "Response component.",
       "variant": "audio",
       "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
+        "minified": 464290,
+        "gzipped": 141349,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "streamdown",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
+          "size": 464290,
+          "gzip": 141349,
+          "version": "2.5.0",
+          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 1
@@ -1962,6 +1993,695 @@
         }
       ],
       "dependencyCount": 1
+    },
+    "pdf/pdf-alert": {
+      "name": "pdf-alert",
+      "title": "PDF Alert",
+      "description": "Callout message with title, body, and tone-based border color.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-badge": {
+      "name": "pdf-badge",
+      "title": "PDF Badge",
+      "description": "Compact status badge with neutral, primary, success, warning, and destructive tones.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-card": {
+      "name": "pdf-card",
+      "title": "PDF Card",
+      "description": "Bordered card container with title, description, and footer slots.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-data-table": {
+      "name": "pdf-data-table",
+      "title": "PDF Data Table",
+      "description": "Render rows from typed data with empty-state handling, alignment, widths, and custom accessors.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1382,
+        "gzipped": 429,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "pdf/pdf-divider": {
+      "name": "pdf-divider",
+      "title": "PDF Divider",
+      "description": "Theme-aware PDF divider with horizontal and vertical orientations.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-form": {
+      "name": "pdf-form",
+      "title": "PDF Form",
+      "description": "Printable text and checkbox fields for generated PDF forms.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-graph": {
+      "name": "pdf-graph",
+      "title": "PDF Graph",
+      "description": "Lightweight bar graph rendered with React PDF SVG primitives.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-heading": {
+      "name": "pdf-heading",
+      "title": "PDF Heading",
+      "description": "Document headings with semantic levels and stable PDF typography.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-image": {
+      "name": "pdf-image",
+      "title": "PDF Image",
+      "description": "Image wrapper with alt metadata, fit controls, dimensions, and fallback text.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-keep-together": {
+      "name": "pdf-keep-together",
+      "title": "PDF Keep Together",
+      "description": "Wrap content with React PDF `wrap={false}` to keep a fragment on one page.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-key-value": {
+      "name": "pdf-key-value",
+      "title": "PDF Key Value",
+      "description": "Key-value rows for summaries, totals, and metadata blocks.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-link": {
+      "name": "pdf-link",
+      "title": "PDF Link",
+      "description": "Clickable PDF link with theme-aware styling and safe fallback text.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-list": {
+      "name": "pdf-list",
+      "title": "PDF List",
+      "description": "Ordered and unordered list component with empty-state handling.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-page-break": {
+      "name": "pdf-page-break",
+      "title": "PDF Page Break",
+      "description": "Insert an explicit React PDF page break in flowing documents.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1423451,
+        "gzipped": 471456,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "pdf/pdf-page-footer": {
+      "name": "pdf-page-footer",
+      "title": "PDF Page Footer",
+      "description": "Fixed or flowing page footer with left and right text areas.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-page-header": {
+      "name": "pdf-page-header",
+      "title": "PDF Page Header",
+      "description": "Fixed or flowing page header with title, subtitle, and metadata.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-page-number": {
+      "name": "pdf-page-number",
+      "title": "PDF Page Number",
+      "description": "Dynamic page number using React PDF render callbacks and format tokens.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-qrcode": {
+      "name": "pdf-qrcode",
+      "title": "PDF QR Code",
+      "description": "Real QR code matrix rendering for React PDF using the qrcode package.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1448289,
+        "gzipped": 480635,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "qrcode",
+          "size": 23456,
+          "gzip": 8750,
+          "version": "1.5.4",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "pdf/pdf-section": {
+      "name": "pdf-section",
+      "title": "PDF Section",
+      "description": "Titled document section with optional description and wrapping controls.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-signature": {
+      "name": "pdf-signature",
+      "title": "PDF Signature",
+      "description": "Signature block with label, signer text, date, and optional image signature.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-stack": {
+      "name": "pdf-stack",
+      "title": "PDF Stack",
+      "description": "Flexbox stack layout for PDF rows, columns, spacing, and wrapping.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-table": {
+      "name": "pdf-table",
+      "title": "PDF Table",
+      "description": "Composable PDF table primitives with header, body, rows, cells, widths, and alignment.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-text": {
+      "name": "pdf-text",
+      "title": "PDF Text",
+      "description": "Theme-aware text with size, tone, weight, and margin controls.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-watermark": {
+      "name": "pdf-watermark",
+      "title": "PDF Watermark",
+      "description": "Fixed centered watermark text for drafts, confidential documents, and samples.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
     }
   },
   "comparisons": {}
