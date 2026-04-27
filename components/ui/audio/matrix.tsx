@@ -27,6 +27,7 @@ interface MatrixProps extends React.HTMLAttributes<HTMLDivElement> {
   cols: number;
   pattern?: Frame;
   frames?: Frame[];
+  interval?: number;
   fps?: number;
   autoplay?: boolean;
   loop?: boolean;
@@ -461,6 +462,7 @@ export const Matrix = React.forwardRef<HTMLDivElement, MatrixProps>(
       cols,
       pattern,
       frames,
+      interval,
       fps = 12,
       autoplay = true,
       loop = true,
@@ -477,8 +479,10 @@ export const Matrix = React.forwardRef<HTMLDivElement, MatrixProps>(
     },
     ref
   ) => {
+    const animationFps = interval && interval > 0 ? 1000 / interval : fps;
+
     const { frameIndex } = useAnimation(frames, {
-      fps,
+      fps: animationFps,
       autoplay: autoplay && !pattern,
       loop,
       onFrame,
