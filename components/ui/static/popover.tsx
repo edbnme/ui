@@ -15,7 +15,7 @@
  * @docs       https://ui.edbn.me/docs/components/popover
  * @source     https://ui.edbn.me/r/popover.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/popover
+ * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/popover
  * @a11y       WAI-ARIA Dialog (non-modal) pattern when not modal; focus
  *             trap when `modal`; automatic `aria-labelledby` /
  *             `aria-describedby` wiring via Base UI; Escape and outside
@@ -26,12 +26,15 @@
  * <PopoverRoot>
  *   <PopoverTrigger>Open</PopoverTrigger>
  *   <PopoverPortal>
+ *     <PopoverBackdrop />              // optional, for modal popovers
  *     <PopoverPositioner sideOffset={8}>
  *       <PopoverPopup>
  *         <PopoverArrow />
  *         <PopoverCloseIconButton />       // optional corner X
- *         <PopoverTitle>Settings</PopoverTitle>
- *         <PopoverDescription>Configure…</PopoverDescription>
+ *         <PopoverViewport>               // optional content transitions
+ *           <PopoverTitle>Settings</PopoverTitle>
+ *           <PopoverDescription>Configure…</PopoverDescription>
+ *         </PopoverViewport>
  *       </PopoverPopup>
  *     </PopoverPositioner>
  *   </PopoverPortal>
@@ -70,8 +73,10 @@ import { cn } from "@/lib/utils";
  *
  * @since 0.3.0
  */
-export type PopoverRootProps = React.ComponentProps<typeof Popover.Root>;
-const PopoverRoot = (props: PopoverRootProps) => <Popover.Root {...props} />;
+export type PopoverRootProps<Payload = unknown> = Popover.Root.Props<Payload>;
+function PopoverRoot<Payload = unknown>(props: PopoverRootProps<Payload>) {
+  return <Popover.Root {...props} />;
+}
 PopoverRoot.displayName = "PopoverRoot";
 
 // ---- POPOVER TRIGGER --------------------------------------------------------
@@ -90,8 +95,12 @@ PopoverRoot.displayName = "PopoverRoot";
  *
  * @since 0.3.0
  */
-export type PopoverTriggerProps = React.ComponentProps<typeof Popover.Trigger>;
-function PopoverTrigger({ className, ...props }: PopoverTriggerProps) {
+export type PopoverTriggerProps<Payload = unknown> =
+  Popover.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
+function PopoverTrigger<Payload = unknown>({
+  className,
+  ...props
+}: PopoverTriggerProps<Payload>) {
   return (
     <Popover.Trigger
       data-slot="popover-trigger"
@@ -386,6 +395,11 @@ PopoverCloseIconButton.displayName = "PopoverCloseIconButton";
  * Optional viewport for coordinating multi-content popover transitions
  * (rare; used when the popover's inner content swaps while remaining open).
  *
+ * **Data attributes** — `data-activation-direction`, `data-current`,
+ * `data-instant`, `data-previous`, `data-transitioning`.
+ *
+ * **CSS variables** — `--popup-height`, `--popup-width`.
+ *
  * @since 0.3.0
  */
 export type PopoverViewportProps = React.ComponentProps<
@@ -395,7 +409,7 @@ function PopoverViewport({ className, ...props }: PopoverViewportProps) {
   return (
     <Popover.Viewport
       data-slot="popover-viewport"
-      className={className}
+      className={cn("relative h-full w-full overflow-clip", className)}
       {...props}
     />
   );

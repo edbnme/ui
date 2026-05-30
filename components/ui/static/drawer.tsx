@@ -2,8 +2,7 @@
  * Drawer — bottom / side sheet with native swipe gestures, snap points,
  * and nested-drawer support.
  *
- * Built on Base UI's Drawer (v1.2.0 — currently exposed via the
- * `DrawerPreview` namespace). For centered modals use `Dialog`; for
+ * Built on Base UI's Drawer. For centered modals use `Dialog`; for
  * transient anchored surfaces use `Popover`.
  *
  * @package    @edbn/ui
@@ -13,7 +12,7 @@
  * @docs       https://ui.edbn.me/docs/components/drawer
  * @source     https://ui.edbn.me/r/drawer.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/drawer
+ * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/drawer
  * @a11y       WAI-ARIA Dialog pattern; focus trap; Escape dismissal;
  *             scroll-lock on `<body>`; inert background; respects
  *             `prefers-reduced-motion`; swipe gestures are decorative —
@@ -24,11 +23,12 @@
  * ```tsx
  * <DrawerRoot>
  *   <DrawerTrigger>Open</DrawerTrigger>
+ *   <DrawerSwipeArea />
  *   <DrawerPortal>
  *     <DrawerBackdrop />
  *     <DrawerViewport>
  *       <DrawerPopup>
- *         <DrawerHandle />
+ *         <DrawerGrip />
  *         <DrawerContent>
  *           <DrawerTitle>Filters</DrawerTitle>
  *           <DrawerDescription>Refine your results.</DrawerDescription>
@@ -66,7 +66,7 @@
 "use client";
 
 import * as React from "react";
-import { DrawerPreview as Drawer } from "@base-ui/react/drawer";
+import { Drawer } from "@base-ui/react/drawer";
 import { X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
@@ -118,13 +118,35 @@ function DrawerTrigger({ className, ...props }: DrawerTriggerProps) {
         "transition-colors",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
         "disabled:pointer-events-none disabled:opacity-50",
-        className,
+        className
       )}
       {...props}
     />
   );
 }
 DrawerTrigger.displayName = "DrawerTrigger";
+
+// ---- DRAWER SWIPE AREA ------------------------------------------------------
+
+/**
+ * Invisible edge hit area that listens for swipe-to-open gestures. Position it
+ * along the edge of the viewport or containing surface with `className`.
+ *
+ * @since 0.3.0
+ */
+export type DrawerSwipeAreaProps = React.ComponentProps<
+  typeof Drawer.SwipeArea
+>;
+function DrawerSwipeArea({ className, ...props }: DrawerSwipeAreaProps) {
+  return (
+    <Drawer.SwipeArea
+      data-slot="drawer-swipe-area"
+      className={cn("touch-none select-none", className)}
+      {...props}
+    />
+  );
+}
+DrawerSwipeArea.displayName = "DrawerSwipeArea";
 
 // ---- DRAWER PORTAL ----------------------------------------------------------
 
@@ -144,7 +166,8 @@ DrawerPortal.displayName = "DrawerPortal";
  * via the `--drawer-swipe-progress` CSS variable — you can leverage this
  * to fade background UI in tandem with the drag.
  *
- * **CSS variables** — `--drawer-swipe-progress`.
+ * **CSS variables** — `--drawer-swipe-progress`,
+ * `--drawer-swipe-strength`.
  *
  * @since 0.3.0
  */
@@ -154,11 +177,13 @@ function DrawerBackdrop({ className, ...props }: DrawerBackdropProps) {
     <Drawer.Backdrop
       data-slot="drawer-backdrop"
       className={cn(
-        "fixed inset-0 z-50 bg-black/50 backdrop-blur-xs",
-        "transition-opacity duration-200 ease-out",
+        "fixed inset-0 z-50 min-h-dvh bg-black backdrop-blur-xs",
+        "[--drawer-backdrop-opacity:0.5] opacity-[calc(var(--drawer-backdrop-opacity)*(1-var(--drawer-swipe-progress)))]",
+        "transition-opacity duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)]",
         "data-starting-style:opacity-0 data-ending-style:opacity-0",
+        "data-swiping:duration-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)]",
         "motion-reduce:backdrop-blur-none motion-reduce:transition-opacity",
-        className,
+        className
       )}
       {...props}
     />
@@ -181,7 +206,7 @@ function DrawerViewport({ className, ...props }: DrawerViewportProps) {
       data-slot="drawer-viewport"
       className={cn(
         "fixed inset-0 z-50 flex items-end justify-center",
-        className,
+        className
       )}
       {...props}
     />
@@ -226,7 +251,7 @@ function DrawerPopup({ className, ...props }: DrawerPopupProps) {
         "motion-reduce:data-starting-style:translate-y-0 motion-reduce:data-ending-style:translate-y-0",
         "motion-reduce:data-starting-style:opacity-0 motion-reduce:data-ending-style:opacity-0",
         "focus:outline-none",
-        className,
+        className
       )}
       {...props}
     />
@@ -234,7 +259,7 @@ function DrawerPopup({ className, ...props }: DrawerPopupProps) {
 }
 DrawerPopup.displayName = "DrawerPopup";
 
-// ---- DRAWER HANDLE (visual grip) -------------------------------------------
+// ---- DRAWER GRIP ------------------------------------------------------------
 
 /**
  * Visual "grab handle" rendered at the top of a bottom drawer. Purely
@@ -243,23 +268,23 @@ DrawerPopup.displayName = "DrawerPopup";
  *
  * @since 0.3.0
  */
-export interface DrawerHandleProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface DrawerGripProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
-function DrawerHandle({ className, ...props }: DrawerHandleProps) {
+function DrawerGrip({ className, ...props }: DrawerGripProps) {
   return (
     <div
       aria-hidden
-      data-slot="drawer-handle"
+      data-slot="drawer-grip"
       className={cn(
         "mx-auto mt-2 mb-1 h-1.5 w-10 shrink-0 rounded-full bg-muted-foreground/30",
-        className,
+        className
       )}
       {...props}
     />
   );
 }
-DrawerHandle.displayName = "DrawerHandle";
+DrawerGrip.displayName = "DrawerGrip";
 
 // ---- DRAWER CONTENT ---------------------------------------------------------
 
@@ -275,7 +300,7 @@ function DrawerContent({ className, ...props }: DrawerContentProps) {
       data-slot="drawer-content"
       className={cn(
         "flex flex-1 flex-col gap-4 overflow-y-auto overscroll-contain px-6 py-4",
-        className,
+        className
       )}
       {...props}
     />
@@ -342,7 +367,7 @@ function DrawerClose({ className, ...props }: DrawerCloseProps) {
         "transition-colors",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
         "disabled:pointer-events-none disabled:opacity-50",
-        className,
+        className
       )}
       {...props}
     />
@@ -383,7 +408,7 @@ function DrawerCloseIconButton({
         "hover:bg-muted hover:opacity-100",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
         "disabled:pointer-events-none disabled:opacity-40",
-        className,
+        className
       )}
       {...props}
     >
@@ -410,7 +435,7 @@ function DrawerIndent({ className, ...props }: DrawerIndentProps) {
       className={cn(
         "transition-transform duration-300 ease-out",
         "motion-reduce:transition-none",
-        className,
+        className
       )}
       {...props}
     />
@@ -443,12 +468,18 @@ function DrawerIndentBackground({
 }
 DrawerIndentBackground.displayName = "DrawerIndentBackground";
 
-// ---- DRAWER HANDLE REF (detached-trigger API) -------------------------------
+// ---- DRAWER HANDLE ----------------------------------------------------------
 
 /**
- * Creates a typed handle for detached triggers (shared with Dialog's
- * handle implementation in Base UI). Use when the trigger lives outside
- * the drawer's render tree.
+ * Handle class for detached triggers and imperative drawer control.
+ *
+ * @since 0.3.0
+ */
+const DrawerHandle = Drawer.Handle;
+
+/**
+ * Creates a typed handle for detached triggers. Use when the trigger lives
+ * outside the drawer's render tree.
  *
  * @since 0.3.0
  */
@@ -460,10 +491,12 @@ export {
   DrawerProvider,
   DrawerRoot,
   DrawerTrigger,
+  DrawerSwipeArea,
   DrawerPortal,
   DrawerBackdrop,
   DrawerViewport,
   DrawerPopup,
+  DrawerGrip,
   DrawerHandle,
   DrawerContent,
   DrawerTitle,

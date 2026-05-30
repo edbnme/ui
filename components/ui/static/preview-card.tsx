@@ -11,10 +11,13 @@
  * <PreviewCardRoot>
  *   <PreviewCardTrigger href="/user">@username</PreviewCardTrigger>
  *   <PreviewCardPortal>
+ *     <PreviewCardBackdrop />
  *     <PreviewCardPositioner>
  *       <PreviewCardPopup>
  *         <PreviewCardArrow />
+ *         <PreviewCardViewport>
  *         …profile content…
+ *         </PreviewCardViewport>
  *       </PreviewCardPopup>
  *     </PreviewCardPositioner>
  *   </PreviewCardPortal>
@@ -28,7 +31,7 @@
  * @package    @edbn/ui
  * @brand      edbn/ui -- https://ui.edbn.me
  * @docs       https://ui.edbn.me/docs/components/preview-card
- * @upstream   Base UI v1.2.0 -- https://base-ui.com/react/components/preview-card
+ * @upstream   Base UI v1.4.1 -- https://base-ui.com/react/components/preview-card
  * @registryDescription Link preview card with rich content and auto-positioning on hover.
  * @registryIsNew
  */
@@ -37,7 +40,6 @@
 
 import * as React from "react";
 import { PreviewCard } from "@base-ui/react/preview-card";
-
 import { cn } from "@/lib/utils";
 
 // ---- ROOT -------------------------------------------------------------------
@@ -45,17 +47,25 @@ import { cn } from "@/lib/utils";
 /**
  * Stateful root — coordinates open state, hover intent, and imperative
  * handle wiring. Supports `defaultOpen` / `open` + `onOpenChange`, plus
- * `openDelay` / `closeDelay` for fine-grained hover timing.
+ * `actionsRef`, detached trigger handles, trigger IDs, and payload render
+ * children.
  *
  * @since 0.1.0
  */
-const PreviewCardRoot = PreviewCard.Root;
+export type PreviewCardRootProps<Payload = unknown> =
+  PreviewCard.Root.Props<Payload>;
+
+function PreviewCardRoot<Payload = unknown>(
+  props: PreviewCardRootProps<Payload>
+) {
+  return <PreviewCard.Root {...props} />;
+}
+PreviewCardRoot.displayName = "PreviewCardRoot";
 
 // ---- TRIGGER ----------------------------------------------------------------
 
-type PreviewCardTriggerProps = React.ComponentPropsWithoutRef<
-  typeof PreviewCard.Trigger
->;
+export type PreviewCardTriggerProps<Payload = unknown> =
+  PreviewCard.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
 
 /**
  * Anchor element that reveals the card on hover or keyboard focus.
@@ -69,10 +79,10 @@ type PreviewCardTriggerProps = React.ComponentPropsWithoutRef<
  *
  * @since 0.1.0
  */
-function PreviewCardTrigger({
+function PreviewCardTrigger<Payload = unknown>({
   className,
   ...props
-}: PreviewCardTriggerProps) {
+}: PreviewCardTriggerProps<Payload>) {
   return (
     <PreviewCard.Trigger
       data-slot="preview-card-trigger"
@@ -99,7 +109,7 @@ const PreviewCardPortal = PreviewCard.Portal;
 
 // ---- BACKDROP ---------------------------------------------------------------
 
-type PreviewCardBackdropProps = React.ComponentPropsWithoutRef<
+export type PreviewCardBackdropProps = React.ComponentPropsWithoutRef<
   typeof PreviewCard.Backdrop
 >;
 
@@ -126,7 +136,7 @@ PreviewCardBackdrop.displayName = "PreviewCardBackdrop";
 
 // ---- POSITIONER -------------------------------------------------------------
 
-type PreviewCardPositionerProps = React.ComponentPropsWithoutRef<
+export type PreviewCardPositionerProps = React.ComponentPropsWithoutRef<
   typeof PreviewCard.Positioner
 >;
 
@@ -159,7 +169,7 @@ PreviewCardPositioner.displayName = "PreviewCardPositioner";
 
 // ---- POPUP ------------------------------------------------------------------
 
-type PreviewCardPopupProps = React.ComponentPropsWithoutRef<
+export type PreviewCardPopupProps = React.ComponentPropsWithoutRef<
   typeof PreviewCard.Popup
 >;
 
@@ -195,7 +205,7 @@ PreviewCardPopup.displayName = "PreviewCardPopup";
 
 // ---- ARROW ------------------------------------------------------------------
 
-type PreviewCardArrowProps = React.ComponentPropsWithoutRef<
+export type PreviewCardArrowProps = React.ComponentPropsWithoutRef<
   typeof PreviewCard.Arrow
 >;
 
@@ -228,7 +238,7 @@ PreviewCardArrow.displayName = "PreviewCardArrow";
 
 // ---- VIEWPORT ---------------------------------------------------------------
 
-type PreviewCardViewportProps = React.ComponentPropsWithoutRef<
+export type PreviewCardViewportProps = React.ComponentPropsWithoutRef<
   typeof PreviewCard.Viewport
 >;
 
@@ -246,7 +256,7 @@ function PreviewCardViewport({
   return (
     <PreviewCard.Viewport
       data-slot="preview-card-viewport"
-      className={className}
+      className={cn("relative h-full w-full overflow-clip", className)}
       {...props}
     />
   );
@@ -285,13 +295,4 @@ export {
   PreviewCardViewport,
   PreviewCardHandle,
   createPreviewCardHandle,
-};
-
-export type {
-  PreviewCardTriggerProps,
-  PreviewCardBackdropProps,
-  PreviewCardPositionerProps,
-  PreviewCardPopupProps,
-  PreviewCardArrowProps,
-  PreviewCardViewportProps,
 };

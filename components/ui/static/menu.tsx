@@ -13,7 +13,7 @@
  * @docs       https://ui.edbn.me/docs/components/menu
  * @source     https://ui.edbn.me/r/menu.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/menu
+ * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/menu
  * @a11y       WAI-ARIA Menu pattern; arrow-key navigation; type-to-search;
  *             Escape / outside-click dismissal; nested submenus open on
  *             hover + ArrowRight; checkbox / radio state announced via
@@ -67,14 +67,17 @@ import { cn } from "@/lib/utils";
 /**
  * Top-level Menu provider. Forwards all Base UI `Menu.Root` props:
  * `actionsRef`, `children`, `closeParentOnEsc`, `defaultOpen`,
- * `defaultTriggerId`, `delay`, `closeDelay`, `disabled`, `handle`,
- * `modal`, `onOpenChange`, `onOpenChangeComplete`, `open`,
- * `openOnHover`, `orientation`, `triggerId`, `typingRef`.
+ * `defaultTriggerId`, `disabled`, `handle`, `highlightItemOnHover`,
+ * `loopFocus`, `modal`, `onOpenChange`, `onOpenChangeComplete`,
+ * `open`, `orientation`, `triggerId`.
  *
  * @since 0.3.0
  */
-export type MenuRootProps = React.ComponentProps<typeof Menu.Root>;
-const MenuRoot = (props: MenuRootProps) => <Menu.Root {...props} />;
+export type MenuRootProps<Payload = unknown> = Menu.Root.Props<Payload>;
+
+function MenuRoot<Payload = unknown>(props: MenuRootProps<Payload>) {
+  return <Menu.Root {...props} />;
+}
 MenuRoot.displayName = "MenuRoot";
 
 // ---- MENU TRIGGER -----------------------------------------------------------
@@ -83,16 +86,21 @@ MenuRoot.displayName = "MenuRoot";
  * Button that opens the menu. Unstyled by default (focus ring only) so you
  * can compose with your own button surface.
  *
- * **Passthrough props** — `className`, `disabled`, `handle`, `id`,
- * `nativeButton`, `payload`, `render`, `style`, plus native `<button>`
- * attrs.
+ * **Passthrough props** — `className`, `closeDelay`, `delay`,
+ * `disabled`, `handle`, `id`, `nativeButton`, `openOnHover`, `payload`,
+ * `render`, `style`, plus native `<button>` attrs.
  *
  * **Data attributes** — `data-popup-open`, `data-pressed`.
  *
  * @since 0.3.0
  */
-export type MenuTriggerProps = React.ComponentProps<typeof Menu.Trigger>;
-function MenuTrigger({ className, ...props }: MenuTriggerProps) {
+export type MenuTriggerProps<Payload = unknown> = Menu.Trigger.Props<Payload> &
+  React.RefAttributes<HTMLElement>;
+
+function MenuTrigger<Payload = unknown>({
+  className,
+  ...props
+}: MenuTriggerProps<Payload>) {
   return (
     <Menu.Trigger
       data-slot="menu-trigger"
@@ -245,6 +253,31 @@ function MenuArrow({ className, children, ...props }: MenuArrowProps) {
 }
 MenuArrow.displayName = "MenuArrow";
 
+// ---- MENU VIEWPORT ----------------------------------------------------------
+
+/**
+ * Optional viewport for coordinating content transitions when multiple
+ * triggers share one menu and the active trigger changes the popup body.
+ *
+ * **Data attributes** — `data-activation-direction`, `data-current`,
+ * `data-instant`, `data-previous`, `data-transitioning`.
+ *
+ * **CSS variables** — `--popup-height`, `--popup-width`.
+ *
+ * @since 0.3.0
+ */
+export type MenuViewportProps = Menu.Viewport.Props;
+function MenuViewport({ className, ...props }: MenuViewportProps) {
+  return (
+    <Menu.Viewport
+      data-slot="menu-viewport"
+      className={cn("relative h-full w-full overflow-clip", className)}
+      {...props}
+    />
+  );
+}
+MenuViewport.displayName = "MenuViewport";
+
 // ---- MENU ITEM --------------------------------------------------------------
 
 /**
@@ -277,9 +310,8 @@ MenuItem.displayName = "MenuItem";
 // ---- MENU LINK ITEM ---------------------------------------------------------
 
 /**
- * `MenuItem` variant that renders as an `<a>` by default. Closes the menu
- * on click by default (set `closeOnClick={false}` to keep it open, e.g.
- * for cmd-click to open in a new tab patterns).
+ * `MenuItem` variant that renders as an `<a>` by default. Does not close the
+ * menu on click by default; set `closeOnClick` to close after navigation.
  *
  * @since 0.3.0
  */
@@ -301,6 +333,32 @@ function MenuLinkItem({ className, ...props }: MenuLinkItemProps) {
   );
 }
 MenuLinkItem.displayName = "MenuLinkItem";
+
+// ---- MENU CHECKBOX ITEM INDICATOR ------------------------------------------
+
+/**
+ * Indicator slot for `MenuCheckboxItem`. Kept mounted only when requested
+ * by Base UI's `keepMounted` prop.
+ *
+ * **Data attributes** — `data-checked`, `data-unchecked`, `data-disabled`,
+ * `data-starting-style`, `data-ending-style`.
+ *
+ * @since 0.3.0
+ */
+export type MenuCheckboxItemIndicatorProps = Menu.CheckboxItemIndicator.Props;
+function MenuCheckboxItemIndicator({
+  className,
+  ...props
+}: MenuCheckboxItemIndicatorProps) {
+  return (
+    <Menu.CheckboxItemIndicator
+      data-slot="menu-checkbox-indicator"
+      className={cn("flex items-center justify-center", className)}
+      {...props}
+    />
+  );
+}
+MenuCheckboxItemIndicator.displayName = "MenuCheckboxItemIndicator";
 
 // ---- MENU CHECKBOX ITEM -----------------------------------------------------
 
@@ -333,12 +391,9 @@ function MenuCheckboxItem({
       {...props}
     >
       <span className="absolute left-2 flex size-4 items-center justify-center">
-        <Menu.CheckboxItemIndicator
-          data-slot="menu-checkbox-indicator"
-          className="flex items-center justify-center"
-        >
+        <MenuCheckboxItemIndicator>
           <Check aria-hidden className="size-4" weight="bold" />
-        </Menu.CheckboxItemIndicator>
+        </MenuCheckboxItemIndicator>
       </span>
       {children}
     </Menu.CheckboxItem>
@@ -358,6 +413,32 @@ const MenuRadioGroup = (props: MenuRadioGroupProps) => (
   <Menu.RadioGroup {...props} />
 );
 MenuRadioGroup.displayName = "MenuRadioGroup";
+
+// ---- MENU RADIO ITEM INDICATOR ---------------------------------------------
+
+/**
+ * Indicator slot for `MenuRadioItem`. Kept mounted only when requested
+ * by Base UI's `keepMounted` prop.
+ *
+ * **Data attributes** — `data-checked`, `data-unchecked`, `data-disabled`,
+ * `data-starting-style`, `data-ending-style`.
+ *
+ * @since 0.3.0
+ */
+export type MenuRadioItemIndicatorProps = Menu.RadioItemIndicator.Props;
+function MenuRadioItemIndicator({
+  className,
+  ...props
+}: MenuRadioItemIndicatorProps) {
+  return (
+    <Menu.RadioItemIndicator
+      data-slot="menu-radio-indicator"
+      className={cn("flex items-center justify-center", className)}
+      {...props}
+    />
+  );
+}
+MenuRadioItemIndicator.displayName = "MenuRadioItemIndicator";
 
 /**
  * Single-select item within a `MenuRadioGroup`. Renders a small filled
@@ -382,12 +463,9 @@ function MenuRadioItem({ className, children, ...props }: MenuRadioItemProps) {
       {...props}
     >
       <span className="absolute left-2 flex size-4 items-center justify-center">
-        <Menu.RadioItemIndicator
-          data-slot="menu-radio-indicator"
-          className="flex items-center justify-center"
-        >
+        <MenuRadioItemIndicator>
           <Circle aria-hidden className="size-2" weight="fill" />
-        </Menu.RadioItemIndicator>
+        </MenuRadioItemIndicator>
       </span>
       {children}
     </Menu.RadioItem>
@@ -557,10 +635,13 @@ export {
   MenuPositioner,
   MenuPopup,
   MenuArrow,
+  MenuViewport,
   MenuItem,
   MenuLinkItem,
+  MenuCheckboxItemIndicator,
   MenuCheckboxItem,
   MenuRadioGroup,
+  MenuRadioItemIndicator,
   MenuRadioItem,
   MenuGroup,
   MenuGroupLabel,

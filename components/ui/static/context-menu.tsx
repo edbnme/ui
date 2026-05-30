@@ -2,10 +2,10 @@
  * ContextMenu — right-click / long-press menu with full keyboard support,
  * nested submenus, checkbox items, radio groups, and link items.
  *
- * Built on Base UI's `ContextMenu` namespace (v1.2.0 — shares the Menu
- * primitive under the hood, so animation and styling tokens match
- * `Menu`). For click-to-open menus use `Menu`; for top-level application
- * menu bars use `Menubar`.
+ * Built on Base UI's `ContextMenu` namespace. It shares Menu parts under the
+ * hood, so item, submenu, checkbox, radio, portal, and positioning APIs mirror
+ * the latest Menu primitive. For click-to-open menus use `Menu`; for top-level
+ * application menu bars use `Menubar`.
  *
  * @package    @edbn/ui
  * @version    0.3.0
@@ -14,7 +14,7 @@
  * @docs       https://ui.edbn.me/docs/components/context-menu
  * @source     https://ui.edbn.me/r/context-menu.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/context-menu
+ * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/context-menu
  * @a11y       WAI-ARIA Menu pattern; full keyboard support (Arrow keys,
  *             Home/End, Enter, Esc, typeahead); focus trap while open;
  *             respects `prefers-reduced-motion`.
@@ -64,12 +64,15 @@ import { cn } from "@/lib/utils";
 /**
  * Top-level ContextMenu provider. Forwards all Base UI `ContextMenu.Root`
  * props: `actionsRef`, `children`, `closeParentOnEsc`, `defaultOpen`,
- * `defaultTriggerId`, `disabled`, `modal`, `onOpenChange`,
- * `onOpenChangeComplete`, `open`, `orientation`, `triggerId`.
+ * `defaultTriggerId`, `disabled`, `handle`, `highlightItemOnHover`,
+ * `loopFocus`, `onOpenChange`, `onOpenChangeComplete`, `open`,
+ * `orientation`, `triggerId`.
  *
  * @since 0.3.0
  */
-export type ContextMenuRootProps = React.ComponentProps<typeof ContextMenu.Root>;
+export type ContextMenuRootProps = React.ComponentProps<
+  typeof ContextMenu.Root
+>;
 const ContextMenuRoot = (props: ContextMenuRootProps) => (
   <ContextMenu.Root {...props} />
 );
@@ -125,7 +128,10 @@ ContextMenuPortal.displayName = "ContextMenuPortal";
 export type ContextMenuBackdropProps = React.ComponentProps<
   typeof ContextMenu.Backdrop
 >;
-function ContextMenuBackdrop({ className, ...props }: ContextMenuBackdropProps) {
+function ContextMenuBackdrop({
+  className,
+  ...props
+}: ContextMenuBackdropProps) {
   return (
     <ContextMenu.Backdrop
       data-slot="context-menu-backdrop"
@@ -133,7 +139,7 @@ function ContextMenuBackdrop({ className, ...props }: ContextMenuBackdropProps) 
         "fixed inset-0 z-40",
         "transition-opacity duration-150 ease-out",
         "data-starting-style:opacity-0 data-ending-style:opacity-0",
-        className,
+        className
       )}
       {...props}
     />
@@ -147,7 +153,10 @@ ContextMenuBackdrop.displayName = "ContextMenuBackdrop";
  * Floating-UI powered positioner. Supports `align`, `alignOffset`,
  * `anchor`, `arrowPadding`, `collisionAvoidance`, `collisionBoundary`,
  * `collisionPadding`, `disableAnchorTracking`, `positionMethod`, `side`,
- * `sideOffset`, `sticky`, `trackAnchor`.
+ * `sideOffset`, `sticky`.
+ *
+ * **Data attributes** — `data-align`, `data-anchor-hidden`, `data-closed`,
+ * `data-open`, `data-side`.
  *
  * **CSS variables** — `--anchor-height`, `--anchor-width`,
  * `--available-height`, `--available-width`, `--transform-origin`.
@@ -198,7 +207,7 @@ function ContextMenuPopup({ className, ...props }: ContextMenuPopupProps) {
         "motion-reduce:transform-none motion-reduce:transition-opacity",
         "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
         "focus:outline-none",
-        className,
+        className
       )}
       {...props}
     />
@@ -219,17 +228,34 @@ ContextMenuPopup.displayName = "ContextMenuPopup";
 export type ContextMenuArrowProps = React.ComponentProps<
   typeof ContextMenu.Arrow
 >;
-function ContextMenuArrow({ className, ...props }: ContextMenuArrowProps) {
+function ContextMenuArrow({
+  className,
+  children,
+  ...props
+}: ContextMenuArrowProps) {
   return (
     <ContextMenu.Arrow
       data-slot="context-menu-arrow"
       className={cn(
-        "relative -top-px -z-10",
-        "[&>svg]:fill-popover [&>svg]:stroke-border",
-        className,
+        "data-[side=top]:rotate-180",
+        "data-[side=left]:-rotate-90",
+        "data-[side=right]:rotate-90",
+        className
       )}
       {...props}
-    />
+    >
+      {children ?? (
+        <svg
+          aria-hidden
+          width="14"
+          height="7"
+          viewBox="0 0 14 7"
+          className="block fill-popover stroke-border"
+        >
+          <path d="M0,0 L7,7 L14,0" strokeWidth="1" />
+        </svg>
+      )}
+    </ContextMenu.Arrow>
   );
 }
 ContextMenuArrow.displayName = "ContextMenuArrow";
@@ -258,7 +284,7 @@ function ContextMenuItem({ className, inset, ...props }: ContextMenuItemProps) {
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
         inset && "pl-8",
-        className,
+        className
       )}
       {...props}
     />
@@ -269,8 +295,8 @@ ContextMenuItem.displayName = "ContextMenuItem";
 // ---- CONTEXT MENU LINK ITEM -------------------------------------------------
 
 /**
- * Anchor-based menu item for navigation. Closes the menu on click by
- * default.
+ * Anchor-based menu item for navigation. Does not close the menu on click by
+ * default; set `closeOnClick` to close after navigation.
  *
  * **Data attributes** — `data-highlighted`.
  *
@@ -295,13 +321,41 @@ function ContextMenuLinkItem({
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
         inset && "pl-8",
-        className,
+        className
       )}
       {...props}
     />
   );
 }
 ContextMenuLinkItem.displayName = "ContextMenuLinkItem";
+
+// ---- CONTEXT MENU CHECKBOX ITEM INDICATOR -----------------------------------
+
+/**
+ * Indicator slot for `ContextMenuCheckboxItem`. Kept mounted only when
+ * requested by Base UI's `keepMounted` prop.
+ *
+ * **Data attributes** — `data-checked`, `data-unchecked`, `data-disabled`,
+ * `data-starting-style`, `data-ending-style`.
+ *
+ * @since 0.3.0
+ */
+export type ContextMenuCheckboxItemIndicatorProps =
+  ContextMenu.CheckboxItemIndicator.Props;
+function ContextMenuCheckboxItemIndicator({
+  className,
+  ...props
+}: ContextMenuCheckboxItemIndicatorProps) {
+  return (
+    <ContextMenu.CheckboxItemIndicator
+      data-slot="context-menu-checkbox-indicator"
+      className={cn("flex items-center justify-center", className)}
+      {...props}
+    />
+  );
+}
+ContextMenuCheckboxItemIndicator.displayName =
+  "ContextMenuCheckboxItemIndicator";
 
 // ---- CONTEXT MENU CHECKBOX ITEM ---------------------------------------------
 
@@ -328,14 +382,14 @@ function ContextMenuCheckboxItem({
         "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm select-none outline-none",
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
-        className,
+        className
       )}
       {...props}
     >
       <span className="absolute left-2 flex size-3.5 items-center justify-center">
-        <ContextMenu.CheckboxItemIndicator data-slot="context-menu-checkbox-indicator">
+        <ContextMenuCheckboxItemIndicator>
           <Check aria-hidden className="size-4" weight="bold" />
-        </ContextMenu.CheckboxItemIndicator>
+        </ContextMenuCheckboxItemIndicator>
       </span>
       {children}
     </ContextMenu.CheckboxItem>
@@ -354,6 +408,33 @@ export type ContextMenuRadioGroupProps = React.ComponentProps<
   typeof ContextMenu.RadioGroup
 >;
 const ContextMenuRadioGroup = ContextMenu.RadioGroup;
+
+// ---- CONTEXT MENU RADIO ITEM INDICATOR --------------------------------------
+
+/**
+ * Indicator slot for `ContextMenuRadioItem`. Kept mounted only when requested
+ * by Base UI's `keepMounted` prop.
+ *
+ * **Data attributes** — `data-checked`, `data-unchecked`, `data-disabled`,
+ * `data-starting-style`, `data-ending-style`.
+ *
+ * @since 0.3.0
+ */
+export type ContextMenuRadioItemIndicatorProps =
+  ContextMenu.RadioItemIndicator.Props;
+function ContextMenuRadioItemIndicator({
+  className,
+  ...props
+}: ContextMenuRadioItemIndicatorProps) {
+  return (
+    <ContextMenu.RadioItemIndicator
+      data-slot="context-menu-radio-indicator"
+      className={cn("flex items-center justify-center", className)}
+      {...props}
+    />
+  );
+}
+ContextMenuRadioItemIndicator.displayName = "ContextMenuRadioItemIndicator";
 
 // ---- CONTEXT MENU RADIO ITEM ------------------------------------------------
 
@@ -380,14 +461,14 @@ function ContextMenuRadioItem({
         "relative flex cursor-default items-center gap-2 rounded-md py-1.5 pr-2 pl-8 text-sm select-none outline-none",
         "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
-        className,
+        className
       )}
       {...props}
     >
       <span className="absolute left-2 flex size-3.5 items-center justify-center">
-        <ContextMenu.RadioItemIndicator data-slot="context-menu-radio-indicator">
+        <ContextMenuRadioItemIndicator>
           <Circle aria-hidden className="size-2 fill-current" weight="fill" />
-        </ContextMenu.RadioItemIndicator>
+        </ContextMenuRadioItemIndicator>
       </span>
       {children}
     </ContextMenu.RadioItem>
@@ -430,7 +511,7 @@ function ContextMenuGroupLabel({
       className={cn(
         "px-2 py-1.5 text-xs font-medium text-muted-foreground",
         inset && "pl-8",
-        className,
+        className
       )}
       {...props}
     />
@@ -505,7 +586,7 @@ function ContextMenuSubmenuTrigger({
         "data-popup-open:bg-accent data-popup-open:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
         inset && "pl-8",
-        className,
+        className
       )}
       {...props}
     >
@@ -519,7 +600,7 @@ ContextMenuSubmenuTrigger.displayName = "ContextMenuSubmenuTrigger";
 // ---- CONTEXT MENU SHORTCUT --------------------------------------------------
 
 /**
- * Right-aligned keyboard-shortcut hint (e.g. `ΓîÿC`). Presentational only.
+ * Right-aligned keyboard-shortcut hint (e.g. `Ctrl+C`). Presentational only.
  *
  * @since 0.3.0
  */
@@ -533,7 +614,7 @@ function ContextMenuShortcut({
       data-slot="context-menu-shortcut"
       className={cn(
         "ml-auto text-xs tracking-wider text-muted-foreground",
-        className,
+        className
       )}
       {...props}
     />
@@ -553,8 +634,10 @@ export {
   ContextMenuArrow,
   ContextMenuItem,
   ContextMenuLinkItem,
+  ContextMenuCheckboxItemIndicator,
   ContextMenuCheckboxItem,
   ContextMenuRadioGroup,
+  ContextMenuRadioItemIndicator,
   ContextMenuRadioItem,
   ContextMenuGroup,
   ContextMenuGroupLabel,

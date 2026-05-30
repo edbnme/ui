@@ -34,7 +34,7 @@
  * @package    @edbn/ui
  * @brand      edbn/ui -- https://ui.edbn.me
  * @docs       https://ui.edbn.me/docs/components/hover-card
- * @upstream   Base UI v1.2.0 -- https://base-ui.com/react/components/preview-card
+ * @upstream   Base UI v1.4.1 -- https://base-ui.com/react/components/preview-card
  * @registryDescription Rich content card that appears on hover, built on Base UI PreviewCard.
  * @registryIsNew
  */
@@ -43,7 +43,6 @@
 
 import * as React from "react";
 import { PreviewCard } from "@base-ui/react/preview-card";
-
 import { cn } from "@/lib/utils";
 
 // ---- ROOT -------------------------------------------------------------------
@@ -52,19 +51,23 @@ import { cn } from "@/lib/utils";
  * Stateful root for a hover card.
  *
  * Coordinates the uncontrolled (`defaultOpen`) or controlled (`open` +
- * `onOpenChange`) open state and renders no DOM itself. The `openDelay` and
- * `closeDelay` props let consumers tune hover intent — defaults favour a
- * calm, non-jumpy feel.
+ * `onOpenChange`) open state and renders no DOM itself. Hover timing is
+ * configured on `HoverCardTrigger` with `delay` and `closeDelay`, matching the
+ * upstream PreviewCard API.
  *
  * @since 0.1.0
  */
-const HoverCardRoot = PreviewCard.Root;
+type HoverCardRootProps<Payload = unknown> = PreviewCard.Root.Props<Payload>;
+
+function HoverCardRoot<Payload = unknown>(props: HoverCardRootProps<Payload>) {
+  return <PreviewCard.Root {...props} />;
+}
+HoverCardRoot.displayName = "HoverCardRoot";
 
 // ---- TRIGGER ----------------------------------------------------------------
 
-type HoverCardTriggerProps = React.ComponentPropsWithoutRef<
-  typeof PreviewCard.Trigger
->;
+type HoverCardTriggerProps<Payload = unknown> =
+  PreviewCard.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
 
 /**
  * Anchor-shaped element that opens the hover card on pointer-over or focus.
@@ -78,7 +81,10 @@ type HoverCardTriggerProps = React.ComponentPropsWithoutRef<
  *
  * @since 0.1.0
  */
-function HoverCardTrigger({ className, ...props }: HoverCardTriggerProps) {
+function HoverCardTrigger<Payload = unknown>({
+  className,
+  ...props
+}: HoverCardTriggerProps<Payload>) {
   return (
     <PreviewCard.Trigger
       data-slot="hover-card-trigger"
@@ -272,7 +278,7 @@ function HoverCardViewport({ className, ...props }: HoverCardViewportProps) {
   return (
     <PreviewCard.Viewport
       data-slot="hover-card-viewport"
-      className={className}
+      className={cn("relative h-full w-full overflow-clip", className)}
       {...props}
     />
   );
@@ -314,6 +320,7 @@ export {
 };
 
 export type {
+  HoverCardRootProps,
   HoverCardTriggerProps,
   HoverCardBackdropProps,
   HoverCardPositionerProps,

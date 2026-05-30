@@ -14,7 +14,7 @@
  * @docs       https://ui.edbn.me/docs/components/dialog
  * @source     https://ui.edbn.me/r/dialog.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/dialog
+ * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/dialog
  * @a11y       WAI-ARIA Dialog (Modal) pattern; focus trap, Escape dismiss,
  *             scroll lock, and automatic `aria-labelledby` /
  *             `aria-describedby` wiring via Base UI.
@@ -25,16 +25,18 @@
  *   <DialogTrigger>Open</DialogTrigger>
  *   <DialogPortal>
  *     <DialogBackdrop />
- *     <DialogPopup>
- *       <DialogCloseIconButton />        // optional corner close
- *       <DialogHeader>
- *         <DialogTitle>—</DialogTitle>
- *         <DialogDescription>—</DialogDescription>
- *       </DialogHeader>
- *       <DialogFooter>
- *         <DialogClose>Cancel</DialogClose>   // unstyled action
- *       </DialogFooter>
- *     </DialogPopup>
+ *     <DialogViewport>                  // optional scroll container
+ *       <DialogPopup>
+ *         <DialogCloseIconButton />      // optional corner close
+ *         <DialogHeader>
+ *           <DialogTitle>—</DialogTitle>
+ *           <DialogDescription>—</DialogDescription>
+ *         </DialogHeader>
+ *         <DialogFooter>
+ *           <DialogClose>Cancel</DialogClose> // unstyled action
+ *         </DialogFooter>
+ *       </DialogPopup>
+ *     </DialogViewport>
  *   </DialogPortal>
  * </DialogRoot>
  * ```
@@ -80,8 +82,10 @@ import { cn } from "@/lib/utils";
  *
  * @since 0.2.5
  */
-export type DialogRootProps = React.ComponentProps<typeof Dialog.Root>;
-const DialogRoot = (props: DialogRootProps) => <Dialog.Root {...props} />;
+export type DialogRootProps<Payload = unknown> = Dialog.Root.Props<Payload>;
+function DialogRoot<Payload = unknown>(props: DialogRootProps<Payload>) {
+  return <Dialog.Root {...props} />;
+}
 DialogRoot.displayName = "DialogRoot";
 
 // ---- DIALOG TRIGGER ---------------------------------------------------------
@@ -104,8 +108,12 @@ DialogRoot.displayName = "DialogRoot";
  * <DialogTrigger render={<Button variant="outline">Open</Button>} />
  * ```
  */
-export type DialogTriggerProps = React.ComponentProps<typeof Dialog.Trigger>;
-function DialogTrigger({ className, ...props }: DialogTriggerProps) {
+export type DialogTriggerProps<Payload = unknown> =
+  Dialog.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
+function DialogTrigger<Payload = unknown>({
+  className,
+  ...props
+}: DialogTriggerProps<Payload>) {
   return (
     <Dialog.Trigger
       data-slot="dialog-trigger"

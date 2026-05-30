@@ -6,7 +6,7 @@
  * use `HoverCard`.
  *
  * Wrap a subtree in `TooltipProvider` to share `delay`, `closeDelay`, and
- * `hoverable` across many tooltips. A lone `TooltipRoot` also works — the
+ * `timeout` across many tooltips. A lone `TooltipRoot` also works — the
  * provider's settings simply merge in when present.
  *
  * @package    @edbn/ui
@@ -16,7 +16,7 @@
  * @docs       https://ui.edbn.me/docs/components/tooltip
  * @source     https://ui.edbn.me/r/tooltip.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/tooltip
+ * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/tooltip
  * @a11y       WAI-ARIA Tooltip pattern; `role="tooltip"` applied by Base
  *             UI; dismisses on Escape; hidden from pointer-down on the
  *             trigger; respects `prefers-reduced-motion`.
@@ -51,14 +51,12 @@ import { cn } from "@/lib/utils";
 // ---- TOOLTIP PROVIDER -------------------------------------------------------
 
 /**
- * Shares `delay`, `closeDelay`, and `hoverable` settings with all nested
+ * Shares `delay`, `closeDelay`, and `timeout` settings with all nested
  * tooltips. Optional — a standalone `TooltipRoot` works without a provider.
  *
  * @since 0.3.0
  */
-export type TooltipProviderProps = React.ComponentProps<
-  typeof TooltipPrimitive.Provider
->;
+export type TooltipProviderProps = TooltipPrimitive.Provider.Props;
 const TooltipProvider = (props: TooltipProviderProps) => (
   <TooltipPrimitive.Provider {...props} />
 );
@@ -69,17 +67,17 @@ TooltipProvider.displayName = "TooltipProvider";
 /**
  * Top-level Tooltip state holder. Forwards all Base UI `Tooltip.Root`
  * props: `open`, `defaultOpen`, `onOpenChange`, `onOpenChangeComplete`,
- * `delay`, `closeDelay`, `hoverable`, `trackCursorAxis`, `actionsRef`,
+ * `disableHoverablePopup`, `trackCursorAxis`, `actionsRef`, `disabled`,
  * `handle`, `defaultTriggerId`, `triggerId`.
  *
  * @since 0.3.0
  */
-export type TooltipRootProps = React.ComponentProps<
-  typeof TooltipPrimitive.Root
->;
-const TooltipRoot = (props: TooltipRootProps) => (
-  <TooltipPrimitive.Root {...props} />
-);
+export type TooltipRootProps<Payload = unknown> =
+  TooltipPrimitive.Root.Props<Payload>;
+
+function TooltipRoot<Payload = unknown>(props: TooltipRootProps<Payload>) {
+  return <TooltipPrimitive.Root {...props} />;
+}
 TooltipRoot.displayName = "TooltipRoot";
 
 // ---- TOOLTIP TRIGGER --------------------------------------------------------
@@ -94,17 +92,20 @@ TooltipRoot.displayName = "TooltipRoot";
  *
  * @since 0.3.0
  */
-export type TooltipTriggerProps = React.ComponentProps<
-  typeof TooltipPrimitive.Trigger
->;
-function TooltipTrigger({ className, ...props }: TooltipTriggerProps) {
+export type TooltipTriggerProps<Payload = unknown> =
+  TooltipPrimitive.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
+
+function TooltipTrigger<Payload = unknown>({
+  className,
+  ...props
+}: TooltipTriggerProps<Payload>) {
   return (
     <TooltipPrimitive.Trigger
       data-slot="tooltip-trigger"
       className={cn(
         "inline-flex items-center justify-center",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
-        className,
+        className
       )}
       {...props}
     />
@@ -119,9 +120,7 @@ TooltipTrigger.displayName = "TooltipTrigger";
  *
  * @since 0.3.0
  */
-export type TooltipPortalProps = React.ComponentProps<
-  typeof TooltipPrimitive.Portal
->;
+export type TooltipPortalProps = TooltipPrimitive.Portal.Props;
 const TooltipPortal = (props: TooltipPortalProps) => (
   <TooltipPrimitive.Portal {...props} />
 );
@@ -142,9 +141,7 @@ TooltipPortal.displayName = "TooltipPortal";
  *
  * @since 0.3.0
  */
-export type TooltipPositionerProps = React.ComponentProps<
-  typeof TooltipPrimitive.Positioner
->;
+export type TooltipPositionerProps = TooltipPrimitive.Positioner.Props;
 function TooltipPositioner({
   className,
   sideOffset = 6,
@@ -172,9 +169,7 @@ TooltipPositioner.displayName = "TooltipPositioner";
  *
  * @since 0.3.0
  */
-export type TooltipPopupProps = React.ComponentProps<
-  typeof TooltipPrimitive.Popup
->;
+export type TooltipPopupProps = TooltipPrimitive.Popup.Props;
 function TooltipPopup({ className, ...props }: TooltipPopupProps) {
   return (
     <TooltipPrimitive.Popup
@@ -190,7 +185,7 @@ function TooltipPopup({ className, ...props }: TooltipPopupProps) {
         // Reduced motion — fade only, no scale
         "motion-reduce:transform-none motion-reduce:transition-opacity",
         "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
-        className,
+        className
       )}
       {...props}
     />
@@ -206,9 +201,7 @@ TooltipPopup.displayName = "TooltipPopup";
  *
  * @since 0.3.0
  */
-export type TooltipArrowProps = React.ComponentProps<
-  typeof TooltipPrimitive.Arrow
->;
+export type TooltipArrowProps = TooltipPrimitive.Arrow.Props;
 function TooltipArrow({ className, children, ...props }: TooltipArrowProps) {
   return (
     <TooltipPrimitive.Arrow
@@ -217,7 +210,7 @@ function TooltipArrow({ className, children, ...props }: TooltipArrowProps) {
         "data-[side=top]:rotate-180",
         "data-[side=left]:-rotate-90",
         "data-[side=right]:rotate-90",
-        className,
+        className
       )}
       {...props}
     >
@@ -245,14 +238,12 @@ TooltipArrow.displayName = "TooltipArrow";
  *
  * @since 0.3.0
  */
-export type TooltipViewportProps = React.ComponentProps<
-  typeof TooltipPrimitive.Viewport
->;
+export type TooltipViewportProps = TooltipPrimitive.Viewport.Props;
 function TooltipViewport({ className, ...props }: TooltipViewportProps) {
   return (
     <TooltipPrimitive.Viewport
       data-slot="tooltip-viewport"
-      className={className}
+      className={cn("relative h-full w-full overflow-clip", className)}
       {...props}
     />
   );

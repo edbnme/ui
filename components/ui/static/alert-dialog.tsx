@@ -18,7 +18,7 @@
  * @docs       https://ui.edbn.me/docs/components/alert-dialog
  * @source     https://ui.edbn.me/r/alert-dialog.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/alert-dialog
+ * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/alert-dialog
  * @a11y       WAI-ARIA AlertDialog pattern (role="alertdialog"); focus trap,
  *             scroll lock, automatic `aria-labelledby` / `aria-describedby`
  *             wiring via Base UI. Always render a Title and an explicit
@@ -30,16 +30,18 @@
  *   <AlertDialogTrigger>Delete</AlertDialogTrigger>
  *   <AlertDialogPortal>
  *     <AlertDialogBackdrop />
- *     <AlertDialogPopup>
- *       <AlertDialogHeader>
- *         <AlertDialogTitle>Delete account?</AlertDialogTitle>
- *         <AlertDialogDescription>This is permanent.</AlertDialogDescription>
- *       </AlertDialogHeader>
- *       <AlertDialogFooter>
- *         <AlertDialogClose>Cancel</AlertDialogClose>
- *         <AlertDialogAction>Delete</AlertDialogAction>
- *       </AlertDialogFooter>
- *     </AlertDialogPopup>
+ *     <AlertDialogViewport>
+ *       <AlertDialogPopup>
+ *         <AlertDialogHeader>
+ *           <AlertDialogTitle>Delete account?</AlertDialogTitle>
+ *           <AlertDialogDescription>This is permanent.</AlertDialogDescription>
+ *         </AlertDialogHeader>
+ *         <AlertDialogFooter>
+ *           <AlertDialogClose>Cancel</AlertDialogClose>
+ *           <AlertDialogAction>Delete</AlertDialogAction>
+ *         </AlertDialogFooter>
+ *       </AlertDialogPopup>
+ *     </AlertDialogViewport>
  *   </AlertDialogPortal>
  * </AlertDialogRoot>
  * ```
@@ -80,12 +82,13 @@ import { cn } from "@/lib/utils";
  *
  * @since 0.3.0
  */
-export type AlertDialogRootProps = React.ComponentProps<
-  typeof AlertDialog.Root
->;
-const AlertDialogRoot = (props: AlertDialogRootProps) => (
-  <AlertDialog.Root {...props} />
-);
+export type AlertDialogRootProps<Payload = unknown> =
+  AlertDialog.Root.Props<Payload>;
+function AlertDialogRoot<Payload = unknown>(
+  props: AlertDialogRootProps<Payload>
+) {
+  return <AlertDialog.Root {...props} />;
+}
 AlertDialogRoot.displayName = "AlertDialogRoot";
 
 // ---- ALERT DIALOG TRIGGER ---------------------------------------------------
@@ -101,10 +104,12 @@ AlertDialogRoot.displayName = "AlertDialogRoot";
  *
  * @since 0.3.0
  */
-export type AlertDialogTriggerProps = React.ComponentProps<
-  typeof AlertDialog.Trigger
->;
-function AlertDialogTrigger({ className, ...props }: AlertDialogTriggerProps) {
+export type AlertDialogTriggerProps<Payload = unknown> =
+  AlertDialog.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
+function AlertDialogTrigger<Payload = unknown>({
+  className,
+  ...props
+}: AlertDialogTriggerProps<Payload>) {
   return (
     <AlertDialog.Trigger
       data-slot="alert-dialog-trigger"
@@ -148,8 +153,8 @@ AlertDialogPortal.displayName = "AlertDialogPortal";
  * Dimming overlay behind the popup. The user cannot dismiss by clicking
  * this — AlertDialog requires an explicit choice.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-starting-style`,
- * `data-ending-style`.
+ * **Data attributes** — `data-open`, `data-closed`, `data-nested`,
+ * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
  * @since 0.3.0
  */
@@ -181,8 +186,8 @@ AlertDialogBackdrop.displayName = "AlertDialogBackdrop";
  * Optional scroll container for alert dialogs with tall content. Omit for
  * centered, fixed-size dialogs.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-starting-style`,
- * `data-ending-style`.
+ * **Data attributes** — `data-open`, `data-closed`, `data-nested`,
+ * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
  * @since 0.3.0
  */
