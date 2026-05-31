@@ -105,7 +105,7 @@ function CodeBlock({
     <div
       data-slot="code-block"
       className={cn(
-        "bg-muted/40 dark:bg-muted/10",
+        "bg-[var(--code-block-surface)] [--code-block-surface:color-mix(in_oklab,var(--muted)_30%,var(--background))] dark:[--code-block-surface:color-mix(in_oklab,var(--muted)_10%,var(--background))]",
         codeBlockVariants({ size }),
         className
       )}
@@ -132,7 +132,7 @@ function CodeBlock({
 
       {/* Code area */}
       <div
-        className="overflow-auto"
+        className="code-block-scroll overflow-auto"
         style={
           maxHeight
             ? {
@@ -144,14 +144,14 @@ function CodeBlock({
       >
         <div
           className={cn(
-            "flex leading-5 transition-opacity duration-150",
+            "flex w-max min-w-full leading-5 transition-opacity duration-150",
             highlighted ? "opacity-100" : "opacity-40"
           )}
         >
           {/* Line numbers */}
           {showLineNumbers && (
             <div
-              className="sticky left-0 z-10 shrink-0 select-none border-r border-border/40 dark:border-border/20 bg-muted/30 dark:bg-muted/10 px-2 py-3 text-right text-muted-foreground/40 dark:text-muted-foreground/30"
+              className="sticky left-0 z-10 shrink-0 select-none border-r border-border/40 bg-[var(--code-block-surface)] px-2 py-3 text-right text-muted-foreground/40 dark:border-border/20 dark:text-muted-foreground/30"
               style={{ minWidth: `calc(${gutterWidth} + 16px)` }}
               aria-hidden="true"
             >
@@ -164,7 +164,7 @@ function CodeBlock({
           )}
 
           {/* Code content */}
-          <div className="min-w-0 flex-1 p-3">
+          <div className="min-w-max flex-1 p-3">
             {highlighted ? (
               <div className="[&_pre]:bg-transparent! [&_pre]:m-0! [&_pre]:p-0! [&_pre]:text-inherit! [&_pre]:leading-5! [&_code]:bg-transparent! [&_.shiki]:bg-transparent! [&_pre]:whitespace-pre!">
                 {highlighted}
