@@ -8,17 +8,20 @@
  */
 
 import { Text, StyleSheet } from "@react-pdf/renderer";
-import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  getPdfPrimitiveProps,
   mergePdfStyles,
+  type PdfPrimitiveProps,
+  type PdfTextAlign,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfPageNumberProps {
+export interface PdfPageNumberProps extends PdfPrimitiveProps {
   format?: string;
   fixed?: boolean;
-  align?: "left" | "center" | "right";
+  align?: PdfTextAlign;
   style?: PdfStyleInput;
 }
 
@@ -37,19 +40,19 @@ export function PdfPageNumber({
   fixed = false,
   align = "center",
   style,
+  ...primitiveProps
 }: PdfPageNumberProps) {
   const theme = usePdfTheme();
   const styles = StyleSheet.create({
-    text: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.xs,
-      textAlign: align,
-    } as Style,
+    text: createPdfTextStyle(theme, {
+      align,
+      size: "xs",
+      tone: "muted",
+    }),
   });
   return (
     <Text
-      fixed={fixed}
+      {...getPdfPrimitiveProps({ ...primitiveProps, fixed })}
       style={mergePdfStyles(styles.text, style)}
       render={({ pageNumber, totalPages }) =>
         formatPdfPageNumber(format, pageNumber, totalPages)

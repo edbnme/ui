@@ -11,27 +11,28 @@ import * as React from "react";
 import { Text as ReactPdfText, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
-  getToneColor,
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfFlowProps,
   mergePdfStyles,
+  type PdfAdvancedTextProps,
+  type PdfTextAlign,
+  type PdfTextRenderProps,
+  type PdfTextSize,
+  type PdfTextTone,
+  type PdfTextWeight,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export type PdfTextSize = "xs" | "sm" | "base" | "lg";
-export type PdfTextTone =
-  | "default"
-  | "muted"
-  | "primary"
-  | "destructive"
-  | "warning"
-  | "success";
+export type { PdfTextAlign, PdfTextSize, PdfTextTone, PdfTextWeight };
 
-export interface PdfTextProps {
+export interface PdfTextProps extends PdfAdvancedTextProps {
   children: React.ReactNode;
   size?: PdfTextSize;
   tone?: PdfTextTone;
-  weight?: "normal" | "medium" | "bold";
-  align?: "left" | "center" | "right";
+  weight?: PdfTextWeight;
+  align?: PdfTextAlign;
   noMargin?: boolean;
   style?: PdfStyleInput;
 }
@@ -44,23 +45,29 @@ export function PdfText({
   align = "left",
   noMargin = false,
   style,
+  render,
+  ...flowProps
 }: PdfTextProps) {
   const theme = usePdfTheme();
   const styles = StyleSheet.create({
     text: {
-      color: getToneColor(theme, tone),
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography[size],
-      lineHeight: 1.45,
+      ...createPdfTextStyle(theme, { size, tone, weight, align }),
       marginBottom: noMargin ? 0 : theme.spacing.sm,
-      textAlign: align,
-      fontWeight: weight === "bold" ? 700 : weight === "medium" ? 600 : 400,
     } as Style,
   });
+  const renderProps = render
+    ? {
+        render: (props: PdfTextRenderProps) => formatPdfValue(render(props)),
+      }
+    : {};
 
   return (
-    <ReactPdfText style={mergePdfStyles(styles.text, style)}>
-      {children}
+    <ReactPdfText
+      {...getPdfFlowProps(flowProps)}
+      {...renderProps}
+      style={mergePdfStyles(styles.text, style)}
+    >
+      {formatPdfValue(children)}
     </ReactPdfText>
   );
 }

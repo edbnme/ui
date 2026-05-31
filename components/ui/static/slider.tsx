@@ -1,5 +1,5 @@
-/**
- * Slider — Range input for picking a numeric value (or a pair of values).
+﻿/**
+ * Slider â€” Range input for picking a numeric value (or a pair of values).
  *
  * Built on the Base UI `Slider` primitive. Supports single and range modes
  * (pass an array to `value` / `defaultValue`), horizontal & vertical
@@ -35,9 +35,9 @@
  * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
+ * @brand      edbn/ui â€” https://ui.edbn.me
  * @docs       https://ui.edbn.me/docs/components/slider
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/slider
+ * @upstream   Base UI v1.2.0 â€” https://base-ui.com/react/components/slider
  * @registryDescription Range slider with single or multi-thumb support.
  */
 
@@ -54,11 +54,11 @@ export type SliderRootProps = Slider.Root.Props;
 
 /**
  * Owns the value state and dispatches updates. Accepts a number for a
- * single-thumb slider or an array for a range slider — the number of
+ * single-thumb slider or an array for a range slider â€” the number of
  * `SliderThumb`s inside should match the array length.
  *
  * Data attributes:
- * - `data-orientation` — `"horizontal"` (default) | `"vertical"`
+ * - `data-orientation` â€” `"horizontal"` (default) | `"vertical"`
  * - `data-disabled`
  *
  * @since 0.1.0
@@ -84,7 +84,7 @@ export type SliderControlProps = Slider.Control.Props;
 
 /**
  * Interactive hit area that hosts the track and thumbs. Taps anywhere on
- * this region move the nearest thumb. Always include — Base UI's pointer
+ * this region move the nearest thumb. Always include â€” Base UI's pointer
  * handling lives here.
  *
  * @since 0.1.0
@@ -135,7 +135,7 @@ export type SliderIndicatorProps = Slider.Indicator.Props;
 
 /**
  * The filled portion of the track. Base UI sizes this automatically based
- * on the current value(s) — for a range slider it spans between the two
+ * on the current value(s) â€” for a range slider it spans between the two
  * thumbs.
  *
  * @since 0.1.0
@@ -160,16 +160,16 @@ SliderIndicator.displayName = "SliderIndicator";
 export type SliderThumbProps = Slider.Thumb.Props;
 
 /**
- * The draggable knob. Render one per value — one for a single-value
+ * The draggable knob. Render one per value â€” one for a single-value
  * slider, two for a range slider.
  *
  * Subtle scale-up while active provides a tactile "picked up" feedback
- * loop matching Apple's HIG affordance for direct-manipulation handles.
+ * loop for direct-manipulation handles.
  *
  * Data attributes:
- * - `data-dragging` — on while actively being dragged
+ * - `data-dragging` â€” on while actively being dragged
  * - `data-orientation`
- * - `data-index` — the thumb's position (0-based) in the value array
+ * - `data-index` â€” the thumb's position (0-based) in the value array
  *
  * @since 0.1.0
  */
@@ -225,7 +225,7 @@ export {
 };
 
 /**
- * Backward-compatible alias — `Slider` was the original shared-variant
+ * Backward-compatible alias â€” `Slider` was the original shared-variant
  * export before the static-variant split. Kept so existing consumers do
  * not break.
  *

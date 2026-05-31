@@ -11,12 +11,15 @@ import * as React from "react";
 import { View, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  clampPdfNumber,
+  getPdfPrimitiveProps,
   mergePdfStyles,
+  type PdfPrimitiveProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfStackProps {
+export interface PdfStackProps extends PdfPrimitiveProps {
   children: React.ReactNode;
   direction?: "row" | "column";
   gap?: number;
@@ -36,12 +39,14 @@ export function PdfStack({
   wrap = false,
   noWrap = false,
   style,
+  ...primitiveProps
 }: PdfStackProps) {
   const theme = usePdfTheme();
+  const safeGap = clampPdfNumber(gap, theme.spacing.gap, 0, 96);
   const styles = StyleSheet.create({
     stack: {
       flexDirection: direction,
-      gap: gap ?? theme.spacing.gap,
+      gap: safeGap,
       alignItems: align,
       justifyContent: justify,
       flexWrap: wrap ? "wrap" : "nowrap",
@@ -49,7 +54,11 @@ export function PdfStack({
   });
 
   return (
-    <View wrap={!noWrap} style={mergePdfStyles(styles.stack, style)}>
+    <View
+      {...getPdfPrimitiveProps(primitiveProps)}
+      wrap={noWrap ? false : undefined}
+      style={mergePdfStyles(styles.stack, style)}
+    >
       {children}
     </View>
   );

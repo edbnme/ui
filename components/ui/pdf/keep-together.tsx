@@ -9,16 +9,29 @@
 
 import * as React from "react";
 import { View } from "@react-pdf/renderer";
-import { mergePdfStyles, type PdfStyleInput } from "@/lib/pdf-theme";
+import {
+  getPdfPrimitiveProps,
+  mergePdfStyles,
+  type PdfPrimitiveProps,
+  type PdfStyleInput,
+} from "@/lib/pdf-theme";
 
-export interface PdfKeepTogetherProps {
+export interface PdfKeepTogetherProps extends PdfPrimitiveProps {
   children: React.ReactNode;
   style?: PdfStyleInput;
 }
 
-export function PdfKeepTogether({ children, style }: PdfKeepTogetherProps) {
+export function PdfKeepTogether({
+  children,
+  style,
+  ...primitiveProps
+}: PdfKeepTogetherProps) {
   return (
-    <View wrap={false} style={mergePdfStyles(style)}>
+    <View
+      {...getPdfPrimitiveProps(primitiveProps)}
+      wrap={false}
+      style={mergePdfStyles(style)}
+    >
       {children}
     </View>
   );

@@ -8,33 +8,67 @@
  */
 
 import * as React from "react";
-import { Link as ReactPdfLink, StyleSheet } from "@react-pdf/renderer";
+import {
+  Link as ReactPdfLink,
+  Text as ReactPdfText,
+  StyleSheet,
+} from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfFlowProps,
   mergePdfStyles,
+  normalizePdfString,
+  type PdfAdvancedLinkProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfLinkProps {
-  src: string;
+export interface PdfLinkProps extends PdfAdvancedLinkProps {
+  src?: string | null;
+  href?: string | null;
   children: React.ReactNode;
+  fallbackText?: React.ReactNode;
   style?: PdfStyleInput;
 }
 
-export function PdfLink({ src, children, style }: PdfLinkProps) {
+export function PdfLink({
+  src,
+  href,
+  children,
+  fallbackText,
+  style,
+  ...flowProps
+}: PdfLinkProps) {
   const theme = usePdfTheme();
+  const linkTarget = normalizePdfString(src ?? href);
   const styles = StyleSheet.create({
     link: {
-      color: theme.colors.primary,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
+      ...createPdfTextStyle(theme, { color: theme.colors.primary, size: "sm" }),
       textDecoration: "underline",
     } as Style,
+    fallback: createPdfTextStyle(theme, { size: "sm", tone: "muted" }),
   });
+
+  if (!linkTarget) {
+    return (
+      <ReactPdfText
+        {...getPdfFlowProps(flowProps)}
+        style={mergePdfStyles(styles.fallback, style)}
+      >
+        {formatPdfValue(fallbackText ?? children)}
+      </ReactPdfText>
+    );
+  }
+
   return (
-    <ReactPdfLink src={src} style={mergePdfStyles(styles.link, style)}>
-      {children}
+    <ReactPdfLink
+      {...getPdfFlowProps(flowProps)}
+      src={linkTarget}
+      style={mergePdfStyles(styles.link, style)}
+    >
+      {formatPdfValue(children)}
     </ReactPdfLink>
   );
 }

@@ -2,8 +2,8 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 18,
-    "totalComponents": 102,
+    "totalPackages": 19,
+    "totalComponents": 106,
     "animatedComponents": 0,
     "staticComponents": 54,
     "sharedComponents": 0,
@@ -15,7 +15,7 @@
       "dependencyCount": 13,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-04-27T13:03:46.763Z"
+    "computedAt": "2026-05-31T09:40:35.617Z"
   },
   "packages": [
     {
@@ -32,6 +32,13 @@
       "version": "latest",
       "source": "fallback",
       "note": "Per icon, tree-shakable"
+    },
+    {
+      "name": "@react-pdf/math",
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     },
     {
       "name": "@react-pdf/renderer",
@@ -104,17 +111,17 @@
     },
     {
       "name": "react-day-picker",
-      "version": "9.14.0",
-      "size": 67432,
-      "gzip": 2450,
-      "dependencyCount": 4,
+      "version": "10.0.1",
+      "size": 67045,
+      "gzip": 19305,
+      "dependencyCount": 2,
       "source": "bundlephobia"
     },
     {
       "name": "react-resizable-panels",
-      "version": "4.10.0",
-      "size": 32580,
-      "gzip": 10774,
+      "version": "4.11.2",
+      "size": 33033,
+      "gzip": 10906,
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
@@ -128,9 +135,9 @@
     },
     {
       "name": "shiki",
-      "version": "4.0.2",
-      "size": 109061,
-      "gzip": 34024,
+      "version": "4.1.0",
+      "size": 206109,
+      "gzip": 64075,
       "dependencyCount": 8,
       "source": "bundlephobia"
     },
@@ -151,9 +158,9 @@
     },
     {
       "name": "use-stick-to-bottom",
-      "version": "1.1.3",
-      "size": 6649,
-      "gzip": 2502,
+      "version": "1.1.4",
+      "size": 6802,
+      "gzip": 2530,
       "dependencyCount": 0,
       "source": "bundlephobia"
     }
@@ -361,8 +368,8 @@
       "description": "Date picker with single, multiple, and range selection via react-day-picker.",
       "variant": "static",
       "sizes": {
-        "minified": 68632,
-        "gzipped": 2850,
+        "minified": 68245,
+        "gzipped": 19705,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -376,9 +383,9 @@
         },
         {
           "name": "react-day-picker",
-          "size": 67432,
-          "gzip": 2450,
-          "version": "9.14.0",
+          "size": 67045,
+          "gzip": 19305,
+          "version": "10.0.1",
           "source": "bundlephobia"
         }
       ],
@@ -1052,8 +1059,8 @@
       "description": "Resizable panel groups with drag handles for flexible layouts.",
       "variant": "static",
       "sizes": {
-        "minified": 33780,
-        "gzipped": 11174,
+        "minified": 34233,
+        "gzipped": 11306,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1067,9 +1074,9 @@
         },
         {
           "name": "react-resizable-panels",
-          "size": 32580,
-          "gzip": 10774,
-          "version": "4.10.0",
+          "size": 33033,
+          "gzip": 10906,
+          "version": "4.11.2",
           "source": "bundlephobia"
         }
       ],
@@ -1552,8 +1559,8 @@
       "description": "Syntax-highlighted code block for generated answers, terminal snippets, and compact examples.",
       "variant": "audio",
       "sizes": {
-        "minified": 143434,
-        "gzipped": 45901,
+        "minified": 240482,
+        "gzipped": 75952,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1581,9 +1588,9 @@
         },
         {
           "name": "shiki",
-          "size": 109061,
-          "gzip": 34024,
-          "version": "4.0.2",
+          "size": 206109,
+          "gzip": 64075,
+          "version": "4.1.0",
           "source": "bundlephobia"
         }
       ],
@@ -1609,17 +1616,17 @@
       "description": "Auto-scrolling conversation container with sticky-to-bottom behavior and scroll affordance.",
       "variant": "audio",
       "sizes": {
-        "minified": 6649,
-        "gzipped": 2502,
+        "minified": 6802,
+        "gzipped": 2530,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "use-stick-to-bottom",
-          "size": 6649,
-          "gzip": 2502,
-          "version": "1.1.3",
+          "size": 6802,
+          "gzip": 2530,
+          "version": "1.1.4",
           "source": "bundlephobia"
         }
       ],
@@ -2072,10 +2079,68 @@
       ],
       "dependencyCount": 2
     },
+    "pdf/pdf-document": {
+      "name": "pdf-document",
+      "title": "PDF Document",
+      "description": "Document and page wrappers for metadata, permissions, bookmarks, page sizing, and theme context.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-dynamic": {
+      "name": "pdf-dynamic",
+      "title": "PDF Dynamic",
+      "description": "Dynamic text and view wrappers for page-aware render callbacks.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
     "pdf/pdf-form": {
       "name": "pdf-form",
       "title": "PDF Form",
-      "description": "Printable text and checkbox fields for generated PDF forms.",
+      "description": "Printable fields plus opt-in native AcroForm text, checkbox, select, list, and fieldset wrappers.",
       "variant": "pdf",
       "sizes": {
         "minified": 1424833,
@@ -2304,14 +2369,50 @@
       ],
       "dependencyCount": 2
     },
+    "pdf/pdf-math": {
+      "name": "pdf-math",
+      "title": "PDF Math",
+      "description": "Optional LaTeX math wrapper powered by @react-pdf/math.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1434833,
+        "gzipped": 474885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/math",
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
+        },
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 3
+    },
     "pdf/pdf-page-break": {
       "name": "pdf-page-break",
       "title": "PDF Page Break",
       "description": "Insert an explicit React PDF page break in flowing documents.",
       "variant": "pdf",
       "sizes": {
-        "minified": 1423451,
-        "gzipped": 471456,
+        "minified": 1424833,
+        "gzipped": 471885,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -2322,9 +2423,16 @@
           "gzip": 471456,
           "version": "4.5.1",
           "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
     "pdf/pdf-page-footer": {
       "name": "pdf-page-footer",
@@ -2511,6 +2619,35 @@
       "name": "pdf-stack",
       "title": "PDF Stack",
       "description": "Flexbox stack layout for PDF rows, columns, spacing, and wrapping.",
+      "variant": "pdf",
+      "sizes": {
+        "minified": 1424833,
+        "gzipped": 471885,
+        "selfSize": 2000,
+        "selfGzip": 600
+      },
+      "dependencies": [
+        {
+          "name": "@react-pdf/renderer",
+          "size": 1423451,
+          "gzip": 471456,
+          "version": "4.5.1",
+          "source": "bundlephobia"
+        },
+        {
+          "name": "@react-pdf/types",
+          "size": 1382,
+          "gzip": 429,
+          "version": "2.11.1",
+          "source": "bundlephobia"
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "pdf/pdf-svg": {
+      "name": "pdf-svg",
+      "title": "PDF SVG",
+      "description": "Theme-aware SVG container plus re-exported React PDF SVG primitives.",
       "variant": "pdf",
       "sizes": {
         "minified": 1424833,

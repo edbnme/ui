@@ -10,12 +10,16 @@
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfPrimitiveProps,
   mergePdfStyles,
+  type PdfPrimitiveProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfPageFooterProps {
+export interface PdfPageFooterProps extends PdfPrimitiveProps {
   leftText?: string;
   rightText?: string;
   fixed?: boolean;
@@ -27,6 +31,7 @@ export function PdfPageFooter({
   rightText,
   fixed = false,
   style,
+  ...primitiveProps
 }: PdfPageFooterProps) {
   const theme = usePdfTheme();
   const styles = StyleSheet.create({
@@ -38,18 +43,19 @@ export function PdfPageFooter({
       marginTop: theme.spacing.lg,
       paddingTop: theme.spacing.sm,
     } as Style,
-    text: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.xs,
-    } as Style,
+    text: createPdfTextStyle(theme, { size: "xs", tone: "muted" }),
     right: { textAlign: "right" } as Style,
   });
 
   return (
-    <View fixed={fixed} style={mergePdfStyles(styles.footer, style)}>
-      <Text style={styles.text}>{leftText}</Text>
-      <Text style={mergePdfStyles(styles.text, styles.right)}>{rightText}</Text>
+    <View
+      {...getPdfPrimitiveProps({ ...primitiveProps, fixed })}
+      style={mergePdfStyles(styles.footer, style)}
+    >
+      <Text style={styles.text}>{formatPdfValue(leftText)}</Text>
+      <Text style={mergePdfStyles(styles.text, styles.right)}>
+        {formatPdfValue(rightText)}
+      </Text>
     </View>
   );
 }

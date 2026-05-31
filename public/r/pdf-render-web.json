@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pdf-render-web",
+  "type": "registry:lib",
+  "title": "PDF Render Web",
+  "description": "Web helpers around usePDF, BlobProvider, PDFDownloadLink, PDFViewer, and pdf().",
+  "dependencies": [
+    "@react-pdf/renderer"
+  ],
+  "registryDependencies": [],
+  "variant": "pdf",
+  "files": [
+    {
+      "path": "lib/pdf-render-web.tsx",
+      "content": "/**\n * PDF Render Web - client-side React PDF render helpers.\n *\n * @registryTitle PDF Render Web\n * @registryDescription Web helpers around usePDF, BlobProvider, PDFDownloadLink, PDFViewer, and pdf().\n * @registryVariant pdf\n */\n\nimport type * as React from \"react\";\nimport {\n  BlobProvider,\n  PDFDownloadLink,\n  PDFViewer,\n  pdf,\n  usePDF,\n} from \"@react-pdf/renderer\";\n\nexport const PdfBlobProvider = BlobProvider;\nexport const PdfDownloadLink = PDFDownloadLink;\nexport const PdfViewer = PDFViewer;\nexport const createPdfInstance = pdf;\nexport const usePdfDocument = usePDF;\n\nexport type PdfBlobProviderProps = React.ComponentProps<typeof BlobProvider>;\nexport type PdfBlobProviderParams = Parameters<\n  PdfBlobProviderProps[\"children\"]\n>[0];\nexport type PdfDownloadLinkProps = React.ComponentProps<typeof PDFDownloadLink>;\nexport type PdfViewerProps = React.ComponentProps<typeof PDFViewer>;\n",
+      "type": "registry:lib"
+    }
+  ]
+}

@@ -17,12 +17,20 @@ import {
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfFlowProps,
+  getPdfPrimitiveProps,
   mergePdfStyles,
+  resolvePdfSize,
+  type PdfFlowProps,
+  type PdfPrimitiveProps,
+  type PdfTextAlign,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfTableProps {
+export interface PdfTableProps extends PdfFlowProps {
   children: React.ReactNode;
   bordered?: boolean;
   striped?: boolean;
@@ -30,12 +38,12 @@ export interface PdfTableProps {
   style?: PdfStyleInput;
 }
 
-export interface PdfTableSectionProps {
+export interface PdfTableSectionProps extends PdfPrimitiveProps {
   children: React.ReactNode;
   style?: PdfStyleInput;
 }
 
-export interface PdfTableRowProps {
+export interface PdfTableRowProps extends PdfFlowProps {
   children: React.ReactNode;
   header?: boolean;
   stripe?: boolean;
@@ -43,10 +51,12 @@ export interface PdfTableRowProps {
   style?: PdfStyleInput;
 }
 
-export interface PdfTableCellProps {
+export interface PdfTableCellProps extends PdfPrimitiveProps {
   children: React.ReactNode;
   width?: number | string;
-  align?: "left" | "center" | "right";
+  minWidth?: number | string;
+  maxWidth?: number | string;
+  align?: PdfTextAlign;
   header?: boolean;
   bordered?: boolean;
   style?: PdfStyleInput;
@@ -70,6 +80,8 @@ export function PdfTable({
   striped = false,
   noWrap = false,
   style,
+  wrap,
+  ...flowProps
 }: PdfTableProps) {
   const theme = usePdfTheme();
   const styles = StyleSheet.create({
@@ -95,22 +107,41 @@ export function PdfTable({
     });
   });
   return (
-    <View wrap={!noWrap} style={mergePdfStyles(styles.table, style)}>
+    <View
+      {...getPdfFlowProps({ ...flowProps, wrap: wrap ?? !noWrap })}
+      style={mergePdfStyles(styles.table, style)}
+    >
       {processedChildren}
     </View>
   );
 }
 
-export function PdfTableHeader({ children, style }: PdfTableSectionProps) {
+export function PdfTableHeader({
+  children,
+  style,
+  minPresenceAhead = 60,
+  ...primitiveProps
+}: PdfTableSectionProps) {
   return (
-    <View minPresenceAhead={60} style={mergePdfStyles(style)}>
+    <View
+      {...getPdfPrimitiveProps({ ...primitiveProps, minPresenceAhead })}
+      style={mergePdfStyles(style)}
+    >
       {children}
     </View>
   );
 }
 
-export function PdfTableBody({ children, style }: PdfTableSectionProps) {
-  return <View style={mergePdfStyles(style)}>{children}</View>;
+export function PdfTableBody({
+  children,
+  style,
+  ...primitiveProps
+}: PdfTableSectionProps) {
+  return (
+    <View {...getPdfPrimitiveProps(primitiveProps)} style={mergePdfStyles(style)}>
+      {children}
+    </View>
+  );
 }
 
 export function PdfTableRow({
@@ -119,6 +150,8 @@ export function PdfTableRow({
   stripe = false,
   bordered = false,
   style,
+  wrap,
+  ...flowProps
 }: PdfTableRowProps) {
   const theme = usePdfTheme();
   const styles = StyleSheet.create({
@@ -139,7 +172,10 @@ export function PdfTableRow({
     return cloneElement(child, { bordered, header });
   });
   return (
-    <View wrap={false} style={mergePdfStyles(styles.row, style)}>
+    <View
+      {...getPdfFlowProps({ ...flowProps, wrap: wrap ?? false })}
+      style={mergePdfStyles(styles.row, style)}
+    >
       {processedChildren}
     </View>
   );
@@ -148,36 +184,45 @@ export function PdfTableRow({
 export function PdfTableCell({
   children,
   width,
+  minWidth,
+  maxWidth,
   align = "left",
   header = false,
   bordered = false,
   style,
+  ...primitiveProps
 }: PdfTableCellProps) {
   const theme = usePdfTheme();
+  const resolvedWidth = resolvePdfSize(width);
+  const content = formatPdfValue(children);
   const styles = StyleSheet.create({
     cell: {
       borderRightColor: theme.colors.border,
       borderRightWidth: bordered ? 1 : 0,
-      flex: width ? undefined : 1,
+      flex: resolvedWidth ? undefined : 1,
+      maxWidth: resolvePdfSize(maxWidth),
+      minWidth: resolvePdfSize(minWidth),
       paddingHorizontal: 8,
       paddingVertical: header ? 7 : 8,
-      width,
+      width: resolvedWidth,
     } as Style,
-    text: {
+    text: createPdfTextStyle(theme, {
+      align,
       color: header ? theme.colors.foreground : theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-      fontWeight: header ? 700 : 400,
       lineHeight: 1.35,
-      textAlign: align,
-    } as Style,
+      size: "sm",
+      weight: header ? "bold" : "normal",
+    }),
   });
   return (
-    <View style={mergePdfStyles(styles.cell, style)}>
-      {typeof children === "string" || typeof children === "number" ? (
-        <Text style={styles.text}>{children}</Text>
+    <View
+      {...getPdfPrimitiveProps(primitiveProps)}
+      style={mergePdfStyles(styles.cell, style)}
+    >
+      {typeof content === "string" || typeof content === "number" ? (
+        <Text style={styles.text}>{content}</Text>
       ) : (
-        children
+        content
       )}
     </View>
   );

@@ -1,10 +1,10 @@
-/**
- * AlertDialog — modal confirmation surface built on Base UI's AlertDialog.
+﻿/**
+ * AlertDialog â€” modal confirmation surface built on Base UI's AlertDialog.
  *
  * Use for **destructive or blocking decisions** (delete, discard, sign out).
  * AlertDialog differs from Dialog in three key ways, enforced by Base UI:
- *   1. Non-dismissible — no Escape key, no backdrop-click dismissal.
- *   2. Role `alertdialog` — announces immediately, traps focus.
+ *   1. Non-dismissible â€” no Escape key, no backdrop-click dismissal.
+ *   2. Role `alertdialog` â€” announces immediately, traps focus.
  *   3. Requires an explicit action/cancel pair (not just a close button).
  *
  * Every sub-component accepts Base UI's `render` prop for element
@@ -14,11 +14,11 @@
  * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.3.0
- * @brand      edbn/ui — <https://ui.edbn.me>
+ * @brand      edbn/ui â€” <https://ui.edbn.me>
  * @docs       https://ui.edbn.me/docs/components/alert-dialog
  * @source     https://ui.edbn.me/r/alert-dialog.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/alert-dialog
+ * @upstream   Base UI v1.4.1 â€” https://base-ui.com/react/components/alert-dialog
  * @a11y       WAI-ARIA AlertDialog pattern (role="alertdialog"); focus trap,
  *             scroll lock, automatic `aria-labelledby` / `aria-describedby`
  *             wiring via Base UI. Always render a Title and an explicit
@@ -49,7 +49,7 @@
  * ## Controlled
  * ```tsx
  * const [open, setOpen] = React.useState(false);
- * <AlertDialogRoot open={open} onOpenChange={setOpen}>…</AlertDialogRoot>
+ * <AlertDialogRoot open={open} onOpenChange={setOpen}>â€¦</AlertDialogRoot>
  * ```
  *
  * ## Detached trigger with typed payload
@@ -57,7 +57,7 @@
  * const handle = createAlertDialogHandle<{ projectId: string }>();
  * <AlertDialogTrigger handle={handle} payload={{ projectId: "p1" }}>Delete</AlertDialogTrigger>
  * <AlertDialogRoot handle={handle}>
- *   {({ payload }) => <AlertDialogPortal>…</AlertDialogPortal>}
+ *   {({ payload }) => <AlertDialogPortal>â€¦</AlertDialogPortal>}
  * </AlertDialogRoot>
  * ```
  * @registryDescription Accessible alert dialog with focus trap, keyboard handling, and portal rendering.
@@ -77,7 +77,7 @@ import { cn } from "@/lib/utils";
  * `actionsRef`, `handle`, `defaultTriggerId`, `triggerId`).
  *
  * Note: AlertDialog is always modal and always traps focus. Unlike Dialog,
- * it cannot be dismissed by Escape key or backdrop click — the user must
+ * it cannot be dismissed by Escape key or backdrop click â€” the user must
  * choose the action or the cancel button.
  *
  * @since 0.3.0
@@ -97,9 +97,9 @@ AlertDialogRoot.displayName = "AlertDialogRoot";
  * Styled button that opens the alert dialog. Pass Base UI's `render` prop to
  * use a custom element (e.g. your `Button`).
  *
- * **Data attributes** — `data-disabled`, `data-popup-open`.
+ * **Data attributes** â€” `data-disabled`, `data-popup-open`.
  *
- * **Passthrough props** — `className`, `handle`, `id`, `nativeButton`,
+ * **Passthrough props** â€” `className`, `handle`, `id`, `nativeButton`,
  * `payload`, `render`, `style`, plus native `<button>` attrs.
  *
  * @since 0.3.0
@@ -134,7 +134,7 @@ AlertDialogTrigger.displayName = "AlertDialogTrigger";
  * Portals alert dialog content into a stable DOM location. Pass
  * `keepMounted` to retain children when closed (for external animators).
  *
- * **Passthrough props** — `className`, `container`, `keepMounted`, `render`,
+ * **Passthrough props** â€” `className`, `container`, `keepMounted`, `render`,
  * `style`.
  *
  * @since 0.3.0
@@ -151,9 +151,9 @@ AlertDialogPortal.displayName = "AlertDialogPortal";
 
 /**
  * Dimming overlay behind the popup. The user cannot dismiss by clicking
- * this — AlertDialog requires an explicit choice.
+ * this â€” AlertDialog requires an explicit choice.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-nested`,
+ * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
  * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
  * @since 0.3.0
@@ -186,7 +186,7 @@ AlertDialogBackdrop.displayName = "AlertDialogBackdrop";
  * Optional scroll container for alert dialogs with tall content. Omit for
  * centered, fixed-size dialogs.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-nested`,
+ * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
  * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
  * @since 0.3.0
@@ -214,12 +214,12 @@ AlertDialogViewport.displayName = "AlertDialogViewport";
 // ---- ALERT DIALOG POPUP -----------------------------------------------------
 
 /**
- * The alert dialog surface. Smaller than Dialog (`max-w-md`) — alert dialogs
+ * The alert dialog surface. Smaller than Dialog (`max-w-md`) â€” alert dialogs
  * are intentionally compact to keep the decision focused. `aria-labelledby`
  * and `aria-describedby` are wired automatically when `AlertDialogTitle` and
  * `AlertDialogDescription` are present inside.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-starting-style`,
+ * **Data attributes** â€” `data-open`, `data-closed`, `data-starting-style`,
  * `data-ending-style`.
  *
  * @since 0.3.0
@@ -232,13 +232,13 @@ function AlertDialogPopup({ className, ...props }: AlertDialogPopupProps) {
     <AlertDialog.Popup
       data-slot="alert-dialog-popup"
       className={cn(
-        // Positioning — centered
+        // Positioning â€” centered
         "fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-        // Size — compact for focused decisions
+        // Size â€” compact for focused decisions
         "w-[calc(100vw-2rem)] max-w-md",
-        // Surface — Apple-like
+        // Surface â€” crisp radius, subtle border, soft shadow
         "rounded-xl border border-border bg-background p-6 text-foreground shadow-2xl",
-        // Transition — GPU-accelerated
+        // Transition â€” GPU-accelerated
         "transform-gpu transition-[translate,scale,opacity] duration-200 ease-out",
         "data-starting-style:scale-95 data-starting-style:opacity-0",
         "data-ending-style:scale-95 data-ending-style:opacity-0",
@@ -259,7 +259,7 @@ AlertDialogPopup.displayName = "AlertDialogPopup";
 
 /**
  * Accessible alert dialog title. Wired to `aria-labelledby` automatically.
- * **Required** — AlertDialog without a Title will warn in dev.
+ * **Required** â€” AlertDialog without a Title will warn in dev.
  *
  * @since 0.3.0
  */
@@ -284,7 +284,7 @@ AlertDialogTitle.displayName = "AlertDialogTitle";
 
 /**
  * Accessible alert dialog description. Wired to `aria-describedby`
- * automatically. Keep concise — one or two sentences max.
+ * automatically. Keep concise â€” one or two sentences max.
  *
  * @since 0.3.0
  */
@@ -312,9 +312,9 @@ AlertDialogDescription.displayName = "AlertDialogDescription";
  * overridable via `className` or `render`. Activating this closes the
  * dialog without running the destructive action.
  *
- * **Data attributes** — `data-disabled`.
+ * **Data attributes** â€” `data-disabled`.
  *
- * **Passthrough props** — `className`, `nativeButton`, `render`, `style`,
+ * **Passthrough props** â€” `className`, `nativeButton`, `render`, `style`,
  * plus native `<button>` attrs.
  *
  * @since 0.3.0
@@ -349,11 +349,11 @@ AlertDialogClose.displayName = "AlertDialogClose";
  * For non-destructive confirmations, override `className` or pass a
  * `render` prop with your own button variant.
  *
- * Implemented on top of Base UI's `AlertDialog.Close` — activating the
+ * Implemented on top of Base UI's `AlertDialog.Close` â€” activating the
  * action closes the dialog. Wire the actual destructive side-effect to the
  * button's `onClick`.
  *
- * **Data attributes** — `data-disabled`.
+ * **Data attributes** â€” `data-disabled`.
  *
  * @since 0.3.0
  * @example
@@ -411,7 +411,7 @@ AlertDialogHeader.displayName = "AlertDialogHeader";
 // ---- ALERT DIALOG FOOTER ----------------------------------------------------
 
 /**
- * Layout helper — horizontal action row on ≥sm; reversed vertical stack on
+ * Layout helper â€” horizontal action row on â‰¥sm; reversed vertical stack on
  * narrow viewports so the primary action stays on top (easier to tap).
  *
  * @since 0.3.0

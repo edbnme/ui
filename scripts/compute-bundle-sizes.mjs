@@ -34,6 +34,7 @@ const OUTPUT_FILE = join(root, "public", "data", "bundle-sizes.json");
 const RATE_LIMIT_MS = 120;
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 1000;
+const FETCH_TIMEOUT_MS = 15000;
 
 // Known package sizes for fallback (when Bundlephobia can't analyze)
 // These are approximate sizes in bytes
@@ -98,8 +99,12 @@ async function sleep(ms) {
 
 async function fetchWithRetry(url, retries = MAX_RETRIES) {
   for (let attempt = 1; attempt <= retries; attempt++) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
     try {
       const response = await fetch(url, {
+        signal: controller.signal,
         headers: {
           "User-Agent": "edbn-ui-bundle-analyzer/1.0",
           Accept: "application/json",
@@ -120,12 +125,20 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
 
       return await response.json();
     } catch (error) {
+      const message =
+        error?.name === "AbortError"
+          ? `Timed out after ${FETCH_TIMEOUT_MS}ms`
+          : error.message;
+
       if (attempt < retries) {
-        console.log(`[WARN] Attempt ${attempt} failed, retrying...`);
+        console.log(`[WARN] Attempt ${attempt} failed: ${message}`);
+        console.log("[WARN] Retrying...");
         await sleep(RETRY_DELAY_MS * attempt);
       } else {
-        throw error;
+        throw new Error(message);
       }
+    } finally {
+      clearTimeout(timeout);
     }
   }
 }
@@ -300,7 +313,7 @@ function computeVariantComparisons(components) {
     ([, c]) => c.variant === "animated"
   );
 
-  for (const [key, animated] of animatedComponents) {
+  for (const [, animated] of animatedComponents) {
     const staticKey = `static/${animated.name}`;
     const staticComponent = components[staticKey];
 

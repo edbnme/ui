@@ -10,12 +10,17 @@
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfPrimitiveProps,
+  isPdfNodeEmpty,
   mergePdfStyles,
+  type PdfPrimitiveProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfPageHeaderProps {
+export interface PdfPageHeaderProps extends PdfPrimitiveProps {
   title: string;
   subtitle?: string;
   rightText?: string;
@@ -29,8 +34,11 @@ export function PdfPageHeader({
   rightText,
   fixed = false,
   style,
+  ...primitiveProps
 }: PdfPageHeaderProps) {
   const theme = usePdfTheme();
+  const hasSubtitle = !isPdfNodeEmpty(subtitle);
+  const hasRightText = !isPdfNodeEmpty(rightText);
   const styles = StyleSheet.create({
     header: {
       borderBottomColor: theme.colors.border,
@@ -40,33 +48,32 @@ export function PdfPageHeader({
       marginBottom: theme.spacing.lg,
       paddingBottom: theme.spacing.sm,
     } as Style,
-    title: {
-      color: theme.colors.foreground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.lg,
-      fontWeight: 700,
-    } as Style,
+    title: createPdfTextStyle(theme, { size: "lg", weight: "bold" }),
     subtitle: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
+      ...createPdfTextStyle(theme, { size: "sm", tone: "muted" }),
       marginTop: 3,
     } as Style,
-    right: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-      textAlign: "right",
-    } as Style,
+    right: createPdfTextStyle(theme, {
+      align: "right",
+      size: "sm",
+      tone: "muted",
+    }),
   });
 
   return (
-    <View fixed={fixed} style={mergePdfStyles(styles.header, style)}>
+    <View
+      {...getPdfPrimitiveProps({ ...primitiveProps, fixed })}
+      style={mergePdfStyles(styles.header, style)}
+    >
       <View>
-        <Text style={styles.title}>{title}</Text>
-        {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
+        <Text style={styles.title}>{formatPdfValue(title)}</Text>
+        {hasSubtitle ? (
+          <Text style={styles.subtitle}>{formatPdfValue(subtitle)}</Text>
+        ) : null}
       </View>
-      {rightText ? <Text style={styles.right}>{rightText}</Text> : null}
+      {hasRightText ? (
+        <Text style={styles.right}>{formatPdfValue(rightText)}</Text>
+      ) : null}
     </View>
   );
 }

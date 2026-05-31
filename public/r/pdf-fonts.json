@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pdf-fonts",
+  "type": "registry:lib",
+  "title": "PDF Fonts",
+  "description": "Idempotent font registration and hyphenation helpers for React PDF documents.",
+  "dependencies": [
+    "@react-pdf/renderer",
+    "@react-pdf/types"
+  ],
+  "registryDependencies": [],
+  "variant": "pdf",
+  "files": [
+    {
+      "path": "lib/pdf-fonts.ts",
+      "content": "/**\n * PDF Fonts - helpers for React PDF font, emoji, and hyphenation setup.\n *\n * @registryTitle PDF Fonts\n * @registryDescription Idempotent font registration and hyphenation helpers for React PDF documents.\n * @registryVariant pdf\n */\n\nimport { Font } from \"@react-pdf/renderer\";\nimport type {\n  EmojiSource,\n  FontStyle,\n  FontWeight,\n  HyphenationCallback,\n} from \"@react-pdf/types\";\n\nexport interface PdfFontSource {\n  src: string;\n  fontStyle?: FontStyle;\n  fontWeight?: FontWeight;\n  postscriptName?: string;\n  method?: \"GET\" | \"HEAD\" | \"POST\" | \"PUT\" | \"DELETE\" | \"PATCH\";\n  headers?: Record<string, string>;\n  body?: unknown;\n}\n\nexport type PdfFontConfig =\n  | ({\n      family: string;\n    } & PdfFontSource)\n  | {\n      family: string;\n      fonts: PdfFontSource[];\n    };\n\nconst registeredFontKeys = new Set<string>();\n\nfunction stableFontKey(config: PdfFontConfig): string {\n  return JSON.stringify(config);\n}\n\nexport function registerPdfFont(config: PdfFontConfig): boolean {\n  const key = stableFontKey(config);\n  if (registeredFontKeys.has(key)) return false;\n  Font.register(config);\n  registeredFontKeys.add(key);\n  return true;\n}\n\nexport function registerPdfFonts(configs: readonly PdfFontConfig[]): number {\n  return configs.reduce(\n    (count, config) => count + (registerPdfFont(config) ? 1 : 0),\n    0\n  );\n}\n\nexport function registerPdfEmojiSource(source: EmojiSource): void {\n  Font.registerEmojiSource(source);\n}\n\nexport function registerPdfHyphenationCallback(\n  callback: HyphenationCallback\n): void {\n  Font.registerHyphenationCallback(callback);\n}\n\nexport const disablePdfHyphenation: HyphenationCallback = (word) => [word];\n\nexport function disablePdfWordHyphenation(): void {\n  registerPdfHyphenationCallback(disablePdfHyphenation);\n}\n",
+      "type": "registry:lib"
+    }
+  ]
+}

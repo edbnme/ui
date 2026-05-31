@@ -11,7 +11,12 @@ import * as React from "react";
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfPrimitiveProps,
+  isPdfNodeEmpty,
   mergePdfStyles,
+  type PdfPrimitiveProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
@@ -23,10 +28,11 @@ export interface PdfKeyValueItem {
   valueStyle?: PdfStyleInput;
 }
 
-export interface PdfKeyValueProps {
-  items: PdfKeyValueItem[];
+export interface PdfKeyValueProps extends PdfPrimitiveProps {
+  items?: readonly PdfKeyValueItem[] | null;
   divided?: boolean;
   emptyText?: string;
+  emptyValue?: React.ReactNode;
   style?: PdfStyleInput;
 }
 
@@ -34,9 +40,12 @@ export function PdfKeyValue({
   items,
   divided = false,
   emptyText = "No details",
+  emptyValue = "",
   style,
+  ...primitiveProps
 }: PdfKeyValueProps) {
   const theme = usePdfTheme();
+  const rows = items ?? [];
   const styles = StyleSheet.create({
     root: { width: "100%" } as Style,
     row: {
@@ -46,36 +55,33 @@ export function PdfKeyValue({
       justifyContent: "space-between",
       paddingVertical: 5,
     } as Style,
-    key: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-    } as Style,
-    value: {
-      color: theme.colors.foreground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-      fontWeight: 700,
-      textAlign: "right",
-    } as Style,
-    empty: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-    } as Style,
+    key: createPdfTextStyle(theme, { size: "sm", tone: "muted" }),
+    value: createPdfTextStyle(theme, {
+      align: "right",
+      size: "sm",
+      weight: "bold",
+    }),
+    empty: createPdfTextStyle(theme, { size: "sm", tone: "muted" }),
   });
 
-  if (items.length === 0) return <Text style={styles.empty}>{emptyText}</Text>;
+  const visibleItems = rows.filter((item) => !isPdfNodeEmpty(item.key));
+
+  if (visibleItems.length === 0) {
+    return <Text style={styles.empty}>{emptyText}</Text>;
+  }
 
   return (
-    <View style={mergePdfStyles(styles.root, style)}>
-      {items.map((item, index) => (
+    <View
+      {...getPdfPrimitiveProps(primitiveProps)}
+      style={mergePdfStyles(styles.root, style)}
+    >
+      {visibleItems.map((item, index) => (
         <View key={index} style={styles.row}>
           <Text style={mergePdfStyles(styles.key, item.keyStyle)}>
-            {item.key}
+            {formatPdfValue(item.key)}
           </Text>
           <Text style={mergePdfStyles(styles.value, item.valueStyle)}>
-            {item.value}
+            {formatPdfValue(item.value, emptyValue)}
           </Text>
         </View>
       ))}

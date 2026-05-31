@@ -11,12 +11,17 @@ import * as React from "react";
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfFlowProps,
+  isPdfNodeEmpty,
   mergePdfStyles,
+  type PdfFlowProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfCardProps {
+export interface PdfCardProps extends PdfFlowProps {
   title?: string;
   description?: string;
   footer?: React.ReactNode;
@@ -32,8 +37,13 @@ export function PdfCard({
   children,
   noWrap = false,
   style,
+  wrap,
+  ...flowProps
 }: PdfCardProps) {
   const theme = usePdfTheme();
+  const hasTitle = !isPdfNodeEmpty(title);
+  const hasDescription = !isPdfNodeEmpty(description);
+  const hasFooter = !isPdfNodeEmpty(footer);
   const styles = StyleSheet.create({
     card: {
       borderColor: theme.colors.border,
@@ -43,17 +53,11 @@ export function PdfCard({
       marginBottom: theme.spacing.md,
     } as Style,
     title: {
-      color: theme.colors.foreground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.lg,
-      fontWeight: 700,
+      ...createPdfTextStyle(theme, { size: "lg", weight: "bold" }),
       marginBottom: 4,
     } as Style,
     description: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-      lineHeight: 1.45,
+      ...createPdfTextStyle(theme, { size: "sm", tone: "muted" }),
       marginBottom: theme.spacing.md,
     } as Style,
     footer: {
@@ -65,13 +69,18 @@ export function PdfCard({
   });
 
   return (
-    <View wrap={!noWrap} style={mergePdfStyles(styles.card, style)}>
-      {title ? <Text style={styles.title}>{title}</Text> : null}
-      {description ? (
-        <Text style={styles.description}>{description}</Text>
+    <View
+      {...getPdfFlowProps({ ...flowProps, wrap: wrap ?? !noWrap })}
+      style={mergePdfStyles(styles.card, style)}
+    >
+      {hasTitle ? (
+        <Text style={styles.title}>{formatPdfValue(title)}</Text>
+      ) : null}
+      {hasDescription ? (
+        <Text style={styles.description}>{formatPdfValue(description)}</Text>
       ) : null}
       {children}
-      {footer ? <View style={styles.footer}>{footer}</View> : null}
+      {hasFooter ? <View style={styles.footer}>{footer}</View> : null}
     </View>
   );
 }

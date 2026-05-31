@@ -34,6 +34,7 @@
   "dependencies": {
     "@base-ui/react": "^1.4.1",
     "@phosphor-icons/react": "^2.1.10",
+    "@react-pdf/math": "^2.0.1",
     "@react-pdf/renderer": "^4.5.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

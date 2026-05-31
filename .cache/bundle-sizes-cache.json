@@ -7,7 +7,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1777190134173
+    "timestamp": 1780185613903
   },
   "@phosphor-icons/react": {
     "data": {
@@ -18,189 +18,17 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1777190134173
+    "timestamp": 1780185613903
   },
-  "@react-three/drei": {
+  "@react-pdf/math": {
     "data": {
-      "name": "@react-three/drei",
-      "version": "10.7.7",
-      "size": 1604829,
-      "gzip": 496190,
-      "dependencyCount": 21,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190134766
-  },
-  "@react-three/fiber": {
-    "data": {
-      "name": "@react-three/fiber",
-      "version": "9.6.0",
-      "size": 159334,
-      "gzip": 50792,
-      "dependencyCount": 10,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190135486
-  },
-  "class-variance-authority": {
-    "data": {
-      "name": "class-variance-authority",
-      "size": 4500,
-      "gzip": 1500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1777190135487
-  },
-  "clsx": {
-    "data": {
-      "name": "clsx",
-      "size": 1800,
-      "gzip": 600,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1777190135487
-  },
-  "embla-carousel-react": {
-    "data": {
-      "name": "embla-carousel-react",
-      "version": "8.6.0",
-      "size": 17975,
-      "gzip": 7277,
-      "dependencyCount": 2,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190135914
-  },
-  "hast-util-to-jsx-runtime": {
-    "data": {
-      "name": "hast-util-to-jsx-runtime",
-      "version": "2.3.6",
-      "size": 28673,
-      "gzip": 9977,
-      "dependencyCount": 15,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190136422
-  },
-  "input-otp": {
-    "data": {
-      "name": "input-otp",
-      "version": "1.4.2",
-      "size": 9599,
-      "gzip": 3860,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190136825
-  },
-  "motion": {
-    "data": {
-      "name": "motion",
-      "size": 150000,
-      "gzip": 45000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1777190136825
-  },
-  "next": {
-    "data": {
-      "name": "next",
+      "name": "@react-pdf/math",
       "size": 10000,
       "gzip": 3000,
       "version": "unknown",
       "source": "estimate"
     },
-    "timestamp": 1777190144235
-  },
-  "react-day-picker": {
-    "data": {
-      "name": "react-day-picker",
-      "version": "9.14.0",
-      "size": 67432,
-      "gzip": 2450,
-      "dependencyCount": 4,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190144649
-  },
-  "react-resizable-panels": {
-    "data": {
-      "name": "react-resizable-panels",
-      "version": "4.10.0",
-      "size": 32580,
-      "gzip": 10774,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190145233
-  },
-  "recharts": {
-    "data": {
-      "name": "recharts",
-      "version": "3.8.1",
-      "size": 527502,
-      "gzip": 139272,
-      "dependencyCount": 11,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190145651
-  },
-  "shiki": {
-    "data": {
-      "name": "shiki",
-      "version": "4.0.2",
-      "size": 109061,
-      "gzip": 34024,
-      "dependencyCount": 8,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190146065
-  },
-  "streamdown": {
-    "data": {
-      "name": "streamdown",
-      "version": "2.5.0",
-      "size": 464290,
-      "gzip": 141349,
-      "dependencyCount": 16,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190146473
-  },
-  "tailwind-merge": {
-    "data": {
-      "name": "tailwind-merge",
-      "size": 28000,
-      "gzip": 8000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    "timestamp": 1777190146473
-  },
-  "three": {
-    "data": {
-      "name": "three",
-      "version": "0.184.0",
-      "size": 724189,
-      "gzip": 181947,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190146873
-  },
-  "use-stick-to-bottom": {
-    "data": {
-      "name": "use-stick-to-bottom",
-      "version": "1.1.3",
-      "size": 6649,
-      "gzip": 2502,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
-    },
-    "timestamp": 1777190147443
+    "timestamp": 1780185617418
   },
   "@react-pdf/renderer": {
     "data": {
@@ -211,7 +39,7 @@
       "dependencyCount": 13,
       "source": "bundlephobia"
     },
-    "timestamp": 1777192643600
+    "timestamp": 1780185617603
   },
   "@react-pdf/types": {
     "data": {
@@ -222,7 +50,70 @@
       "dependencyCount": 3,
       "source": "bundlephobia"
     },
-    "timestamp": 1777192644181
+    "timestamp": 1780185617747
+  },
+  "class-variance-authority": {
+    "data": {
+      "name": "class-variance-authority",
+      "size": 4500,
+      "gzip": 1500,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1780185617747
+  },
+  "clsx": {
+    "data": {
+      "name": "clsx",
+      "size": 1800,
+      "gzip": 600,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1780185617747
+  },
+  "embla-carousel-react": {
+    "data": {
+      "name": "embla-carousel-react",
+      "version": "8.6.0",
+      "size": 17975,
+      "gzip": 7277,
+      "dependencyCount": 2,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185618022
+  },
+  "hast-util-to-jsx-runtime": {
+    "data": {
+      "name": "hast-util-to-jsx-runtime",
+      "version": "2.3.6",
+      "size": 28673,
+      "gzip": 9977,
+      "dependencyCount": 15,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185618171
+  },
+  "input-otp": {
+    "data": {
+      "name": "input-otp",
+      "version": "1.4.2",
+      "size": 9599,
+      "gzip": 3860,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185618330
+  },
+  "motion": {
+    "data": {
+      "name": "motion",
+      "size": 150000,
+      "gzip": 45000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1780185618330
   },
   "qrcode": {
     "data": {
@@ -233,6 +124,82 @@
       "dependencyCount": 3,
       "source": "bundlephobia"
     },
-    "timestamp": 1777192644670
+    "timestamp": 1780185618492
+  },
+  "react-day-picker": {
+    "data": {
+      "name": "react-day-picker",
+      "version": "10.0.1",
+      "size": 67045,
+      "gzip": 19305,
+      "dependencyCount": 2,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185618687
+  },
+  "react-resizable-panels": {
+    "data": {
+      "name": "react-resizable-panels",
+      "version": "4.11.2",
+      "size": 33033,
+      "gzip": 10906,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185618843
+  },
+  "recharts": {
+    "data": {
+      "name": "recharts",
+      "version": "3.8.1",
+      "size": 527502,
+      "gzip": 139272,
+      "dependencyCount": 11,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185619002
+  },
+  "shiki": {
+    "data": {
+      "name": "shiki",
+      "version": "4.1.0",
+      "size": 206109,
+      "gzip": 64075,
+      "dependencyCount": 8,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185619180
+  },
+  "streamdown": {
+    "data": {
+      "name": "streamdown",
+      "version": "2.5.0",
+      "size": 464290,
+      "gzip": 141349,
+      "dependencyCount": 16,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185619402
+  },
+  "tailwind-merge": {
+    "data": {
+      "name": "tailwind-merge",
+      "size": 28000,
+      "gzip": 8000,
+      "version": "latest",
+      "source": "fallback"
+    },
+    "timestamp": 1780185619402
+  },
+  "use-stick-to-bottom": {
+    "data": {
+      "name": "use-stick-to-bottom",
+      "version": "1.1.4",
+      "size": 6802,
+      "gzip": 2530,
+      "dependencyCount": 0,
+      "source": "bundlephobia"
+    },
+    "timestamp": 1780185619656
   }
 }

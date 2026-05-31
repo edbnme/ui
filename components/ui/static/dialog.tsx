@@ -1,5 +1,5 @@
-/**
- * Dialog — modal overlay built on Base UI's Dialog primitive.
+﻿/**
+ * Dialog â€” modal overlay built on Base UI's Dialog primitive.
  *
  * Provides an accessible, composable dialog system with focus management,
  * scroll locking, keyboard dismissal, and motion-safe transitions. Every
@@ -10,11 +10,11 @@
  * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.2.5
- * @brand      edbn/ui — <https://ui.edbn.me>
+ * @brand      edbn/ui â€” <https://ui.edbn.me>
  * @docs       https://ui.edbn.me/docs/components/dialog
  * @source     https://ui.edbn.me/r/dialog.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/dialog
+ * @upstream   Base UI v1.4.1 â€” https://base-ui.com/react/components/dialog
  * @a11y       WAI-ARIA Dialog (Modal) pattern; focus trap, Escape dismiss,
  *             scroll lock, and automatic `aria-labelledby` /
  *             `aria-describedby` wiring via Base UI.
@@ -29,8 +29,8 @@
  *       <DialogPopup>
  *         <DialogCloseIconButton />      // optional corner close
  *         <DialogHeader>
- *           <DialogTitle>—</DialogTitle>
- *           <DialogDescription>—</DialogDescription>
+ *           <DialogTitle>â€”</DialogTitle>
+ *           <DialogDescription>â€”</DialogDescription>
  *         </DialogHeader>
  *         <DialogFooter>
  *           <DialogClose>Cancel</DialogClose> // unstyled action
@@ -44,13 +44,13 @@
  * ## Controlled open state
  * ```tsx
  * const [open, setOpen] = React.useState(false);
- * <DialogRoot open={open} onOpenChange={setOpen}>—</DialogRoot>
+ * <DialogRoot open={open} onOpenChange={setOpen}>â€”</DialogRoot>
  * ```
  *
  * ## Imperative close via `actionsRef`
  * ```tsx
  * const actions = React.useRef<Dialog.Root.Actions>(null);
- * <DialogRoot actionsRef={actions}>—</DialogRoot>
+ * <DialogRoot actionsRef={actions}>â€”</DialogRoot>
  * // Later: actions.current?.unmount();
  * ```
  *
@@ -59,7 +59,7 @@
  * const handle = createDialogHandle<{ userId: string }>();
  * <DialogTrigger handle={handle} payload={{ userId: "1" }}>Edit</DialogTrigger>
  * <DialogRoot handle={handle}>
- *   {({ payload }) => <DialogPortal>—</DialogPortal>}
+ *   {({ payload }) => <DialogPortal>â€”</DialogPortal>}
  * </DialogRoot>
  * ```
  * @registryDescription Modal dialog with focus trap, backdrop, and controlled state.
@@ -96,10 +96,10 @@ DialogRoot.displayName = "DialogRoot";
  * dialog-trigger behavior.
  *
  * **Data attributes**
- * - `data-disabled` — present when disabled
- * - `data-popup-open` — present while the dialog is open
+ * - `data-disabled` â€” present when disabled
+ * - `data-popup-open` â€” present while the dialog is open
  *
- * **Passthrough props** — `className`, `handle`, `id`, `nativeButton`,
+ * **Passthrough props** â€” `className`, `handle`, `id`, `nativeButton`,
  * `payload`, `render`, `style`, plus native `<button>` attrs.
  *
  * @since 0.2.5
@@ -140,7 +140,7 @@ DialogTrigger.displayName = "DialogTrigger";
  * animations with an external animator such as Framer Motion's
  * `<AnimatePresence>`).
  *
- * **Passthrough props** — `className`, `container`, `keepMounted`, `render`,
+ * **Passthrough props** â€” `className`, `container`, `keepMounted`, `render`,
  * `style`.
  *
  * @since 0.2.5
@@ -155,7 +155,7 @@ DialogPortal.displayName = "DialogPortal";
  * Dimming overlay behind the popup. By design, Base UI omits nested backdrops
  * so a parent dialog remains visible beneath a nested one.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-starting-style`,
+ * **Data attributes** â€” `data-open`, `data-closed`, `data-starting-style`,
  * `data-ending-style`.
  *
  * @since 0.2.5
@@ -183,7 +183,7 @@ DialogBackdrop.displayName = "DialogBackdrop";
  * Optional scroll container for dialogs whose content can exceed the viewport.
  * Skip for centered, fixed-size dialogs.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-nested`,
+ * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
  * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
  * @since 0.2.5
@@ -211,10 +211,10 @@ DialogViewport.displayName = "DialogViewport";
  * `DialogDescription` are present inside. Supports `initialFocus` and
  * `finalFocus` refs to override focus destinations on open/close.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-nested`,
+ * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
  * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
- * **CSS variables** — `--nested-dialogs` (nesting depth), used here for a
+ * **CSS variables** â€” `--nested-dialogs` (nesting depth), used here for a
  * push-back effect on the parent when a child dialog opens.
  *
  * @since 0.2.5
@@ -232,18 +232,18 @@ function DialogPopup({ className, ...props }: DialogPopupProps) {
     <Dialog.Popup
       data-slot="dialog-popup"
       className={cn(
-        // Positioning — centered overlay
+        // Positioning â€” centered overlay
         "fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-        // Size — respects small viewports
+        // Size â€” respects small viewports
         "w-[calc(100vw-2rem)] max-w-lg",
-        // Surface — Apple-like material: crisp radius, subtle border, soft shadow
+        // Surface â€” crisp radius, subtle border, soft shadow
         "rounded-xl border border-border bg-background p-6 text-foreground shadow-2xl",
-        // Transition — GPU-accelerated
+        // Transition â€” GPU-accelerated
         "transform-gpu transition-[translate,scale,opacity] duration-200 ease-out",
         // Enter / exit (data-starting-style / data-ending-style)
         "data-starting-style:scale-95 data-starting-style:opacity-0",
         "data-ending-style:scale-95 data-ending-style:opacity-0",
-        // Reduced motion — keep fade, drop transforms
+        // Reduced motion â€” keep fade, drop transforms
         "motion-reduce:transform-none motion-reduce:transition-opacity",
         "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
         // Nested stacking effect driven by --nested-dialogs
@@ -266,7 +266,7 @@ DialogPopup.displayName = "DialogPopup";
 /**
  * Accessible dialog title. Its id is wired to the popup's `aria-labelledby`
  * automatically. If the visual design omits a heading, wrap in a visually-
- * hidden element via `render` — **do not omit the `DialogTitle` itself**.
+ * hidden element via `render` â€” **do not omit the `DialogTitle` itself**.
  *
  * @since 0.2.5
  */
@@ -311,14 +311,14 @@ DialogDescription.displayName = "DialogDescription";
 /**
  * Unstyled action that closes the dialog when activated. Use inside
  * `DialogFooter` for "Cancel" / "Done" / custom close buttons. Bring your own
- * surface classes — this component only supplies behavior, focus ring, and
+ * surface classes â€” this component only supplies behavior, focus ring, and
  * disabled handling.
  *
  * For the common corner-X pattern, use {@link DialogCloseIconButton}.
  *
- * **Data attributes** — `data-disabled`.
+ * **Data attributes** â€” `data-disabled`.
  *
- * **Passthrough props** — `className`, `nativeButton`, `render`, `style`, plus
+ * **Passthrough props** â€” `className`, `nativeButton`, `render`, `style`, plus
  * native `<button>` attrs.
  *
  * @since 0.2.5
@@ -357,7 +357,7 @@ DialogClose.displayName = "DialogClose";
 // ---- DIALOG CLOSE ICON BUTTON -----------------------------------------------
 
 /**
- * Styled corner-X close button — a convenience built on Base UI's
+ * Styled corner-X close button â€” a convenience built on Base UI's
  * `Dialog.Close`. Renders an absolutely positioned circular 32px hit-target
  * with the Phosphor X icon and an accessible name ("Close dialog") for
  * screen readers.
@@ -365,14 +365,14 @@ DialogClose.displayName = "DialogClose";
  * Place inside a `DialogPopup` before `DialogHeader`; the header has `pr-6`
  * by default to reserve space for this button.
  *
- * **Data attributes** — `data-disabled`.
+ * **Data attributes** â€” `data-disabled`.
  *
  * @since 0.2.5
  * @example
  * ```tsx
  * <DialogPopup>
  *   <DialogCloseIconButton />
- *   <DialogHeader>—</DialogHeader>
+ *   <DialogHeader>â€”</DialogHeader>
  * </DialogPopup>
  * ```
  */
@@ -409,7 +409,7 @@ DialogCloseIconButton.displayName = "DialogCloseIconButton";
 /**
  * Layout helper grouping `DialogTitle` + `DialogDescription`. Reserves right
  * padding (`pr-6`) for an optional `DialogCloseIconButton`. Not a Base UI
- * element — renders a `<div>` with a stable `data-slot` for global styling.
+ * element â€” renders a `<div>` with a stable `data-slot` for global styling.
  *
  * @since 0.2.5
  */
@@ -431,7 +431,7 @@ DialogHeader.displayName = "DialogHeader";
 // ---- DIALOG FOOTER ----------------------------------------------------------
 
 /**
- * Layout helper — horizontal action row on =sm; reversed vertical stack on
+ * Layout helper â€” horizontal action row on =sm; reversed vertical stack on
  * narrow viewports so the primary action stays on top.
  *
  * @since 0.2.5

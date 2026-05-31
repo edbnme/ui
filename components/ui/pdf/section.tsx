@@ -11,12 +11,17 @@ import * as React from "react";
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfFlowProps,
+  isPdfNodeEmpty,
   mergePdfStyles,
+  type PdfFlowProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfSectionProps {
+export interface PdfSectionProps extends PdfFlowProps {
   title?: string;
   description?: string;
   children: React.ReactNode;
@@ -30,34 +35,37 @@ export function PdfSection({
   children,
   noWrap = false,
   style,
+  wrap,
+  ...flowProps
 }: PdfSectionProps) {
   const theme = usePdfTheme();
+  const hasTitle = !isPdfNodeEmpty(title);
+  const hasDescription = !isPdfNodeEmpty(description);
   const styles = StyleSheet.create({
     section: {
       marginBottom: theme.spacing.section,
-      paddingTop: title ? theme.spacing.sm : 0,
+      paddingTop: hasTitle ? theme.spacing.sm : 0,
     } as Style,
     title: {
-      color: theme.colors.foreground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.lg,
-      fontWeight: 700,
+      ...createPdfTextStyle(theme, { size: "lg", weight: "bold" }),
       marginBottom: 4,
     } as Style,
     description: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-      lineHeight: 1.45,
+      ...createPdfTextStyle(theme, { size: "sm", tone: "muted" }),
       marginBottom: theme.spacing.sm,
     } as Style,
   });
 
   return (
-    <View wrap={!noWrap} style={mergePdfStyles(styles.section, style)}>
-      {title ? <Text style={styles.title}>{title}</Text> : null}
-      {description ? (
-        <Text style={styles.description}>{description}</Text>
+    <View
+      {...getPdfFlowProps({ ...flowProps, wrap: wrap ?? !noWrap })}
+      style={mergePdfStyles(styles.section, style)}
+    >
+      {hasTitle ? (
+        <Text style={styles.title}>{formatPdfValue(title)}</Text>
+      ) : null}
+      {hasDescription ? (
+        <Text style={styles.description}>{formatPdfValue(description)}</Text>
       ) : null}
       {children}
     </View>

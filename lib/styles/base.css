@@ -180,7 +180,7 @@
 
 @layer utilities {
   /* Backdrop blur with saturation (glassmorphism) */
-  .backdrop-apple {
+  .backdrop-frosted {
     backdrop-filter: blur(var(--blur-xl)) saturate(var(--backdrop-saturate));
   }
 
@@ -268,7 +268,7 @@
   }
 
   /* Focus ring */
-  .focus-ring-apple {
+  .focus-ring-crisp {
     @apply outline-none;
     @apply focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
     @apply focus-visible:ring-offset-background;

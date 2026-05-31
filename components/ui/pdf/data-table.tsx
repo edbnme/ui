@@ -16,22 +16,34 @@ import {
   PdfTableRow,
 } from "@/components/ui/pdf/table";
 import { PdfText } from "@/components/ui/pdf/text";
-import { mergePdfStyles, type PdfStyleInput } from "@/lib/pdf-theme";
+import {
+  formatPdfValue,
+  mergePdfStyles,
+  type PdfFlowProps,
+  type PdfTextAlign,
+  type PdfStyleInput,
+} from "@/lib/pdf-theme";
 
 export interface PdfDataTableColumn<T> {
   key: string;
   header: React.ReactNode;
   width?: number | string;
-  align?: "left" | "center" | "right";
-  accessor: keyof T | ((row: T, index: number) => React.ReactNode);
+  align?: PdfTextAlign;
+  accessor?: keyof T | ((row: T, index: number) => React.ReactNode);
+  format?: (value: unknown, row: T, index: number) => React.ReactNode;
+  emptyValue?: React.ReactNode;
+  headerStyle?: PdfStyleInput;
+  cellStyle?: PdfStyleInput;
 }
 
-export interface PdfDataTableProps<T> {
-  columns: PdfDataTableColumn<T>[];
-  data: T[];
+export interface PdfDataTableProps<T> extends PdfFlowProps {
+  columns?: readonly PdfDataTableColumn<T>[];
+  data?: readonly T[] | null;
   emptyText?: string;
+  noColumnsText?: string;
   bordered?: boolean;
   striped?: boolean;
+  getRowKey?: (row: T, index: number) => React.Key;
   style?: PdfStyleInput;
 }
 
@@ -40,21 +52,38 @@ function readCell<T>(
   column: PdfDataTableColumn<T>,
   index: number
 ): React.ReactNode {
-  if (typeof column.accessor === "function") return column.accessor(row, index);
-  const value = row[column.accessor];
-  if (value == null) return "";
-  return String(value);
+  const rawValue =
+    typeof column.accessor === "function"
+      ? column.accessor(row, index)
+      : column.accessor
+        ? row[column.accessor]
+        : row && typeof row === "object" && column.key in row
+          ? row[column.key as keyof T]
+          : undefined;
+
+  return column.format
+    ? column.format(rawValue, row, index)
+    : formatPdfValue(rawValue, column.emptyValue);
 }
 
 export function PdfDataTable<T>({
-  columns,
+  columns = [],
   data,
   emptyText = "No rows",
+  noColumnsText = "No columns",
   bordered = false,
   striped = true,
+  getRowKey,
   style,
+  ...flowProps
 }: PdfDataTableProps<T>) {
-  if (columns.length === 0 || data.length === 0) {
+  const rows = data ?? [];
+
+  if (columns.length === 0) {
+    return <PdfText tone="muted">{noColumnsText}</PdfText>;
+  }
+
+  if (rows.length === 0) {
     return <PdfText tone="muted">{emptyText}</PdfText>;
   }
 
@@ -62,6 +91,7 @@ export function PdfDataTable<T>({
     <PdfTable
       bordered={bordered}
       striped={striped}
+      {...flowProps}
       style={mergePdfStyles(style)}
     >
       <PdfTableHeader>
@@ -71,6 +101,7 @@ export function PdfDataTable<T>({
               key={column.key}
               width={column.width}
               align={column.align}
+              style={column.headerStyle}
             >
               {column.header}
             </PdfTableCell>
@@ -78,13 +109,14 @@ export function PdfDataTable<T>({
         </PdfTableRow>
       </PdfTableHeader>
       <PdfTableBody>
-        {data.map((row, rowIndex) => (
-          <PdfTableRow key={rowIndex}>
+        {rows.map((row, rowIndex) => (
+          <PdfTableRow key={getRowKey?.(row, rowIndex) ?? rowIndex}>
             {columns.map((column) => (
               <PdfTableCell
                 key={column.key}
                 width={column.width}
                 align={column.align}
+                style={column.cellStyle}
               >
                 {readCell(row, column, rowIndex)}
               </PdfTableCell>

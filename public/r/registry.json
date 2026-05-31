@@ -1156,6 +1156,58 @@
       ]
     },
     {
+      "name": "pdf-fonts",
+      "type": "registry:lib",
+      "title": "PDF Fonts",
+      "description": "Idempotent font registration and hyphenation helpers for React PDF documents.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "lib/pdf-fonts.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "pdf-render-node",
+      "type": "registry:lib",
+      "title": "PDF Render Node",
+      "description": "Node helpers for rendering React PDF documents to files, buffers, strings, and streams.",
+      "dependencies": [
+        "@react-pdf/renderer"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "lib/pdf-render-node.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "pdf-render-web",
+      "type": "registry:lib",
+      "title": "PDF Render Web",
+      "description": "Web helpers around usePDF, BlobProvider, PDFDownloadLink, PDFViewer, and pdf().",
+      "dependencies": [
+        "@react-pdf/renderer"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "lib/pdf-render-web.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "pdf-theme",
       "type": "registry:lib",
       "title": "PDF Theme",
@@ -1896,10 +1948,46 @@
       ]
     },
     {
+      "name": "pdf-document",
+      "type": "registry:ui",
+      "title": "PDF Document",
+      "description": "Document and page wrappers for metadata, permissions, bookmarks, page sizing, and theme context.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/document.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-dynamic",
+      "type": "registry:ui",
+      "title": "PDF Dynamic",
+      "description": "Dynamic text and view wrappers for page-aware render callbacks.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/dynamic.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "pdf-form",
       "type": "registry:ui",
       "title": "PDF Form",
-      "description": "Printable text and checkbox fields for generated PDF forms.",
+      "description": "Printable fields plus opt-in native AcroForm text, checkbox, select, list, and fieldset wrappers.",
       "dependencies": [
         "@react-pdf/renderer",
         "@react-pdf/types"
@@ -2040,12 +2128,32 @@
       ]
     },
     {
+      "name": "pdf-math",
+      "type": "registry:ui",
+      "title": "PDF Math",
+      "description": "Optional LaTeX math wrapper powered by @react-pdf/math.",
+      "dependencies": [
+        "@react-pdf/math",
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/math.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "pdf-page-break",
       "type": "registry:ui",
       "title": "PDF Page Break",
       "description": "Insert an explicit React PDF page break in flowing documents.",
       "dependencies": [
-        "@react-pdf/renderer"
+        "@react-pdf/renderer",
+        "@react-pdf/types"
       ],
       "registryDependencies": [],
       "variant": "pdf",
@@ -2179,6 +2287,24 @@
       "files": [
         {
           "path": "components/ui/pdf/stack.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pdf-svg",
+      "type": "registry:ui",
+      "title": "PDF SVG",
+      "description": "Theme-aware SVG container plus re-exported React PDF SVG primitives.",
+      "dependencies": [
+        "@react-pdf/renderer",
+        "@react-pdf/types"
+      ],
+      "registryDependencies": [],
+      "variant": "pdf",
+      "files": [
+        {
+          "path": "components/ui/pdf/svg.tsx",
           "type": "registry:ui"
         }
       ]

@@ -11,12 +11,18 @@ import * as React from "react";
 import { Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfFlowProps,
+  isPdfNodeEmpty,
   mergePdfStyles,
+  type PdfAdvancedTextProps,
   type PdfStyleInput,
+  type PdfTextRenderProps,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfHeadingProps {
+export interface PdfHeadingProps extends PdfAdvancedTextProps {
   children: React.ReactNode;
   level?: 1 | 2 | 3 | 4;
   eyebrow?: string;
@@ -35,30 +41,46 @@ export function PdfHeading({
   level = 2,
   eyebrow,
   style,
+  render,
+  ...flowProps
 }: PdfHeadingProps) {
   const theme = usePdfTheme();
+  const resolvedLevel = levelSize[level] ? level : 2;
+  const hasEyebrow = !isPdfNodeEmpty(eyebrow);
   const styles = StyleSheet.create({
     eyebrow: {
-      color: theme.colors.primary,
-      fontSize: theme.typography.xs,
+      ...createPdfTextStyle(theme, { color: theme.colors.primary, size: "xs" }),
       letterSpacing: 1.2,
       marginBottom: 4,
       textTransform: "uppercase",
     } as Style,
     heading: {
-      color: theme.colors.foreground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography[levelSize[level]],
-      fontWeight: 700,
-      lineHeight: 1.15,
-      marginBottom: theme.spacing.sm,
+      ...createPdfTextStyle(theme, {
+        lineHeight: 1.15,
+        marginBottom: theme.spacing.sm,
+        size: levelSize[resolvedLevel],
+        weight: "bold",
+      }),
     } as Style,
   });
+  const renderProps = render
+    ? {
+        render: (props: PdfTextRenderProps) => formatPdfValue(render(props)),
+      }
+    : {};
 
   return (
     <>
-      {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
-      <Text style={mergePdfStyles(styles.heading, style)}>{children}</Text>
+      {hasEyebrow ? (
+        <Text style={styles.eyebrow}>{formatPdfValue(eyebrow)}</Text>
+      ) : null}
+      <Text
+        {...getPdfFlowProps(flowProps)}
+        {...renderProps}
+        style={mergePdfStyles(styles.heading, style)}
+      >
+        {formatPdfValue(children)}
+      </Text>
     </>
   );
 }

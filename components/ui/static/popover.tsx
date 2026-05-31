@@ -1,5 +1,5 @@
-/**
- * Popover — anchored popup surface built on Base UI's Popover primitive.
+﻿/**
+ * Popover â€” anchored popup surface built on Base UI's Popover primitive.
  *
  * Use for transient contextual content attached to a trigger button:
  * settings, mini-forms, rich tooltips, quick actions. For modal decisions
@@ -11,11 +11,11 @@
  * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.3.0
- * @brand      edbn/ui — <https://ui.edbn.me>
+ * @brand      edbn/ui â€” <https://ui.edbn.me>
  * @docs       https://ui.edbn.me/docs/components/popover
  * @source     https://ui.edbn.me/r/popover.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/popover
+ * @upstream   Base UI v1.4.1 â€” https://base-ui.com/react/components/popover
  * @a11y       WAI-ARIA Dialog (non-modal) pattern when not modal; focus
  *             trap when `modal`; automatic `aria-labelledby` /
  *             `aria-describedby` wiring via Base UI; Escape and outside
@@ -33,7 +33,7 @@
  *         <PopoverCloseIconButton />       // optional corner X
  *         <PopoverViewport>               // optional content transitions
  *           <PopoverTitle>Settings</PopoverTitle>
- *           <PopoverDescription>Configure…</PopoverDescription>
+ *           <PopoverDescription>Configureâ€¦</PopoverDescription>
  *         </PopoverViewport>
  *       </PopoverPopup>
  *     </PopoverPositioner>
@@ -51,7 +51,7 @@
  * const handle = createPopoverHandle<{ userId: string }>();
  * <PopoverTrigger handle={handle} payload={{ userId: "1" }}>Profile</PopoverTrigger>
  * <PopoverRoot handle={handle}>
- *   {({ payload }) => <PopoverPortal>…</PopoverPortal>}
+ *   {({ payload }) => <PopoverPortal>â€¦</PopoverPortal>}
  * </PopoverRoot>
  * ```
  * @registryDescription Floating popover with auto-positioning and focus management.
@@ -84,12 +84,12 @@ PopoverRoot.displayName = "PopoverRoot";
 /**
  * Button that opens the popover. Supports hover-triggered open via
  * `openOnHover`, with configurable `delay` and `closeDelay`. Unstyled by
- * default (focus ring only) — compose with your own button surface via
+ * default (focus ring only) â€” compose with your own button surface via
  * `className` or `render`.
  *
- * **Data attributes** — `data-popup-open`, `data-pressed`.
+ * **Data attributes** â€” `data-popup-open`, `data-pressed`.
  *
- * **Passthrough props** — `className`, `closeDelay`, `delay`, `handle`,
+ * **Passthrough props** â€” `className`, `closeDelay`, `delay`, `handle`,
  * `id`, `nativeButton`, `openOnHover`, `payload`, `render`, `style`, plus
  * native `<button>` attrs.
  *
@@ -123,7 +123,7 @@ PopoverTrigger.displayName = "PopoverTrigger";
  * Portals popover content into a stable DOM location. Pass `keepMounted` to
  * retain children when closed (for external animators).
  *
- * **Passthrough props** — `className`, `container`, `keepMounted`, `render`,
+ * **Passthrough props** â€” `className`, `container`, `keepMounted`, `render`,
  * `style`.
  *
  * @since 0.3.0
@@ -140,7 +140,7 @@ PopoverPortal.displayName = "PopoverPortal";
  * Optional dimming overlay behind the popup when `modal` is true. Not used
  * for non-modal popovers.
  *
- * **Data attributes** — `data-open`, `data-closed`, `data-starting-style`,
+ * **Data attributes** â€” `data-open`, `data-closed`, `data-starting-style`,
  * `data-ending-style`.
  *
  * @since 0.3.0
@@ -171,10 +171,10 @@ PopoverBackdrop.displayName = "PopoverBackdrop";
  * `side`, `align`, `sideOffset`, `alignOffset`, `collisionAvoidance`, and
  * `collisionBoundary` to tune placement.
  *
- * **Data attributes** — `data-align`, `data-anchor-hidden`, `data-open`,
+ * **Data attributes** â€” `data-align`, `data-anchor-hidden`, `data-open`,
  * `data-closed`, `data-side`.
  *
- * **CSS variables** — `--anchor-height`, `--anchor-width`,
+ * **CSS variables** â€” `--anchor-height`, `--anchor-width`,
  * `--available-height`, `--available-width`, `--positioner-height`,
  * `--positioner-width`, `--transform-origin`.
  *
@@ -198,12 +198,12 @@ PopoverPositioner.displayName = "PopoverPositioner";
 
 /**
  * The popover surface. Uses `--transform-origin` from the positioner so the
- * scale-in animates from the anchor direction (Apple-like).
+ * scale-in animates from the anchor direction.
  *
- * **Data attributes** — `data-align`, `data-instant`, `data-open`,
+ * **Data attributes** â€” `data-align`, `data-instant`, `data-open`,
  * `data-closed`, `data-side`, `data-starting-style`, `data-ending-style`.
  *
- * **CSS variables** — `--popup-height`, `--popup-width`.
+ * **CSS variables** â€” `--popup-height`, `--popup-width`.
  *
  * @since 0.3.0
  */
@@ -239,7 +239,7 @@ PopoverPopup.displayName = "PopoverPopup";
  * Small triangle indicating the popover's anchor direction. Rotates
  * automatically via the `data-side` attribute.
  *
- * **Data attributes** — `data-align`, `data-open`, `data-closed`,
+ * **Data attributes** â€” `data-align`, `data-open`, `data-closed`,
  * `data-side`, `data-uncentered`.
  *
  * @since 0.3.0
@@ -322,7 +322,7 @@ PopoverDescription.displayName = "PopoverDescription";
  * use {@link PopoverCloseIconButton}; for footer buttons place a
  * `PopoverClose` inside your own layout.
  *
- * **Passthrough props** — `className`, `nativeButton`, `render`, `style`,
+ * **Passthrough props** â€” `className`, `nativeButton`, `render`, `style`,
  * plus native `<button>` attrs.
  *
  * @since 0.3.0
@@ -357,7 +357,7 @@ PopoverClose.displayName = "PopoverClose";
  * ```tsx
  * <PopoverPopup>
  *   <PopoverCloseIconButton />
- *   …
+ *   â€¦
  * </PopoverPopup>
  * ```
  */
@@ -395,10 +395,10 @@ PopoverCloseIconButton.displayName = "PopoverCloseIconButton";
  * Optional viewport for coordinating multi-content popover transitions
  * (rare; used when the popover's inner content swaps while remaining open).
  *
- * **Data attributes** — `data-activation-direction`, `data-current`,
+ * **Data attributes** â€” `data-activation-direction`, `data-current`,
  * `data-instant`, `data-previous`, `data-transitioning`.
  *
- * **CSS variables** — `--popup-height`, `--popup-width`.
+ * **CSS variables** â€” `--popup-height`, `--popup-width`.
  *
  * @since 0.3.0
  */

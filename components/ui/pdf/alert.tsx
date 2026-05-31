@@ -11,13 +11,18 @@ import * as React from "react";
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  createPdfTextStyle,
+  formatPdfValue,
+  getPdfPrimitiveProps,
   getToneColor,
+  isPdfNodeEmpty,
   mergePdfStyles,
+  type PdfPrimitiveProps,
   type PdfStyleInput,
   usePdfTheme,
 } from "@/lib/pdf-theme";
 
-export interface PdfAlertProps {
+export interface PdfAlertProps extends PdfPrimitiveProps {
   title?: string;
   children: React.ReactNode;
   tone?: "primary" | "success" | "warning" | "destructive";
@@ -29,9 +34,11 @@ export function PdfAlert({
   children,
   tone = "primary",
   style,
+  ...primitiveProps
 }: PdfAlertProps) {
   const theme = usePdfTheme();
   const color = getToneColor(theme, tone);
+  const hasTitle = !isPdfNodeEmpty(title);
   const styles = StyleSheet.create({
     alert: {
       borderColor: theme.colors.border,
@@ -42,25 +49,23 @@ export function PdfAlert({
       marginBottom: theme.spacing.md,
       padding: theme.spacing.md,
     } as Style,
-    title: {
-      color: theme.colors.foreground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.base,
-      fontWeight: 700,
+    title: createPdfTextStyle(theme, {
       marginBottom: 4,
-    } as Style,
-    body: {
-      color: theme.colors.mutedForeground,
-      fontFamily: theme.typography.fontFamily,
-      fontSize: theme.typography.sm,
-      lineHeight: 1.45,
-    } as Style,
+      size: "base",
+      weight: "bold",
+    }),
+    body: createPdfTextStyle(theme, { size: "sm", tone: "muted" }),
   });
 
   return (
-    <View style={mergePdfStyles(styles.alert, style)}>
-      {title ? <Text style={styles.title}>{title}</Text> : null}
-      <Text style={styles.body}>{children}</Text>
+    <View
+      {...getPdfPrimitiveProps(primitiveProps)}
+      style={mergePdfStyles(styles.alert, style)}
+    >
+      {hasTitle ? (
+        <Text style={styles.title}>{formatPdfValue(title)}</Text>
+      ) : null}
+      <Text style={styles.body}>{formatPdfValue(children)}</Text>
     </View>
   );
 }
