@@ -50,6 +50,8 @@ const COLOR_EXEMPTIONS = [
 const patterns = {
   useClient: /^["']use client["'];?\s*$/m,
   forwardRef: /forwardRef[<(]/,
+  componentPropsWithRef: /ComponentPropsWithRef\s*</,
+  refPropForwarded: /\bref\s*=\s*\{\s*ref\s*\}/,
   dataSlot: /data-slot\s*=\s*["']/,
   legacyStaticPath: /components\/ui\/static\/|@\/components\/ui\/static\//,
 
@@ -162,7 +164,12 @@ function validateComponentConventions(item, file) {
     error(item.name, `Missing "use client" directive in ${file.path}`);
   }
 
-  if (file.type === "registry:ui" && !patterns.forwardRef.test(content)) {
+  const hasForwardedRef =
+    patterns.forwardRef.test(content) ||
+    (patterns.componentPropsWithRef.test(content) &&
+      patterns.refPropForwarded.test(content));
+
+  if (file.type === "registry:ui" && !hasForwardedRef) {
     warn(
       item.name,
       `No forwardRef found in ${file.path} — expected for UI components`

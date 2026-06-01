@@ -15,7 +15,7 @@
       "dependencyCount": 13,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-06-01T13:57:15.894Z"
+    "computedAt": "2026-06-01T19:02:19.010Z"
   },
   "packages": [
     {
@@ -220,7 +220,7 @@
     "static/alert": {
       "name": "alert",
       "title": "Alert",
-      "description": "Feedback alerts with 5 variants: default, destructive, success, warning, and info.",
+      "description": "Inline status banners with default, destructive, success, warning, and info variants.",
       "variant": "static",
       "sizes": {
         "minified": 4500,
@@ -1194,7 +1194,7 @@
     "static/sidebar": {
       "name": "sidebar",
       "title": "Sidebar",
-      "description": "Sidebar component.",
+      "description": "Responsive sidebar with collapsible sections, menu items, groups, and mobile support.",
       "variant": "static",
       "sizes": {
         "minified": 5700,

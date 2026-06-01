@@ -71,7 +71,7 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "description": "Feedback alerts with 5 variants: default, destructive, success, warning, and info.",
+      "description": "Inline status banners with default, destructive, success, warning, and info variants.",
       "dependencies": [
         "class-variance-authority"
       ],
@@ -841,7 +841,7 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
-      "description": "Sidebar component.",
+      "description": "Responsive sidebar with collapsible sections, menu items, groups, and mobile support.",
       "dependencies": [
         "@phosphor-icons/react",
         "class-variance-authority"

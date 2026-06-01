@@ -1,9 +1,9 @@
-﻿﻿/**
- * AspectRatio — Maintains a consistent width-to-height ratio for content.
+/**
+ * AspectRatio - Maintains a consistent width-to-height ratio for content.
  *
  * A zero-dependency wrapper around the native CSS `aspect-ratio`
  * property. Pass `ratio={16 / 9}` for 16:9, `ratio={1}` for square, etc.
- * Children are absolutely-free — use `object-cover` on images / videos to
+ * Children are unconstrained - use `object-cover` on images / videos to
  * fill the box.
  *
  * Anatomy:
@@ -16,7 +16,7 @@
  * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
+ * @brand      edbn/ui - https://ui.edbn.me
  * @docs       https://ui.edbn.me/docs/components/aspect-ratio
  * @registryDescription A CSS aspect-ratio wrapper component for maintaining consistent proportions.
  */
@@ -39,24 +39,24 @@ export interface AspectRatioProps extends React.ComponentPropsWithoutRef<"div"> 
  *
  * @since 0.1.0
  */
-function AspectRatio({
-  ratio = 1,
-  className,
-  style,
-  children,
-  ...props
-}: AspectRatioProps) {
-  return (
-    <div
-      data-slot="aspect-ratio"
-      className={cn("relative w-full", className)}
-      style={{ aspectRatio: `${ratio}`, ...style }}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
+const AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(
+  function AspectRatio(
+    { ratio = 1, className, style, children, ...props },
+    ref
+  ) {
+    return (
+      <div
+        ref={ref}
+        data-slot="aspect-ratio"
+        className={cn("relative w-full", className)}
+        style={{ aspectRatio: `${ratio}`, ...style }}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 AspectRatio.displayName = "AspectRatio";
 
 // ---- EXPORTS ----------------------------------------------------------------
