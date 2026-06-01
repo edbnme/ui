@@ -43,7 +43,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/accordion.tsx",
+          "path": "components/ui/accordion.tsx",
           "type": "registry:ui"
         }
       ]
@@ -62,7 +62,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/alert-dialog.tsx",
+          "path": "components/ui/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -81,7 +81,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/alert.tsx",
+          "path": "components/ui/alert.tsx",
           "type": "registry:ui"
         }
       ]
@@ -98,7 +98,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/aspect-ratio.tsx",
+          "path": "components/ui/aspect-ratio.tsx",
           "type": "registry:ui"
         }
       ]
@@ -118,7 +118,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/autocomplete.tsx",
+          "path": "components/ui/autocomplete.tsx",
           "type": "registry:ui"
         }
       ]
@@ -137,7 +137,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/avatar.tsx",
+          "path": "components/ui/avatar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -156,7 +156,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/badge.tsx",
+          "path": "components/ui/badge.tsx",
           "type": "registry:ui"
         }
       ]
@@ -173,7 +173,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/breadcrumb.tsx",
+          "path": "components/ui/breadcrumb.tsx",
           "type": "registry:ui"
         }
       ]
@@ -192,7 +192,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/button.tsx",
+          "path": "components/ui/button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -212,7 +212,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/calendar.tsx",
+          "path": "components/ui/calendar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -231,7 +231,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/card.tsx",
+          "path": "components/ui/card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -251,7 +251,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/carousel.tsx",
+          "path": "components/ui/carousel.tsx",
           "type": "registry:ui"
         }
       ]
@@ -270,7 +270,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/chart.tsx",
+          "path": "components/ui/chart.tsx",
           "type": "registry:ui"
         }
       ]
@@ -290,7 +290,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/checkbox-group.tsx",
+          "path": "components/ui/checkbox-group.tsx",
           "type": "registry:ui"
         }
       ]
@@ -310,7 +310,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/checkbox.tsx",
+          "path": "components/ui/checkbox.tsx",
           "type": "registry:ui"
         }
       ]
@@ -329,7 +329,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/collapsible.tsx",
+          "path": "components/ui/collapsible.tsx",
           "type": "registry:ui"
         }
       ]
@@ -349,7 +349,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/combobox.tsx",
+          "path": "components/ui/combobox.tsx",
           "type": "registry:ui"
         }
       ]
@@ -369,7 +369,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/context-menu.tsx",
+          "path": "components/ui/context-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -389,7 +389,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/dialog.tsx",
+          "path": "components/ui/dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -409,7 +409,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/drawer.tsx",
+          "path": "components/ui/drawer.tsx",
           "type": "registry:ui"
         }
       ]
@@ -428,7 +428,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/field.tsx",
+          "path": "components/ui/field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -447,7 +447,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/fieldset.tsx",
+          "path": "components/ui/fieldset.tsx",
           "type": "registry:ui"
         }
       ]
@@ -466,7 +466,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/form.tsx",
+          "path": "components/ui/form.tsx",
           "type": "registry:ui"
         }
       ]
@@ -485,7 +485,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/hover-card.tsx",
+          "path": "components/ui/hover-card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -505,7 +505,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/input-otp.tsx",
+          "path": "components/ui/input-otp.tsx",
           "type": "registry:ui"
         }
       ]
@@ -524,7 +524,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/input.tsx",
+          "path": "components/ui/input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -541,7 +541,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/label.tsx",
+          "path": "components/ui/label.tsx",
           "type": "registry:ui"
         }
       ]
@@ -561,7 +561,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/menu.tsx",
+          "path": "components/ui/menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -581,7 +581,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/menubar.tsx",
+          "path": "components/ui/menubar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -600,7 +600,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/meter.tsx",
+          "path": "components/ui/meter.tsx",
           "type": "registry:ui"
         }
       ]
@@ -619,7 +619,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/navigation-menu.tsx",
+          "path": "components/ui/navigation-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -639,7 +639,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/number-field.tsx",
+          "path": "components/ui/number-field.tsx",
           "type": "registry:ui"
         }
       ]
@@ -656,7 +656,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/pagination.tsx",
+          "path": "components/ui/pagination.tsx",
           "type": "registry:ui"
         }
       ]
@@ -676,7 +676,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/popover.tsx",
+          "path": "components/ui/popover.tsx",
           "type": "registry:ui"
         }
       ]
@@ -695,7 +695,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/preview-card.tsx",
+          "path": "components/ui/preview-card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -714,7 +714,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/progress.tsx",
+          "path": "components/ui/progress.tsx",
           "type": "registry:ui"
         }
       ]
@@ -733,7 +733,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/radio.tsx",
+          "path": "components/ui/radio.tsx",
           "type": "registry:ui"
         }
       ]
@@ -753,7 +753,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/resizable.tsx",
+          "path": "components/ui/resizable.tsx",
           "type": "registry:ui"
         }
       ]
@@ -772,7 +772,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/scroll-area.tsx",
+          "path": "components/ui/scroll-area.tsx",
           "type": "registry:ui"
         }
       ]
@@ -792,7 +792,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/select.tsx",
+          "path": "components/ui/select.tsx",
           "type": "registry:ui"
         }
       ]
@@ -811,7 +811,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/separator.tsx",
+          "path": "components/ui/separator.tsx",
           "type": "registry:ui"
         }
       ]
@@ -832,7 +832,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/sheet.tsx",
+          "path": "components/ui/sheet.tsx",
           "type": "registry:ui"
         }
       ]
@@ -841,7 +841,7 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
-      "description": "Responsive sidebar with collapsible sections, menu items, groups, and mobile support.",
+      "description": "Sidebar component.",
       "dependencies": [
         "@phosphor-icons/react",
         "class-variance-authority"
@@ -857,27 +857,27 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/sidebar.tsx",
+          "path": "components/ui/sidebar.tsx",
           "type": "registry:ui"
         },
         {
-          "path": "components/ui/static/sidebar-context.tsx",
+          "path": "components/ui/sidebar-context.tsx",
           "type": "registry:ui"
         },
         {
-          "path": "components/ui/static/sidebar-group.tsx",
+          "path": "components/ui/sidebar-group.tsx",
           "type": "registry:ui"
         },
         {
-          "path": "components/ui/static/sidebar-menu-sub.tsx",
+          "path": "components/ui/sidebar-menu-sub.tsx",
           "type": "registry:ui"
         },
         {
-          "path": "components/ui/static/sidebar-menu.tsx",
+          "path": "components/ui/sidebar-menu.tsx",
           "type": "registry:ui"
         },
         {
-          "path": "components/ui/static/sidebar-rail.tsx",
+          "path": "components/ui/sidebar-rail.tsx",
           "type": "registry:ui"
         }
       ]
@@ -894,7 +894,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/skeleton.tsx",
+          "path": "components/ui/skeleton.tsx",
           "type": "registry:ui"
         }
       ]
@@ -913,7 +913,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/slider.tsx",
+          "path": "components/ui/slider.tsx",
           "type": "registry:ui"
         }
       ]
@@ -932,7 +932,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/switch.tsx",
+          "path": "components/ui/switch.tsx",
           "type": "registry:ui"
         }
       ]
@@ -949,7 +949,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/table.tsx",
+          "path": "components/ui/table.tsx",
           "type": "registry:ui"
         }
       ]
@@ -968,7 +968,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/tabs.tsx",
+          "path": "components/ui/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -985,7 +985,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/textarea.tsx",
+          "path": "components/ui/textarea.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1005,7 +1005,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/toast.tsx",
+          "path": "components/ui/toast.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1025,7 +1025,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/toggle-group.tsx",
+          "path": "components/ui/toggle-group.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1045,7 +1045,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/toggle.tsx",
+          "path": "components/ui/toggle.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1065,7 +1065,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/toolbar.tsx",
+          "path": "components/ui/toolbar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1084,7 +1084,7 @@
       "variant": "static",
       "files": [
         {
-          "path": "components/ui/static/tooltip.tsx",
+          "path": "components/ui/tooltip.tsx",
           "type": "registry:ui"
         }
       ]

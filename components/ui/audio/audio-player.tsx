@@ -28,7 +28,7 @@ import {
   MenuPopup,
   MenuRadioGroup,
   MenuRadioItem,
-} from "@/components/ui/static/menu";
+} from "@/components/ui/menu";
 import { cn } from "@/lib/utils";
 
 // ---- VARIANTS ---------------------------------------------------------------

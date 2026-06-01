@@ -10,11 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed (Phase 9 — Deprecated File Cleanup)
 
 - **Deleted 5 deprecated static components** — replaced by Base UI v2 equivalents
-  - `static/alert-dialog.tsx` → use `static/alert-dialog-v2.tsx`
-  - `static/dropdown-menu.tsx` → use `static/menu.tsx`
-  - `static/popover.tsx` → use `static/popover-v2.tsx`
-  - `static/sheet.tsx` → use `static/sheet-v2.tsx`
-  - `static/pull-down.tsx` → use `static/menu.tsx` / `static/context-menu.tsx`
+  - `alert-dialog.tsx`
+  - `dropdown-menu.tsx`
+  - `popover.tsx`
+  - `sheet.tsx`
+  - `pull-down.tsx`
 - **Deleted 5 outdated static docs pages** for the removed components
 
 ### Fixed
@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **shared/badge.tsx** — Empty interface `BadgeProps` → type alias
 - **shared/label.tsx** — Empty interface `LabelProps` → type alias
 - **shared/separator.tsx** — Removed duplicate export statement
-- **static/sidebar.tsx** — Updated Slot import to `@/lib/primitives` adapter layer
+- **sidebar.tsx** — Updated Slot import to `@/lib/primitives` adapter layer
 
 ### Changed
 

@@ -21,14 +21,14 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Slot } from "@/lib/primitives";
-import { useSidebar } from "@/components/ui/static/sidebar-context";
+import { useSidebar } from "@/components/ui/sidebar-context";
 import {
   TooltipRoot,
   TooltipPopup,
   TooltipPositioner,
   TooltipTrigger,
-} from "@/components/ui/static/tooltip";
-import { Skeleton } from "@/components/ui/static/skeleton";
+} from "@/components/ui/tooltip";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // ---- SIDEBAR MENU -----------------------------------------------------------
 

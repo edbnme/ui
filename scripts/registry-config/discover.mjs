@@ -36,7 +36,7 @@
  * @packageDocumentation
  */
 
-import { readFileSync, readdirSync, statSync } from "fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "fs";
 import { join, relative, dirname, basename, extname, posix } from "path";
 
 // ---- CONSTANTS --------------------------------------------------------------
@@ -48,7 +48,7 @@ import { join, relative, dirname, basename, extname, posix } from "path";
  */
 export const SOURCE_DIRS = [
   {
-    dir: "components/ui/static",
+    dir: "components/ui",
     type: "registry:ui",
     variant: "static",
     prefix: "",
@@ -95,6 +95,10 @@ const LIB_VARIANT_OVERRIDES = {
  */
 const NON_REGISTRY_LIB_FILES = new Set();
 
+const UI_ROOT_EXCLUDED_DIRS = new Set(["audio", "pdf", "static"]);
+const NON_REGISTRY_SOURCE_FILES = new Set(["components/ui/sonner.tsx"]);
+const LEGACY_STATIC_UI_DIR = "components/ui/static";
+
 /**
  * Peer dependencies that must NEVER appear in a component's `dependencies`
  * (they come from the consumer's React installation). Matches the peerDeps
@@ -140,11 +144,16 @@ function listSourceFiles(root, subdir) {
     if (st.isDirectory()) {
       // Skip styles/ and other non-source subfolders.
       if (entry === "styles" || entry === "__tests__") continue;
+      if (subdir === "components/ui" && UI_ROOT_EXCLUDED_DIRS.has(entry)) {
+        continue;
+      }
       results.push(...listSourceFiles(root, posix.join(subdir, entry)));
     } else if (SOURCE_EXTS.has(extname(entry))) {
       // Skip barrel index files.
       if (basename(entry, extname(entry)) === "index") continue;
-      results.push(posix.join(subdir, entry));
+      const relPath = posix.join(subdir, entry);
+      if (NON_REGISTRY_SOURCE_FILES.has(relPath)) continue;
+      results.push(relPath);
     }
   }
   return results;
@@ -647,6 +656,12 @@ function resolveEntry(main, lookup, scanned) {
  * }}
  */
 export function discoverAll(ossRoot) {
+  if (existsSync(join(ossRoot, LEGACY_STATIC_UI_DIR))) {
+    throw new Error(
+      `[discover] Legacy source directory "${LEGACY_STATIC_UI_DIR}" is not allowed. Use components/ui/<component>.tsx.`
+    );
+  }
+
   const scanned = scanFiles(ossRoot);
 
   // Duplicate-slug detection.

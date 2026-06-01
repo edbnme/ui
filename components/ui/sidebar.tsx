@@ -1,4 +1,4 @@
-﻿﻿/**
+/**
  * Sidebar — Responsive sidebar with collapsible sections, menu items,
  * groups, and mobile sheet support.
  *
@@ -55,8 +55,8 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "@/components/ui/static/sheet";
-import { TooltipProvider } from "@/components/ui/static/tooltip";
+} from "@/components/ui/sheet";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 import {
   type SidebarContextProps,
@@ -68,7 +68,7 @@ import {
   SIDEBAR_WIDTH_MOBILE,
   SIDEBAR_WIDTH_ICON,
   SIDEBAR_KEYBOARD_SHORTCUT,
-} from "@/components/ui/static/sidebar-context";
+} from "@/components/ui/sidebar-context";
 
 // Re-export sub-modules for barrel import
 export {
@@ -76,7 +76,7 @@ export {
   SidebarGroupLabel,
   SidebarGroupAction,
   SidebarGroupContent,
-} from "@/components/ui/static/sidebar-group";
+} from "@/components/ui/sidebar-group";
 export {
   SidebarMenu,
   SidebarMenuItem,
@@ -85,12 +85,12 @@ export {
   SidebarMenuAction,
   SidebarMenuBadge,
   SidebarMenuSkeleton,
-} from "@/components/ui/static/sidebar-menu";
+} from "@/components/ui/sidebar-menu";
 export {
   SidebarMenuSub,
   SidebarMenuSubItem,
   SidebarMenuSubButton,
-} from "@/components/ui/static/sidebar-menu-sub";
+} from "@/components/ui/sidebar-menu-sub";
 export {
   SidebarRail,
   SidebarInput,
@@ -98,7 +98,7 @@ export {
   SidebarFooter,
   SidebarSeparator,
   SidebarContent,
-} from "@/components/ui/static/sidebar-rail";
+} from "@/components/ui/sidebar-rail";
 
 // Re-export context hook
 export { useSidebar };

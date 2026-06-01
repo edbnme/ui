@@ -32,7 +32,7 @@
     "test:run": "vitest run --passWithNoTests"
   },
   "dependencies": {
-    "@base-ui/react": "^1.4.1",
+    "@base-ui/react": "^1.5.0",
     "@phosphor-icons/react": "^2.1.10",
     "@react-pdf/math": "^2.0.1",
     "@react-pdf/renderer": "^4.5.1",

@@ -21,7 +21,7 @@ import {
   ScrubBarTimeLabel,
   ScrubBarTrack,
 } from "@/components/ui/audio/scrub-bar";
-import { Button } from "@/components/ui/static/button";
+import { Button } from "@/components/ui/button";
 import {
   useTranscriptViewer,
   type CharacterAlignmentResponseModel,

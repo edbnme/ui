@@ -18,9 +18,9 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { useSidebar } from "@/components/ui/static/sidebar-context";
-import { Input } from "@/components/ui/static/input";
-import { Separator } from "@/components/ui/static/separator";
+import { useSidebar } from "@/components/ui/sidebar-context";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 
 // ---- SIDEBAR RAIL -----------------------------------------------------------
 

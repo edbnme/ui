@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Registry Validation Script
  *
  * Build-time validation for edbn-ui registry JSON files.
@@ -27,12 +27,20 @@ const REGISTRY_DIRS = [
   join(root, "oss", "public", "r"),
 ];
 
+const LEGACY_STATIC_UI_SOURCE_DIR = join(
+  root,
+  "oss",
+  "components",
+  "ui",
+  "static"
+);
+
 /** Items exempt from UI component checks (hooks, libs, etc.) */
 const NON_UI_TYPES = ["registry:hook", "registry:lib", "registry:component"];
 
 /** Files exempt from hardcoded color warnings */
 const COLOR_EXEMPTIONS = [
-  "components/ui/static/avatar.tsx",
+  "components/ui/avatar.tsx",
   "components/ui/animated/slide-to-unlock.tsx",
   "maps/",
 ];
@@ -43,6 +51,7 @@ const patterns = {
   useClient: /^["']use client["'];?\s*$/m,
   forwardRef: /forwardRef[<(]/,
   dataSlot: /data-slot\s*=\s*["']/,
+  legacyStaticPath: /components\/ui\/static\/|@\/components\/ui\/static\//,
 
   /** Hardcoded Tailwind color classes */
   hardcodedColors:
@@ -88,6 +97,22 @@ function isColorExempt(filePath) {
 function validateFileContent(item, file) {
   if (!file.content || file.content.trim().length === 0) {
     error(item.name, `File ${file.path} has empty content`);
+  }
+}
+
+function validateCanonicalUiPaths(item, file) {
+  if (patterns.legacyStaticPath.test(file.path)) {
+    error(
+      item.name,
+      `Legacy static path found in registry file path: ${file.path}`
+    );
+  }
+
+  if (file.content && patterns.legacyStaticPath.test(file.content)) {
+    error(
+      item.name,
+      `Legacy static import/path found in ${file.path}; use components/ui/<name>`
+    );
   }
 }
 
@@ -172,15 +197,25 @@ function validateHardcodedColors(item, file) {
   }
 }
 
+function validateNoLegacyStaticSourceDir() {
+  if (existsSync(LEGACY_STATIC_UI_SOURCE_DIR)) {
+    error(
+      "components/ui/static",
+      "Legacy source directory exists. Move files to oss/components/ui/<component>.tsx."
+    );
+  }
+}
+
 // ---- MAIN -------------------------------------------------------------------
 
 console.log("");
-console.log("   ╔═══════════════════════════════════════╗");
-console.log("   ║   EDBN UI — Registry Validation       ║");
-console.log("   ╚═══════════════════════════════════════╝");
+console.log("   +---------------------------------------+");
+console.log("   ¦   EDBN UI — Registry Validation       ¦");
+console.log("   +---------------------------------------+");
 console.log("");
 
 const registryDir = getRegistryDir();
+validateNoLegacyStaticSourceDir();
 
 if (!registryDir) {
   console.error(
@@ -230,6 +265,7 @@ for (const jsonFile of jsonFiles) {
 
   for (const file of item.files) {
     validateFileContent(item, file);
+    validateCanonicalUiPaths(item, file);
     validateDependencies(item, file);
     validateComponentConventions(item, file);
     validateHardcodedColors(item, file);

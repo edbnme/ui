@@ -15,7 +15,7 @@
       "dependencyCount": 13,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-05-31T10:34:15.764Z"
+    "computedAt": "2026-06-01T13:57:15.894Z"
   },
   "packages": [
     {
@@ -1194,7 +1194,7 @@
     "static/sidebar": {
       "name": "sidebar",
       "title": "Sidebar",
-      "description": "Responsive sidebar with collapsible sections, menu items, groups, and mobile support.",
+      "description": "Sidebar component.",
       "variant": "static",
       "sizes": {
         "minified": 5700,

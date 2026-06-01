@@ -40,7 +40,7 @@ npx shadcn@latest add https://ui.edbn.me/r/audio/audio-message.json
 
 1. Add or update registry config in `oss/scripts/registry-config/`.
 2. Keep source files in the matching OSS directories:
-   - `oss/components/ui/static/`
+   - `oss/components/ui/`
    - `oss/components/ui/shared/`
    - `oss/lib/`
    - `oss/hooks/`

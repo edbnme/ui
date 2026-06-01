@@ -8,7 +8,7 @@
  *
  * Setup (once, usually in `app/layout.tsx`):
  * ```tsx
- * import { ToastProvider, ToastViewport } from "@/components/ui/static/toast";
+ * import { ToastProvider, ToastViewport } from "@/components/ui/toast";
  *
  * <ToastProvider>
  *   {children}
