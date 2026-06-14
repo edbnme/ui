@@ -7,7 +7,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1780185613903
+    "timestamp": 1781131024234
   },
   "@phosphor-icons/react": {
     "data": {
@@ -18,7 +18,7 @@
       "source": "fallback",
       "note": "Per icon, tree-shakable"
     },
-    "timestamp": 1780185613903
+    "timestamp": 1781131024234
   },
   "@react-pdf/math": {
     "data": {
@@ -28,7 +28,7 @@
       "version": "unknown",
       "source": "estimate"
     },
-    "timestamp": 1780185617418
+    "timestamp": 1781131072415
   },
   "@react-pdf/renderer": {
     "data": {
@@ -39,7 +39,7 @@
       "dependencyCount": 13,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185617603
+    "timestamp": 1781131073006
   },
   "@react-pdf/types": {
     "data": {
@@ -50,7 +50,7 @@
       "dependencyCount": 3,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185617747
+    "timestamp": 1781131073527
   },
   "class-variance-authority": {
     "data": {
@@ -60,7 +60,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1780185617747
+    "timestamp": 1781131073527
   },
   "clsx": {
     "data": {
@@ -70,7 +70,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1780185617747
+    "timestamp": 1781131073527
   },
   "embla-carousel-react": {
     "data": {
@@ -81,7 +81,7 @@
       "dependencyCount": 2,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185618022
+    "timestamp": 1781131073914
   },
   "hast-util-to-jsx-runtime": {
     "data": {
@@ -92,7 +92,7 @@
       "dependencyCount": 15,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185618171
+    "timestamp": 1781131074603
   },
   "input-otp": {
     "data": {
@@ -103,7 +103,7 @@
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185618330
+    "timestamp": 1781131074974
   },
   "motion": {
     "data": {
@@ -113,7 +113,7 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1780185618330
+    "timestamp": 1781131074974
   },
   "qrcode": {
     "data": {
@@ -124,7 +124,7 @@
       "dependencyCount": 3,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185618492
+    "timestamp": 1781131075351
   },
   "react-day-picker": {
     "data": {
@@ -135,7 +135,7 @@
       "dependencyCount": 2,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185618687
+    "timestamp": 1781131076273
   },
   "react-resizable-panels": {
     "data": {
@@ -146,7 +146,7 @@
       "dependencyCount": 0,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185618843
+    "timestamp": 1781131076786
   },
   "recharts": {
     "data": {
@@ -157,18 +157,18 @@
       "dependencyCount": 11,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185619002
+    "timestamp": 1781131077158
   },
   "shiki": {
     "data": {
       "name": "shiki",
-      "version": "4.1.0",
-      "size": 206109,
-      "gzip": 64075,
+      "version": "4.2.0",
+      "size": 206270,
+      "gzip": 64175,
       "dependencyCount": 8,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185619180
+    "timestamp": 1781131077741
   },
   "streamdown": {
     "data": {
@@ -179,7 +179,7 @@
       "dependencyCount": 16,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185619402
+    "timestamp": 1781131078222
   },
   "tailwind-merge": {
     "data": {
@@ -189,17 +189,27 @@
       "version": "latest",
       "source": "fallback"
     },
-    "timestamp": 1780185619402
+    "timestamp": 1781131078223
   },
   "use-stick-to-bottom": {
     "data": {
       "name": "use-stick-to-bottom",
-      "version": "1.1.4",
-      "size": 6802,
-      "gzip": 2530,
-      "dependencyCount": 0,
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
+    },
+    "timestamp": 1781131126407
+  },
+  "@daypicker/react": {
+    "data": {
+      "name": "@daypicker/react",
+      "version": "10.0.1",
+      "size": 67045,
+      "gzip": 19305,
+      "dependencyCount": 1,
       "source": "bundlephobia"
     },
-    "timestamp": 1780185619656
+    "timestamp": 1781175437664
   }
 }

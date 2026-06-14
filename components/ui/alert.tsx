@@ -3,9 +3,9 @@
 /**
  * Alert - inline status banner for non-modal messages.
  *
- * This is a local semantic wrapper, not a Base UI primitive. Use it for
- * contextual status messages that sit near the related content. For transient
- * notifications use Toast; for blocking decisions use AlertDialog.
+ * This is a local semantic wrapper for contextual status messages that sit
+ * near the related content. For transient notifications use Toast; for
+ * blocking decisions use AlertDialog.
  *
  * Accessibility: renders `role="alert"` by default so assistive technology
  * announces urgent content when it appears. Override with `role="status"` for
@@ -34,27 +34,28 @@ import { cn } from "@/lib/utils";
  */
 const alertVariants = cva(
   [
-    "relative isolate w-full min-w-0 overflow-hidden rounded-2xl border px-4 py-3.5 text-sm",
+    "relative isolate w-full min-w-0 overflow-hidden rounded-2xl border px-4 py-3.5 text-sm outline-none",
     "border-[color:var(--alert-border)] bg-[var(--alert-surface)] text-[var(--alert-foreground)]",
-    "shadow-[0_1px_0_color-mix(in_oklab,var(--foreground)_4%,transparent),0_18px_44px_-34px_var(--alert-shadow)]",
-    "supports-[backdrop-filter]:backdrop-blur-xl",
-    "after:pointer-events-none after:absolute after:inset-x-3 after:top-0 after:h-px after:bg-[color-mix(in_oklab,var(--alert-highlight)_72%,transparent)]",
-    "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4.5 [&>svg]:size-4 [&>svg]:shrink-0",
-    "[&>svg]:text-[var(--alert-accent)]",
-    "[&>svg~*]:pl-7 [&_code]:rounded-md [&_code]:bg-[var(--alert-code-surface)] [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[12px]",
+    "shadow-sm transition-[background-color,border-color] duration-150 ease-out motion-reduce:transition-none dark:shadow-none",
+    "dark:[--alert-border:color-mix(in_oklab,var(--border)_90%,var(--alert-tone)_10%)] dark:[--alert-surface:color-mix(in_oklab,var(--background)_98%,var(--alert-tone)_2%)] dark:[--alert-muted:color-mix(in_oklab,var(--muted-foreground)_94%,var(--alert-tone)_6%)] dark:[--alert-mark-surface:color-mix(in_oklab,var(--background)_93%,var(--alert-tone)_7%)] dark:[--alert-code-surface:color-mix(in_oklab,var(--background)_96%,var(--alert-tone)_4%)] dark:[--alert-code-border:color-mix(in_oklab,var(--border)_90%,var(--alert-tone)_10%)]",
+    "focus-visible:border-[color:var(--alert-accent)]",
+    "forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:text-[CanvasText] forced-colors:shadow-none",
+    "[&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3.5 [&>svg]:size-6 [&>svg]:shrink-0",
+    "[&>svg]:rounded-full [&>svg]:bg-[var(--alert-mark-surface)] [&>svg]:p-1 [&>svg]:text-[var(--alert-accent)]",
+    "[&>svg~*]:pl-9 [&_code]:rounded-md [&_code]:border [&_code]:border-[color:var(--alert-code-border)] [&_code]:bg-[var(--alert-code-surface)] [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[12px]",
   ],
   {
     variants: {
       variant: {
         default:
-          "[--alert-accent:var(--foreground)] [--alert-border:color-mix(in_oklab,var(--border)_88%,var(--foreground)_12%)] [--alert-surface:color-mix(in_oklab,var(--background)_78%,var(--muted)_22%)] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_86%,var(--foreground))] [--alert-highlight:var(--background)] [--alert-shadow:var(--foreground)] [--alert-code-surface:color-mix(in_oklab,var(--muted)_45%,transparent)]",
+          "[--alert-tone:var(--foreground)] [--alert-accent:var(--alert-tone)] [--alert-border:color-mix(in_oklab,var(--border)_84%,var(--alert-tone)_16%)] [--alert-surface:color-mix(in_oklab,var(--background)_96%,var(--alert-tone)_4%)] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_92%,var(--alert-tone)_8%)] [--alert-mark-surface:color-mix(in_oklab,var(--background)_90%,var(--alert-tone)_10%)] [--alert-code-surface:color-mix(in_oklab,var(--muted)_80%,var(--background)_20%)] [--alert-code-border:color-mix(in_oklab,var(--border)_88%,var(--alert-tone)_12%)]",
         destructive:
-          "[--alert-accent:var(--destructive)] [--alert-border:color-mix(in_oklab,var(--destructive)_24%,var(--border))] [--alert-surface:color-mix(in_oklab,var(--destructive)_7%,var(--background))] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_84%,var(--destructive))] [--alert-highlight:var(--background)] [--alert-shadow:var(--destructive)] [--alert-code-surface:color-mix(in_oklab,var(--destructive)_9%,transparent)]",
+          "[--alert-tone:var(--destructive)] [--alert-accent:var(--alert-tone)] [--alert-border:color-mix(in_oklab,var(--border)_80%,var(--alert-tone)_20%)] [--alert-surface:color-mix(in_oklab,var(--background)_95%,var(--alert-tone)_5%)] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_90%,var(--alert-tone)_10%)] [--alert-mark-surface:color-mix(in_oklab,var(--background)_90%,var(--alert-tone)_10%)] [--alert-code-surface:color-mix(in_oklab,var(--background)_94%,var(--alert-tone)_6%)] [--alert-code-border:color-mix(in_oklab,var(--border)_84%,var(--alert-tone)_16%)]",
         success:
-          "[--alert-accent:var(--chart-2)] [--alert-border:color-mix(in_oklab,var(--chart-2)_22%,var(--border))] [--alert-surface:color-mix(in_oklab,var(--chart-2)_7%,var(--background))] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_84%,var(--chart-2))] [--alert-highlight:var(--background)] [--alert-shadow:var(--chart-2)] [--alert-code-surface:color-mix(in_oklab,var(--chart-2)_9%,transparent)]",
+          "[--alert-tone:var(--chart-2)] [--alert-accent:var(--alert-tone)] [--alert-border:color-mix(in_oklab,var(--border)_80%,var(--alert-tone)_20%)] [--alert-surface:color-mix(in_oklab,var(--background)_95%,var(--alert-tone)_5%)] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_90%,var(--alert-tone)_10%)] [--alert-mark-surface:color-mix(in_oklab,var(--background)_90%,var(--alert-tone)_10%)] [--alert-code-surface:color-mix(in_oklab,var(--background)_94%,var(--alert-tone)_6%)] [--alert-code-border:color-mix(in_oklab,var(--border)_84%,var(--alert-tone)_16%)]",
         warning:
-          "[--alert-accent:var(--chart-5)] [--alert-border:color-mix(in_oklab,var(--chart-5)_24%,var(--border))] [--alert-surface:color-mix(in_oklab,var(--chart-5)_8%,var(--background))] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_84%,var(--chart-5))] [--alert-highlight:var(--background)] [--alert-shadow:var(--chart-5)] [--alert-code-surface:color-mix(in_oklab,var(--chart-5)_10%,transparent)]",
-        info: "[--alert-accent:var(--chart-3)] [--alert-border:color-mix(in_oklab,var(--chart-3)_22%,var(--border))] [--alert-surface:color-mix(in_oklab,var(--chart-3)_7%,var(--background))] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_84%,var(--chart-3))] [--alert-highlight:var(--background)] [--alert-shadow:var(--chart-3)] [--alert-code-surface:color-mix(in_oklab,var(--chart-3)_9%,transparent)]",
+          "[--alert-tone:var(--chart-5)] dark:[--alert-tone:var(--chart-3)] [--alert-accent:var(--alert-tone)] [--alert-border:color-mix(in_oklab,var(--border)_78%,var(--alert-tone)_22%)] [--alert-surface:color-mix(in_oklab,var(--background)_94%,var(--alert-tone)_6%)] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_90%,var(--alert-tone)_10%)] [--alert-mark-surface:color-mix(in_oklab,var(--background)_88%,var(--alert-tone)_12%)] [--alert-code-surface:color-mix(in_oklab,var(--background)_93%,var(--alert-tone)_7%)] [--alert-code-border:color-mix(in_oklab,var(--border)_84%,var(--alert-tone)_16%)]",
+        info: "[--alert-tone:var(--chart-3)] dark:[--alert-tone:var(--chart-1)] [--alert-accent:var(--alert-tone)] [--alert-border:color-mix(in_oklab,var(--border)_80%,var(--alert-tone)_20%)] [--alert-surface:color-mix(in_oklab,var(--background)_95%,var(--alert-tone)_5%)] [--alert-foreground:var(--foreground)] [--alert-muted:color-mix(in_oklab,var(--muted-foreground)_90%,var(--alert-tone)_10%)] [--alert-mark-surface:color-mix(in_oklab,var(--background)_90%,var(--alert-tone)_10%)] [--alert-code-surface:color-mix(in_oklab,var(--background)_94%,var(--alert-tone)_6%)] [--alert-code-border:color-mix(in_oklab,var(--border)_84%,var(--alert-tone)_16%)]",
       },
     },
     defaultVariants: {
@@ -80,12 +81,15 @@ function Alert({
   role = "alert",
   ...props
 }: AlertProps) {
+  const resolvedVariant = variant ?? "default";
+
   return (
     <div
       ref={ref}
       role={role}
       data-slot="alert"
-      className={cn(alertVariants({ variant }), className)}
+      data-variant={resolvedVariant}
+      className={cn(alertVariants({ variant: resolvedVariant }), className)}
       {...props}
     />
   );
@@ -108,6 +112,7 @@ function AlertTitle({ ref, className, ...props }: AlertTitleProps) {
       data-slot="alert-title"
       className={cn(
         "mb-1 text-[13px] font-semibold leading-5 text-[var(--alert-foreground)] [text-wrap:balance]",
+        "forced-colors:text-[CanvasText]",
         className
       )}
       {...props}
@@ -132,6 +137,7 @@ function AlertDescription({ ref, className, ...props }: AlertDescriptionProps) {
       data-slot="alert-description"
       className={cn(
         "text-[13px] leading-5 text-[var(--alert-muted)] [&_p]:leading-5 [&_span]:break-words",
+        "forced-colors:text-[CanvasText]",
         className
       )}
       {...props}

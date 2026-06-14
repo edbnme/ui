@@ -3,16 +3,16 @@
   "name": "label",
   "type": "registry:ui",
   "title": "Label",
-  "description": "A styled label component with peer/group disabled state support.",
+  "description": "Premium solid form label with peer and group disabled state support.",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "static",
   "files": [
     {
       "path": "components/ui/label.tsx",
-      "content": "/**\r\n * Label — Accessible form label with disabled-peer state styling.\r\n *\r\n * A thin wrapper over the native `<label>` element. Associates with a\r\n * control either via `htmlFor` + `id`, or by being nested around the\r\n * control. Adds visual opacity when the adjacent / ancestor control is\r\n * disabled (via `peer-disabled:` and `group-data-disabled:` selectors).\r\n *\r\n * Anatomy:\r\n * ```tsx\r\n * <Label htmlFor=\"email\">Email address</Label>\r\n * <Input id=\"email\" type=\"email\" />\r\n * ```\r\n *\r\n * @package    @edbn/ui\r\n * @version    0.3.0\r\n * @since      0.1.0\r\n * @brand      edbn/ui — https://ui.edbn.me\r\n * @docs       https://ui.edbn.me/docs/components/label\r\n * @registryDescription A styled label component with peer/group disabled state support.\r\n */\r\n\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// ---- LABEL ------------------------------------------------------------------\r\n\r\nexport type LabelProps = React.ComponentPropsWithoutRef<\"label\">;\r\n\r\n/**\r\n * Native `<label>` with accessible disabled-state styling.\r\n *\r\n * @since 0.1.0\r\n */\r\nfunction Label({ className, ...props }: LabelProps) {\r\n  return (\r\n    <label\r\n      data-slot=\"label\"\r\n      className={cn(\r\n        \"flex items-center gap-2 text-sm font-medium leading-none select-none\",\r\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\r\n        \"group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\nLabel.displayName = \"Label\";\r\n\r\n// ---- EXPORTS ----------------------------------------------------------------\r\n\r\nexport { Label };\r\n",
+      "content": "/**\n * Label - Premium solid accessible form label.\n *\n * Native label wrapper with full htmlFor behavior, ref forwarding, and\n * disabled-state styling for peer and grouped form controls.\n *\n * @package @edbn/ui\n * @version 0.3.0\n * @since 0.1.0\n * @docs https://ui.edbn.me/docs/components/label\n * @registryDescription Premium solid form label with peer and group disabled state support.\n */\n\n\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\n// ---- LABEL ------------------------------------------------------------------\n\nexport type LabelProps = React.ComponentPropsWithRef<\"label\">;\n\nfunction Label({ className, ref, ...props }: LabelProps) {\n  return (\n    <label\n      ref={ref}\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm font-medium leading-none text-foreground select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        \"group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50\",\n        \"has-[[aria-invalid=true]]:text-destructive\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\nLabel.displayName = \"Label\";\n\n// ---- EXPORTS ----------------------------------------------------------------\n\nexport { Label };\n",
       "type": "registry:ui"
     }
   ]

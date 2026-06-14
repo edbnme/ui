@@ -2,7 +2,7 @@
   "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
   "version": "1.0.0",
   "summary": {
-    "totalPackages": 19,
+    "totalPackages": 18,
     "totalComponents": 106,
     "animatedComponents": 0,
     "staticComponents": 54,
@@ -15,7 +15,7 @@
       "dependencyCount": 13,
       "source": "bundlephobia"
     },
-    "computedAt": "2026-06-01T19:02:19.010Z"
+    "computedAt": "2026-06-13T18:15:29.022Z"
   },
   "packages": [
     {
@@ -24,6 +24,14 @@
       "gzip": 25000,
       "version": "latest",
       "source": "fallback"
+    },
+    {
+      "name": "@daypicker/react",
+      "version": "10.0.1",
+      "size": 67045,
+      "gzip": 19305,
+      "dependencyCount": 1,
+      "source": "bundlephobia"
     },
     {
       "name": "@phosphor-icons/react",
@@ -87,14 +95,6 @@
       "source": "bundlephobia"
     },
     {
-      "name": "input-otp",
-      "version": "1.4.2",
-      "size": 9599,
-      "gzip": 3860,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
-    },
-    {
       "name": "motion",
       "size": 150000,
       "gzip": 45000,
@@ -107,14 +107,6 @@
       "size": 23456,
       "gzip": 8750,
       "dependencyCount": 3,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "react-day-picker",
-      "version": "10.0.1",
-      "size": 67045,
-      "gzip": 19305,
-      "dependencyCount": 2,
       "source": "bundlephobia"
     },
     {
@@ -135,9 +127,9 @@
     },
     {
       "name": "shiki",
-      "version": "4.1.0",
-      "size": 206109,
-      "gzip": 64075,
+      "version": "4.2.0",
+      "size": 206270,
+      "gzip": 64175,
       "dependencyCount": 8,
       "source": "bundlephobia"
     },
@@ -158,11 +150,10 @@
     },
     {
       "name": "use-stick-to-bottom",
-      "version": "1.1.4",
-      "size": 6802,
-      "gzip": 2530,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
+      "size": 10000,
+      "gzip": 3000,
+      "version": "unknown",
+      "source": "estimate"
     }
   ],
   "components": {
@@ -256,7 +247,7 @@
     "static/autocomplete": {
       "name": "autocomplete",
       "title": "Autocomplete",
-      "description": "Searchable dropdown with filtering, keyboard navigation, and empty state.",
+      "description": "Premium solid autocomplete with full Base UI part coverage, filtering hooks, grouped items, status, and portal positioning.",
       "variant": "static",
       "sizes": {
         "minified": 86200,
@@ -285,7 +276,7 @@
     "static/avatar": {
       "name": "avatar",
       "title": "Avatar",
-      "description": "Composable avatar with image support and fallback initials.",
+      "description": "Premium solid avatar with image loading, fallback delay, render composition, and state-aware styling.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -307,7 +298,7 @@
     "static/badge": {
       "name": "badge",
       "title": "Badge",
-      "description": "Small status indicator with variant styles.",
+      "description": "Compact status indicator with solid semantic variants.",
       "variant": "static",
       "sizes": {
         "minified": 4500,
@@ -329,7 +320,7 @@
     "static/breadcrumb": {
       "name": "breadcrumb",
       "title": "Breadcrumb",
-      "description": "Navigation breadcrumb trail with separator support.",
+      "description": "Solid breadcrumb navigation with separator, ellipsis, and responsive wrapping.",
       "variant": "static",
       "sizes": {
         "minified": 0,
@@ -365,7 +356,7 @@
     "static/calendar": {
       "name": "calendar",
       "title": "Calendar",
-      "description": "Date picker with single, multiple, and range selection via react-day-picker.",
+      "description": "Date picker with single and multiple selection via DayPicker.",
       "variant": "static",
       "sizes": {
         "minified": 68245,
@@ -375,18 +366,18 @@
       },
       "dependencies": [
         {
+          "name": "@daypicker/react",
+          "size": 67045,
+          "gzip": 19305,
+          "version": "10.0.1",
+          "source": "bundlephobia"
+        },
+        {
           "name": "@phosphor-icons/react",
           "size": 1200,
           "gzip": 400,
           "version": "latest",
           "source": "fallback"
-        },
-        {
-          "name": "react-day-picker",
-          "size": 67045,
-          "gzip": 19305,
-          "version": "10.0.1",
-          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 2
@@ -547,7 +538,7 @@
     "static/combobox": {
       "name": "combobox",
       "title": "Combobox",
-      "description": "Searchable dropdown for filtering and selecting from a list, built on Base UI Combobox.",
+      "description": "Premium solid combobox with full primitive part coverage, chips, filtering hooks, grouping, status, and portal positioning.",
       "variant": "static",
       "sizes": {
         "minified": 86200,
@@ -751,28 +742,28 @@
     "static/input-otp": {
       "name": "input-otp",
       "title": "Input OTP",
-      "description": "One-time password input with auto-focus, paste support, and separators.",
+      "description": "Premium solid one-time password input with paste, validation, and separators.",
       "variant": "static",
       "sizes": {
-        "minified": 10799,
-        "gzipped": 4260,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 85000,
+          "gzip": 25000,
+          "version": "latest",
+          "source": "fallback"
+        },
         {
           "name": "@phosphor-icons/react",
           "size": 1200,
           "gzip": 400,
           "version": "latest",
           "source": "fallback"
-        },
-        {
-          "name": "input-otp",
-          "size": 9599,
-          "gzip": 3860,
-          "version": "1.4.2",
-          "source": "bundlephobia"
         }
       ],
       "dependencyCount": 2
@@ -802,7 +793,7 @@
     "static/label": {
       "name": "label",
       "title": "Label",
-      "description": "A styled label component with peer/group disabled state support.",
+      "description": "Premium solid form label with peer and group disabled state support.",
       "variant": "static",
       "sizes": {
         "minified": 0,
@@ -845,7 +836,7 @@
     "static/menubar": {
       "name": "menubar",
       "title": "Menubar",
-      "description": "Horizontal menu bar with keyboard navigation, checkbox items, and submenus.",
+      "description": "Premium solid menubar with keyboard navigation, checkbox items, radio items, and submenus.",
       "variant": "static",
       "sizes": {
         "minified": 86200,
@@ -899,8 +890,8 @@
       "description": "Horizontal navigation menu with dropdown content panels and links.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
+        "minified": 86200,
+        "gzipped": 25400,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -911,9 +902,16 @@
           "gzip": 25000,
           "version": "latest",
           "source": "fallback"
+        },
+        {
+          "name": "@phosphor-icons/react",
+          "size": 1200,
+          "gzip": 400,
+          "version": "latest",
+          "source": "fallback"
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
     "static/number-field": {
       "name": "number-field",
@@ -1085,7 +1083,7 @@
     "static/scroll-area": {
       "name": "scroll-area",
       "title": "Scroll Area",
-      "description": "Custom scrollbar container with cross-browser styling.",
+      "description": "Native scroll area with custom scrollbars and edge cues.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -1158,7 +1156,7 @@
     "static/sheet": {
       "name": "sheet",
       "title": "Sheet",
-      "description": "Static slide-out panel built on Base UI Dialog with directional CSS transitions.",
+      "description": "Premium solid slide-out panel built on Base UI Dialog with directional CSS transitions.",
       "variant": "static",
       "sizes": {
         "minified": 90700,
@@ -1237,7 +1235,7 @@
     "static/slider": {
       "name": "slider",
       "title": "Slider",
-      "description": "Range slider with single or multi-thumb support.",
+      "description": "Premium solid slider with full Base UI part coverage, labels, value readout, range thumbs, form integration, and state-aware styling.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -1259,7 +1257,7 @@
     "static/switch": {
       "name": "switch",
       "title": "Switch",
-      "description": "Toggle switch with accessible on/off states.",
+      "description": "Premium solid switch with accessible on/off states and form integration.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -1281,7 +1279,7 @@
     "static/table": {
       "name": "table",
       "title": "Table",
-      "description": "Data table with header, body, and cell components.",
+      "description": "Premium solid data table with header, body, footer, rows, cells, and caption.",
       "variant": "static",
       "sizes": {
         "minified": 0,
@@ -1295,7 +1293,7 @@
     "static/tabs": {
       "name": "tabs",
       "title": "Tabs",
-      "description": "Tabbed interface with accessible panel switching.",
+      "description": "Premium solid tabs with accessible panel switching and animated indicator.",
       "variant": "static",
       "sizes": {
         "minified": 85000,
@@ -1317,7 +1315,7 @@
     "static/textarea": {
       "name": "textarea",
       "title": "Textarea",
-      "description": "Multi-line text input with auto-resize support.",
+      "description": "Premium solid multi-line text input with optional auto-resize.",
       "variant": "static",
       "sizes": {
         "minified": 0,
@@ -1331,7 +1329,7 @@
     "static/toast": {
       "name": "toast",
       "title": "Toast",
-      "description": "Notification toasts with auto-dismiss, actions, and stacking.",
+      "description": "Premium solid notification toasts with actions, stacking, and swipe dismissal.",
       "variant": "static",
       "sizes": {
         "minified": 86200,
@@ -1360,7 +1358,7 @@
     "static/toggle-group": {
       "name": "toggle-group",
       "title": "Toggle Group",
-      "description": "Exclusive or multi-select toggle buttons for switching between options.",
+      "description": "Premium solid toggle group with exclusive or multi-select state.",
       "variant": "static",
       "sizes": {
         "minified": 89500,
@@ -1389,7 +1387,7 @@
     "static/toggle": {
       "name": "toggle",
       "title": "Toggle",
-      "description": "Pressable toggle button with on/off state.",
+      "description": "Premium solid toggle button with accessible pressed state.",
       "variant": "static",
       "sizes": {
         "minified": 89500,
@@ -1418,7 +1416,7 @@
     "static/toolbar": {
       "name": "toolbar",
       "title": "Toolbar",
-      "description": "Horizontal toolbar with buttons, toggles, and grouped actions.",
+      "description": "Premium solid toolbar with grouped actions, links, and inputs.",
       "variant": "static",
       "sizes": {
         "minified": 89500,
@@ -1559,8 +1557,8 @@
       "description": "Syntax-highlighted code block for generated answers, terminal snippets, and compact examples.",
       "variant": "audio",
       "sizes": {
-        "minified": 240482,
-        "gzipped": 75952,
+        "minified": 240643,
+        "gzipped": 76052,
         "selfSize": 2000,
         "selfGzip": 600
       },
@@ -1588,9 +1586,9 @@
         },
         {
           "name": "shiki",
-          "size": 206109,
-          "gzip": 64075,
-          "version": "4.1.0",
+          "size": 206270,
+          "gzip": 64175,
+          "version": "4.2.0",
           "source": "bundlephobia"
         }
       ],
@@ -1616,18 +1614,18 @@
       "description": "Auto-scrolling conversation container with sticky-to-bottom behavior and scroll affordance.",
       "variant": "audio",
       "sizes": {
-        "minified": 6802,
-        "gzipped": 2530,
+        "minified": 10000,
+        "gzipped": 3000,
         "selfSize": 2000,
         "selfGzip": 600
       },
       "dependencies": [
         {
           "name": "use-stick-to-bottom",
-          "size": 6802,
-          "gzip": 2530,
-          "version": "1.1.4",
-          "source": "bundlephobia"
+          "size": 10000,
+          "gzip": 3000,
+          "version": "unknown",
+          "source": "estimate"
         }
       ],
       "dependencyCount": 1

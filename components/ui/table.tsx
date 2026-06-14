@@ -1,39 +1,15 @@
 /**
- * Table — Semantic HTML table with styled header, body, footer, rows,
- * cells, and caption.
+ * Table - Premium solid semantic data table.
  *
- * Pure CSS — the components are thin wrappers over native table
- * elements with consistent spacing, borders, and hover states. Wraps
- * the `<table>` in a scroll container so wide tables don't break
- * layout.
+ * Native table primitives with stable scroll containment, crisp borders,
+ * selected row styling, footer support, captions, and full native prop/ref
+ * forwarding.
  *
- * Anatomy:
- * ```tsx
- * <Table>
- *   <TableCaption>A list of recent invoices.</TableCaption>
- *   <TableHeader>
- *     <TableRow>
- *       <TableHead>Invoice</TableHead>
- *       <TableHead>Status</TableHead>
- *       <TableHead className="text-right">Amount</TableHead>
- *     </TableRow>
- *   </TableHeader>
- *   <TableBody>
- *     <TableRow>
- *       <TableCell>INV001</TableCell>
- *       <TableCell>Paid</TableCell>
- *       <TableCell className="text-right">$250.00</TableCell>
- *     </TableRow>
- *   </TableBody>
- * </Table>
- * ```
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
- * @docs       https://ui.edbn.me/docs/components/table
- * @registryDescription Data table with header, body, and cell components.
+ * @package @edbn/ui
+ * @version 0.3.0
+ * @since 0.1.0
+ * @docs https://ui.edbn.me/docs/components/table
+ * @registryDescription Premium solid data table with header, body, footer, rows, cells, and caption.
  */
 
 "use client";
@@ -44,18 +20,16 @@ import { cn } from "@/lib/utils";
 
 // ---- ROOT -------------------------------------------------------------------
 
-export type TableProps = React.ComponentPropsWithoutRef<"table">;
+export type TableProps = React.ComponentPropsWithRef<"table">;
 
-/**
- * The `<table>` element, wrapped in a horizontal-scroll container to
- * handle wide data gracefully.
- *
- * @since 0.1.0
- */
-function Table({ className, ...props }: TableProps) {
+function Table({ className, ref, ...props }: TableProps) {
   return (
-    <div data-slot="table-wrapper" className="relative w-full overflow-auto">
+    <div
+      data-slot="table-wrapper"
+      className="relative w-full overflow-auto rounded-lg border border-border/70 bg-background shadow-sm"
+    >
       <table
+        ref={ref}
         data-slot="table"
         className={cn("w-full caption-bottom text-sm", className)}
         {...props}
@@ -67,18 +41,17 @@ Table.displayName = "Table";
 
 // ---- HEADER -----------------------------------------------------------------
 
-export type TableHeaderProps = React.ComponentPropsWithoutRef<"thead">;
+export type TableHeaderProps = React.ComponentPropsWithRef<"thead">;
 
-/**
- * `<thead>` section.
- *
- * @since 0.1.0
- */
-function TableHeader({ className, ...props }: TableHeaderProps) {
+function TableHeader({ className, ref, ...props }: TableHeaderProps) {
   return (
     <thead
+      ref={ref}
       data-slot="table-header"
-      className={cn("[&_tr]:border-b [&_tr]:border-border", className)}
+      className={cn(
+        "bg-muted/50 text-muted-foreground [&_tr]:border-b [&_tr]:border-border/70",
+        className
+      )}
       {...props}
     />
   );
@@ -87,16 +60,12 @@ TableHeader.displayName = "TableHeader";
 
 // ---- BODY -------------------------------------------------------------------
 
-export type TableBodyProps = React.ComponentPropsWithoutRef<"tbody">;
+export type TableBodyProps = React.ComponentPropsWithRef<"tbody">;
 
-/**
- * `<tbody>` section. Strips the bottom border from the last row.
- *
- * @since 0.1.0
- */
-function TableBody({ className, ...props }: TableBodyProps) {
+function TableBody({ className, ref, ...props }: TableBodyProps) {
   return (
     <tbody
+      ref={ref}
       data-slot="table-body"
       className={cn("[&_tr:last-child]:border-0", className)}
       {...props}
@@ -107,16 +76,12 @@ TableBody.displayName = "TableBody";
 
 // ---- FOOTER -----------------------------------------------------------------
 
-export type TableFooterProps = React.ComponentPropsWithoutRef<"tfoot">;
+export type TableFooterProps = React.ComponentPropsWithRef<"tfoot">;
 
-/**
- * `<tfoot>` section — typically used for totals / summary rows.
- *
- * @since 0.1.0
- */
-function TableFooter({ className, ...props }: TableFooterProps) {
+function TableFooter({ className, ref, ...props }: TableFooterProps) {
   return (
     <tfoot
+      ref={ref}
       data-slot="table-footer"
       className={cn(
         "border-t border-border bg-muted/50 font-medium [&>tr]:last:border-b-0",
@@ -130,20 +95,15 @@ TableFooter.displayName = "TableFooter";
 
 // ---- ROW --------------------------------------------------------------------
 
-export type TableRowProps = React.ComponentPropsWithoutRef<"tr">;
+export type TableRowProps = React.ComponentPropsWithRef<"tr">;
 
-/**
- * `<tr>` row. Add `data-selected` (any truthy value) to mark selected
- * rows — they'll pick up the `data-selected:bg-muted` style.
- *
- * @since 0.1.0
- */
-function TableRow({ className, ...props }: TableRowProps) {
+function TableRow({ className, ref, ...props }: TableRowProps) {
   return (
     <tr
+      ref={ref}
       data-slot="table-row"
       className={cn(
-        "border-b border-border",
+        "border-b border-border/70",
         "transition-colors duration-150 ease-out motion-reduce:transition-none",
         "hover:bg-muted/50 data-selected:bg-muted",
         className
@@ -156,19 +116,16 @@ TableRow.displayName = "TableRow";
 
 // ---- HEAD CELL --------------------------------------------------------------
 
-export type TableHeadProps = React.ComponentPropsWithoutRef<"th">;
+export type TableHeadProps = React.ComponentPropsWithRef<"th">;
 
-/**
- * `<th>` header cell.
- *
- * @since 0.1.0
- */
-function TableHead({ className, ...props }: TableHeadProps) {
+function TableHead({ className, ref, ...props }: TableHeadProps) {
   return (
     <th
+      ref={ref}
       data-slot="table-head"
       className={cn(
-        "h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
+        "h-10 px-3 text-left align-middle font-medium text-muted-foreground",
+        "[&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
         className
       )}
       {...props}
@@ -179,19 +136,16 @@ TableHead.displayName = "TableHead";
 
 // ---- DATA CELL --------------------------------------------------------------
 
-export type TableCellProps = React.ComponentPropsWithoutRef<"td">;
+export type TableCellProps = React.ComponentPropsWithRef<"td">;
 
-/**
- * `<td>` data cell.
- *
- * @since 0.1.0
- */
-function TableCell({ className, ...props }: TableCellProps) {
+function TableCell({ className, ref, ...props }: TableCellProps) {
   return (
     <td
+      ref={ref}
       data-slot="table-cell"
       className={cn(
-        "p-2 align-middle [&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
+        "p-3 align-middle",
+        "[&:has([role=checkbox])]:pr-0 *:[[role=checkbox]]:translate-y-0.5",
         className
       )}
       {...props}
@@ -202,16 +156,12 @@ TableCell.displayName = "TableCell";
 
 // ---- CAPTION ----------------------------------------------------------------
 
-export type TableCaptionProps = React.ComponentPropsWithoutRef<"caption">;
+export type TableCaptionProps = React.ComponentPropsWithRef<"caption">;
 
-/**
- * `<caption>` — accessible description of the table.
- *
- * @since 0.1.0
- */
-function TableCaption({ className, ...props }: TableCaptionProps) {
+function TableCaption({ className, ref, ...props }: TableCaptionProps) {
   return (
     <caption
+      ref={ref}
       data-slot="table-caption"
       className={cn("mt-4 text-sm text-muted-foreground", className)}
       {...props}

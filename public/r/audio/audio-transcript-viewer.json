@@ -6,9 +6,9 @@
   "description": "Playback-aligned transcript primitives with word highlighting and scrub controls.",
   "dependencies": [],
   "registryDependencies": [
-    "audio-scrub-bar",
-    "button",
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/audio-scrub-bar.json",
+    "https://ui.edbn.me/api/analytics/registry/button.json",
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "audio",
   "files": [

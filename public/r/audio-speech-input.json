@@ -6,7 +6,7 @@
   "description": "Web Speech API trigger with listening, processing, error, and unsupported states.",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "audio",
   "files": [

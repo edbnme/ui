@@ -144,11 +144,12 @@ export { RadioGroupRoot, RadioItem, RadioIndicator } from "./radio";
 // Slider
 export {
   SliderRoot,
+  SliderLabel,
+  SliderValue,
   SliderControl,
   SliderTrack,
   SliderIndicator,
   SliderThumb,
-  SliderValue,
   Slider,
 } from "./slider";
 
@@ -196,11 +197,14 @@ export {
 
 // Scroll Area
 export {
+  ScrollArea,
   ScrollAreaRoot,
   ScrollAreaViewport,
+  ScrollAreaContent,
   ScrollAreaScrollbar,
   ScrollAreaThumb,
-  ScrollArea,
+  ScrollAreaCorner,
+  ScrollAreaEdgeCue,
   ScrollBar,
 } from "./scroll-area";
 
@@ -232,8 +236,12 @@ export { AvatarRoot, AvatarImage, AvatarFallback, Avatar } from "./avatar";
 // Toast
 export {
   ToastProvider,
+  ToastPortal,
   ToastViewport,
+  ToastPositioner,
   ToastRoot,
+  ToastArrow,
+  ToastContent,
   ToastTitle,
   ToastDescription,
   ToastClose,
@@ -292,6 +300,8 @@ export {
 // Combobox
 export {
   ComboboxRoot,
+  ComboboxLabel,
+  ComboboxInputGroup,
   ComboboxInputWrapper,
   ComboboxInput,
   ComboboxTrigger,
@@ -316,6 +326,8 @@ export {
   ComboboxChips,
   ComboboxChip,
   ComboboxChipRemove,
+  useComboboxFilter,
+  useComboboxFilteredItems,
 } from "./combobox";
 
 // Fieldset
@@ -380,13 +392,17 @@ export {
   SheetTrigger,
   SheetPortal,
   SheetBackdrop,
+  SheetViewport,
   SheetPopup,
   SheetClose,
+  SheetCloseIconButton,
   SheetHeader,
   SheetTitle,
   SheetDescription,
   SheetBody,
   SheetFooter,
+  SheetHandle,
+  createSheetHandle,
   sheetVariants,
 } from "./sheet";
 
@@ -450,11 +466,14 @@ export {
   MenubarBackdrop,
   MenubarPositioner,
   MenubarPopup,
+  MenubarViewport,
   MenubarArrow,
   MenubarItem,
   MenubarLinkItem,
+  MenubarCheckboxItemIndicator,
   MenubarCheckboxItem,
   MenubarRadioGroup,
+  MenubarRadioItemIndicator,
   MenubarRadioItem,
   MenubarGroup,
   MenubarGroupLabel,
@@ -462,6 +481,8 @@ export {
   MenubarSubmenuRoot,
   MenubarSubmenuTrigger,
   MenubarShortcut,
+  MenubarHandle,
+  createMenubarHandle,
 } from "./menubar";
 
 // Navigation Menu
@@ -491,6 +512,7 @@ export {
 // Autocomplete
 export {
   AutocompleteRoot,
+  AutocompleteInputGroup,
   AutocompleteInput,
   AutocompleteTrigger,
   AutocompleteClear,
@@ -509,8 +531,9 @@ export {
   AutocompleteSeparator,
   AutocompleteIcon,
   AutocompleteValue,
-  AutocompleteItemIndicator,
   AutocompleteStatus,
+  useAutocompleteFilter,
+  useAutocompleteFilteredItems,
 } from "./autocomplete";
 
 // Calendar

@@ -13,11 +13,8 @@
  * </AspectRatio>
  * ```
  *
- * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.1.0
- * @brand      edbn/ui - https://ui.edbn.me
- * @docs       https://ui.edbn.me/docs/components/aspect-ratio
  * @registryDescription A CSS aspect-ratio wrapper component for maintaining consistent proportions.
  */
 

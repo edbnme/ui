@@ -9,8 +9,8 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "dropdown-menu",
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/dropdown-menu.json",
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "audio",
   "files": [

@@ -10,10 +10,10 @@
  * @version    0.3.0
  * @since      0.3.0
  * @brand      edbn/ui — <https://ui.edbn.me>
- * @docs       https://ui.edbn.me/docs/components/menu
- * @source     https://ui.edbn.me/r/menu.json
+ * @docs       https://ui.edbn.me/docs/components/dropdown-menu
+ * @source     https://ui.edbn.me/r/dropdown-menu.json
  * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/menu
+ * @upstream   Base UI v1.5.0 — https://base-ui.com/react/components/menu
  * @a11y       WAI-ARIA Menu pattern; arrow-key navigation; type-to-search;
  *             Escape / outside-click dismissal; nested submenus open on
  *             hover + ArrowRight; checkbox / radio state announced via
@@ -161,8 +161,7 @@ MenuBackdrop.displayName = "MenuBackdrop";
  * `data-instant`, `data-open`, `data-side`.
  *
  * **CSS variables** — `--anchor-height`, `--anchor-width`,
- * `--available-height`, `--available-width`, `--positioner-height`,
- * `--positioner-width`, `--transform-origin`.
+ * `--available-height`, `--available-width`, `--transform-origin`.
  *
  * @since 0.3.0
  */
@@ -201,7 +200,7 @@ function MenuPopup({ className, ...props }: MenuPopupProps) {
     <Menu.Popup
       data-slot="menu-popup"
       className={cn(
-        "z-50 min-w-40 overflow-hidden rounded-xl border border-border bg-popover p-1 text-popover-foreground shadow-xl",
+        "relative z-50 min-w-40 overflow-visible rounded-[8px] border border-border bg-popover p-1 text-popover-foreground shadow-xl",
         "origin-(--transform-origin) transform-gpu",
         "transition-[scale,opacity] duration-150 ease-out",
         "data-starting-style:scale-95 data-starting-style:opacity-0",
@@ -222,6 +221,9 @@ MenuPopup.displayName = "MenuPopup";
 /**
  * Optional arrow pointer.
  *
+ * Empty by default so menus keep a continuous popup border. Pass custom
+ * children when a project intentionally wants a visible pointer.
+ *
  * @since 0.3.0
  */
 export type MenuArrowProps = React.ComponentProps<typeof Menu.Arrow>;
@@ -230,24 +232,19 @@ function MenuArrow({ className, children, ...props }: MenuArrowProps) {
     <Menu.Arrow
       data-slot="menu-arrow"
       className={cn(
-        "data-[side=top]:rotate-180",
-        "data-[side=left]:-rotate-90",
-        "data-[side=right]:rotate-90",
+        "pointer-events-none absolute h-1.5 w-6 overflow-visible [--menu-arrow-rotation:0deg]",
+        "data-[side=bottom]:top-[-4px]",
+        "data-[side=top]:bottom-[-4px] data-[side=top]:[--menu-arrow-rotation:180deg]",
+        "data-[side=left]:right-[-4px] data-[side=left]:h-6 data-[side=left]:w-1.5 data-[side=left]:[--menu-arrow-rotation:90deg]",
+        "data-[side=right]:left-[-4px] data-[side=right]:h-6 data-[side=right]:w-1.5 data-[side=right]:[--menu-arrow-rotation:-90deg]",
+        "data-[side=inline-start]:h-6 data-[side=inline-start]:w-1.5 data-[side=inline-start]:[inset-inline-end:-4px] data-[side=inline-start]:[--menu-arrow-rotation:90deg]",
+        "data-[side=inline-end]:h-6 data-[side=inline-end]:w-1.5 data-[side=inline-end]:[inset-inline-start:-4px] data-[side=inline-end]:[--menu-arrow-rotation:-90deg]",
+        "rtl:data-[side=inline-start]:[--menu-arrow-rotation:-90deg] rtl:data-[side=inline-end]:[--menu-arrow-rotation:90deg]",
         className
       )}
       {...props}
     >
-      {children ?? (
-        <svg
-          aria-hidden
-          width="14"
-          height="7"
-          viewBox="0 0 14 7"
-          className="block fill-popover stroke-border"
-        >
-          <path d="M0,0 L7,7 L14,0" strokeWidth="1" />
-        </svg>
-      )}
+      {children}
     </Menu.Arrow>
   );
 }
@@ -409,9 +406,15 @@ MenuCheckboxItem.displayName = "MenuCheckboxItem";
  * @since 0.3.0
  */
 export type MenuRadioGroupProps = React.ComponentProps<typeof Menu.RadioGroup>;
-const MenuRadioGroup = (props: MenuRadioGroupProps) => (
-  <Menu.RadioGroup {...props} />
-);
+function MenuRadioGroup({ className, ...props }: MenuRadioGroupProps) {
+  return (
+    <Menu.RadioGroup
+      data-slot="menu-radio-group"
+      className={className}
+      {...props}
+    />
+  );
+}
 MenuRadioGroup.displayName = "MenuRadioGroup";
 
 // ---- MENU RADIO ITEM INDICATOR ---------------------------------------------
@@ -592,18 +595,21 @@ MenuSubmenuTrigger.displayName = "MenuSubmenuTrigger";
  * @since 0.3.0
  */
 export type MenuShortcutProps = React.HTMLAttributes<HTMLSpanElement>;
-function MenuShortcut({ className, ...props }: MenuShortcutProps) {
-  return (
-    <span
-      data-slot="menu-shortcut"
-      className={cn(
-        "ml-auto text-xs tracking-wider text-muted-foreground",
-        className
-      )}
-      {...props}
-    />
-  );
-}
+const MenuShortcut = React.forwardRef<HTMLSpanElement, MenuShortcutProps>(
+  function MenuShortcut({ className, ...props }, ref) {
+    return (
+      <span
+        data-slot="menu-shortcut"
+        ref={ref}
+        className={cn(
+          "ml-auto text-xs tracking-wider text-muted-foreground",
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 MenuShortcut.displayName = "MenuShortcut";
 
 // ---- MENU HANDLE (detached-trigger API) -------------------------------------

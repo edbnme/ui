@@ -38,7 +38,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -57,7 +57,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -76,7 +76,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -93,7 +93,7 @@
       "description": "A CSS aspect-ratio wrapper component for maintaining consistent proportions.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -107,13 +107,13 @@
       "name": "autocomplete",
       "type": "registry:ui",
       "title": "Autocomplete",
-      "description": "Searchable dropdown with filtering, keyboard navigation, and empty state.",
+      "description": "Premium solid autocomplete with full Base UI part coverage, filtering hooks, grouped items, status, and portal positioning.",
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -127,12 +127,12 @@
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "description": "Composable avatar with image support and fallback initials.",
+      "description": "Premium solid avatar with image loading, fallback delay, render composition, and state-aware styling.",
       "dependencies": [
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -146,12 +146,12 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "Small status indicator with variant styles.",
+      "description": "Compact status indicator with solid semantic variants.",
       "dependencies": [
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -165,10 +165,10 @@
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",
-      "description": "Navigation breadcrumb trail with separator support.",
+      "description": "Solid breadcrumb navigation with separator, ellipsis, and responsive wrapping.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -187,7 +187,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -201,13 +201,14 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "description": "Date picker with single, multiple, and range selection via react-day-picker.",
+      "description": "Date picker with single and multiple selection via DayPicker.",
       "dependencies": [
-        "@phosphor-icons/react",
-        "react-day-picker"
+        "@daypicker/react",
+        "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/select.json",
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -226,7 +227,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -246,7 +247,7 @@
         "embla-carousel-react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -265,7 +266,7 @@
         "recharts"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -285,7 +286,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -305,7 +306,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -324,7 +325,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -338,13 +339,13 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "description": "Searchable dropdown for filtering and selecting from a list, built on Base UI Combobox.",
+      "description": "Premium solid combobox with full primitive part coverage, chips, filtering hooks, grouping, status, and portal positioning.",
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -364,7 +365,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -384,7 +385,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -404,7 +405,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -423,7 +424,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -442,7 +443,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -461,7 +462,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -480,7 +481,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -494,13 +495,13 @@
       "name": "input-otp",
       "type": "registry:ui",
       "title": "Input OTP",
-      "description": "One-time password input with auto-focus, paste support, and separators.",
+      "description": "Premium solid one-time password input with paste, validation, and separators.",
       "dependencies": [
-        "@phosphor-icons/react",
-        "input-otp"
+        "@base-ui/react",
+        "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -519,7 +520,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -533,10 +534,10 @@
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
-      "description": "A styled label component with peer/group disabled state support.",
+      "description": "Premium solid form label with peer and group disabled state support.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -556,7 +557,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -570,13 +571,13 @@
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
-      "description": "Horizontal menu bar with keyboard navigation, checkbox items, and submenus.",
+      "description": "Premium solid menubar with keyboard navigation, checkbox items, radio items, and submenus.",
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -595,7 +596,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -611,10 +612,11 @@
       "title": "Navigation Menu",
       "description": "Horizontal navigation menu with dropdown content panels and links.",
       "dependencies": [
-        "@base-ui/react"
+        "@base-ui/react",
+        "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -634,7 +636,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -651,7 +653,7 @@
       "description": "Page navigation with previous/next and numbered pages.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -671,7 +673,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -690,7 +692,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -709,7 +711,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -728,7 +730,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -748,7 +750,7 @@
         "react-resizable-panels"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -762,12 +764,12 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
-      "description": "Custom scrollbar container with cross-browser styling.",
+      "description": "Native scroll area with custom scrollbars and edge cues.",
       "dependencies": [
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -787,7 +789,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -806,7 +808,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -820,14 +822,14 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "description": "Static slide-out panel built on Base UI Dialog with directional CSS transitions.",
+      "description": "Premium solid slide-out panel built on Base UI Dialog with directional CSS transitions.",
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -847,12 +849,12 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "input",
-        "separator",
-        "sheet",
-        "skeleton",
-        "tooltip",
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/input.json",
+        "https://ui.edbn.me/api/analytics/registry/separator.json",
+        "https://ui.edbn.me/api/analytics/registry/sheet.json",
+        "https://ui.edbn.me/api/analytics/registry/skeleton.json",
+        "https://ui.edbn.me/api/analytics/registry/tooltip.json",
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -889,7 +891,7 @@
       "description": "Loading placeholder with pulse animation.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -903,12 +905,12 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "Range slider with single or multi-thumb support.",
+      "description": "Premium solid slider with full Base UI part coverage, labels, value readout, range thumbs, form integration, and state-aware styling.",
       "dependencies": [
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -922,12 +924,12 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "description": "Toggle switch with accessible on/off states.",
+      "description": "Premium solid switch with accessible on/off states and form integration.",
       "dependencies": [
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -941,10 +943,10 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table",
-      "description": "Data table with header, body, and cell components.",
+      "description": "Premium solid data table with header, body, footer, rows, cells, and caption.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -958,12 +960,12 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "description": "Tabbed interface with accessible panel switching.",
+      "description": "Premium solid tabs with accessible panel switching and animated indicator.",
       "dependencies": [
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -977,10 +979,10 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "description": "Multi-line text input with auto-resize support.",
+      "description": "Premium solid multi-line text input with optional auto-resize.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -994,13 +996,13 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "description": "Notification toasts with auto-dismiss, actions, and stacking.",
+      "description": "Premium solid notification toasts with actions, stacking, and swipe dismissal.",
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -1014,13 +1016,13 @@
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "Toggle Group",
-      "description": "Exclusive or multi-select toggle buttons for switching between options.",
+      "description": "Premium solid toggle group with exclusive or multi-select state.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -1034,13 +1036,13 @@
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
-      "description": "Pressable toggle button with on/off state.",
+      "description": "Premium solid toggle button with accessible pressed state.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -1054,13 +1056,13 @@
       "name": "toolbar",
       "type": "registry:ui",
       "title": "Toolbar",
-      "description": "Horizontal toolbar with buttons, toggles, and grouped actions.",
+      "description": "Premium solid toolbar with grouped actions, links, and inputs.",
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -1079,7 +1081,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -1128,7 +1130,7 @@
         "@phosphor-icons/react"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "static",
       "files": [
@@ -1423,8 +1425,8 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "dropdown-menu",
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/dropdown-menu.json",
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1443,7 +1445,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1460,7 +1462,7 @@
       "description": "Animated audio bars for microphone levels, agent states, and ambient voice activity.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1479,7 +1481,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1501,7 +1503,7 @@
         "shiki"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1518,7 +1520,7 @@
       "description": "Provider-agnostic realtime conversation bar with connection, message, and send controls.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1537,7 +1539,7 @@
         "use-stick-to-bottom"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1556,7 +1558,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1573,7 +1575,7 @@
       "description": "Canvas waveform for live microphone input, processing animations, and idle audio states.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1590,7 +1592,7 @@
       "description": "Dot-matrix animation presets for compact loaders, voice activity, and ambient status.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1609,7 +1611,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1626,7 +1628,7 @@
       "description": "Microphone selector with permission-aware device enumeration, mute toggle, and live input preview.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1643,7 +1645,7 @@
       "description": "Lightweight canvas agent orb for listening, talking, thinking, and idle voice states.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1662,7 +1664,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1681,7 +1683,7 @@
         "streamdown"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1698,7 +1700,7 @@
       "description": "Composable scrub bar primitives for playback progress, seeking, thumbs, and time labels.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1717,7 +1719,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1734,7 +1736,7 @@
       "description": "Web Speech API trigger with listening, processing, error, and unsupported states.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1754,7 +1756,7 @@
         "motion"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1773,7 +1775,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1790,9 +1792,9 @@
       "description": "Playback-aligned transcript primitives with word highlighting and scrub controls.",
       "dependencies": [],
       "registryDependencies": [
-        "audio-scrub-bar",
-        "button",
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/audio-scrub-bar.json",
+        "https://ui.edbn.me/api/analytics/registry/button.json",
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1809,7 +1811,7 @@
       "description": "Voice action button with waveform, recording, processing, success, and error feedback.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1826,7 +1828,7 @@
       "description": "Searchable voice selection component for generated speech and narration workflows.",
       "dependencies": [],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1845,7 +1847,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "utils"
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
       ],
       "variant": "audio",
       "files": [
@@ -1918,8 +1920,8 @@
         "@react-pdf/types"
       ],
       "registryDependencies": [
-        "pdf-table",
-        "pdf-text"
+        "https://ui.edbn.me/api/analytics/registry/pdf-table.json",
+        "https://ui.edbn.me/api/analytics/registry/pdf-text.json"
       ],
       "variant": "pdf",
       "files": [

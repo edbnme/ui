@@ -6,7 +6,7 @@
   "description": "Animated audio bars for microphone levels, agent states, and ambient voice activity.",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "audio",
   "files": [

@@ -6,7 +6,7 @@
   "description": "Page navigation with previous/next and numbered pages.",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "static",
   "files": [

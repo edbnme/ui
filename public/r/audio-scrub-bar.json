@@ -6,7 +6,7 @@
   "description": "Composable scrub bar primitives for playback progress, seeking, thumbs, and time labels.",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "audio",
   "files": [

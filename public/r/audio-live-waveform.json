@@ -6,7 +6,7 @@
   "description": "Canvas waveform for live microphone input, processing animations, and idle audio states.",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "audio",
   "files": [

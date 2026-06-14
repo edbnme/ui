@@ -9,7 +9,7 @@
     "react-resizable-panels"
   ],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "static",
   "files": [

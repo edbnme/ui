@@ -1,10 +1,9 @@
 /**
- * Avatar — User avatar with image loading, fallback, and automatic delay.
+ * Avatar - premium solid profile image primitive.
  *
- * Built on the Base UI `Avatar` primitive. Handles the full image-loading
- * lifecycle: shows `<AvatarFallback>` while the image loads, swaps to
- * `<AvatarImage>` on `load`, and stays on the fallback on `error`. The
- * fallback can specify a delay so quick successful loads do not flash.
+ * Thin styled layer over `@base-ui/react/avatar`. Parts preserve upstream
+ * render composition, refs, function-valued `className` and `style`, image
+ * loading state, fallback delay, and transition data attributes.
  *
  * Anatomy:
  * ```tsx
@@ -14,115 +13,143 @@
  * </AvatarRoot>
  * ```
  *
- * Accessibility: always pass an `alt` on `AvatarImage`. For decorative
- * avatars set `alt=""`. Fallbacks are announced as text.
+ * Styling is solid, platform-native, professional, and token driven.
  *
  * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
  * @docs       https://ui.edbn.me/docs/components/avatar
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/avatar
- * @registryDescription Composable avatar with image support and fallback initials.
+ * @upstream   @base-ui/react v1.5.0 - https://base-ui.com/react/components/avatar
+ * @registryDescription Premium solid avatar with image loading, fallback delay, render composition, and state-aware styling.
+ * @registryDemos basic=Basic, with-image=With Image, states=States
  */
-
 "use client";
 
 import * as React from "react";
 import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar";
+import type {
+  AvatarFallbackProps as BaseAvatarFallbackProps,
+  AvatarFallbackState as BaseAvatarFallbackState,
+  AvatarImageProps as BaseAvatarImageProps,
+  AvatarImageState as BaseAvatarImageState,
+  AvatarRootProps as BaseAvatarRootProps,
+  AvatarRootState as BaseAvatarRootState,
+  ImageLoadingStatus as BaseImageLoadingStatus,
+} from "@base-ui/react/avatar";
 
 import { cn } from "@/lib/utils";
 
+// ---- TYPES ------------------------------------------------------------------
+
+export type AvatarRootProps = BaseAvatarRootProps;
+export type AvatarRootState = BaseAvatarRootState;
+export type AvatarImageProps = BaseAvatarImageProps;
+export type AvatarImageState = BaseAvatarImageState;
+export type AvatarFallbackProps = BaseAvatarFallbackProps;
+export type AvatarFallbackState = BaseAvatarFallbackState;
+export type ImageLoadingStatus = BaseImageLoadingStatus;
+
+// ---- HELPERS ----------------------------------------------------------------
+
+function composeClassName<TProps extends { className?: unknown }>(
+  baseClassName: string,
+  className: TProps["className"]
+): TProps["className"] {
+  if (typeof className === "function") {
+    return ((state: unknown) =>
+      cn(
+        baseClassName,
+        (className as (state: unknown) => string | undefined)(state)
+      )) as TProps["className"];
+  }
+
+  return cn(
+    baseClassName,
+    className as string | undefined
+  ) as TProps["className"];
+}
+
 // ---- ROOT -------------------------------------------------------------------
 
-export type AvatarRootProps = React.ComponentPropsWithoutRef<
-  typeof AvatarPrimitive.Root
->;
-
-/**
- * The outer container — coordinates image loading state and clips children
- * to a rounded shape.
- *
- * @since 0.1.0
- */
-function AvatarRoot({ className, ...props }: AvatarRootProps) {
+const AvatarRoot = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Root>,
+  AvatarRootProps
+>(function AvatarRoot({ className, ...props }, ref) {
   return (
     <AvatarPrimitive.Root
+      ref={ref}
       data-slot="avatar-root"
-      className={cn(
-        "relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full",
-        "bg-muted",
+      className={composeClassName<AvatarRootProps>(
+        cn(
+          "relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full align-middle",
+          "border border-border bg-muted text-muted-foreground shadow-sm ring-1 ring-background",
+          "select-none transition-[background-color,border-color,box-shadow] duration-150 ease-out motion-reduce:transition-none",
+          "forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]"
+        ),
         className
       )}
       {...props}
     />
   );
-}
+});
 AvatarRoot.displayName = "AvatarRoot";
 
 // ---- IMAGE ------------------------------------------------------------------
 
-export type AvatarImageProps = React.ComponentPropsWithoutRef<
-  typeof AvatarPrimitive.Image
->;
-
-/**
- * The `<img>`. Only mounts after the underlying image successfully loads,
- * preventing broken-icon flashes when the URL 404s.
- *
- * @since 0.1.0
- */
-function AvatarImage({ className, ...props }: AvatarImageProps) {
+const AvatarImage = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Image>,
+  AvatarImageProps
+>(function AvatarImage({ className, ...props }, ref) {
   return (
     <AvatarPrimitive.Image
+      ref={ref}
       data-slot="avatar-image"
-      className={cn("aspect-square h-full w-full object-cover", className)}
-      {...props}
-    />
-  );
-}
-AvatarImage.displayName = "AvatarImage";
-
-// ---- FALLBACK ---------------------------------------------------------------
-
-export type AvatarFallbackProps = React.ComponentPropsWithoutRef<
-  typeof AvatarPrimitive.Fallback
->;
-
-/**
- * Shown while the image loads (and remains visible if it errors). Usually
- * a 1–2 character initial set.
- *
- * Props of note:
- * - `delay?: number` — ms to wait before showing the fallback; prevents
- *   flash on fast loads.
- *
- * @since 0.1.0
- */
-function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
-  return (
-    <AvatarPrimitive.Fallback
-      data-slot="avatar-fallback"
-      className={cn(
-        "flex h-full w-full items-center justify-center rounded-full",
-        "bg-muted text-sm font-medium text-muted-foreground",
-        "select-none",
+      className={composeClassName<AvatarImageProps>(
+        cn(
+          "aspect-square h-full w-full object-cover",
+          "transition-[opacity,transform] duration-150 ease-out motion-reduce:transition-none",
+          "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+          "data-[ending-style]:scale-95 data-[ending-style]:opacity-0"
+        ),
         className
       )}
       {...props}
     />
   );
-}
+});
+AvatarImage.displayName = "AvatarImage";
+
+// ---- FALLBACK ---------------------------------------------------------------
+
+const AvatarFallback = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Fallback>,
+  AvatarFallbackProps
+>(function AvatarFallback({ className, ...props }, ref) {
+  return (
+    <AvatarPrimitive.Fallback
+      ref={ref}
+      data-slot="avatar-fallback"
+      className={composeClassName<AvatarFallbackProps>(
+        cn(
+          "flex h-full w-full items-center justify-center rounded-full",
+          "bg-secondary text-sm font-semibold leading-none text-secondary-foreground",
+          "ring-1 ring-inset ring-border",
+          "forced-colors:border forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]"
+        ),
+        className
+      )}
+      {...props}
+    />
+  );
+});
 AvatarFallback.displayName = "AvatarFallback";
 
 // ---- EXPORTS ----------------------------------------------------------------
 
-export { AvatarRoot, AvatarImage, AvatarFallback };
+const Avatar = Object.assign(AvatarRoot, {
+  Root: AvatarRoot,
+  Image: AvatarImage,
+  Fallback: AvatarFallback,
+});
 
-/**
- * Backward-compatible alias — `Avatar` was the original shared-variant
- * export. Points to `AvatarRoot`.
- *
- * @deprecated prefer `AvatarRoot` for clarity.
- */
-export { AvatarRoot as Avatar };
+export { AvatarRoot, AvatarImage, AvatarFallback, Avatar };

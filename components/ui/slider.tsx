@@ -1,233 +1,309 @@
-﻿/**
- * Slider â€” Range input for picking a numeric value (or a pair of values).
+/**
+ * Slider - Numeric value input with single-value and range modes.
  *
- * Built on the Base UI `Slider` primitive. Supports single and range modes
- * (pass an array to `value` / `defaultValue`), horizontal & vertical
- * orientation, keyboard stepping (Arrow keys, PageUp/PageDown, Home/End),
- * form integration via hidden inputs, and full ARIA wiring.
+ * Thin styled layer over `@base-ui/react/slider`. Parts preserve upstream
+ * render composition, refs, function-valued `className` and `style`, field
+ * state data attributes, form integration, labeling, and range thumb indexes.
  *
- * Anatomy (single value):
+ * Anatomy:
  * ```tsx
  * <SliderRoot defaultValue={50}>
+ *   <div className="flex items-center justify-between">
+ *     <SliderLabel>Volume</SliderLabel>
+ *     <SliderValue />
+ *   </div>
  *   <SliderControl>
  *     <SliderTrack>
  *       <SliderIndicator />
+ *       <SliderThumb />
  *     </SliderTrack>
- *     <SliderThumb />
  *   </SliderControl>
- *   <SliderValue />
  * </SliderRoot>
  * ```
  *
- * Anatomy (range):
+ * Range anatomy:
  * ```tsx
- * <SliderRoot defaultValue={[20, 80]} min={0} max={100}>
+ * <SliderRoot defaultValue={[20, 80]}>
+ *   <SliderLabel>Price range</SliderLabel>
  *   <SliderControl>
  *     <SliderTrack>
  *       <SliderIndicator />
+ *       <SliderThumb index={0} aria-label="Minimum price" />
+ *       <SliderThumb index={1} aria-label="Maximum price" />
  *     </SliderTrack>
- *     <SliderThumb />
- *     <SliderThumb />
  *   </SliderControl>
  * </SliderRoot>
  * ```
+ *
+ * Styling is solid, premium, platform-native, and token driven.
  *
  * @package    @edbn/ui
  * @version    0.3.0
- * @since      0.1.0
- * @brand      edbn/ui â€” https://ui.edbn.me
- * @docs       https://ui.edbn.me/docs/components/slider
- * @upstream   Base UI v1.2.0 â€” https://base-ui.com/react/components/slider
- * @registryDescription Range slider with single or multi-thumb support.
+ * @upstream   Base UI v1.5.0 - https://base-ui.com/react/components/slider
+ * @registryDescription Premium solid slider with full Base UI part coverage, labels, value readout, range thumbs, form integration, and state-aware styling.
+ * @registryDemos basic=Basic, range=Range, vertical=Vertical, states=States, form=Form
  */
-
 "use client";
 
 import * as React from "react";
-import { Slider } from "@base-ui/react/slider";
-
+import { Slider as BaseSlider } from "@base-ui/react/slider";
+import type {
+  SliderControlProps as BaseSliderControlProps,
+  SliderControlState as BaseSliderControlState,
+  SliderIndicatorProps as BaseSliderIndicatorProps,
+  SliderIndicatorState as BaseSliderIndicatorState,
+  SliderLabelProps as BaseSliderLabelProps,
+  SliderLabelState as BaseSliderLabelState,
+  SliderRootChangeEventDetails as BaseSliderRootChangeEventDetails,
+  SliderRootChangeEventReason as BaseSliderRootChangeEventReason,
+  SliderRootCommitEventDetails as BaseSliderRootCommitEventDetails,
+  SliderRootCommitEventReason as BaseSliderRootCommitEventReason,
+  SliderRootProps as BaseSliderRootProps,
+  SliderRootState as BaseSliderRootState,
+  SliderThumbProps as BaseSliderThumbProps,
+  SliderThumbState as BaseSliderThumbState,
+  SliderTrackProps as BaseSliderTrackProps,
+  SliderTrackState as BaseSliderTrackState,
+  SliderValueProps as BaseSliderValueProps,
+  SliderValueState as BaseSliderValueState,
+} from "@base-ui/react/slider";
 import { cn } from "@/lib/utils";
+
+// ---- TYPES ------------------------------------------------------------------
+
+export type SliderRootValue = number | readonly number[];
+export type SliderRootProps<
+  Value extends SliderRootValue = SliderRootValue,
+> = BaseSliderRootProps<Value>;
+export type SliderRootState = BaseSliderRootState;
+export type SliderRootChangeEventReason = BaseSliderRootChangeEventReason;
+export type SliderRootChangeEventDetails = BaseSliderRootChangeEventDetails;
+export type SliderRootCommitEventReason = BaseSliderRootCommitEventReason;
+export type SliderRootCommitEventDetails = BaseSliderRootCommitEventDetails;
+
+export type SliderLabelProps = BaseSliderLabelProps;
+export type SliderLabelState = BaseSliderLabelState;
+export type SliderValueProps = BaseSliderValueProps;
+export type SliderValueState = BaseSliderValueState;
+export type SliderControlProps = BaseSliderControlProps;
+export type SliderControlState = BaseSliderControlState;
+export type SliderTrackProps = BaseSliderTrackProps;
+export type SliderTrackState = BaseSliderTrackState;
+export type SliderIndicatorProps = BaseSliderIndicatorProps;
+export type SliderIndicatorState = BaseSliderIndicatorState;
+export type SliderThumbProps = BaseSliderThumbProps;
+export type SliderThumbState = BaseSliderThumbState;
+
+// ---- HELPERS ----------------------------------------------------------------
+
+function composeClassName<TProps extends { className?: unknown }>(
+  baseClassName: string,
+  className: TProps["className"]
+): TProps["className"] {
+  if (typeof className === "function") {
+    return ((state: unknown) =>
+      cn(
+        baseClassName,
+        (className as (state: unknown) => string | undefined)(state)
+      )) as TProps["className"];
+  }
+
+  return cn(
+    baseClassName,
+    className as string | undefined
+  ) as TProps["className"];
+}
 
 // ---- ROOT -------------------------------------------------------------------
 
-export type SliderRootProps = Slider.Root.Props;
+const SliderRoot = React.forwardRef<HTMLDivElement, SliderRootProps>(
+  function SliderRoot({ className, ...props }, ref) {
+    return (
+      <BaseSlider.Root
+        ref={ref}
+        data-slot="slider-root"
+        className={composeClassName<SliderRootProps>(
+          cn(
+            "relative flex w-full min-w-0 select-none flex-col gap-2 text-foreground",
+            "[--slider-control-size:1.5rem] [--slider-thumb-size:1.25rem] [--slider-track-size:0.5rem]",
+            "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
+            "data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-fit data-[orientation=vertical]:items-center"
+          ),
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+) as <Value extends SliderRootValue = SliderRootValue>(
+  props: SliderRootProps<Value> & React.RefAttributes<HTMLDivElement>
+) => React.JSX.Element;
+(SliderRoot as { displayName?: string }).displayName = "SliderRoot";
 
-/**
- * Owns the value state and dispatches updates. Accepts a number for a
- * single-thumb slider or an array for a range slider â€” the number of
- * `SliderThumb`s inside should match the array length.
- *
- * Data attributes:
- * - `data-orientation` â€” `"horizontal"` (default) | `"vertical"`
- * - `data-disabled`
- *
- * @since 0.1.0
- */
-function SliderRoot({ className, ...props }: SliderRootProps) {
-  return (
-    <Slider.Root
-      data-slot="slider-root"
-      className={cn(
-        "relative flex w-full touch-none select-none items-center",
-        "data-orientation-vertical:h-full data-orientation-vertical:w-auto data-orientation-vertical:flex-col",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-SliderRoot.displayName = "SliderRoot";
+// ---- LABEL ------------------------------------------------------------------
+
+const SliderLabel = React.forwardRef<HTMLDivElement, SliderLabelProps>(
+  function SliderLabel({ className, ...props }, ref) {
+    return (
+      <BaseSlider.Label
+        ref={ref}
+        data-slot="slider-label"
+        className={composeClassName<SliderLabelProps>(
+          cn(
+            "text-sm font-medium leading-none text-foreground",
+            "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
+            "forced-colors:text-[CanvasText]"
+          ),
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+SliderLabel.displayName = "SliderLabel";
+
+// ---- VALUE ------------------------------------------------------------------
+
+const SliderValue = React.forwardRef<HTMLOutputElement, SliderValueProps>(
+  function SliderValue({ className, ...props }, ref) {
+    return (
+      <BaseSlider.Value
+        ref={ref}
+        data-slot="slider-value"
+        className={composeClassName<SliderValueProps>(
+          cn(
+            "min-w-10 text-right text-sm font-medium tabular-nums text-muted-foreground",
+            "data-[disabled]:opacity-60 forced-colors:text-[CanvasText]"
+          ),
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+SliderValue.displayName = "SliderValue";
 
 // ---- CONTROL ----------------------------------------------------------------
 
-export type SliderControlProps = Slider.Control.Props;
-
-/**
- * Interactive hit area that hosts the track and thumbs. Taps anywhere on
- * this region move the nearest thumb. Always include â€” Base UI's pointer
- * handling lives here.
- *
- * @since 0.1.0
- */
-function SliderControl({ className, ...props }: SliderControlProps) {
-  return (
-    <Slider.Control
-      data-slot="slider-control"
-      className={cn(
-        "relative flex h-5 w-full touch-none select-none items-center",
-        "data-orientation-vertical:h-full data-orientation-vertical:w-5 data-orientation-vertical:flex-col",
-        className
-      )}
-      {...props}
-    />
-  );
-}
+const SliderControl = React.forwardRef<HTMLDivElement, SliderControlProps>(
+  function SliderControl({ className, ...props }, ref) {
+    return (
+      <BaseSlider.Control
+        ref={ref}
+        data-slot="slider-control"
+        className={composeClassName<SliderControlProps>(
+          cn(
+            "relative flex w-full touch-none select-none items-center py-2",
+            "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60",
+            "data-[orientation=horizontal]:min-h-[var(--slider-control-size)]",
+            "data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-[var(--slider-control-size)] data-[orientation=vertical]:justify-center data-[orientation=vertical]:px-2 data-[orientation=vertical]:py-0"
+          ),
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 SliderControl.displayName = "SliderControl";
 
 // ---- TRACK ------------------------------------------------------------------
 
-export type SliderTrackProps = Slider.Track.Props;
-
-/**
- * The recessed rail behind the thumb. Hosts `SliderIndicator`, which paints
- * the filled portion.
- *
- * @since 0.1.0
- */
-function SliderTrack({ className, ...props }: SliderTrackProps) {
-  return (
-    <Slider.Track
-      data-slot="slider-track"
-      className={cn(
-        "relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20",
-        "data-orientation-vertical:h-full data-orientation-vertical:w-1.5",
-        className
-      )}
-      {...props}
-    />
-  );
-}
+const SliderTrack = React.forwardRef<HTMLDivElement, SliderTrackProps>(
+  function SliderTrack({ className, ...props }, ref) {
+    return (
+      <BaseSlider.Track
+        ref={ref}
+        data-slot="slider-track"
+        className={composeClassName<SliderTrackProps>(
+          cn(
+            "relative isolate grow overflow-hidden rounded-full border border-border bg-muted shadow-inner",
+            "data-[invalid]:border-destructive",
+            "data-[orientation=horizontal]:h-[var(--slider-track-size)] data-[orientation=horizontal]:w-full",
+            "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-[var(--slider-track-size)]",
+            "forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:shadow-none"
+          ),
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 SliderTrack.displayName = "SliderTrack";
 
 // ---- INDICATOR --------------------------------------------------------------
 
-export type SliderIndicatorProps = Slider.Indicator.Props;
-
-/**
- * The filled portion of the track. Base UI sizes this automatically based
- * on the current value(s) â€” for a range slider it spans between the two
- * thumbs.
- *
- * @since 0.1.0
- */
-function SliderIndicator({ className, ...props }: SliderIndicatorProps) {
+const SliderIndicator = React.forwardRef<
+  HTMLDivElement,
+  SliderIndicatorProps
+>(function SliderIndicator({ className, ...props }, ref) {
   return (
-    <Slider.Indicator
+    <BaseSlider.Indicator
+      ref={ref}
       data-slot="slider-indicator"
-      className={cn(
-        "absolute h-full bg-primary",
-        "data-orientation-vertical:h-auto data-orientation-vertical:w-full",
+      className={composeClassName<SliderIndicatorProps>(
+        cn(
+          "absolute rounded-full bg-primary shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--primary)_88%,var(--border))]",
+          "data-[invalid]:bg-destructive",
+          "data-[orientation=horizontal]:h-full",
+          "data-[orientation=vertical]:w-full",
+          "forced-colors:bg-[Highlight] forced-colors:shadow-none"
+        ),
         className
       )}
       {...props}
     />
   );
-}
+});
 SliderIndicator.displayName = "SliderIndicator";
 
 // ---- THUMB ------------------------------------------------------------------
 
-export type SliderThumbProps = Slider.Thumb.Props;
-
-/**
- * The draggable knob. Render one per value â€” one for a single-value
- * slider, two for a range slider.
- *
- * Subtle scale-up while active provides a tactile "picked up" feedback
- * loop for direct-manipulation handles.
- *
- * Data attributes:
- * - `data-dragging` â€” on while actively being dragged
- * - `data-orientation`
- * - `data-index` â€” the thumb's position (0-based) in the value array
- *
- * @since 0.1.0
- */
-function SliderThumb({ className, ...props }: SliderThumbProps) {
-  return (
-    <Slider.Thumb
-      data-slot="slider-thumb"
-      className={cn(
-        "block h-4 w-4 rounded-full border border-primary/50 bg-background shadow",
-        "transition-[transform,box-shadow,border-color] duration-150 ease-out motion-reduce:transition-none",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        "hover:scale-110 data-dragging:scale-110 data-dragging:shadow-md",
-        "disabled:pointer-events-none disabled:opacity-50",
-        className
-      )}
-      {...props}
-    />
-  );
-}
+const SliderThumb = React.forwardRef<HTMLDivElement, SliderThumbProps>(
+  function SliderThumb({ className, ...props }, ref) {
+    return (
+      <BaseSlider.Thumb
+        ref={ref}
+        data-slot="slider-thumb"
+        className={composeClassName<SliderThumbProps>(
+          cn(
+            "block size-[var(--slider-thumb-size)] rounded-full border border-border bg-background ring-4 ring-background",
+            "shadow-[0_1px_2px_rgba(0,0,0,0.12),0_6px_18px_-10px_rgba(0,0,0,0.45)]",
+            "transition-[background-color,border-color,box-shadow,transform] duration-150 ease-out motion-reduce:transition-none motion-reduce:active:scale-100",
+            "hover:border-ring hover:shadow-[0_2px_6px_rgba(0,0,0,0.14),0_10px_24px_-14px_rgba(0,0,0,0.55)]",
+            "data-[dragging]:scale-105 data-[dragging]:border-ring data-[dragging]:shadow-[0_2px_6px_rgba(0,0,0,0.16),0_14px_28px_-14px_rgba(0,0,0,0.65)]",
+            "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[invalid]:border-destructive",
+            "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring",
+            "has-[:focus-visible]:border-ring has-[:focus-visible]:outline-none has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-ring",
+            "forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:ring-[Canvas]",
+            "forced-colors:has-[:focus-visible]:outline forced-colors:has-[:focus-visible]:outline-2 forced-colors:has-[:focus-visible]:outline-[Highlight]"
+          ),
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
 SliderThumb.displayName = "SliderThumb";
-
-// ---- VALUE ------------------------------------------------------------------
-
-export type SliderValueProps = Slider.Value.Props;
-
-/**
- * Live text readout of the current value(s). Renders as an `<output>`
- * element with `aria-live="off"` by default (Base UI handles the
- * announcement semantics through the thumb's `aria-valuenow`).
- *
- * @since 0.1.0
- */
-function SliderValue({ className, ...props }: SliderValueProps) {
-  return (
-    <Slider.Value
-      data-slot="slider-value"
-      className={cn("text-sm tabular-nums text-muted-foreground", className)}
-      {...props}
-    />
-  );
-}
-SliderValue.displayName = "SliderValue";
 
 // ---- EXPORTS ----------------------------------------------------------------
 
 export {
   SliderRoot,
+  SliderLabel,
+  SliderValue,
   SliderControl,
   SliderTrack,
   SliderIndicator,
   SliderThumb,
-  SliderValue,
 };
 
 /**
- * Backward-compatible alias â€” `Slider` was the original shared-variant
- * export before the static-variant split. Kept so existing consumers do
- * not break.
+ * Backward-compatible alias kept for existing imports.
  *
  * @deprecated prefer `SliderRoot` for clarity.
  */

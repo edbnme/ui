@@ -1,10 +1,10 @@
 /**
- * Sheet — CSS-only slide-out panel built on `@base-ui/react` Dialog.
+ * Sheet - directional slide-out panel built on `@base-ui/react/dialog`.
  *
- * A side drawer that slides in from any of the four edges. Uses Base UI's
- * `data-starting-style` / `data-ending-style` hooks to animate open/close
- * via CSS transforms — no `motion` dependency. All animations honor
- * `prefers-reduced-motion`.
+ * Use Sheet for non-gesture side panels and task drawers. It keeps the full
+ * Dialog primitive API, including detached triggers, controlled state, modal
+ * modes, `render` composition, refs, function `className` / `style`, and
+ * transition data attributes.
  *
  * Anatomy:
  * ```tsx
@@ -14,13 +14,14 @@
  *     <SheetBackdrop />
  *     <SheetViewport>
  *       <SheetPopup side="right">
+ *         <SheetCloseIconButton />
  *         <SheetHeader>
  *           <SheetTitle>Title</SheetTitle>
  *           <SheetDescription>Description</SheetDescription>
  *         </SheetHeader>
- *         <SheetBody>…content…</SheetBody>
+ *         <SheetBody>Content</SheetBody>
  *         <SheetFooter>
- *           <SheetClose>Close</SheetClose>
+ *           <SheetClose>Done</SheetClose>
  *         </SheetFooter>
  *       </SheetPopup>
  *     </SheetViewport>
@@ -31,50 +32,81 @@
  * @package    @edbn/ui
  * @version    0.3.0
  * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
  * @docs       https://ui.edbn.me/docs/components/sheet
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/dialog
- * @registryDescription Static slide-out panel built on Base UI Dialog with directional CSS transitions.
+ * @source     https://ui.edbn.me/r/sheet.json
+ * @registry   https://ui.edbn.me/r
+ * @upstream   https://base-ui.com/react/components/dialog
+ * @registryDescription Premium solid slide-out panel built on Base UI Dialog with directional CSS transitions.
  */
-
 "use client";
 
 import * as React from "react";
 import { Dialog } from "@base-ui/react/dialog";
-import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "@phosphor-icons/react";
-
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// ---- ROOT -------------------------------------------------------------------
+type StateClassName<State> =
+  | string
+  | ((state: State) => string | undefined)
+  | undefined;
+
+function composeStateClassName<State>(
+  baseClassName: string,
+  className: StateClassName<State>
+) {
+  if (typeof className === "function") {
+    return (state: State) => cn(baseClassName, className(state));
+  }
+
+  return cn(baseClassName, className);
+}
+
+// ---- SHEET ROOT -------------------------------------------------------------
 
 /**
- * The sheet's controlled root. Direct re-export from Base UI.
+ * Top-level Sheet state holder. Forwards all Base UI `Dialog.Root` props:
+ * `open`, `defaultOpen`, `onOpenChange`, `onOpenChangeComplete`, `modal`,
+ * `disablePointerDismissal`, `actionsRef`, `handle`, `triggerId`,
+ * `defaultTriggerId`, and function-as-children payload rendering.
  *
  * @since 0.1.0
  */
-const SheetRoot = Dialog.Root;
+export type SheetRootProps<Payload = unknown> = Dialog.Root.Props<Payload>;
+function SheetRoot<Payload = unknown>(props: SheetRootProps<Payload>) {
+  return <Dialog.Root {...props} />;
+}
+SheetRoot.displayName = "SheetRoot";
 
-// ---- TRIGGER ----------------------------------------------------------------
-
-export type SheetTriggerProps = React.ComponentPropsWithoutRef<
-  typeof Dialog.Trigger
->;
+// ---- SHEET TRIGGER ----------------------------------------------------------
 
 /**
- * Element that opens the sheet when activated.
+ * Button that opens the sheet. Pass Base UI's `render` prop to compose with a
+ * design-system button while preserving trigger behavior.
+ *
+ * **Data attributes** - `data-popup-open`, `data-disabled`.
  *
  * @since 0.1.0
  */
-function SheetTrigger({ className, ...props }: SheetTriggerProps) {
+export type SheetTriggerProps<Payload = unknown> =
+  Dialog.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
+function SheetTrigger<Payload = unknown>({
+  className,
+  ...props
+}: SheetTriggerProps<Payload>) {
   return (
     <Dialog.Trigger
       data-slot="sheet-trigger"
-      className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md border border-border bg-background px-4 text-sm font-medium text-foreground select-none",
-        "transition-colors duration-150 ease-out motion-reduce:transition-none",
-        "hover:bg-muted active:bg-muted/80",
-        "focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-ring",
+      className={composeStateClassName<Dialog.Trigger.State>(
+        cn(
+          "inline-flex h-10 items-center justify-center rounded-md px-4",
+          "border border-border bg-background text-sm font-medium text-foreground",
+          "select-none transition-colors duration-150 ease-out",
+          "hover:bg-muted active:bg-muted/80",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+          "data-disabled:pointer-events-none data-disabled:opacity-50",
+          "motion-reduce:transition-none"
+        ),
         className
       )}
       {...props}
@@ -83,34 +115,40 @@ function SheetTrigger({ className, ...props }: SheetTriggerProps) {
 }
 SheetTrigger.displayName = "SheetTrigger";
 
-// ---- PORTAL -----------------------------------------------------------------
+// ---- SHEET PORTAL -----------------------------------------------------------
 
 /**
- * Portals the sheet's children to the document body. Direct re-export.
+ * Portals sheet content into a stable DOM location. Supports `container`,
+ * `keepMounted`, `render`, `className`, and `style`.
  *
  * @since 0.1.0
  */
-const SheetPortal = Dialog.Portal;
+export type SheetPortalProps = React.ComponentProps<typeof Dialog.Portal>;
+const SheetPortal = (props: SheetPortalProps) => <Dialog.Portal {...props} />;
+SheetPortal.displayName = "SheetPortal";
 
-// ---- BACKDROP ---------------------------------------------------------------
-
-export type SheetBackdropProps = React.ComponentPropsWithoutRef<
-  typeof Dialog.Backdrop
->;
+// ---- SHEET BACKDROP ---------------------------------------------------------
 
 /**
- * Dim layer behind the sheet.
+ * Solid dim layer behind the sheet.
+ *
+ * **Data attributes** - `data-open`, `data-closed`, `data-starting-style`,
+ * `data-ending-style`.
  *
  * @since 0.1.0
  */
+export type SheetBackdropProps = React.ComponentProps<typeof Dialog.Backdrop>;
 function SheetBackdrop({ className, ...props }: SheetBackdropProps) {
   return (
     <Dialog.Backdrop
       data-slot="sheet-backdrop"
-      className={cn(
-        "fixed inset-0 z-50 bg-black/60 backdrop-blur-sm",
-        "transition-opacity duration-300 motion-reduce:transition-none",
-        "data-starting-style:opacity-0 data-ending-style:opacity-0",
+      className={composeStateClassName<Dialog.Backdrop.State>(
+        cn(
+          "fixed inset-0 z-50 bg-foreground/45",
+          "transition-opacity duration-200 ease-out",
+          "data-starting-style:opacity-0 data-ending-style:opacity-0",
+          "motion-reduce:transition-none"
+        ),
         className
       )}
       {...props}
@@ -119,55 +157,63 @@ function SheetBackdrop({ className, ...props }: SheetBackdropProps) {
 }
 SheetBackdrop.displayName = "SheetBackdrop";
 
-// ---- VIEWPORT ---------------------------------------------------------------
-
-export type SheetViewportProps = React.ComponentPropsWithoutRef<
-  typeof Dialog.Viewport
->;
+// ---- SHEET VIEWPORT ---------------------------------------------------------
 
 /**
- * Full-viewport wrapper that contains the popup. Typically invisible.
+ * Full-viewport positioning and clipping container for the popup.
+ *
+ * **Data attributes** - `data-open`, `data-closed`, `data-nested`,
+ * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
  * @since 0.1.0
  */
+export type SheetViewportProps = React.ComponentProps<typeof Dialog.Viewport>;
 function SheetViewport({ className, ...props }: SheetViewportProps) {
   return (
     <Dialog.Viewport
       data-slot="sheet-viewport"
-      className={cn("fixed inset-0 z-50", className)}
+      className={composeStateClassName<Dialog.Viewport.State>(
+        cn("fixed inset-0 z-50 overflow-hidden pointer-events-none"),
+        className
+      )}
       {...props}
     />
   );
 }
 SheetViewport.displayName = "SheetViewport";
 
-// ---- POPUP VARIANTS ---------------------------------------------------------
+// ---- SHEET POPUP ------------------------------------------------------------
 
 const sheetVariants = cva(
   [
-    "fixed z-50 bg-background shadow-lg border border-border",
-    "transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
-    "motion-reduce:transition-none",
-    "flex flex-col overflow-y-auto",
+    "fixed z-50 flex flex-col overflow-hidden border-border bg-background text-foreground shadow-2xl",
+    "pointer-events-auto outline-none transform-gpu",
+    "transition-[transform,opacity] duration-200 ease-out",
+    "data-starting-style:opacity-0 data-ending-style:opacity-0",
+    "motion-reduce:transition-opacity",
   ],
   {
     variants: {
       side: {
         top: [
-          "inset-x-0 top-0 max-h-[80vh] rounded-b-2xl",
+          "inset-x-0 top-0 max-h-[min(80dvh,42rem)] w-full rounded-b-xl border-b",
           "data-starting-style:-translate-y-full data-ending-style:-translate-y-full",
+          "motion-reduce:data-starting-style:translate-y-0 motion-reduce:data-ending-style:translate-y-0",
         ],
         right: [
-          "inset-y-0 right-0 w-full max-w-sm sm:max-w-md",
+          "inset-y-0 right-0 h-dvh w-[min(30rem,calc(100vw-1rem))] border-l sm:w-[30rem]",
           "data-starting-style:translate-x-full data-ending-style:translate-x-full",
+          "motion-reduce:data-starting-style:translate-x-0 motion-reduce:data-ending-style:translate-x-0",
         ],
         bottom: [
-          "inset-x-0 bottom-0 max-h-[80vh] rounded-t-2xl",
+          "inset-x-0 bottom-0 max-h-[min(82dvh,44rem)] w-full rounded-t-xl border-t",
           "data-starting-style:translate-y-full data-ending-style:translate-y-full",
+          "motion-reduce:data-starting-style:translate-y-0 motion-reduce:data-ending-style:translate-y-0",
         ],
         left: [
-          "inset-y-0 left-0 w-full max-w-sm sm:max-w-md",
+          "inset-y-0 left-0 h-dvh w-[min(30rem,calc(100vw-1rem))] border-r sm:w-[30rem]",
           "data-starting-style:-translate-x-full data-ending-style:-translate-x-full",
+          "motion-reduce:data-starting-style:translate-x-0 motion-reduce:data-ending-style:translate-x-0",
         ],
       },
     },
@@ -177,15 +223,17 @@ const sheetVariants = cva(
   }
 );
 
-// ---- POPUP ------------------------------------------------------------------
-
+export type SheetSide = NonNullable<VariantProps<typeof sheetVariants>["side"]>;
 export interface SheetPopupProps
-  extends React.ComponentPropsWithoutRef<typeof Dialog.Popup>,
+  extends Dialog.Popup.Props,
     VariantProps<typeof sheetVariants> {}
 
 /**
- * The sheet surface itself. Choose edge via `side="top" | "right" |
- * "bottom" | "left"` (default `right`).
+ * The sheet surface. Choose an edge with `side="top" | "right" | "bottom" |
+ * "left"`; `right` is the default.
+ *
+ * **Data attributes** - `data-open`, `data-closed`, `data-nested`,
+ * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
  *
  * @since 0.1.0
  */
@@ -197,149 +245,186 @@ function SheetPopup({
   return (
     <Dialog.Popup
       data-slot="sheet-popup"
-      className={cn(sheetVariants({ side }), className)}
+      className={composeStateClassName<Dialog.Popup.State>(
+        sheetVariants({ side }),
+        className
+      )}
       {...props}
     />
   );
 }
 SheetPopup.displayName = "SheetPopup";
 
-// ---- CLOSE ------------------------------------------------------------------
-
-export type SheetCloseProps = React.ComponentPropsWithoutRef<
-  typeof Dialog.Close
->;
+// ---- SHEET CLOSE ------------------------------------------------------------
 
 /**
- * Button that closes the sheet. Defaults to an X-icon button in the top
- * right; pass children to override.
+ * Unstyled close action. Use inside `SheetFooter` for Cancel, Done, or custom
+ * action buttons. For the corner X affordance, use `SheetCloseIconButton`.
+ *
+ * **Data attributes** - `data-disabled`.
  *
  * @since 0.1.0
  */
-function SheetClose({ className, children, ...props }: SheetCloseProps) {
+export type SheetCloseProps = React.ComponentProps<typeof Dialog.Close>;
+function SheetClose({ className, ...props }: SheetCloseProps) {
   return (
     <Dialog.Close
       data-slot="sheet-close"
-      className={cn(
-        "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background",
-        "transition-opacity duration-150 ease-out motion-reduce:transition-none",
-        "hover:opacity-100",
-        "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-        "disabled:pointer-events-none",
+      className={composeStateClassName<Dialog.Close.State>(
+        cn(
+          "inline-flex items-center justify-center select-none",
+          "transition-colors duration-150 ease-out",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+          "data-disabled:pointer-events-none data-disabled:opacity-50",
+          "motion-reduce:transition-none"
+        ),
         className
       )}
       {...props}
-    >
-      {children ?? (
-        <>
-          <X className="h-4 w-4" aria-hidden />
-          <span className="sr-only">Close</span>
-        </>
-      )}
-    </Dialog.Close>
+    />
   );
 }
 SheetClose.displayName = "SheetClose";
 
-// ---- HEADER -----------------------------------------------------------------
-
-export type SheetHeaderProps = React.ComponentPropsWithoutRef<"div">;
+// ---- SHEET CLOSE ICON BUTTON ------------------------------------------------
 
 /**
- * Top region of the sheet — houses title & description.
+ * Styled corner close button with a 32px hit target and an accessible name.
+ *
+ * @since 0.3.0
+ */
+export type SheetCloseIconButtonProps = SheetCloseProps;
+function SheetCloseIconButton({
+  className,
+  "aria-label": ariaLabel = "Close sheet",
+  ...props
+}: SheetCloseIconButtonProps) {
+  return (
+    <Dialog.Close
+      data-slot="sheet-close-icon-button"
+      aria-label={ariaLabel}
+      className={composeStateClassName<Dialog.Close.State>(
+        cn(
+          "absolute top-4 right-4 z-10 inline-flex size-8 items-center justify-center rounded-md",
+          "text-muted-foreground transition-colors duration-150 ease-out",
+          "hover:bg-muted hover:text-foreground",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
+          "data-disabled:pointer-events-none data-disabled:opacity-50",
+          "motion-reduce:transition-none"
+        ),
+        className
+      )}
+      {...props}
+    >
+      <X aria-hidden className="size-4" weight="bold" />
+      <span className="sr-only">Close</span>
+    </Dialog.Close>
+  );
+}
+SheetCloseIconButton.displayName = "SheetCloseIconButton";
+
+// ---- SHEET HEADER -----------------------------------------------------------
+
+/**
+ * Top region for `SheetTitle` and `SheetDescription`.
  *
  * @since 0.1.0
  */
+export type SheetHeaderProps = React.ComponentProps<"div">;
 function SheetHeader({ className, ...props }: SheetHeaderProps) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col space-y-2 p-6 pb-0", className)}
+      className={cn("flex flex-col gap-1.5 px-6 pt-6 pb-4 pr-14", className)}
       {...props}
     />
   );
 }
 SheetHeader.displayName = "SheetHeader";
 
-// ---- TITLE ------------------------------------------------------------------
-
-export type SheetTitleProps = React.ComponentPropsWithoutRef<
-  typeof Dialog.Title
->;
+// ---- SHEET TITLE ------------------------------------------------------------
 
 /**
- * Accessible sheet title — linked via `aria-labelledby`.
+ * Accessible sheet title. Its id is wired to the popup automatically.
  *
  * @since 0.1.0
  */
+export type SheetTitleProps = React.ComponentProps<typeof Dialog.Title>;
 function SheetTitle({ className, ...props }: SheetTitleProps) {
   return (
     <Dialog.Title
       data-slot="sheet-title"
-      className={cn("text-lg font-semibold text-foreground", className)}
+      className={composeStateClassName<Dialog.Title.State>(
+        cn("text-lg leading-none font-semibold tracking-tight text-foreground"),
+        className
+      )}
       {...props}
     />
   );
 }
 SheetTitle.displayName = "SheetTitle";
 
-// ---- DESCRIPTION ------------------------------------------------------------
-
-export type SheetDescriptionProps = React.ComponentPropsWithoutRef<
-  typeof Dialog.Description
->;
+// ---- SHEET DESCRIPTION ------------------------------------------------------
 
 /**
- * Accessible sheet description — linked via `aria-describedby`.
+ * Accessible sheet description. Its id is wired to the popup automatically.
  *
  * @since 0.1.0
  */
+export type SheetDescriptionProps = React.ComponentProps<
+  typeof Dialog.Description
+>;
 function SheetDescription({ className, ...props }: SheetDescriptionProps) {
   return (
     <Dialog.Description
       data-slot="sheet-description"
-      className={cn("text-sm text-muted-foreground", className)}
+      className={composeStateClassName<Dialog.Description.State>(
+        cn("text-sm leading-relaxed text-muted-foreground"),
+        className
+      )}
       {...props}
     />
   );
 }
 SheetDescription.displayName = "SheetDescription";
 
-// ---- BODY -------------------------------------------------------------------
-
-export type SheetBodyProps = React.ComponentPropsWithoutRef<"div">;
+// ---- SHEET BODY -------------------------------------------------------------
 
 /**
- * Scrollable main content area.
+ * Scrollable main content region.
  *
  * @since 0.1.0
  */
+export type SheetBodyProps = React.ComponentProps<"div">;
 function SheetBody({ className, ...props }: SheetBodyProps) {
   return (
     <div
       data-slot="sheet-body"
-      className={cn("flex-1 overflow-y-auto p-6", className)}
+      className={cn(
+        "min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-4",
+        className
+      )}
       {...props}
     />
   );
 }
 SheetBody.displayName = "SheetBody";
 
-// ---- FOOTER -----------------------------------------------------------------
-
-export type SheetFooterProps = React.ComponentPropsWithoutRef<"div">;
+// ---- SHEET FOOTER -----------------------------------------------------------
 
 /**
- * Bottom region — typically holds action buttons.
+ * Bottom action row. On narrow viewports, actions stack with the primary
+ * action nearest the sheet content.
  *
  * @since 0.1.0
  */
+export type SheetFooterProps = React.ComponentProps<"div">;
 function SheetFooter({ className, ...props }: SheetFooterProps) {
   return (
     <div
       data-slot="sheet-footer"
       className={cn(
-        "flex flex-col-reverse gap-2 p-6 pt-0 sm:flex-row sm:justify-end",
+        "mt-auto flex flex-col-reverse gap-2 border-t border-border px-6 py-4 sm:flex-row sm:justify-end",
         className
       )}
       {...props}
@@ -347,6 +432,22 @@ function SheetFooter({ className, ...props }: SheetFooterProps) {
   );
 }
 SheetFooter.displayName = "SheetFooter";
+
+// ---- SHEET HANDLE -----------------------------------------------------------
+
+/**
+ * Handle class for detached triggers and imperative sheet control.
+ *
+ * @since 0.3.0
+ */
+const SheetHandle = Dialog.Handle;
+
+/**
+ * Creates a typed handle for detached triggers.
+ *
+ * @since 0.3.0
+ */
+const createSheetHandle = Dialog.createHandle;
 
 // ---- EXPORTS ----------------------------------------------------------------
 
@@ -358,10 +459,13 @@ export {
   SheetViewport,
   SheetPopup,
   SheetClose,
+  SheetCloseIconButton,
   SheetHeader,
   SheetTitle,
   SheetDescription,
   SheetBody,
   SheetFooter,
+  SheetHandle,
+  createSheetHandle,
   sheetVariants,
 };

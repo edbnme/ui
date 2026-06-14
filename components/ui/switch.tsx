@@ -1,31 +1,16 @@
 /**
- * Switch — Toggle for binary on / off settings.
+ * Switch - Premium solid binary setting control.
  *
- * Built on the Base UI `Switch` primitive. Uses an iOS-style sliding thumb
- * with smooth spring-free easing tuned for a quiet, precise feel. Supports
- * controlled / uncontrolled state, form integration, and full ARIA wiring.
+ * Built on Base UI Switch v1.5.0. The wrapper keeps the upstream Root and
+ * Thumb API intact, including refs, render composition, state className,
+ * state style, form props, data attributes, and hidden input behavior.
  *
- * Anatomy:
- * ```tsx
- * <label className="flex items-center gap-2">
- *   <SwitchRoot defaultChecked>
- *     <SwitchThumb />
- *   </SwitchRoot>
- *   <span className="text-sm font-medium">Dark mode</span>
- * </label>
- * ```
- *
- * Accessibility: rendered as a `<button role="switch">` with `aria-checked`
- * managed by Base UI. Space / Enter toggles. A hidden `<input>` provides
- * native form submission behavior.
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
- * @docs       https://ui.edbn.me/docs/components/switch
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/switch
- * @registryDescription Toggle switch with accessible on/off states.
+ * @package @edbn/ui
+ * @version 0.3.0
+ * @since 0.1.0
+ * @docs https://ui.edbn.me/docs/components/switch
+ * @upstream https://base-ui.com/react/components/switch
+ * @registryDescription Premium solid switch with accessible on/off states and form integration.
  */
 
 "use client";
@@ -35,31 +20,40 @@ import { Switch } from "@base-ui/react/switch";
 
 import { cn } from "@/lib/utils";
 
+type StateClassName<State> =
+  | string
+  | ((state: State) => string | undefined)
+  | undefined;
+
+function composeClassName<State>(
+  baseClassName: string,
+  className: StateClassName<State>
+) {
+  if (typeof className === "function") {
+    return (state: State) => cn(baseClassName, className(state));
+  }
+
+  return cn(baseClassName, className);
+}
+
 // ---- ROOT -------------------------------------------------------------------
 
-export type SwitchRootProps = React.ComponentPropsWithoutRef<typeof Switch.Root>;
+export type SwitchRootProps = React.ComponentProps<typeof Switch.Root>;
 
-/**
- * The track element. The thumb rides inside it — its translation is driven
- * by the `data-checked` attribute on the root, which scoped Tailwind
- * selectors can hook into.
- *
- * Data attributes:
- * - `data-checked`, `data-unchecked`
- * - `data-disabled`, `data-readonly`, `data-required`
- *
- * @since 0.1.0
- */
 function SwitchRoot({ className, ...props }: SwitchRootProps) {
   return (
     <Switch.Root
       data-slot="switch-root"
-      className={cn(
-        "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm",
-        "transition-colors duration-200 ease-out motion-reduce:transition-none",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-        "disabled:cursor-not-allowed disabled:opacity-50",
-        "bg-input data-checked:bg-primary",
+      className={composeClassName<Switch.Root.State>(
+        cn(
+          "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border border-border/70 bg-muted shadow-sm",
+          "transition-[background-color,border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "data-checked:border-primary data-checked:bg-primary",
+          "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+          "data-readonly:cursor-default data-readonly:opacity-80",
+          "data-invalid:border-destructive data-invalid:ring-destructive/20"
+        ),
         className
       )}
       {...props}
@@ -70,24 +64,18 @@ SwitchRoot.displayName = "SwitchRoot";
 
 // ---- THUMB ------------------------------------------------------------------
 
-export type SwitchThumbProps = React.ComponentPropsWithoutRef<
-  typeof Switch.Thumb
->;
+export type SwitchThumbProps = React.ComponentProps<typeof Switch.Thumb>;
 
-/**
- * The sliding knob. Translates `4px` (the track's internal padding width)
- * when `data-checked`, giving the familiar iOS-style snap.
- *
- * @since 0.1.0
- */
 function SwitchThumb({ className, ...props }: SwitchThumbProps) {
   return (
     <Switch.Thumb
       data-slot="switch-thumb"
-      className={cn(
-        "pointer-events-none block h-4 w-4 rounded-full bg-background shadow-lg ring-0",
-        "transition-transform duration-200 ease-out motion-reduce:transition-none",
-        "translate-x-0 data-checked:translate-x-4",
+      className={composeClassName<Switch.Thumb.State>(
+        cn(
+          "pointer-events-none block h-4 w-4 translate-x-0 rounded-full bg-background shadow-lg ring-1 ring-black/5",
+          "transition-transform duration-200 ease-out motion-reduce:transition-none",
+          "data-checked:translate-x-4 data-disabled:opacity-90"
+        ),
         className
       )}
       {...props}

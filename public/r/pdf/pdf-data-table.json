@@ -8,8 +8,8 @@
     "@react-pdf/types"
   ],
   "registryDependencies": [
-    "pdf-table",
-    "pdf-text"
+    "https://ui.edbn.me/api/analytics/registry/pdf-table.json",
+    "https://ui.edbn.me/api/analytics/registry/pdf-text.json"
   ],
   "variant": "pdf",
   "files": [

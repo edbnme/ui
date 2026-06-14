@@ -9,12 +9,12 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "input",
-    "separator",
-    "sheet",
-    "skeleton",
-    "tooltip",
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/input.json",
+    "https://ui.edbn.me/api/analytics/registry/separator.json",
+    "https://ui.edbn.me/api/analytics/registry/sheet.json",
+    "https://ui.edbn.me/api/analytics/registry/skeleton.json",
+    "https://ui.edbn.me/api/analytics/registry/tooltip.json",
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "static",
   "files": [

@@ -8,7 +8,7 @@
     "@base-ui/react"
   ],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "static",
   "files": [

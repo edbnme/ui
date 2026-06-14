@@ -1,23 +1,14 @@
 /**
- * Label — Accessible form label with disabled-peer state styling.
+ * Label - Premium solid accessible form label.
  *
- * A thin wrapper over the native `<label>` element. Associates with a
- * control either via `htmlFor` + `id`, or by being nested around the
- * control. Adds visual opacity when the adjacent / ancestor control is
- * disabled (via `peer-disabled:` and `group-data-disabled:` selectors).
+ * Native label wrapper with full htmlFor behavior, ref forwarding, and
+ * disabled-state styling for peer and grouped form controls.
  *
- * Anatomy:
- * ```tsx
- * <Label htmlFor="email">Email address</Label>
- * <Input id="email" type="email" />
- * ```
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
- * @docs       https://ui.edbn.me/docs/components/label
- * @registryDescription A styled label component with peer/group disabled state support.
+ * @package @edbn/ui
+ * @version 0.3.0
+ * @since 0.1.0
+ * @docs https://ui.edbn.me/docs/components/label
+ * @registryDescription Premium solid form label with peer and group disabled state support.
  */
 
 "use client";
@@ -28,21 +19,18 @@ import { cn } from "@/lib/utils";
 
 // ---- LABEL ------------------------------------------------------------------
 
-export type LabelProps = React.ComponentPropsWithoutRef<"label">;
+export type LabelProps = React.ComponentPropsWithRef<"label">;
 
-/**
- * Native `<label>` with accessible disabled-state styling.
- *
- * @since 0.1.0
- */
-function Label({ className, ...props }: LabelProps) {
+function Label({ className, ref, ...props }: LabelProps) {
   return (
     <label
+      ref={ref}
       data-slot="label"
       className={cn(
-        "flex items-center gap-2 text-sm font-medium leading-none select-none",
+        "flex items-center gap-2 text-sm font-medium leading-none text-foreground select-none",
         "peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
         "group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50",
+        "has-[[aria-invalid=true]]:text-destructive",
         className
       )}
       {...props}

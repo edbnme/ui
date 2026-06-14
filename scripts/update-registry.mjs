@@ -25,6 +25,7 @@ import { fileURLToPath } from "url";
 
 import { discoverAll } from "./registry-config/discover.mjs";
 import { cssVarsLight, cssVarsDark } from "./registry-config/css-vars.mjs";
+import { toAnalyticsRegistryDependency } from "../../scripts/registry-url-helpers.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -68,6 +69,7 @@ const allEntries = [
   ...Object.entries(pdfComponents),
   ...Object.entries(audioHookComponents),
 ];
+const localRegistryNames = new Set(allEntries.map(([name]) => name));
 
 // Lookup map for inline dependency resolution.
 // Only library and hook components are referenced as inlineDependencies,
@@ -131,6 +133,12 @@ function collectRegistryDependencies(config) {
   return sortedUnique(dependencies);
 }
 
+function collectAnalyticsRegistryDependencies(config) {
+  return (config.registryDependencies || []).map((dep) =>
+    toAnalyticsRegistryDependency(dep, localRegistryNames)
+  );
+}
+
 function ensureDir(dirPath) {
   if (!existsSync(dirPath)) {
     mkdirSync(dirPath, { recursive: true });
@@ -152,7 +160,7 @@ function updateRegistryFile(name, config, outputDir) {
     title: config.title,
     description: config.description,
     dependencies,
-    registryDependencies: config.registryDependencies,
+    registryDependencies: collectAnalyticsRegistryDependencies(config),
     variant: config.variant,
     files: allFiles.map((file) => {
       const fullPath = join(root, file.path);
@@ -204,7 +212,7 @@ function updateMainRegistry(outputDir) {
     title: config.title,
     description: config.description,
     dependencies: collectRegistryDependencies(config),
-    registryDependencies: config.registryDependencies,
+    registryDependencies: collectAnalyticsRegistryDependencies(config),
     variant: config.variant,
     files: config.files.map((f) => ({ path: f.path, type: f.type })),
   }));

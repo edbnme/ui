@@ -1,29 +1,15 @@
 /**
- * Textarea — Multi-line text input with optional auto-resize.
+ * Textarea - Premium solid multi-line text input.
  *
- * A pure-CSS component (no Base UI primitive — native `<textarea>` gives
- * us everything we need plus correct form participation). Supports an
- * opt-in `autoResize` mode that grows the element to fit its content on
- * every input, then caps at the browser's natural scroll when a `max-h-*`
- * class is applied.
+ * Native textarea wrapper with full form behavior, accessible validation
+ * attributes, optional auto-resize, explicit ref forwarding, and solid
+ * state-aware styling.
  *
- * Anatomy:
- * ```tsx
- * <Textarea placeholder="Write a message…" />
- * <Textarea autoResize placeholder="Grows as you type" />
- * <Textarea autoResize className="max-h-60" />
- * ```
- *
- * Accessibility: native `<textarea>` — native label wiring, native
- * `required`, native `aria-invalid`. For error messaging, pair with
- * `aria-describedby` pointing at the message element.
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
- * @docs       https://ui.edbn.me/docs/components/textarea
- * @registryDescription Multi-line text input with auto-resize support.
+ * @package @edbn/ui
+ * @version 0.3.0
+ * @since 0.1.0
+ * @docs https://ui.edbn.me/docs/components/textarea
+ * @registryDescription Premium solid multi-line text input with optional auto-resize.
  */
 
 "use client";
@@ -34,91 +20,84 @@ import { cn } from "@/lib/utils";
 
 // ---- ROOT -------------------------------------------------------------------
 
-export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaProps extends React.ComponentPropsWithRef<"textarea"> {
   /**
-   * When `true`, the element resizes to fit its content on every input
-   * event. Combine with `max-h-*` to set an upper bound.
+   * Resize to fit content on mount, controlled value changes, and input.
+   * Combine with a max-height class to cap growth.
    */
   autoResize?: boolean;
-  /** Forwarded ref — React 19 ref-as-prop. */
-  ref?: React.Ref<HTMLTextAreaElement>;
 }
 
-/**
- * Multi-line text input.
- *
- * @since 0.1.0
- */
+function assignRef<T>(ref: React.Ref<T> | undefined, value: T | null) {
+  if (typeof ref === "function") {
+    ref(value);
+    return;
+  }
+
+  if (ref) {
+    (ref as React.MutableRefObject<T | null>).current = value;
+  }
+}
+
 function Textarea({
   className,
   autoResize = false,
-  ref: forwardedRef,
+  ref,
+  onInput,
   ...props
 }: TextareaProps) {
   const internalRef = React.useRef<HTMLTextAreaElement | null>(null);
 
   const resize = React.useCallback(() => {
-    const el = internalRef.current;
-    if (!el || !autoResize) return;
-    el.style.height = "auto";
-    el.style.height = `${el.scrollHeight}px`;
+    const element = internalRef.current;
+    if (!element || !autoResize) return;
+
+    element.style.height = "auto";
+    element.style.height = `${element.scrollHeight}px`;
   }, [autoResize]);
 
-  // ---- Merged ref: keep our internal pointer AND honor consumer ref -------
-  const handleRef = React.useCallback(
+  const setRef = React.useCallback(
     (node: HTMLTextAreaElement | null) => {
       internalRef.current = node;
-      if (typeof forwardedRef === "function") {
-        forwardedRef(node);
-      } else if (forwardedRef) {
-        (
-          forwardedRef as React.MutableRefObject<HTMLTextAreaElement | null>
-        ).current = node;
-      }
-      // Initial sizing after mount.
+      assignRef(ref, node);
       if (node && autoResize) {
         node.style.height = "auto";
         node.style.height = `${node.scrollHeight}px`;
       }
     },
-    [forwardedRef, autoResize]
+    [autoResize, ref]
   );
 
-  // Re-measure when controlled value changes.
-  React.useEffect(() => {
-    if (autoResize && props.value !== undefined) {
-      resize();
-    }
-  }, [autoResize, props.value, resize]);
+  React.useLayoutEffect(() => {
+    resize();
+  }, [resize, props.value]);
 
-  // Listen for uncontrolled input events.
-  React.useEffect(() => {
-    const el = internalRef.current;
-    if (!el || !autoResize) return;
-    const handler = () => resize();
-    el.addEventListener("input", handler);
-    return () => el.removeEventListener("input", handler);
-  }, [autoResize, resize]);
+  function handleInput(
+    event: Parameters<NonNullable<TextareaProps["onInput"]>>[0]
+  ) {
+    onInput?.(event);
+    resize();
+  }
 
   return (
     <textarea
-      ref={handleRef}
+      ref={setRef}
       data-slot="textarea"
       className={cn(
-        "flex w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-2 text-base shadow-xs outline-none",
-        "transition-[color,box-shadow] duration-150 ease-out motion-reduce:transition-none",
+        "flex w-full min-w-0 rounded-md border border-input bg-background px-3 py-2 text-base shadow-xs outline-none",
+        "transition-[border-color,box-shadow,color] duration-150 ease-out motion-reduce:transition-none",
         "placeholder:text-muted-foreground",
         "selection:bg-primary selection:text-primary-foreground",
-        "dark:bg-input/30",
         "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
         "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+        "read-only:bg-muted/40",
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
         "md:text-sm",
         autoResize && "resize-none overflow-hidden",
         !autoResize && "min-h-20",
         className
       )}
+      onInput={handleInput}
       {...props}
     />
   );

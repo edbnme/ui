@@ -6,7 +6,7 @@
   "description": "Dot-matrix animation presets for compact loaders, voice activity, and ambient status.",
   "dependencies": [],
   "registryDependencies": [
-    "utils"
+    "https://ui.edbn.me/api/analytics/registry/utils.json"
   ],
   "variant": "audio",
   "files": [

@@ -1,31 +1,17 @@
 /**
- * ToggleGroup — Coordinating container for a set of toggles.
+ * Toggle Group - Premium solid grouped toggle controls.
  *
- * Built on Base UI's `ToggleGroup`. Supports `single` (one pressed at a
- * time — radio-like behavior) and `multiple` (any combination) selection
- * modes. Manages roving focus, Arrow-key navigation, and Space / Enter
- * activation across its items automatically.
+ * Built on Base UI ToggleGroup v1.5.0 with Base UI Toggle items. The
+ * wrapper preserves group value arrays, multiple/single mode, refs, render
+ * composition, state className, state style, orientation, roving focus, and
+ * data attributes.
  *
- * Anatomy:
- * ```tsx
- * <ToggleGroupRoot defaultValue={["left"]}>
- *   <ToggleGroupItem value="left" aria-label="Align left"><AlignLeft /></ToggleGroupItem>
- *   <ToggleGroupItem value="center" aria-label="Align center"><AlignCenter /></ToggleGroupItem>
- *   <ToggleGroupItem value="right" aria-label="Align right"><AlignRight /></ToggleGroupItem>
- * </ToggleGroupRoot>
- * ```
- *
- * Accessibility: the group has `role="group"` and each item reports its
- * pressed state via `aria-pressed`. Provide an `aria-label` on the group
- * itself if its purpose isn't obvious from surrounding context.
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.1.0
- * @brand      edbn/ui — https://ui.edbn.me
- * @docs       https://ui.edbn.me/docs/components/toggle-group
- * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/toggle-group
- * @registryDescription Exclusive or multi-select toggle buttons for switching between options.
+ * @package @edbn/ui
+ * @version 0.3.0
+ * @since 0.1.0
+ * @docs https://ui.edbn.me/docs/components/toggle-group
+ * @upstream https://base-ui.com/react/components/toggle-group
+ * @registryDescription Premium solid toggle group with exclusive or multi-select state.
  * @registryIsNew
  */
 
@@ -38,35 +24,47 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+type StateClassName<State> =
+  | string
+  | ((state: State) => string | undefined)
+  | undefined;
+
+function composeClassName<State>(
+  baseClassName: string,
+  className: StateClassName<State>
+) {
+  if (typeof className === "function") {
+    return (state: State) => cn(baseClassName, className(state));
+  }
+
+  return cn(baseClassName, className);
+}
+
 // ---- VARIANTS ---------------------------------------------------------------
 
-/**
- * Styling contract for `ToggleGroupItem`. Kept in-module (rather than
- * imported from `./toggle`) so this file has no upstream coupling — making
- * it safe to copy into another codebase.
- *
- * @since 0.1.0
- */
 const toggleGroupItemVariants = cva(
   [
     "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background",
-    "transition-colors duration-150 ease-out motion-reduce:transition-none",
-    "hover:bg-muted hover:text-muted-foreground",
+    "transition-[background-color,border-color,color,box-shadow] duration-150 ease-out motion-reduce:transition-none",
+    "hover:bg-muted hover:text-foreground",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
     "disabled:pointer-events-none disabled:opacity-50",
-    "data-pressed:bg-accent data-pressed:text-accent-foreground",
+    "data-pressed:bg-accent data-pressed:text-accent-foreground data-pressed:shadow-sm",
   ],
   {
     variants: {
       variant: {
         default: "bg-transparent",
         outline:
-          "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground",
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        solid:
+          "border border-border bg-background shadow-sm hover:bg-muted data-pressed:border-primary/40",
       },
       size: {
         default: "h-9 px-3",
         sm: "h-8 px-2",
         lg: "h-10 px-3",
+        icon: "size-9",
       },
     },
     defaultVariants: {
@@ -78,25 +76,22 @@ const toggleGroupItemVariants = cva(
 
 // ---- ROOT -------------------------------------------------------------------
 
-export type ToggleGroupRootProps = React.ComponentPropsWithoutRef<
-  typeof ToggleGroup
->;
+export type ToggleGroupRootProps = ToggleGroup.Props & {
+  ref?: React.Ref<HTMLDivElement>;
+};
 
-/**
- * The coordinating container.
- *
- * Props of note:
- * - `value` / `defaultValue` — array of pressed item values
- * - `onValueChange(value: string[])` — controlled callback
- * - `toggleMultiple` — when `false`, behaves as a single-selection group
- *
- * @since 0.1.0
- */
 function ToggleGroupRoot({ className, ...props }: ToggleGroupRootProps) {
   return (
     <ToggleGroup
       data-slot="toggle-group-root"
-      className={cn("flex items-center gap-1", className)}
+      className={composeClassName<ToggleGroup.State>(
+        cn(
+          "flex items-center gap-1 rounded-lg border border-border/70 bg-background p-1 shadow-sm",
+          "data-orientation-vertical:flex-col data-orientation-vertical:items-stretch",
+          "data-disabled:opacity-50 data-multiple:ring-1 data-multiple:ring-border/50"
+        ),
+        className
+      )}
       {...props}
     />
   );
@@ -105,14 +100,11 @@ ToggleGroupRoot.displayName = "ToggleGroupRoot";
 
 // ---- ITEM -------------------------------------------------------------------
 
-export type ToggleGroupItemProps = React.ComponentPropsWithoutRef<typeof Toggle> &
-  VariantProps<typeof toggleGroupItemVariants>;
+export type ToggleGroupItemProps = Toggle.Props &
+  VariantProps<typeof toggleGroupItemVariants> & {
+    ref?: React.Ref<HTMLButtonElement>;
+  };
 
-/**
- * A single toggle inside the group.
- *
- * @since 0.1.0
- */
 function ToggleGroupItem({
   className,
   variant,
@@ -122,7 +114,10 @@ function ToggleGroupItem({
   return (
     <Toggle
       data-slot="toggle-group-item"
-      className={cn(toggleGroupItemVariants({ variant, size }), className)}
+      className={composeClassName<Toggle.State>(
+        toggleGroupItemVariants({ variant, size }),
+        className
+      )}
       {...props}
     />
   );
