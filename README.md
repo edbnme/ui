@@ -61,5 +61,3 @@ Next.js 16, React 19, Tailwind CSS v4, Base UI, Motion (framer-motion fork), Vit
 ## Issues
 
 Bugs? Ideas? [Open an issue](https://github.com/edbnme/ui.edbn.me/issues).
-
----
