@@ -25,6 +25,15 @@
         "@react-pdf/renderer"
       ],
       "cssImport": null
+    },
+    "tables": {
+      "name": "Tables",
+      "description": "Composable data table renderers and controls powered by TanStack Table",
+      "dependencies": [
+        "@phosphor-icons/react@^2.1.10",
+        "@tanstack/react-table@^8.21.3"
+      ],
+      "cssImport": null
     }
   },
   "items": [
@@ -2361,6 +2370,60 @@
       "files": [
         {
           "path": "components/ui/pdf/watermark.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "A typed, semantic TanStack Table renderer with composable controls and status states.",
+      "dependencies": [
+        "@phosphor-icons/react@^2.1.10",
+        "@tanstack/react-table@^8.21.3"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/api/analytics/registry/popover.json",
+        "https://ui.edbn.me/api/analytics/registry/table.json",
+        "https://ui.edbn.me/api/analytics/registry/utils.json"
+      ],
+      "variant": "tables",
+      "files": [
+        {
+          "path": "components/ui/tables/data-table.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-column-header.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-faceted-filter.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-pagination.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-resize-handle.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-search.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-toolbar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-types.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "components/ui/tables/data-table-view-options.tsx",
           "type": "registry:ui"
         }
       ]

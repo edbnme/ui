@@ -20,23 +20,35 @@ import { cn } from "@/lib/utils";
 
 // ---- ROOT -------------------------------------------------------------------
 
-export type TableProps = React.ComponentPropsWithRef<"table">;
+export type TableProps = React.ComponentPropsWithRef<"table"> & {
+  /** Props forwarded to the scroll container around the native table. */
+  containerProps?: React.ComponentPropsWithRef<"div">;
+};
 
-function Table({ className, ref, ...props }: TableProps) {
-  return (
-    <div
-      data-slot="table-wrapper"
-      className="relative w-full overflow-auto rounded-lg border border-border/70 bg-background shadow-sm"
-    >
-      <table
-        ref={ref}
-        data-slot="table"
-        className={cn("w-full caption-bottom text-sm", className)}
-        {...props}
-      />
-    </div>
-  );
-}
+const Table = React.forwardRef<HTMLTableElement, Omit<TableProps, "ref">>(
+  function Table({ className, containerProps, ...props }, ref) {
+    const { className: containerClassName, ...restContainerProps } =
+      containerProps ?? {};
+
+    return (
+      <div
+        {...restContainerProps}
+        data-slot="table-wrapper"
+        className={cn(
+          "relative w-full overflow-auto rounded-lg border border-border/70 bg-background shadow-sm",
+          containerClassName
+        )}
+      >
+        <table
+          ref={ref}
+          data-slot="table"
+          className={cn("w-full caption-bottom text-sm", className)}
+          {...props}
+        />
+      </div>
+    );
+  }
+);
 Table.displayName = "Table";
 
 // ---- HEADER -----------------------------------------------------------------

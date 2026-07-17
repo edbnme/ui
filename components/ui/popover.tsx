@@ -96,13 +96,14 @@ PopoverRoot.displayName = "PopoverRoot";
  * @since 0.3.0
  */
 export type PopoverTriggerProps<Payload = unknown> =
-  Popover.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
-function PopoverTrigger<Payload = unknown>({
-  className,
-  ...props
-}: PopoverTriggerProps<Payload>) {
+  Popover.Trigger.Props<Payload>;
+function PopoverTriggerImpl<Payload = unknown>(
+  { className, ...props }: Omit<PopoverTriggerProps<Payload>, "ref">,
+  ref: React.ForwardedRef<HTMLButtonElement>
+) {
   return (
     <Popover.Trigger
+      ref={ref}
       data-slot="popover-trigger"
       className={cn(
         "inline-flex items-center justify-center",
@@ -115,6 +116,17 @@ function PopoverTrigger<Payload = unknown>({
     />
   );
 }
+
+type PopoverTriggerComponent = {
+  <Payload = unknown>(
+    props: PopoverTriggerProps<Payload>
+  ): React.ReactElement | null;
+  displayName?: string;
+};
+
+const PopoverTrigger = React.forwardRef(
+  PopoverTriggerImpl
+) as PopoverTriggerComponent;
 PopoverTrigger.displayName = "PopoverTrigger";
 
 // ---- POPOVER PORTAL ---------------------------------------------------------

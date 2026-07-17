@@ -2,7 +2,7 @@
  * Registry Update Script
  *
  * Generates component registry JSON files for every variant (static, audio,
- * hooks, lib). Registry config is DERIVED from the component source files
+ * pdf, tables, hooks, lib). Registry config is DERIVED from the component source files
  * themselves via `registry-config/discover.mjs` — there is no hand-authored
  * config to keep in sync.
  *
@@ -13,6 +13,8 @@
  *   public/r/
  *   ├── static/          variant-specific copies
  *   ├── audio/
+ *   ├── pdf/
+ *   ├── tables/
  *   ├── <slug>.json      flat root-level (loaded by the frontend)
  *   └── registry.json    main index
  *
@@ -22,9 +24,9 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
-
-import { discoverAll } from "./registry-config/discover.mjs";
 import { cssVarsLight, cssVarsDark } from "./registry-config/css-vars.mjs";
+import { mergeDependencySpecifiers } from "./registry-config/dependency-specifiers.mjs";
+import { discoverAll } from "./registry-config/discover.mjs";
 import { toAnalyticsRegistryDependency } from "../../scripts/registry-url-helpers.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -50,6 +52,9 @@ const audioComponents = partition(
 const pdfComponents = partition(
   (c) => c.type === "registry:ui" && c.variant === "pdf"
 );
+const tableComponents = partition(
+  (c) => c.type === "registry:ui" && c.variant === "tables"
+);
 const libraryComponents = partition((c) => c.type === "registry:lib");
 const hookComponents = partition(
   (c) => c.type === "registry:hook" && c.variant === "static"
@@ -67,6 +72,7 @@ const allEntries = [
   ...Object.entries(hookComponents),
   ...Object.entries(audioComponents),
   ...Object.entries(pdfComponents),
+  ...Object.entries(tableComponents),
   ...Object.entries(audioHookComponents),
 ];
 const localRegistryNames = new Set(allEntries.map(([name]) => name));
@@ -81,10 +87,6 @@ const inlineLookup = {
 };
 
 // ---- HELPER FUNCTIONS -------------------------------------------------------
-
-function sortedUnique(values) {
-  return Array.from(new Set(values)).sort();
-}
 
 function collectInlineConfigs(config, seen = new Set()) {
   const collected = [];
@@ -130,7 +132,7 @@ function collectRegistryDependencies(config) {
     dependencies.push(...(depConfig.dependencies || []));
   }
 
-  return sortedUnique(dependencies);
+  return mergeDependencySpecifiers(dependencies);
 }
 
 function collectAnalyticsRegistryDependencies(config) {
@@ -243,6 +245,16 @@ function updateMainRegistry(outputDir) {
         dependencies: ["@react-pdf/renderer"],
         cssImport: null,
       },
+      tables: {
+        name: "Tables",
+        description:
+          "Composable data table renderers and controls powered by TanStack Table",
+        dependencies: [
+          "@phosphor-icons/react@^2.1.10",
+          "@tanstack/react-table@^8.21.3",
+        ],
+        cssImport: null,
+      },
     },
     items,
   };
@@ -279,6 +291,7 @@ ensureDir(outputDir);
 ensureDir(join(outputDir, "static"));
 ensureDir(join(outputDir, "audio"));
 ensureDir(join(outputDir, "pdf"));
+ensureDir(join(outputDir, "tables"));
 
 // Update individual component registry files
 allEntries.forEach(([name, config]) => {
@@ -302,6 +315,7 @@ console.log("  public/r/");
 console.log("  ├── static/     (CSS-only + Base UI components)");
 console.log("  ├── audio/      (Audio/AI chat components)");
 console.log("  ├── pdf/        (React PDF document components)");
+console.log("  ├── tables/     (TanStack Table renderers and controls)");
 console.log("  └── registry.json");
 
 // ---- BUNDLE SIZE COMPUTATION ------------------------------------------------

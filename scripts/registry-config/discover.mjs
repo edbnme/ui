@@ -18,7 +18,7 @@
  * Recognized JSDoc tags (all optional):
  *   @registrySlug <slug>                  override filename-based slug
  *   @registryDescription <text>           registry-facing short description
- *   @registryDependencies <csv>           force-add npm deps (rare edge case)
+ *   @registryDependencies <csv>           force-add npm deps; versions allowed
  *   @registryRegistryDependencies <csv>   force-add registry deps
  *   @registryCssVars                      include shadcn cssVars block
  *   @registryIsNew                        flag for explorer "NEW" badge
@@ -38,6 +38,7 @@
 
 import { existsSync, readFileSync, readdirSync, statSync } from "fs";
 import { join, relative, dirname, basename, extname, posix } from "path";
+import { mergeDependencySpecifiers } from "./dependency-specifiers.mjs";
 
 // ---- CONSTANTS --------------------------------------------------------------
 
@@ -64,6 +65,12 @@ export const SOURCE_DIRS = [
     type: "registry:ui",
     variant: "pdf",
     prefix: "pdf-",
+  },
+  {
+    dir: "components/ui/tables",
+    type: "registry:ui",
+    variant: "tables",
+    prefix: "",
   },
   { dir: "hooks", type: "registry:hook", variant: "static", prefix: "" },
   { dir: "lib", type: "registry:lib", variant: "static", prefix: "" },
@@ -95,7 +102,7 @@ const LIB_VARIANT_OVERRIDES = {
  */
 const NON_REGISTRY_LIB_FILES = new Set();
 
-const UI_ROOT_EXCLUDED_DIRS = new Set(["audio", "pdf", "static"]);
+const UI_ROOT_EXCLUDED_DIRS = new Set(["audio", "pdf", "static", "tables"]);
 const NON_REGISTRY_SOURCE_FILES = new Set(["components/ui/sonner.tsx"]);
 const LEGACY_STATIC_UI_DIR = "components/ui/static";
 
@@ -621,7 +628,7 @@ function resolveEntry(main, lookup, scanned) {
     type: main.type,
     title: main.title,
     description: main.description,
-    dependencies: sorted(npmDeps),
+    dependencies: mergeDependencySpecifiers(npmDeps),
     registryDependencies: sorted(registryDeps),
     inlineDependencies: sorted(inlineDeps),
     files,

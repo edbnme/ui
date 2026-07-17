@@ -19,6 +19,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { getDependencyName } from "./registry-config/dependency-specifiers.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -241,7 +242,7 @@ function extractAllDependencies(registry) {
 
   for (const item of registry.items || []) {
     if (item.dependencies) {
-      item.dependencies.forEach((dep) => allDeps.add(dep));
+      item.dependencies.forEach((dep) => allDeps.add(getDependencyName(dep)));
     }
   }
 
@@ -264,7 +265,8 @@ function computeComponentSizes(registry, packageSizes) {
     const variant = item.variant || "shared";
 
     // Calculate sizes for this component
-    const deps = (item.dependencies || []).map((dep) => {
+    const deps = (item.dependencies || []).map((dependency) => {
+      const dep = getDependencyName(dependency);
       const pkgData = packageSizeMap.get(dep) || {
         name: dep,
         size: 5000,
@@ -370,6 +372,10 @@ async function main() {
 
   // Extract all unique dependencies
   const allDeps = extractAllDependencies(registry);
+  const activeDependencies = new Set(allDeps);
+  cache = Object.fromEntries(
+    Object.entries(cache).filter(([name]) => activeDependencies.has(name))
+  );
   console.log(`[INFO] Found ${allDeps.length} unique dependencies\n`);
 
   // Fetch sizes for all dependencies

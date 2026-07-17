@@ -378,6 +378,9 @@ export * from "./skeleton";
 // Table (formerly shared/)
 export * from "./table";
 
+// Data Table (TanStack Table renderer and controls)
+export * from "./tables/data-table";
+
 // Textarea (formerly shared/)
 export * from "./textarea";
 

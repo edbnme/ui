@@ -14,6 +14,7 @@
 import { readFileSync, existsSync, readdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
+import { getDependencyName } from "./registry-config/dependency-specifiers.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -37,6 +38,7 @@ const LEGACY_STATIC_UI_SOURCE_DIR = join(
 
 /** Items exempt from UI component checks (hooks, libs, etc.) */
 const NON_UI_TYPES = ["registry:hook", "registry:lib", "registry:component"];
+const VALID_VARIANTS = new Set(["static", "audio", "pdf", "tables"]);
 
 /** Files exempt from hardcoded color warnings */
 const COLOR_EXEMPTIONS = [
@@ -102,6 +104,15 @@ function validateFileContent(item, file) {
   }
 }
 
+function validateVariant(item) {
+  if (!item.variant || !VALID_VARIANTS.has(item.variant)) {
+    error(
+      item.name,
+      `Missing or unknown registry variant "${item.variant ?? ""}"`
+    );
+  }
+}
+
 function validateCanonicalUiPaths(item, file) {
   if (patterns.legacyStaticPath.test(file.path)) {
     error(
@@ -122,7 +133,15 @@ function validateDependencies(item, file) {
   if (!file.content) return;
 
   const content = file.content;
-  const declaredDeps = new Set(item.dependencies || []);
+  const declaredDeps = new Set();
+
+  for (const dependency of item.dependencies || []) {
+    try {
+      declaredDeps.add(getDependencyName(dependency));
+    } catch (validationError) {
+      error(item.name, validationError.message);
+    }
+  }
 
   const npmImportRegex =
     /(?:import\s+.*?from|import)\s+["']([^./@ ][^"' ]*|@[^/"' ]+\/[^"' ]+)["']/g;
@@ -264,6 +283,7 @@ for (const jsonFile of jsonFiles) {
   }
 
   console.log(`  Validating: ${item.name || jsonFile}`);
+  validateVariant(item);
 
   if (!item.files || !Array.isArray(item.files)) {
     error(item.name || jsonFile, "Missing or invalid 'files' array");
