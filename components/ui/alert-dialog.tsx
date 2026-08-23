@@ -1,474 +1,187 @@
-﻿/**
- * AlertDialog â€” modal confirmation surface built on Base UI's AlertDialog.
- *
- * Use for **destructive or blocking decisions** (delete, discard, sign out).
- * AlertDialog differs from Dialog in three key ways, enforced by Base UI:
- *   1. Non-dismissible â€” no Escape key, no backdrop-click dismissal.
- *   2. Role `alertdialog` â€” announces immediately, traps focus.
- *   3. Requires an explicit action/cancel pair (not just a close button).
- *
- * Every sub-component accepts Base UI's `render` prop for element
- * polymorphism (the Base UI equivalent of the Radix / shadcn `asChild`
- * pattern).
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.3.0
- * @brand      edbn/ui â€” <https://ui.edbn.me>
- * @docs       https://ui.edbn.me/docs/components/alert-dialog
- * @source     https://ui.edbn.me/r/alert-dialog.json
- * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.4.1 â€” https://base-ui.com/react/components/alert-dialog
- * @a11y       WAI-ARIA AlertDialog pattern (role="alertdialog"); focus trap,
- *             scroll lock, automatic `aria-labelledby` / `aria-describedby`
- *             wiring via Base UI. Always render a Title and an explicit
- *             action/cancel pair.
- *
- * ## Anatomy
- * ```tsx
- * <AlertDialogRoot>
- *   <AlertDialogTrigger>Delete</AlertDialogTrigger>
- *   <AlertDialogPortal>
- *     <AlertDialogBackdrop />
- *     <AlertDialogViewport>
- *       <AlertDialogPopup>
- *         <AlertDialogHeader>
- *           <AlertDialogTitle>Delete account?</AlertDialogTitle>
- *           <AlertDialogDescription>This is permanent.</AlertDialogDescription>
- *         </AlertDialogHeader>
- *         <AlertDialogFooter>
- *           <AlertDialogClose>Cancel</AlertDialogClose>
- *           <AlertDialogAction>Delete</AlertDialogAction>
- *         </AlertDialogFooter>
- *       </AlertDialogPopup>
- *     </AlertDialogViewport>
- *   </AlertDialogPortal>
- * </AlertDialogRoot>
- * ```
- *
- * ## Controlled
- * ```tsx
- * const [open, setOpen] = React.useState(false);
- * <AlertDialogRoot open={open} onOpenChange={setOpen}>â€¦</AlertDialogRoot>
- * ```
- *
- * ## Detached trigger with typed payload
- * ```tsx
- * const handle = createAlertDialogHandle<{ projectId: string }>();
- * <AlertDialogTrigger handle={handle} payload={{ projectId: "p1" }}>Delete</AlertDialogTrigger>
- * <AlertDialogRoot handle={handle}>
- *   {({ payload }) => <AlertDialogPortal>â€¦</AlertDialogPortal>}
- * </AlertDialogRoot>
- * ```
- * @registryDescription Accessible alert dialog with focus trap, keyboard handling, and portal rendering.
- * @registryCssVars
- */
-"use client";
+"use client"
 
-import * as React from "react";
-import { AlertDialog } from "@base-ui/react/alert-dialog";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog"
 
-// ---- ALERT DIALOG ROOT ------------------------------------------------------
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
-/**
- * Top-level AlertDialog provider. Forwards all Base UI `AlertDialog.Root`
- * props (`open`, `defaultOpen`, `onOpenChange`, `onOpenChangeComplete`,
- * `actionsRef`, `handle`, `defaultTriggerId`, `triggerId`).
- *
- * Note: AlertDialog is always modal and always traps focus. Unlike Dialog,
- * it cannot be dismissed by Escape key or backdrop click â€” the user must
- * choose the action or the cancel button.
- *
- * @since 0.3.0
- */
-export type AlertDialogRootProps<Payload = unknown> =
-  AlertDialog.Root.Props<Payload>;
-function AlertDialogRoot<Payload = unknown>(
-  props: AlertDialogRootProps<Payload>
-) {
-  return <AlertDialog.Root {...props} />;
+function AlertDialog({ ...props }: AlertDialogPrimitive.Root.Props) {
+  return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} />
 }
-AlertDialogRoot.displayName = "AlertDialogRoot";
 
-// ---- ALERT DIALOG TRIGGER ---------------------------------------------------
+function AlertDialogTrigger({ ...props }: AlertDialogPrimitive.Trigger.Props) {
+  return (
+    <AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" {...props} />
+  )
+}
 
-/**
- * Styled button that opens the alert dialog. Pass Base UI's `render` prop to
- * use a custom element (e.g. your `Button`).
- *
- * **Data attributes** â€” `data-disabled`, `data-popup-open`.
- *
- * **Passthrough props** â€” `className`, `handle`, `id`, `nativeButton`,
- * `payload`, `render`, `style`, plus native `<button>` attrs.
- *
- * @since 0.3.0
- */
-export type AlertDialogTriggerProps<Payload = unknown> =
-  AlertDialog.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
-function AlertDialogTrigger<Payload = unknown>({
+function AlertDialogPortal({ ...props }: AlertDialogPrimitive.Portal.Props) {
+  return (
+    <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />
+  )
+}
+
+function AlertDialogOverlay({
   className,
   ...props
-}: AlertDialogTriggerProps<Payload>) {
+}: AlertDialogPrimitive.Backdrop.Props) {
   return (
-    <AlertDialog.Trigger
-      data-slot="alert-dialog-trigger"
+    <AlertDialogPrimitive.Backdrop
+      data-slot="alert-dialog-overlay"
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md px-4",
-        "border border-border bg-background text-sm font-medium text-foreground",
-        "select-none transition-colors",
-        "hover:bg-muted active:bg-muted/80",
-        "focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-ring",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
         className
       )}
       {...props}
     />
-  );
+  )
 }
-AlertDialogTrigger.displayName = "AlertDialogTrigger";
 
-// ---- ALERT DIALOG PORTAL ----------------------------------------------------
+function AlertDialogContent({
+  className,
+  size = "default",
+  ...props
+}: AlertDialogPrimitive.Popup.Props & {
+  size?: "default" | "sm"
+}) {
+  return (
+    <AlertDialogPortal>
+      <AlertDialogOverlay />
+      <AlertDialogPrimitive.Popup
+        data-slot="alert-dialog-content"
+        data-size={size}
+        className={cn(
+          "group/alert-dialog-content fixed top-1/2 left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none data-[size=default]:max-w-xs data-[size=sm]:max-w-xs data-[size=default]:sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          className
+        )}
+        {...props}
+      />
+    </AlertDialogPortal>
+  )
+}
 
-/**
- * Portals alert dialog content into a stable DOM location. Pass
- * `keepMounted` to retain children when closed (for external animators).
- *
- * **Passthrough props** â€” `className`, `container`, `keepMounted`, `render`,
- * `style`.
- *
- * @since 0.3.0
- */
-export type AlertDialogPortalProps = React.ComponentProps<
-  typeof AlertDialog.Portal
->;
-const AlertDialogPortal = (props: AlertDialogPortalProps) => (
-  <AlertDialog.Portal {...props} />
-);
-AlertDialogPortal.displayName = "AlertDialogPortal";
-
-// ---- ALERT DIALOG BACKDROP --------------------------------------------------
-
-/**
- * Dimming overlay behind the popup. The user cannot dismiss by clicking
- * this â€” AlertDialog requires an explicit choice.
- *
- * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
- * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
- *
- * @since 0.3.0
- */
-export type AlertDialogBackdropProps = React.ComponentProps<
-  typeof AlertDialog.Backdrop
->;
-function AlertDialogBackdrop({
+function AlertDialogHeader({
   className,
   ...props
-}: AlertDialogBackdropProps) {
-  return (
-    <AlertDialog.Backdrop
-      data-slot="alert-dialog-backdrop"
-      className={cn(
-        "fixed inset-0 z-50 bg-black/60 backdrop-blur-sm",
-        "transition-opacity duration-200 ease-out",
-        "data-starting-style:opacity-0 data-ending-style:opacity-0",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-AlertDialogBackdrop.displayName = "AlertDialogBackdrop";
-
-// ---- ALERT DIALOG VIEWPORT --------------------------------------------------
-
-/**
- * Optional scroll container for alert dialogs with tall content. Omit for
- * centered, fixed-size dialogs.
- *
- * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
- * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
- *
- * @since 0.3.0
- */
-export type AlertDialogViewportProps = React.ComponentProps<
-  typeof AlertDialog.Viewport
->;
-function AlertDialogViewport({
-  className,
-  ...props
-}: AlertDialogViewportProps) {
-  return (
-    <AlertDialog.Viewport
-      data-slot="alert-dialog-viewport"
-      className={cn(
-        "fixed inset-0 z-50 flex items-center justify-center overflow-auto",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-AlertDialogViewport.displayName = "AlertDialogViewport";
-
-// ---- ALERT DIALOG POPUP -----------------------------------------------------
-
-/**
- * The alert dialog surface. Smaller than Dialog (`max-w-md`) â€” alert dialogs
- * are intentionally compact to keep the decision focused. `aria-labelledby`
- * and `aria-describedby` are wired automatically when `AlertDialogTitle` and
- * `AlertDialogDescription` are present inside.
- *
- * **Data attributes** â€” `data-open`, `data-closed`, `data-starting-style`,
- * `data-ending-style`.
- *
- * @since 0.3.0
- */
-export type AlertDialogPopupProps = React.ComponentProps<
-  typeof AlertDialog.Popup
->;
-function AlertDialogPopup({ className, ...props }: AlertDialogPopupProps) {
-  return (
-    <AlertDialog.Popup
-      data-slot="alert-dialog-popup"
-      className={cn(
-        // Positioning â€” centered
-        "fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-        // Size â€” compact for focused decisions
-        "w-[calc(100vw-2rem)] max-w-md",
-        // Surface â€” crisp radius, subtle border, soft shadow
-        "rounded-xl border border-border bg-background p-6 text-foreground shadow-2xl",
-        // Transition â€” GPU-accelerated
-        "transform-gpu transition-[translate,scale,opacity] duration-200 ease-out",
-        "data-starting-style:scale-95 data-starting-style:opacity-0",
-        "data-ending-style:scale-95 data-ending-style:opacity-0",
-        // Reduced motion
-        "motion-reduce:transform-none motion-reduce:transition-opacity",
-        "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
-        // Focus managed by children
-        "focus:outline-none",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-AlertDialogPopup.displayName = "AlertDialogPopup";
-
-// ---- ALERT DIALOG TITLE -----------------------------------------------------
-
-/**
- * Accessible alert dialog title. Wired to `aria-labelledby` automatically.
- * **Required** â€” AlertDialog without a Title will warn in dev.
- *
- * @since 0.3.0
- */
-export type AlertDialogTitleProps = React.ComponentProps<
-  typeof AlertDialog.Title
->;
-function AlertDialogTitle({ className, ...props }: AlertDialogTitleProps) {
-  return (
-    <AlertDialog.Title
-      data-slot="alert-dialog-title"
-      className={cn(
-        "text-lg leading-none font-semibold tracking-tight text-foreground",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-AlertDialogTitle.displayName = "AlertDialogTitle";
-
-// ---- ALERT DIALOG DESCRIPTION -----------------------------------------------
-
-/**
- * Accessible alert dialog description. Wired to `aria-describedby`
- * automatically. Keep concise â€” one or two sentences max.
- *
- * @since 0.3.0
- */
-export type AlertDialogDescriptionProps = React.ComponentProps<
-  typeof AlertDialog.Description
->;
-function AlertDialogDescription({
-  className,
-  ...props
-}: AlertDialogDescriptionProps) {
-  return (
-    <AlertDialog.Description
-      data-slot="alert-dialog-description"
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
-  );
-}
-AlertDialogDescription.displayName = "AlertDialogDescription";
-
-// ---- ALERT DIALOG CLOSE (cancel action) -------------------------------------
-
-/**
- * The cancel button. Styled as a secondary/outline button by default;
- * overridable via `className` or `render`. Activating this closes the
- * dialog without running the destructive action.
- *
- * **Data attributes** â€” `data-disabled`.
- *
- * **Passthrough props** â€” `className`, `nativeButton`, `render`, `style`,
- * plus native `<button>` attrs.
- *
- * @since 0.3.0
- */
-export type AlertDialogCloseProps = React.ComponentProps<
-  typeof AlertDialog.Close
->;
-function AlertDialogClose({ className, ...props }: AlertDialogCloseProps) {
-  return (
-    <AlertDialog.Close
-      data-slot="alert-dialog-close"
-      className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md px-4",
-        "border border-border bg-background text-sm font-medium text-foreground",
-        "select-none transition-colors",
-        "hover:bg-muted active:bg-muted/80",
-        "focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-ring",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-AlertDialogClose.displayName = "AlertDialogClose";
-
-// ---- ALERT DIALOG ACTION (destructive action) -------------------------------
-
-/**
- * The primary/destructive action button. Styled as `bg-destructive` by
- * default since alert dialogs most commonly confirm destructive operations.
- * For non-destructive confirmations, override `className` or pass a
- * `render` prop with your own button variant.
- *
- * Implemented on top of Base UI's `AlertDialog.Close` â€” activating the
- * action closes the dialog. Wire the actual destructive side-effect to the
- * button's `onClick`.
- *
- * **Data attributes** â€” `data-disabled`.
- *
- * @since 0.3.0
- * @example
- * ```tsx
- * <AlertDialogAction onClick={() => deleteAccount()}>
- *   Delete account
- * </AlertDialogAction>
- * ```
- */
-export type AlertDialogActionProps = React.ComponentProps<
-  typeof AlertDialog.Close
->;
-function AlertDialogAction({ className, ...props }: AlertDialogActionProps) {
-  return (
-    <AlertDialog.Close
-      data-slot="alert-dialog-action"
-      className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md px-4",
-        "bg-destructive text-sm font-medium text-destructive-foreground",
-        "select-none transition-colors",
-        "hover:bg-destructive/90 active:bg-destructive/80",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-destructive",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-AlertDialogAction.displayName = "AlertDialogAction";
-
-// ---- ALERT DIALOG HEADER ----------------------------------------------------
-
-/**
- * Layout helper grouping `AlertDialogTitle` + `AlertDialogDescription`.
- * Renders a `<div>` with a stable `data-slot`.
- *
- * @since 0.3.0
- */
-export type AlertDialogHeaderProps = React.ComponentProps<"div">;
-function AlertDialogHeader({ className, ...props }: AlertDialogHeaderProps) {
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-dialog-header"
       className={cn(
-        "flex flex-col space-y-1.5 text-center sm:text-left",
+        "grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-4 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr]",
         className
       )}
       {...props}
     />
-  );
+  )
 }
-AlertDialogHeader.displayName = "AlertDialogHeader";
 
-// ---- ALERT DIALOG FOOTER ----------------------------------------------------
-
-/**
- * Layout helper â€” horizontal action row on â‰¥sm; reversed vertical stack on
- * narrow viewports so the primary action stays on top (easier to tap).
- *
- * @since 0.3.0
- */
-export type AlertDialogFooterProps = React.ComponentProps<"div">;
-function AlertDialogFooter({ className, ...props }: AlertDialogFooterProps) {
+function AlertDialogFooter({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="alert-dialog-footer"
       className={cn(
-        "mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        "-mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t bg-muted/50 p-4 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
         className
       )}
       {...props}
     />
-  );
+  )
 }
-AlertDialogFooter.displayName = "AlertDialogFooter";
 
-// ---- ALERT DIALOG HANDLE (detached-trigger API) -----------------------------
+function AlertDialogMedia({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="alert-dialog-media"
+      className={cn(
+        "mb-2 inline-flex size-10 items-center justify-center rounded-md bg-muted sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-6",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-/**
- * Handle type produced by {@link createAlertDialogHandle}. Pass the same
- * handle to `<AlertDialogRoot>` and any detached `<AlertDialogTrigger>`s to
- * connect them without prop drilling.
- *
- * @since 0.3.0
- */
-const AlertDialogHandle = AlertDialog.Handle;
+function AlertDialogTitle({
+  className,
+  ...props
+}: React.ComponentProps<typeof AlertDialogPrimitive.Title>) {
+  return (
+    <AlertDialogPrimitive.Title
+      data-slot="alert-dialog-title"
+      className={cn(
+        "font-heading text-base font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-/**
- * Creates a typed handle for detached triggers. The generic is the payload
- * type carried from a trigger to the root's function-as-children.
- *
- * @since 0.3.0
- * @example
- * ```tsx
- * const handle = createAlertDialogHandle<{ id: string }>();
- * ```
- */
-const createAlertDialogHandle = AlertDialog.createHandle;
+function AlertDialogDescription({
+  className,
+  ...props
+}: React.ComponentProps<typeof AlertDialogPrimitive.Description>) {
+  return (
+    <AlertDialogPrimitive.Description
+      data-slot="alert-dialog-description"
+      className={cn(
+        "text-sm text-balance text-muted-foreground md:text-pretty *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-// ---- EXPORTS ----------------------------------------------------------------
+function AlertDialogAction({
+  className,
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  return (
+    <Button
+      data-slot="alert-dialog-action"
+      className={cn(className)}
+      {...props}
+    />
+  )
+}
+
+function AlertDialogCancel({
+  className,
+  variant = "outline",
+  size = "default",
+  ...props
+}: AlertDialogPrimitive.Close.Props &
+  Pick<React.ComponentProps<typeof Button>, "variant" | "size">) {
+  return (
+    <AlertDialogPrimitive.Close
+      data-slot="alert-dialog-cancel"
+      className={cn(className)}
+      render={<Button variant={variant} size={size} />}
+      {...props}
+    />
+  )
+}
 
 export {
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  AlertDialogPortal,
-  AlertDialogBackdrop,
-  AlertDialogViewport,
-  AlertDialogPopup,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogClose,
+  AlertDialog,
   AlertDialogAction,
-  AlertDialogHeader,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
   AlertDialogFooter,
-  AlertDialogHandle,
-  createAlertDialogHandle,
-};
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogOverlay,
+  AlertDialogPortal,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+}

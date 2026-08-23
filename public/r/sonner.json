@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "title": "Sonner",
+  "description": "The stock shadcn Sonner component for the Base UI/Nova preset.",
+  "dependencies": [
+    "lucide-react@^1.33.0",
+    "next-themes@^0.4.6",
+    "sonner@^2.0.7"
+  ],
+  "registryDependencies": [
+    "https://edbn.dev/r/edbn-base.json"
+  ],
+  "files": [
+    {
+      "path": "components/ui/sonner.tsx",
+      "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\nimport { Toaster as Sonner, type ToasterProps } from \"sonner\"\nimport { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from \"lucide-react\"\n\nconst Toaster = ({ ...props }: ToasterProps) => {\n  const { theme = \"system\" } = useTheme()\n\n  return (\n    <Sonner\n      theme={theme as ToasterProps[\"theme\"]}\n      className=\"toaster group\"\n      icons={{\n        success: (\n          <CircleCheckIcon className=\"size-4\" />\n        ),\n        info: (\n          <InfoIcon className=\"size-4\" />\n        ),\n        warning: (\n          <TriangleAlertIcon className=\"size-4\" />\n        ),\n        error: (\n          <OctagonXIcon className=\"size-4\" />\n        ),\n        loading: (\n          <Loader2Icon className=\"size-4 animate-spin\" />\n        ),\n      }}\n      style={\n        {\n          \"--normal-bg\": \"var(--popover)\",\n          \"--normal-text\": \"var(--popover-foreground)\",\n          \"--normal-border\": \"var(--border)\",\n          \"--border-radius\": \"var(--radius)\",\n        } as React.CSSProperties\n      }\n      toastOptions={{\n        classNames: {\n          toast: \"cn-toast\",\n        },\n      }}\n      {...props}\n    />\n  )\n}\n\nexport { Toaster }\n",
+      "type": "registry:ui",
+      "target": "@ui/sonner.tsx"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/sonner"
+    }
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

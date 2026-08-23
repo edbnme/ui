@@ -1,129 +1,89 @@
-/**
- * Toggle Group - Premium solid grouped toggle controls.
- *
- * Built on Base UI ToggleGroup v1.5.0 with Base UI Toggle items. The
- * wrapper preserves group value arrays, multiple/single mode, refs, render
- * composition, state className, state style, orientation, roving focus, and
- * data attributes.
- *
- * @package @edbn/ui
- * @version 0.3.0
- * @since 0.1.0
- * @docs https://ui.edbn.me/docs/components/toggle-group
- * @upstream https://base-ui.com/react/components/toggle-group
- * @registryDescription Premium solid toggle group with exclusive or multi-select state.
- * @registryIsNew
- */
+"use client"
 
-"use client";
+import * as React from "react"
+import { Toggle as TogglePrimitive } from "@base-ui/react/toggle"
+import { ToggleGroup as ToggleGroupPrimitive } from "@base-ui/react/toggle-group"
+import { type VariantProps } from "class-variance-authority"
 
-import * as React from "react";
-import { Toggle } from "@base-ui/react/toggle";
-import { ToggleGroup } from "@base-ui/react/toggle-group";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils"
+import { toggleVariants } from "@/components/ui/toggle"
 
-import { cn } from "@/lib/utils";
-
-type StateClassName<State> =
-  | string
-  | ((state: State) => string | undefined)
-  | undefined;
-
-function composeClassName<State>(
-  baseClassName: string,
-  className: StateClassName<State>
-) {
-  if (typeof className === "function") {
-    return (state: State) => cn(baseClassName, className(state));
+const ToggleGroupContext = React.createContext<
+  VariantProps<typeof toggleVariants> & {
+    spacing?: number
+    orientation?: "horizontal" | "vertical"
   }
+>({
+  size: "default",
+  variant: "default",
+  spacing: 2,
+  orientation: "horizontal",
+})
 
-  return cn(baseClassName, className);
-}
-
-// ---- VARIANTS ---------------------------------------------------------------
-
-const toggleGroupItemVariants = cva(
-  [
-    "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background",
-    "transition-[background-color,border-color,color,box-shadow] duration-150 ease-out motion-reduce:transition-none",
-    "hover:bg-muted hover:text-foreground",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-    "disabled:pointer-events-none disabled:opacity-50",
-    "data-pressed:bg-accent data-pressed:text-accent-foreground data-pressed:shadow-sm",
-  ],
-  {
-    variants: {
-      variant: {
-        default: "bg-transparent",
-        outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        solid:
-          "border border-border bg-background shadow-sm hover:bg-muted data-pressed:border-primary/40",
-      },
-      size: {
-        default: "h-9 px-3",
-        sm: "h-8 px-2",
-        lg: "h-10 px-3",
-        icon: "size-9",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-);
-
-// ---- ROOT -------------------------------------------------------------------
-
-export type ToggleGroupRootProps = ToggleGroup.Props & {
-  ref?: React.Ref<HTMLDivElement>;
-};
-
-function ToggleGroupRoot({ className, ...props }: ToggleGroupRootProps) {
-  return (
-    <ToggleGroup
-      data-slot="toggle-group-root"
-      className={composeClassName<ToggleGroup.State>(
-        cn(
-          "flex items-center gap-1 rounded-lg border border-border/70 bg-background p-1 shadow-sm",
-          "data-orientation-vertical:flex-col data-orientation-vertical:items-stretch",
-          "data-disabled:opacity-50 data-multiple:ring-1 data-multiple:ring-border/50"
-        ),
-        className
-      )}
-      {...props}
-    />
-  );
-}
-ToggleGroupRoot.displayName = "ToggleGroupRoot";
-
-// ---- ITEM -------------------------------------------------------------------
-
-export type ToggleGroupItemProps = Toggle.Props &
-  VariantProps<typeof toggleGroupItemVariants> & {
-    ref?: React.Ref<HTMLButtonElement>;
-  };
-
-function ToggleGroupItem({
+function ToggleGroup({
   className,
   variant,
   size,
+  spacing = 2,
+  orientation = "horizontal",
+  children,
   ...props
-}: ToggleGroupItemProps) {
+}: ToggleGroupPrimitive.Props &
+  VariantProps<typeof toggleVariants> & {
+    spacing?: number
+    orientation?: "horizontal" | "vertical"
+  }) {
   return (
-    <Toggle
-      data-slot="toggle-group-item"
-      className={composeClassName<Toggle.State>(
-        toggleGroupItemVariants({ variant, size }),
+    <ToggleGroupPrimitive
+      data-slot="toggle-group"
+      data-variant={variant}
+      data-size={size}
+      data-spacing={spacing}
+      data-orientation={orientation}
+      style={{ "--gap": spacing } as React.CSSProperties}
+      className={cn(
+        "group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-lg data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-vertical:flex-col data-vertical:items-stretch",
         className
       )}
       {...props}
-    />
-  );
+    >
+      <ToggleGroupContext.Provider
+        value={{ variant, size, spacing, orientation }}
+      >
+        {children}
+      </ToggleGroupContext.Provider>
+    </ToggleGroupPrimitive>
+  )
 }
-ToggleGroupItem.displayName = "ToggleGroupItem";
 
-// ---- EXPORTS ----------------------------------------------------------------
+function ToggleGroupItem({
+  className,
+  children,
+  variant = "default",
+  size = "default",
+  ...props
+}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
+  const context = React.useContext(ToggleGroupContext)
 
-export { ToggleGroupRoot, ToggleGroupItem, toggleGroupItemVariants };
+  return (
+    <TogglePrimitive
+      data-slot="toggle-group-item"
+      data-variant={context.variant || variant}
+      data-size={context.size || size}
+      data-spacing={context.spacing}
+      className={cn(
+        "shrink-0 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-end]:pr-1.5 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-start]:pl-1.5 group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-l-lg group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-lg group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-r-lg group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-lg group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:border-l-0 group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:border-t-0 group-data-horizontal/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-l group-data-vertical/toggle-group:data-[spacing=0]:data-[variant=outline]:first:border-t",
+        toggleVariants({
+          variant: context.variant || variant,
+          size: context.size || size,
+        }),
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </TogglePrimitive>
+  )
+}
+
+export { ToggleGroup, ToggleGroupItem }

@@ -1,21 +1,30 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "badge",
-  "type": "registry:ui",
   "title": "Badge",
-  "description": "Compact status indicator with solid semantic variants.",
+  "description": "The stock shadcn Badge component for the Base UI/Nova preset.",
   "dependencies": [
-    "class-variance-authority"
+    "@base-ui/react@^1.7.0",
+    "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [
-    "https://ui.edbn.me/api/analytics/registry/utils.json"
+    "https://edbn.dev/r/edbn-base.json"
   ],
-  "variant": "static",
   "files": [
     {
       "path": "components/ui/badge.tsx",
-      "content": "\"use client\";\n\n/**\n * Badge - compact inline status or count indicator.\n *\n * A pure-CSS component for short labels: counts, statuses, tags, and\n * categories. Use sparingly so badges keep their visual priority.\n *\n * @registryDescription Compact status indicator with solid semantic variants.\n */\n\nimport * as React from \"react\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { cn } from \"@/lib/utils\";\n\n// ---- VARIANTS ---------------------------------------------------------------\n\nconst badgeVariants = cva(\n  [\n    \"inline-flex max-w-full shrink-0 items-center justify-center gap-1 overflow-hidden whitespace-nowrap rounded-full border font-medium tabular-nums\",\n    \"border-[color:var(--badge-border)] bg-[var(--badge-surface)] text-[var(--badge-foreground)] shadow-sm dark:shadow-none\",\n    \"transition-[background-color,border-color,color,box-shadow] duration-150 ease-out motion-reduce:transition-none\",\n    \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n    \"aria-disabled:pointer-events-none aria-disabled:opacity-60 data-disabled:pointer-events-none data-disabled:opacity-60\",\n    \"forced-colors:border-[ButtonBorder] forced-colors:bg-[ButtonFace] forced-colors:text-[ButtonText] forced-colors:shadow-none\",\n    \"[&>svg]:size-[0.9em] [&>svg]:shrink-0\",\n  ],\n  {\n    variants: {\n      variant: {\n        default:\n          \"[--badge-border:color-mix(in_oklab,var(--primary)_88%,var(--background)_12%)] [--badge-surface:var(--primary)] [--badge-foreground:var(--primary-foreground)]\",\n        secondary:\n          \"[--badge-border:color-mix(in_oklab,var(--border)_72%,var(--foreground)_28%)] [--badge-surface:color-mix(in_oklab,var(--secondary)_86%,var(--foreground)_14%)] [--badge-foreground:var(--secondary-foreground)]\",\n        destructive:\n          \"[--badge-border:color-mix(in_oklab,var(--destructive)_84%,var(--background)_16%)] [--badge-surface:var(--destructive)] [--badge-foreground:var(--destructive-foreground)]\",\n        outline:\n          \"[--badge-border:var(--border)] [--badge-surface:var(--background)] [--badge-foreground:var(--foreground)]\",\n        success:\n          \"[--badge-tone:var(--chart-2)] [--badge-border:color-mix(in_oklab,var(--border)_78%,var(--badge-tone)_22%)] [--badge-surface:color-mix(in_oklab,var(--background)_92%,var(--badge-tone)_8%)] [--badge-foreground:color-mix(in_oklab,var(--foreground)_80%,var(--badge-tone)_20%)]\",\n        warning:\n          \"[--badge-tone:var(--chart-5)] [--badge-border:color-mix(in_oklab,var(--border)_76%,var(--badge-tone)_24%)] [--badge-surface:color-mix(in_oklab,var(--background)_91%,var(--badge-tone)_9%)] [--badge-foreground:color-mix(in_oklab,var(--foreground)_82%,var(--badge-tone)_18%)] dark:[--badge-tone:var(--chart-3)]\",\n        info: \"[--badge-tone:var(--chart-3)] [--badge-border:color-mix(in_oklab,var(--border)_78%,var(--badge-tone)_22%)] [--badge-surface:color-mix(in_oklab,var(--background)_92%,var(--badge-tone)_8%)] [--badge-foreground:color-mix(in_oklab,var(--foreground)_80%,var(--badge-tone)_20%)] dark:[--badge-tone:var(--chart-1)]\",\n      },\n      size: {\n        sm: \"h-5 px-2 text-[11px] leading-none\",\n        md: \"h-6 px-2.5 text-xs leading-none\",\n        lg: \"h-7 px-3 text-sm leading-none\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"md\",\n    },\n  }\n);\n\n// ---- ROOT -------------------------------------------------------------------\n\nexport interface BadgeProps\n  extends React.ComponentPropsWithoutRef<\"div\">,\n    VariantProps<typeof badgeVariants> {}\n\nconst Badge = React.forwardRef<HTMLDivElement, BadgeProps>(\n  ({ className, variant, size, ...props }, ref) => {\n    const resolvedVariant = variant ?? \"default\";\n    const resolvedSize = size ?? \"md\";\n\n    return (\n      <div\n        ref={ref}\n        data-slot=\"badge\"\n        data-variant={resolvedVariant}\n        data-size={resolvedSize}\n        className={cn(\n          badgeVariants({ variant: resolvedVariant, size: resolvedSize }),\n          className\n        )}\n        {...props}\n      />\n    );\n  }\n);\nBadge.displayName = \"Badge\";\n\n// ---- EXPORTS ----------------------------------------------------------------\n\nexport { Badge, badgeVariants };\n",
-      "type": "registry:ui"
+      "content": "import { mergeProps } from \"@base-ui/react/merge-props\"\nimport { useRender } from \"@base-ui/react/use-render\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-primary text-primary-foreground [a]:hover:bg-primary/80\",\n        secondary:\n          \"bg-secondary text-secondary-foreground [a]:hover:bg-secondary/80\",\n        destructive:\n          \"bg-destructive/10 text-destructive focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:focus-visible:ring-destructive/40 [a]:hover:bg-destructive/20\",\n        outline:\n          \"border-border text-foreground [a]:hover:bg-muted [a]:hover:text-muted-foreground\",\n        ghost:\n          \"hover:bg-muted hover:text-muted-foreground dark:hover:bg-muted/50\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Badge({\n  className,\n  variant = \"default\",\n  render,\n  ...props\n}: useRender.ComponentProps<\"span\"> & VariantProps<typeof badgeVariants>) {\n  return useRender({\n    defaultTagName: \"span\",\n    props: mergeProps<\"span\">(\n      {\n        className: cn(badgeVariants({ variant }), className),\n      },\n      props\n    ),\n    render,\n    state: {\n      slot: \"badge\",\n      variant,\n    },\n  })\n}\n\nexport { Badge, badgeVariants }\n",
+      "type": "registry:ui",
+      "target": "@ui/badge.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/badge"
+    }
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
 }

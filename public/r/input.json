@@ -1,21 +1,29 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
-  "type": "registry:ui",
   "title": "Input",
-  "description": "Styled text input with variants for email, password, and more.",
+  "description": "The stock shadcn Input component for the Base UI/Nova preset.",
   "dependencies": [
-    "@base-ui/react"
+    "@base-ui/react@^1.7.0"
   ],
   "registryDependencies": [
-    "https://ui.edbn.me/api/analytics/registry/utils.json"
+    "https://edbn.dev/r/edbn-base.json"
   ],
-  "variant": "static",
   "files": [
     {
       "path": "components/ui/input.tsx",
-      "content": "/**\r\n * Input — Single-line text input.\r\n *\r\n * Built on the Base UI `Input` primitive. A thin styled wrapper around\r\n * `<input>` that carries shadcn/Tailwind-v4 design tokens and correctly\r\n * handles disabled, error (`aria-invalid`), and focus-visible states.\r\n *\r\n * Anatomy:\r\n * ```tsx\r\n * <InputRoot type=\"email\" placeholder=\"you@example.com\" />\r\n *\r\n * // Error state (pair with a FormField / visible message for context)\r\n * <InputRoot aria-invalid aria-describedby=\"email-error\" />\r\n * <p id=\"email-error\" className=\"text-sm text-destructive\">Invalid.</p>\r\n * ```\r\n *\r\n * Accessibility: the element is a real `<input>`, so native form\r\n * participation, labels (`<label htmlFor>`), and validation work out of\r\n * the box. For error messaging, set `aria-invalid` and `aria-describedby`\r\n * pointing at the message element.\r\n *\r\n * @package    @edbn/ui\r\n * @version    0.3.0\r\n * @since      0.1.0\r\n * @brand      edbn/ui — https://ui.edbn.me\r\n * @docs       https://ui.edbn.me/docs/components/input\r\n * @upstream   Base UI v1.2.0 — https://base-ui.com/react/components/input\r\n * @registryDescription Styled text input with variants for email, password, and more.\r\n */\r\n\r\n\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { Input as InputPrimitive } from \"@base-ui/react/input\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\n// ---- ROOT -------------------------------------------------------------------\r\n\r\nexport type InputRootProps = React.ComponentPropsWithoutRef<typeof InputPrimitive>;\r\n\r\n/**\r\n * A styled text input.\r\n *\r\n * Focus: 1 px `ring` in `ring` color. Error: `aria-invalid` adds a\r\n * destructive-tinted ring.\r\n *\r\n * @since 0.1.0\r\n */\r\nfunction InputRoot({ className, ...props }: InputRootProps) {\r\n  return (\r\n    <InputPrimitive\r\n      data-slot=\"input-root\"\r\n      className={cn(\r\n        \"flex h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm\",\r\n        \"transition-colors duration-150 ease-out motion-reduce:transition-none\",\r\n        \"file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground\",\r\n        \"placeholder:text-muted-foreground\",\r\n        \"selection:bg-primary selection:text-primary-foreground\",\r\n        \"focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring\",\r\n        \"disabled:cursor-not-allowed disabled:opacity-50\",\r\n        \"aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40\",\r\n        \"md:text-sm\",\r\n        className\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\nInputRoot.displayName = \"InputRoot\";\r\n\r\n// ---- EXPORTS ----------------------------------------------------------------\r\n\r\nexport { InputRoot };\r\n\r\n/**\r\n * Backward-compatible alias — `Input` was the original shared-variant\r\n * export before the static-variant split.\r\n *\r\n * @deprecated prefer `InputRoot` for clarity.\r\n */\r\nexport { InputRoot as Input };\r\n",
-      "type": "registry:ui"
+      "content": "import * as React from \"react\"\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "type": "registry:ui",
+      "target": "@ui/input.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/input"
+    }
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
 }

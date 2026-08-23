@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "title": "Direction",
+  "description": "The stock shadcn Direction component for the Base UI/Nova preset.",
+  "dependencies": [
+    "@base-ui/react@^1.7.0"
+  ],
+  "registryDependencies": [
+    "https://edbn.dev/r/edbn-base.json"
+  ],
+  "files": [
+    {
+      "path": "components/ui/direction.tsx",
+      "content": "\"use client\"\n\nexport {\n  DirectionProvider,\n  useDirection,\n} from \"@base-ui/react/direction-provider\"\n",
+      "type": "registry:ui",
+      "target": "@ui/direction.tsx"
+    }
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/direction"
+    }
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

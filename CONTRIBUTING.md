@@ -18,8 +18,8 @@ Open an issue first if you're planning to add a new component or make significan
 ## Component guidelines
 
 - Use TypeScript
-- Build on Base UI primitives when possible
-- Use motion presets from `lib/motion.ts` (no hardcoded spring values)
+- Start from the pinned shadcn Base UI source when an official component exists
+- Keep public APIs composable and accessible
 - Support both light and dark themes
 - Test on mobile and desktop
 - Include proper ARIA attributes
@@ -30,17 +30,14 @@ Example structure:
 "use client";
 
 import * as React from "react";
-import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { springPresets } from "@/lib/motion";
 
 const MyComponent = React.forwardRef<HTMLDivElement, Props>(
   ({ className, ...props }, ref) => {
     return (
-      <motion.div
+      <div
         ref={ref}
         className={cn("base-styles", className)}
-        transition={springPresets.snappy}
         {...props}
       />
     );
@@ -55,8 +52,9 @@ export { MyComponent };
 
 After adding or modifying a component:
 
-1. Update `scripts/update-registry.mjs`
-2. Run `node scripts/update-registry.mjs`
+1. Update `registry.json`
+2. Run `npm run registry:validate`
+3. Run `npm run registry:build`
 
 ## Tests
 

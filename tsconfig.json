@@ -14,14 +14,11 @@
     "jsx": "react-jsx",
     "paths": {
       "@/components/ui/*": ["./components/ui/*"],
-      "@/components/ui/animated/*": ["./components/ui/animated/*"],
-      "@/components/ui/base-ui/*": ["./components/ui/base-ui/*"],
       "@/hooks/*": ["./hooks/*"],
       "@/lib/*": ["./lib/*"],
-      "@/lib/styles/*": ["./lib/styles/*"],
       "@/*": ["./*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.mts"],
-  "exclude": ["node_modules", "archive"]
+  "exclude": ["node_modules"]
 }

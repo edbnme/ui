@@ -1,187 +1,37 @@
 {
-  "$schema": "https://ui.edbn.me/schemas/bundle-sizes.json",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "summary": {
-    "totalPackages": 18,
-    "totalComponents": 106,
-    "animatedComponents": 0,
-    "staticComponents": 54,
-    "sharedComponents": 0,
-    "largestDependency": {
-      "name": "@react-pdf/renderer",
-      "version": "4.5.1",
-      "size": 1423451,
-      "gzip": 471456,
-      "dependencyCount": 13,
-      "source": "bundlephobia"
-    },
-    "computedAt": "2026-06-13T18:15:29.022Z"
+    "totalPackages": 12,
+    "totalComponents": 62,
+    "computedAt": "2026-08-23T00:00:00.000Z",
+    "measurement": "component source bytes; external packages excluded"
   },
-  "packages": [
-    {
-      "name": "@base-ui/react",
-      "size": 85000,
-      "gzip": 25000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "@daypicker/react",
-      "version": "10.0.1",
-      "size": 67045,
-      "gzip": 19305,
-      "dependencyCount": 1,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "@phosphor-icons/react",
-      "size": 1200,
-      "gzip": 400,
-      "version": "latest",
-      "source": "fallback",
-      "note": "Per icon, tree-shakable"
-    },
-    {
-      "name": "@react-pdf/math",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
-    },
-    {
-      "name": "@react-pdf/renderer",
-      "version": "4.5.1",
-      "size": 1423451,
-      "gzip": 471456,
-      "dependencyCount": 13,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "@react-pdf/types",
-      "version": "2.11.1",
-      "size": 1382,
-      "gzip": 429,
-      "dependencyCount": 3,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "class-variance-authority",
-      "size": 4500,
-      "gzip": 1500,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "clsx",
-      "size": 1800,
-      "gzip": 600,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "embla-carousel-react",
-      "version": "8.6.0",
-      "size": 17975,
-      "gzip": 7277,
-      "dependencyCount": 2,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "hast-util-to-jsx-runtime",
-      "version": "2.3.6",
-      "size": 28673,
-      "gzip": 9977,
-      "dependencyCount": 15,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "motion",
-      "size": 150000,
-      "gzip": 45000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "qrcode",
-      "version": "1.5.4",
-      "size": 23456,
-      "gzip": 8750,
-      "dependencyCount": 3,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "react-resizable-panels",
-      "version": "4.11.2",
-      "size": 33033,
-      "gzip": 10906,
-      "dependencyCount": 0,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "recharts",
-      "version": "3.8.1",
-      "size": 527502,
-      "gzip": 139272,
-      "dependencyCount": 11,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "shiki",
-      "version": "4.2.0",
-      "size": 206270,
-      "gzip": 64175,
-      "dependencyCount": 8,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "streamdown",
-      "version": "2.5.0",
-      "size": 464290,
-      "gzip": 141349,
-      "dependencyCount": 16,
-      "source": "bundlephobia"
-    },
-    {
-      "name": "tailwind-merge",
-      "size": 28000,
-      "gzip": 8000,
-      "version": "latest",
-      "source": "fallback"
-    },
-    {
-      "name": "use-stick-to-bottom",
-      "size": 10000,
-      "gzip": 3000,
-      "version": "unknown",
-      "source": "estimate"
-    }
-  ],
   "components": {
     "static/accordion": {
       "name": "accordion",
       "title": "Accordion",
-      "description": "Vertically collapsible content panels with smooth height animations.",
+      "description": "The stock shadcn Accordion component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2598,
+        "gzipped": 833,
+        "selfSize": 2598,
+        "selfGzip": 833
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -189,21 +39,21 @@
     "static/alert-dialog": {
       "name": "alert-dialog",
       "title": "Alert Dialog",
-      "description": "Accessible alert dialog with focus trap, keyboard handling, and portal rendering.",
+      "description": "The stock shadcn Alert Dialog component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 5272,
+        "gzipped": 1282,
+        "selfSize": 5272,
+        "selfGzip": 1282
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -211,21 +61,21 @@
     "static/alert": {
       "name": "alert",
       "title": "Alert",
-      "description": "Inline status banners with default, destructive, success, warning, and info variants.",
+      "description": "The stock shadcn Alert component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2048,
+        "gzipped": 722,
+        "selfSize": 2048,
+        "selfGzip": 722
       },
       "dependencies": [
         {
           "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -233,42 +83,42 @@
     "static/aspect-ratio": {
       "name": "aspect-ratio",
       "title": "Aspect Ratio",
-      "description": "A CSS aspect-ratio wrapper component for maintaining consistent proportions.",
+      "description": "The stock shadcn Aspect Ratio component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 403,
+        "gzipped": 250,
+        "selfSize": 403,
+        "selfGzip": 250
       },
       "dependencies": [],
       "dependencyCount": 0
     },
-    "static/autocomplete": {
-      "name": "autocomplete",
-      "title": "Autocomplete",
-      "description": "Premium solid autocomplete with full Base UI part coverage, filtering hooks, grouped items, status, and portal positioning.",
+    "static/attachment": {
+      "name": "attachment",
+      "title": "Attachment",
+      "description": "The stock shadcn Attachment component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 6105,
+        "gzipped": 1582,
+        "selfSize": 6105,
+        "selfGzip": 1582
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -276,21 +126,21 @@
     "static/avatar": {
       "name": "avatar",
       "title": "Avatar",
-      "description": "Premium solid avatar with image loading, fallback delay, render composition, and state-aware styling.",
+      "description": "The stock shadcn Avatar component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 3038,
+        "gzipped": 818,
+        "selfSize": 3038,
+        "selfGzip": 818
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -298,86 +148,173 @@
     "static/badge": {
       "name": "badge",
       "title": "Badge",
-      "description": "Compact status indicator with solid semantic variants.",
+      "description": "The stock shadcn Badge component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1925,
+        "gzipped": 777,
+        "selfSize": 1925,
+        "selfGzip": 777
       },
       "dependencies": [
         {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
           "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
     "static/breadcrumb": {
       "name": "breadcrumb",
       "title": "Breadcrumb",
-      "description": "Solid breadcrumb navigation with separator, ellipsis, and responsive wrapping.",
+      "description": "The stock shadcn Breadcrumb component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2586,
+        "gzipped": 777,
+        "selfSize": 2586,
+        "selfGzip": 777
       },
-      "dependencies": [],
-      "dependencyCount": 0
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "static/bubble": {
+      "name": "bubble",
+      "title": "Bubble",
+      "description": "The stock shadcn Bubble component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 4809,
+        "gzipped": 1300,
+        "selfSize": 4809,
+        "selfGzip": 1300
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "static/button-group": {
+      "name": "button-group",
+      "title": "Button Group",
+      "description": "The stock shadcn Button Group component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 2480,
+        "gzipped": 875,
+        "selfSize": 2480,
+        "selfGzip": 875
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
     },
     "static/button": {
       "name": "button",
       "title": "Button",
-      "description": "Static button component with CSS transitions only. No motion dependency required.",
+      "description": "The stock shadcn Button component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 3240,
+        "gzipped": 1044,
+        "selfSize": 3240,
+        "selfGzip": 1044
       },
       "dependencies": [
         {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
           "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
     "static/calendar": {
       "name": "calendar",
       "title": "Calendar",
-      "description": "Date picker with single and multiple selection via DayPicker.",
+      "description": "The stock shadcn Calendar component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 68245,
-        "gzipped": 19705,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 8268,
+        "gzipped": 2102,
+        "selfSize": 8268,
+        "selfGzip": 2102
       },
       "dependencies": [
         {
-          "name": "@daypicker/react",
-          "size": 67045,
-          "gzip": 19305,
-          "version": "10.0.1",
-          "source": "bundlephobia"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "react-day-picker",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -385,50 +322,42 @@
     "static/card": {
       "name": "card",
       "title": "Card",
-      "description": "Container component with header, content, and footer sections.",
+      "description": "The stock shadcn Card component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2630,
+        "gzipped": 731,
+        "selfSize": 2630,
+        "selfGzip": 731
       },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
+      "dependencies": [],
+      "dependencyCount": 0
     },
     "static/carousel": {
       "name": "carousel",
       "title": "Carousel",
-      "description": "Horizontal scroll carousel with navigation controls via Embla Carousel.",
+      "description": "The stock shadcn Carousel component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 19175,
-        "gzipped": 7677,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 5611,
+        "gzipped": 1596,
+        "selfSize": 5611,
+        "selfGzip": 1596
       },
       "dependencies": [
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "embla-carousel-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "embla-carousel-react",
-          "size": 17975,
-          "gzip": 7277,
-          "version": "8.6.0",
-          "source": "bundlephobia"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -436,79 +365,50 @@
     "static/chart": {
       "name": "chart",
       "title": "Chart",
-      "description": "Composable chart components with Recharts integration and theme support.",
+      "description": "The stock shadcn Chart component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 527502,
-        "gzipped": 139272,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 10501,
+        "gzipped": 2953,
+        "selfSize": 10501,
+        "selfGzip": 2953
       },
       "dependencies": [
         {
           "name": "recharts",
-          "size": 527502,
-          "gzip": 139272,
-          "version": "3.8.1",
-          "source": "bundlephobia"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
     },
-    "static/checkbox-group": {
-      "name": "checkbox-group",
-      "title": "Checkbox Group",
-      "description": "Grouped checkboxes with shared label and accessible parent state.",
-      "variant": "static",
-      "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 2
-    },
     "static/checkbox": {
       "name": "checkbox",
       "title": "Checkbox",
-      "description": "Accessible checkbox with indeterminate state support.",
+      "description": "The stock shadcn Checkbox component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1539,
+        "gzipped": 608,
+        "selfSize": 1539,
+        "selfGzip": 608
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -516,21 +416,21 @@
     "static/collapsible": {
       "name": "collapsible",
       "title": "Collapsible",
-      "description": "Expandable/collapsible content section with CSS transitions.",
+      "description": "The stock shadcn Collapsible component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 658,
+        "gzipped": 233,
+        "selfSize": 658,
+        "selfGzip": 233
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -538,28 +438,57 @@
     "static/combobox": {
       "name": "combobox",
       "title": "Combobox",
-      "description": "Premium solid combobox with full primitive part coverage, chips, filtering hooks, grouping, status, and portal positioning.",
+      "description": "The stock shadcn Combobox component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 9031,
+        "gzipped": 2303,
+        "selfSize": 9031,
+        "selfGzip": 2303
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "static/command": {
+      "name": "command",
+      "title": "Command",
+      "description": "The stock shadcn Command component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 5005,
+        "gzipped": 1383,
+        "selfSize": 5005,
+        "selfGzip": 1383
+      },
+      "dependencies": [
+        {
+          "name": "cmdk",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -567,28 +496,28 @@
     "static/context-menu": {
       "name": "context-menu",
       "title": "Context Menu",
-      "description": "Right-click context menu with items, checkboxes, radio groups, and submenus.",
+      "description": "The stock shadcn Context Menu component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 8035,
+        "gzipped": 1640,
+        "selfSize": 8035,
+        "selfGzip": 1640
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -596,123 +525,145 @@
     "static/dialog": {
       "name": "dialog",
       "title": "Dialog",
-      "description": "Modal dialog with focus trap, backdrop, and controlled state.",
+      "description": "The stock shadcn Dialog component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 4075,
+        "gzipped": 1170,
+        "selfSize": 4075,
+        "selfGzip": 1170
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
+    },
+    "static/direction": {
+      "name": "direction",
+      "title": "Direction",
+      "description": "The stock shadcn Direction component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 103,
+        "gzipped": 102,
+        "selfSize": 103,
+        "selfGzip": 102
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
     },
     "static/drawer": {
       "name": "drawer",
       "title": "Drawer",
-      "description": "Bottom sheet drawer with swipe-to-dismiss and smooth spring animations.",
+      "description": "The stock shadcn Drawer component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 11356,
+        "gzipped": 2749,
+        "selfSize": 11356,
+        "selfGzip": 2749
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "static/dropdown-menu": {
+      "name": "dropdown-menu",
+      "title": "Dropdown Menu",
+      "description": "The stock shadcn Dropdown Menu component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 8736,
+        "gzipped": 1734,
+        "selfSize": 8736,
+        "selfGzip": 1734
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
     },
+    "static/empty": {
+      "name": "empty",
+      "title": "Empty",
+      "description": "The stock shadcn Empty component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 2397,
+        "gzipped": 724,
+        "selfSize": 2397,
+        "selfGzip": 724
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
+    },
     "static/field": {
       "name": "field",
       "title": "Field",
-      "description": "Form field with label, description, error message, and validation.",
+      "description": "The stock shadcn Field component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 6266,
+        "gzipped": 1706,
+        "selfSize": 6266,
+        "selfGzip": 1706
       },
       "dependencies": [
         {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "static/fieldset": {
-      "name": "fieldset",
-      "title": "Fieldset",
-      "description": "Semantic form grouping with accessible legend for related fields.",
-      "variant": "static",
-      "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "static/form": {
-      "name": "form",
-      "title": "Form",
-      "description": "Accessible form wrapper with Base UI validation integration.",
-      "variant": "static",
-      "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -720,50 +671,72 @@
     "static/hover-card": {
       "name": "hover-card",
       "title": "Hover Card",
-      "description": "Rich content card that appears on hover, built on Base UI PreviewCard.",
+      "description": "The stock shadcn Hover Card component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1855,
+        "gzipped": 660,
+        "selfSize": 1855,
+        "selfGzip": 660
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "static/input-group": {
+      "name": "input-group",
+      "title": "Input Group",
+      "description": "The stock shadcn Input Group component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 5264,
+        "gzipped": 1481,
+        "selfSize": 5264,
+        "selfGzip": 1481
+      },
+      "dependencies": [
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
     },
     "static/input-otp": {
       "name": "input-otp",
-      "title": "Input OTP",
-      "description": "Premium solid one-time password input with paste, validation, and separators.",
+      "title": "Input Otp",
+      "description": "The stock shadcn Input Otp component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2547,
+        "gzipped": 864,
+        "selfSize": 2547,
+        "selfGzip": 864
       },
       "dependencies": [
         {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "name": "input-otp",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -771,64 +744,107 @@
     "static/input": {
       "name": "input",
       "title": "Input",
-      "description": "Styled text input with variants for email, password, and more.",
+      "description": "The stock shadcn Input component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1040,
+        "gzipped": 495,
+        "selfSize": 1040,
+        "selfGzip": 495
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
     },
-    "static/label": {
-      "name": "label",
-      "title": "Label",
-      "description": "Premium solid form label with peer and group disabled state support.",
+    "static/item": {
+      "name": "item",
+      "title": "Item",
+      "description": "The stock shadcn Item component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "static/dropdown-menu": {
-      "name": "dropdown-menu",
-      "title": "Dropdown Menu",
-      "description": "Dropdown menu with items, separators, and keyboard navigation.",
-      "variant": "static",
-      "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 4860,
+        "gzipped": 1309,
+        "selfSize": 4860,
+        "selfGzip": 1309
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "static/kbd": {
+      "name": "kbd",
+      "title": "Kbd",
+      "description": "The stock shadcn Kbd component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 837,
+        "gzipped": 400,
+        "selfSize": 837,
+        "selfGzip": 400
+      },
+      "dependencies": [],
+      "dependencyCount": 0
+    },
+    "static/label": {
+      "name": "label",
+      "title": "Label",
+      "description": "The stock shadcn Label component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 518,
+        "gzipped": 310,
+        "selfSize": 518,
+        "selfGzip": 310
+      },
+      "dependencies": [],
+      "dependencyCount": 0
+    },
+    "static/marker": {
+      "name": "marker",
+      "title": "Marker",
+      "description": "The stock shadcn Marker component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 1948,
+        "gzipped": 750,
+        "selfSize": 1948,
+        "selfGzip": 750
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -836,50 +852,93 @@
     "static/menubar": {
       "name": "menubar",
       "title": "Menubar",
-      "description": "Premium solid menubar with keyboard navigation, checkbox items, radio items, and submenus.",
+      "description": "The stock shadcn Menubar component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 8181,
+        "gzipped": 1607,
+        "selfSize": 8181,
+        "selfGzip": 1607
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
     },
-    "static/meter": {
-      "name": "meter",
-      "title": "Meter",
-      "description": "Visual indicator for scalar measurements within a known range.",
+    "static/message-scroller": {
+      "name": "message-scroller",
+      "title": "Message Scroller",
+      "description": "The stock shadcn Message Scroller component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 4062,
+        "gzipped": 1136,
+        "selfSize": 4062,
+        "selfGzip": 1136
       },
       "dependencies": [
         {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "name": "@shadcn/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "static/message": {
+      "name": "message",
+      "title": "Message",
+      "description": "The stock shadcn Message component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 2232,
+        "gzipped": 604,
+        "selfSize": 2232,
+        "selfGzip": 604
+      },
+      "dependencies": [],
+      "dependencyCount": 0
+    },
+    "static/native-select": {
+      "name": "native-select",
+      "title": "Native Select",
+      "description": "The stock shadcn Native Select component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 2093,
+        "gzipped": 788,
+        "selfSize": 2093,
+        "selfGzip": 788
+      },
+      "dependencies": [
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -887,122 +946,79 @@
     "static/navigation-menu": {
       "name": "navigation-menu",
       "title": "Navigation Menu",
-      "description": "Horizontal navigation menu with dropdown content panels and links.",
+      "description": "The stock shadcn Navigation Menu component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 7393,
+        "gzipped": 1770,
+        "selfSize": 7393,
+        "selfGzip": 1770
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "static/number-field": {
-      "name": "number-field",
-      "title": "Number Field",
-      "description": "Numeric input with increment/decrement buttons and min/max constraints.",
-      "variant": "static",
-      "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
-      "dependencyCount": 2
+      "dependencyCount": 3
     },
     "static/pagination": {
       "name": "pagination",
       "title": "Pagination",
-      "description": "Page navigation with previous/next and numbered pages.",
+      "description": "The stock shadcn Pagination component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2864,
+        "gzipped": 867,
+        "selfSize": 2864,
+        "selfGzip": 867
       },
-      "dependencies": [],
-      "dependencyCount": 0
+      "dependencies": [
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
     },
     "static/popover": {
       "name": "popover",
       "title": "Popover",
-      "description": "Floating popover with auto-positioning and focus management.",
+      "description": "The stock shadcn Popover component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2574,
+        "gzipped": 809,
+        "selfSize": 2574,
+        "selfGzip": 809
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "static/preview-card": {
-      "name": "preview-card",
-      "title": "Preview Card",
-      "description": "Link preview card with rich content and auto-positioning on hover.",
-      "variant": "static",
-      "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -1010,43 +1026,72 @@
     "static/progress": {
       "name": "progress",
       "title": "Progress",
-      "description": "Progress bar with determinate and indeterminate states.",
+      "description": "The stock shadcn Progress component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1740,
+        "gzipped": 520,
+        "selfSize": 1740,
+        "selfGzip": 520
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
     },
+    "static/questionnaire": {
+      "name": "questionnaire",
+      "title": "Questionnaire",
+      "description": "The stock shadcn Questionnaire component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 10207,
+        "gzipped": 1909,
+        "selfSize": 10207,
+        "selfGzip": 1909
+      },
+      "dependencies": [
+        {
+          "name": "@shadcn/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
     "static/radio-group": {
       "name": "radio-group",
       "title": "Radio Group",
-      "description": "Radio group with accessible keyboard navigation.",
+      "description": "The stock shadcn Radio Group component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1835,
+        "gzipped": 651,
+        "selfSize": 1835,
+        "selfGzip": 651
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -1054,50 +1099,43 @@
     "static/resizable": {
       "name": "resizable",
       "title": "Resizable",
-      "description": "Resizable panel groups with drag handles for flexible layouts.",
+      "description": "The stock shadcn Resizable component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 34233,
-        "gzipped": 11306,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1671,
+        "gzipped": 583,
+        "selfSize": 1671,
+        "selfGzip": 583
       },
       "dependencies": [
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
           "name": "react-resizable-panels",
-          "size": 33033,
-          "gzip": 10906,
-          "version": "4.11.2",
-          "source": "bundlephobia"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
-      "dependencyCount": 2
+      "dependencyCount": 1
     },
     "static/scroll-area": {
       "name": "scroll-area",
       "title": "Scroll Area",
-      "description": "Native scroll area with custom scrollbars and edge cues.",
+      "description": "The stock shadcn Scroll Area component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1593,
+        "gzipped": 549,
+        "selfSize": 1593,
+        "selfGzip": 549
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -1105,28 +1143,28 @@
     "static/select": {
       "name": "select",
       "title": "Select",
-      "description": "Accessible select dropdown with search and keyboard navigation.",
+      "description": "The stock shadcn Select component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 6655,
+        "gzipped": 1809,
+        "selfSize": 6655,
+        "selfGzip": 1809
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -1134,21 +1172,21 @@
     "static/separator": {
       "name": "separator",
       "title": "Separator",
-      "description": "Visual divider for separating content sections.",
+      "description": "The stock shadcn Separator component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 545,
+        "gzipped": 283,
+        "selfSize": 545,
+        "selfGzip": 283
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -1156,78 +1194,78 @@
     "static/sheet": {
       "name": "sheet",
       "title": "Sheet",
-      "description": "Premium solid slide-out panel built on Base UI Dialog with directional CSS transitions.",
+      "description": "The stock shadcn Sheet component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 90700,
-        "gzipped": 26900,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 4433,
+        "gzipped": 1154,
+        "selfSize": 4433,
+        "selfGzip": 1154
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 3
-    },
-    "static/sidebar": {
-      "name": "sidebar",
-      "title": "Sidebar",
-      "description": "Responsive sidebar with collapsible sections, menu items, groups, and mobile support.",
-      "variant": "static",
-      "sizes": {
-        "minified": 5700,
-        "gzipped": 1900,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
     },
+    "static/sidebar": {
+      "name": "sidebar",
+      "title": "Sidebar",
+      "description": "The stock shadcn Sidebar component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 21633,
+        "gzipped": 4764,
+        "selfSize": 21633,
+        "selfGzip": 4764
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 3
+    },
     "static/skeleton": {
       "name": "skeleton",
       "title": "Skeleton",
-      "description": "Loading placeholder with pulse animation.",
+      "description": "The stock shadcn Skeleton component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 275,
+        "gzipped": 206,
+        "selfSize": 275,
+        "selfGzip": 206
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1235,21 +1273,79 @@
     "static/slider": {
       "name": "slider",
       "title": "Slider",
-      "description": "Premium solid slider with full Base UI part coverage, labels, value readout, range thumbs, form integration, and state-aware styling.",
+      "description": "The stock shadcn Slider component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1874,
+        "gzipped": 742,
+        "selfSize": 1874,
+        "selfGzip": 742
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
+    },
+    "static/sonner": {
+      "name": "sonner",
+      "title": "Sonner",
+      "description": "The stock shadcn Sonner component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 1226,
+        "gzipped": 488,
+        "selfSize": 1226,
+        "selfGzip": 488
+      },
+      "dependencies": [
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "next-themes",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "sonner",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 3
+    },
+    "static/spinner": {
+      "name": "spinner",
+      "title": "Spinner",
+      "description": "The stock shadcn Spinner component for the Base UI/Nova preset.",
+      "variant": "static",
+      "sizes": {
+        "minified": 322,
+        "gzipped": 233,
+        "selfSize": 322,
+        "selfGzip": 233
+      },
+      "dependencies": [
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -1257,21 +1353,21 @@
     "static/switch": {
       "name": "switch",
       "title": "Switch",
-      "description": "Premium solid switch with accessible on/off states and form integration.",
+      "description": "The stock shadcn Switch component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1811,
+        "gzipped": 679,
+        "selfSize": 1811,
+        "selfGzip": 679
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
@@ -1279,13 +1375,13 @@
     "static/table": {
       "name": "table",
       "title": "Table",
-      "description": "Premium solid data table with header, body, footer, rows, cells, and caption.",
+      "description": "The stock shadcn Table component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2402,
+        "gzipped": 660,
+        "selfSize": 2402,
+        "selfGzip": 660
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1293,35 +1389,42 @@
     "static/tabs": {
       "name": "tabs",
       "title": "Tabs",
-      "description": "Premium solid tabs with accessible panel switching and animated indicator.",
+      "description": "The stock shadcn Tabs component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 3497,
+        "gzipped": 1072,
+        "selfSize": 3497,
+        "selfGzip": 1072
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 2
     },
     "static/textarea": {
       "name": "textarea",
       "title": "Textarea",
-      "description": "Premium solid multi-line text input with optional auto-resize.",
+      "description": "The stock shadcn Textarea component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 842,
+        "gzipped": 435,
+        "selfSize": 842,
+        "selfGzip": 435
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1329,28 +1432,28 @@
     "static/toast": {
       "name": "toast",
       "title": "Toast",
-      "description": "Premium solid notification toasts with actions, stacking, and swipe dismissal.",
+      "description": "The stock shadcn Toast component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 86200,
-        "gzipped": 25400,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 7394,
+        "gzipped": 1924,
+        "selfSize": 7394,
+        "selfGzip": 1924
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -1358,28 +1461,28 @@
     "static/toggle-group": {
       "name": "toggle-group",
       "title": "Toggle Group",
-      "description": "Premium solid toggle group with exclusive or multi-select state.",
+      "description": "The stock shadcn Toggle Group component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 89500,
-        "gzipped": 26500,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 3183,
+        "gzipped": 912,
+        "selfSize": 3183,
+        "selfGzip": 912
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
           "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -1387,57 +1490,28 @@
     "static/toggle": {
       "name": "toggle",
       "title": "Toggle",
-      "description": "Premium solid toggle button with accessible pressed state.",
+      "description": "The stock shadcn Toggle component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 89500,
-        "gzipped": 26500,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 1762,
+        "gzipped": 744,
+        "selfSize": 1762,
+        "selfGzip": 744
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         },
         {
           "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "static/toolbar": {
-      "name": "toolbar",
-      "title": "Toolbar",
-      "description": "Premium solid toolbar with grouped actions, links, and inputs.",
-      "variant": "static",
-      "sizes": {
-        "minified": 89500,
-        "gzipped": 26500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 2
@@ -1445,1319 +1519,24 @@
     "static/tooltip": {
       "name": "tooltip",
       "title": "Tooltip",
-      "description": "Accessible tooltip with auto-positioning and delay.",
+      "description": "The stock shadcn Tooltip component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 85000,
-        "gzipped": 25000,
-        "selfSize": 2000,
-        "selfGzip": 600
+        "minified": 2846,
+        "gzipped": 883,
+        "selfSize": 2846,
+        "selfGzip": 883
       },
       "dependencies": [
         {
           "name": "@base-ui/react",
-          "size": 85000,
-          "gzip": 25000,
-          "version": "latest",
-          "source": "fallback"
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
       "dependencyCount": 1
-    },
-    "audio/audio-player": {
-      "name": "audio-player",
-      "title": "Audio Player",
-      "description": "Composable audio playback primitives for buttons, progress, duration, and speed controls.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 5700,
-        "gzipped": 1900,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "audio/audio-recorder": {
-      "name": "audio-recorder",
-      "title": "Audio Recorder",
-      "description": "Microphone recorder with elapsed time, pause/resume controls, and completion callbacks.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-bar-visualizer": {
-      "name": "audio-bar-visualizer",
-      "title": "Bar Visualizer",
-      "description": "Animated audio bars for microphone levels, agent states, and ambient voice activity.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-chat-input": {
-      "name": "audio-chat-input",
-      "title": "Chat Input",
-      "description": "Composable assistant input with autosizing text, leading actions, and send controls.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-code-block": {
-      "name": "audio-code-block",
-      "title": "Code Block",
-      "description": "Syntax-highlighted code block for generated answers, terminal snippets, and compact examples.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 240643,
-        "gzipped": 76052,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@phosphor-icons/react",
-          "size": 1200,
-          "gzip": 400,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "hast-util-to-jsx-runtime",
-          "size": 28673,
-          "gzip": 9977,
-          "version": "2.3.6",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "shiki",
-          "size": 206270,
-          "gzip": 64175,
-          "version": "4.2.0",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 4
-    },
-    "audio/audio-conversation-bar": {
-      "name": "audio-conversation-bar",
-      "title": "Conversation Bar",
-      "description": "Provider-agnostic realtime conversation bar with connection, message, and send controls.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-conversation": {
-      "name": "audio-conversation",
-      "title": "Conversation",
-      "description": "Auto-scrolling conversation container with sticky-to-bottom behavior and scroll affordance.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 10000,
-        "gzipped": 3000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "use-stick-to-bottom",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-feedback": {
-      "name": "audio-feedback",
-      "title": "Feedback",
-      "description": "Inline response feedback actions for copy, regenerate, and positive or negative ratings.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-live-waveform": {
-      "name": "audio-live-waveform",
-      "title": "Live Waveform",
-      "description": "Canvas waveform for live microphone input, processing animations, and idle audio states.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-matrix": {
-      "name": "audio-matrix",
-      "title": "Matrix",
-      "description": "Dot-matrix animation presets for compact loaders, voice activity, and ambient status.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-message": {
-      "name": "audio-message",
-      "title": "Message",
-      "description": "Sender-aware chat message primitives with avatars and user or assistant alignment.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-mic-selector": {
-      "name": "audio-mic-selector",
-      "title": "Mic Selector",
-      "description": "Microphone selector with permission-aware device enumeration, mute toggle, and live input preview.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-orb": {
-      "name": "audio-orb",
-      "title": "Orb",
-      "description": "Lightweight canvas agent orb for listening, talking, thinking, and idle voice states.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-prompt-suggestions": {
-      "name": "audio-prompt-suggestions",
-      "title": "Prompt Suggestions",
-      "description": "List and grid prompt suggestions for assistant empty states and quick actions.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-response": {
-      "name": "audio-response",
-      "title": "Response",
-      "description": "Streaming markdown response renderer for assistant output, code, lists, and rich text.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 464290,
-        "gzipped": 141349,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "streamdown",
-          "size": 464290,
-          "gzip": 141349,
-          "version": "2.5.0",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-scrub-bar": {
-      "name": "audio-scrub-bar",
-      "title": "Scrub Bar",
-      "description": "Composable scrub bar primitives for playback progress, seeking, thumbs, and time labels.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-shimmering-text": {
-      "name": "audio-shimmering-text",
-      "title": "Shimmering Text Audio",
-      "description": "Motion-aware shimmering text for generated speech, transcript, and response pending states.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 150000,
-        "gzipped": 45000,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "motion",
-          "size": 150000,
-          "gzip": 45000,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-speech-input": {
-      "name": "audio-speech-input",
-      "title": "Speech Input",
-      "description": "Web Speech API trigger with listening, processing, error, and unsupported states.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-thinking-indicator": {
-      "name": "audio-thinking-indicator",
-      "title": "Thinking Indicator",
-      "description": "Dots, pulse, and shimmer indicators for assistant thinking and generation states.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 154500,
-        "gzipped": 46500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        },
-        {
-          "name": "motion",
-          "size": 150000,
-          "gzip": 45000,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "audio/audio-token-counter": {
-      "name": "audio-token-counter",
-      "title": "Token Counter",
-      "description": "Token usage meter with limits, model labels, progress, and cost estimates.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "audio/audio-transcript-viewer": {
-      "name": "audio-transcript-viewer",
-      "title": "Transcript Viewer",
-      "description": "Playback-aligned transcript primitives with word highlighting and scrub controls.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-voice-button": {
-      "name": "audio-voice-button",
-      "title": "Voice Button",
-      "description": "Voice action button with waveform, recording, processing, success, and error feedback.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-voice-picker": {
-      "name": "audio-voice-picker",
-      "title": "Voice Picker",
-      "description": "Searchable voice selection component for generated speech and narration workflows.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 0,
-        "gzipped": 0,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [],
-      "dependencyCount": 0
-    },
-    "audio/audio-waveform": {
-      "name": "audio-waveform",
-      "title": "Waveform",
-      "description": "Static, scrolling, microphone, recording, and scrubber waveform primitives for audio timelines.",
-      "variant": "audio",
-      "sizes": {
-        "minified": 4500,
-        "gzipped": 1500,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "class-variance-authority",
-          "size": 4500,
-          "gzip": 1500,
-          "version": "latest",
-          "source": "fallback"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "pdf/pdf-alert": {
-      "name": "pdf-alert",
-      "title": "PDF Alert",
-      "description": "Callout message with title, body, and tone-based border color.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-badge": {
-      "name": "pdf-badge",
-      "title": "PDF Badge",
-      "description": "Compact status badge with neutral, primary, success, warning, and destructive tones.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-card": {
-      "name": "pdf-card",
-      "title": "PDF Card",
-      "description": "Bordered card container with title, description, and footer slots.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-data-table": {
-      "name": "pdf-data-table",
-      "title": "PDF Data Table",
-      "description": "Render rows from typed data with empty-state handling, alignment, widths, and custom accessors.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1382,
-        "gzipped": 429,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 1
-    },
-    "pdf/pdf-divider": {
-      "name": "pdf-divider",
-      "title": "PDF Divider",
-      "description": "Theme-aware PDF divider with horizontal and vertical orientations.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-document": {
-      "name": "pdf-document",
-      "title": "PDF Document",
-      "description": "Document and page wrappers for metadata, permissions, bookmarks, page sizing, and theme context.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-dynamic": {
-      "name": "pdf-dynamic",
-      "title": "PDF Dynamic",
-      "description": "Dynamic text and view wrappers for page-aware render callbacks.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-form": {
-      "name": "pdf-form",
-      "title": "PDF Form",
-      "description": "Printable fields plus opt-in native AcroForm text, checkbox, select, list, and fieldset wrappers.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-graph": {
-      "name": "pdf-graph",
-      "title": "PDF Graph",
-      "description": "Lightweight bar graph rendered with React PDF SVG primitives.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-heading": {
-      "name": "pdf-heading",
-      "title": "PDF Heading",
-      "description": "Document headings with semantic levels and stable PDF typography.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-image": {
-      "name": "pdf-image",
-      "title": "PDF Image",
-      "description": "Image wrapper with alt metadata, fit controls, dimensions, and fallback text.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-keep-together": {
-      "name": "pdf-keep-together",
-      "title": "PDF Keep Together",
-      "description": "Wrap content with React PDF `wrap={false}` to keep a fragment on one page.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-key-value": {
-      "name": "pdf-key-value",
-      "title": "PDF Key Value",
-      "description": "Key-value rows for summaries, totals, and metadata blocks.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-link": {
-      "name": "pdf-link",
-      "title": "PDF Link",
-      "description": "Clickable PDF link with theme-aware styling and safe fallback text.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-list": {
-      "name": "pdf-list",
-      "title": "PDF List",
-      "description": "Ordered and unordered list component with empty-state handling.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-math": {
-      "name": "pdf-math",
-      "title": "PDF Math",
-      "description": "Optional LaTeX math wrapper powered by @react-pdf/math.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1434833,
-        "gzipped": 474885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/math",
-          "size": 10000,
-          "gzip": 3000,
-          "version": "unknown",
-          "source": "estimate"
-        },
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 3
-    },
-    "pdf/pdf-page-break": {
-      "name": "pdf-page-break",
-      "title": "PDF Page Break",
-      "description": "Insert an explicit React PDF page break in flowing documents.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-page-footer": {
-      "name": "pdf-page-footer",
-      "title": "PDF Page Footer",
-      "description": "Fixed or flowing page footer with left and right text areas.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-page-header": {
-      "name": "pdf-page-header",
-      "title": "PDF Page Header",
-      "description": "Fixed or flowing page header with title, subtitle, and metadata.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-page-number": {
-      "name": "pdf-page-number",
-      "title": "PDF Page Number",
-      "description": "Dynamic page number using React PDF render callbacks and format tokens.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-qrcode": {
-      "name": "pdf-qrcode",
-      "title": "PDF QR Code",
-      "description": "Real QR code matrix rendering for React PDF using the qrcode package.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1448289,
-        "gzipped": 480635,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "qrcode",
-          "size": 23456,
-          "gzip": 8750,
-          "version": "1.5.4",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 3
-    },
-    "pdf/pdf-section": {
-      "name": "pdf-section",
-      "title": "PDF Section",
-      "description": "Titled document section with optional description and wrapping controls.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-signature": {
-      "name": "pdf-signature",
-      "title": "PDF Signature",
-      "description": "Signature block with label, signer text, date, and optional image signature.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-stack": {
-      "name": "pdf-stack",
-      "title": "PDF Stack",
-      "description": "Flexbox stack layout for PDF rows, columns, spacing, and wrapping.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-svg": {
-      "name": "pdf-svg",
-      "title": "PDF SVG",
-      "description": "Theme-aware SVG container plus re-exported React PDF SVG primitives.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-table": {
-      "name": "pdf-table",
-      "title": "PDF Table",
-      "description": "Composable PDF table primitives with header, body, rows, cells, widths, and alignment.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-text": {
-      "name": "pdf-text",
-      "title": "PDF Text",
-      "description": "Theme-aware text with size, tone, weight, and margin controls.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
-    },
-    "pdf/pdf-watermark": {
-      "name": "pdf-watermark",
-      "title": "PDF Watermark",
-      "description": "Fixed centered watermark text for drafts, confidential documents, and samples.",
-      "variant": "pdf",
-      "sizes": {
-        "minified": 1424833,
-        "gzipped": 471885,
-        "selfSize": 2000,
-        "selfGzip": 600
-      },
-      "dependencies": [
-        {
-          "name": "@react-pdf/renderer",
-          "size": 1423451,
-          "gzip": 471456,
-          "version": "4.5.1",
-          "source": "bundlephobia"
-        },
-        {
-          "name": "@react-pdf/types",
-          "size": 1382,
-          "gzip": 429,
-          "version": "2.11.1",
-          "source": "bundlephobia"
-        }
-      ],
-      "dependencyCount": 2
     }
-  },
-  "comparisons": {}
+  }
 }

@@ -1,61 +1,22 @@
-/**
- * AspectRatio - Maintains a consistent width-to-height ratio for content.
- *
- * A zero-dependency wrapper around the native CSS `aspect-ratio`
- * property. Pass `ratio={16 / 9}` for 16:9, `ratio={1}` for square, etc.
- * Children are unconstrained - use `object-cover` on images / videos to
- * fill the box.
- *
- * Anatomy:
- * ```tsx
- * <AspectRatio ratio={16 / 9}>
- *   <img src="/photo.jpg" alt="Landscape" className="h-full w-full object-cover" />
- * </AspectRatio>
- * ```
- *
- * @version    0.3.0
- * @since      0.1.0
- * @registryDescription A CSS aspect-ratio wrapper component for maintaining consistent proportions.
- */
+import { cn } from "@/lib/utils"
 
-"use client";
-
-import * as React from "react";
-
-import { cn } from "@/lib/utils";
-
-// ---- ASPECT RATIO -----------------------------------------------------------
-
-export interface AspectRatioProps extends React.ComponentPropsWithoutRef<"div"> {
-  /** Width-to-height ratio (e.g. `16 / 9`). Defaults to `1` (square). */
-  ratio?: number;
+function AspectRatio({
+  ratio,
+  className,
+  ...props
+}: React.ComponentProps<"div"> & { ratio: number }) {
+  return (
+    <div
+      data-slot="aspect-ratio"
+      style={
+        {
+          "--ratio": ratio,
+        } as React.CSSProperties
+      }
+      className={cn("relative aspect-(--ratio)", className)}
+      {...props}
+    />
+  )
 }
 
-/**
- * Maintains a consistent aspect ratio via CSS `aspect-ratio`.
- *
- * @since 0.1.0
- */
-const AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(
-  function AspectRatio(
-    { ratio = 1, className, style, children, ...props },
-    ref
-  ) {
-    return (
-      <div
-        ref={ref}
-        data-slot="aspect-ratio"
-        className={cn("relative w-full", className)}
-        style={{ aspectRatio: `${ratio}`, ...style }}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  }
-);
-AspectRatio.displayName = "AspectRatio";
-
-// ---- EXPORTS ----------------------------------------------------------------
-
-export { AspectRatio };
+export { AspectRatio }

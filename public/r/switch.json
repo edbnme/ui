@@ -1,21 +1,29 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "switch",
-  "type": "registry:ui",
   "title": "Switch",
-  "description": "Premium solid switch with accessible on/off states and form integration.",
+  "description": "The stock shadcn Switch component for the Base UI/Nova preset.",
   "dependencies": [
-    "@base-ui/react"
+    "@base-ui/react@^1.7.0"
   ],
   "registryDependencies": [
-    "https://ui.edbn.me/api/analytics/registry/utils.json"
+    "https://edbn.dev/r/edbn-base.json"
   ],
-  "variant": "static",
   "files": [
     {
       "path": "components/ui/switch.tsx",
-      "content": "/**\n * Switch - Premium solid binary setting control.\n *\n * Built on Base UI Switch v1.5.0. The wrapper keeps the upstream Root and\n * Thumb API intact, including refs, render composition, state className,\n * state style, form props, data attributes, and hidden input behavior.\n *\n * @package @edbn/ui\n * @version 0.3.0\n * @since 0.1.0\n * @docs https://ui.edbn.me/docs/components/switch\n * @upstream https://base-ui.com/react/components/switch\n * @registryDescription Premium solid switch with accessible on/off states and form integration.\n */\n\n\"use client\";\n\nimport * as React from \"react\";\nimport { Switch } from \"@base-ui/react/switch\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype StateClassName<State> =\n  | string\n  | ((state: State) => string | undefined)\n  | undefined;\n\nfunction composeClassName<State>(\n  baseClassName: string,\n  className: StateClassName<State>\n) {\n  if (typeof className === \"function\") {\n    return (state: State) => cn(baseClassName, className(state));\n  }\n\n  return cn(baseClassName, className);\n}\n\n// ---- ROOT -------------------------------------------------------------------\n\nexport type SwitchRootProps = React.ComponentProps<typeof Switch.Root>;\n\nfunction SwitchRoot({ className, ...props }: SwitchRootProps) {\n  return (\n    <Switch.Root\n      data-slot=\"switch-root\"\n      className={composeClassName<Switch.Root.State>(\n        cn(\n          \"peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border border-border/70 bg-muted shadow-sm\",\n          \"transition-[background-color,border-color,box-shadow] duration-200 ease-out motion-reduce:transition-none\",\n          \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background\",\n          \"data-checked:border-primary data-checked:bg-primary\",\n          \"data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n          \"data-readonly:cursor-default data-readonly:opacity-80\",\n          \"data-invalid:border-destructive data-invalid:ring-destructive/20\"\n        ),\n        className\n      )}\n      {...props}\n    />\n  );\n}\nSwitchRoot.displayName = \"SwitchRoot\";\n\n// ---- THUMB ------------------------------------------------------------------\n\nexport type SwitchThumbProps = React.ComponentProps<typeof Switch.Thumb>;\n\nfunction SwitchThumb({ className, ...props }: SwitchThumbProps) {\n  return (\n    <Switch.Thumb\n      data-slot=\"switch-thumb\"\n      className={composeClassName<Switch.Thumb.State>(\n        cn(\n          \"pointer-events-none block h-4 w-4 translate-x-0 rounded-full bg-background shadow-lg ring-1 ring-black/5\",\n          \"transition-transform duration-200 ease-out motion-reduce:transition-none\",\n          \"data-checked:translate-x-4 data-disabled:opacity-90\"\n        ),\n        className\n      )}\n      {...props}\n    />\n  );\n}\nSwitchThumb.displayName = \"SwitchThumb\";\n\n// ---- EXPORTS ----------------------------------------------------------------\n\nexport { SwitchRoot, SwitchThumb };\n",
-      "type": "registry:ui"
+      "content": "\"use client\"\n\nimport { Switch as SwitchPrimitive } from \"@base-ui/react/switch\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Switch({\n  className,\n  size = \"default\",\n  ...props\n}: SwitchPrimitive.Root.Props & {\n  size?: \"sm\" | \"default\"\n}) {\n  return (\n    <SwitchPrimitive.Root\n      data-slot=\"switch\"\n      data-size={size}\n      className={cn(\n        \"peer group/switch relative inline-flex shrink-0 items-center rounded-full border border-transparent transition-all outline-none group-has-[:focus-visible]/field-label:border-transparent group-has-[:focus-visible]/field-label:ring-0 after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=default]:h-[18.4px] data-[size=default]:w-[32px] data-[size=sm]:h-[14px] data-[size=sm]:w-[24px] dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:bg-primary data-unchecked:bg-input dark:data-unchecked:bg-input/80 data-disabled:cursor-not-allowed data-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    >\n      <SwitchPrimitive.Thumb\n        data-slot=\"switch-thumb\"\n        className=\"pointer-events-none block rounded-full bg-background ring-0 transition-transform group-data-[size=default]/switch:size-4 group-data-[size=sm]/switch:size-3 group-data-[size=default]/switch:data-checked:translate-x-[calc(100%-2px)] group-data-[size=sm]/switch:data-checked:translate-x-[calc(100%-2px)] dark:data-checked:bg-primary-foreground group-data-[size=default]/switch:data-unchecked:translate-x-0 group-data-[size=sm]/switch:data-unchecked:translate-x-0 dark:data-unchecked:bg-foreground\"\n      />\n    </SwitchPrimitive.Root>\n  )\n}\n\nexport { Switch }\n",
+      "type": "registry:ui",
+      "target": "@ui/switch.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/switch"
+    }
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
 }

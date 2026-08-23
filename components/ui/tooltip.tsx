@@ -1,283 +1,66 @@
-/**
- * Tooltip — lightweight informational popup shown on hover / focus.
- *
- * Use for terse ancillary labels (icon-only buttons, badge details, key
- * hints). For interactive content use `Popover`; for a richer hovercard
- * use `HoverCard`.
- *
- * Wrap a subtree in `TooltipProvider` to share `delay`, `closeDelay`, and
- * `timeout` across many tooltips. A lone `TooltipRoot` also works — the
- * provider's settings simply merge in when present.
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.3.0
- * @brand      edbn/ui — <https://ui.edbn.me>
- * @docs       https://ui.edbn.me/docs/components/tooltip
- * @source     https://ui.edbn.me/r/tooltip.json
- * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.4.1 — https://base-ui.com/react/components/tooltip
- * @a11y       WAI-ARIA Tooltip pattern; `role="tooltip"` applied by Base
- *             UI; dismisses on Escape; hidden from pointer-down on the
- *             trigger; respects `prefers-reduced-motion`.
- *
- * **Breaking change (0.3.0)** — the backward-compat aliases `Tooltip` and
- * `TooltipContent` are removed. Use `TooltipRoot` and `TooltipPopup`.
- *
- * ## Anatomy
- * ```tsx
- * <TooltipProvider>
- *   <TooltipRoot>
- *     <TooltipTrigger>Hover me</TooltipTrigger>
- *     <TooltipPortal>
- *       <TooltipPositioner sideOffset={6}>
- *         <TooltipPopup>
- *           <TooltipArrow />
- *           Useful hint
- *         </TooltipPopup>
- *       </TooltipPositioner>
- *     </TooltipPortal>
- *   </TooltipRoot>
- * </TooltipProvider>
- * ```
- * @registryDescription Accessible tooltip with auto-positioning and delay.
- */
-"use client";
+"use client"
 
-import * as React from "react";
-import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
-import { cn } from "@/lib/utils";
+import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip"
 
-// ---- TOOLTIP PROVIDER -------------------------------------------------------
+import { cn } from "@/lib/utils"
 
-/**
- * Shares `delay`, `closeDelay`, and `timeout` settings with all nested
- * tooltips. Optional — a standalone `TooltipRoot` works without a provider.
- *
- * @since 0.3.0
- */
-export type TooltipProviderProps = TooltipPrimitive.Provider.Props;
-const TooltipProvider = (props: TooltipProviderProps) => (
-  <TooltipPrimitive.Provider {...props} />
-);
-TooltipProvider.displayName = "TooltipProvider";
-
-// ---- TOOLTIP ROOT -----------------------------------------------------------
-
-/**
- * Top-level Tooltip state holder. Forwards all Base UI `Tooltip.Root`
- * props: `open`, `defaultOpen`, `onOpenChange`, `onOpenChangeComplete`,
- * `disableHoverablePopup`, `trackCursorAxis`, `actionsRef`, `disabled`,
- * `handle`, `defaultTriggerId`, `triggerId`.
- *
- * @since 0.3.0
- */
-export type TooltipRootProps<Payload = unknown> =
-  TooltipPrimitive.Root.Props<Payload>;
-
-function TooltipRoot<Payload = unknown>(props: TooltipRootProps<Payload>) {
-  return <TooltipPrimitive.Root {...props} />;
-}
-TooltipRoot.displayName = "TooltipRoot";
-
-// ---- TOOLTIP TRIGGER --------------------------------------------------------
-
-/**
- * Element that owns the tooltip. Unstyled by default — compose via
- * `render` to wrap any existing button / link. When `asChild`-style usage
- * is needed, pass `render={<YourButton />}` (Base UI idiom).
- *
- * **Passthrough props** — `className`, `handle`, `id`, `payload`, `render`,
- * `style`, plus native `<button>` attrs.
- *
- * @since 0.3.0
- */
-export type TooltipTriggerProps<Payload = unknown> =
-  TooltipPrimitive.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
-
-function TooltipTrigger<Payload = unknown>({
-  className,
+function TooltipProvider({
+  delay = 0,
   ...props
-}: TooltipTriggerProps<Payload>) {
+}: TooltipPrimitive.Provider.Props) {
   return (
-    <TooltipPrimitive.Trigger
-      data-slot="tooltip-trigger"
-      className={cn(
-        "inline-flex items-center justify-center",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
-        className
-      )}
+    <TooltipPrimitive.Provider
+      data-slot="tooltip-provider"
+      delay={delay}
       {...props}
     />
-  );
+  )
 }
-TooltipTrigger.displayName = "TooltipTrigger";
 
-// ---- TOOLTIP PORTAL ---------------------------------------------------------
+function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
+  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />
+}
 
-/**
- * Portals tooltip content into a stable DOM location (defaults to body).
- *
- * @since 0.3.0
- */
-export type TooltipPortalProps = TooltipPrimitive.Portal.Props;
-const TooltipPortal = (props: TooltipPortalProps) => (
-  <TooltipPrimitive.Portal {...props} />
-);
-TooltipPortal.displayName = "TooltipPortal";
+function TooltipTrigger({ ...props }: TooltipPrimitive.Trigger.Props) {
+  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
+}
 
-// ---- TOOLTIP POSITIONER -----------------------------------------------------
-
-/**
- * Floating positioner. Default `sideOffset={6}` matches our design-tone
- * spacing for compact tooltips.
- *
- * **Data attributes** — `data-align`, `data-anchor-hidden`, `data-open`,
- * `data-closed`, `data-side`.
- *
- * **CSS variables** — `--anchor-height`, `--anchor-width`,
- * `--available-height`, `--available-width`, `--positioner-height`,
- * `--positioner-width`, `--transform-origin`.
- *
- * @since 0.3.0
- */
-export type TooltipPositionerProps = TooltipPrimitive.Positioner.Props;
-function TooltipPositioner({
+function TooltipContent({
   className,
-  sideOffset = 6,
+  side = "top",
+  sideOffset = 4,
+  align = "center",
+  alignOffset = 0,
+  children,
   ...props
-}: TooltipPositionerProps) {
+}: TooltipPrimitive.Popup.Props &
+  Pick<
+    TooltipPrimitive.Positioner.Props,
+    "align" | "alignOffset" | "side" | "sideOffset"
+  >) {
   return (
-    <TooltipPrimitive.Positioner
-      data-slot="tooltip-positioner"
-      sideOffset={sideOffset}
-      className={cn("z-50", className)}
-      {...props}
-    />
-  );
-}
-TooltipPositioner.displayName = "TooltipPositioner";
-
-// ---- TOOLTIP POPUP ----------------------------------------------------------
-
-/**
- * The tooltip surface. Uses `--transform-origin` from the positioner so
- * the subtle scale-in animates from the anchor edge.
- *
- * **Data attributes** — `data-instant`, `data-open`, `data-closed`,
- * `data-starting-style`, `data-ending-style`, `data-side`.
- *
- * @since 0.3.0
- */
-export type TooltipPopupProps = TooltipPrimitive.Popup.Props;
-function TooltipPopup({ className, ...props }: TooltipPopupProps) {
-  return (
-    <TooltipPrimitive.Popup
-      data-slot="tooltip-popup"
-      className={cn(
-        "z-50 max-w-xs rounded-md bg-foreground px-2.5 py-1.5 text-xs text-background shadow-md",
-        "origin-(--transform-origin) transform-gpu",
-        "transition-[scale,opacity] duration-100 ease-out",
-        "data-starting-style:scale-90 data-starting-style:opacity-0",
-        "data-ending-style:scale-90 data-ending-style:opacity-0",
-        // Instant re-open on rapid hover — skip scale animation
-        "data-instant:transition-none",
-        // Reduced motion — fade only, no scale
-        "motion-reduce:transform-none motion-reduce:transition-opacity",
-        "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-TooltipPopup.displayName = "TooltipPopup";
-
-// ---- TOOLTIP ARROW ----------------------------------------------------------
-
-/**
- * Arrow indicating the tooltip's anchor direction. Rotates automatically
- * based on `data-side`.
- *
- * @since 0.3.0
- */
-export type TooltipArrowProps = TooltipPrimitive.Arrow.Props;
-function TooltipArrow({ className, children, ...props }: TooltipArrowProps) {
-  return (
-    <TooltipPrimitive.Arrow
-      data-slot="tooltip-arrow"
-      className={cn(
-        "data-[side=top]:rotate-180",
-        "data-[side=left]:-rotate-90",
-        "data-[side=right]:rotate-90",
-        className
-      )}
-      {...props}
-    >
-      {children ?? (
-        <svg
-          aria-hidden
-          width="10"
-          height="5"
-          viewBox="0 0 10 5"
-          className="block fill-foreground"
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Positioner
+        align={align}
+        alignOffset={alignOffset}
+        side={side}
+        sideOffset={sideOffset}
+        className="isolate z-50"
+      >
+        <TooltipPrimitive.Popup
+          data-slot="tooltip-content"
+          className={cn(
+            "z-50 inline-flex w-fit max-w-xs origin-(--transform-origin) items-center gap-1.5 rounded-md bg-foreground px-3 py-1.5 text-xs text-background has-data-[slot=kbd]:pr-1.5 data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+            className
+          )}
+          {...props}
         >
-          <path d="M0 5L5 0L10 5H0Z" />
-        </svg>
-      )}
-    </TooltipPrimitive.Arrow>
-  );
+          {children}
+          <TooltipPrimitive.Arrow className="z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-[2px] bg-foreground fill-foreground data-[side=bottom]:top-1 data-[side=inline-end]:top-1/2! data-[side=inline-end]:-left-1 data-[side=inline-end]:-translate-y-1/2 data-[side=inline-start]:top-1/2! data-[side=inline-start]:-right-1 data-[side=inline-start]:-translate-y-1/2 data-[side=left]:top-1/2! data-[side=left]:-right-1 data-[side=left]:-translate-y-1/2 data-[side=right]:top-1/2! data-[side=right]:-left-1 data-[side=right]:-translate-y-1/2 data-[side=top]:-bottom-2.5" />
+        </TooltipPrimitive.Popup>
+      </TooltipPrimitive.Positioner>
+    </TooltipPrimitive.Portal>
+  )
 }
-TooltipArrow.displayName = "TooltipArrow";
 
-// ---- TOOLTIP VIEWPORT -------------------------------------------------------
-
-/**
- * Optional viewport for coordinating multi-tooltip transitions (e.g. a
- * single tooltip surface that morphs between triggers). Rarely needed.
- *
- * @since 0.3.0
- */
-export type TooltipViewportProps = TooltipPrimitive.Viewport.Props;
-function TooltipViewport({ className, ...props }: TooltipViewportProps) {
-  return (
-    <TooltipPrimitive.Viewport
-      data-slot="tooltip-viewport"
-      className={cn("relative h-full w-full overflow-clip", className)}
-      {...props}
-    />
-  );
-}
-TooltipViewport.displayName = "TooltipViewport";
-
-// ---- TOOLTIP HANDLE (detached-trigger API) ----------------------------------
-
-/**
- * Handle type produced by {@link createTooltipHandle}. Enables detached
- * triggers that control a remote `TooltipRoot`.
- *
- * @since 0.3.0
- */
-const TooltipHandle = TooltipPrimitive.Handle;
-
-/**
- * Creates a typed handle for detached triggers.
- *
- * @since 0.3.0
- */
-const createTooltipHandle = TooltipPrimitive.createHandle;
-
-// ---- EXPORTS ----------------------------------------------------------------
-
-export {
-  TooltipProvider,
-  TooltipRoot,
-  TooltipTrigger,
-  TooltipPortal,
-  TooltipPositioner,
-  TooltipPopup,
-  TooltipArrow,
-  TooltipViewport,
-  TooltipHandle,
-  createTooltipHandle,
-};
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }

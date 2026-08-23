@@ -1,494 +1,160 @@
-﻿/**
- * Dialog â€” modal overlay built on Base UI's Dialog primitive.
- *
- * Provides an accessible, composable dialog system with focus management,
- * scroll locking, keyboard dismissal, and motion-safe transitions. Every
- * sub-component extends its Base UI counterpart and accepts Base UI's
- * `render` prop for element polymorphism (the Base UI equivalent of the
- * Radix / shadcn `asChild` pattern).
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.2.5
- * @brand      edbn/ui â€” <https://ui.edbn.me>
- * @docs       https://ui.edbn.me/docs/components/dialog
- * @source     https://ui.edbn.me/r/dialog.json
- * @registry   https://ui.edbn.me/r
- * @upstream   Base UI v1.4.1 â€” https://base-ui.com/react/components/dialog
- * @a11y       WAI-ARIA Dialog (Modal) pattern; focus trap, Escape dismiss,
- *             scroll lock, and automatic `aria-labelledby` /
- *             `aria-describedby` wiring via Base UI.
- *
- * ## Anatomy
- * ```tsx
- * <DialogRoot>
- *   <DialogTrigger>Open</DialogTrigger>
- *   <DialogPortal>
- *     <DialogBackdrop />
- *     <DialogViewport>                  // optional scroll container
- *       <DialogPopup>
- *         <DialogCloseIconButton />      // optional corner close
- *         <DialogHeader>
- *           <DialogTitle>â€”</DialogTitle>
- *           <DialogDescription>â€”</DialogDescription>
- *         </DialogHeader>
- *         <DialogFooter>
- *           <DialogClose>Cancel</DialogClose> // unstyled action
- *         </DialogFooter>
- *       </DialogPopup>
- *     </DialogViewport>
- *   </DialogPortal>
- * </DialogRoot>
- * ```
- *
- * ## Controlled open state
- * ```tsx
- * const [open, setOpen] = React.useState(false);
- * <DialogRoot open={open} onOpenChange={setOpen}>â€”</DialogRoot>
- * ```
- *
- * ## Imperative close via `actionsRef`
- * ```tsx
- * const actions = React.useRef<Dialog.Root.Actions>(null);
- * <DialogRoot actionsRef={actions}>â€”</DialogRoot>
- * // Later: actions.current?.unmount();
- * ```
- *
- * ## Detached trigger with typed payload
- * ```tsx
- * const handle = createDialogHandle<{ userId: string }>();
- * <DialogTrigger handle={handle} payload={{ userId: "1" }}>Edit</DialogTrigger>
- * <DialogRoot handle={handle}>
- *   {({ payload }) => <DialogPortal>â€”</DialogPortal>}
- * </DialogRoot>
- * ```
- * @registryDescription Modal dialog with focus trap, backdrop, and controlled state.
- */
-"use client";
+"use client"
 
-import * as React from "react";
-import { Dialog } from "@base-ui/react/dialog";
-import { X } from "@phosphor-icons/react";
-import { cn } from "@/lib/utils";
+import * as React from "react"
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
 
-// ---- DIALOG ROOT ------------------------------------------------------------
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import { XIcon } from "lucide-react"
 
-/**
- * Top-level Dialog provider. Manages open state, focus trap, scroll lock,
- * and keyboard dismissal. Forwards all Base UI `Dialog.Root` props, including
- * `open`, `defaultOpen`, `onOpenChange`, `onOpenChangeComplete`, `modal`,
- * `disablePointerDismissal`, `actionsRef`, `handle`, `defaultTriggerId`, and
- * `triggerId`.
- *
- * @since 0.2.5
- */
-export type DialogRootProps<Payload = unknown> = Dialog.Root.Props<Payload>;
-function DialogRoot<Payload = unknown>(props: DialogRootProps<Payload>) {
-  return <Dialog.Root {...props} />;
+function Dialog({ ...props }: DialogPrimitive.Root.Props) {
+  return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
-DialogRoot.displayName = "DialogRoot";
 
-// ---- DIALOG TRIGGER ---------------------------------------------------------
+function DialogTrigger({ ...props }: DialogPrimitive.Trigger.Props) {
+  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
+}
 
-/**
- * Styled button that opens the dialog. Pass Base UI's `render` prop to use a
- * custom element (e.g. your design-system `Button`) while preserving
- * dialog-trigger behavior.
- *
- * **Data attributes**
- * - `data-disabled` â€” present when disabled
- * - `data-popup-open` â€” present while the dialog is open
- *
- * **Passthrough props** â€” `className`, `handle`, `id`, `nativeButton`,
- * `payload`, `render`, `style`, plus native `<button>` attrs.
- *
- * @since 0.2.5
- * @example Custom render
- * ```tsx
- * <DialogTrigger render={<Button variant="outline">Open</Button>} />
- * ```
- */
-export type DialogTriggerProps<Payload = unknown> =
-  Dialog.Trigger.Props<Payload> & React.RefAttributes<HTMLElement>;
-function DialogTrigger<Payload = unknown>({
+function DialogPortal({ ...props }: DialogPrimitive.Portal.Props) {
+  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />
+}
+
+function DialogClose({ ...props }: DialogPrimitive.Close.Props) {
+  return <DialogPrimitive.Close data-slot="dialog-close" {...props} />
+}
+
+function DialogOverlay({
   className,
   ...props
-}: DialogTriggerProps<Payload>) {
+}: DialogPrimitive.Backdrop.Props) {
   return (
-    <Dialog.Trigger
-      data-slot="dialog-trigger"
+    <DialogPrimitive.Backdrop
+      data-slot="dialog-overlay"
       className={cn(
-        "inline-flex h-10 items-center justify-center rounded-md px-4",
-        "border border-border bg-background text-sm font-medium text-foreground",
-        "select-none transition-colors",
-        "hover:bg-muted active:bg-muted/80",
-        "focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-ring",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
+        "fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
         className
       )}
       {...props}
     />
-  );
+  )
 }
-DialogTrigger.displayName = "DialogTrigger";
 
-// ---- DIALOG PORTAL ----------------------------------------------------------
-
-/**
- * Portals dialog content into a stable DOM location. Pass `keepMounted` to
- * retain children in the tree when closed (required when driving exit
- * animations with an external animator such as Framer Motion's
- * `<AnimatePresence>`).
- *
- * **Passthrough props** â€” `className`, `container`, `keepMounted`, `render`,
- * `style`.
- *
- * @since 0.2.5
- */
-export type DialogPortalProps = React.ComponentProps<typeof Dialog.Portal>;
-const DialogPortal = (props: DialogPortalProps) => <Dialog.Portal {...props} />;
-DialogPortal.displayName = "DialogPortal";
-
-// ---- DIALOG BACKDROP --------------------------------------------------------
-
-/**
- * Dimming overlay behind the popup. By design, Base UI omits nested backdrops
- * so a parent dialog remains visible beneath a nested one.
- *
- * **Data attributes** â€” `data-open`, `data-closed`, `data-starting-style`,
- * `data-ending-style`.
- *
- * @since 0.2.5
- */
-export type DialogBackdropProps = React.ComponentProps<typeof Dialog.Backdrop>;
-function DialogBackdrop({ className, ...props }: DialogBackdropProps) {
-  return (
-    <Dialog.Backdrop
-      data-slot="dialog-backdrop"
-      className={cn(
-        "fixed inset-0 z-50 bg-black/60 backdrop-blur-sm",
-        "transition-opacity duration-200 ease-out",
-        "data-starting-style:opacity-0 data-ending-style:opacity-0",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-DialogBackdrop.displayName = "DialogBackdrop";
-
-// ---- DIALOG VIEWPORT --------------------------------------------------------
-
-/**
- * Optional scroll container for dialogs whose content can exceed the viewport.
- * Skip for centered, fixed-size dialogs.
- *
- * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
- * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
- *
- * @since 0.2.5
- */
-export type DialogViewportProps = React.ComponentProps<typeof Dialog.Viewport>;
-function DialogViewport({ className, ...props }: DialogViewportProps) {
-  return (
-    <Dialog.Viewport
-      data-slot="dialog-viewport"
-      className={cn(
-        "fixed inset-0 z-50 flex items-center justify-center overflow-auto",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-DialogViewport.displayName = "DialogViewport";
-
-// ---- DIALOG POPUP -----------------------------------------------------------
-
-/**
- * The dialog surface. Centered with a subtle scale-in. `aria-labelledby` and
- * `aria-describedby` are wired automatically when `DialogTitle` and
- * `DialogDescription` are present inside. Supports `initialFocus` and
- * `finalFocus` refs to override focus destinations on open/close.
- *
- * **Data attributes** â€” `data-open`, `data-closed`, `data-nested`,
- * `data-nested-dialog-open`, `data-starting-style`, `data-ending-style`.
- *
- * **CSS variables** â€” `--nested-dialogs` (nesting depth), used here for a
- * push-back effect on the parent when a child dialog opens.
- *
- * @since 0.2.5
- * @example Focus the first input on open
- * ```tsx
- * const inputRef = React.useRef<HTMLInputElement>(null);
- * <DialogPopup initialFocus={inputRef}>
- *   <input ref={inputRef} />
- * </DialogPopup>
- * ```
- */
-export type DialogPopupProps = React.ComponentProps<typeof Dialog.Popup>;
-function DialogPopup({ className, ...props }: DialogPopupProps) {
-  return (
-    <Dialog.Popup
-      data-slot="dialog-popup"
-      className={cn(
-        // Positioning â€” centered overlay
-        "fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2",
-        // Size â€” respects small viewports
-        "w-[calc(100vw-2rem)] max-w-lg",
-        // Surface â€” crisp radius, subtle border, soft shadow
-        "rounded-xl border border-border bg-background p-6 text-foreground shadow-2xl",
-        // Transition â€” GPU-accelerated
-        "transform-gpu transition-[translate,scale,opacity] duration-200 ease-out",
-        // Enter / exit (data-starting-style / data-ending-style)
-        "data-starting-style:scale-95 data-starting-style:opacity-0",
-        "data-ending-style:scale-95 data-ending-style:opacity-0",
-        // Reduced motion â€” keep fade, drop transforms
-        "motion-reduce:transform-none motion-reduce:transition-opacity",
-        "motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
-        // Nested stacking effect driven by --nested-dialogs
-        "data-nested-dialog-open:scale-[calc(1-0.05*var(--nested-dialogs))]",
-        "data-nested-dialog-open:opacity-80",
-        "motion-reduce:data-nested-dialog-open:scale-100",
-        "motion-reduce:data-nested-dialog-open:opacity-100",
-        // Focus is managed by children
-        "focus:outline-none",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-DialogPopup.displayName = "DialogPopup";
-
-// ---- DIALOG TITLE -----------------------------------------------------------
-
-/**
- * Accessible dialog title. Its id is wired to the popup's `aria-labelledby`
- * automatically. If the visual design omits a heading, wrap in a visually-
- * hidden element via `render` â€” **do not omit the `DialogTitle` itself**.
- *
- * @since 0.2.5
- */
-export type DialogTitleProps = React.ComponentProps<typeof Dialog.Title>;
-function DialogTitle({ className, ...props }: DialogTitleProps) {
-  return (
-    <Dialog.Title
-      data-slot="dialog-title"
-      className={cn(
-        "text-lg leading-none font-semibold tracking-tight text-foreground",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-DialogTitle.displayName = "DialogTitle";
-
-// ---- DIALOG DESCRIPTION -----------------------------------------------------
-
-/**
- * Accessible dialog description. Wired to `aria-describedby` automatically.
- *
- * @since 0.2.5
- */
-export type DialogDescriptionProps = React.ComponentProps<
-  typeof Dialog.Description
->;
-function DialogDescription({ className, ...props }: DialogDescriptionProps) {
-  return (
-    <Dialog.Description
-      data-slot="dialog-description"
-      className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
-  );
-}
-DialogDescription.displayName = "DialogDescription";
-
-// ---- DIALOG CLOSE -----------------------------------------------------------
-
-/**
- * Unstyled action that closes the dialog when activated. Use inside
- * `DialogFooter` for "Cancel" / "Done" / custom close buttons. Bring your own
- * surface classes â€” this component only supplies behavior, focus ring, and
- * disabled handling.
- *
- * For the common corner-X pattern, use {@link DialogCloseIconButton}.
- *
- * **Data attributes** â€” `data-disabled`.
- *
- * **Passthrough props** â€” `className`, `nativeButton`, `render`, `style`, plus
- * native `<button>` attrs.
- *
- * @since 0.2.5
- * @example Footer cancel button
- * ```tsx
- * <DialogFooter>
- *   <DialogClose className="h-9 rounded-md border px-4 text-sm">
- *     Cancel
- *   </DialogClose>
- * </DialogFooter>
- * ```
- *
- * @example Custom element via render
- * ```tsx
- * <DialogClose render={<Button variant="ghost">Cancel</Button>} />
- * ```
- */
-export type DialogCloseProps = React.ComponentProps<typeof Dialog.Close>;
-function DialogClose({ className, ...props }: DialogCloseProps) {
-  return (
-    <Dialog.Close
-      data-slot="dialog-close"
-      className={cn(
-        "inline-flex items-center justify-center",
-        "select-none transition-colors",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
-        "data-disabled:pointer-events-none data-disabled:opacity-50",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-DialogClose.displayName = "DialogClose";
-
-// ---- DIALOG CLOSE ICON BUTTON -----------------------------------------------
-
-/**
- * Styled corner-X close button â€” a convenience built on Base UI's
- * `Dialog.Close`. Renders an absolutely positioned circular 32px hit-target
- * with the Phosphor X icon and an accessible name ("Close dialog") for
- * screen readers.
- *
- * Place inside a `DialogPopup` before `DialogHeader`; the header has `pr-6`
- * by default to reserve space for this button.
- *
- * **Data attributes** â€” `data-disabled`.
- *
- * @since 0.2.5
- * @example
- * ```tsx
- * <DialogPopup>
- *   <DialogCloseIconButton />
- *   <DialogHeader>â€”</DialogHeader>
- * </DialogPopup>
- * ```
- */
-export type DialogCloseIconButtonProps = DialogCloseProps;
-function DialogCloseIconButton({
+function DialogContent({
   className,
-  "aria-label": ariaLabel = "Close dialog",
+  children,
+  showCloseButton = true,
   ...props
-}: DialogCloseIconButtonProps) {
+}: DialogPrimitive.Popup.Props & {
+  showCloseButton?: boolean
+}) {
   return (
-    <Dialog.Close
-      data-slot="dialog-close-icon-button"
-      aria-label={ariaLabel}
-      className={cn(
-        "absolute top-3 right-3",
-        "inline-flex size-8 items-center justify-center rounded-full",
-        "text-muted-foreground opacity-70 transition-opacity",
-        "hover:bg-muted hover:opacity-100",
-        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
-        "data-disabled:pointer-events-none data-disabled:opacity-40",
-        className
-      )}
-      {...props}
-    >
-      <X aria-hidden className="size-4" weight="bold" />
-      <span className="sr-only">Close</span>
-    </Dialog.Close>
-  );
+    <DialogPortal>
+      <DialogOverlay />
+      <DialogPrimitive.Popup
+        data-slot="dialog-content"
+        className={cn(
+          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-sm text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          className
+        )}
+        {...props}
+      >
+        {children}
+        {showCloseButton && (
+          <DialogPrimitive.Close
+            data-slot="dialog-close"
+            render={
+              <Button
+                variant="ghost"
+                className="absolute top-2 right-2"
+                size="icon-sm"
+              />
+            }
+          >
+            <XIcon
+            />
+            <span className="sr-only">Close</span>
+          </DialogPrimitive.Close>
+        )}
+      </DialogPrimitive.Popup>
+    </DialogPortal>
+  )
 }
-DialogCloseIconButton.displayName = "DialogCloseIconButton";
 
-// ---- DIALOG HEADER ----------------------------------------------------------
-
-/**
- * Layout helper grouping `DialogTitle` + `DialogDescription`. Reserves right
- * padding (`pr-6`) for an optional `DialogCloseIconButton`. Not a Base UI
- * element â€” renders a `<div>` with a stable `data-slot` for global styling.
- *
- * @since 0.2.5
- */
-export type DialogHeaderProps = React.ComponentProps<"div">;
-function DialogHeader({ className, ...props }: DialogHeaderProps) {
+function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn(
-        "flex flex-col space-y-1.5 pr-6 text-center sm:text-left",
-        className
-      )}
+      className={cn("flex flex-col gap-2", className)}
       {...props}
     />
-  );
+  )
 }
-DialogHeader.displayName = "DialogHeader";
 
-// ---- DIALOG FOOTER ----------------------------------------------------------
-
-/**
- * Layout helper â€” horizontal action row on =sm; reversed vertical stack on
- * narrow viewports so the primary action stays on top.
- *
- * @since 0.2.5
- */
-export type DialogFooterProps = React.ComponentProps<"div">;
-function DialogFooter({ className, ...props }: DialogFooterProps) {
+function DialogFooter({
+  className,
+  showCloseButton = false,
+  children,
+  ...props
+}: React.ComponentProps<"div"> & {
+  showCloseButton?: boolean
+}) {
   return (
     <div
       data-slot="dialog-footer"
       className={cn(
-        "mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        "-mx-4 -mb-4 flex flex-col-reverse gap-2 rounded-b-xl border-t bg-muted/50 p-4 sm:flex-row sm:justify-end",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      {showCloseButton && (
+        <DialogPrimitive.Close render={<Button variant="outline" />}>
+          Close
+        </DialogPrimitive.Close>
+      )}
+    </div>
+  )
+}
+
+function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
+  return (
+    <DialogPrimitive.Title
+      data-slot="dialog-title"
+      className={cn(
+        "font-heading text-base leading-none font-medium",
         className
       )}
       {...props}
     />
-  );
+  )
 }
-DialogFooter.displayName = "DialogFooter";
 
-// ---- DIALOG HANDLE (imperative / detached-trigger API) ----------------------
-
-/**
- * Handle type produced by {@link createDialogHandle}. Pass the same handle to
- * `<DialogRoot>` and any detached `<DialogTrigger>`s to connect them without
- * prop drilling.
- *
- * @since 0.2.5
- */
-const DialogHandle = Dialog.Handle;
-
-/**
- * Creates a typed handle for detached triggers. The generic is the payload
- * type carried from a trigger to the root's function-as-children.
- *
- * @since 0.2.5
- * @example
- * ```tsx
- * const handle = createDialogHandle<{ id: string }>();
- * ```
- */
-const createDialogHandle = Dialog.createHandle;
-
-// ---- EXPORTS ----------------------------------------------------------------
+function DialogDescription({
+  className,
+  ...props
+}: DialogPrimitive.Description.Props) {
+  return (
+    <DialogPrimitive.Description
+      data-slot="dialog-description"
+      className={cn(
+        "text-sm text-muted-foreground *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 export {
-  DialogRoot,
-  DialogTrigger,
-  DialogPortal,
-  DialogBackdrop,
-  DialogViewport,
-  DialogPopup,
-  DialogTitle,
-  DialogDescription,
+  Dialog,
   DialogClose,
-  DialogCloseIconButton,
-  DialogHeader,
+  DialogContent,
+  DialogDescription,
   DialogFooter,
-  DialogHandle,
-  createDialogHandle,
-};
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+}

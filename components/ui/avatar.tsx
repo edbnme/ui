@@ -1,155 +1,109 @@
-/**
- * Avatar - premium solid profile image primitive.
- *
- * Thin styled layer over `@base-ui/react/avatar`. Parts preserve upstream
- * render composition, refs, function-valued `className` and `style`, image
- * loading state, fallback delay, and transition data attributes.
- *
- * Anatomy:
- * ```tsx
- * <AvatarRoot>
- *   <AvatarImage src="/avatars/jane.jpg" alt="Jane Doe" />
- *   <AvatarFallback delay={400}>JD</AvatarFallback>
- * </AvatarRoot>
- * ```
- *
- * Styling is solid, platform-native, professional, and token driven.
- *
- * @package    @edbn/ui
- * @version    0.3.0
- * @since      0.1.0
- * @docs       https://ui.edbn.me/docs/components/avatar
- * @upstream   @base-ui/react v1.5.0 - https://base-ui.com/react/components/avatar
- * @registryDescription Premium solid avatar with image loading, fallback delay, render composition, and state-aware styling.
- * @registryDemos basic=Basic, with-image=With Image, states=States
- */
-"use client";
+"use client"
 
-import * as React from "react";
-import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar";
-import type {
-  AvatarFallbackProps as BaseAvatarFallbackProps,
-  AvatarFallbackState as BaseAvatarFallbackState,
-  AvatarImageProps as BaseAvatarImageProps,
-  AvatarImageState as BaseAvatarImageState,
-  AvatarRootProps as BaseAvatarRootProps,
-  AvatarRootState as BaseAvatarRootState,
-  ImageLoadingStatus as BaseImageLoadingStatus,
-} from "@base-ui/react/avatar";
+import * as React from "react"
+import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-// ---- TYPES ------------------------------------------------------------------
-
-export type AvatarRootProps = BaseAvatarRootProps;
-export type AvatarRootState = BaseAvatarRootState;
-export type AvatarImageProps = BaseAvatarImageProps;
-export type AvatarImageState = BaseAvatarImageState;
-export type AvatarFallbackProps = BaseAvatarFallbackProps;
-export type AvatarFallbackState = BaseAvatarFallbackState;
-export type ImageLoadingStatus = BaseImageLoadingStatus;
-
-// ---- HELPERS ----------------------------------------------------------------
-
-function composeClassName<TProps extends { className?: unknown }>(
-  baseClassName: string,
-  className: TProps["className"]
-): TProps["className"] {
-  if (typeof className === "function") {
-    return ((state: unknown) =>
-      cn(
-        baseClassName,
-        (className as (state: unknown) => string | undefined)(state)
-      )) as TProps["className"];
-  }
-
-  return cn(
-    baseClassName,
-    className as string | undefined
-  ) as TProps["className"];
-}
-
-// ---- ROOT -------------------------------------------------------------------
-
-const AvatarRoot = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Root>,
-  AvatarRootProps
->(function AvatarRoot({ className, ...props }, ref) {
+function Avatar({
+  className,
+  size = "default",
+  ...props
+}: AvatarPrimitive.Root.Props & {
+  size?: "default" | "sm" | "lg"
+}) {
   return (
     <AvatarPrimitive.Root
-      ref={ref}
-      data-slot="avatar-root"
-      className={composeClassName<AvatarRootProps>(
-        cn(
-          "relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full align-middle",
-          "border border-border bg-muted text-muted-foreground shadow-sm ring-1 ring-background",
-          "select-none transition-[background-color,border-color,box-shadow] duration-150 ease-out motion-reduce:transition-none",
-          "forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]"
-        ),
+      data-slot="avatar"
+      data-size={size}
+      className={cn(
+        "group/avatar relative flex size-8 shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:border-border after:mix-blend-darken data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten",
         className
       )}
       {...props}
     />
-  );
-});
-AvatarRoot.displayName = "AvatarRoot";
+  )
+}
 
-// ---- IMAGE ------------------------------------------------------------------
-
-const AvatarImage = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Image>,
-  AvatarImageProps
->(function AvatarImage({ className, ...props }, ref) {
+function AvatarImage({ className, ...props }: AvatarPrimitive.Image.Props) {
   return (
     <AvatarPrimitive.Image
-      ref={ref}
       data-slot="avatar-image"
-      className={composeClassName<AvatarImageProps>(
-        cn(
-          "aspect-square h-full w-full object-cover",
-          "transition-[opacity,transform] duration-150 ease-out motion-reduce:transition-none",
-          "data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
-          "data-[ending-style]:scale-95 data-[ending-style]:opacity-0"
-        ),
+      className={cn(
+        "aspect-square size-full rounded-full object-cover",
         className
       )}
       {...props}
     />
-  );
-});
-AvatarImage.displayName = "AvatarImage";
+  )
+}
 
-// ---- FALLBACK ---------------------------------------------------------------
-
-const AvatarFallback = React.forwardRef<
-  React.ElementRef<typeof AvatarPrimitive.Fallback>,
-  AvatarFallbackProps
->(function AvatarFallback({ className, ...props }, ref) {
+function AvatarFallback({
+  className,
+  ...props
+}: AvatarPrimitive.Fallback.Props) {
   return (
     <AvatarPrimitive.Fallback
-      ref={ref}
       data-slot="avatar-fallback"
-      className={composeClassName<AvatarFallbackProps>(
-        cn(
-          "flex h-full w-full items-center justify-center rounded-full",
-          "bg-secondary text-sm font-semibold leading-none text-secondary-foreground",
-          "ring-1 ring-inset ring-border",
-          "forced-colors:border forced-colors:border-[CanvasText] forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]"
-        ),
+      className={cn(
+        "flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs",
         className
       )}
       {...props}
     />
-  );
-});
-AvatarFallback.displayName = "AvatarFallback";
+  )
+}
 
-// ---- EXPORTS ----------------------------------------------------------------
+function AvatarBadge({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="avatar-badge"
+      className={cn(
+        "absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground bg-blend-color ring-2 ring-background select-none",
+        "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
+        "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
+        "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-const Avatar = Object.assign(AvatarRoot, {
-  Root: AvatarRoot,
-  Image: AvatarImage,
-  Fallback: AvatarFallback,
-});
+function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="avatar-group"
+      className={cn(
+        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
-export { AvatarRoot, AvatarImage, AvatarFallback, Avatar };
+function AvatarGroupCount({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="avatar-group-count"
+      className={cn(
+        "relative flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm text-muted-foreground ring-2 ring-background group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarBadge,
+}

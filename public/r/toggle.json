@@ -1,22 +1,30 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "toggle",
-  "type": "registry:ui",
   "title": "Toggle",
-  "description": "Premium solid toggle button with accessible pressed state.",
+  "description": "The stock shadcn Toggle component for the Base UI/Nova preset.",
   "dependencies": [
-    "@base-ui/react",
-    "class-variance-authority"
+    "@base-ui/react@^1.7.0",
+    "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [
-    "https://ui.edbn.me/api/analytics/registry/utils.json"
+    "https://edbn.dev/r/edbn-base.json"
   ],
-  "variant": "static",
   "files": [
     {
       "path": "components/ui/toggle.tsx",
-      "content": "/**\n * Toggle - Premium solid two-state button.\n *\n * Built on Base UI Toggle v1.5.0. The wrapper preserves the upstream\n * controlled/uncontrolled pressed state, value for ToggleGroup, refs,\n * render composition, state className, state style, and data attributes.\n *\n * @package @edbn/ui\n * @version 0.3.0\n * @since 0.1.0\n * @docs https://ui.edbn.me/docs/components/toggle\n * @upstream https://base-ui.com/react/components/toggle\n * @registryDescription Premium solid toggle button with accessible pressed state.\n */\n\n\"use client\";\n\nimport * as React from \"react\";\nimport { Toggle } from \"@base-ui/react/toggle\";\nimport { ToggleGroup } from \"@base-ui/react/toggle-group\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype StateClassName<State> =\n  | string\n  | ((state: State) => string | undefined)\n  | undefined;\n\nfunction composeClassName<State>(\n  baseClassName: string,\n  className: StateClassName<State>\n) {\n  if (typeof className === \"function\") {\n    return (state: State) => cn(baseClassName, className(state));\n  }\n\n  return cn(baseClassName, className);\n}\n\n// ---- VARIANTS ---------------------------------------------------------------\n\nconst toggleVariants = cva(\n  [\n    \"inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background\",\n    \"transition-[background-color,border-color,color,box-shadow] duration-150 ease-out motion-reduce:transition-none\",\n    \"hover:bg-muted hover:text-foreground\",\n    \"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n    \"disabled:pointer-events-none disabled:opacity-50\",\n    \"data-pressed:bg-accent data-pressed:text-accent-foreground data-pressed:shadow-sm\",\n  ],\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        outline:\n          \"border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground\",\n        solid:\n          \"border border-border bg-background shadow-sm hover:bg-muted data-pressed:border-primary/40\",\n      },\n      size: {\n        default: \"h-9 px-3\",\n        sm: \"h-8 px-2\",\n        lg: \"h-10 px-3\",\n        icon: \"size-9\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n);\n\n// ---- ROOT -------------------------------------------------------------------\n\nexport type ToggleRootProps = Toggle.Props &\n  VariantProps<typeof toggleVariants> & {\n    ref?: React.Ref<HTMLButtonElement>;\n  };\n\nfunction ToggleRoot({ className, variant, size, ...props }: ToggleRootProps) {\n  return (\n    <Toggle\n      data-slot=\"toggle-root\"\n      className={composeClassName<Toggle.State>(\n        toggleVariants({ variant, size }),\n        className\n      )}\n      {...props}\n    />\n  );\n}\nToggleRoot.displayName = \"ToggleRoot\";\n\n// ---- GROUP ROOT -------------------------------------------------------------\n\nexport type ToggleGroupRootProps = ToggleGroup.Props & {\n  ref?: React.Ref<HTMLDivElement>;\n};\n\nfunction ToggleGroupRoot({ className, ...props }: ToggleGroupRootProps) {\n  return (\n    <ToggleGroup\n      data-slot=\"toggle-group-root\"\n      className={composeClassName<ToggleGroup.State>(\n        cn(\n          \"flex items-center gap-1 rounded-lg border border-border/70 bg-background p-1 shadow-sm\",\n          \"data-orientation-vertical:flex-col data-orientation-vertical:items-stretch\",\n          \"data-disabled:opacity-50\"\n        ),\n        className\n      )}\n      {...props}\n    />\n  );\n}\nToggleGroupRoot.displayName = \"ToggleGroupRoot\";\n\n// ---- GROUP ITEM -------------------------------------------------------------\n\nexport type ToggleGroupItemProps = Toggle.Props &\n  VariantProps<typeof toggleVariants> & {\n    ref?: React.Ref<HTMLButtonElement>;\n  };\n\nfunction ToggleGroupItem({\n  className,\n  variant,\n  size,\n  ...props\n}: ToggleGroupItemProps) {\n  return (\n    <Toggle\n      data-slot=\"toggle-group-item\"\n      className={composeClassName<Toggle.State>(\n        toggleVariants({ variant, size }),\n        className\n      )}\n      {...props}\n    />\n  );\n}\nToggleGroupItem.displayName = \"ToggleGroupItem\";\n\n// ---- EXPORTS ----------------------------------------------------------------\n\nexport { ToggleRoot, ToggleGroupRoot, ToggleGroupItem, toggleVariants };\n",
-      "type": "registry:ui"
+      "content": "\"use client\"\n\nimport { Toggle as TogglePrimitive } from \"@base-ui/react/toggle\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst toggleVariants = cva(\n  \"group/toggle inline-flex items-center justify-center gap-1 rounded-lg text-sm font-medium whitespace-nowrap transition-all outline-none hover:bg-muted hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-pressed:bg-muted data-[state=on]:bg-muted dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-transparent\",\n        outline: \"border border-input bg-transparent hover:bg-muted\",\n      },\n      size: {\n        default:\n          \"h-8 min-w-8 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        sm: \"h-7 min-w-7 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5\",\n        lg: \"h-9 min-w-9 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\nfunction Toggle({\n  className,\n  variant = \"default\",\n  size = \"default\",\n  ...props\n}: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {\n  return (\n    <TogglePrimitive\n      data-slot=\"toggle\"\n      className={cn(toggleVariants({ variant, size, className }))}\n      {...props}\n    />\n  )\n}\n\nexport { Toggle, toggleVariants }\n",
+      "type": "registry:ui",
+      "target": "@ui/toggle.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/toggle"
+    }
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
 }

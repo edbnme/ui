@@ -1,19 +1,26 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "label",
-  "type": "registry:ui",
   "title": "Label",
-  "description": "Premium solid form label with peer and group disabled state support.",
-  "dependencies": [],
+  "description": "The stock shadcn Label component for the Base UI/Nova preset.",
   "registryDependencies": [
-    "https://ui.edbn.me/api/analytics/registry/utils.json"
+    "https://edbn.dev/r/edbn-base.json"
   ],
-  "variant": "static",
   "files": [
     {
       "path": "components/ui/label.tsx",
-      "content": "/**\n * Label - Premium solid accessible form label.\n *\n * Native label wrapper with full htmlFor behavior, ref forwarding, and\n * disabled-state styling for peer and grouped form controls.\n *\n * @package @edbn/ui\n * @version 0.3.0\n * @since 0.1.0\n * @docs https://ui.edbn.me/docs/components/label\n * @registryDescription Premium solid form label with peer and group disabled state support.\n */\n\n\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\n// ---- LABEL ------------------------------------------------------------------\n\nexport type LabelProps = React.ComponentPropsWithRef<\"label\">;\n\nfunction Label({ className, ref, ...props }: LabelProps) {\n  return (\n    <label\n      ref={ref}\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm font-medium leading-none text-foreground select-none\",\n        \"peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        \"group-data-disabled:cursor-not-allowed group-data-disabled:opacity-50\",\n        \"has-[[aria-invalid=true]]:text-destructive\",\n        className\n      )}\n      {...props}\n    />\n  );\n}\nLabel.displayName = \"Label\";\n\n// ---- EXPORTS ----------------------------------------------------------------\n\nexport { Label };\n",
-      "type": "registry:ui"
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n  return (\n    <label\n      data-slot=\"label\"\n      className={cn(\n        \"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Label }\n",
+      "type": "registry:ui",
+      "target": "@ui/label.tsx"
     }
-  ]
+  ],
+  "meta": {
+    "links": {
+      "docs": "https://ui.shadcn.com/docs/components/base/label"
+    }
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
 }
