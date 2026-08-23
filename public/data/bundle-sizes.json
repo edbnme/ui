@@ -1124,10 +1124,10 @@
       "description": "The stock shadcn Scroll Area component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 1593,
-        "gzipped": 549,
-        "selfSize": 1593,
-        "selfGzip": 549
+        "minified": 1624,
+        "gzipped": 563,
+        "selfSize": 1624,
+        "selfGzip": 563
       },
       "dependencies": [
         {

@@ -1,15 +1,15 @@
 # edbn/ui registry guide
 
-`registry.json` is the authored source of truth. It contains `edbn-base` plus 62 official shadcn Base UI component items.
+`registry.json` is the authored source of truth. It contains `edbn-base` plus every installable official shadcn Base UI component discovered by the last manual sync.
 
 ## Install Examples
 
 ```bash
 # Install the foundation first.
-npx shadcn@4.19.0 add https://edbn.dev/r/edbn-base.json
+npx shadcn@latest add https://edbn.dev/r/edbn-base.json
 
 # Install one or more components.
-npx shadcn@4.19.0 add https://edbn.dev/r/button.json https://edbn.dev/r/dialog.json
+npx shadcn@latest add https://edbn.dev/r/button.json https://edbn.dev/r/dialog.json
 ```
 
 ## Contract
@@ -26,8 +26,8 @@ npx shadcn@4.19.0 add https://edbn.dev/r/button.json https://edbn.dev/r/dialog.j
 
 ## Maintaining The Registry
 
-1. Add or update source in `components/ui/`.
-2. Author the corresponding item in `registry.json`.
+1. From the parent repository, run `npm run registry:official:sync` to replace stock source from the official registry.
+2. Add a representative site demo for every newly discovered component.
 3. Validate and rebuild:
 
 ```bash

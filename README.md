@@ -9,7 +9,7 @@ These aren't just demos, they're meant to be copied into your project and custom
 
 ## What's here
 
-- 62 public components in `components/ui/`
+- Manifest-driven public components in `components/ui/`
 - Stock `cn` utility and responsive hook in `lib/` and `hooks/`
 - Authored registry manifest in `registry.json`
 - Tracked CLI output in `public/r/`
@@ -19,8 +19,8 @@ These aren't just demos, they're meant to be copied into your project and custom
 Install the shared foundation, then add components by URL:
 
 ```bash
-npx shadcn@4.19.0 add https://edbn.dev/r/edbn-base.json
-npx shadcn@4.19.0 add https://edbn.dev/r/button.json
+npx shadcn@latest add https://edbn.dev/r/edbn-base.json
+npx shadcn@latest add https://edbn.dev/r/button.json
 ```
 
 Or copy the code directly from `components/ui/`.
@@ -57,7 +57,7 @@ npm run registry:build
 
 ## Stack
 
-React 19, Tailwind CSS 4, shadcn 4.19.0, Base UI, Lucide, and Vitest.
+React 19, Tailwind CSS 4, Base UI, Lucide, Vitest, and the exact shadcn version recorded in `registry.json`.
 
 ## Issues
 

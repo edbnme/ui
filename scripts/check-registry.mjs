@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const registryPath = join(root, "registry.json");
 const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+const componentsConfig = JSON.parse(readFileSync(join(root, "components.json"), "utf8"));
 const expectedBaseUrl = "https://edbn.dev/r";
 const errors = [];
 
@@ -65,11 +66,24 @@ const uiItems = items.filter((item) => item.type === "registry:ui");
 if (!base || base.type !== "registry:base") {
   fail("edbn-base must exist as registry:base");
 }
-if (uiItems.length !== 62) {
-  fail(`expected 62 registry:ui items, found ${uiItems.length}`);
+if (uiItems.length === 0) {
+  fail("registry must contain at least one registry:ui item");
+}
+if (Object.keys(componentsConfig.registries ?? {}).length > 0) {
+  fail("components.json must not configure third-party registries");
 }
 
 const manifestFiles = new Set();
+const fileOwners = new Map();
+const baseImportSpecifiers = new Set();
+
+for (const file of base?.files ?? []) {
+  const extensionless = file.path.replace(/\.[cm]?[jt]sx?$/, "");
+  if (file.path.startsWith("lib/"))
+    baseImportSpecifiers.add(`@/${extensionless}`);
+  if (file.path.startsWith("hooks/"))
+    baseImportSpecifiers.add(`@/${extensionless}`);
+}
 
 for (const item of items) {
   if (!Array.isArray(item.files) || item.files.length === 0) {
@@ -89,15 +103,17 @@ for (const item of items) {
     }
 
     const expectedTarget =
-      file.type === "registry:ui"
-        ? `@ui/${basename(file.path)}`
-        : file.path === "lib/utils.ts"
-          ? "@lib/utils.ts"
-          : file.path === "hooks/use-mobile.ts"
-            ? "@hooks/use-mobile.ts"
+      file.type === "registry:ui" && file.path.startsWith("components/ui/")
+        ? `@ui/${file.path.slice("components/ui/".length)}`
+        : file.type === "registry:lib" && file.path.startsWith("lib/")
+          ? `@lib/${file.path.slice("lib/".length)}`
+          : file.type === "registry:hook" && file.path.startsWith("hooks/")
+            ? `@hooks/${file.path.slice("hooks/".length)}`
             : null;
     if (file.target !== expectedTarget) {
-      fail(`${item.name}: expected target ${expectedTarget}, found ${file.target}`);
+      fail(
+        `${item.name}: expected target ${expectedTarget}, found ${file.target}`
+      );
       continue;
     }
 
@@ -112,6 +128,13 @@ for (const item of items) {
       continue;
     }
 
+    if (fileOwners.has(file.path)) {
+      fail(
+        `${item.name}: source file is already owned by ${fileOwners.get(file.path)}`
+      );
+    } else {
+      fileOwners.set(file.path, item.name);
+    }
     manifestFiles.add(file.path);
 
     if (file.type !== "registry:ui") continue;
@@ -136,7 +159,7 @@ for (const item of items) {
         continue;
       }
 
-      if (specifier === "@/lib/utils" || specifier === "@/hooks/use-mobile") {
+      if (baseImportSpecifiers.has(specifier)) {
         continue;
       }
 
@@ -153,6 +176,9 @@ for (const item of items) {
   }
 
   if (item.type === "registry:ui") {
+    if (!item.files.some((file) => file.type === "registry:ui")) {
+      fail(`${item.name}: registry:ui item must contain generated UI source`);
+    }
     const dependencies = item.registryDependencies || [];
     if (dependencies[0] !== `${expectedBaseUrl}/edbn-base.json`) {
       fail(`${item.name}: edbn-base must be the first registry dependency`);
@@ -171,16 +197,26 @@ for (const item of items) {
   }
 }
 
-const sourceFiles = readdirSync(join(root, "components", "ui"))
-  .filter((file) => file.endsWith(".tsx"))
-  .map((file) => `components/ui/${file}`);
+const sourceFiles = readdirSync(join(root, "components", "ui"), {
+  recursive: true,
+  withFileTypes: true,
+})
+  .filter((entry) => entry.isFile() && /\.[cm]?[jt]sx?$/.test(entry.name))
+  .map((entry) =>
+    relative(root, join(entry.parentPath, entry.name)).split(sep).join("/")
+  );
 
 for (const file of sourceFiles) {
   if (!manifestFiles.has(file)) fail(`unregistered UI source file: ${file}`);
 }
 
-if (sourceFiles.length !== 62) {
-  fail(`expected 62 UI source files, found ${sourceFiles.length}`);
+const manifestUiFiles = [...manifestFiles].filter((file) =>
+  file.startsWith("components/ui/")
+);
+if (sourceFiles.length !== manifestUiFiles.length) {
+  fail(
+    `UI source/manifest mismatch: ${sourceFiles.length} source files and ${manifestUiFiles.length} registered files`
+  );
 }
 
 if (errors.length > 0) {
