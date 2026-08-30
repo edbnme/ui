@@ -14,9 +14,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2598,
-        "gzipped": 833,
+        "gzipped": 835,
         "selfSize": 2598,
-        "selfGzip": 833
+        "selfGzip": 835
       },
       "dependencies": [
         {
@@ -43,9 +43,9 @@
       "variant": "static",
       "sizes": {
         "minified": 5452,
-        "gzipped": 1332,
+        "gzipped": 1343,
         "selfSize": 5452,
-        "selfGzip": 1332
+        "selfGzip": 1343
       },
       "dependencies": [
         {
@@ -65,9 +65,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2048,
-        "gzipped": 722,
+        "gzipped": 731,
         "selfSize": 2048,
-        "selfGzip": 722
+        "selfGzip": 731
       },
       "dependencies": [
         {
@@ -87,9 +87,9 @@
       "variant": "static",
       "sizes": {
         "minified": 403,
-        "gzipped": 250,
+        "gzipped": 251,
         "selfSize": 403,
-        "selfGzip": 250
+        "selfGzip": 251
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -101,9 +101,9 @@
       "variant": "static",
       "sizes": {
         "minified": 6105,
-        "gzipped": 1582,
+        "gzipped": 1600,
         "selfSize": 6105,
-        "selfGzip": 1582
+        "selfGzip": 1600
       },
       "dependencies": [
         {
@@ -130,9 +130,9 @@
       "variant": "static",
       "sizes": {
         "minified": 3038,
-        "gzipped": 818,
+        "gzipped": 825,
         "selfSize": 3038,
-        "selfGzip": 818
+        "selfGzip": 825
       },
       "dependencies": [
         {
@@ -152,9 +152,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1925,
-        "gzipped": 777,
+        "gzipped": 784,
         "selfSize": 1925,
-        "selfGzip": 777
+        "selfGzip": 784
       },
       "dependencies": [
         {
@@ -181,9 +181,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2586,
-        "gzipped": 777,
+        "gzipped": 783,
         "selfSize": 2586,
-        "selfGzip": 777
+        "selfGzip": 783
       },
       "dependencies": [
         {
@@ -210,9 +210,9 @@
       "variant": "static",
       "sizes": {
         "minified": 4809,
-        "gzipped": 1300,
+        "gzipped": 1317,
         "selfSize": 4809,
-        "selfGzip": 1300
+        "selfGzip": 1317
       },
       "dependencies": [
         {
@@ -239,9 +239,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2480,
-        "gzipped": 875,
+        "gzipped": 884,
         "selfSize": 2480,
-        "selfGzip": 875
+        "selfGzip": 884
       },
       "dependencies": [
         {
@@ -268,9 +268,9 @@
       "variant": "static",
       "sizes": {
         "minified": 4277,
-        "gzipped": 1312,
+        "gzipped": 1318,
         "selfSize": 4277,
-        "selfGzip": 1312
+        "selfGzip": 1318
       },
       "dependencies": [
         {
@@ -297,9 +297,9 @@
       "variant": "static",
       "sizes": {
         "minified": 8268,
-        "gzipped": 2102,
+        "gzipped": 2124,
         "selfSize": 8268,
-        "selfGzip": 2102
+        "selfGzip": 2124
       },
       "dependencies": [
         {
@@ -326,9 +326,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2630,
-        "gzipped": 731,
+        "gzipped": 741,
         "selfSize": 2630,
-        "selfGzip": 731
+        "selfGzip": 741
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -340,9 +340,9 @@
       "variant": "static",
       "sizes": {
         "minified": 5611,
-        "gzipped": 1596,
+        "gzipped": 1625,
         "selfSize": 5611,
-        "selfGzip": 1596
+        "selfGzip": 1625
       },
       "dependencies": [
         {
@@ -369,9 +369,9 @@
       "variant": "static",
       "sizes": {
         "minified": 10501,
-        "gzipped": 2953,
+        "gzipped": 2996,
         "selfSize": 10501,
-        "selfGzip": 2953
+        "selfGzip": 2996
       },
       "dependencies": [
         {
@@ -391,9 +391,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1696,
-        "gzipped": 672,
+        "gzipped": 680,
         "selfSize": 1696,
-        "selfGzip": 672
+        "selfGzip": 680
       },
       "dependencies": [
         {
@@ -442,9 +442,9 @@
       "variant": "static",
       "sizes": {
         "minified": 9165,
-        "gzipped": 2347,
+        "gzipped": 2377,
         "selfSize": 9165,
-        "selfGzip": 2347
+        "selfGzip": 2377
       },
       "dependencies": [
         {
@@ -471,9 +471,9 @@
       "variant": "static",
       "sizes": {
         "minified": 5629,
-        "gzipped": 1623,
+        "gzipped": 1633,
         "selfSize": 5629,
-        "selfGzip": 1623
+        "selfGzip": 1633
       },
       "dependencies": [
         {
@@ -500,9 +500,9 @@
       "variant": "static",
       "sizes": {
         "minified": 10272,
-        "gzipped": 2226,
+        "gzipped": 2268,
         "selfSize": 10272,
-        "selfGzip": 2226
+        "selfGzip": 2268
       },
       "dependencies": [
         {
@@ -529,9 +529,9 @@
       "variant": "static",
       "sizes": {
         "minified": 4261,
-        "gzipped": 1225,
+        "gzipped": 1233,
         "selfSize": 4261,
-        "selfGzip": 1225
+        "selfGzip": 1233
       },
       "dependencies": [
         {
@@ -580,9 +580,9 @@
       "variant": "static",
       "sizes": {
         "minified": 11542,
-        "gzipped": 2796,
+        "gzipped": 2865,
         "selfSize": 11542,
-        "selfGzip": 2796
+        "selfGzip": 2865
       },
       "dependencies": [
         {
@@ -602,9 +602,9 @@
       "variant": "static",
       "sizes": {
         "minified": 9802,
-        "gzipped": 2116,
+        "gzipped": 2156,
         "selfSize": 9802,
-        "selfGzip": 2116
+        "selfGzip": 2156
       },
       "dependencies": [
         {
@@ -631,9 +631,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2397,
-        "gzipped": 724,
+        "gzipped": 731,
         "selfSize": 2397,
-        "selfGzip": 724
+        "selfGzip": 731
       },
       "dependencies": [
         {
@@ -653,9 +653,9 @@
       "variant": "static",
       "sizes": {
         "minified": 6266,
-        "gzipped": 1706,
+        "gzipped": 1725,
         "selfSize": 6266,
-        "selfGzip": 1706
+        "selfGzip": 1725
       },
       "dependencies": [
         {
@@ -675,9 +675,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2006,
-        "gzipped": 708,
+        "gzipped": 714,
         "selfSize": 2006,
-        "selfGzip": 708
+        "selfGzip": 714
       },
       "dependencies": [
         {
@@ -697,9 +697,9 @@
       "variant": "static",
       "sizes": {
         "minified": 5264,
-        "gzipped": 1481,
+        "gzipped": 1493,
         "selfSize": 5264,
-        "selfGzip": 1481
+        "selfGzip": 1493
       },
       "dependencies": [
         {
@@ -719,9 +719,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2547,
-        "gzipped": 864,
+        "gzipped": 868,
         "selfSize": 2547,
-        "selfGzip": 864
+        "selfGzip": 868
       },
       "dependencies": [
         {
@@ -748,9 +748,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1241,
-        "gzipped": 571,
+        "gzipped": 575,
         "selfSize": 1241,
-        "selfGzip": 571
+        "selfGzip": 575
       },
       "dependencies": [
         {
@@ -770,9 +770,9 @@
       "variant": "static",
       "sizes": {
         "minified": 4860,
-        "gzipped": 1309,
+        "gzipped": 1319,
         "selfSize": 4860,
-        "selfGzip": 1309
+        "selfGzip": 1319
       },
       "dependencies": [
         {
@@ -799,9 +799,9 @@
       "variant": "static",
       "sizes": {
         "minified": 837,
-        "gzipped": 400,
+        "gzipped": 401,
         "selfSize": 837,
-        "selfGzip": 400
+        "selfGzip": 401
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -813,9 +813,9 @@
       "variant": "static",
       "sizes": {
         "minified": 518,
-        "gzipped": 310,
+        "gzipped": 309,
         "selfSize": 518,
-        "selfGzip": 310
+        "selfGzip": 309
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -827,9 +827,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1948,
-        "gzipped": 750,
+        "gzipped": 754,
         "selfSize": 1948,
-        "selfGzip": 750
+        "selfGzip": 754
       },
       "dependencies": [
         {
@@ -856,9 +856,9 @@
       "variant": "static",
       "sizes": {
         "minified": 8181,
-        "gzipped": 1607,
+        "gzipped": 1630,
         "selfSize": 8181,
-        "selfGzip": 1607
+        "selfGzip": 1630
       },
       "dependencies": [
         {
@@ -885,9 +885,9 @@
       "variant": "static",
       "sizes": {
         "minified": 8022,
-        "gzipped": 2080,
+        "gzipped": 2124,
         "selfSize": 8022,
-        "selfGzip": 2080
+        "selfGzip": 2124
       },
       "dependencies": [
         {
@@ -921,9 +921,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2232,
-        "gzipped": 604,
+        "gzipped": 608,
         "selfSize": 2232,
-        "selfGzip": 604
+        "selfGzip": 608
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -935,9 +935,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2093,
-        "gzipped": 788,
+        "gzipped": 792,
         "selfSize": 2093,
-        "selfGzip": 788
+        "selfGzip": 792
       },
       "dependencies": [
         {
@@ -957,9 +957,9 @@
       "variant": "static",
       "sizes": {
         "minified": 7541,
-        "gzipped": 1825,
+        "gzipped": 1846,
         "selfSize": 7541,
-        "selfGzip": 1825
+        "selfGzip": 1846
       },
       "dependencies": [
         {
@@ -1015,9 +1015,9 @@
       "variant": "static",
       "sizes": {
         "minified": 3696,
-        "gzipped": 1206,
+        "gzipped": 1217,
         "selfSize": 3696,
-        "selfGzip": 1206
+        "selfGzip": 1217
       },
       "dependencies": [
         {
@@ -1037,9 +1037,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1740,
-        "gzipped": 520,
+        "gzipped": 525,
         "selfSize": 1740,
-        "selfGzip": 520
+        "selfGzip": 525
       },
       "dependencies": [
         {
@@ -1059,9 +1059,9 @@
       "variant": "static",
       "sizes": {
         "minified": 10207,
-        "gzipped": 1909,
+        "gzipped": 1936,
         "selfSize": 10207,
-        "selfGzip": 1909
+        "selfGzip": 1936
       },
       "dependencies": [
         {
@@ -1088,9 +1088,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1835,
-        "gzipped": 651,
+        "gzipped": 658,
         "selfSize": 1835,
-        "selfGzip": 651
+        "selfGzip": 658
       },
       "dependencies": [
         {
@@ -1110,9 +1110,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1671,
-        "gzipped": 583,
+        "gzipped": 592,
         "selfSize": 1671,
-        "selfGzip": 583
+        "selfGzip": 592
       },
       "dependencies": [
         {
@@ -1132,9 +1132,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1624,
-        "gzipped": 563,
+        "gzipped": 567,
         "selfSize": 1624,
-        "selfGzip": 563
+        "selfGzip": 567
       },
       "dependencies": [
         {
@@ -1154,9 +1154,9 @@
       "variant": "static",
       "sizes": {
         "minified": 8040,
-        "gzipped": 2262,
+        "gzipped": 2295,
         "selfSize": 8040,
-        "selfGzip": 2262
+        "selfGzip": 2295
       },
       "dependencies": [
         {
@@ -1183,9 +1183,9 @@
       "variant": "static",
       "sizes": {
         "minified": 545,
-        "gzipped": 283,
+        "gzipped": 282,
         "selfSize": 545,
-        "selfGzip": 283
+        "selfGzip": 282
       },
       "dependencies": [
         {
@@ -1205,9 +1205,9 @@
       "variant": "static",
       "sizes": {
         "minified": 4619,
-        "gzipped": 1208,
+        "gzipped": 1224,
         "selfSize": 4619,
-        "selfGzip": 1208
+        "selfGzip": 1224
       },
       "dependencies": [
         {
@@ -1234,9 +1234,9 @@
       "variant": "static",
       "sizes": {
         "minified": 21913,
-        "gzipped": 4843,
+        "gzipped": 4950,
         "selfSize": 21913,
-        "selfGzip": 4843
+        "selfGzip": 4950
       },
       "dependencies": [
         {
@@ -1364,9 +1364,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1811,
-        "gzipped": 679,
+        "gzipped": 684,
         "selfSize": 1811,
-        "selfGzip": 679
+        "selfGzip": 684
       },
       "dependencies": [
         {
@@ -1386,9 +1386,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2535,
-        "gzipped": 718,
+        "gzipped": 719,
         "selfSize": 2535,
-        "selfGzip": 718
+        "selfGzip": 719
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1400,9 +1400,9 @@
       "variant": "static",
       "sizes": {
         "minified": 3497,
-        "gzipped": 1072,
+        "gzipped": 1086,
         "selfSize": 3497,
-        "selfGzip": 1072
+        "selfGzip": 1086
       },
       "dependencies": [
         {
@@ -1429,9 +1429,9 @@
       "variant": "static",
       "sizes": {
         "minified": 842,
-        "gzipped": 435,
+        "gzipped": 436,
         "selfSize": 842,
-        "selfGzip": 435
+        "selfGzip": 436
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1443,9 +1443,9 @@
       "variant": "static",
       "sizes": {
         "minified": 7580,
-        "gzipped": 1972,
+        "gzipped": 2009,
         "selfSize": 7580,
-        "selfGzip": 1972
+        "selfGzip": 2009
       },
       "dependencies": [
         {
@@ -1472,9 +1472,9 @@
       "variant": "static",
       "sizes": {
         "minified": 3183,
-        "gzipped": 912,
+        "gzipped": 921,
         "selfSize": 3183,
-        "selfGzip": 912
+        "selfGzip": 921
       },
       "dependencies": [
         {
@@ -1501,9 +1501,9 @@
       "variant": "static",
       "sizes": {
         "minified": 1762,
-        "gzipped": 744,
+        "gzipped": 752,
         "selfSize": 1762,
-        "selfGzip": 744
+        "selfGzip": 752
       },
       "dependencies": [
         {
@@ -1530,9 +1530,9 @@
       "variant": "static",
       "sizes": {
         "minified": 2980,
-        "gzipped": 927,
+        "gzipped": 936,
         "selfSize": 2980,
-        "selfGzip": 927
+        "selfGzip": 936
       },
       "dependencies": [
         {
