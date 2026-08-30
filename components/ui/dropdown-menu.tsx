@@ -3,12 +3,35 @@
 import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 
-import { usePortalContainer } from "@/lib/ui-environment"
+import {
+  PopupMotionProvider,
+  usePopupMotion,
+  usePopupMotionState,
+  usePortalContainer,
+} from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { ChevronRightIcon, CheckIcon } from "lucide-react"
 
-function DropdownMenu({ ...props }: MenuPrimitive.Root.Props) {
-  return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />
+function DropdownMenu<Payload = unknown>({
+  open,
+  onOpenChange,
+  ...props
+}: MenuPrimitive.Root.Props<Payload>) {
+  const [motion, handleOpenChange] = usePopupMotionState(
+    open,
+    onOpenChange
+  )
+
+  return (
+    <PopupMotionProvider value={motion}>
+      <MenuPrimitive.Root
+        data-slot="dropdown-menu"
+        open={open}
+        onOpenChange={handleOpenChange}
+        {...props}
+      />
+    </PopupMotionProvider>
+  )
 }
 
 function DropdownMenuPortal({ container, ...props }: MenuPrimitive.Portal.Props) {
@@ -40,6 +63,7 @@ function DropdownMenuContent({
     "align" | "alignOffset" | "side" | "sideOffset"
   >) {
   const portalContainer = usePortalContainer()
+  const motion = usePopupMotion()
 
   return (
     <MenuPrimitive.Portal container={portalContainer}>
@@ -52,7 +76,8 @@ function DropdownMenuContent({
       >
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
-          className={cn("z-50 max-h-(--available-height) w-(--anchor-width) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:overflow-hidden data-closed:fade-out-0 data-closed:zoom-out-95", className )}
+          data-motion={motion}
+          className={cn("z-50 max-h-(--available-height) w-(--anchor-width) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-xl border border-foreground/8 bg-popover/95 p-1 text-popover-foreground shadow-[0_16px_40px_-18px_rgb(0_0_0_/_0.35),inset_0_1px_0_color-mix(in_oklch,var(--foreground)_8%,transparent)] ring-1 ring-foreground/8 outline-none transition-[opacity,transform] duration-[130ms] ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-[100ms] data-[motion=instant]:transition-none motion-reduce:transition-none motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 supports-[backdrop-filter:blur(0)]:bg-popover/82 supports-[backdrop-filter:blur(0)]:backdrop-blur-xl supports-[backdrop-filter:blur(0)]:saturate-150 contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText] [@media_(prefers-reduced-transparency:_reduce)]:bg-popover [@media_(prefers-reduced-transparency:_reduce)]:backdrop-blur-none", className )}
           {...props}
         />
       </MenuPrimitive.Positioner>
@@ -107,8 +132,26 @@ function DropdownMenuItem({
   )
 }
 
-function DropdownMenuSub({ ...props }: MenuPrimitive.SubmenuRoot.Props) {
-  return <MenuPrimitive.SubmenuRoot data-slot="dropdown-menu-sub" {...props} />
+function DropdownMenuSub({
+  open,
+  onOpenChange,
+  ...props
+}: MenuPrimitive.SubmenuRoot.Props) {
+  const [motion, handleOpenChange] = usePopupMotionState(
+    open,
+    onOpenChange
+  )
+
+  return (
+    <PopupMotionProvider value={motion}>
+      <MenuPrimitive.SubmenuRoot
+        data-slot="dropdown-menu-sub"
+        open={open}
+        onOpenChange={handleOpenChange}
+        {...props}
+      />
+    </PopupMotionProvider>
+  )
 }
 
 function DropdownMenuSubTrigger({
@@ -146,7 +189,7 @@ function DropdownMenuSubContent({
   return (
     <DropdownMenuContent
       data-slot="dropdown-menu-sub-content"
-      className={cn("w-auto min-w-[96px] rounded-lg bg-popover p-1 text-popover-foreground shadow-lg ring-1 ring-foreground/10 duration-100 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95", className )}
+      className={cn("w-auto min-w-[96px]", className )}
       align={align}
       alignOffset={alignOffset}
       side={side}

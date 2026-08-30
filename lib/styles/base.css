@@ -44,6 +44,10 @@
 }
 
 :root {
+    --motion-duration-press: 140ms;
+    --motion-duration-surface-in: 160ms;
+    --motion-duration-surface-out: 125ms;
+    --motion-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);

@@ -1,10 +1,11 @@
+import * as React from "react"
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap outline-none select-none transition-[color,background-color,border-color,box-shadow,opacity,transform] duration-(--motion-duration-press) ease-(--motion-ease-out) data-[pointer-pressed]:not-aria-[haspopup]:scale-[.97] motion-reduce:transition-none motion-reduce:data-[pointer-pressed]:scale-100 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -44,12 +45,40 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  onPointerDown,
+  onPointerUp,
+  onPointerCancel,
+  onPointerLeave,
+  onLostPointerCapture,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  const [pointerPressed, setPointerPressed] = React.useState(false)
+
   return (
     <ButtonPrimitive
       data-slot="button"
+      data-pointer-pressed={pointerPressed || undefined}
       className={cn(buttonVariants({ variant, size, className }))}
+      onPointerDown={(event) => {
+        if (event.button === 0) setPointerPressed(true)
+        onPointerDown?.(event)
+      }}
+      onPointerUp={(event) => {
+        setPointerPressed(false)
+        onPointerUp?.(event)
+      }}
+      onPointerCancel={(event) => {
+        setPointerPressed(false)
+        onPointerCancel?.(event)
+      }}
+      onPointerLeave={(event) => {
+        setPointerPressed(false)
+        onPointerLeave?.(event)
+      }}
+      onLostPointerCapture={(event) => {
+        setPointerPressed(false)
+        onLostPointerCapture?.(event)
+      }}
       {...props}
     />
   )

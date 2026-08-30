@@ -267,10 +267,10 @@
       "description": "The stock shadcn Button component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 3240,
-        "gzipped": 1044,
-        "selfSize": 3240,
-        "selfGzip": 1044
+        "minified": 4277,
+        "gzipped": 1312,
+        "selfSize": 4277,
+        "selfGzip": 1312
       },
       "dependencies": [
         {
@@ -390,10 +390,10 @@
       "description": "The stock shadcn Checkbox component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 1539,
-        "gzipped": 608,
-        "selfSize": 1539,
-        "selfGzip": 608
+        "minified": 1696,
+        "gzipped": 672,
+        "selfSize": 1696,
+        "selfGzip": 672
       },
       "dependencies": [
         {
@@ -470,10 +470,10 @@
       "description": "The stock shadcn Command component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 5005,
-        "gzipped": 1383,
-        "selfSize": 5005,
-        "selfGzip": 1383
+        "minified": 5629,
+        "gzipped": 1623,
+        "selfSize": 5629,
+        "selfGzip": 1623
       },
       "dependencies": [
         {
@@ -601,10 +601,10 @@
       "description": "The stock shadcn Dropdown Menu component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 8998,
-        "gzipped": 1800,
-        "selfSize": 8998,
-        "selfGzip": 1800
+        "minified": 9802,
+        "gzipped": 2116,
+        "selfSize": 9802,
+        "selfGzip": 2116
       },
       "dependencies": [
         {
@@ -747,10 +747,10 @@
       "description": "The stock shadcn Input component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 1040,
-        "gzipped": 495,
-        "selfSize": 1040,
-        "selfGzip": 495
+        "minified": 1241,
+        "gzipped": 571,
+        "selfSize": 1241,
+        "selfGzip": 571
       },
       "dependencies": [
         {
@@ -1014,10 +1014,10 @@
       "description": "The stock shadcn Popover component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 2708,
-        "gzipped": 859,
-        "selfSize": 2708,
-        "selfGzip": 859
+        "minified": 3696,
+        "gzipped": 1206,
+        "selfSize": 3696,
+        "selfGzip": 1206
       },
       "dependencies": [
         {
@@ -1153,10 +1153,10 @@
       "description": "The stock shadcn Select component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 6789,
-        "gzipped": 1853,
-        "selfSize": 6789,
-        "selfGzip": 1853
+        "minified": 8040,
+        "gzipped": 2262,
+        "selfSize": 8040,
+        "selfGzip": 2262
       },
       "dependencies": [
         {
@@ -1385,10 +1385,10 @@
       "description": "The stock shadcn Table component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 2402,
-        "gzipped": 660,
-        "selfSize": 2402,
-        "selfGzip": 660
+        "minified": 2535,
+        "gzipped": 718,
+        "selfSize": 2535,
+        "selfGzip": 718
       },
       "dependencies": [],
       "dependencyCount": 0
