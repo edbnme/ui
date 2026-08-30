@@ -42,10 +42,10 @@
       "description": "The stock shadcn Alert Dialog component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 5272,
-        "gzipped": 1282,
-        "selfSize": 5272,
-        "selfGzip": 1282
+        "minified": 5452,
+        "gzipped": 1332,
+        "selfSize": 5452,
+        "selfGzip": 1332
       },
       "dependencies": [
         {
@@ -441,10 +441,10 @@
       "description": "The stock shadcn Combobox component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 9031,
-        "gzipped": 2303,
-        "selfSize": 9031,
-        "selfGzip": 2303
+        "minified": 9165,
+        "gzipped": 2347,
+        "selfSize": 9165,
+        "selfGzip": 2347
       },
       "dependencies": [
         {
@@ -499,10 +499,10 @@
       "description": "The stock shadcn Context Menu component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 8035,
-        "gzipped": 1640,
-        "selfSize": 8035,
-        "selfGzip": 1640
+        "minified": 10272,
+        "gzipped": 2226,
+        "selfSize": 10272,
+        "selfGzip": 2226
       },
       "dependencies": [
         {
@@ -528,10 +528,10 @@
       "description": "The stock shadcn Dialog component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4075,
-        "gzipped": 1170,
-        "selfSize": 4075,
-        "selfGzip": 1170
+        "minified": 4261,
+        "gzipped": 1225,
+        "selfSize": 4261,
+        "selfGzip": 1225
       },
       "dependencies": [
         {
@@ -579,10 +579,10 @@
       "description": "The stock shadcn Drawer component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 11356,
-        "gzipped": 2749,
-        "selfSize": 11356,
-        "selfGzip": 2749
+        "minified": 11542,
+        "gzipped": 2796,
+        "selfSize": 11542,
+        "selfGzip": 2796
       },
       "dependencies": [
         {
@@ -601,10 +601,10 @@
       "description": "The stock shadcn Dropdown Menu component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 8736,
-        "gzipped": 1734,
-        "selfSize": 8736,
-        "selfGzip": 1734
+        "minified": 8998,
+        "gzipped": 1800,
+        "selfSize": 8998,
+        "selfGzip": 1800
       },
       "dependencies": [
         {
@@ -674,10 +674,10 @@
       "description": "The stock shadcn Hover Card component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 1855,
-        "gzipped": 660,
-        "selfSize": 1855,
-        "selfGzip": 660
+        "minified": 2006,
+        "gzipped": 708,
+        "selfSize": 2006,
+        "selfGzip": 708
       },
       "dependencies": [
         {
@@ -884,12 +884,19 @@
       "description": "The stock shadcn Message Scroller component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4062,
-        "gzipped": 1136,
-        "selfSize": 4062,
-        "selfGzip": 1136
+        "minified": 8022,
+        "gzipped": 2080,
+        "selfSize": 8022,
+        "selfGzip": 2080
       },
       "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
         {
           "name": "@shadcn/react",
           "size": 0,
@@ -905,7 +912,7 @@
           "note": "External package size is excluded from the local source measurement."
         }
       ],
-      "dependencyCount": 2
+      "dependencyCount": 3
     },
     "static/message": {
       "name": "message",
@@ -949,10 +956,10 @@
       "description": "The stock shadcn Navigation Menu component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 7393,
-        "gzipped": 1770,
-        "selfSize": 7393,
-        "selfGzip": 1770
+        "minified": 7541,
+        "gzipped": 1825,
+        "selfSize": 7541,
+        "selfGzip": 1825
       },
       "dependencies": [
         {
@@ -1007,10 +1014,10 @@
       "description": "The stock shadcn Popover component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 2574,
-        "gzipped": 809,
-        "selfSize": 2574,
-        "selfGzip": 809
+        "minified": 2708,
+        "gzipped": 859,
+        "selfSize": 2708,
+        "selfGzip": 859
       },
       "dependencies": [
         {
@@ -1146,10 +1153,10 @@
       "description": "The stock shadcn Select component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 6655,
-        "gzipped": 1809,
-        "selfSize": 6655,
-        "selfGzip": 1809
+        "minified": 6789,
+        "gzipped": 1853,
+        "selfSize": 6789,
+        "selfGzip": 1853
       },
       "dependencies": [
         {
@@ -1197,10 +1204,10 @@
       "description": "The stock shadcn Sheet component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4433,
-        "gzipped": 1154,
-        "selfSize": 4433,
-        "selfGzip": 1154
+        "minified": 4619,
+        "gzipped": 1208,
+        "selfSize": 4619,
+        "selfGzip": 1208
       },
       "dependencies": [
         {
@@ -1226,10 +1233,10 @@
       "description": "The stock shadcn Sidebar component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 21633,
-        "gzipped": 4764,
-        "selfSize": 21633,
-        "selfGzip": 4764
+        "minified": 21913,
+        "gzipped": 4843,
+        "selfSize": 21913,
+        "selfGzip": 4843
       },
       "dependencies": [
         {
@@ -1435,10 +1442,10 @@
       "description": "The stock shadcn Toast component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 7394,
-        "gzipped": 1924,
-        "selfSize": 7394,
-        "selfGzip": 1924
+        "minified": 7580,
+        "gzipped": 1972,
+        "selfSize": 7580,
+        "selfGzip": 1972
       },
       "dependencies": [
         {
@@ -1522,10 +1529,10 @@
       "description": "The stock shadcn Tooltip component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 2846,
-        "gzipped": 883,
-        "selfSize": 2846,
-        "selfGzip": 883
+        "minified": 2980,
+        "gzipped": 927,
+        "selfSize": 2980,
+        "selfGzip": 927
       },
       "dependencies": [
         {

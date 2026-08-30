@@ -2,29 +2,102 @@
 
 import * as React from "react"
 import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu"
+import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 
+import {
+  useUIDocument,
+  usePortalContainer,
+  useUIEnvironmentActive,
+} from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { ChevronRightIcon, CheckIcon } from "lucide-react"
 
+type PreviewContextMenu = {
+  anchor: ContextMenuPrimitive.Positioner.Props["anchor"]
+  setPoint: (x: number, y: number) => void
+}
+
+const PreviewContextMenuContext = React.createContext<PreviewContextMenu | null>(
+  null
+)
+
 function ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props) {
+  const environmentActive = useUIEnvironmentActive()
+
+  if (environmentActive) return <PreviewContextMenuRoot {...props} />
+
   return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
 }
 
-function ContextMenuPortal({ ...props }: ContextMenuPrimitive.Portal.Props) {
+function PreviewContextMenuRoot({ ...props }: ContextMenuPrimitive.Root.Props) {
+  const [point, setPoint] = React.useState({ x: 0, y: 0 })
+  const value = React.useMemo<PreviewContextMenu>(
+    () => ({
+      anchor: {
+        getBoundingClientRect: () => ({
+          bottom: point.y,
+          height: 0,
+          left: point.x,
+          right: point.x,
+          top: point.y,
+          width: 0,
+          x: point.x,
+          y: point.y,
+        }),
+      },
+      setPoint: (x, y) => setPoint({ x, y }),
+    }),
+    [point]
+  )
+
   return (
-    <ContextMenuPrimitive.Portal data-slot="context-menu-portal" {...props} />
+    <PreviewContextMenuContext.Provider value={value}>
+      <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
+    </PreviewContextMenuContext.Provider>
+  )
+}
+
+function ContextMenuPortal({
+  container,
+  ...props
+}: ContextMenuPrimitive.Portal.Props) {
+  const portalContainer = usePortalContainer(container)
+
+  return (
+    <ContextMenuPrimitive.Portal
+      data-slot="context-menu-portal"
+      container={portalContainer}
+      {...props}
+    />
   )
 }
 
 function ContextMenuTrigger({
   className,
+  onContextMenu,
   ...props
 }: ContextMenuPrimitive.Trigger.Props) {
-  return (
+  const environmentActive = useUIEnvironmentActive()
+  const previewContext = React.useContext(PreviewContextMenuContext)
+  const trigger = (
     <ContextMenuPrimitive.Trigger
       data-slot="context-menu-trigger"
       className={cn("select-none", className)}
+      onContextMenu={(event) => {
+        previewContext?.setPoint(event.clientX, event.clientY)
+        onContextMenu?.(event)
+      }}
       {...props}
+    />
+  )
+
+  if (!environmentActive) return trigger
+
+  return (
+    <MenuPrimitive.Trigger
+      nativeButton={false}
+      render={trigger}
+      onMouseDown={(event) => event.preventBaseUIHandler()}
     />
   )
 }
@@ -41,14 +114,23 @@ function ContextMenuContent({
     ContextMenuPrimitive.Positioner.Props,
     "align" | "alignOffset" | "side" | "sideOffset"
   >) {
+  const portalContainer = usePortalContainer()
+  const environmentActive = useUIEnvironmentActive()
+  const ownerDocument = useUIDocument()
+  const previewContext = React.useContext(PreviewContextMenuContext)
+
   return (
-    <ContextMenuPrimitive.Portal>
+    <ContextMenuPrimitive.Portal container={portalContainer}>
       <ContextMenuPrimitive.Positioner
         className="isolate z-50 outline-none"
         align={align}
         alignOffset={alignOffset}
         side={side}
         sideOffset={sideOffset}
+        anchor={previewContext?.anchor}
+        collisionBoundary={
+          environmentActive ? ownerDocument?.documentElement : undefined
+        }
       >
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"

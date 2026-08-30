@@ -4,7 +4,7 @@
   "title": "Aspect Ratio",
   "description": "The stock shadcn Aspect Ratio component for the Base UI/Nova preset.",
   "registryDependencies": [
-    "https://edbn.dev/r/edbn-base.json"
+    "https://ui.edbn.me/r/edbn-base.json"
   ],
   "files": [
     {

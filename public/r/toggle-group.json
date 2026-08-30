@@ -8,8 +8,8 @@
     "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [
-    "https://edbn.dev/r/edbn-base.json",
-    "https://edbn.dev/r/toggle.json"
+    "https://ui.edbn.me/r/edbn-base.json",
+    "https://ui.edbn.me/r/toggle.json"
   ],
   "files": [
     {

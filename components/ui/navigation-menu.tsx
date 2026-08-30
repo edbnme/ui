@@ -1,6 +1,9 @@
+"use client"
+
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu"
 import { cva } from "class-variance-authority"
 
+import { usePortalContainer } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { ChevronDownIcon } from "lucide-react"
 
@@ -100,8 +103,10 @@ function NavigationMenuPositioner({
   alignOffset = 0,
   ...props
 }: NavigationMenuPrimitive.Positioner.Props) {
+  const portalContainer = usePortalContainer()
+
   return (
-    <NavigationMenuPrimitive.Portal>
+    <NavigationMenuPrimitive.Portal container={portalContainer}>
       <NavigationMenuPrimitive.Positioner
         side={side}
         sideOffset={sideOffset}

@@ -7,9 +7,9 @@
     "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [
-    "https://edbn.dev/r/edbn-base.json",
-    "https://edbn.dev/r/label.json",
-    "https://edbn.dev/r/separator.json"
+    "https://ui.edbn.me/r/edbn-base.json",
+    "https://ui.edbn.me/r/label.json",
+    "https://ui.edbn.me/r/separator.json"
   ],
   "files": [
     {

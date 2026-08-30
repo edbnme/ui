@@ -7,7 +7,7 @@ Source of truth for all distributable UI components. This directory is a git sub
 - The 62 root files are the canonical public components generated from the Base UI + Nova + neutral + Lucide preset.
 - Import directly from `@/components/ui/<component>`; there is no barrel export.
 - Feature code owns the source after installation and may modify it locally.
-- Product blocks, layouts, recipes, renderer helpers, and PEN stay outside this directory.
+- Product blocks, layouts, recipes, and renderer helpers stay outside this directory.
 
 ## Key Patterns
 

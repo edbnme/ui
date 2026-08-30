@@ -1,256 +1,317 @@
 {
   "version": 1,
   "sourceFiles": {
-    "stock-component-demo.tsx": "\"use client\";\n\nimport * as React from \"react\";\nimport {\n  Bell,\n  Bold,\n  Check,\n  ChevronRight,\n  CircleAlert,\n  FileText,\n  Inbox,\n  Italic,\n  Mail,\n  MoreHorizontal,\n  Search,\n  Underline,\n  User,\n} from \"lucide-react\";\nimport { Bar, BarChart, CartesianGrid, XAxis } from \"recharts\";\nimport { toast as sonnerToast } from \"sonner\";\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\nimport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/components/ui/alert-dialog\";\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\nimport { AspectRatio } from \"@/components/ui/aspect-ratio\";\nimport {\n  Attachment,\n  AttachmentAction,\n  AttachmentActions,\n  AttachmentContent,\n  AttachmentDescription,\n  AttachmentMedia,\n  AttachmentTitle,\n} from \"@/components/ui/attachment\";\nimport { Avatar, AvatarBadge, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Badge } from \"@/components/ui/badge\";\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/components/ui/breadcrumb\";\nimport { Bubble, BubbleContent, BubbleGroup } from \"@/components/ui/bubble\";\nimport { ButtonGroup, ButtonGroupSeparator } from \"@/components/ui/button-group\";\nimport { Button } from \"@/components/ui/button\";\nimport { Calendar } from \"@/components/ui/calendar\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/components/ui/carousel\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\nimport { Checkbox } from \"@/components/ui/checkbox\";\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from \"@/components/ui/collapsible\";\nimport {\n  Combobox,\n  ComboboxContent,\n  ComboboxEmpty,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxList,\n} from \"@/components/ui/combobox\";\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/components/ui/command\";\nimport {\n  ContextMenu,\n  ContextMenuContent,\n  ContextMenuItem,\n  ContextMenuSeparator,\n  ContextMenuTrigger,\n} from \"@/components/ui/context-menu\";\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/components/ui/dialog\";\nimport { DirectionProvider } from \"@/components/ui/direction\";\nimport {\n  Drawer,\n  DrawerContent,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/components/ui/drawer\";\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from \"@/components/ui/dropdown-menu\";\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/components/ui/empty\";\nimport {\n  Field,\n  FieldDescription,\n  FieldLabel,\n} from \"@/components/ui/field\";\nimport { HoverCard, HoverCardContent, HoverCardTrigger } from \"@/components/ui/hover-card\";\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n  InputGroupText,\n} from \"@/components/ui/input-group\";\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/components/ui/input-otp\";\nimport { Input } from \"@/components/ui/input\";\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemMedia,\n  ItemTitle,\n} from \"@/components/ui/item\";\nimport { Kbd, KbdGroup } from \"@/components/ui/kbd\";\nimport { Label } from \"@/components/ui/label\";\nimport { Marker, MarkerContent, MarkerIcon } from \"@/components/ui/marker\";\nimport {\n  Menubar,\n  MenubarContent,\n  MenubarItem,\n  MenubarMenu,\n  MenubarSeparator,\n  MenubarTrigger,\n} from \"@/components/ui/menubar\";\nimport {\n  MessageScroller,\n  MessageScrollerButton,\n  MessageScrollerContent,\n  MessageScrollerItem,\n  MessageScrollerProvider,\n  MessageScrollerViewport,\n} from \"@/components/ui/message-scroller\";\nimport {\n  Message,\n  MessageAvatar,\n  MessageContent,\n  MessageFooter,\n  MessageHeader,\n} from \"@/components/ui/message\";\nimport { NativeSelect, NativeSelectOption } from \"@/components/ui/native-select\";\nimport {\n  NavigationMenu,\n  NavigationMenuContent,\n  NavigationMenuItem,\n  NavigationMenuLink,\n  NavigationMenuList,\n  NavigationMenuTrigger,\n} from \"@/components/ui/navigation-menu\";\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationItem,\n  PaginationLink,\n  PaginationNext,\n  PaginationPrevious,\n} from \"@/components/ui/pagination\";\nimport {\n  Popover,\n  PopoverContent,\n  PopoverDescription,\n  PopoverHeader,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/components/ui/popover\";\nimport { Progress, ProgressLabel, ProgressValue } from \"@/components/ui/progress\";\nimport {\n  Questionnaire,\n  QuestionnaireActions,\n  QuestionnaireChoice,\n  QuestionnaireChoices,\n  QuestionnaireDescription,\n  QuestionnaireItem,\n  QuestionnaireProgress,\n  QuestionnaireSubmit,\n  QuestionnaireTitle,\n} from \"@/components/ui/questionnaire\";\nimport { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\";\nimport {\n  ResizableHandle,\n  ResizablePanel,\n  ResizablePanelGroup,\n} from \"@/components/ui/resizable\";\nimport { ScrollArea, ScrollBar } from \"@/components/ui/scroll-area\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\nimport { Separator } from \"@/components/ui/separator\";\nimport {\n  Sheet,\n  SheetContent,\n  SheetDescription,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/components/ui/sheet\";\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarInset,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from \"@/components/ui/sidebar\";\nimport { Skeleton } from \"@/components/ui/skeleton\";\nimport { Slider } from \"@/components/ui/slider\";\nimport { Spinner } from \"@/components/ui/spinner\";\nimport { Switch } from \"@/components/ui/switch\";\nimport {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from \"@/components/ui/table\";\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/components/ui/tabs\";\nimport { Textarea } from \"@/components/ui/textarea\";\nimport { toast, Toaster as ToastToaster } from \"@/components/ui/toast\";\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle-group\";\nimport { Toggle } from \"@/components/ui/toggle\";\nimport { Tooltip, TooltipContent, TooltipTrigger } from \"@/components/ui/tooltip\";\n\nconst fruits = [\"Apple\", \"Banana\", \"Blueberry\", \"Grapes\", \"Pineapple\"];\nconst chartData = [\n  { month: \"Jan\", visitors: 186 },\n  { month: \"Feb\", visitors: 305 },\n  { month: \"Mar\", visitors: 237 },\n  { month: \"Apr\", visitors: 273 },\n];\n\nfunction Frame({ children }: { children: React.ReactNode }) {\n  return <div className=\"w-full max-w-sm\">{children}</div>;\n}\n\nfunction CalendarDemo() {\n  const [date, setDate] = React.useState<Date | undefined>(new Date());\n  return <Calendar mode=\"single\" selected={date} onSelect={setDate} />;\n}\n\nfunction ToastDemo() {\n  return (\n    <ToastToaster>\n      <Button\n        onClick={() =>\n          toast.add({ title: \"Saved\", description: \"Your changes are live.\" })\n        }\n      >\n        Show toast\n      </Button>\n    </ToastToaster>\n  );\n}\n\nconst demos: Record<string, () => React.ReactNode> = {\n  accordion: () => (\n    <Frame>\n      <Accordion defaultValue={[\"shipping\"]}>\n        <AccordionItem value=\"shipping\">\n          <AccordionTrigger>How does shipping work?</AccordionTrigger>\n          <AccordionContent>Orders usually arrive within 3–5 days.</AccordionContent>\n        </AccordionItem>\n        <AccordionItem value=\"returns\">\n          <AccordionTrigger>Can I return an item?</AccordionTrigger>\n          <AccordionContent>Yes, within 30 days of delivery.</AccordionContent>\n        </AccordionItem>\n      </Accordion>\n    </Frame>\n  ),\n  \"alert-dialog\": () => (\n    <AlertDialog>\n      <AlertDialogTrigger render={<Button variant=\"destructive\" />}>\n        Delete project\n      </AlertDialogTrigger>\n      <AlertDialogContent>\n        <AlertDialogHeader>\n          <AlertDialogTitle>Delete this project?</AlertDialogTitle>\n          <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>\n        </AlertDialogHeader>\n        <AlertDialogFooter>\n          <AlertDialogCancel>Cancel</AlertDialogCancel>\n          <AlertDialogAction>Delete</AlertDialogAction>\n        </AlertDialogFooter>\n      </AlertDialogContent>\n    </AlertDialog>\n  ),\n  alert: () => (\n    <Alert>\n      <CircleAlert />\n      <AlertTitle>Heads up</AlertTitle>\n      <AlertDescription>Your trial ends in three days.</AlertDescription>\n    </Alert>\n  ),\n  \"aspect-ratio\": () => (\n    <Frame>\n      <AspectRatio ratio={16 / 9} className=\"grid place-items-center rounded-xl bg-muted\">\n        <span className=\"text-sm text-muted-foreground\">16:9</span>\n      </AspectRatio>\n    </Frame>\n  ),\n  attachment: () => (\n    <Attachment>\n      <AttachmentMedia><FileText /></AttachmentMedia>\n      <AttachmentContent>\n        <AttachmentTitle>project-brief.md</AttachmentTitle>\n        <AttachmentDescription>1.8 MB · uploaded</AttachmentDescription>\n      </AttachmentContent>\n      <AttachmentActions>\n        <AttachmentAction aria-label=\"More attachment actions\"><MoreHorizontal /></AttachmentAction>\n      </AttachmentActions>\n    </Attachment>\n  ),\n  avatar: () => (\n    <Avatar className=\"size-12\">\n      <AvatarFallback>ED</AvatarFallback>\n      <AvatarBadge className=\"bg-emerald-500\" />\n    </Avatar>\n  ),\n  badge: () => <div className=\"flex gap-2\"><Badge>New</Badge><Badge variant=\"outline\">Beta</Badge></div>,\n  breadcrumb: () => (\n    <Breadcrumb>\n      <BreadcrumbList>\n        <BreadcrumbItem>Docs</BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem><BreadcrumbPage>Components</BreadcrumbPage></BreadcrumbItem>\n      </BreadcrumbList>\n    </Breadcrumb>\n  ),\n  bubble: () => (\n    <BubbleGroup>\n      <Bubble variant=\"muted\"><BubbleContent>Can you review this?</BubbleContent></Bubble>\n      <Bubble align=\"end\"><BubbleContent>Absolutely.</BubbleContent></Bubble>\n    </BubbleGroup>\n  ),\n  \"button-group\": () => (\n    <ButtonGroup>\n      <Button variant=\"outline\">Save</Button>\n      <ButtonGroupSeparator />\n      <Button variant=\"outline\" size=\"icon\" aria-label=\"More options\"><MoreHorizontal /></Button>\n    </ButtonGroup>\n  ),\n  button: () => <div className=\"flex flex-wrap gap-2\"><Button>Continue</Button><Button variant=\"outline\">Cancel</Button></div>,\n  calendar: () => <CalendarDemo />,\n  card: () => (\n    <Card>\n      <CardHeader><CardTitle>Team plan</CardTitle><CardDescription>For growing product teams.</CardDescription></CardHeader>\n      <CardContent><p className=\"text-2xl font-semibold\">$24</p></CardContent>\n      <CardFooter><Button className=\"w-full\">Upgrade</Button></CardFooter>\n    </Card>\n  ),\n  carousel: () => (\n    <Carousel className=\"w-full max-w-xs\">\n      <CarouselContent>{[1, 2, 3].map((item) => <CarouselItem key={item}><div className=\"grid aspect-square place-items-center rounded-xl border text-3xl font-semibold\">{item}</div></CarouselItem>)}</CarouselContent>\n      <CarouselPrevious /><CarouselNext />\n    </Carousel>\n  ),\n  chart: () => (\n    <ChartContainer config={{ visitors: { label: \"Visitors\", color: \"var(--chart-1)\" } }} className=\"h-56 w-full\">\n      <BarChart data={chartData} accessibilityLayer>\n        <CartesianGrid vertical={false} />\n        <XAxis dataKey=\"month\" tickLine={false} axisLine={false} />\n        <ChartTooltip content={<ChartTooltipContent />} />\n        <Bar dataKey=\"visitors\" fill=\"var(--color-visitors)\" radius={6} />\n      </BarChart>\n    </ChartContainer>\n  ),\n  checkbox: () => <div className=\"flex items-center gap-2\"><Checkbox id=\"terms\" defaultChecked /><Label htmlFor=\"terms\">Accept terms</Label></div>,\n  collapsible: () => (\n    <Collapsible>\n      <CollapsibleTrigger render={<Button variant=\"outline\" />}>Toggle details</CollapsibleTrigger>\n      <CollapsibleContent className=\"mt-3 rounded-lg border p-3 text-sm\">Additional project details.</CollapsibleContent>\n    </Collapsible>\n  ),\n  combobox: () => (\n    <Combobox items={fruits}>\n      <ComboboxInput placeholder=\"Choose a fruit\" />\n      <ComboboxContent><ComboboxEmpty>No fruit found.</ComboboxEmpty><ComboboxList>{(fruit: string) => <ComboboxItem key={fruit} value={fruit}>{fruit}</ComboboxItem>}</ComboboxList></ComboboxContent>\n    </Combobox>\n  ),\n  command: () => (\n    <Command className=\"rounded-xl border shadow-sm\">\n      <CommandInput placeholder=\"Search actions…\" />\n      <CommandList><CommandEmpty>No results.</CommandEmpty><CommandGroup heading=\"Actions\"><CommandItem><Search /> Search</CommandItem><CommandItem><User /> Profile</CommandItem></CommandGroup></CommandList>\n    </Command>\n  ),\n  \"context-menu\": () => (\n    <ContextMenu>\n      <ContextMenuTrigger className=\"grid h-36 w-64 place-items-center rounded-xl border border-dashed text-sm text-muted-foreground\">Right click here</ContextMenuTrigger>\n      <ContextMenuContent><ContextMenuItem>Back</ContextMenuItem><ContextMenuItem>Reload</ContextMenuItem><ContextMenuSeparator /><ContextMenuItem>Inspect</ContextMenuItem></ContextMenuContent>\n    </ContextMenu>\n  ),\n  dialog: () => (\n    <Dialog>\n      <DialogTrigger render={<Button />}>Edit profile</DialogTrigger>\n      <DialogContent><DialogHeader><DialogTitle>Edit profile</DialogTitle><DialogDescription>Update your public display name.</DialogDescription></DialogHeader><Input aria-label=\"Display name\" defaultValue=\"Ada Lovelace\" /><DialogFooter><Button>Save changes</Button></DialogFooter></DialogContent>\n    </Dialog>\n  ),\n  direction: () => (\n    <DirectionProvider direction=\"rtl\"><div dir=\"rtl\" className=\"rounded-xl border p-4 text-sm\">واجهة من اليمين إلى اليسار</div></DirectionProvider>\n  ),\n  drawer: () => (\n    <Drawer>\n      <DrawerTrigger render={<Button variant=\"outline\" />}>Open drawer</DrawerTrigger>\n      <DrawerContent><DrawerHeader><DrawerTitle>Move project</DrawerTitle><DrawerDescription>Select a destination workspace.</DrawerDescription></DrawerHeader><DrawerFooter><Button>Continue</Button></DrawerFooter></DrawerContent>\n    </Drawer>\n  ),\n  \"dropdown-menu\": () => (\n    <DropdownMenu>\n      <DropdownMenuTrigger render={<Button variant=\"outline\" />}>Open menu</DropdownMenuTrigger>\n      <DropdownMenuContent><DropdownMenuGroup><DropdownMenuLabel>My account</DropdownMenuLabel><DropdownMenuItem>Profile</DropdownMenuItem><DropdownMenuItem>Settings</DropdownMenuItem></DropdownMenuGroup><DropdownMenuSeparator /><DropdownMenuItem>Sign out</DropdownMenuItem></DropdownMenuContent>\n    </DropdownMenu>\n  ),\n  empty: () => (\n    <Empty><EmptyHeader><EmptyMedia variant=\"icon\"><Inbox /></EmptyMedia><EmptyTitle>No messages</EmptyTitle><EmptyDescription>You are all caught up.</EmptyDescription></EmptyHeader><EmptyContent><Button size=\"sm\">Compose</Button></EmptyContent></Empty>\n  ),\n  field: () => (\n    <Field><FieldLabel htmlFor=\"email-demo\">Email</FieldLabel><Input id=\"email-demo\" type=\"email\" placeholder=\"you@example.com\" /><FieldDescription>We will only use this for account notices.</FieldDescription></Field>\n  ),\n  \"hover-card\": () => (\n    <HoverCard><HoverCardTrigger render={<Button variant=\"link\" />}>@edbn</HoverCardTrigger><HoverCardContent><p className=\"font-medium\">edbn/ui</p><p className=\"mt-1 text-sm text-muted-foreground\">Editable shadcn source built with Base UI.</p></HoverCardContent></HoverCard>\n  ),\n  \"input-group\": () => (\n    <InputGroup><InputGroupAddon><InputGroupText><Mail /></InputGroupText></InputGroupAddon><InputGroupInput aria-label=\"Email\" placeholder=\"you@example.com\" /></InputGroup>\n  ),\n  \"input-otp\": () => (\n    <InputOTP maxLength={6}><InputOTPGroup>{[0, 1, 2].map((index) => <InputOTPSlot key={index} index={index} />)}</InputOTPGroup><InputOTPSeparator /><InputOTPGroup>{[3, 4, 5].map((index) => <InputOTPSlot key={index} index={index} />)}</InputOTPGroup></InputOTP>\n  ),\n  input: () => <Input className=\"max-w-xs\" aria-label=\"Email\" placeholder=\"Email address\" />,\n  item: () => (\n    <Item variant=\"outline\"><ItemMedia variant=\"icon\"><FileText /></ItemMedia><ItemContent><ItemTitle>Project brief</ItemTitle><ItemDescription>Updated two minutes ago</ItemDescription></ItemContent><ItemActions><Button size=\"icon-sm\" variant=\"ghost\" aria-label=\"Open\"><ChevronRight /></Button></ItemActions></Item>\n  ),\n  kbd: () => <KbdGroup><Kbd>⌘</Kbd><Kbd>K</Kbd></KbdGroup>,\n  label: () => <div className=\"grid gap-2\"><Label htmlFor=\"label-input\">Project name</Label><Input id=\"label-input\" defaultValue=\"Acme\" /></div>,\n  marker: () => <Marker variant=\"separator\"><MarkerIcon><Check /></MarkerIcon><MarkerContent>Today</MarkerContent></Marker>,\n  menubar: () => (\n    <Menubar><MenubarMenu><MenubarTrigger>File</MenubarTrigger><MenubarContent><MenubarItem>New tab</MenubarItem><MenubarItem>New window</MenubarItem><MenubarSeparator /><MenubarItem>Print</MenubarItem></MenubarContent></MenubarMenu><MenubarMenu><MenubarTrigger>Edit</MenubarTrigger><MenubarContent><MenubarItem>Undo</MenubarItem><MenubarItem>Redo</MenubarItem></MenubarContent></MenubarMenu></Menubar>\n  ),\n  message: () => (\n    <Message><MessageAvatar><Avatar><AvatarFallback>AI</AvatarFallback></Avatar></MessageAvatar><MessageContent><MessageHeader>Assistant</MessageHeader><Bubble variant=\"muted\"><BubbleContent>Your component migration is ready to review.</BubbleContent></Bubble><MessageFooter>Just now</MessageFooter></MessageContent></Message>\n  ),\n  \"message-scroller\": () => (\n    <MessageScrollerProvider>\n      <MessageScroller className=\"h-64 rounded-xl border\"><MessageScrollerViewport><MessageScrollerContent className=\"p-4\">{Array.from({ length: 8 }, (_, index) => <MessageScrollerItem key={index} scrollAnchor={index === 7}><Bubble variant={index % 2 ? \"muted\" : \"outline\"}><BubbleContent>Message {index + 1}</BubbleContent></Bubble></MessageScrollerItem>)}</MessageScrollerContent></MessageScrollerViewport><MessageScrollerButton /></MessageScroller>\n    </MessageScrollerProvider>\n  ),\n  \"native-select\": () => <NativeSelect aria-label=\"Role\" defaultValue=\"designer\"><NativeSelectOption value=\"designer\">Designer</NativeSelectOption><NativeSelectOption value=\"engineer\">Engineer</NativeSelectOption></NativeSelect>,\n  \"navigation-menu\": () => (\n    <NavigationMenu><NavigationMenuList><NavigationMenuItem><NavigationMenuTrigger>Products</NavigationMenuTrigger><NavigationMenuContent className=\"p-3\"><NavigationMenuLink href=\"#\" className=\"block w-52 rounded-md p-3 hover:bg-muted\"><span className=\"font-medium\">Components</span><span className=\"block text-sm text-muted-foreground\">Browse all primitives.</span></NavigationMenuLink></NavigationMenuContent></NavigationMenuItem><NavigationMenuItem><NavigationMenuLink href=\"#\" className=\"px-3 py-2 text-sm\">Docs</NavigationMenuLink></NavigationMenuItem></NavigationMenuList></NavigationMenu>\n  ),\n  pagination: () => (\n    <Pagination><PaginationContent><PaginationItem><PaginationPrevious href=\"#\" /></PaginationItem><PaginationItem><PaginationLink href=\"#\" isActive>1</PaginationLink></PaginationItem><PaginationItem><PaginationLink href=\"#\">2</PaginationLink></PaginationItem><PaginationItem><PaginationNext href=\"#\" /></PaginationItem></PaginationContent></Pagination>\n  ),\n  popover: () => (\n    <Popover><PopoverTrigger render={<Button variant=\"outline\" />}>Open popover</PopoverTrigger><PopoverContent><PopoverHeader><PopoverTitle>Dimensions</PopoverTitle><PopoverDescription>Set the component size.</PopoverDescription></PopoverHeader><div className=\"mt-3 grid grid-cols-2 gap-2\"><Input aria-label=\"Width\" defaultValue=\"100%\" /><Input aria-label=\"Height\" defaultValue=\"auto\" /></div></PopoverContent></Popover>\n  ),\n  progress: () => <Progress value={68}><ProgressLabel>Uploading</ProgressLabel><ProgressValue /></Progress>,\n  questionnaire: () => (\n    <Questionnaire items={[{ name: \"role\", required: true, choices: [{ value: \"design\" }, { value: \"engineering\" }] }]} defaultItem=\"role\" onSubmit={(event) => event.preventDefault()}>\n      <QuestionnaireProgress>Question 1 of 1</QuestionnaireProgress><QuestionnaireItem name=\"role\" required><QuestionnaireTitle>What is your role?</QuestionnaireTitle><QuestionnaireDescription>Choose the closest match.</QuestionnaireDescription><QuestionnaireChoices><QuestionnaireChoice value=\"design\">Design</QuestionnaireChoice><QuestionnaireChoice value=\"engineering\">Engineering</QuestionnaireChoice></QuestionnaireChoices><QuestionnaireActions><QuestionnaireSubmit>Finish</QuestionnaireSubmit></QuestionnaireActions></QuestionnaireItem>\n    </Questionnaire>\n  ),\n  \"radio-group\": () => (\n    <RadioGroup defaultValue=\"email\"><div className=\"flex items-center gap-2\"><RadioGroupItem value=\"email\" id=\"radio-email\" /><Label htmlFor=\"radio-email\">Email</Label></div><div className=\"flex items-center gap-2\"><RadioGroupItem value=\"sms\" id=\"radio-sms\" /><Label htmlFor=\"radio-sms\">SMS</Label></div></RadioGroup>\n  ),\n  resizable: () => (\n    <ResizablePanelGroup orientation=\"horizontal\" className=\"h-48 rounded-xl border\"><ResizablePanel defaultSize={45}><div className=\"grid h-full place-items-center\">One</div></ResizablePanel><ResizableHandle withHandle /><ResizablePanel defaultSize={55}><div className=\"grid h-full place-items-center\">Two</div></ResizablePanel></ResizablePanelGroup>\n  ),\n  \"scroll-area\": () => (\n    <ScrollArea className=\"h-56 w-64 rounded-xl border\"><div className=\"space-y-3 p-4\">{Array.from({ length: 12 }, (_, index) => <p key={index} className=\"text-sm\">Scrollable item {index + 1}</p>)}</div><ScrollBar /></ScrollArea>\n  ),\n  select: () => (\n    <Select defaultValue=\"light\"><SelectTrigger><SelectValue placeholder=\"Theme\" /></SelectTrigger><SelectContent><SelectItem value=\"light\">Light</SelectItem><SelectItem value=\"dark\">Dark</SelectItem><SelectItem value=\"system\">System</SelectItem></SelectContent></Select>\n  ),\n  separator: () => <div className=\"w-full max-w-xs\"><p className=\"text-sm font-medium\">edbn/ui</p><p className=\"text-sm text-muted-foreground\">Base UI components</p><Separator className=\"my-4\" /><div className=\"flex h-5 items-center gap-4 text-sm\"><span>Docs</span><Separator orientation=\"vertical\" /><span>Registry</span></div></div>,\n  sheet: () => (\n    <Sheet><SheetTrigger render={<Button variant=\"outline\" />}>Open sheet</SheetTrigger><SheetContent><SheetHeader><SheetTitle>Project settings</SheetTitle><SheetDescription>Update configuration for this project.</SheetDescription></SheetHeader><div className=\"p-4\"><Input aria-label=\"Project name\" defaultValue=\"Acme\" /></div></SheetContent></Sheet>\n  ),\n  sidebar: () => (\n    <SidebarProvider className=\"min-h-[280px] overflow-hidden rounded-xl border\" style={{ minHeight: 280 }}>\n      <Sidebar collapsible=\"none\" className=\"w-44\"><SidebarContent><SidebarGroup><SidebarGroupLabel>Workspace</SidebarGroupLabel><SidebarGroupContent><SidebarMenu>{[\"Dashboard\", \"Projects\", \"Settings\"].map((label) => <SidebarMenuItem key={label}><SidebarMenuButton>{label}</SidebarMenuButton></SidebarMenuItem>)}</SidebarMenu></SidebarGroupContent></SidebarGroup></SidebarContent></Sidebar><SidebarInset className=\"min-h-0 p-3\"><SidebarTrigger /><div className=\"mt-8 text-sm text-muted-foreground\">Main content</div></SidebarInset>\n    </SidebarProvider>\n  ),\n  skeleton: () => <div className=\"flex items-center gap-3\"><Skeleton className=\"size-11 rounded-full\" /><div className=\"space-y-2\"><Skeleton className=\"h-4 w-40\" /><Skeleton className=\"h-3 w-28\" /></div></div>,\n  slider: () => <Slider className=\"w-64\" defaultValue={[40]} max={100} step={1} aria-label=\"Volume\" />,\n  sonner: () => <Button onClick={() => sonnerToast.success(\"Changes saved\")}>Show Sonner toast</Button>,\n  spinner: () => <div className=\"flex items-center gap-2 text-sm text-muted-foreground\"><Spinner /> Loading</div>,\n  switch: () => <div className=\"flex items-center gap-2\"><Switch id=\"airplane\" /><Label htmlFor=\"airplane\">Airplane mode</Label></div>,\n  table: () => (\n    <Table><TableHeader><TableRow><TableHead>Invoice</TableHead><TableHead>Status</TableHead><TableHead className=\"text-right\">Total</TableHead></TableRow></TableHeader><TableBody><TableRow><TableCell>INV-001</TableCell><TableCell>Paid</TableCell><TableCell className=\"text-right\">$250</TableCell></TableRow><TableRow><TableCell>INV-002</TableCell><TableCell>Pending</TableCell><TableCell className=\"text-right\">$150</TableCell></TableRow></TableBody></Table>\n  ),\n  tabs: () => <Tabs defaultValue=\"account\"><TabsList><TabsTrigger value=\"account\">Account</TabsTrigger><TabsTrigger value=\"security\">Security</TabsTrigger></TabsList><TabsContent value=\"account\" className=\"rounded-lg border p-4\">Manage account details.</TabsContent><TabsContent value=\"security\" className=\"rounded-lg border p-4\">Manage sign-in security.</TabsContent></Tabs>,\n  textarea: () => <Textarea className=\"max-w-sm\" aria-label=\"Message\" placeholder=\"Write a message…\" />,\n  toast: () => <ToastDemo />,\n  toggle: () => <Toggle aria-label=\"Toggle bold\"><Bold /></Toggle>,\n  \"toggle-group\": () => <ToggleGroup defaultValue={[\"bold\"]}><ToggleGroupItem value=\"bold\" aria-label=\"Bold\"><Bold /></ToggleGroupItem><ToggleGroupItem value=\"italic\" aria-label=\"Italic\"><Italic /></ToggleGroupItem><ToggleGroupItem value=\"underline\" aria-label=\"Underline\"><Underline /></ToggleGroupItem></ToggleGroup>,\n  tooltip: () => <Tooltip><TooltipTrigger render={<Button size=\"icon\" variant=\"outline\" aria-label=\"Notifications\" />}><Bell /></TooltipTrigger><TooltipContent>Notifications</TooltipContent></Tooltip>,\n};\n\nexport const stockComponentDemoSlugs = Object.keys(demos).sort();\n\nexport function StockComponentDemo({ componentSlug }: { componentSlug: string }) {\n  const renderDemo = demos[componentSlug];\n  if (!renderDemo) {\n    return <p className=\"text-sm text-muted-foreground\">Demo unavailable.</p>;\n  }\n  return <>{renderDemo()}</>;\n}\n"
+    "accordion-basic.tsx": "\"use client\";\nimport * as React from \"react\";\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\n\nfunction Frame({ children }: { children: React.ReactNode }) {\n  return <div className=\"w-full max-w-sm\">{children}</div>;\n}\n\nexport default function AccordionBasicPreview() {\n  return (\n    <Frame>\n      <Accordion defaultValue={[\"shipping\"]}>\n        <AccordionItem value=\"shipping\">\n          <AccordionTrigger>How does shipping work?</AccordionTrigger>\n          <AccordionContent>\n            Orders usually arrive within 3–5 days.\n          </AccordionContent>\n        </AccordionItem>\n        <AccordionItem value=\"returns\">\n          <AccordionTrigger>Can I return an item?</AccordionTrigger>\n          <AccordionContent>Yes, within 30 days of delivery.</AccordionContent>\n        </AccordionItem>\n      </Accordion>\n    </Frame>\n  );\n}\n",
+    "alert-dialog-basic.tsx": "\"use client\";\nimport {\n  AlertDialog,\n  AlertDialogAction,\n  AlertDialogCancel,\n  AlertDialogContent,\n  AlertDialogDescription,\n  AlertDialogFooter,\n  AlertDialogHeader,\n  AlertDialogTitle,\n  AlertDialogTrigger,\n} from \"@/components/ui/alert-dialog\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function AlertDialogBasicPreview() {\n  return (\n    <AlertDialog>\n      <AlertDialogTrigger render={<Button variant=\"destructive\" />}>\n        Delete project\n      </AlertDialogTrigger>\n      <AlertDialogContent>\n        <AlertDialogHeader>\n          <AlertDialogTitle>Delete this project?</AlertDialogTitle>\n          <AlertDialogDescription>\n            This action cannot be undone.\n          </AlertDialogDescription>\n        </AlertDialogHeader>\n        <AlertDialogFooter>\n          <AlertDialogCancel>Cancel</AlertDialogCancel>\n          <AlertDialogAction>Delete</AlertDialogAction>\n        </AlertDialogFooter>\n      </AlertDialogContent>\n    </AlertDialog>\n  );\n}\n",
+    "alert-basic.tsx": "\"use client\";\nimport { CircleAlert } from \"lucide-react\";\nimport { Alert, AlertDescription, AlertTitle } from \"@/components/ui/alert\";\n\nexport default function AlertBasicPreview() {\n  return (\n    <Alert>\n      <CircleAlert />\n      <AlertTitle>Heads up</AlertTitle>\n      <AlertDescription>Your trial ends in three days.</AlertDescription>\n    </Alert>\n  );\n}\n",
+    "aspect-ratio-basic.tsx": "\"use client\";\nimport * as React from \"react\";\nimport { AspectRatio } from \"@/components/ui/aspect-ratio\";\n\nfunction Frame({ children }: { children: React.ReactNode }) {\n  return <div className=\"w-full max-w-sm\">{children}</div>;\n}\n\nexport default function AspectRatioBasicPreview() {\n  return (\n    <Frame>\n      <AspectRatio\n        ratio={16 / 9}\n        className=\"grid place-items-center rounded-xl bg-muted\"\n      >\n        <span className=\"text-sm text-muted-foreground\">16:9</span>\n      </AspectRatio>\n    </Frame>\n  );\n}\n",
+    "attachment-basic.tsx": "\"use client\";\nimport { FileText, MoreHorizontal } from \"lucide-react\";\nimport {\n  Attachment,\n  AttachmentAction,\n  AttachmentActions,\n  AttachmentContent,\n  AttachmentDescription,\n  AttachmentMedia,\n  AttachmentTitle,\n} from \"@/components/ui/attachment\";\n\nexport default function AttachmentBasicPreview() {\n  return (\n    <Attachment>\n      <AttachmentMedia>\n        <FileText />\n      </AttachmentMedia>\n      <AttachmentContent>\n        <AttachmentTitle>project-brief.md</AttachmentTitle>\n        <AttachmentDescription>1.8 MB · uploaded</AttachmentDescription>\n      </AttachmentContent>\n      <AttachmentActions>\n        <AttachmentAction aria-label=\"More attachment actions\">\n          <MoreHorizontal />\n        </AttachmentAction>\n      </AttachmentActions>\n    </Attachment>\n  );\n}\n",
+    "avatar-basic.tsx": "\"use client\";\nimport { Avatar, AvatarBadge, AvatarFallback } from \"@/components/ui/avatar\";\n\nexport default function AvatarBasicPreview() {\n  return (\n    <Avatar className=\"size-12\">\n      <AvatarFallback>ED</AvatarFallback>\n      <AvatarBadge className=\"bg-emerald-500\" />\n    </Avatar>\n  );\n}\n",
+    "badge-basic.tsx": "\"use client\";\nimport { Badge } from \"@/components/ui/badge\";\n\nexport default function BadgeBasicPreview() {\n  return (\n    <div className=\"flex gap-2\">\n      <Badge>New</Badge>\n      <Badge variant=\"outline\">Beta</Badge>\n    </div>\n  );\n}\n",
+    "breadcrumb-basic.tsx": "\"use client\";\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator,\n} from \"@/components/ui/breadcrumb\";\n\nexport default function BreadcrumbBasicPreview() {\n  return (\n    <Breadcrumb>\n      <BreadcrumbList>\n        <BreadcrumbItem>Docs</BreadcrumbItem>\n        <BreadcrumbSeparator />\n        <BreadcrumbItem>\n          <BreadcrumbPage>Components</BreadcrumbPage>\n        </BreadcrumbItem>\n      </BreadcrumbList>\n    </Breadcrumb>\n  );\n}\n",
+    "bubble-basic.tsx": "\"use client\";\nimport { Bubble, BubbleContent, BubbleGroup } from \"@/components/ui/bubble\";\n\nexport default function BubbleBasicPreview() {\n  return (\n    <BubbleGroup>\n      <Bubble variant=\"muted\">\n        <BubbleContent>Can you review this?</BubbleContent>\n      </Bubble>\n      <Bubble align=\"end\">\n        <BubbleContent>Absolutely.</BubbleContent>\n      </Bubble>\n    </BubbleGroup>\n  );\n}\n",
+    "button-group-basic.tsx": "\"use client\";\nimport { MoreHorizontal } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  ButtonGroup,\n  ButtonGroupSeparator,\n} from \"@/components/ui/button-group\";\n\nexport default function ButtonGroupBasicPreview() {\n  return (\n    <ButtonGroup>\n      <Button variant=\"outline\">Save</Button>\n      <ButtonGroupSeparator />\n      <Button variant=\"outline\" size=\"icon\" aria-label=\"More options\">\n        <MoreHorizontal />\n      </Button>\n    </ButtonGroup>\n  );\n}\n",
+    "button-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\n\nexport default function ButtonBasicPreview() {\n  return (\n    <div className=\"flex flex-wrap gap-2\">\n      <Button>Continue</Button>\n      <Button variant=\"outline\">Cancel</Button>\n    </div>\n  );\n}\n",
+    "calendar-basic.tsx": "\"use client\";\nimport * as React from \"react\";\nimport { Calendar } from \"@/components/ui/calendar\";\n\nfunction CalendarDemo() {\n  const [date, setDate] = React.useState<Date | undefined>(new Date());\n  return <Calendar mode=\"single\" selected={date} onSelect={setDate} />;\n}\n\nexport default function CalendarBasicPreview() {\n  return <CalendarDemo />;\n}\n",
+    "card-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Card,\n  CardContent,\n  CardDescription,\n  CardFooter,\n  CardHeader,\n  CardTitle,\n} from \"@/components/ui/card\";\n\nexport default function CardBasicPreview() {\n  return (\n    <Card>\n      <CardHeader>\n        <CardTitle>Team plan</CardTitle>\n        <CardDescription>For growing product teams.</CardDescription>\n      </CardHeader>\n      <CardContent>\n        <p className=\"text-2xl font-semibold\">$24</p>\n      </CardContent>\n      <CardFooter>\n        <Button className=\"w-full\">Upgrade</Button>\n      </CardFooter>\n    </Card>\n  );\n}\n",
+    "carousel-basic.tsx": "\"use client\";\nimport {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from \"@/components/ui/carousel\";\n\nexport default function CarouselBasicPreview() {\n  return (\n    <Carousel className=\"w-full max-w-xs\">\n      <CarouselContent>\n        {[1, 2, 3].map((item) => (\n          <CarouselItem key={item}>\n            <div className=\"grid aspect-square place-items-center rounded-xl border text-3xl font-semibold\">\n              {item}\n            </div>\n          </CarouselItem>\n        ))}\n      </CarouselContent>\n      <CarouselPrevious />\n      <CarouselNext />\n    </Carousel>\n  );\n}\n",
+    "chart-basic.tsx": "\"use client\";\nimport { Bar, BarChart, CartesianGrid, XAxis } from \"recharts\";\nimport {\n  ChartContainer,\n  ChartTooltip,\n  ChartTooltipContent,\n} from \"@/components/ui/chart\";\n\nconst chartData = [\n  { month: \"Jan\", visitors: 186 },\n  { month: \"Feb\", visitors: 305 },\n  { month: \"Mar\", visitors: 237 },\n  { month: \"Apr\", visitors: 273 },\n];\n\nexport default function ChartBasicPreview() {\n  return (\n    <ChartContainer\n      config={{ visitors: { label: \"Visitors\", color: \"var(--chart-1)\" } }}\n      className=\"h-56 w-full\"\n    >\n      <BarChart data={chartData} accessibilityLayer>\n        <CartesianGrid vertical={false} />\n        <XAxis dataKey=\"month\" tickLine={false} axisLine={false} />\n        <ChartTooltip content={<ChartTooltipContent />} />\n        <Bar dataKey=\"visitors\" fill=\"var(--color-visitors)\" radius={6} />\n      </BarChart>\n    </ChartContainer>\n  );\n}\n",
+    "checkbox-basic.tsx": "\"use client\";\nimport { Checkbox } from \"@/components/ui/checkbox\";\nimport { Label } from \"@/components/ui/label\";\n\nexport default function CheckboxBasicPreview() {\n  return (\n    <div className=\"flex items-center gap-2\">\n      <Checkbox id=\"terms\" defaultChecked />\n      <Label htmlFor=\"terms\">Accept terms</Label>\n    </div>\n  );\n}\n",
+    "collapsible-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Collapsible,\n  CollapsibleContent,\n  CollapsibleTrigger,\n} from \"@/components/ui/collapsible\";\n\nexport default function CollapsibleBasicPreview() {\n  return (\n    <Collapsible>\n      <CollapsibleTrigger render={<Button variant=\"outline\" />}>\n        Toggle details\n      </CollapsibleTrigger>\n      <CollapsibleContent className=\"mt-3 rounded-lg border p-3 text-sm\">\n        Additional project details.\n      </CollapsibleContent>\n    </Collapsible>\n  );\n}\n",
+    "combobox-basic.tsx": "\"use client\";\nimport {\n  Combobox,\n  ComboboxContent,\n  ComboboxEmpty,\n  ComboboxInput,\n  ComboboxItem,\n  ComboboxList,\n} from \"@/components/ui/combobox\";\n\nconst fruits = [\"Apple\", \"Banana\", \"Blueberry\", \"Grapes\", \"Pineapple\"];\n\nexport default function ComboboxBasicPreview() {\n  return (\n    <Combobox items={fruits}>\n      <ComboboxInput placeholder=\"Choose a fruit\" />\n      <ComboboxContent>\n        <ComboboxEmpty>No fruit found.</ComboboxEmpty>\n        <ComboboxList>\n          {(fruit: string) => (\n            <ComboboxItem key={fruit} value={fruit}>\n              {fruit}\n            </ComboboxItem>\n          )}\n        </ComboboxList>\n      </ComboboxContent>\n    </Combobox>\n  );\n}\n",
+    "command-basic.tsx": "\"use client\";\nimport { Search, User } from \"lucide-react\";\nimport {\n  Command,\n  CommandEmpty,\n  CommandGroup,\n  CommandInput,\n  CommandItem,\n  CommandList,\n} from \"@/components/ui/command\";\n\nexport default function CommandBasicPreview() {\n  return (\n    <Command className=\"rounded-xl border shadow-sm\">\n      <CommandInput placeholder=\"Search actions…\" />\n      <CommandList>\n        <CommandEmpty>No results.</CommandEmpty>\n        <CommandGroup heading=\"Actions\">\n          <CommandItem>\n            <Search /> Search\n          </CommandItem>\n          <CommandItem>\n            <User /> Profile\n          </CommandItem>\n        </CommandGroup>\n      </CommandList>\n    </Command>\n  );\n}\n",
+    "context-menu-basic.tsx": "\"use client\";\nimport {\n  ContextMenu,\n  ContextMenuContent,\n  ContextMenuItem,\n  ContextMenuSeparator,\n  ContextMenuTrigger,\n} from \"@/components/ui/context-menu\";\n\nexport default function ContextMenuBasicPreview() {\n  return (\n    <ContextMenu>\n      <ContextMenuTrigger className=\"grid h-36 w-64 place-items-center rounded-xl border border-dashed text-sm text-muted-foreground\">\n        Right click here\n      </ContextMenuTrigger>\n      <ContextMenuContent>\n        <ContextMenuItem>Back</ContextMenuItem>\n        <ContextMenuItem>Reload</ContextMenuItem>\n        <ContextMenuSeparator />\n        <ContextMenuItem>Inspect</ContextMenuItem>\n      </ContextMenuContent>\n    </ContextMenu>\n  );\n}\n",
+    "dialog-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Dialog,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogTitle,\n  DialogTrigger,\n} from \"@/components/ui/dialog\";\nimport { Input } from \"@/components/ui/input\";\n\nexport default function DialogBasicPreview() {\n  return (\n    <Dialog>\n      <DialogTrigger render={<Button />}>Edit profile</DialogTrigger>\n      <DialogContent>\n        <DialogHeader>\n          <DialogTitle>Edit profile</DialogTitle>\n          <DialogDescription>\n            Update your public display name.\n          </DialogDescription>\n        </DialogHeader>\n        <Input aria-label=\"Display name\" defaultValue=\"Ada Lovelace\" />\n        <DialogFooter>\n          <Button>Save changes</Button>\n        </DialogFooter>\n      </DialogContent>\n    </Dialog>\n  );\n}\n",
+    "direction-basic.tsx": "\"use client\";\nimport { DirectionProvider } from \"@/components/ui/direction\";\n\nexport default function DirectionBasicPreview() {\n  return (\n    <DirectionProvider direction=\"rtl\">\n      <div dir=\"rtl\" className=\"rounded-xl border p-4 text-sm\">\n        واجهة من اليمين إلى اليسار\n      </div>\n    </DirectionProvider>\n  );\n}\n",
+    "drawer-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Drawer,\n  DrawerContent,\n  DrawerDescription,\n  DrawerFooter,\n  DrawerHeader,\n  DrawerTitle,\n  DrawerTrigger,\n} from \"@/components/ui/drawer\";\n\nexport default function DrawerBasicPreview() {\n  return (\n    <Drawer>\n      <DrawerTrigger render={<Button variant=\"outline\" />}>\n        Open drawer\n      </DrawerTrigger>\n      <DrawerContent>\n        <DrawerHeader>\n          <DrawerTitle>Move project</DrawerTitle>\n          <DrawerDescription>Select a destination workspace.</DrawerDescription>\n        </DrawerHeader>\n        <DrawerFooter>\n          <Button>Continue</Button>\n        </DrawerFooter>\n      </DrawerContent>\n    </Drawer>\n  );\n}\n",
+    "dropdown-menu-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuTrigger,\n} from \"@/components/ui/dropdown-menu\";\n\nexport default function DropdownMenuBasicPreview() {\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger render={<Button variant=\"outline\" />}>\n        Open menu\n      </DropdownMenuTrigger>\n      <DropdownMenuContent>\n        <DropdownMenuGroup>\n          <DropdownMenuLabel>My account</DropdownMenuLabel>\n          <DropdownMenuItem>Profile</DropdownMenuItem>\n          <DropdownMenuItem>Settings</DropdownMenuItem>\n        </DropdownMenuGroup>\n        <DropdownMenuSeparator />\n        <DropdownMenuItem>Sign out</DropdownMenuItem>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  );\n}\n",
+    "empty-basic.tsx": "\"use client\";\nimport { Inbox } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Empty,\n  EmptyContent,\n  EmptyDescription,\n  EmptyHeader,\n  EmptyMedia,\n  EmptyTitle,\n} from \"@/components/ui/empty\";\n\nexport default function EmptyBasicPreview() {\n  return (\n    <Empty>\n      <EmptyHeader>\n        <EmptyMedia variant=\"icon\">\n          <Inbox />\n        </EmptyMedia>\n        <EmptyTitle>No messages</EmptyTitle>\n        <EmptyDescription>You are all caught up.</EmptyDescription>\n      </EmptyHeader>\n      <EmptyContent>\n        <Button size=\"sm\">Compose</Button>\n      </EmptyContent>\n    </Empty>\n  );\n}\n",
+    "field-basic.tsx": "\"use client\";\nimport { Field, FieldDescription, FieldLabel } from \"@/components/ui/field\";\nimport { Input } from \"@/components/ui/input\";\n\nexport default function FieldBasicPreview() {\n  return (\n    <Field>\n      <FieldLabel htmlFor=\"email-demo\">Email</FieldLabel>\n      <Input id=\"email-demo\" type=\"email\" placeholder=\"you@example.com\" />\n      <FieldDescription>\n        We will only use this for account notices.\n      </FieldDescription>\n    </Field>\n  );\n}\n",
+    "hover-card-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  HoverCard,\n  HoverCardContent,\n  HoverCardTrigger,\n} from \"@/components/ui/hover-card\";\n\nexport default function HoverCardBasicPreview() {\n  return (\n    <HoverCard>\n      <HoverCardTrigger render={<Button variant=\"link\" />}>\n        @edbn\n      </HoverCardTrigger>\n      <HoverCardContent>\n        <p className=\"font-medium\">edbn/ui</p>\n        <p className=\"mt-1 text-sm text-muted-foreground\">\n          Editable shadcn source built with Base UI.\n        </p>\n      </HoverCardContent>\n    </HoverCard>\n  );\n}\n",
+    "input-group-basic.tsx": "\"use client\";\nimport { Mail } from \"lucide-react\";\nimport {\n  InputGroup,\n  InputGroupAddon,\n  InputGroupInput,\n  InputGroupText,\n} from \"@/components/ui/input-group\";\n\nexport default function InputGroupBasicPreview() {\n  return (\n    <InputGroup>\n      <InputGroupAddon>\n        <InputGroupText>\n          <Mail />\n        </InputGroupText>\n      </InputGroupAddon>\n      <InputGroupInput aria-label=\"Email\" placeholder=\"you@example.com\" />\n    </InputGroup>\n  );\n}\n",
+    "input-otp-basic.tsx": "\"use client\";\nimport {\n  InputOTP,\n  InputOTPGroup,\n  InputOTPSeparator,\n  InputOTPSlot,\n} from \"@/components/ui/input-otp\";\n\nexport default function InputOtpBasicPreview() {\n  return (\n    <InputOTP maxLength={6}>\n      <InputOTPGroup>\n        {[0, 1, 2].map((index) => (\n          <InputOTPSlot key={index} index={index} />\n        ))}\n      </InputOTPGroup>\n      <InputOTPSeparator />\n      <InputOTPGroup>\n        {[3, 4, 5].map((index) => (\n          <InputOTPSlot key={index} index={index} />\n        ))}\n      </InputOTPGroup>\n    </InputOTP>\n  );\n}\n",
+    "input-basic.tsx": "\"use client\";\nimport { Input } from \"@/components/ui/input\";\n\nexport default function InputBasicPreview() {\n  return (\n    <Input\n      className=\"max-w-xs\"\n      aria-label=\"Email\"\n      placeholder=\"Email address\"\n    />\n  );\n}\n",
+    "item-basic.tsx": "\"use client\";\nimport { ChevronRight, FileText } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Item,\n  ItemActions,\n  ItemContent,\n  ItemDescription,\n  ItemMedia,\n  ItemTitle,\n} from \"@/components/ui/item\";\n\nexport default function ItemBasicPreview() {\n  return (\n    <Item variant=\"outline\">\n      <ItemMedia variant=\"icon\">\n        <FileText />\n      </ItemMedia>\n      <ItemContent>\n        <ItemTitle>Project brief</ItemTitle>\n        <ItemDescription>Updated two minutes ago</ItemDescription>\n      </ItemContent>\n      <ItemActions>\n        <Button size=\"icon-sm\" variant=\"ghost\" aria-label=\"Open\">\n          <ChevronRight />\n        </Button>\n      </ItemActions>\n    </Item>\n  );\n}\n",
+    "kbd-basic.tsx": "\"use client\";\nimport { Kbd, KbdGroup } from \"@/components/ui/kbd\";\n\nexport default function KbdBasicPreview() {\n  return (\n    <KbdGroup>\n      <Kbd>⌘</Kbd>\n      <Kbd>K</Kbd>\n    </KbdGroup>\n  );\n}\n",
+    "label-basic.tsx": "\"use client\";\nimport { Input } from \"@/components/ui/input\";\nimport { Label } from \"@/components/ui/label\";\n\nexport default function LabelBasicPreview() {\n  return (\n    <div className=\"grid gap-2\">\n      <Label htmlFor=\"label-input\">Project name</Label>\n      <Input id=\"label-input\" defaultValue=\"Acme\" />\n    </div>\n  );\n}\n",
+    "marker-basic.tsx": "\"use client\";\nimport { Check } from \"lucide-react\";\nimport { Marker, MarkerContent, MarkerIcon } from \"@/components/ui/marker\";\n\nexport default function MarkerBasicPreview() {\n  return (\n    <Marker variant=\"separator\">\n      <MarkerIcon>\n        <Check />\n      </MarkerIcon>\n      <MarkerContent>Today</MarkerContent>\n    </Marker>\n  );\n}\n",
+    "menubar-basic.tsx": "\"use client\";\nimport {\n  Menubar,\n  MenubarContent,\n  MenubarItem,\n  MenubarMenu,\n  MenubarSeparator,\n  MenubarTrigger,\n} from \"@/components/ui/menubar\";\n\nexport default function MenubarBasicPreview() {\n  return (\n    <Menubar>\n      <MenubarMenu>\n        <MenubarTrigger>File</MenubarTrigger>\n        <MenubarContent>\n          <MenubarItem>New tab</MenubarItem>\n          <MenubarItem>New window</MenubarItem>\n          <MenubarSeparator />\n          <MenubarItem>Print</MenubarItem>\n        </MenubarContent>\n      </MenubarMenu>\n      <MenubarMenu>\n        <MenubarTrigger>Edit</MenubarTrigger>\n        <MenubarContent>\n          <MenubarItem>Undo</MenubarItem>\n          <MenubarItem>Redo</MenubarItem>\n        </MenubarContent>\n      </MenubarMenu>\n    </Menubar>\n  );\n}\n",
+    "message-scroller-basic.tsx": "\"use client\";\nimport { Bubble, BubbleContent } from \"@/components/ui/bubble\";\nimport {\n  MessageScroller,\n  MessageScrollerButton,\n  MessageScrollerContent,\n  MessageScrollerItem,\n  MessageScrollerProvider,\n  MessageScrollerViewport,\n} from \"@/components/ui/message-scroller\";\n\nexport default function MessageScrollerBasicPreview() {\n  return (\n    <MessageScrollerProvider>\n      <MessageScroller className=\"h-64 rounded-xl border\">\n        <MessageScrollerViewport>\n          <MessageScrollerContent className=\"p-4\">\n            {Array.from({ length: 8 }, (_, index) => (\n              <MessageScrollerItem key={index} scrollAnchor={index === 7}>\n                <Bubble variant={index % 2 ? \"muted\" : \"outline\"}>\n                  <BubbleContent>Message {index + 1}</BubbleContent>\n                </Bubble>\n              </MessageScrollerItem>\n            ))}\n          </MessageScrollerContent>\n        </MessageScrollerViewport>\n        <MessageScrollerButton />\n      </MessageScroller>\n    </MessageScrollerProvider>\n  );\n}\n",
+    "message-basic.tsx": "\"use client\";\nimport { Avatar, AvatarFallback } from \"@/components/ui/avatar\";\nimport { Bubble, BubbleContent } from \"@/components/ui/bubble\";\nimport {\n  Message,\n  MessageAvatar,\n  MessageContent,\n  MessageFooter,\n  MessageHeader,\n} from \"@/components/ui/message\";\n\nexport default function MessageBasicPreview() {\n  return (\n    <Message>\n      <MessageAvatar>\n        <Avatar>\n          <AvatarFallback>AI</AvatarFallback>\n        </Avatar>\n      </MessageAvatar>\n      <MessageContent>\n        <MessageHeader>Assistant</MessageHeader>\n        <Bubble variant=\"muted\">\n          <BubbleContent>\n            Your component migration is ready to review.\n          </BubbleContent>\n        </Bubble>\n        <MessageFooter>Just now</MessageFooter>\n      </MessageContent>\n    </Message>\n  );\n}\n",
+    "native-select-basic.tsx": "\"use client\";\nimport {\n  NativeSelect,\n  NativeSelectOption,\n} from \"@/components/ui/native-select\";\n\nexport default function NativeSelectBasicPreview() {\n  return (\n    <NativeSelect aria-label=\"Role\" defaultValue=\"designer\">\n      <NativeSelectOption value=\"designer\">Designer</NativeSelectOption>\n      <NativeSelectOption value=\"engineer\">Engineer</NativeSelectOption>\n    </NativeSelect>\n  );\n}\n",
+    "navigation-menu-basic.tsx": "\"use client\";\nimport {\n  NavigationMenu,\n  NavigationMenuContent,\n  NavigationMenuItem,\n  NavigationMenuLink,\n  NavigationMenuList,\n  NavigationMenuTrigger,\n} from \"@/components/ui/navigation-menu\";\n\nexport default function NavigationMenuBasicPreview() {\n  return (\n    <NavigationMenu>\n      <NavigationMenuList>\n        <NavigationMenuItem>\n          <NavigationMenuTrigger>Products</NavigationMenuTrigger>\n          <NavigationMenuContent className=\"p-3\">\n            <NavigationMenuLink\n              href=\"#\"\n              className=\"block w-52 rounded-md p-3 hover:bg-muted\"\n            >\n              <span className=\"font-medium\">Components</span>\n              <span className=\"block text-sm text-muted-foreground\">\n                Browse all primitives.\n              </span>\n            </NavigationMenuLink>\n          </NavigationMenuContent>\n        </NavigationMenuItem>\n        <NavigationMenuItem>\n          <NavigationMenuLink href=\"#\" className=\"px-3 py-2 text-sm\">\n            Docs\n          </NavigationMenuLink>\n        </NavigationMenuItem>\n      </NavigationMenuList>\n    </NavigationMenu>\n  );\n}\n",
+    "pagination-basic.tsx": "\"use client\";\nimport {\n  Pagination,\n  PaginationContent,\n  PaginationItem,\n  PaginationLink,\n  PaginationNext,\n  PaginationPrevious,\n} from \"@/components/ui/pagination\";\n\nexport default function PaginationBasicPreview() {\n  return (\n    <Pagination>\n      <PaginationContent>\n        <PaginationItem>\n          <PaginationPrevious href=\"#\" />\n        </PaginationItem>\n        <PaginationItem>\n          <PaginationLink href=\"#\" isActive>\n            1\n          </PaginationLink>\n        </PaginationItem>\n        <PaginationItem>\n          <PaginationLink href=\"#\">2</PaginationLink>\n        </PaginationItem>\n        <PaginationItem>\n          <PaginationNext href=\"#\" />\n        </PaginationItem>\n      </PaginationContent>\n    </Pagination>\n  );\n}\n",
+    "popover-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport {\n  Popover,\n  PopoverContent,\n  PopoverDescription,\n  PopoverHeader,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@/components/ui/popover\";\n\nexport default function PopoverBasicPreview() {\n  return (\n    <Popover>\n      <PopoverTrigger render={<Button variant=\"outline\" />}>\n        Open popover\n      </PopoverTrigger>\n      <PopoverContent>\n        <PopoverHeader>\n          <PopoverTitle>Dimensions</PopoverTitle>\n          <PopoverDescription>Set the component size.</PopoverDescription>\n        </PopoverHeader>\n        <div className=\"mt-3 grid grid-cols-2 gap-2\">\n          <Input aria-label=\"Width\" defaultValue=\"100%\" />\n          <Input aria-label=\"Height\" defaultValue=\"auto\" />\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n}\n",
+    "progress-basic.tsx": "\"use client\";\nimport {\n  Progress,\n  ProgressLabel,\n  ProgressValue,\n} from \"@/components/ui/progress\";\n\nexport default function ProgressBasicPreview() {\n  return (\n    <Progress value={68}>\n      <ProgressLabel>Uploading</ProgressLabel>\n      <ProgressValue />\n    </Progress>\n  );\n}\n",
+    "questionnaire-basic.tsx": "\"use client\";\nimport {\n  Questionnaire,\n  QuestionnaireActions,\n  QuestionnaireChoice,\n  QuestionnaireChoices,\n  QuestionnaireDescription,\n  QuestionnaireItem,\n  QuestionnaireProgress,\n  QuestionnaireSubmit,\n  QuestionnaireTitle,\n} from \"@/components/ui/questionnaire\";\n\nexport default function QuestionnaireBasicPreview() {\n  return (\n    <Questionnaire\n      items={[\n        {\n          name: \"role\",\n          required: true,\n          choices: [{ value: \"design\" }, { value: \"engineering\" }],\n        },\n      ]}\n      defaultItem=\"role\"\n      onSubmit={(event) => event.preventDefault()}\n    >\n      <QuestionnaireProgress>Question 1 of 1</QuestionnaireProgress>\n      <QuestionnaireItem name=\"role\" required>\n        <QuestionnaireTitle>What is your role?</QuestionnaireTitle>\n        <QuestionnaireDescription>\n          Choose the closest match.\n        </QuestionnaireDescription>\n        <QuestionnaireChoices>\n          <QuestionnaireChoice value=\"design\">Design</QuestionnaireChoice>\n          <QuestionnaireChoice value=\"engineering\">\n            Engineering\n          </QuestionnaireChoice>\n        </QuestionnaireChoices>\n        <QuestionnaireActions>\n          <QuestionnaireSubmit>Finish</QuestionnaireSubmit>\n        </QuestionnaireActions>\n      </QuestionnaireItem>\n    </Questionnaire>\n  );\n}\n",
+    "radio-group-basic.tsx": "\"use client\";\nimport { Label } from \"@/components/ui/label\";\nimport { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\";\n\nexport default function RadioGroupBasicPreview() {\n  return (\n    <RadioGroup defaultValue=\"email\">\n      <div className=\"flex items-center gap-2\">\n        <RadioGroupItem value=\"email\" id=\"radio-email\" />\n        <Label htmlFor=\"radio-email\">Email</Label>\n      </div>\n      <div className=\"flex items-center gap-2\">\n        <RadioGroupItem value=\"sms\" id=\"radio-sms\" />\n        <Label htmlFor=\"radio-sms\">SMS</Label>\n      </div>\n    </RadioGroup>\n  );\n}\n",
+    "resizable-basic.tsx": "\"use client\";\nimport {\n  ResizableHandle,\n  ResizablePanel,\n  ResizablePanelGroup,\n} from \"@/components/ui/resizable\";\n\nexport default function ResizableBasicPreview() {\n  return (\n    <ResizablePanelGroup\n      orientation=\"horizontal\"\n      className=\"h-48 rounded-xl border\"\n    >\n      <ResizablePanel defaultSize={45}>\n        <div className=\"grid h-full place-items-center\">One</div>\n      </ResizablePanel>\n      <ResizableHandle withHandle />\n      <ResizablePanel defaultSize={55}>\n        <div className=\"grid h-full place-items-center\">Two</div>\n      </ResizablePanel>\n    </ResizablePanelGroup>\n  );\n}\n",
+    "scroll-area-basic.tsx": "\"use client\";\nimport { ScrollArea, ScrollBar } from \"@/components/ui/scroll-area\";\n\nexport default function ScrollAreaBasicPreview() {\n  return (\n    <ScrollArea className=\"h-56 w-64 rounded-xl border\">\n      <div className=\"space-y-3 p-4\">\n        {Array.from({ length: 12 }, (_, index) => (\n          <p key={index} className=\"text-sm\">\n            Scrollable item {index + 1}\n          </p>\n        ))}\n      </div>\n      <ScrollBar />\n    </ScrollArea>\n  );\n}\n",
+    "select-basic.tsx": "\"use client\";\nimport {\n  Select,\n  SelectContent,\n  SelectItem,\n  SelectTrigger,\n  SelectValue,\n} from \"@/components/ui/select\";\n\nexport default function SelectBasicPreview() {\n  return (\n    <Select defaultValue=\"light\">\n      <SelectTrigger>\n        <SelectValue placeholder=\"Theme\" />\n      </SelectTrigger>\n      <SelectContent>\n        <SelectItem value=\"light\">Light</SelectItem>\n        <SelectItem value=\"dark\">Dark</SelectItem>\n        <SelectItem value=\"system\">System</SelectItem>\n      </SelectContent>\n    </Select>\n  );\n}\n",
+    "separator-basic.tsx": "\"use client\";\nimport { Separator } from \"@/components/ui/separator\";\n\nexport default function SeparatorBasicPreview() {\n  return (\n    <div className=\"w-full max-w-xs\">\n      <p className=\"text-sm font-medium\">edbn/ui</p>\n      <p className=\"text-sm text-muted-foreground\">Base UI components</p>\n      <Separator className=\"my-4\" />\n      <div className=\"flex h-5 items-center gap-4 text-sm\">\n        <span>Docs</span>\n        <Separator orientation=\"vertical\" />\n        <span>Registry</span>\n      </div>\n    </div>\n  );\n}\n",
+    "sheet-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport { Input } from \"@/components/ui/input\";\nimport {\n  Sheet,\n  SheetContent,\n  SheetDescription,\n  SheetHeader,\n  SheetTitle,\n  SheetTrigger,\n} from \"@/components/ui/sheet\";\n\nexport default function SheetBasicPreview() {\n  return (\n    <Sheet>\n      <SheetTrigger render={<Button variant=\"outline\" />}>\n        Open sheet\n      </SheetTrigger>\n      <SheetContent>\n        <SheetHeader>\n          <SheetTitle>Project settings</SheetTitle>\n          <SheetDescription>\n            Update configuration for this project.\n          </SheetDescription>\n        </SheetHeader>\n        <div className=\"p-4\">\n          <Input aria-label=\"Project name\" defaultValue=\"Acme\" />\n        </div>\n      </SheetContent>\n    </Sheet>\n  );\n}\n",
+    "sidebar-basic.tsx": "\"use client\";\nimport type { CSSProperties } from \"react\";\nimport {\n  Sidebar,\n  SidebarContent,\n  SidebarGroup,\n  SidebarGroupContent,\n  SidebarGroupLabel,\n  SidebarInset,\n  SidebarMenu,\n  SidebarMenuButton,\n  SidebarMenuItem,\n  SidebarProvider,\n  SidebarTrigger,\n} from \"@/components/ui/sidebar\";\n\nexport default function SidebarBasicPreview() {\n  return (\n    <SidebarProvider\n      className=\"relative min-h-[280px] overflow-hidden rounded-xl border\"\n      style={\n        {\n          minHeight: 280,\n          \"--sidebar-width\": \"11rem\",\n          \"--sidebar-width-icon\": \"3rem\",\n        } as CSSProperties\n      }\n    >\n      <Sidebar collapsible=\"icon\" className=\"!absolute !h-full\">\n        <SidebarContent>\n          <SidebarGroup>\n            <SidebarGroupLabel>Workspace</SidebarGroupLabel>\n            <SidebarGroupContent>\n              <SidebarMenu>\n                {[\"Dashboard\", \"Projects\", \"Settings\"].map((label) => (\n                  <SidebarMenuItem key={label}>\n                    <SidebarMenuButton>{label}</SidebarMenuButton>\n                  </SidebarMenuItem>\n                ))}\n              </SidebarMenu>\n            </SidebarGroupContent>\n          </SidebarGroup>\n        </SidebarContent>\n      </Sidebar>\n      <SidebarInset className=\"min-h-0 p-3\">\n        <SidebarTrigger />\n        <div className=\"mt-8 text-sm text-muted-foreground\">Main content</div>\n      </SidebarInset>\n    </SidebarProvider>\n  );\n}\n",
+    "skeleton-basic.tsx": "\"use client\";\nimport { Skeleton } from \"@/components/ui/skeleton\";\n\nexport default function SkeletonBasicPreview() {\n  return (\n    <div className=\"flex items-center gap-3\">\n      <Skeleton className=\"size-11 rounded-full\" />\n      <div className=\"space-y-2\">\n        <Skeleton className=\"h-4 w-40\" />\n        <Skeleton className=\"h-3 w-28\" />\n      </div>\n    </div>\n  );\n}\n",
+    "slider-basic.tsx": "\"use client\";\nimport { Slider } from \"@/components/ui/slider\";\n\nexport default function SliderBasicPreview() {\n  return (\n    <Slider\n      className=\"w-64\"\n      defaultValue={[40]}\n      max={100}\n      step={1}\n      aria-label=\"Volume\"\n    />\n  );\n}\n",
+    "sonner-basic.tsx": "\"use client\";\nimport { toast as sonnerToast } from \"sonner\";\nimport { Button } from \"@/components/ui/button\";\nimport { Toaster } from \"@/components/ui/sonner\";\n\nexport default function SonnerBasicPreview() {\n  return (\n    <>\n      <Button onClick={() => sonnerToast.success(\"Changes saved\")}>\n        Show Sonner toast\n      </Button>\n      <Toaster />\n    </>\n  );\n}\n",
+    "spinner-basic.tsx": "\"use client\";\nimport { Spinner } from \"@/components/ui/spinner\";\n\nexport default function SpinnerBasicPreview() {\n  return (\n    <div className=\"flex items-center gap-2 text-sm text-muted-foreground\">\n      <Spinner /> Loading\n    </div>\n  );\n}\n",
+    "switch-basic.tsx": "\"use client\";\nimport { Label } from \"@/components/ui/label\";\nimport { Switch } from \"@/components/ui/switch\";\n\nexport default function SwitchBasicPreview() {\n  return (\n    <div className=\"flex items-center gap-2\">\n      <Switch id=\"airplane\" />\n      <Label htmlFor=\"airplane\">Airplane mode</Label>\n    </div>\n  );\n}\n",
+    "table-basic.tsx": "\"use client\";\nimport {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from \"@/components/ui/table\";\n\nexport default function TableBasicPreview() {\n  return (\n    <Table>\n      <TableHeader>\n        <TableRow>\n          <TableHead>Invoice</TableHead>\n          <TableHead>Status</TableHead>\n          <TableHead className=\"text-right\">Total</TableHead>\n        </TableRow>\n      </TableHeader>\n      <TableBody>\n        <TableRow>\n          <TableCell>INV-001</TableCell>\n          <TableCell>Paid</TableCell>\n          <TableCell className=\"text-right\">$250</TableCell>\n        </TableRow>\n        <TableRow>\n          <TableCell>INV-002</TableCell>\n          <TableCell>Pending</TableCell>\n          <TableCell className=\"text-right\">$150</TableCell>\n        </TableRow>\n      </TableBody>\n    </Table>\n  );\n}\n",
+    "tabs-basic.tsx": "\"use client\";\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from \"@/components/ui/tabs\";\n\nexport default function TabsBasicPreview() {\n  return (\n    <Tabs defaultValue=\"account\">\n      <TabsList>\n        <TabsTrigger value=\"account\">Account</TabsTrigger>\n        <TabsTrigger value=\"security\">Security</TabsTrigger>\n      </TabsList>\n      <TabsContent value=\"account\" className=\"rounded-lg border p-4\">\n        Manage account details.\n      </TabsContent>\n      <TabsContent value=\"security\" className=\"rounded-lg border p-4\">\n        Manage sign-in security.\n      </TabsContent>\n    </Tabs>\n  );\n}\n",
+    "textarea-basic.tsx": "\"use client\";\nimport { Textarea } from \"@/components/ui/textarea\";\n\nexport default function TextareaBasicPreview() {\n  return (\n    <Textarea\n      className=\"max-w-sm\"\n      aria-label=\"Message\"\n      placeholder=\"Write a message…\"\n    />\n  );\n}\n",
+    "toast-basic.tsx": "\"use client\";\nimport { Button } from \"@/components/ui/button\";\nimport { toast, Toaster as ToastToaster } from \"@/components/ui/toast\";\n\nfunction ToastDemo() {\n  return (\n    <ToastToaster>\n      <Button\n        onClick={() =>\n          toast.add({ title: \"Saved\", description: \"Your changes are live.\" })\n        }\n      >\n        Show toast\n      </Button>\n    </ToastToaster>\n  );\n}\n\nexport default function ToastBasicPreview() {\n  return <ToastDemo />;\n}\n",
+    "toggle-group-basic.tsx": "\"use client\";\nimport { Bold, Italic, Underline } from \"lucide-react\";\nimport { ToggleGroup, ToggleGroupItem } from \"@/components/ui/toggle-group\";\n\nexport default function ToggleGroupBasicPreview() {\n  return (\n    <ToggleGroup defaultValue={[\"bold\"]}>\n      <ToggleGroupItem value=\"bold\" aria-label=\"Bold\">\n        <Bold />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"italic\" aria-label=\"Italic\">\n        <Italic />\n      </ToggleGroupItem>\n      <ToggleGroupItem value=\"underline\" aria-label=\"Underline\">\n        <Underline />\n      </ToggleGroupItem>\n    </ToggleGroup>\n  );\n}\n",
+    "toggle-basic.tsx": "\"use client\";\nimport { Bold } from \"lucide-react\";\nimport { Toggle } from \"@/components/ui/toggle\";\n\nexport default function ToggleBasicPreview() {\n  return (\n    <Toggle aria-label=\"Toggle bold\">\n      <Bold />\n    </Toggle>\n  );\n}\n",
+    "tooltip-basic.tsx": "\"use client\";\nimport { Bell } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\n\nexport default function TooltipBasicPreview() {\n  return (\n    <Tooltip>\n      <TooltipTrigger\n        render={\n          <Button size=\"icon\" variant=\"outline\" aria-label=\"Notifications\" />\n        }\n      >\n        <Bell />\n      </TooltipTrigger>\n      <TooltipContent>Notifications</TooltipContent>\n    </Tooltip>\n  );\n}\n"
   },
   "components": {
     "accordion": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "accordion-basic.tsx"
     },
     "alert-dialog": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "alert-dialog-basic.tsx"
     },
     "alert": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "alert-basic.tsx"
     },
     "aspect-ratio": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "aspect-ratio-basic.tsx"
     },
     "attachment": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "attachment-basic.tsx"
     },
     "avatar": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "avatar-basic.tsx"
     },
     "badge": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "badge-basic.tsx"
     },
     "breadcrumb": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "breadcrumb-basic.tsx"
     },
     "bubble": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "bubble-basic.tsx"
     },
     "button-group": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "button-group-basic.tsx"
     },
     "button": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "button-basic.tsx"
     },
     "calendar": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "calendar-basic.tsx"
     },
     "card": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "card-basic.tsx"
     },
     "carousel": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "carousel-basic.tsx"
     },
     "chart": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "chart-basic.tsx"
     },
     "checkbox": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "checkbox-basic.tsx"
     },
     "collapsible": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "collapsible-basic.tsx"
     },
     "combobox": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "combobox-basic.tsx"
     },
     "command": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "command-basic.tsx"
     },
     "context-menu": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "context-menu-basic.tsx"
     },
     "dialog": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "dialog-basic.tsx"
     },
     "direction": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "direction-basic.tsx"
     },
     "drawer": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "drawer-basic.tsx"
     },
     "dropdown-menu": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "dropdown-menu-basic.tsx"
     },
     "empty": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "empty-basic.tsx"
     },
     "field": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "field-basic.tsx"
     },
     "hover-card": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "hover-card-basic.tsx"
     },
     "input-group": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "input-group-basic.tsx"
     },
     "input-otp": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "input-otp-basic.tsx"
     },
     "input": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "input-basic.tsx"
     },
     "item": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "item-basic.tsx"
     },
     "kbd": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "kbd-basic.tsx"
     },
     "label": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "label-basic.tsx"
     },
     "marker": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "marker-basic.tsx"
     },
     "menubar": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "menubar-basic.tsx"
     },
     "message-scroller": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "message-scroller-basic.tsx"
     },
     "message": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "message-basic.tsx"
     },
     "native-select": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "native-select-basic.tsx"
     },
     "navigation-menu": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "navigation-menu-basic.tsx"
     },
     "pagination": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "pagination-basic.tsx"
     },
     "popover": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "popover-basic.tsx"
     },
     "progress": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "progress-basic.tsx"
     },
     "questionnaire": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "questionnaire-basic.tsx"
     },
     "radio-group": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "radio-group-basic.tsx"
     },
     "resizable": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "resizable-basic.tsx"
     },
     "scroll-area": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "scroll-area-basic.tsx"
     },
     "select": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "select-basic.tsx"
     },
     "separator": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "separator-basic.tsx"
     },
     "sheet": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "sheet-basic.tsx"
     },
     "sidebar": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "sidebar-basic.tsx"
     },
     "skeleton": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "skeleton-basic.tsx"
     },
     "slider": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "slider-basic.tsx"
     },
     "sonner": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "sonner-basic.tsx"
     },
     "spinner": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "spinner-basic.tsx"
     },
     "switch": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "switch-basic.tsx"
     },
     "table": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "table-basic.tsx"
     },
     "tabs": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "tabs-basic.tsx"
     },
     "textarea": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "textarea-basic.tsx"
     },
     "toast": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "toast-basic.tsx"
     },
     "toggle-group": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "toggle-group-basic.tsx"
     },
     "toggle": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "toggle-basic.tsx"
     },
     "tooltip": {
       "demo": "basic",
-      "sourceFile": "stock-component-demo.tsx"
+      "sourceFile": "tooltip-basic.tsx"
     }
   }
 }

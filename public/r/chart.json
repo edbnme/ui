@@ -7,7 +7,7 @@
     "recharts@^3.8.0"
   ],
   "registryDependencies": [
-    "https://edbn.dev/r/edbn-base.json"
+    "https://ui.edbn.me/r/edbn-base.json"
   ],
   "files": [
     {

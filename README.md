@@ -19,8 +19,8 @@ These aren't just demos, they're meant to be copied into your project and custom
 Install the shared foundation, then add components by URL:
 
 ```bash
-npx shadcn@latest add https://edbn.dev/r/edbn-base.json
-npx shadcn@latest add https://edbn.dev/r/button.json
+npx shadcn@latest add https://ui.edbn.me/r/edbn-base.json
+npx shadcn@latest add https://ui.edbn.me/r/button.json
 ```
 
 Or copy the code directly from `components/ui/`.
