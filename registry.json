@@ -127,7 +127,8 @@
       },
       "meta": {
         "preset": "b2fA",
-        "generator": "shadcn@4.19.0"
+        "generator": "shadcn@4.19.0",
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -155,7 +156,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/accordion"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -183,7 +185,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/alert-dialog"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -210,7 +213,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/alert"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -234,7 +238,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/aspect-ratio"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -263,7 +268,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/attachment"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -290,7 +296,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/avatar"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -318,7 +325,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/badge"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -346,7 +354,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/breadcrumb"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -374,7 +383,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/bubble"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -403,7 +413,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/button-group"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -431,7 +442,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/button"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -460,7 +472,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/calendar"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -484,7 +497,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/card"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -513,7 +527,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/carousel"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -540,7 +555,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/chart"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -568,7 +584,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/checkbox"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -595,7 +612,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/collapsible"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -625,7 +643,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/combobox"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -655,7 +674,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/command"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -683,7 +703,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/context-menu"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -712,7 +733,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/dialog"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -739,7 +761,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/direction"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -766,7 +789,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/drawer"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -794,7 +818,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/dropdown-menu"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -821,7 +846,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/empty"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -850,7 +876,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/field"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -877,7 +904,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/hover-card"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -907,7 +935,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/input-group"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -935,7 +964,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/input-otp"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -962,7 +992,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/input"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -991,7 +1022,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/item"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1015,7 +1047,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/kbd"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1039,7 +1072,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/label"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1067,7 +1101,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/marker"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1096,7 +1131,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/menubar"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1126,7 +1162,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/message-scroller"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1150,7 +1187,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/message"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1177,7 +1215,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/native-select"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1206,7 +1245,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/navigation-menu"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1234,7 +1274,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/pagination"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1261,7 +1302,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/popover"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1288,7 +1330,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/progress"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1317,7 +1360,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/questionnaire"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1344,7 +1388,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/radio-group"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1371,7 +1416,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/resizable"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1398,7 +1444,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/scroll-area"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1426,7 +1473,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/select"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1453,7 +1501,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/separator"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1482,7 +1531,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/sheet"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1517,7 +1567,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/sidebar"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1541,7 +1592,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/skeleton"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1568,7 +1620,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/slider"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1597,7 +1650,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/sonner"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1624,7 +1678,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/spinner"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1651,7 +1706,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/switch"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1675,7 +1731,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/table"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1703,7 +1760,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/tabs"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1727,7 +1785,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/textarea"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1756,7 +1815,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/toast"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1785,7 +1845,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/toggle-group"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1813,7 +1874,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/toggle"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     },
     {
@@ -1840,7 +1902,8 @@
       "meta": {
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/tooltip"
-        }
+        },
+        "license": "https://ui.edbn.me/docs/components/license"
       }
     }
   ]

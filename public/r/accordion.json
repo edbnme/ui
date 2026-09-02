@@ -21,7 +21,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/base/accordion"
-    }
+    },
+    "license": "https://ui.edbn.me/docs/components/license"
   },
   "categories": [
     "ui"

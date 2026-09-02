@@ -22,7 +22,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/base/questionnaire"
-    }
+    },
+    "license": "https://ui.edbn.me/docs/components/license"
   },
   "categories": [
     "ui"

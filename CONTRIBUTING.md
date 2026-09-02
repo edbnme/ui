@@ -5,7 +5,7 @@ Thanks for considering contributing to ui.edbn.me.
 ## Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ui.edbn.me.git
+git clone https://github.com/kewonit/ui.edbn.me.git
 cd ui.edbn.me
 npm install
 npm run dev
@@ -78,6 +78,29 @@ Run tests before committing:
 npm run test
 npm run lint
 ```
+
+## Contribution license
+
+By submitting a pull request, patch, issue attachment, or other contribution
+to the public source, you represent that you have the legal authority to grant
+the rights in that contribution and that it does not include confidential
+information, trade secrets, malware, personal data that you are not authorized
+to disclose, or third-party material that you cannot lawfully contribute.
+
+You retain ownership of your contribution. You grant EDBN and its successors a
+perpetual, worldwide, irrevocable, royalty-free, transferable, sublicensable,
+and relicensable license to reproduce, prepare derivative works from, modify,
+publicly perform, publicly display, distribute, make, have made, use, offer to
+sell, sell, import, and otherwise exploit the contribution, alone or combined
+with other material, under the source-available dual license or any other
+license selected by EDBN. You also grant EDBN a patent license to the extent
+your contribution necessarily practices patent claims that you can license.
+
+EDBN may use, relicense, or distribute the contribution without additional
+payment, attribution, or approval unless a separate written agreement says
+otherwise. This contribution notice does not claim that the repository operates
+a separate signed CLA or DCO program. Third-party material remains subject to
+its original license and is not relicensed by this notice.
 
 ## Pull requests
 

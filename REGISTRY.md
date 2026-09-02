@@ -44,3 +44,12 @@ npm run registry:build
 ```
 
 4. Review the exact diff in `public/r/`.
+
+## Legal
+
+Public registry output and the source in this package are subject to the
+[Source-Available License](https://ui.edbn.me/docs/components/license). See the
+[Terms of Use](https://ui.edbn.me/terms), [Privacy Policy](https://ui.edbn.me/privacy),
+and [Legal Notice](https://ui.edbn.me/legal) for the hosted site and related
+services. Third-party dependencies and assets remain subject to their own
+licenses.

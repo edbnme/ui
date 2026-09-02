@@ -1,7 +1,7 @@
 {
   "name": "@edbn/ui",
   "version": "0.3.0",
-  "description": "Locally owned shadcn components built with Base UI.",
+  "description": "Public source-available shadcn components built with Base UI.",
   "author": "edbnme",
   "license": "SEE LICENSE IN LICENSE.md",
   "keywords": [

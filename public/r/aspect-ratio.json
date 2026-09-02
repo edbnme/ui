@@ -17,7 +17,8 @@
   "meta": {
     "links": {
       "docs": "https://ui.shadcn.com/docs/components/base/aspect-ratio"
-    }
+    },
+    "license": "https://ui.edbn.me/docs/components/license"
   },
   "categories": [
     "ui"

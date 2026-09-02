@@ -111,7 +111,8 @@
   },
   "meta": {
     "preset": "b2fA",
-    "generator": "shadcn@4.19.0"
+    "generator": "shadcn@4.19.0",
+    "license": "https://ui.edbn.me/docs/components/license"
   },
   "type": "registry:base",
   "config": {

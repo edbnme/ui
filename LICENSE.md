@@ -1,241 +1,211 @@
 # SOURCE-AVAILABLE LICENSE AGREEMENT
 
-**Copyright © edbn 2026**
-
-**ui.edbn.me** is dual-licensed for maximum flexibility while sustaining development:
-
-## 📋 License Options
-
-### Option 1: Non-Commercial License (FREE)
-
-Free for personal, educational, and non-commercial use under the terms below.
-
-### Option 2: Commercial License (PAID)
-
-Required for commercial use. [Contact us for pricing](mailto:license@edbn.me).
-
----
-
-## NON-COMMERCIAL LICENSE TERMS
-
-### Grant of License
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, modify, and distribute the Software for **NON-COMMERCIAL PURPOSES ONLY**, subject to the following conditions:
-
-### Permitted Non-Commercial Uses
-
-You MAY use the Software for free in the following scenarios:
-
-✅ **Personal Projects**: Portfolio sites, hobby projects, learning projects  
-✅ **Open Source Projects**: Non-commercial open source projects with compatible licenses  
-✅ **Educational Use**: Academic projects, student work, educational institutions  
-✅ **Research**: Academic and scientific research  
-✅ **Non-Profit Organizations**: Registered charitable and non-profit entities  
-✅ **Evaluation**: Testing and evaluation for potential commercial use (up to 30 days)
-
-### Commercial Use Requires Paid License
-
-You MUST obtain a commercial license if:
-
-❌ You use the Software in any commercial product or service  
-❌ Your organization generates revenue or operates for-profit  
-❌ You use it for client work, freelancing, or consulting (commercial projects)  
-❌ You use it in SaaS, PaaS, or hosted services  
-❌ You integrate it into commercial software  
-❌ Your application generates revenue through sales, subscriptions, or ads
-
-### Attribution Requirements
-
-You must retain all copyright notices and include the following attribution in your documentation or about page:
-
-```
-Built with ui.edbn.me
-Copyright © edbn 2026
-```
-
-### Source Code Availability
-
-While the source code is publicly available for transparency and contribution:
-
-- ✅ You MAY view, study, and fork the code for non-commercial use
-- ✅ You MAY contribute improvements back to the project
-- ❌ You may NOT redistribute the Software as a component library or design system
-- ❌ You may NOT create competing products or services using this code
-- ❌ You may NOT publish the Software to package registries under different names
-
-### Restrictions
-
-You may NOT:
-
-1. **Redistribute** the Software as a standalone component library or product
-2. **Create derivatives** for commercial redistribution or competing products
-3. **Remove or modify** copyright notices, licenses, or attributions
-4. **Use the name** "ui.edbn.me" or similar branding without permission
-5. **Sublicense** or sell the Software to third parties
-6. **Use** the Software for commercial purposes without a commercial license
-
-### Ownership and Intellectual Property
-
-- The Software is licensed, not sold
-- All intellectual property rights remain with the copyright holders
-- No patent, trademark, or other rights are granted except as explicitly stated
-
-### Contributions
-
-By contributing to this project, you agree that:
-
-- Your contributions are licensed under the same dual-license model
-- You have the right to submit the contribution
-- You grant the project maintainers a perpetual, worldwide license to use your contribution
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
-
----
-
-## COMMERCIAL LICENSE
-
-### When You Need a Commercial License
-
-A commercial license is REQUIRED if:
-
-- You use the Software in a commercial product, application, or service
-- Your company or organization is for-profit
-- You use the Software for client work or paid projects
-- You integrate the Software into commercial offerings
-- You generate revenue from applications using the Software
-- Your use case doesn't qualify as non-commercial
-
-### What a Commercial License Includes
-
-✅ **Commercial Use Rights**: Use in unlimited commercial projects and products  
-✅ **No Attribution Required**: Optional attribution (appreciated but not mandatory)  
-✅ **Priority Support**: Access to priority email support  
-✅ **License Compliance**: Peace of mind for commercial use  
-✅ **Future Updates**: Access to updates during license period
-
-### Pricing
-
-Commercial licenses are priced based on team size and usage:
-
-- **Solo Developer**: $99/year - 1 developer
-- **Small Team**: $299/year - Up to 5 developers
-- **Company**: $999/year - Up to 25 developers
-- **Enterprise**: Custom pricing - Unlimited developers + premium support
-
-[Get a Commercial License](https://ui.edbn.me/pricing) or [Contact Sales](mailto:license@edbn.me)
-
-### Commercial License Grants
-
-A commercial license grants you the right to:
-
-1. Use the Software in unlimited commercial applications
-2. Modify and create derivative works for commercial use
-3. Distribute applications incorporating the Software (in compiled form)
-4. Use the Software for client work and commercial projects
-5. Optionally omit attribution
-
-Commercial licenses DO NOT grant the right to:
-
-- Redistribute the Software source code publicly
-- Create competing component libraries or design systems
-- Sublicense or resell the Software
-- Provide the Software as a SaaS or hosted service to third parties
-
----
-
-## WARRANTY DISCLAIMER
-
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.**
-
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
----
-
-## LIMITATION OF LIABILITY
-
-TO THE MAXIMUM EXTENT PERMITTED BY LAW:
-
-- The authors and copyright holders shall not be liable for any damages
-- Total liability shall not exceed $100 USD or amounts paid for a commercial license
-- This applies to all claims regardless of the basis or nature of the claim
-
----
-
-## TERMINATION
-
-### Automatic Termination
-
-Your license terminates automatically if you:
-
-- Violate any terms of this license
-- Fail to pay commercial license fees (if applicable)
-- Use the Software commercially without a commercial license
-- Redistribute the Software in violation of these terms
-
-### Effect of Termination
-
-Upon termination, you must:
-
-- Cease all use of the Software
-- Delete all copies of the Software
-- Cease distribution of any applications incorporating the Software
-
----
-
-## GENERAL PROVISIONS
-
-**Governing Law**: This Agreement is governed by the laws of the United States.
-
-**Severability**: If any provision is found invalid, the remaining provisions continue in effect.
-
-**No Waiver**: Failure to enforce any right does not waive that right.
-
-**Entire Agreement**: This Agreement constitutes the entire agreement regarding the Software.
-
-**Modifications**: The licensor reserves the right to modify these terms. Continued use constitutes acceptance of modified terms.
-
----
-
-## FREQUENTLY ASKED QUESTIONS
-
-### Can I use this for my portfolio site?
-
-Yes! Personal portfolio sites are non-commercial use.
-
-### Can I use this for client projects?
-
-Only if you have a commercial license. Client work is commercial use.
-
-### Can I use this for my startup?
-
-No, unless you have a commercial license. Startups are commercial entities.
-
-### Can I contribute to the project?
-
-Yes! We welcome contributions. See [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-### What if I'm not sure if my use is commercial?
-
-Contact us at [license@edbn.me](mailto:license@edbn.me) for clarification.
-
-### Can I try it before buying a commercial license?
-
-Yes! You have 30 days to evaluate for potential commercial use.
-
-### What happens if I go commercial?
-
-Purchase a commercial license before launching your commercial product.
-
----
-
-## CONTACT
-
-**Licensing Questions**: [license@edbn.me](mailto:license@edbn.me)  
-**Website**: [https://ui.edbn.me](https://ui.edbn.me)  
-**GitHub**: [https://github.com/edbnme/ui.edbn.me](https://github.com/edbnme/ui.edbn.me)  
-**Commercial Licenses**: [https://ui.edbn.me/pricing](https://ui.edbn.me/pricing)
-
----
-
-**Last Updated**: December 2026  
-**Copyright © 2024-2026 edbn/ui contributors. All rights reserved.**
+Copyright © 2024-2026 EDBN. All rights reserved.
+
+Effective August 9, 2026.
+
+This Source-Available License Agreement (the "Agreement") is between EDBN
+("EDBN" or "Licensor") and the person or entity that accesses, downloads,
+installs, copies, modifies, or uses the Licensed Materials ("you" or
+"Licensee"). By doing any of those acts, you accept this Agreement. If you do
+not accept it, do not access, download, install, copy, modify, or use the
+Licensed Materials.
+
+## 1. Licensed Materials
+
+"Licensed Materials" means only the public source files, registry output,
+MCP server files, and technical documentation that EDBN distributes as part of
+the edbn/ui public packages or identifies as licensed at the time you obtain
+them. This includes public OSS components, registry output, the MCP package,
+published code examples, and technical documentation bundled with those
+distributables.
+
+Licensed Materials do not include the private website application,
+authentication, analytics, billing, infrastructure, tests, deployment
+configuration, unpublished source, EDBN branding, trademarks, logos, marketing
+copy, screenshots, recordings, or other editorial material unless a separate
+written notice expressly includes that material. Dependencies, fonts, icons,
+images, datasets, and other third-party material are not included and remain
+subject to their own licenses.
+
+## 2. Free Noncommercial License
+
+Subject to this Agreement, EDBN grants you a worldwide, non-exclusive,
+royalty-free license to use, reproduce, modify, and distribute the Licensed
+Materials solely for noncommercial purposes. Permitted uses include personal,
+educational, research, nonprofit, evaluation, and noncommercial internal use.
+
+You may incorporate the Licensed Materials into a noncommercial application
+and may publish the Licensed Materials as source only when they are part of a
+larger application repository that is not distributed primarily to make the
+Licensed Materials available for reuse. You may distribute compiled or bundled
+versions as part of that application. You must preserve this license and all
+copyright, attribution, and third-party notices.
+
+This license includes a reasonable evaluation period of up to 30 consecutive
+days to decide whether to obtain the Pro commercial license. Evaluation copies
+may not be used to operate a revenue-generating product or service.
+
+## 3. Pro Commercial License
+
+While you have an active Pro subscription purchased through EDBN's authorized
+checkout, EDBN grants you a worldwide, non-exclusive, royalty-free license to
+use, reproduce, modify, compile, and distribute Licensed Materials obtained
+during the active subscription in commercial applications, client work,
+internal business systems, and hosted applications.
+
+The license for each copy lawfully obtained during the active subscription,
+including derivative works created from that copy, continues after the
+subscription is cancelled or expires, provided you comply with this Agreement.
+Cancellation or expiry ends access to new Pro-only materials, updates, and
+subscription benefits. It does not revoke rights in copies previously obtained
+under this section.
+
+You may provide source to your employees, contractors, and a client only as
+reasonably necessary to create, maintain, or use the authorized application,
+subject to confidentiality and use restrictions that protect the Licensed
+Materials. You may distribute an application repository containing the
+Licensed Materials only when the repository is a complete application and is
+not distributed primarily as a reusable library, design system, registry, or
+source archive.
+
+## 4. Restrictions
+
+You must not:
+
+1. sell, rent, lease, sublicense, transfer, or redistribute the Licensed
+   Materials as a standalone product;
+2. create or distribute a component library, design system, registry,
+   template pack, marketplace, or competing product whose primary purpose is
+   to make the Licensed Materials available for reuse;
+3. mirror or republish EDBN's registry, MCP service, source archive, or public
+   distribution channel;
+4. publish the Licensed Materials under another name or remove, alter, or
+   obscure required notices;
+5. use EDBN's name, marks, logos, trade dress, or branding to imply
+   sponsorship, affiliation, or endorsement;
+6. use the Licensed Materials unlawfully or in breach of a third-party right;
+7. extract private source, credentials, personal data, or third-party assets
+   through the Licensed Materials; or
+8. use an MCP credential or hosted service to bypass access controls, evade
+   limits, reconstruct restricted material, or provide unauthorized access.
+
+## 5. Ownership and Third-Party Rights
+
+The Licensed Materials are licensed, not sold. EDBN and its licensors retain
+all right, title, and interest in the Licensed Materials. You retain ownership
+of your independent application code and modifications, subject to EDBN's
+rights in the underlying Licensed Materials and the rights of third parties.
+
+This Agreement grants no patent, trademark, trade dress, publicity, privacy,
+database, or other right except the limited copyright rights expressly stated
+here. Third-party licenses and notices control the third-party material to
+which they apply.
+
+## 6. Contributions
+
+Contributions are governed by the contribution terms published in the
+repository. You must have authority to submit a contribution, and it must not
+include confidential information, trade secrets, malware, personal data that
+you lack permission to disclose, or third-party material that you are not
+authorized to license. No contribution changes the ownership or license of
+third-party material.
+
+## 7. Fees and Related Terms
+
+The Pro subscription, pricing, billing, cancellation, refunds, taxes, account
+access, and hosted-service terms are governed by the Terms of Use and the terms
+shown at checkout. The current licensing page is available at
+https://ui.edbn.me/docs/components/license. Licensing questions may be sent to
+license@edbn.me.
+
+## 8. Disclaimer of Warranties
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE LICENSED MATERIALS ARE PROVIDED
+"AS IS" AND "AS AVAILABLE", WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, SECURITY, OR QUIET ENJOYMENT.
+EDBN DOES NOT WARRANT THAT THE LICENSED MATERIALS WILL BE ERROR-FREE,
+UNINTERRUPTED, SECURE, ACCESSIBLE, OR SUITABLE FOR YOUR APPLICATION.
+
+## 9. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, EDBN AND ITS AFFILIATES, OFFICERS,
+DIRECTORS, EMPLOYEES, CONTRACTORS, SUPPLIERS, AND LICENSORS WILL NOT BE LIABLE
+FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE
+DAMAGES, OR FOR LOST PROFITS, REVENUE, DATA, GOODWILL, BUSINESS OPPORTUNITY,
+OR BUSINESS INTERRUPTION, ARISING FROM OR RELATED TO THIS AGREEMENT OR THE
+LICENSED MATERIALS.
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, EDBN'S TOTAL AGGREGATE LIABILITY FOR
+ALL CLAIMS ARISING FROM OR RELATED TO THIS AGREEMENT OR THE LICENSED MATERIALS
+WILL NOT EXCEED THE GREATER OF USD 100 OR THE AMOUNTS YOU PAID TO EDBN FOR THE
+RELEVANT LICENSE DURING THE 12 MONTHS BEFORE THE EVENT GIVING RISE TO THE
+CLAIM. Nothing in this Agreement limits liability that applicable law does not
+permit to be limited.
+
+## 10. Indemnification
+
+To the extent permitted by law, you will defend, indemnify, and hold harmless
+EDBN and its affiliates, officers, directors, employees, contractors,
+suppliers, and licensors from claims, damages, liabilities, judgments,
+settlements, and reasonable legal fees arising from your breach of this
+Agreement, unlawful use of the Licensed Materials, or application, service,
+content, or modification that you create or distribute. EDBN will give
+reasonably prompt notice of a claim and reasonable cooperation at your expense.
+You may not settle a claim in a way that admits fault by or imposes an
+obligation on EDBN without EDBN's prior written consent.
+
+## 11. Termination
+
+The noncommercial license and any Pro license continue until terminated. EDBN
+may terminate this Agreement immediately for an incurable breach and may
+terminate it for a curable material breach if you do not cure the breach within
+30 days after written notice. Pro subscription expiry or cancellation alone
+does not terminate the rights in copies obtained during the active subscription
+under Section 3.
+
+If this Agreement is terminated because of your breach, you must stop using and
+distributing the affected Licensed Materials and delete prohibited copies in
+your possession or control. Sections concerning ownership, restrictions,
+third-party rights, fees owed, disclaimers, liability, indemnification,
+termination effects, and general provisions survive termination.
+
+## 12. General Provisions
+
+This Agreement is governed by the laws applicable in the jurisdiction where
+EDBN maintains its principal place of business, without regard to conflict of
+law rules. Subject to mandatory consumer law, the courts of competent
+jurisdiction in that place have exclusive jurisdiction over disputes arising
+from this Agreement.
+
+The Terms of Use govern the hosted Service, accounts, subscriptions, billing,
+and payments. The Privacy Policy governs personal information. Third-party
+licenses govern third-party material. A written item-specific license or signed
+agreement controls over this Agreement for the material it expressly covers.
+This Agreement otherwise controls the Licensed Materials.
+
+EDBN may update this Agreement prospectively by publishing a revised version
+with a new effective date. A revised version does not retroactively remove
+rights in copies lawfully obtained under an earlier version, except that a
+material breach may terminate those rights. No delay or failure to enforce a
+provision is a waiver. If a provision is unenforceable, it will be limited to
+the minimum extent necessary and the rest will remain in effect.
+
+You may not assign this Agreement without EDBN's prior written consent. EDBN
+may assign it in connection with a reorganization, financing, merger, sale, or
+transfer of the relevant rights. The parties are independent contractors. This
+Agreement does not create an agency, partnership, employment, fiduciary, or
+third-party beneficiary relationship.
+
+Legal notices concerning this Agreement may be sent to legal@edbn.me.
+Copyright and rights reports may be sent to copyright@edbn.me. Privacy requests
+may be sent to privacy@edbn.me. Nothing in this Agreement represents that EDBN
+has registered a designated DMCA agent or qualifies for a statutory safe harbor.
+
+## 13. Related Documents
+
+- [License](https://ui.edbn.me/docs/components/license)
+- [Terms of Use](https://ui.edbn.me/terms)
+- [Privacy Policy](https://ui.edbn.me/privacy)
+- [Legal Notice](https://ui.edbn.me/legal)

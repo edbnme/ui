@@ -1,9 +1,9 @@
 # edbn/ui
 
 [![Version](https://img.shields.io/badge/version-0.2.5-blue.svg)](https://github.com/edbnme/ui.edbn.me/releases)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+[![License](https://img.shields.io/badge/license-source--available-blue.svg)](LICENSE.md)
 
-Locally owned shadcn component source generated from the Base UI + Nova + neutral + Lucide preset. The supported baseline is React 19 and Tailwind CSS 4.
+Public source-available shadcn components generated from the Base UI + Nova + neutral + Lucide preset. The supported baseline is React 19 and Tailwind CSS 4.
 
 These aren't just demos, they're meant to be copied into your project and customized.
 
@@ -27,7 +27,7 @@ Or copy the code directly from `components/ui/`.
 
 ## License
 
-Free for personal and open source projects. Commercial use requires a license. See [LICENSE.md](LICENSE.md).
+Free noncommercial use is available under the dual license. Commercial use requires an active Pro license. See [LICENSE.md](LICENSE.md), the [online license](https://ui.edbn.me/docs/components/license), the [Terms of Use](https://ui.edbn.me/terms), the [Privacy Policy](https://ui.edbn.me/privacy), and the [Legal Notice](https://ui.edbn.me/legal).
 
 ## Docs
 
