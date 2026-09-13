@@ -1204,10 +1204,10 @@
       "description": "The stock shadcn Sheet component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 4619,
-        "gzipped": 1224,
-        "selfSize": 4619,
-        "selfGzip": 1224
+        "minified": 4692,
+        "gzipped": 1248,
+        "selfSize": 4692,
+        "selfGzip": 1248
       },
       "dependencies": [
         {
@@ -1233,10 +1233,10 @@
       "description": "The stock shadcn Sidebar component for the Base UI/Nova preset.",
       "variant": "static",
       "sizes": {
-        "minified": 21913,
-        "gzipped": 4950,
-        "selfSize": 21913,
-        "selfGzip": 4950
+        "minified": 22008,
+        "gzipped": 4970,
+        "selfSize": 22008,
+        "selfGzip": 4970
       },
       "dependencies": [
         {
