@@ -24,7 +24,7 @@
     },
     {
       "path": "hooks/use-mobile.ts",
-      "content": "import * as React from \"react\"\n\nimport { useUIWindow } from \"@/lib/ui-environment\"\n\nconst MOBILE_BREAKPOINT = 768\n\nexport function useIsMobile() {\n  const ownerWindow = useUIWindow()\n  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)\n\n  React.useEffect(() => {\n    if (!ownerWindow) return\n\n    const mql = ownerWindow.matchMedia(\n      `(max-width: ${MOBILE_BREAKPOINT - 1}px)`\n    )\n    const onChange = () => {\n      setIsMobile(ownerWindow.innerWidth < MOBILE_BREAKPOINT)\n    }\n    mql.addEventListener(\"change\", onChange)\n    setIsMobile(ownerWindow.innerWidth < MOBILE_BREAKPOINT)\n    return () => mql.removeEventListener(\"change\", onChange)\n  }, [ownerWindow])\n\n  return !!isMobile\n}\n",
+      "content": "import * as React from \"react\"\n\nimport { useUIWindow } from \"@/lib/ui-environment\"\n\nconst MOBILE_BREAKPOINT = 768\n\nexport function useIsMobile() {\n  const ownerWindow = useUIWindow()\n  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)\n\n  React.useEffect(() => {\n    if (!ownerWindow) return\n\n    const mql = ownerWindow.matchMedia(\n      `(max-width: ${MOBILE_BREAKPOINT - 1}px)`\n    )\n    if (!mql) return\n\n    const onChange = () => {\n      setIsMobile(ownerWindow.innerWidth < MOBILE_BREAKPOINT)\n    }\n    mql.addEventListener(\"change\", onChange)\n    setIsMobile(ownerWindow.innerWidth < MOBILE_BREAKPOINT)\n    return () => mql.removeEventListener(\"change\", onChange)\n  }, [ownerWindow])\n\n  return !!isMobile\n}\n",
       "type": "registry:hook",
       "target": "@hooks/use-mobile.ts"
     }
