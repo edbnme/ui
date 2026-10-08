@@ -5,6 +5,9 @@ import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 
 import {
+  PopupMotionProvider,
+  usePopupMotion,
+  usePopupMotionState,
   useUIDocument,
   usePortalContainer,
   useUIEnvironmentActive,
@@ -21,12 +24,19 @@ const PreviewContextMenuContext = React.createContext<PreviewContextMenu | null>
   null
 )
 
-function ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props) {
+function ContextMenu({ open, onOpenChange, ...props }: ContextMenuPrimitive.Root.Props) {
   const environmentActive = useUIEnvironmentActive()
+  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
 
-  if (environmentActive) return <PreviewContextMenuRoot {...props} />
-
-  return <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
+  return (
+    <PopupMotionProvider value={motion}>
+      {environmentActive ? (
+        <PreviewContextMenuRoot open={open} onOpenChange={handleOpenChange} {...props} />
+      ) : (
+        <ContextMenuPrimitive.Root data-slot="context-menu" open={open} onOpenChange={handleOpenChange} {...props} />
+      )}
+    </PopupMotionProvider>
+  )
 }
 
 function PreviewContextMenuRoot({ ...props }: ContextMenuPrimitive.Root.Props) {
@@ -75,6 +85,8 @@ function ContextMenuPortal({
 function ContextMenuTrigger({
   className,
   onContextMenu,
+  onKeyDown,
+  tabIndex = 0,
   ...props
 }: ContextMenuPrimitive.Trigger.Props) {
   const environmentActive = useUIEnvironmentActive()
@@ -82,10 +94,31 @@ function ContextMenuTrigger({
   const trigger = (
     <ContextMenuPrimitive.Trigger
       data-slot="context-menu-trigger"
-      className={cn("select-none", className)}
+      tabIndex={tabIndex}
+      aria-haspopup="menu"
+      aria-keyshortcuts="Shift+F10"
+      className={cn("select-none outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground", className)}
       onContextMenu={(event) => {
         previewContext?.setPoint(event.clientX, event.clientY)
         onContextMenu?.(event)
+      }}
+      onKeyDown={(event) => {
+        onKeyDown?.(event)
+        if (event.defaultPrevented) return
+        const shortcut = event.key === "ContextMenu" || (event.shiftKey && event.key === "F10")
+        const activation = event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")
+        if (!shortcut && !activation) return
+        event.preventDefault()
+        event.preventBaseUIHandler()
+        const rect = event.currentTarget.getBoundingClientRect()
+        const ownerWindow = event.currentTarget.ownerDocument.defaultView!
+        event.currentTarget.dispatchEvent(new ownerWindow.MouseEvent("contextmenu", {
+          bubbles: true,
+          cancelable: true,
+          button: 0,
+          clientX: rect.left + rect.width / 2,
+          clientY: rect.top + rect.height / 2,
+        }))
       }}
       {...props}
     />
@@ -115,6 +148,7 @@ function ContextMenuContent({
     "align" | "alignOffset" | "side" | "sideOffset"
   >) {
   const portalContainer = usePortalContainer()
+  const motion = usePopupMotion()
   const environmentActive = useUIEnvironmentActive()
   const ownerDocument = useUIDocument()
   const previewContext = React.useContext(PreviewContextMenuContext)
@@ -134,7 +168,8 @@ function ContextMenuContent({
       >
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
-          className={cn("z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover p-1 text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 outline-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95", className )}
+          data-motion={motion}
+          className={cn("z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-xl bg-popover p-1.5 text-popover-foreground shadow-[0_1px_1px_rgb(16_16_20_/_0.04),0_8px_20px_-8px_rgb(16_16_20_/_0.16)] border border-border outline-none transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none", className )}
           {...props}
         />
       </ContextMenuPrimitive.Positioner>
@@ -183,7 +218,7 @@ function ContextMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "group/context-menu-item relative flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 focus:*:[svg]:text-accent-foreground data-[variant=destructive]:*:[svg]:text-destructive",
+        "group/context-menu-item relative flex cursor-default items-center gap-1.5 min-h-9 rounded-lg px-2.5 py-2 [@media(pointer:coarse)]:min-h-11 text-sm outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive dark:data-[variant=destructive]:focus:bg-destructive/20 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 focus:*:[svg]:text-accent-foreground data-[variant=destructive]:*:[svg]:text-destructive",
         className
       )}
       {...props}
@@ -191,9 +226,13 @@ function ContextMenuItem({
   )
 }
 
-function ContextMenuSub({ ...props }: ContextMenuPrimitive.SubmenuRoot.Props) {
+function ContextMenuSub({ open, onOpenChange, ...props }: ContextMenuPrimitive.SubmenuRoot.Props) {
+  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
+
   return (
-    <ContextMenuPrimitive.SubmenuRoot data-slot="context-menu-sub" {...props} />
+    <PopupMotionProvider value={motion}>
+      <ContextMenuPrimitive.SubmenuRoot data-slot="context-menu-sub" open={open} onOpenChange={handleOpenChange} {...props} />
+    </PopupMotionProvider>
   )
 }
 
@@ -210,7 +249,7 @@ function ContextMenuSubTrigger({
       data-slot="context-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "flex cursor-default items-center gap-1.5 rounded-md px-1.5 py-1 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-open:bg-accent data-open:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "flex cursor-default items-center gap-1.5 min-h-9 rounded-lg px-2.5 py-2 [@media(pointer:coarse)]:min-h-11 text-sm outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-open:bg-accent data-open:text-accent-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -248,7 +287,7 @@ function ContextMenuCheckboxItem({
       data-slot="context-menu-checkbox-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-1.5 min-h-9 rounded-lg py-2 pr-9 pl-2.5 [@media(pointer:coarse)]:min-h-11 text-sm outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       checked={checked}
@@ -289,7 +328,7 @@ function ContextMenuRadioItem({
       data-slot="context-menu-radio-item"
       data-inset={inset}
       className={cn(
-        "relative flex cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "relative flex cursor-default items-center gap-1.5 min-h-9 rounded-lg py-2 pr-9 pl-2.5 [@media(pointer:coarse)]:min-h-11 text-sm outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground select-none focus:bg-accent focus:text-accent-foreground data-inset:pl-7 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

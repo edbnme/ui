@@ -48,7 +48,7 @@ function BreadcrumbLink({
     defaultTagName: "a",
     props: mergeProps<"a">(
       {
-        className: cn("transition-colors hover:text-foreground", className),
+        className: cn("transition-colors [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground", className),
       },
       props
     ),

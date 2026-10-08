@@ -2,9 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "collapsible",
   "title": "Collapsible",
-  "description": "The stock shadcn Collapsible component for the Base UI/Nova preset.",
+  "description": "The edbn Collapsible component with the shared Instrument Sans and paper surface foundation.",
   "dependencies": [
-    "@base-ui/react@^1.7.0"
+    "@base-ui/react@^1.8.0"
   ],
   "registryDependencies": [
     "https://ui.edbn.me/r/edbn-base.json"

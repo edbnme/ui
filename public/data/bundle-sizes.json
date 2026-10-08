@@ -10,13 +10,13 @@
     "static/accordion": {
       "name": "accordion",
       "title": "Accordion",
-      "description": "The stock shadcn Accordion component for the Base UI/Nova preset.",
+      "description": "The edbn Accordion component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2598,
-        "gzipped": 835,
-        "selfSize": 2598,
-        "selfGzip": 835
+        "minified": 2591,
+        "gzipped": 811,
+        "selfSize": 2591,
+        "selfGzip": 811
       },
       "dependencies": [
         {
@@ -39,13 +39,13 @@
     "static/alert-dialog": {
       "name": "alert-dialog",
       "title": "Alert Dialog",
-      "description": "The stock shadcn Alert Dialog component for the Base UI/Nova preset.",
+      "description": "The edbn Alert Dialog component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5452,
-        "gzipped": 1343,
-        "selfSize": 5452,
-        "selfGzip": 1343
+        "minified": 6489,
+        "gzipped": 1625,
+        "selfSize": 6489,
+        "selfGzip": 1625
       },
       "dependencies": [
         {
@@ -61,13 +61,13 @@
     "static/alert": {
       "name": "alert",
       "title": "Alert",
-      "description": "The stock shadcn Alert component for the Base UI/Nova preset.",
+      "description": "The edbn Alert component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2048,
-        "gzipped": 731,
-        "selfSize": 2048,
-        "selfGzip": 731
+        "minified": 2149,
+        "gzipped": 766,
+        "selfSize": 2149,
+        "selfGzip": 766
       },
       "dependencies": [
         {
@@ -83,7 +83,7 @@
     "static/aspect-ratio": {
       "name": "aspect-ratio",
       "title": "Aspect Ratio",
-      "description": "The stock shadcn Aspect Ratio component for the Base UI/Nova preset.",
+      "description": "The edbn Aspect Ratio component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 403,
@@ -97,13 +97,13 @@
     "static/attachment": {
       "name": "attachment",
       "title": "Attachment",
-      "description": "The stock shadcn Attachment component for the Base UI/Nova preset.",
+      "description": "The edbn Attachment component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 6105,
-        "gzipped": 1600,
-        "selfSize": 6105,
-        "selfGzip": 1600
+        "minified": 6223,
+        "gzipped": 1673,
+        "selfSize": 6223,
+        "selfGzip": 1673
       },
       "dependencies": [
         {
@@ -126,7 +126,7 @@
     "static/avatar": {
       "name": "avatar",
       "title": "Avatar",
-      "description": "The stock shadcn Avatar component for the Base UI/Nova preset.",
+      "description": "The edbn Avatar component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 3038,
@@ -148,13 +148,13 @@
     "static/badge": {
       "name": "badge",
       "title": "Badge",
-      "description": "The stock shadcn Badge component for the Base UI/Nova preset.",
+      "description": "The edbn Badge component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1925,
-        "gzipped": 784,
-        "selfSize": 1925,
-        "selfGzip": 784
+        "minified": 2417,
+        "gzipped": 853,
+        "selfSize": 2417,
+        "selfGzip": 853
       },
       "dependencies": [
         {
@@ -177,13 +177,13 @@
     "static/breadcrumb": {
       "name": "breadcrumb",
       "title": "Breadcrumb",
-      "description": "The stock shadcn Breadcrumb component for the Base UI/Nova preset.",
+      "description": "The edbn Breadcrumb component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2586,
-        "gzipped": 783,
-        "selfSize": 2586,
-        "selfGzip": 783
+        "minified": 2627,
+        "gzipped": 811,
+        "selfSize": 2627,
+        "selfGzip": 811
       },
       "dependencies": [
         {
@@ -206,13 +206,13 @@
     "static/bubble": {
       "name": "bubble",
       "title": "Bubble",
-      "description": "The stock shadcn Bubble component for the Base UI/Nova preset.",
+      "description": "The edbn Bubble component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 4809,
-        "gzipped": 1317,
-        "selfSize": 4809,
-        "selfGzip": 1317
+        "minified": 4972,
+        "gzipped": 1371,
+        "selfSize": 4972,
+        "selfGzip": 1371
       },
       "dependencies": [
         {
@@ -235,7 +235,7 @@
     "static/button-group": {
       "name": "button-group",
       "title": "Button Group",
-      "description": "The stock shadcn Button Group component for the Base UI/Nova preset.",
+      "description": "The edbn Button Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 2480,
@@ -264,13 +264,13 @@
     "static/button": {
       "name": "button",
       "title": "Button",
-      "description": "The stock shadcn Button component for the Base UI/Nova preset.",
+      "description": "The edbn Button component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 4277,
-        "gzipped": 1318,
-        "selfSize": 4277,
-        "selfGzip": 1318
+        "minified": 5070,
+        "gzipped": 1421,
+        "selfSize": 5070,
+        "selfGzip": 1421
       },
       "dependencies": [
         {
@@ -293,13 +293,13 @@
     "static/calendar": {
       "name": "calendar",
       "title": "Calendar",
-      "description": "The stock shadcn Calendar component for the Base UI/Nova preset.",
+      "description": "The edbn Calendar component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 8268,
-        "gzipped": 2124,
-        "selfSize": 8268,
-        "selfGzip": 2124
+        "minified": 8428,
+        "gzipped": 2175,
+        "selfSize": 8428,
+        "selfGzip": 2175
       },
       "dependencies": [
         {
@@ -322,13 +322,13 @@
     "static/card": {
       "name": "card",
       "title": "Card",
-      "description": "The stock shadcn Card component for the Base UI/Nova preset.",
+      "description": "The edbn Card component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2630,
-        "gzipped": 741,
-        "selfSize": 2630,
-        "selfGzip": 741
+        "minified": 2618,
+        "gzipped": 740,
+        "selfSize": 2618,
+        "selfGzip": 740
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -336,13 +336,13 @@
     "static/carousel": {
       "name": "carousel",
       "title": "Carousel",
-      "description": "The stock shadcn Carousel component for the Base UI/Nova preset.",
+      "description": "The edbn Carousel component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5611,
-        "gzipped": 1625,
-        "selfSize": 5611,
-        "selfGzip": 1625
+        "minified": 6603,
+        "gzipped": 1926,
+        "selfSize": 6603,
+        "selfGzip": 1926
       },
       "dependencies": [
         {
@@ -365,13 +365,13 @@
     "static/chart": {
       "name": "chart",
       "title": "Chart",
-      "description": "The stock shadcn Chart component for the Base UI/Nova preset.",
+      "description": "The edbn Chart component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10501,
-        "gzipped": 2996,
-        "selfSize": 10501,
-        "selfGzip": 2996
+        "minified": 10495,
+        "gzipped": 3004,
+        "selfSize": 10495,
+        "selfGzip": 3004
       },
       "dependencies": [
         {
@@ -387,13 +387,13 @@
     "static/checkbox": {
       "name": "checkbox",
       "title": "Checkbox",
-      "description": "The stock shadcn Checkbox component for the Base UI/Nova preset.",
+      "description": "The edbn Checkbox component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1696,
-        "gzipped": 680,
-        "selfSize": 1696,
-        "selfGzip": 680
+        "minified": 1644,
+        "gzipped": 645,
+        "selfSize": 1644,
+        "selfGzip": 645
       },
       "dependencies": [
         {
@@ -416,7 +416,7 @@
     "static/collapsible": {
       "name": "collapsible",
       "title": "Collapsible",
-      "description": "The stock shadcn Collapsible component for the Base UI/Nova preset.",
+      "description": "The edbn Collapsible component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 658,
@@ -438,13 +438,13 @@
     "static/combobox": {
       "name": "combobox",
       "title": "Combobox",
-      "description": "The stock shadcn Combobox component for the Base UI/Nova preset.",
+      "description": "The edbn Combobox component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 9165,
-        "gzipped": 2377,
-        "selfSize": 9165,
-        "selfGzip": 2377
+        "minified": 10354,
+        "gzipped": 2730,
+        "selfSize": 10354,
+        "selfGzip": 2730
       },
       "dependencies": [
         {
@@ -467,13 +467,13 @@
     "static/command": {
       "name": "command",
       "title": "Command",
-      "description": "The stock shadcn Command component for the Base UI/Nova preset.",
+      "description": "The edbn Command component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5629,
-        "gzipped": 1633,
-        "selfSize": 5629,
-        "selfGzip": 1633
+        "minified": 5326,
+        "gzipped": 1520,
+        "selfSize": 5326,
+        "selfGzip": 1520
       },
       "dependencies": [
         {
@@ -496,13 +496,13 @@
     "static/context-menu": {
       "name": "context-menu",
       "title": "Context Menu",
-      "description": "The stock shadcn Context Menu component for the Base UI/Nova preset.",
+      "description": "The edbn Context Menu component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10272,
-        "gzipped": 2268,
-        "selfSize": 10272,
-        "selfGzip": 2268
+        "minified": 12842,
+        "gzipped": 2834,
+        "selfSize": 12842,
+        "selfGzip": 2834
       },
       "dependencies": [
         {
@@ -525,13 +525,13 @@
     "static/dialog": {
       "name": "dialog",
       "title": "Dialog",
-      "description": "The stock shadcn Dialog component for the Base UI/Nova preset.",
+      "description": "The edbn Dialog component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 4261,
-        "gzipped": 1233,
-        "selfSize": 4261,
-        "selfGzip": 1233
+        "minified": 5333,
+        "gzipped": 1525,
+        "selfSize": 5333,
+        "selfGzip": 1525
       },
       "dependencies": [
         {
@@ -554,7 +554,7 @@
     "static/direction": {
       "name": "direction",
       "title": "Direction",
-      "description": "The stock shadcn Direction component for the Base UI/Nova preset.",
+      "description": "The edbn Direction component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 103,
@@ -576,13 +576,13 @@
     "static/drawer": {
       "name": "drawer",
       "title": "Drawer",
-      "description": "The stock shadcn Drawer component for the Base UI/Nova preset.",
+      "description": "The edbn Drawer component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 11542,
-        "gzipped": 2865,
-        "selfSize": 11542,
-        "selfGzip": 2865
+        "minified": 13718,
+        "gzipped": 3271,
+        "selfSize": 13718,
+        "selfGzip": 3271
       },
       "dependencies": [
         {
@@ -598,13 +598,13 @@
     "static/dropdown-menu": {
       "name": "dropdown-menu",
       "title": "Dropdown Menu",
-      "description": "The stock shadcn Dropdown Menu component for the Base UI/Nova preset.",
+      "description": "The edbn Dropdown Menu component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 9802,
-        "gzipped": 2156,
-        "selfSize": 9802,
-        "selfGzip": 2156
+        "minified": 10261,
+        "gzipped": 2114,
+        "selfSize": 10261,
+        "selfGzip": 2114
       },
       "dependencies": [
         {
@@ -627,13 +627,13 @@
     "static/empty": {
       "name": "empty",
       "title": "Empty",
-      "description": "The stock shadcn Empty component for the Base UI/Nova preset.",
+      "description": "The edbn Empty component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2397,
-        "gzipped": 731,
-        "selfSize": 2397,
-        "selfGzip": 731
+        "minified": 2411,
+        "gzipped": 745,
+        "selfSize": 2411,
+        "selfGzip": 745
       },
       "dependencies": [
         {
@@ -649,13 +649,13 @@
     "static/field": {
       "name": "field",
       "title": "Field",
-      "description": "The stock shadcn Field component for the Base UI/Nova preset.",
+      "description": "The edbn Field component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 6266,
-        "gzipped": 1725,
-        "selfSize": 6266,
-        "selfGzip": 1725
+        "minified": 6368,
+        "gzipped": 1772,
+        "selfSize": 6368,
+        "selfGzip": 1772
       },
       "dependencies": [
         {
@@ -671,13 +671,13 @@
     "static/hover-card": {
       "name": "hover-card",
       "title": "Hover Card",
-      "description": "The stock shadcn Hover Card component for the Base UI/Nova preset.",
+      "description": "The edbn Hover Card component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2006,
-        "gzipped": 714,
-        "selfSize": 2006,
-        "selfGzip": 714
+        "minified": 2590,
+        "gzipped": 891,
+        "selfSize": 2590,
+        "selfGzip": 891
       },
       "dependencies": [
         {
@@ -693,13 +693,13 @@
     "static/input-group": {
       "name": "input-group",
       "title": "Input Group",
-      "description": "The stock shadcn Input Group component for the Base UI/Nova preset.",
+      "description": "The edbn Input Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5264,
-        "gzipped": 1493,
-        "selfSize": 5264,
-        "selfGzip": 1493
+        "minified": 5556,
+        "gzipped": 1578,
+        "selfSize": 5556,
+        "selfGzip": 1578
       },
       "dependencies": [
         {
@@ -715,13 +715,13 @@
     "static/input-otp": {
       "name": "input-otp",
       "title": "Input Otp",
-      "description": "The stock shadcn Input Otp component for the Base UI/Nova preset.",
+      "description": "The edbn Input Otp component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2547,
-        "gzipped": 868,
-        "selfSize": 2547,
-        "selfGzip": 868
+        "minified": 2695,
+        "gzipped": 915,
+        "selfSize": 2695,
+        "selfGzip": 915
       },
       "dependencies": [
         {
@@ -744,13 +744,13 @@
     "static/input": {
       "name": "input",
       "title": "Input",
-      "description": "The stock shadcn Input component for the Base UI/Nova preset.",
+      "description": "The edbn Input component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1241,
-        "gzipped": 575,
-        "selfSize": 1241,
-        "selfGzip": 575
+        "minified": 1315,
+        "gzipped": 588,
+        "selfSize": 1315,
+        "selfGzip": 588
       },
       "dependencies": [
         {
@@ -766,13 +766,13 @@
     "static/item": {
       "name": "item",
       "title": "Item",
-      "description": "The stock shadcn Item component for the Base UI/Nova preset.",
+      "description": "The edbn Item component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 4860,
-        "gzipped": 1319,
-        "selfSize": 4860,
-        "selfGzip": 1319
+        "minified": 5002,
+        "gzipped": 1379,
+        "selfSize": 5002,
+        "selfGzip": 1379
       },
       "dependencies": [
         {
@@ -795,7 +795,7 @@
     "static/kbd": {
       "name": "kbd",
       "title": "Kbd",
-      "description": "The stock shadcn Kbd component for the Base UI/Nova preset.",
+      "description": "The edbn Kbd component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 837,
@@ -809,7 +809,7 @@
     "static/label": {
       "name": "label",
       "title": "Label",
-      "description": "The stock shadcn Label component for the Base UI/Nova preset.",
+      "description": "The edbn Label component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 518,
@@ -823,13 +823,13 @@
     "static/marker": {
       "name": "marker",
       "title": "Marker",
-      "description": "The stock shadcn Marker component for the Base UI/Nova preset.",
+      "description": "The edbn Marker component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1948,
-        "gzipped": 754,
-        "selfSize": 1948,
-        "selfGzip": 754
+        "minified": 2030,
+        "gzipped": 778,
+        "selfSize": 2030,
+        "selfGzip": 778
       },
       "dependencies": [
         {
@@ -852,13 +852,13 @@
     "static/menubar": {
       "name": "menubar",
       "title": "Menubar",
-      "description": "The stock shadcn Menubar component for the Base UI/Nova preset.",
+      "description": "The edbn Menubar component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 8181,
-        "gzipped": 1630,
-        "selfSize": 8181,
-        "selfGzip": 1630
+        "minified": 7925,
+        "gzipped": 1545,
+        "selfSize": 7925,
+        "selfGzip": 1545
       },
       "dependencies": [
         {
@@ -881,13 +881,13 @@
     "static/message-scroller": {
       "name": "message-scroller",
       "title": "Message Scroller",
-      "description": "The stock shadcn Message Scroller component for the Base UI/Nova preset.",
+      "description": "The edbn Message Scroller component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 8022,
-        "gzipped": 2124,
-        "selfSize": 8022,
-        "selfGzip": 2124
+        "minified": 8231,
+        "gzipped": 2213,
+        "selfSize": 8231,
+        "selfGzip": 2213
       },
       "dependencies": [
         {
@@ -917,13 +917,13 @@
     "static/message": {
       "name": "message",
       "title": "Message",
-      "description": "The stock shadcn Message component for the Base UI/Nova preset.",
+      "description": "The edbn Message component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2232,
-        "gzipped": 608,
-        "selfSize": 2232,
-        "selfGzip": 608
+        "minified": 2236,
+        "gzipped": 613,
+        "selfSize": 2236,
+        "selfGzip": 613
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -931,13 +931,13 @@
     "static/native-select": {
       "name": "native-select",
       "title": "Native Select",
-      "description": "The stock shadcn Native Select component for the Base UI/Nova preset.",
+      "description": "The edbn Native Select component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2093,
-        "gzipped": 792,
-        "selfSize": 2093,
-        "selfGzip": 792
+        "minified": 2330,
+        "gzipped": 885,
+        "selfSize": 2330,
+        "selfGzip": 885
       },
       "dependencies": [
         {
@@ -953,13 +953,13 @@
     "static/navigation-menu": {
       "name": "navigation-menu",
       "title": "Navigation Menu",
-      "description": "The stock shadcn Navigation Menu component for the Base UI/Nova preset.",
+      "description": "The edbn Navigation Menu component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 7541,
-        "gzipped": 1846,
-        "selfSize": 7541,
-        "selfGzip": 1846
+        "minified": 6389,
+        "gzipped": 1590,
+        "selfSize": 6389,
+        "selfGzip": 1590
       },
       "dependencies": [
         {
@@ -989,7 +989,7 @@
     "static/pagination": {
       "name": "pagination",
       "title": "Pagination",
-      "description": "The stock shadcn Pagination component for the Base UI/Nova preset.",
+      "description": "The edbn Pagination component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 2864,
@@ -1011,13 +1011,13 @@
     "static/popover": {
       "name": "popover",
       "title": "Popover",
-      "description": "The stock shadcn Popover component for the Base UI/Nova preset.",
+      "description": "The edbn Popover component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 3696,
-        "gzipped": 1217,
-        "selfSize": 3696,
-        "selfGzip": 1217
+        "minified": 3603,
+        "gzipped": 1181,
+        "selfSize": 3603,
+        "selfGzip": 1181
       },
       "dependencies": [
         {
@@ -1033,12 +1033,12 @@
     "static/progress": {
       "name": "progress",
       "title": "Progress",
-      "description": "The stock shadcn Progress component for the Base UI/Nova preset.",
+      "description": "The edbn Progress component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1740,
+        "minified": 1741,
         "gzipped": 525,
-        "selfSize": 1740,
+        "selfSize": 1741,
         "selfGzip": 525
       },
       "dependencies": [
@@ -1055,13 +1055,13 @@
     "static/questionnaire": {
       "name": "questionnaire",
       "title": "Questionnaire",
-      "description": "The stock shadcn Questionnaire component for the Base UI/Nova preset.",
+      "description": "The edbn Questionnaire component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10207,
-        "gzipped": 1936,
-        "selfSize": 10207,
-        "selfGzip": 1936
+        "minified": 10418,
+        "gzipped": 1999,
+        "selfSize": 10418,
+        "selfGzip": 1999
       },
       "dependencies": [
         {
@@ -1084,13 +1084,13 @@
     "static/radio-group": {
       "name": "radio-group",
       "title": "Radio Group",
-      "description": "The stock shadcn Radio Group component for the Base UI/Nova preset.",
+      "description": "The edbn Radio Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1835,
-        "gzipped": 658,
-        "selfSize": 1835,
-        "selfGzip": 658
+        "minified": 1928,
+        "gzipped": 690,
+        "selfSize": 1928,
+        "selfGzip": 690
       },
       "dependencies": [
         {
@@ -1106,7 +1106,7 @@
     "static/resizable": {
       "name": "resizable",
       "title": "Resizable",
-      "description": "The stock shadcn Resizable component for the Base UI/Nova preset.",
+      "description": "The edbn Resizable component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 1671,
@@ -1128,13 +1128,13 @@
     "static/scroll-area": {
       "name": "scroll-area",
       "title": "Scroll Area",
-      "description": "The stock shadcn Scroll Area component for the Base UI/Nova preset.",
+      "description": "The edbn Scroll Area component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1624,
-        "gzipped": 567,
-        "selfSize": 1624,
-        "selfGzip": 567
+        "minified": 1715,
+        "gzipped": 582,
+        "selfSize": 1715,
+        "selfGzip": 582
       },
       "dependencies": [
         {
@@ -1150,13 +1150,13 @@
     "static/select": {
       "name": "select",
       "title": "Select",
-      "description": "The stock shadcn Select component for the Base UI/Nova preset.",
+      "description": "The edbn Select component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 8040,
-        "gzipped": 2295,
-        "selfSize": 8040,
-        "selfGzip": 2295
+        "minified": 8094,
+        "gzipped": 2249,
+        "selfSize": 8094,
+        "selfGzip": 2249
       },
       "dependencies": [
         {
@@ -1179,7 +1179,7 @@
     "static/separator": {
       "name": "separator",
       "title": "Separator",
-      "description": "The stock shadcn Separator component for the Base UI/Nova preset.",
+      "description": "The edbn Separator component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 545,
@@ -1201,13 +1201,13 @@
     "static/sheet": {
       "name": "sheet",
       "title": "Sheet",
-      "description": "The stock shadcn Sheet component for the Base UI/Nova preset.",
+      "description": "The edbn Sheet component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 4692,
-        "gzipped": 1248,
-        "selfSize": 4692,
-        "selfGzip": 1248
+        "minified": 5716,
+        "gzipped": 1541,
+        "selfSize": 5716,
+        "selfGzip": 1541
       },
       "dependencies": [
         {
@@ -1230,13 +1230,13 @@
     "static/sidebar": {
       "name": "sidebar",
       "title": "Sidebar",
-      "description": "The stock shadcn Sidebar component for the Base UI/Nova preset.",
+      "description": "The edbn Sidebar component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 22008,
-        "gzipped": 4970,
-        "selfSize": 22008,
-        "selfGzip": 4970
+        "minified": 23198,
+        "gzipped": 5007,
+        "selfSize": 23198,
+        "selfGzip": 5007
       },
       "dependencies": [
         {
@@ -1266,13 +1266,13 @@
     "static/skeleton": {
       "name": "skeleton",
       "title": "Skeleton",
-      "description": "The stock shadcn Skeleton component for the Base UI/Nova preset.",
+      "description": "The edbn Skeleton component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 275,
-        "gzipped": 206,
-        "selfSize": 275,
-        "selfGzip": 206
+        "minified": 302,
+        "gzipped": 219,
+        "selfSize": 302,
+        "selfGzip": 219
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1280,13 +1280,13 @@
     "static/slider": {
       "name": "slider",
       "title": "Slider",
-      "description": "The stock shadcn Slider component for the Base UI/Nova preset.",
+      "description": "The edbn Slider component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1874,
-        "gzipped": 742,
-        "selfSize": 1874,
-        "selfGzip": 742
+        "minified": 2310,
+        "gzipped": 838,
+        "selfSize": 2310,
+        "selfGzip": 838
       },
       "dependencies": [
         {
@@ -1302,13 +1302,13 @@
     "static/sonner": {
       "name": "sonner",
       "title": "Sonner",
-      "description": "The stock shadcn Sonner component for the Base UI/Nova preset.",
+      "description": "The edbn Sonner component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1226,
-        "gzipped": 488,
-        "selfSize": 1226,
-        "selfGzip": 488
+        "minified": 1474,
+        "gzipped": 586,
+        "selfSize": 1474,
+        "selfGzip": 586
       },
       "dependencies": [
         {
@@ -1338,13 +1338,13 @@
     "static/spinner": {
       "name": "spinner",
       "title": "Spinner",
-      "description": "The stock shadcn Spinner component for the Base UI/Nova preset.",
+      "description": "The edbn Spinner component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 322,
-        "gzipped": 233,
-        "selfSize": 322,
-        "selfGzip": 233
+        "minified": 349,
+        "gzipped": 246,
+        "selfSize": 349,
+        "selfGzip": 246
       },
       "dependencies": [
         {
@@ -1360,13 +1360,13 @@
     "static/switch": {
       "name": "switch",
       "title": "Switch",
-      "description": "The stock shadcn Switch component for the Base UI/Nova preset.",
+      "description": "The edbn Switch component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1811,
-        "gzipped": 684,
-        "selfSize": 1811,
-        "selfGzip": 684
+        "minified": 1880,
+        "gzipped": 698,
+        "selfSize": 1880,
+        "selfGzip": 698
       },
       "dependencies": [
         {
@@ -1382,13 +1382,13 @@
     "static/table": {
       "name": "table",
       "title": "Table",
-      "description": "The stock shadcn Table component for the Base UI/Nova preset.",
+      "description": "The edbn Table component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2535,
-        "gzipped": 719,
-        "selfSize": 2535,
-        "selfGzip": 719
+        "minified": 2617,
+        "gzipped": 746,
+        "selfSize": 2617,
+        "selfGzip": 746
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1396,13 +1396,13 @@
     "static/tabs": {
       "name": "tabs",
       "title": "Tabs",
-      "description": "The stock shadcn Tabs component for the Base UI/Nova preset.",
+      "description": "The edbn Tabs component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 3497,
-        "gzipped": 1086,
-        "selfSize": 3497,
-        "selfGzip": 1086
+        "minified": 3753,
+        "gzipped": 1119,
+        "selfSize": 3753,
+        "selfGzip": 1119
       },
       "dependencies": [
         {
@@ -1425,13 +1425,13 @@
     "static/textarea": {
       "name": "textarea",
       "title": "Textarea",
-      "description": "The stock shadcn Textarea component for the Base UI/Nova preset.",
+      "description": "The edbn Textarea component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 842,
-        "gzipped": 436,
-        "selfSize": 842,
-        "selfGzip": 436
+        "minified": 992,
+        "gzipped": 477,
+        "selfSize": 992,
+        "selfGzip": 477
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -1439,13 +1439,13 @@
     "static/toast": {
       "name": "toast",
       "title": "Toast",
-      "description": "The stock shadcn Toast component for the Base UI/Nova preset.",
+      "description": "The edbn Toast component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 7580,
-        "gzipped": 2009,
-        "selfSize": 7580,
-        "selfGzip": 2009
+        "minified": 8528,
+        "gzipped": 2142,
+        "selfSize": 8528,
+        "selfGzip": 2142
       },
       "dependencies": [
         {
@@ -1468,7 +1468,7 @@
     "static/toggle-group": {
       "name": "toggle-group",
       "title": "Toggle Group",
-      "description": "The stock shadcn Toggle Group component for the Base UI/Nova preset.",
+      "description": "The edbn Toggle Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
         "minified": 3183,
@@ -1497,13 +1497,13 @@
     "static/toggle": {
       "name": "toggle",
       "title": "Toggle",
-      "description": "The stock shadcn Toggle component for the Base UI/Nova preset.",
+      "description": "The edbn Toggle component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1762,
-        "gzipped": 752,
-        "selfSize": 1762,
-        "selfGzip": 752
+        "minified": 1994,
+        "gzipped": 795,
+        "selfSize": 1994,
+        "selfGzip": 795
       },
       "dependencies": [
         {
@@ -1526,13 +1526,13 @@
     "static/tooltip": {
       "name": "tooltip",
       "title": "Tooltip",
-      "description": "The stock shadcn Tooltip component for the Base UI/Nova preset.",
+      "description": "The edbn Tooltip component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2980,
-        "gzipped": 936,
-        "selfSize": 2980,
-        "selfGzip": 936
+        "minified": 3393,
+        "gzipped": 1071,
+        "selfSize": 3393,
+        "selfGzip": 1071
       },
       "dependencies": [
         {

@@ -4,7 +4,7 @@ Source of truth for all distributable UI components. This directory is a git sub
 
 ## Contract
 
-- The 62 root files are the canonical public components generated from the Base UI + Nova + neutral + Lucide preset.
+- The 62 root files are the canonical public components built on the Base UI + Nova + neutral + Lucide preset, with edbn's authored appearance and motion.
 - Import directly from `@/components/ui/<component>`; there is no barrel export.
 - Feature code owns the source after installation and may modify it locally.
 - Product blocks, layouts, recipes, and renderer helpers stay outside this directory.
@@ -13,8 +13,9 @@ Source of truth for all distributable UI components. This directory is a git sub
 
 - Import components from `@/components/ui/<component>`.
 - Generated components use `@base-ui/react` internally where applicable.
-- Styling uses `cn()` from `lib/utils.ts` and the stock semantic tokens in `lib/styles/base.css`.
-- Keep component source close to the pinned CLI output; make only deliberate source-owned changes.
+- Styling uses `cn()` from `lib/utils.ts` and the semantic tokens in `lib/styles/base.css`. Instrument Sans, warm paper surfaces, and roomy controls are the defaults; consumers can override tokens and classes.
+- Keep primitive behavior and public props compatible with the pinned CLI output. Declare authored source in `LOCAL_UI_SOURCE_PATHS` so upstream synchronization preserves it.
+- Pointer popup transitions use the shared input-modality provider. Keyboard and programmatic changes are immediate; reduced motion uses short fades without moving surfaces.
 - After changing a file, update `registry.json`, validate, and regenerate `public/r/`.
 
 ## Registry

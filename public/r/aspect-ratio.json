@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "aspect-ratio",
   "title": "Aspect Ratio",
-  "description": "The stock shadcn Aspect Ratio component for the Base UI/Nova preset.",
+  "description": "The edbn Aspect Ratio component with the shared Instrument Sans and paper surface foundation.",
   "registryDependencies": [
     "https://ui.edbn.me/r/edbn-base.json"
   ],

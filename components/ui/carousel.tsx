@@ -5,6 +5,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 
+import { useUIWindow } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
@@ -51,9 +52,20 @@ function Carousel({
   children,
   ...props
 }: React.ComponentProps<"div"> & CarouselProps) {
+  const ownerWindow = useUIWindow()
+  const [reducedMotion, setReducedMotion] = React.useState(false)
+  React.useEffect(() => {
+    const preference = ownerWindow?.matchMedia("(prefers-reduced-motion: reduce)")
+    if (!preference) return
+    const update = () => setReducedMotion(preference.matches)
+    update()
+    preference.addEventListener("change", update)
+    return () => preference.removeEventListener("change", update)
+  }, [ownerWindow])
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
+      ...(reducedMotion ? { duration: 0 } : {}),
       axis: orientation === "horizontal" ? "x" : "y",
     },
     plugins
@@ -67,25 +79,26 @@ function Carousel({
     setCanScrollNext(api.canScrollNext())
   }, [])
 
-  const scrollPrev = React.useCallback(() => {
-    api?.scrollPrev()
-  }, [api])
+  const scrollPrev = React.useCallback((event?: React.MouseEvent) => {
+    api?.scrollPrev(!event || event.detail === 0 || reducedMotion)
+  }, [api, reducedMotion])
 
-  const scrollNext = React.useCallback(() => {
-    api?.scrollNext()
-  }, [api])
+  const scrollNext = React.useCallback((event?: React.MouseEvent) => {
+    api?.scrollNext(!event || event.detail === 0 || reducedMotion)
+  }, [api, reducedMotion])
 
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "ArrowLeft") {
+      if (event.defaultPrevented || (event.target as HTMLElement).closest("input, textarea, select, [contenteditable='true']")) return
+      if (event.key === (orientation === "horizontal" ? "ArrowLeft" : "ArrowUp")) {
         event.preventDefault()
-        scrollPrev()
-      } else if (event.key === "ArrowRight") {
+        api?.scrollPrev(true)
+      } else if (event.key === (orientation === "horizontal" ? "ArrowRight" : "ArrowDown")) {
         event.preventDefault()
-        scrollNext()
+        api?.scrollNext(true)
       }
     },
-    [scrollPrev, scrollNext]
+    [api, orientation]
   )
 
   React.useEffect(() => {
@@ -100,6 +113,7 @@ function Carousel({
     api.on("select", onSelect)
 
     return () => {
+      api?.off("reInit", onSelect)
       api?.off("select", onSelect)
     }
   }, [api, onSelect])

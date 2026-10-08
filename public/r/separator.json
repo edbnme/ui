@@ -2,9 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "separator",
   "title": "Separator",
-  "description": "The stock shadcn Separator component for the Base UI/Nova preset.",
+  "description": "The edbn Separator component with the shared Instrument Sans and paper surface foundation.",
   "dependencies": [
-    "@base-ui/react@^1.7.0"
+    "@base-ui/react@^1.8.0"
   ],
   "registryDependencies": [
     "https://ui.edbn.me/r/edbn-base.json"
