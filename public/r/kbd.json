@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "kbd",
   "title": "Kbd",
-  "description": "The stock shadcn Kbd component for the Base UI/Nova preset.",
+  "description": "The edbn Kbd component with the shared Instrument Sans and paper surface foundation.",
   "registryDependencies": [
     "https://ui.edbn.me/r/edbn-base.json"
   ],

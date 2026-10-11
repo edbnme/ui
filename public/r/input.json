@@ -2,9 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "input",
   "title": "Input",
-  "description": "The stock shadcn Input component for the Base UI/Nova preset.",
+  "description": "The edbn Input component with the shared Instrument Sans and paper surface foundation.",
   "dependencies": [
-    "@base-ui/react@^1.7.0"
+    "@base-ui/react@^1.8.0"
   ],
   "registryDependencies": [
     "https://ui.edbn.me/r/edbn-base.json"
@@ -12,7 +12,7 @@
   "files": [
     {
       "path": "components/ui/input.tsx",
-      "content": "import * as React from \"react\"\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"h-8 w-full min-w-0 rounded-lg border border-input bg-background/75 px-2.5 py-1 text-base outline-none transition-[color,background-color,border-color,box-shadow,opacity] duration-(--motion-duration-press) ease-(--motion-ease-out) motion-reduce:transition-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:bg-background focus-visible:ring-3 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:focus-visible:bg-input/40 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "content": "import * as React from \"react\"\nimport { Input as InputPrimitive } from \"@base-ui/react/input\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type, ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <InputPrimitive\n      type={type}\n      data-slot=\"input\"\n      className={cn(\n        \"h-10 w-full [@media(pointer:coarse)]:min-h-11 min-w-0 rounded-lg border border-input bg-background px-3 py-2 text-base outline-none transition-[color,background-color,opacity] duration-(--motion-duration-press) ease-(--motion-ease-out) motion-reduce:transition-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground focus-visible:bg-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:border-foreground/50 dark:bg-input/30 dark:focus-visible:bg-input/40 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
       "type": "registry:ui",
       "target": "@ui/input.tsx"
     }

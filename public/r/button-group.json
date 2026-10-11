@@ -2,9 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "button-group",
   "title": "Button Group",
-  "description": "The stock shadcn Button Group component for the Base UI/Nova preset.",
+  "description": "The edbn Button Group component with the shared Instrument Sans and paper surface foundation.",
   "dependencies": [
-    "@base-ui/react@^1.7.0",
+    "@base-ui/react@^1.8.0",
     "class-variance-authority@^0.7.1"
   ],
   "registryDependencies": [

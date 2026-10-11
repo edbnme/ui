@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "resizable",
   "title": "Resizable",
-  "description": "The stock shadcn Resizable component for the Base UI/Nova preset.",
+  "description": "The edbn Resizable component with the shared Instrument Sans and paper surface foundation.",
   "dependencies": [
     "react-resizable-panels@^4.12.3"
   ],

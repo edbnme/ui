@@ -2,14 +2,14 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "skeleton",
   "title": "Skeleton",
-  "description": "The stock shadcn Skeleton component for the Base UI/Nova preset.",
+  "description": "The edbn Skeleton component with the shared Instrument Sans and paper surface foundation.",
   "registryDependencies": [
     "https://ui.edbn.me/r/edbn-base.json"
   ],
   "files": [
     {
       "path": "components/ui/skeleton.tsx",
-      "content": "import { cn } from \"@/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\"animate-pulse rounded-md bg-muted\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
+      "content": "import { cn } from \"@/lib/utils\"\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      data-slot=\"skeleton\"\n      className={cn(\"animate-pulse motion-reduce:animate-none rounded-md bg-muted\", className)}\n      {...props}\n    />\n  )\n}\n\nexport { Skeleton }\n",
       "type": "registry:ui",
       "target": "@ui/skeleton.tsx"
     }

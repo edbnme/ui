@@ -12,22 +12,26 @@ function Slider({
 }: SliderPrimitive.Root.Props) {
   const _values = Array.isArray(value)
     ? value
-    : Array.isArray(defaultValue)
-      ? defaultValue
-      : [min, max]
+    : typeof value === "number"
+      ? [value]
+      : Array.isArray(defaultValue)
+        ? defaultValue
+        : typeof defaultValue === "number"
+          ? [defaultValue]
+          : [min, max]
 
   return (
     <SliderPrimitive.Root
-      className={cn("data-horizontal:w-full data-vertical:h-full", className)}
+      className={cn("w-full data-vertical:h-full", className)}
       data-slot="slider"
-      defaultValue={defaultValue}
+      defaultValue={defaultValue ?? _values}
       value={value}
       min={min}
       max={max}
       thumbAlignment="edge"
       {...props}
     >
-      <SliderPrimitive.Control className="relative flex w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-auto data-vertical:flex-col">
+      <SliderPrimitive.Control className="relative flex min-h-11 w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:min-w-11 data-vertical:w-auto data-vertical:flex-col">
         <SliderPrimitive.Track
           data-slot="slider-track"
           className="relative grow overflow-hidden rounded-full bg-muted select-none data-horizontal:h-1 data-horizontal:w-full data-vertical:h-full data-vertical:w-1"
@@ -41,7 +45,12 @@ function Slider({
           <SliderPrimitive.Thumb
             data-slot="slider-thumb"
             key={index}
-            className="relative block size-3 shrink-0 rounded-full border border-ring bg-white ring-ring/50 transition-[color,box-shadow] select-none after:absolute after:-inset-2 hover:ring-3 focus-visible:ring-3 focus-visible:outline-hidden active:ring-3 disabled:pointer-events-none disabled:opacity-50"
+            index={index}
+            aria-label={props["aria-label"]}
+            aria-labelledby={props["aria-labelledby"]}
+            aria-describedby={props["aria-describedby"]}
+            aria-valuetext={props["aria-valuetext"]}
+            className="relative block size-4 shrink-0 rounded-full border border-primary bg-primary transition-none select-none after:absolute after:-inset-3.5 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-solid has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-foreground disabled:pointer-events-none disabled:opacity-50"
           />
         ))}
       </SliderPrimitive.Control>

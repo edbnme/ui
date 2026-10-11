@@ -2,9 +2,9 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "checkbox",
   "title": "Checkbox",
-  "description": "The stock shadcn Checkbox component for the Base UI/Nova preset.",
+  "description": "The edbn Checkbox component with the shared Instrument Sans and paper surface foundation.",
   "dependencies": [
-    "@base-ui/react@^1.7.0",
+    "@base-ui/react@^1.8.0",
     "lucide-react@^1.33.0"
   ],
   "registryDependencies": [
@@ -13,7 +13,7 @@
   "files": [
     {
       "path": "components/ui/checkbox.tsx",
-      "content": "\"use client\"\n\nimport { Checkbox as CheckboxPrimitive } from \"@base-ui/react/checkbox\"\n\nimport { cn } from \"@/lib/utils\"\nimport { CheckIcon } from \"lucide-react\"\n\nfunction Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {\n  return (\n    <CheckboxPrimitive.Root\n      data-slot=\"checkbox\"\n      className={cn(\n        \"peer relative flex size-4 shrink-0 items-center justify-center rounded-[4px] border border-input bg-background/80 outline-none transition-[color,background-color,border-color,box-shadow,opacity] duration-(--motion-duration-press) ease-(--motion-ease-out) motion-reduce:transition-none group-has-disabled/field:opacity-50 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-data-checked:border-input after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground group-has-[:focus-visible]/field-label:data-checked:border-primary dark:data-checked:bg-primary\",\n        className\n      )}\n      {...props}\n    >\n      <CheckboxPrimitive.Indicator\n        data-slot=\"checkbox-indicator\"\n        className=\"grid place-content-center text-current transition-none [&>svg]:size-3.5\"\n      >\n        <CheckIcon\n        />\n      </CheckboxPrimitive.Indicator>\n    </CheckboxPrimitive.Root>\n  )\n}\n\nexport { Checkbox }\n",
+      "content": "\"use client\"\n\nimport { Checkbox as CheckboxPrimitive } from \"@base-ui/react/checkbox\"\n\nimport { cn } from \"@/lib/utils\"\nimport { CheckIcon } from \"lucide-react\"\n\nfunction Checkbox({ className, ...props }: CheckboxPrimitive.Root.Props) {\n  return (\n    <CheckboxPrimitive.Root\n      data-slot=\"checkbox\"\n      className={cn(\n        \"peer relative flex size-[18px] shrink-0 items-center justify-center rounded-[4px] border border-input bg-background outline-none transition-none group-has-disabled/field:opacity-50 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-data-checked:border-input after:absolute after:-inset-[13px] [@media(pointer:coarse)]:m-[13px] focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary dark:border-foreground/50 dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground group-has-[:focus-visible]/field-label:data-checked:border-primary dark:data-checked:bg-primary\",\n        className\n      )}\n      {...props}\n    >\n      <CheckboxPrimitive.Indicator\n        data-slot=\"checkbox-indicator\"\n        className=\"grid place-content-center text-current transition-none [&>svg]:size-3.5\"\n      >\n        <CheckIcon\n        />\n      </CheckboxPrimitive.Indicator>\n    </CheckboxPrimitive.Root>\n  )\n}\n\nexport { Checkbox }\n",
       "type": "registry:ui",
       "target": "@ui/checkbox.tsx"
     }

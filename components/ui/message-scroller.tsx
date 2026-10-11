@@ -9,7 +9,7 @@ import {
   useMessageScrollerVisibility,
 } from "@shadcn/react/message-scroller"
 
-import { useUIEnvironmentActive } from "@/lib/ui-environment"
+import { useUIEnvironmentActive, useUIWindow } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ArrowDownIcon } from "lucide-react"
@@ -90,10 +90,12 @@ type MessageScrollerButtonProps = React.ComponentProps<
 
 function MessageScrollerButton(props: MessageScrollerButtonProps) {
   const environmentActive = useUIEnvironmentActive()
+  const ownerWindow = useUIWindow()
+  const resolvedBehavior = ownerWindow?.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "instant" : props.behavior
 
-  if (environmentActive) return <EnvironmentMessageScrollerButton {...props} />
+  if (environmentActive) return <EnvironmentMessageScrollerButton {...props} behavior={resolvedBehavior} />
 
-  return <DefaultMessageScrollerButton {...props} />
+  return <DefaultMessageScrollerButton {...props} behavior={resolvedBehavior} />
 }
 
 function DefaultMessageScrollerButton({
@@ -113,7 +115,7 @@ function DefaultMessageScrollerButton({
       data-size={size}
       direction={direction}
       className={cn(
-        "absolute inset-s-1/2 -translate-x-1/2 border-border bg-background text-foreground transition-[translate,scale,opacity] duration-200 hover:bg-muted hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:scale-95 data-[active=false]:opacity-0 data-[active=false]:duration-400 data-[active=false]:ease-[cubic-bezier(0.7,0,0.84,0)] data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=end]:data-[active=false]:translate-y-full data-[direction=start]:top-4 data-[direction=start]:data-[active=false]:-translate-y-full rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
+        "absolute inset-s-1/2 -translate-x-1/2 border-border bg-background text-foreground transition-opacity duration-(--motion-duration-surface-in) motion-reduce:duration-100 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:opacity-0 data-[active=false]:duration-(--motion-duration-surface-out) data-[active=false]:ease-(--motion-ease-out) data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=start]:top-4 rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
         className
       )}
       render={render ?? <Button variant={variant} size={size} />}
@@ -222,7 +224,7 @@ function EnvironmentMessageScrollerButton({
         </>
       ),
       className: cn(
-        "absolute inset-s-1/2 -translate-x-1/2 border-border bg-background text-foreground transition-[translate,scale,opacity] duration-200 hover:bg-muted hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:scale-95 data-[active=false]:opacity-0 data-[active=false]:duration-400 data-[active=false]:ease-[cubic-bezier(0.7,0,0.84,0)] data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=end]:data-[active=false]:translate-y-full data-[direction=start]:top-4 data-[direction=start]:data-[active=false]:-translate-y-full rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
+        "absolute inset-s-1/2 -translate-x-1/2 border-border bg-background text-foreground transition-opacity duration-(--motion-duration-surface-in) motion-reduce:duration-100 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:opacity-0 data-[active=false]:duration-(--motion-duration-surface-out) data-[active=false]:ease-(--motion-ease-out) data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=start]:top-4 rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
         className
       ),
       inert: active ? undefined : true,

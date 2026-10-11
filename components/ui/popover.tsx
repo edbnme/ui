@@ -65,7 +65,7 @@ function PopoverContent({
           data-slot="popover-content"
           data-motion={motion}
           className={cn(
-            "z-50 flex w-72 origin-(--transform-origin) flex-col gap-2.5 rounded-xl border border-foreground/8 bg-popover/95 p-2.5 text-sm text-popover-foreground shadow-[0_18px_50px_-22px_rgb(0_0_0_/_0.4),inset_0_1px_0_color-mix(in_oklch,var(--foreground)_8%,transparent)] ring-1 ring-foreground/8 outline-hidden transition-[opacity,transform] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-none motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 supports-[backdrop-filter:blur(0)]:bg-popover/82 supports-[backdrop-filter:blur(0)]:backdrop-blur-xl supports-[backdrop-filter:blur(0)]:saturate-150 contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText] [@media_(prefers-reduced-transparency:_reduce)]:bg-popover [@media_(prefers-reduced-transparency:_reduce)]:backdrop-blur-none",
+            "z-50 flex w-72 max-w-(--available-width) max-h-(--available-height) overflow-y-auto overscroll-contain origin-(--transform-origin) flex-col gap-2.5 rounded-2xl border border-border bg-popover p-5 text-[15px] text-popover-foreground shadow-[0_1px_1px_rgb(16_16_20_/_0.04),0_8px_20px_-8px_rgb(16_16_20_/_0.16)] outline-hidden transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]",
             className
           )}
           {...props}
@@ -89,7 +89,7 @@ function PopoverTitle({ className, ...props }: PopoverPrimitive.Title.Props) {
   return (
     <PopoverPrimitive.Title
       data-slot="popover-title"
-      className={cn("font-medium", className)}
+      className={cn("font-heading text-lg font-medium", className)}
       {...props}
     />
   )
@@ -102,7 +102,7 @@ function PopoverDescription({
   return (
     <PopoverPrimitive.Description
       data-slot="popover-description"
-      className={cn("text-muted-foreground", className)}
+      className={cn("text-[13px] text-muted-foreground", className)}
       {...props}
     />
   )

@@ -7,8 +7,9 @@
       "name": "edbn-base",
       "type": "registry:base",
       "title": "edbn Base UI",
-      "description": "Base UI, Nova, neutral, and Lucide foundation for edbn components.",
+      "description": "Instrument Sans, warm paper surfaces, and accessible Base UI components for edbn.",
       "dependencies": [
+        "@fontsource-variable/instrument-sans@5.3.0",
         "clsx@^2.1.1",
         "shadcn@4.19.0",
         "tailwind-merge@^3.6.0",
@@ -37,26 +38,34 @@
           "motion-duration-press": "140ms",
           "motion-duration-surface-in": "160ms",
           "motion-duration-surface-out": "125ms",
-          "motion-ease-out": "cubic-bezier(0.23, 1, 0.32, 1)"
+          "motion-ease-out": "cubic-bezier(0.23, 1, 0.32, 1)",
+          "font-sans": "var(--font-sans)",
+          "radius-sm": "calc(var(--radius) * 0.6)",
+          "radius-md": "calc(var(--radius) * 0.8)",
+          "radius-lg": "var(--radius)",
+          "radius-xl": "calc(var(--radius) * 1.6)",
+          "radius-2xl": "calc(var(--radius) * 2)",
+          "radius-3xl": "calc(var(--radius) * 2.4)",
+          "radius-4xl": "calc(var(--radius) * 2.8)"
         },
         "light": {
-          "background": "oklch(1 0 0)",
-          "foreground": "oklch(0.145 0 0)",
-          "card": "oklch(1 0 0)",
-          "card-foreground": "oklch(0.145 0 0)",
-          "popover": "oklch(1 0 0)",
-          "popover-foreground": "oklch(0.145 0 0)",
+          "background": "#fafaf9",
+          "foreground": "#121214",
+          "card": "#f1f1ef",
+          "card-foreground": "#121214",
+          "popover": "#fafaf9",
+          "popover-foreground": "#121214",
           "primary": "oklch(0.205 0 0)",
           "primary-foreground": "oklch(0.985 0 0)",
-          "secondary": "oklch(0.97 0 0)",
-          "secondary-foreground": "oklch(0.205 0 0)",
-          "muted": "oklch(0.97 0 0)",
-          "muted-foreground": "oklch(0.556 0 0)",
+          "secondary": "#f1f1ef",
+          "secondary-foreground": "#121214",
+          "muted": "#f1f1ef",
+          "muted-foreground": "#636268",
           "accent": "oklch(0.97 0 0)",
           "accent-foreground": "oklch(0.205 0 0)",
           "destructive": "oklch(0.577 0.245 27.325)",
-          "border": "oklch(0.922 0 0)",
-          "input": "oklch(0.922 0 0)",
+          "border": "#e6e5e2",
+          "input": "#8b8a91",
           "ring": "oklch(0.708 0 0)",
           "chart-1": "oklch(0.87 0 0)",
           "chart-2": "oklch(0.556 0 0)",
@@ -71,7 +80,8 @@
           "sidebar-accent": "oklch(0.97 0 0)",
           "sidebar-accent-foreground": "oklch(0.205 0 0)",
           "sidebar-border": "oklch(0.922 0 0)",
-          "sidebar-ring": "oklch(0.708 0 0)"
+          "sidebar-ring": "oklch(0.708 0 0)",
+          "font-sans": "\"Instrument Sans Variable\", sans-serif"
         },
         "dark": {
           "background": "oklch(0.145 0 0)",
@@ -108,8 +118,16 @@
         }
       },
       "css": {
+        "@import \"@fontsource-variable/instrument-sans\"": {},
         "@import \"tw-animate-css\"": {},
-        "@import \"shadcn/tailwind.css\"": {}
+        "@import \"shadcn/tailwind.css\"": {},
+        "@layer base": {
+          "body": {
+            "font-family": "var(--font-sans)",
+            "font-size": "0.9375rem",
+            "line-height": "1.55"
+          }
+        }
       },
       "config": {
         "style": "base-nova",
@@ -135,9 +153,9 @@
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
-      "description": "The stock shadcn Accordion component for the Base UI/Nova preset.",
+      "description": "The edbn Accordion component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -164,9 +182,9 @@
       "name": "alert-dialog",
       "type": "registry:ui",
       "title": "Alert Dialog",
-      "description": "The stock shadcn Alert Dialog component for the Base UI/Nova preset.",
+      "description": "The edbn Alert Dialog component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json",
@@ -193,7 +211,7 @@
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
-      "description": "The stock shadcn Alert component for the Base UI/Nova preset.",
+      "description": "The edbn Alert component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "class-variance-authority@^0.7.1"
       ],
@@ -221,7 +239,7 @@
       "name": "aspect-ratio",
       "type": "registry:ui",
       "title": "Aspect Ratio",
-      "description": "The stock shadcn Aspect Ratio component for the Base UI/Nova preset.",
+      "description": "The edbn Aspect Ratio component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -246,9 +264,9 @@
       "name": "attachment",
       "type": "registry:ui",
       "title": "Attachment",
-      "description": "The stock shadcn Attachment component for the Base UI/Nova preset.",
+      "description": "The edbn Attachment component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -276,9 +294,9 @@
       "name": "avatar",
       "type": "registry:ui",
       "title": "Avatar",
-      "description": "The stock shadcn Avatar component for the Base UI/Nova preset.",
+      "description": "The edbn Avatar component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -304,9 +322,9 @@
       "name": "badge",
       "type": "registry:ui",
       "title": "Badge",
-      "description": "The stock shadcn Badge component for the Base UI/Nova preset.",
+      "description": "The edbn Badge component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -333,9 +351,9 @@
       "name": "breadcrumb",
       "type": "registry:ui",
       "title": "Breadcrumb",
-      "description": "The stock shadcn Breadcrumb component for the Base UI/Nova preset.",
+      "description": "The edbn Breadcrumb component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -362,9 +380,9 @@
       "name": "bubble",
       "type": "registry:ui",
       "title": "Bubble",
-      "description": "The stock shadcn Bubble component for the Base UI/Nova preset.",
+      "description": "The edbn Bubble component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -391,9 +409,9 @@
       "name": "button-group",
       "type": "registry:ui",
       "title": "Button Group",
-      "description": "The stock shadcn Button Group component for the Base UI/Nova preset.",
+      "description": "The edbn Button Group component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -421,9 +439,9 @@
       "name": "button",
       "type": "registry:ui",
       "title": "Button",
-      "description": "The stock shadcn Button component for the Base UI/Nova preset.",
+      "description": "The edbn Button component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -450,7 +468,7 @@
       "name": "calendar",
       "type": "registry:ui",
       "title": "Calendar",
-      "description": "The stock shadcn Calendar component for the Base UI/Nova preset.",
+      "description": "The edbn Calendar component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "lucide-react@^1.33.0",
         "react-day-picker@^10.0.1"
@@ -480,7 +498,7 @@
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "description": "The stock shadcn Card component for the Base UI/Nova preset.",
+      "description": "The edbn Card component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -505,7 +523,7 @@
       "name": "carousel",
       "type": "registry:ui",
       "title": "Carousel",
-      "description": "The stock shadcn Carousel component for the Base UI/Nova preset.",
+      "description": "The edbn Carousel component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "embla-carousel-react@^8.6.0",
         "lucide-react@^1.33.0"
@@ -535,7 +553,7 @@
       "name": "chart",
       "type": "registry:ui",
       "title": "Chart",
-      "description": "The stock shadcn Chart component for the Base UI/Nova preset.",
+      "description": "The edbn Chart component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "recharts@^3.8.0"
       ],
@@ -563,9 +581,9 @@
       "name": "checkbox",
       "type": "registry:ui",
       "title": "Checkbox",
-      "description": "The stock shadcn Checkbox component for the Base UI/Nova preset.",
+      "description": "The edbn Checkbox component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -592,9 +610,9 @@
       "name": "collapsible",
       "type": "registry:ui",
       "title": "Collapsible",
-      "description": "The stock shadcn Collapsible component for the Base UI/Nova preset.",
+      "description": "The edbn Collapsible component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -620,9 +638,9 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "description": "The stock shadcn Combobox component for the Base UI/Nova preset.",
+      "description": "The edbn Combobox component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -651,7 +669,7 @@
       "name": "command",
       "type": "registry:ui",
       "title": "Command",
-      "description": "The stock shadcn Command component for the Base UI/Nova preset.",
+      "description": "The edbn Command component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "cmdk@^1.1.1",
         "lucide-react@^1.33.0"
@@ -682,9 +700,9 @@
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
-      "description": "The stock shadcn Context Menu component for the Base UI/Nova preset.",
+      "description": "The edbn Context Menu component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -711,9 +729,9 @@
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
-      "description": "The stock shadcn Dialog component for the Base UI/Nova preset.",
+      "description": "The edbn Dialog component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -741,9 +759,9 @@
       "name": "direction",
       "type": "registry:ui",
       "title": "Direction",
-      "description": "The stock shadcn Direction component for the Base UI/Nova preset.",
+      "description": "The edbn Direction component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -769,9 +787,9 @@
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
-      "description": "The stock shadcn Drawer component for the Base UI/Nova preset.",
+      "description": "The edbn Drawer component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -797,9 +815,9 @@
       "name": "dropdown-menu",
       "type": "registry:ui",
       "title": "Dropdown Menu",
-      "description": "The stock shadcn Dropdown Menu component for the Base UI/Nova preset.",
+      "description": "The edbn Dropdown Menu component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -826,7 +844,7 @@
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
-      "description": "The stock shadcn Empty component for the Base UI/Nova preset.",
+      "description": "The edbn Empty component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "class-variance-authority@^0.7.1"
       ],
@@ -854,7 +872,7 @@
       "name": "field",
       "type": "registry:ui",
       "title": "Field",
-      "description": "The stock shadcn Field component for the Base UI/Nova preset.",
+      "description": "The edbn Field component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "class-variance-authority@^0.7.1"
       ],
@@ -884,9 +902,9 @@
       "name": "hover-card",
       "type": "registry:ui",
       "title": "Hover Card",
-      "description": "The stock shadcn Hover Card component for the Base UI/Nova preset.",
+      "description": "The edbn Hover Card component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -912,7 +930,7 @@
       "name": "input-group",
       "type": "registry:ui",
       "title": "Input Group",
-      "description": "The stock shadcn Input Group component for the Base UI/Nova preset.",
+      "description": "The edbn Input Group component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "class-variance-authority@^0.7.1"
       ],
@@ -943,7 +961,7 @@
       "name": "input-otp",
       "type": "registry:ui",
       "title": "Input Otp",
-      "description": "The stock shadcn Input Otp component for the Base UI/Nova preset.",
+      "description": "The edbn Input Otp component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "input-otp@^1.5.0",
         "lucide-react@^1.33.0"
@@ -972,9 +990,9 @@
       "name": "input",
       "type": "registry:ui",
       "title": "Input",
-      "description": "The stock shadcn Input component for the Base UI/Nova preset.",
+      "description": "The edbn Input component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1000,9 +1018,9 @@
       "name": "item",
       "type": "registry:ui",
       "title": "Item",
-      "description": "The stock shadcn Item component for the Base UI/Nova preset.",
+      "description": "The edbn Item component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -1030,7 +1048,7 @@
       "name": "kbd",
       "type": "registry:ui",
       "title": "Kbd",
-      "description": "The stock shadcn Kbd component for the Base UI/Nova preset.",
+      "description": "The edbn Kbd component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -1055,7 +1073,7 @@
       "name": "label",
       "type": "registry:ui",
       "title": "Label",
-      "description": "The stock shadcn Label component for the Base UI/Nova preset.",
+      "description": "The edbn Label component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -1080,9 +1098,9 @@
       "name": "marker",
       "type": "registry:ui",
       "title": "Marker",
-      "description": "The stock shadcn Marker component for the Base UI/Nova preset.",
+      "description": "The edbn Marker component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -1109,9 +1127,9 @@
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
-      "description": "The stock shadcn Menubar component for the Base UI/Nova preset.",
+      "description": "The edbn Menubar component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -1139,9 +1157,9 @@
       "name": "message-scroller",
       "type": "registry:ui",
       "title": "Message Scroller",
-      "description": "The stock shadcn Message Scroller component for the Base UI/Nova preset.",
+      "description": "The edbn Message Scroller component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "@shadcn/react@^0.3.0",
         "lucide-react@^1.33.0"
       ],
@@ -1170,7 +1188,7 @@
       "name": "message",
       "type": "registry:ui",
       "title": "Message",
-      "description": "The stock shadcn Message component for the Base UI/Nova preset.",
+      "description": "The edbn Message component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -1195,7 +1213,7 @@
       "name": "native-select",
       "type": "registry:ui",
       "title": "Native Select",
-      "description": "The stock shadcn Native Select component for the Base UI/Nova preset.",
+      "description": "The edbn Native Select component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "lucide-react@^1.33.0"
       ],
@@ -1223,9 +1241,9 @@
       "name": "navigation-menu",
       "type": "registry:ui",
       "title": "Navigation Menu",
-      "description": "The stock shadcn Navigation Menu component for the Base UI/Nova preset.",
+      "description": "The edbn Navigation Menu component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1",
         "lucide-react@^1.33.0"
       ],
@@ -1253,7 +1271,7 @@
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
-      "description": "The stock shadcn Pagination component for the Base UI/Nova preset.",
+      "description": "The edbn Pagination component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "lucide-react@^1.33.0"
       ],
@@ -1282,9 +1300,9 @@
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
-      "description": "The stock shadcn Popover component for the Base UI/Nova preset.",
+      "description": "The edbn Popover component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1310,9 +1328,9 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "description": "The stock shadcn Progress component for the Base UI/Nova preset.",
+      "description": "The edbn Progress component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1338,7 +1356,7 @@
       "name": "questionnaire",
       "type": "registry:ui",
       "title": "Questionnaire",
-      "description": "The stock shadcn Questionnaire component for the Base UI/Nova preset.",
+      "description": "The edbn Questionnaire component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "@shadcn/react@^0.3.0",
         "lucide-react@^1.33.0"
@@ -1368,9 +1386,9 @@
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
-      "description": "The stock shadcn Radio Group component for the Base UI/Nova preset.",
+      "description": "The edbn Radio Group component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1396,7 +1414,7 @@
       "name": "resizable",
       "type": "registry:ui",
       "title": "Resizable",
-      "description": "The stock shadcn Resizable component for the Base UI/Nova preset.",
+      "description": "The edbn Resizable component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "react-resizable-panels@^4.12.3"
       ],
@@ -1424,9 +1442,9 @@
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
-      "description": "The stock shadcn Scroll Area component for the Base UI/Nova preset.",
+      "description": "The edbn Scroll Area component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1452,9 +1470,9 @@
       "name": "select",
       "type": "registry:ui",
       "title": "Select",
-      "description": "The stock shadcn Select component for the Base UI/Nova preset.",
+      "description": "The edbn Select component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -1481,9 +1499,9 @@
       "name": "separator",
       "type": "registry:ui",
       "title": "Separator",
-      "description": "The stock shadcn Separator component for the Base UI/Nova preset.",
+      "description": "The edbn Separator component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1509,9 +1527,9 @@
       "name": "sheet",
       "type": "registry:ui",
       "title": "Sheet",
-      "description": "The stock shadcn Sheet component for the Base UI/Nova preset.",
+      "description": "The edbn Sheet component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -1539,9 +1557,9 @@
       "name": "sidebar",
       "type": "registry:ui",
       "title": "Sidebar",
-      "description": "The stock shadcn Sidebar component for the Base UI/Nova preset.",
+      "description": "The edbn Sidebar component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1",
         "lucide-react@^1.33.0"
       ],
@@ -1575,7 +1593,7 @@
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
-      "description": "The stock shadcn Skeleton component for the Base UI/Nova preset.",
+      "description": "The edbn Skeleton component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -1600,9 +1618,9 @@
       "name": "slider",
       "type": "registry:ui",
       "title": "Slider",
-      "description": "The stock shadcn Slider component for the Base UI/Nova preset.",
+      "description": "The edbn Slider component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1628,7 +1646,7 @@
       "name": "sonner",
       "type": "registry:ui",
       "title": "Sonner",
-      "description": "The stock shadcn Sonner component for the Base UI/Nova preset.",
+      "description": "The edbn Sonner component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "lucide-react@^1.33.0",
         "next-themes@^0.4.6",
@@ -1658,7 +1676,7 @@
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
-      "description": "The stock shadcn Spinner component for the Base UI/Nova preset.",
+      "description": "The edbn Spinner component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
         "lucide-react@^1.33.0"
       ],
@@ -1686,9 +1704,9 @@
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
-      "description": "The stock shadcn Switch component for the Base UI/Nova preset.",
+      "description": "The edbn Switch component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -1714,7 +1732,7 @@
       "name": "table",
       "type": "registry:ui",
       "title": "Table",
-      "description": "The stock shadcn Table component for the Base UI/Nova preset.",
+      "description": "The edbn Table component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -1739,9 +1757,9 @@
       "name": "tabs",
       "type": "registry:ui",
       "title": "Tabs",
-      "description": "The stock shadcn Tabs component for the Base UI/Nova preset.",
+      "description": "The edbn Tabs component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -1768,7 +1786,7 @@
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
-      "description": "The stock shadcn Textarea component for the Base UI/Nova preset.",
+      "description": "The edbn Textarea component with the shared Instrument Sans and paper surface foundation.",
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
       ],
@@ -1793,9 +1811,9 @@
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
-      "description": "The stock shadcn Toast component for the Base UI/Nova preset.",
+      "description": "The edbn Toast component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
@@ -1823,9 +1841,9 @@
       "name": "toggle-group",
       "type": "registry:ui",
       "title": "Toggle Group",
-      "description": "The stock shadcn Toggle Group component for the Base UI/Nova preset.",
+      "description": "The edbn Toggle Group component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -1853,9 +1871,9 @@
       "name": "toggle",
       "type": "registry:ui",
       "title": "Toggle",
-      "description": "The stock shadcn Toggle component for the Base UI/Nova preset.",
+      "description": "The edbn Toggle component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0",
+        "@base-ui/react@^1.8.0",
         "class-variance-authority@^0.7.1"
       ],
       "registryDependencies": [
@@ -1882,9 +1900,9 @@
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
-      "description": "The stock shadcn Tooltip component for the Base UI/Nova preset.",
+      "description": "The edbn Tooltip component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.7.0"
+        "@base-ui/react@^1.8.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"

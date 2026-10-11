@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "pagination",
   "title": "Pagination",
-  "description": "The stock shadcn Pagination component for the Base UI/Nova preset.",
+  "description": "The edbn Pagination component with the shared Instrument Sans and paper surface foundation.",
   "dependencies": [
     "lucide-react@^1.33.0"
   ],

@@ -19,6 +19,7 @@ export type PopupMotion = "pointer" | "instant";
 export type PopupChangeEventDetails = {
   event?: Event;
   reason?: string;
+  readonly isCanceled?: boolean;
 };
 
 const UIEnvironmentContext = React.createContext<UIEnvironment | undefined>(
@@ -40,6 +41,10 @@ function getPopupMotion(
 
   if (type === "click" && "detail" in event && event.detail === 0) {
     return "instant";
+  }
+
+  if (type === "contextmenu") {
+    return "button" in event && event.button === 2 ? "pointer" : "instant";
   }
 
   return /^(?:click|mouse|pointer|touch)/.test(type) ? "pointer" : "instant";
@@ -137,6 +142,10 @@ function usePopupMotionState<Details extends PopupChangeEventDetails>(
       pendingOpen.current = nextOpen;
       setMotion(getPopupMotion(eventDetails));
       onOpenChange?.(nextOpen, eventDetails);
+      if (eventDetails.isCanceled) {
+        pendingOpen.current = null;
+        setMotion("instant");
+      }
     },
     [onOpenChange]
   );
