@@ -172,6 +172,9 @@ const sourcePaths = new Set(
   items.flatMap((item) => (item.files ?? []).map((file) => file.path))
 );
 const baseImportSpecifiers = new Set();
+// Every shadcn project has these from `shadcn init`, written for its own style,
+// so edbn-base does not ship them and installs never ask to overwrite them.
+const projectImportSpecifiers = new Set(["@/lib/utils"]);
 
 for (const file of baseItems[0]?.files ?? []) {
   const specifier = targetSpecifier(file.target);
@@ -282,7 +285,11 @@ for (const item of items) {
           );
         continue;
       }
-      if (baseImportSpecifiers.has(specifier)) continue;
+      if (
+        baseImportSpecifiers.has(specifier) ||
+        projectImportSpecifiers.has(specifier)
+      )
+        continue;
       if (specifier.startsWith("@/")) {
         const owner = ownerBySpecifier.get(specifier);
         if (!owner) {
