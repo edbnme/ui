@@ -220,7 +220,7 @@ function QuestionnairePrevious({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        "col-start-1 row-start-1 min-h-11 justify-self-start",
+        "col-start-1 row-start-1 [@media(pointer:coarse)]:min-h-11 justify-self-start",
         className
       )}
       {...props}
@@ -245,7 +245,7 @@ function QuestionnaireSkip({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        "col-start-2 row-start-1 min-h-11 justify-self-end",
+        "col-start-2 row-start-1 [@media(pointer:coarse)]:min-h-11 justify-self-end",
         className
       )}
       {...props}
@@ -270,7 +270,7 @@ function QuestionnaireNext({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        "col-start-3 row-start-1 min-h-11 justify-self-end",
+        "col-start-3 row-start-1 [@media(pointer:coarse)]:min-h-11 justify-self-end",
         className
       )}
       {...props}
@@ -295,7 +295,7 @@ function QuestionnaireSubmit({
       data-variant={variant}
       className={cn(
         buttonVariants({ size, variant }),
-        "col-start-3 row-start-1 min-h-11 justify-self-end",
+        "col-start-3 row-start-1 [@media(pointer:coarse)]:min-h-11 justify-self-end",
         className
       )}
       {...props}

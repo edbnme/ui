@@ -169,7 +169,7 @@ function ContextMenuContent({
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
           data-motion={motion}
-          className={cn("z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-xl bg-popover p-1.5 text-popover-foreground shadow-[0_1px_1px_rgb(16_16_20_/_0.04),0_8px_20px_-8px_rgb(16_16_20_/_0.16)] border border-border outline-none transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none", className )}
+          className={cn("z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-panel border border-border/60 bg-popover p-1 text-popover-foreground shadow-popup outline-none transition-opacity ease-(--motion-ease-out) data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]", className )}
           {...props}
         />
       </ContextMenuPrimitive.Positioner>
@@ -266,7 +266,6 @@ function ContextMenuSubContent({
   return (
     <ContextMenuContent
       data-slot="context-menu-sub-content"
-      className="shadow-lg"
       side="right"
       {...props}
     />

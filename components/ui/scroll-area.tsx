@@ -18,7 +18,7 @@ function ScrollArea({
     >
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
-        className="size-full rounded-[inherit] transition-none outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        className="size-full rounded-[inherit] transition-none outline-none [mask-image:linear-gradient(to_bottom,transparent,black_min(2.5rem,var(--scroll-area-overflow-y-start,0px)),black_calc(100%-min(2.5rem,var(--scroll-area-overflow-y-end,0px))),transparent)] focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>

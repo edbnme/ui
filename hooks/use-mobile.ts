@@ -4,25 +4,28 @@ import { useUIWindow } from "@/lib/ui-environment"
 
 const MOBILE_BREAKPOINT = 768
 
+/**
+ * Below 768px. Read from the media query as the component renders, so a
+ * client render never starts as desktop and flips after mounting. On the
+ * server, and while hydrating server HTML, it's false.
+ */
 export function useIsMobile() {
   const ownerWindow = useUIWindow()
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+  const query = `(max-width: ${MOBILE_BREAKPOINT - 1}px)`
 
-  React.useEffect(() => {
-    if (!ownerWindow) return
+  const subscribe = React.useCallback(
+    (onChange: () => void) => {
+      const mql = ownerWindow?.matchMedia?.(query)
+      if (!mql) return () => {}
+      mql.addEventListener("change", onChange)
+      return () => mql.removeEventListener("change", onChange)
+    },
+    [ownerWindow, query]
+  )
 
-    const mql = ownerWindow.matchMedia(
-      `(max-width: ${MOBILE_BREAKPOINT - 1}px)`
-    )
-    if (!mql) return
-
-    const onChange = () => {
-      setIsMobile(ownerWindow.innerWidth < MOBILE_BREAKPOINT)
-    }
-    mql.addEventListener("change", onChange)
-    setIsMobile(ownerWindow.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener("change", onChange)
-  }, [ownerWindow])
-
-  return !!isMobile
+  return React.useSyncExternalStore(
+    subscribe,
+    () => ownerWindow?.matchMedia?.(query).matches ?? false,
+    () => false
+  )
 }
