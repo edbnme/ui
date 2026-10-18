@@ -74,7 +74,7 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}{" "}
-      <ChevronDownIcon className="relative top-px ml-1 size-3 transition-none group-data-popup-open/navigation-menu-trigger:rotate-180 group-data-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
+      <ChevronDownIcon className="relative top-px ml-1 size-3 transition-transform duration-200 ease-(--motion-ease-out) motion-reduce:transition-none group-data-popup-open/navigation-menu-trigger:rotate-180 group-data-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   )
 }
@@ -87,7 +87,7 @@ function NavigationMenuContent({
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        "h-full w-auto p-1 transition-none group-data-[viewport=false]/navigation-menu:rounded-lg group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:ring-1 group-data-[viewport=false]/navigation-menu:ring-foreground/10 data-ending-style:opacity-0 data-starting-style:opacity-0",
+        "h-full w-auto p-1 transition-[opacity,translate] duration-200 ease-(--motion-ease-out) data-starting-style:opacity-0 data-ending-style:opacity-0 data-starting-style:data-[activation-direction=left]:-translate-x-6 data-starting-style:data-[activation-direction=right]:translate-x-6 data-ending-style:data-[activation-direction=left]:translate-x-6 data-ending-style:data-[activation-direction=right]:-translate-x-6 motion-reduce:translate-x-0 motion-reduce:transition-opacity group-data-[viewport=false]/navigation-menu:rounded-panel group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:border-border/60 group-data-[viewport=false]/navigation-menu:bg-popover group-data-[viewport=false]/navigation-menu:text-popover-foreground group-data-[viewport=false]/navigation-menu:shadow-popup",
         className
       )}
       {...props}
@@ -113,12 +113,12 @@ function NavigationMenuPositioner({
         align={align}
         alignOffset={alignOffset}
         className={cn(
-          "isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-none data-instant:transition-none data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0",
+          "isolate z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) transition-[top,left,right,bottom] duration-200 ease-(--motion-ease-out) data-instant:transition-none motion-reduce:transition-none",
           className
         )}
         {...props}
       >
-        <NavigationMenuPrimitive.Popup className="xs:w-(--popup-width) relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-xl bg-popover text-popover-foreground shadow-[0_1px_1px_rgb(16_16_20_/_0.06),0_10px_18px_-6px_rgb(16_16_20_/_0.16),0_28px_44px_-16px_rgb(16_16_20_/_0.3)] border border-border transition-none outline-none data-ending-style:opacity-0 data-starting-style:opacity-0">
+        <NavigationMenuPrimitive.Popup className="relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-panel border border-border/60 bg-popover text-popover-foreground shadow-popup outline-none transition-[opacity,scale,width,height] duration-200 ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-instant:transition-none motion-reduce:transition-opacity">
           <NavigationMenuPrimitive.Viewport className="relative size-full overflow-hidden" />
         </NavigationMenuPrimitive.Popup>
       </NavigationMenuPrimitive.Positioner>
@@ -134,7 +134,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex items-center gap-2 min-h-10 rounded-lg p-2.5 text-sm [@media(pointer:coarse)]:min-h-11 transition-none outline-none [@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted focus:bg-muted focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground in-data-[slot=navigation-menu-content]:rounded-md data-active:bg-muted/50 data-active:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted data-active:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
+        "flex items-center gap-2 min-h-10 rounded-lg p-2.5 text-sm [@media(pointer:coarse)]:min-h-11 transition-none outline-none [@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted focus:bg-muted focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground in-data-[slot=navigation-menu-content]:rounded-control data-active:bg-muted/50 data-active:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted data-active:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
