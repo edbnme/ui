@@ -180,10 +180,10 @@
       "description": "The edbn Breadcrumb component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2627,
-        "gzipped": 811,
-        "selfSize": 2627,
-        "selfGzip": 811
+        "minified": 2636,
+        "gzipped": 821,
+        "selfSize": 2636,
+        "selfGzip": 821
       },
       "dependencies": [
         {
@@ -992,10 +992,10 @@
       "description": "The edbn Pagination component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2961,
-        "gzipped": 916,
-        "selfSize": 2961,
-        "selfGzip": 916
+        "minified": 3015,
+        "gzipped": 930,
+        "selfSize": 3015,
+        "selfGzip": 930
       },
       "dependencies": [
         {
