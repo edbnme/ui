@@ -16,6 +16,8 @@ function Calendar({
   className,
   classNames,
   showOutsideDays = true,
+  // Six weeks in every month, so the calendar's height never jumps.
+  fixedWeeks = true,
   captionLayout = "label",
   buttonVariant = "ghost",
   locale,
@@ -30,6 +32,7 @@ function Calendar({
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
+      fixedWeeks={fixedWeeks}
       className={cn(
         "group/calendar bg-background p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(9)] [@media(pointer:coarse)]:[--cell-size:--spacing(11)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
