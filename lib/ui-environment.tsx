@@ -50,6 +50,28 @@ function getPopupMotion(
   return /^(?:click|mouse|pointer|touch)/.test(type) ? "pointer" : "instant";
 }
 
+// The last press or key per document, so a popup whose open state is changed
+// from outside (by a separate menu button, say) can still tell a tap, which
+// animates, from a key or a script, which don't.
+const lastInput = new WeakMap<Document, { pointer: boolean; at: number }>();
+
+function trackInput(ownerDocument: Document | null) {
+  if (!ownerDocument || lastInput.has(ownerDocument)) return;
+  lastInput.set(ownerDocument, { pointer: false, at: -Infinity });
+  const record = (pointer: boolean) => (event: Event) =>
+    lastInput.set(ownerDocument, { pointer, at: event.timeStamp });
+  ownerDocument.addEventListener("pointerdown", record(true), true);
+  ownerDocument.addEventListener("keydown", record(false), true);
+}
+
+function getControlledMotion(ownerDocument: Document | null): PopupMotion {
+  const input = ownerDocument && lastInput.get(ownerDocument);
+  const now = ownerDocument?.defaultView?.performance.now();
+  return input?.pointer && now !== undefined && now - input.at < 1000
+    ? "pointer"
+    : "instant";
+}
+
 function UIEnvironmentProvider({
   value,
   children,
@@ -120,9 +142,12 @@ function usePopupMotionState<Details extends PopupChangeEventDetails>(
   open: boolean | undefined,
   onOpenChange?: (open: boolean, eventDetails: Details) => void
 ) {
+  const ownerDocument = useUIDocument();
   const [motion, setMotion] = React.useState<PopupMotion>("instant");
   const previousOpen = React.useRef(open);
   const pendingOpen = React.useRef<boolean | null>(null);
+
+  React.useEffect(() => trackInput(ownerDocument), [ownerDocument]);
 
   React.useLayoutEffect(() => {
     if (open === undefined) {
@@ -132,10 +157,12 @@ function usePopupMotionState<Details extends PopupChangeEventDetails>(
 
     if (open !== previousOpen.current) {
       previousOpen.current = open;
-      if (pendingOpen.current !== open) setMotion("instant");
+      // Changed from outside: animate only if a press just caused it.
+      if (pendingOpen.current !== open)
+        setMotion(getControlledMotion(ownerDocument));
     }
     pendingOpen.current = null;
-  }, [open]);
+  }, [open, ownerDocument]);
 
   const handleOpenChange = React.useCallback(
     (nextOpen: boolean, eventDetails: Details) => {
