@@ -1305,10 +1305,10 @@
       "description": "The edbn Sonner component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1474,
-        "gzipped": 586,
-        "selfSize": 1474,
-        "selfGzip": 586
+        "minified": 1525,
+        "gzipped": 618,
+        "selfSize": 1525,
+        "selfGzip": 618
       },
       "dependencies": [
         {

@@ -34,7 +34,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
           "--normal-bg": "var(--popover)",
           "--normal-text": "var(--popover-foreground)",
           "--normal-border": "var(--border)",
-          "--border-radius": "calc(var(--radius) * 2)",
+          // The 14px panel radius, like the other floating surfaces.
+          "--border-radius": "14px",
         } as React.CSSProperties
       }
       toastOptions={{
