@@ -61,7 +61,7 @@ function MenubarTrigger({
     <DropdownMenuTrigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex h-8 items-center rounded-control px-3 text-sm font-medium outline-none select-none pointer-coarse:h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-popover data-popup-open:bg-popover focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground data-disabled:opacity-50",
+        "flex h-8 items-center rounded-control px-3 text-sm font-medium outline-none select-none pointer-coarse:h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-popover data-popup-open:bg-popover focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-foreground data-disabled:opacity-50",
         className
       )}
       {...props}
