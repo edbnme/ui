@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
 
-import { PopupMotionProvider, usePopupMotion, usePopupMotionState, usePortalContainer } from "@/lib/ui-environment"
+import { usePortalContainer } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -14,18 +14,8 @@ import {
 } from "@/components/ui/input-group"
 import { ChevronDownIcon, XIcon, CheckIcon } from "lucide-react"
 
-function Combobox<Value, Multiple extends boolean | undefined = false>({
-  open,
-  onOpenChange,
-  ...props
-}: ComboboxPrimitive.Root.Props<Value, Multiple>) {
-  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
-
-  return (
-    <PopupMotionProvider value={motion}>
-      <ComboboxPrimitive.Root open={open} onOpenChange={handleOpenChange} {...props} />
-    </PopupMotionProvider>
-  )
+function Combobox<Value, Multiple extends boolean | undefined = false>({ ...props }: ComboboxPrimitive.Root.Props<Value, Multiple>) {
+  return <ComboboxPrimitive.Root {...props} />
 }
 
 function ComboboxValue({ ...props }: ComboboxPrimitive.Value.Props) {
@@ -115,8 +105,6 @@ function ComboboxContent({
     "side" | "align" | "sideOffset" | "alignOffset" | "anchor"
   >) {
   const portalContainer = usePortalContainer()
-  const motion = usePopupMotion()
-
   return (
     <ComboboxPrimitive.Portal container={portalContainer}>
       <ComboboxPrimitive.Positioner
@@ -129,9 +117,8 @@ function ComboboxContent({
       >
         <ComboboxPrimitive.Popup
           data-slot="combobox-content"
-          data-motion={motion}
           data-chips={!!anchor}
-          className={cn("group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-panel border border-border/60 bg-popover text-popover-foreground shadow-popup data-[chips=true]:min-w-(--anchor-width) *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-10 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none", className )}
+          className={cn("group/combobox-content relative max-h-(--available-height) w-(--anchor-width) max-w-(--available-width) min-w-[calc(var(--anchor-width)+--spacing(7))] origin-(--transform-origin) overflow-hidden rounded-panel border border-border/60 bg-popover text-popover-foreground shadow-popup data-[chips=true]:min-w-(--anchor-width) *:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-10 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100", className )}
           {...props}
         />
       </ComboboxPrimitive.Positioner>

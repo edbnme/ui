@@ -3,19 +3,13 @@
 import * as React from "react"
 import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
 
-import { PopupMotionProvider, usePopupMotion, usePopupMotionState, usePortalContainer } from "@/lib/ui-environment"
+import { usePortalContainer } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
 
-function Dialog({ open, onOpenChange, ...props }: DialogPrimitive.Root.Props) {
-  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
-
-  return (
-    <PopupMotionProvider value={motion}>
-      <DialogPrimitive.Root data-slot="dialog" open={open} onOpenChange={handleOpenChange} {...props} />
-    </PopupMotionProvider>
-  )
+function Dialog({ ...props }: DialogPrimitive.Root.Props) {
+  return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
 
 function DialogTrigger({ ...props }: DialogPrimitive.Trigger.Props) {
@@ -42,14 +36,11 @@ function DialogOverlay({
   className,
   ...props
 }: DialogPrimitive.Backdrop.Props) {
-  const motion = usePopupMotion()
-
   return (
     <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
-      data-motion={motion}
       className={cn(
-        "fixed inset-0 isolate z-50 bg-black/20 transition-opacity dark:bg-black/50 duration-200 ease-(--motion-ease-out) data-starting-style:opacity-0 data-ending-style:opacity-0 data-ending-style:duration-150 data-[motion=instant]:transition-none motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms]",
+        "fixed inset-0 isolate z-50 bg-black/20 transition-opacity dark:bg-black/50 duration-200 ease-(--motion-ease-out) data-starting-style:opacity-0 data-ending-style:opacity-0 data-ending-style:duration-150 motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms]",
         className
       )}
       {...props}
@@ -65,16 +56,13 @@ function DialogContent({
 }: DialogPrimitive.Popup.Props & {
   showCloseButton?: boolean
 }) {
-  const motion = usePopupMotion()
-
   return (
     <DialogPortal>
       <DialogOverlay />
       <DialogPrimitive.Popup
         data-slot="dialog-content"
-        data-motion={motion}
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 grid w-[26rem] max-w-[calc(100%-2rem)] max-h-[calc(100dvh-2rem)] overflow-y-auto -translate-x-1/2 -translate-y-1/2 gap-5 rounded-card bg-popover p-7 pt-11 text-[15px] text-popover-foreground border border-border/60 shadow-lift outline-none transition-[opacity,scale] duration-200 ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-150 data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none",
+          "fixed top-1/2 left-1/2 z-50 grid w-[26rem] max-w-[calc(100%-2rem)] max-h-[calc(100dvh-2rem)] overflow-y-auto -translate-x-1/2 -translate-y-1/2 gap-5 rounded-card bg-popover p-7 pt-11 text-[15px] text-popover-foreground border border-border/60 shadow-lift outline-none transition-[opacity,scale] duration-200 ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-150 motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100",
           className
         )}
         {...props}

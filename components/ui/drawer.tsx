@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "@base-ui/react/drawer"
 
-import { PopupMotionProvider, usePopupMotion, usePopupMotionState, usePortalContainer, type PopupMotion } from "@/lib/ui-environment"
+import { usePortalContainer } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 
 type DrawerContextProps = {
@@ -11,7 +11,6 @@ type DrawerContextProps = {
   modal: DrawerPrimitive.Root.Props["modal"]
   showSwipeHandle: boolean
   swipeDirection: NonNullable<DrawerPrimitive.Root.Props["swipeDirection"]>
-  setInteractionMotion: (motion: PopupMotion) => void
 }
 
 const DrawerContext = React.createContext<DrawerContextProps | null>(null)
@@ -27,8 +26,6 @@ function useDrawer() {
 }
 
 function Drawer({
-  open,
-  onOpenChange,
   modal = true,
   showSwipeHandle = false,
   snapPoints,
@@ -37,32 +34,22 @@ function Drawer({
 }: DrawerPrimitive.Root.Props & {
   showSwipeHandle?: boolean
 }) {
-  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
-  const [interactionMotion, setInteractionMotion] = React.useState<PopupMotion | null>(null)
-  React.useLayoutEffect(() => setInteractionMotion(null), [open])
   const hasSnapPoints = snapPoints != null && snapPoints.length > 0
   const contextValue = React.useMemo(
-    () => ({ hasSnapPoints, modal, showSwipeHandle, swipeDirection, setInteractionMotion }),
+    () => ({ hasSnapPoints, modal, showSwipeHandle, swipeDirection }),
     [hasSnapPoints, modal, showSwipeHandle, swipeDirection]
   )
 
   return (
-    <PopupMotionProvider value={interactionMotion ?? motion}>
-      <DrawerContext.Provider value={contextValue}>
-        <DrawerPrimitive.Root
-          data-slot="drawer"
-          open={open}
-          onOpenChange={(nextOpen, eventDetails) => {
-            setInteractionMotion(null)
-            handleOpenChange(nextOpen, eventDetails)
-          }}
-          modal={modal}
-          snapPoints={snapPoints}
-          swipeDirection={swipeDirection}
-          {...props}
-        />
-      </DrawerContext.Provider>
-    </PopupMotionProvider>
+    <DrawerContext.Provider value={contextValue}>
+      <DrawerPrimitive.Root
+        data-slot="drawer"
+        modal={modal}
+        snapPoints={snapPoints}
+        swipeDirection={swipeDirection}
+        {...props}
+      />
+    </DrawerContext.Provider>
   )
 }
 
@@ -90,13 +77,11 @@ function DrawerOverlay({
   className,
   ...props
 }: DrawerPrimitive.Backdrop.Props) {
-  const motion = usePopupMotion()
   return (
     <DrawerPrimitive.Backdrop
       data-slot="drawer-overlay"
-      data-motion={motion}
       className={cn(
-        "fixed inset-0 z-50 min-h-dvh bg-black/20 dark:bg-black/50 opacity-[max(var(--drawer-overlay-min-opacity,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity data-[motion=instant]:transition-none motion-reduce:data-[motion=instant]:transition-none duration-[270ms] ease-(--motion-ease-drawer) motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] select-none data-ending-style:pointer-events-none data-ending-style:opacity-0 data-ending-style:duration-[min(200ms,calc(var(--drawer-swipe-strength)*200ms))] data-snap-points:[--drawer-overlay-min-opacity:0.5] data-starting-style:opacity-0 data-swiping:duration-0 supports-[-webkit-touch-callout:none]:absolute",
+        "fixed inset-0 z-50 min-h-dvh bg-black/20 dark:bg-black/50 opacity-[max(var(--drawer-overlay-min-opacity,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-[270ms] ease-(--motion-ease-drawer) motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] select-none data-ending-style:pointer-events-none data-ending-style:opacity-0 data-ending-style:duration-[min(200ms,calc(var(--drawer-swipe-strength)*200ms))] data-snap-points:[--drawer-overlay-min-opacity:0.5] data-starting-style:opacity-0 data-swiping:duration-0 supports-[-webkit-touch-callout:none]:absolute",
         className
       )}
       {...props}
@@ -124,12 +109,9 @@ function DrawerSwipeHandle({
 function DrawerContent({
   className,
   children,
-  onPointerDown,
-  onKeyDown,
   ...props
 }: DrawerPrimitive.Popup.Props) {
-  const motion = usePopupMotion()
-  const { hasSnapPoints, modal, showSwipeHandle, swipeDirection, setInteractionMotion } = useDrawer()
+  const { hasSnapPoints, modal, showSwipeHandle, swipeDirection } = useDrawer()
   const swipeAxis =
     swipeDirection === "down" || swipeDirection === "up" ? "y" : "x"
 
@@ -145,20 +127,11 @@ function DrawerContent({
       >
         <DrawerPrimitive.Popup
           data-slot="drawer-popup"
-          data-motion={motion}
           data-swipe-axis={swipeAxis}
           data-snap-points={hasSnapPoints ? "" : undefined}
-          onPointerDown={(event) => {
-            setInteractionMotion("pointer")
-            onPointerDown?.(event)
-          }}
-          onKeyDown={(event) => {
-            setInteractionMotion("instant")
-            onKeyDown?.(event)
-          }}
           className={cn(
             // Base.
-            "group/drawer-popup pointer-events-auto fixed z-50 m-(--drawer-inset,0px) flex h-(--drawer-content-height) max-h-(--drawer-content-max-height,none) min-h-0 w-(--drawer-content-width,auto) transform-[translate3d(var(--translate-x,0px),var(--translate-y,0px),0)_scale(var(--stack-scale))] flex-col bg-popover text-[15px] text-popover-foreground shadow-lift motion-reduce:[--drawer-rest-transform:translate3d(var(--translate-x,0px),var(--translate-y,0px),0)_scale(var(--stack-scale))] motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-starting-style:opacity-0 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-ending-style:duration-[80ms] transition-[transform,opacity] data-[motion=instant]:transition-none motion-reduce:data-[motion=instant]:transition-none duration-[270ms] ease-(--motion-ease-drawer) outline-none select-none data-[swipe-direction=down]:rounded-t-card data-[swipe-direction=down]:border-t data-[swipe-direction=down]:border-border/60 data-[swipe-direction=left]:rounded-r-card data-[swipe-direction=left]:border-r data-[swipe-direction=left]:border-border/60 data-[swipe-direction=right]:rounded-l-card data-[swipe-direction=right]:border-l data-[swipe-direction=right]:border-border/60 data-[swipe-direction=up]:rounded-b-card data-[swipe-direction=up]:border-b data-[swipe-direction=up]:border-border/60",
+            "group/drawer-popup pointer-events-auto fixed z-50 m-(--drawer-inset,0px) flex h-(--drawer-content-height) max-h-(--drawer-content-max-height,none) min-h-0 w-(--drawer-content-width,auto) transform-[translate3d(var(--translate-x,0px),var(--translate-y,0px),0)_scale(var(--stack-scale))] flex-col bg-popover text-[15px] text-popover-foreground shadow-lift motion-reduce:[--drawer-rest-transform:translate3d(var(--translate-x,0px),var(--translate-y,0px),0)_scale(var(--stack-scale))] motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-starting-style:opacity-0 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-ending-style:duration-[80ms] transition-[transform,opacity] duration-[270ms] ease-(--motion-ease-drawer) outline-none select-none data-[swipe-direction=down]:rounded-t-card data-[swipe-direction=down]:border-t data-[swipe-direction=down]:border-border/60 data-[swipe-direction=left]:rounded-r-card data-[swipe-direction=left]:border-r data-[swipe-direction=left]:border-border/60 data-[swipe-direction=right]:rounded-l-card data-[swipe-direction=right]:border-l data-[swipe-direction=right]:border-border/60 data-[swipe-direction=up]:rounded-b-card data-[swipe-direction=up]:border-b data-[swipe-direction=up]:border-border/60",
             // Nested.
             "data-nested-drawer-open:overflow-hidden data-nested-drawer-open:brightness-95",
             // Bleed.

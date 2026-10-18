@@ -4,34 +4,13 @@ import * as React from "react"
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 
 import {
-  PopupMotionProvider,
-  usePopupMotion,
-  usePopupMotionState,
   usePortalContainer,
 } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { ChevronRightIcon, CheckIcon } from "lucide-react"
 
-function DropdownMenu<Payload = unknown>({
-  open,
-  onOpenChange,
-  ...props
-}: MenuPrimitive.Root.Props<Payload>) {
-  const [motion, handleOpenChange] = usePopupMotionState(
-    open,
-    onOpenChange
-  )
-
-  return (
-    <PopupMotionProvider value={motion}>
-      <MenuPrimitive.Root
-        data-slot="dropdown-menu"
-        open={open}
-        onOpenChange={handleOpenChange}
-        {...props}
-      />
-    </PopupMotionProvider>
-  )
+function DropdownMenu<Payload = unknown>({ ...props }: MenuPrimitive.Root.Props<Payload>) {
+  return <MenuPrimitive.Root data-slot="dropdown-menu" {...props} />
 }
 
 function DropdownMenuPortal({ container, ...props }: MenuPrimitive.Portal.Props) {
@@ -63,8 +42,6 @@ function DropdownMenuContent({
     "align" | "alignOffset" | "side" | "sideOffset"
   >) {
   const portalContainer = usePortalContainer()
-  const motion = usePopupMotion()
-
   return (
     <MenuPrimitive.Portal container={portalContainer}>
       <MenuPrimitive.Positioner
@@ -76,8 +53,7 @@ function DropdownMenuContent({
       >
         <MenuPrimitive.Popup
           data-slot="dropdown-menu-content"
-          data-motion={motion}
-          className={cn("z-50 max-h-(--available-height) w-(--anchor-width) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-panel border border-border/60 bg-popover p-1 text-popover-foreground shadow-popup outline-none transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]", className )}
+          className={cn("z-50 max-h-(--available-height) w-(--anchor-width) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-panel border border-border/60 bg-popover p-1 text-popover-foreground shadow-popup outline-none transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]", className )}
           {...props}
         />
       </MenuPrimitive.Positioner>
@@ -132,26 +108,8 @@ function DropdownMenuItem({
   )
 }
 
-function DropdownMenuSub({
-  open,
-  onOpenChange,
-  ...props
-}: MenuPrimitive.SubmenuRoot.Props) {
-  const [motion, handleOpenChange] = usePopupMotionState(
-    open,
-    onOpenChange
-  )
-
-  return (
-    <PopupMotionProvider value={motion}>
-      <MenuPrimitive.SubmenuRoot
-        data-slot="dropdown-menu-sub"
-        open={open}
-        onOpenChange={handleOpenChange}
-        {...props}
-      />
-    </PopupMotionProvider>
-  )
+function DropdownMenuSub({ ...props }: MenuPrimitive.SubmenuRoot.Props) {
+  return <MenuPrimitive.SubmenuRoot data-slot="dropdown-menu-sub" {...props} />
 }
 
 function DropdownMenuSubTrigger({

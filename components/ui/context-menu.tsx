@@ -5,9 +5,6 @@ import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu
 import { Menu as MenuPrimitive } from "@base-ui/react/menu"
 
 import {
-  PopupMotionProvider,
-  usePopupMotion,
-  usePopupMotionState,
   useUIDocument,
   usePortalContainer,
   useUIEnvironmentActive,
@@ -24,18 +21,13 @@ const PreviewContextMenuContext = React.createContext<PreviewContextMenu | null>
   null
 )
 
-function ContextMenu({ open, onOpenChange, ...props }: ContextMenuPrimitive.Root.Props) {
+function ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props) {
   const environmentActive = useUIEnvironmentActive()
-  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
 
-  return (
-    <PopupMotionProvider value={motion}>
-      {environmentActive ? (
-        <PreviewContextMenuRoot open={open} onOpenChange={handleOpenChange} {...props} />
-      ) : (
-        <ContextMenuPrimitive.Root data-slot="context-menu" open={open} onOpenChange={handleOpenChange} {...props} />
-      )}
-    </PopupMotionProvider>
+  return environmentActive ? (
+    <PreviewContextMenuRoot {...props} />
+  ) : (
+    <ContextMenuPrimitive.Root data-slot="context-menu" {...props} />
   )
 }
 
@@ -148,7 +140,6 @@ function ContextMenuContent({
     "align" | "alignOffset" | "side" | "sideOffset"
   >) {
   const portalContainer = usePortalContainer()
-  const motion = usePopupMotion()
   const environmentActive = useUIEnvironmentActive()
   const ownerDocument = useUIDocument()
   const previewContext = React.useContext(PreviewContextMenuContext)
@@ -168,8 +159,7 @@ function ContextMenuContent({
       >
         <ContextMenuPrimitive.Popup
           data-slot="context-menu-content"
-          data-motion={motion}
-          className={cn("z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-panel border border-border/60 bg-popover p-1 text-popover-foreground shadow-popup outline-none transition-opacity ease-(--motion-ease-out) data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]", className )}
+          className={cn("z-50 max-h-(--available-height) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-panel border border-border/60 bg-popover p-1 text-popover-foreground shadow-popup outline-none transition-opacity ease-(--motion-ease-out) data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]", className )}
           {...props}
         />
       </ContextMenuPrimitive.Positioner>
@@ -226,14 +216,8 @@ function ContextMenuItem({
   )
 }
 
-function ContextMenuSub({ open, onOpenChange, ...props }: ContextMenuPrimitive.SubmenuRoot.Props) {
-  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
-
-  return (
-    <PopupMotionProvider value={motion}>
-      <ContextMenuPrimitive.SubmenuRoot data-slot="context-menu-sub" open={open} onOpenChange={handleOpenChange} {...props} />
-    </PopupMotionProvider>
-  )
+function ContextMenuSub({ ...props }: ContextMenuPrimitive.SubmenuRoot.Props) {
+  return <ContextMenuPrimitive.SubmenuRoot data-slot="context-menu-sub" {...props} />
 }
 
 function ContextMenuSubTrigger({

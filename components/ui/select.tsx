@@ -4,33 +4,13 @@ import * as React from "react"
 import { Select as SelectPrimitive } from "@base-ui/react/select"
 
 import {
-  PopupMotionProvider,
-  usePopupMotion,
-  usePopupMotionState,
   usePortalContainer,
 } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { ChevronDownIcon, CheckIcon, ChevronUpIcon } from "lucide-react"
 
-function Select<Value, Multiple extends boolean | undefined = false>({
-  open,
-  onOpenChange,
-  ...props
-}: SelectPrimitive.Root.Props<Value, Multiple>) {
-  const [motion, handleOpenChange] = usePopupMotionState(
-    open,
-    onOpenChange
-  )
-
-  return (
-    <PopupMotionProvider value={motion}>
-      <SelectPrimitive.Root
-        open={open}
-        onOpenChange={handleOpenChange}
-        {...props}
-      />
-    </PopupMotionProvider>
-  )
+function Select<Value, Multiple extends boolean | undefined = false>({ ...props }: SelectPrimitive.Root.Props<Value, Multiple>) {
+  return <SelectPrimitive.Root {...props} />
 }
 
 function SelectGroup({ className, ...props }: SelectPrimitive.Group.Props) {
@@ -96,8 +76,6 @@ function SelectContent({
     "align" | "alignOffset" | "side" | "sideOffset" | "alignItemWithTrigger"
   >) {
   const portalContainer = usePortalContainer()
-  const motion = usePopupMotion()
-  const contentMotion = alignItemWithTrigger ? "instant" : motion
 
   return (
     <SelectPrimitive.Portal container={portalContainer}>
@@ -112,8 +90,7 @@ function SelectContent({
         <SelectPrimitive.Popup
           data-slot="select-content"
           data-align-trigger={alignItemWithTrigger}
-          data-motion={contentMotion}
-          className={cn("relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-panel border border-border/60 bg-popover text-popover-foreground shadow-popup transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]", className )}
+          className={cn("relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-panel border border-border/60 bg-popover text-popover-foreground shadow-popup transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 contrast-more:bg-popover contrast-more:shadow-none forced-colors:bg-[Canvas] forced-colors:text-[CanvasText]", className )}
           {...props}
         >
           <SelectScrollUpButton />
