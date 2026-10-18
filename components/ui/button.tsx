@@ -13,11 +13,11 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:bg-primary/80",
         outline:
-          "border-border bg-background [@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-input/50",
+          "border-border bg-background [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[color-mix(in_oklch,var(--background),var(--foreground)_5%)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground aria-expanded:bg-[color-mix(in_oklch,var(--background),var(--foreground)_5%)] aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-input/50",
         secondary:
           "bg-secondary text-secondary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
-          "[@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted/50",
+          "[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.05] [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground aria-expanded:bg-foreground/[.05] aria-expanded:text-foreground",
         destructive:
           "bg-destructive text-white [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[color-mix(in_srgb,var(--destructive),black_10%)] focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:text-[color-mix(in_oklch,var(--destructive),white_40%)] dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:hover:underline",
