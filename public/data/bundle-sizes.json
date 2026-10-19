@@ -267,10 +267,10 @@
       "description": "The edbn Button component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 4919,
-        "gzipped": 1387,
-        "selfSize": 4919,
-        "selfGzip": 1387
+        "minified": 5019,
+        "gzipped": 1409,
+        "selfSize": 5019,
+        "selfGzip": 1409
       },
       "dependencies": [
         {

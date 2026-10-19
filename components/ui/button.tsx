@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost:
           "[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.05] [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground aria-expanded:bg-foreground/[.05] aria-expanded:text-foreground",
         destructive:
-          "bg-destructive/10 text-destructive [@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/15 aria-expanded:bg-destructive/15 focus-visible:outline-destructive dark:bg-destructive/20 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/30",
+          "bg-destructive/10 text-[color-mix(in_oklch,var(--destructive),black_15%)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/15 aria-expanded:bg-destructive/15 focus-visible:outline-destructive dark:bg-destructive/20 dark:text-[color-mix(in_oklch,var(--destructive),white_25%)] dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/30",
         link: "text-primary underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:hover:underline",
       },
       size: {
