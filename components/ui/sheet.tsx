@@ -1,20 +1,43 @@
 "use client"
 
 import * as React from "react"
-import { Dialog as SheetPrimitive } from "@base-ui/react/dialog"
+import { Drawer as SheetPrimitive } from "@base-ui/react/drawer"
 
-import { PopupMotionProvider, usePopupMotion, usePopupMotionState, usePortalContainer } from "@/lib/ui-environment"
+import { usePortalContainer } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
 
-function Sheet({ open, onOpenChange, ...props }: SheetPrimitive.Root.Props) {
-  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
+type SheetSide = "top" | "right" | "bottom" | "left"
+
+const swipeDirections = {
+  top: "up",
+  right: "right",
+  bottom: "down",
+  left: "left",
+} as const
+
+// A sheet is Base UI's drawer: it slides in from its edge and can be swiped
+// back out. The side is set on SheetContent, as in shadcn, while Base UI
+// takes the swipe direction on the root, so the content passes it up.
+const SheetSideContext = React.createContext<React.Dispatch<
+  React.SetStateAction<SheetSide>
+> | null>(null)
+
+const useIsomorphicLayoutEffect =
+  typeof window === "undefined" ? React.useEffect : React.useLayoutEffect
+
+function Sheet({ ...props }: SheetPrimitive.Root.Props) {
+  const [side, setSide] = React.useState<SheetSide>("right")
 
   return (
-    <PopupMotionProvider value={motion}>
-      <SheetPrimitive.Root data-slot="sheet" open={open} onOpenChange={handleOpenChange} {...props} />
-    </PopupMotionProvider>
+    <SheetSideContext.Provider value={setSide}>
+      <SheetPrimitive.Root
+        data-slot="sheet"
+        swipeDirection={swipeDirections[side]}
+        {...props}
+      />
+    </SheetSideContext.Provider>
   )
 }
 
@@ -39,14 +62,11 @@ function SheetPortal({ container, ...props }: SheetPrimitive.Portal.Props) {
 }
 
 function SheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props) {
-  const motion = usePopupMotion()
-
   return (
     <SheetPrimitive.Backdrop
       data-slot="sheet-overlay"
-      data-motion={motion}
       className={cn(
-        "fixed inset-0 z-50 bg-black/20 dark:bg-black/50 transition-opacity duration-[270ms] ease-(--motion-ease-drawer) data-ending-style:duration-200 data-[motion=instant]:transition-none motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] data-ending-style:opacity-0 data-starting-style:opacity-0",
+        "fixed inset-0 z-50 min-h-dvh bg-black/20 opacity-[calc(1-var(--drawer-swipe-progress,0))] transition-opacity duration-[450ms] ease-(--motion-ease-drawer) select-none data-swiping:duration-0 data-starting-style:opacity-0 data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength,1)*400ms)] motion-reduce:duration-100 supports-[-webkit-touch-callout:none]:absolute dark:bg-black/50",
         className
       )}
       {...props}
@@ -62,43 +82,62 @@ function SheetContent({
   keepMounted = false,
   ...props
 }: SheetPrimitive.Popup.Props & {
-  side?: "top" | "right" | "bottom" | "left"
+  side?: SheetSide
   showCloseButton?: boolean
   keepMounted?: boolean
 }) {
-  const motion = usePopupMotion()
+  const setSide = React.useContext(SheetSideContext)
+
+  useIsomorphicLayoutEffect(() => {
+    setSide?.(side)
+  }, [setSide, side])
 
   return (
     <SheetPortal keepMounted={keepMounted}>
       <SheetOverlay />
-      <SheetPrimitive.Popup
-        data-slot="sheet-content"
-        data-motion={motion}
-        data-side={side}
-        className={cn(
-          "fixed z-50 flex max-h-dvh flex-col overflow-y-auto gap-4 bg-popover bg-clip-padding text-sm text-popover-foreground shadow-lift transition-[opacity,translate] duration-[270ms] ease-(--motion-ease-drawer) data-ending-style:duration-200 data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-[motion=instant]:transition-none data-ending-style:opacity-0 data-starting-style:opacity-0 data-[side=bottom]:inset-x-0 data-[side=bottom]:bottom-0 data-[side=bottom]:h-auto data-[side=bottom]:rounded-t-card data-[side=bottom]:border-t data-[side=bottom]:border-border/60 data-[side=bottom]:data-ending-style:translate-y-[2.5rem] data-[side=bottom]:data-starting-style:translate-y-[2.5rem] data-[side=left]:inset-y-0 data-[side=left]:left-0 data-[side=left]:h-full data-[side=left]:w-3/4 data-[side=left]:border-r data-[side=left]:border-border/60 data-[side=left]:data-ending-style:translate-x-[-2.5rem] data-[side=left]:data-starting-style:translate-x-[-2.5rem] data-[side=right]:inset-y-0 data-[side=right]:right-0 data-[side=right]:h-full data-[side=right]:w-3/4 data-[side=right]:border-l data-[side=right]:border-border/60 data-[side=right]:data-ending-style:translate-x-[2.5rem] data-[side=right]:data-starting-style:translate-x-[2.5rem] data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:h-auto data-[side=top]:rounded-b-card data-[side=top]:border-b data-[side=top]:border-border/60 data-[side=top]:data-ending-style:translate-y-[-2.5rem] data-[side=top]:data-starting-style:translate-y-[-2.5rem] data-[side=left]:sm:max-w-sm data-[side=right]:sm:max-w-sm",
-          className
-        )}
-        {...props}
+      <SheetPrimitive.Viewport
+        data-slot="sheet-viewport"
+        className="pointer-events-none fixed inset-0 z-50"
       >
-        {children}
-        {showCloseButton && (
-          <SheetPrimitive.Close
-            data-slot="sheet-close"
-            render={
-              <Button
-                variant="ghost"
-                className="absolute top-3 right-3"
-                size="icon-lg"
-              />
-            }
+        <SheetPrimitive.Popup
+          data-slot="sheet-content"
+          data-side={side}
+          className={cn(
+            // Base: Base UI's drawer timing, following the finger while swiped.
+            "pointer-events-auto fixed z-50 flex max-h-dvh flex-col gap-4 overflow-y-auto overscroll-contain bg-popover text-sm text-popover-foreground shadow-lift outline-none transition-transform duration-[450ms] ease-(--motion-ease-drawer) data-swiping:duration-0 data-swiping:select-none data-ending-style:duration-[calc(var(--drawer-swipe-strength,1)*400ms)] motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-starting-style:opacity-0 motion-reduce:data-ending-style:opacity-0 contrast-more:shadow-none contrast-more:outline contrast-more:outline-foreground forced-colors:outline forced-colors:outline-[CanvasText]",
+            // Right and left: full height, 3/4 of a phone, 24rem from sm.
+            "data-[side=left]:inset-y-0 data-[side=left]:left-0 data-[side=left]:h-full data-[side=left]:w-3/4 data-[side=left]:sm:max-w-sm data-[side=left]:transform-[translateX(var(--drawer-swipe-movement-x,0px))] data-[side=left]:data-starting-style:transform-[translateX(calc(-100%-2px))] data-[side=left]:data-ending-style:transform-[translateX(calc(-100%-2px))]",
+            "data-[side=right]:inset-y-0 data-[side=right]:right-0 data-[side=right]:h-full data-[side=right]:w-3/4 data-[side=right]:sm:max-w-sm data-[side=right]:transform-[translateX(var(--drawer-swipe-movement-x,0px))] data-[side=right]:data-starting-style:transform-[translateX(calc(100%+2px))] data-[side=right]:data-ending-style:transform-[translateX(calc(100%+2px))]",
+            // Top and bottom: full width, rounded on the edge that faces in.
+            "data-[side=top]:inset-x-0 data-[side=top]:top-0 data-[side=top]:h-auto data-[side=top]:rounded-b-card data-[side=top]:transform-[translateY(var(--drawer-swipe-movement-y,0px))] data-[side=top]:data-starting-style:transform-[translateY(calc(-100%-2px))] data-[side=top]:data-ending-style:transform-[translateY(calc(-100%-2px))]",
+            "data-[side=bottom]:inset-x-0 data-[side=bottom]:bottom-0 data-[side=bottom]:h-auto data-[side=bottom]:rounded-t-card data-[side=bottom]:transform-[translateY(var(--drawer-swipe-movement-y,0px))] data-[side=bottom]:data-starting-style:transform-[translateY(calc(100%+2px))] data-[side=bottom]:data-ending-style:transform-[translateY(calc(100%+2px))]",
+            className
+          )}
+          {...props}
+        >
+          <SheetPrimitive.Content
+            data-slot="sheet-body"
+            className="contents"
           >
-            <XIcon
-            />
-            <span className="sr-only">Close</span>
-          </SheetPrimitive.Close>
-        )}
-      </SheetPrimitive.Popup>
+            {children}
+          </SheetPrimitive.Content>
+          {showCloseButton && (
+            <SheetPrimitive.Close
+              data-slot="sheet-close"
+              render={
+                <Button
+                  variant="ghost"
+                  className="absolute top-3 end-3 text-muted-foreground"
+                  size="icon-sm"
+                />
+              }
+            >
+              <XIcon />
+              <span className="sr-only">Close</span>
+            </SheetPrimitive.Close>
+          )}
+        </SheetPrimitive.Popup>
+      </SheetPrimitive.Viewport>
     </SheetPortal>
   )
 }
@@ -107,7 +146,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-2 p-7 pt-14", className)}
+      className={cn("flex flex-col gap-1.5 p-6 pe-12", className)}
       {...props}
     />
   )
@@ -117,7 +156,7 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-footer"
-      className={cn("mt-auto flex flex-col gap-2 p-7", className)}
+      className={cn("mt-auto flex flex-col gap-2 p-6", className)}
       {...props}
     />
   )
@@ -128,7 +167,7 @@ function SheetTitle({ className, ...props }: SheetPrimitive.Title.Props) {
     <SheetPrimitive.Title
       data-slot="sheet-title"
       className={cn(
-        "font-heading text-lg font-medium text-foreground",
+        "font-heading text-lg leading-snug font-medium text-foreground",
         className
       )}
       {...props}

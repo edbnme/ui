@@ -24,10 +24,10 @@ function NativeSelect({
       <select
         data-slot="native-select"
         data-size={size}
-        className="h-10 w-full [@media(pointer:coarse)]:min-h-11 min-w-0 appearance-none rounded-lg border border-input bg-background py-2 pr-9 pl-3 text-base md:text-sm transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none select-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=sm]:h-9 data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-[size=sm]:py-0.5 dark:border-foreground/50 dark:bg-input/30 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+        className="h-8 w-full min-w-0 appearance-none rounded-control border border-input bg-background py-1 ps-3 pe-8 text-sm pointer-coarse:h-10 pointer-coarse:text-base transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none select-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-1 focus-visible:outline-foreground disabled:pointer-events-none disabled:cursor-not-allowed aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=sm]:h-7 pointer-coarse:data-[size=sm]:h-9 dark:border-foreground/50 dark:bg-input/30 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
         {...props}
       />
-      <ChevronDownIcon className="pointer-events-none absolute top-1/2 right-2.5 size-4 -translate-y-1/2 text-muted-foreground select-none" aria-hidden="true" data-slot="native-select-icon" />
+      <ChevronDownIcon className="pointer-events-none absolute top-1/2 end-2.5 size-4 -translate-y-1/2 text-muted-foreground select-none" aria-hidden="true" data-slot="native-select-icon" />
     </div>
   )
 }

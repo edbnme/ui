@@ -33,7 +33,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           fontFamily: "var(--font-sans)",
           "--normal-bg": "var(--popover)",
           "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
+          "--normal-border": "color-mix(in oklab, var(--foreground) 8%, transparent)",
           // The 14px panel radius, like the other floating surfaces.
           "--border-radius": "14px",
         } as React.CSSProperties

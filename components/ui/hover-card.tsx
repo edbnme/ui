@@ -2,17 +2,11 @@
 
 import { PreviewCard as PreviewCardPrimitive } from "@base-ui/react/preview-card"
 
-import { PopupMotionProvider, usePopupMotion, usePopupMotionState, usePortalContainer } from "@/lib/ui-environment"
+import { usePortalContainer } from "@/lib/ui-environment"
 import { cn } from "@/lib/utils"
 
-function HoverCard({ open, onOpenChange, ...props }: PreviewCardPrimitive.Root.Props) {
-  const [motion, handleOpenChange] = usePopupMotionState(open, onOpenChange)
-
-  return (
-    <PopupMotionProvider value={motion}>
-      <PreviewCardPrimitive.Root data-slot="hover-card" open={open} onOpenChange={handleOpenChange} {...props} />
-    </PopupMotionProvider>
-  )
+function HoverCard({ ...props }: PreviewCardPrimitive.Root.Props) {
+  return <PreviewCardPrimitive.Root data-slot="hover-card" {...props} />
 }
 
 function HoverCardTrigger({ ...props }: PreviewCardPrimitive.Trigger.Props) {
@@ -24,9 +18,9 @@ function HoverCardTrigger({ ...props }: PreviewCardPrimitive.Trigger.Props) {
 function HoverCardContent({
   className,
   side = "bottom",
-  sideOffset = 4,
+  sideOffset = 8,
   align = "center",
-  alignOffset = 4,
+  alignOffset = 0,
   ...props
 }: PreviewCardPrimitive.Popup.Props &
   Pick<
@@ -34,8 +28,6 @@ function HoverCardContent({
     "align" | "alignOffset" | "side" | "sideOffset"
   >) {
   const portalContainer = usePortalContainer()
-
-  const motion = usePopupMotion()
 
   return (
     <PreviewCardPrimitive.Portal
@@ -51,9 +43,8 @@ function HoverCardContent({
       >
         <PreviewCardPrimitive.Popup
           data-slot="hover-card-content"
-        data-motion={motion}
           className={cn(
-            "z-50 w-64 origin-(--transform-origin) rounded-panel border border-border/60 bg-popover p-5 text-[15px] text-popover-foreground shadow-popup outline-hidden transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) data-[motion=instant]:transition-none motion-reduce:transition-opacity motion-reduce:duration-100 motion-reduce:data-ending-style:duration-[80ms] motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 motion-reduce:data-[motion=instant]:transition-none",
+            "z-50 w-64 max-w-(--available-width) origin-(--transform-origin) rounded-panel bg-popover p-4 text-[15px] text-popover-foreground shadow-popup outline-none transition-[opacity,scale] duration-(--motion-duration-surface-in) ease-(--motion-ease-out) data-starting-style:scale-[.98] data-starting-style:opacity-0 data-ending-style:scale-[.98] data-ending-style:opacity-0 data-ending-style:duration-(--motion-duration-surface-out) motion-reduce:transition-opacity motion-reduce:data-starting-style:scale-100 motion-reduce:data-ending-style:scale-100 contrast-more:shadow-none contrast-more:outline contrast-more:outline-foreground forced-colors:bg-[Canvas] forced-colors:text-[CanvasText] forced-colors:outline forced-colors:outline-[CanvasText]",
             className
           )}
           {...props}

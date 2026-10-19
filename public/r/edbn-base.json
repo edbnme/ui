@@ -11,7 +11,7 @@
   "files": [
     {
       "path": "lib/ui-environment.tsx",
-      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nexport type PortalContainer =\n  | HTMLElement\n  | ShadowRoot\n  | React.RefObject<HTMLElement | ShadowRoot | null>\n  | null;\n\nexport type UIEnvironment = {\n  window?: Window | null;\n  document?: Document | null;\n  portalContainer?: PortalContainer;\n};\n\nexport type PopupMotion = \"pointer\" | \"instant\";\n\nexport type PopupChangeEventDetails = {\n  event?: Event;\n  reason?: string;\n  readonly isCanceled?: boolean;\n};\n\nconst UIEnvironmentContext = React.createContext<UIEnvironment | undefined>(\n  undefined\n);\n\nconst PopupMotionContext = React.createContext<PopupMotion>(\"instant\");\n\nfunction getPopupMotion(\n  eventDetails: PopupChangeEventDetails | undefined\n): PopupMotion {\n  const event = eventDetails?.event;\n  if (!event) return \"instant\";\n\n  const type = event.type.toLowerCase();\n  if (type.startsWith(\"key\") || type === \"focus\" || type === \"blur\") {\n    return \"instant\";\n  }\n\n  if (type === \"click\" && \"detail\" in event && event.detail === 0) {\n    return \"instant\";\n  }\n\n  if (type === \"contextmenu\") {\n    return \"button\" in event && event.button === 2 ? \"pointer\" : \"instant\";\n  }\n\n  return /^(?:click|mouse|pointer|touch)/.test(type) ? \"pointer\" : \"instant\";\n}\n\n// The last press or key per document, so a popup whose open state is changed\n// from outside (by a separate menu button, say) can still tell a tap, which\n// animates, from a key or a script, which don't.\nconst lastInput = new WeakMap<Document, { pointer: boolean; at: number }>();\n\nfunction trackInput(ownerDocument: Document | null) {\n  if (!ownerDocument || lastInput.has(ownerDocument)) return;\n  lastInput.set(ownerDocument, { pointer: false, at: -Infinity });\n  const record = (pointer: boolean) => (event: Event) =>\n    lastInput.set(ownerDocument, { pointer, at: event.timeStamp });\n  ownerDocument.addEventListener(\"pointerdown\", record(true), true);\n  ownerDocument.addEventListener(\"keydown\", record(false), true);\n}\n\nfunction getControlledMotion(ownerDocument: Document | null): PopupMotion {\n  const input = ownerDocument && lastInput.get(ownerDocument);\n  const now = ownerDocument?.defaultView?.performance.now();\n  return input?.pointer && now !== undefined && now - input.at < 1000\n    ? \"pointer\"\n    : \"instant\";\n}\n\nfunction UIEnvironmentProvider({\n  value,\n  children,\n}: {\n  value: UIEnvironment;\n  children: React.ReactNode;\n}) {\n  return (\n    <UIEnvironmentContext.Provider value={value}>\n      {children}\n    </UIEnvironmentContext.Provider>\n  );\n}\n\nfunction PopupMotionProvider({\n  value,\n  children,\n}: {\n  value: PopupMotion;\n  children: React.ReactNode;\n}) {\n  return (\n    <PopupMotionContext.Provider value={value}>\n      {children}\n    </PopupMotionContext.Provider>\n  );\n}\n\nfunction useUIWindow() {\n  const environment = React.useContext(UIEnvironmentContext);\n\n  if (environment?.window !== undefined) {\n    return environment.window;\n  }\n\n  return typeof window === \"undefined\" ? null : window;\n}\n\nfunction useUIDocument() {\n  const environment = React.useContext(UIEnvironmentContext);\n\n  if (environment?.document !== undefined) {\n    return environment.document;\n  }\n\n  if (environment?.window !== undefined) {\n    return environment.window?.document ?? null;\n  }\n\n  return typeof document === \"undefined\" ? null : document;\n}\n\nfunction usePortalContainer(container?: PortalContainer) {\n  const environment = React.useContext(UIEnvironmentContext);\n\n  return container !== undefined ? container : environment?.portalContainer;\n}\n\nfunction useUIEnvironmentActive() {\n  return React.useContext(UIEnvironmentContext) !== undefined;\n}\n\nfunction usePopupMotion() {\n  return React.useContext(PopupMotionContext);\n}\n\nfunction usePopupMotionState<Details extends PopupChangeEventDetails>(\n  open: boolean | undefined,\n  onOpenChange?: (open: boolean, eventDetails: Details) => void\n) {\n  const ownerDocument = useUIDocument();\n  const [motion, setMotion] = React.useState<PopupMotion>(\"instant\");\n  const previousOpen = React.useRef(open);\n  const pendingOpen = React.useRef<boolean | null>(null);\n\n  React.useEffect(() => trackInput(ownerDocument), [ownerDocument]);\n\n  React.useLayoutEffect(() => {\n    if (open === undefined) {\n      pendingOpen.current = null;\n      return;\n    }\n\n    if (open !== previousOpen.current) {\n      previousOpen.current = open;\n      // Changed from outside: animate only if a press just caused it.\n      if (pendingOpen.current !== open)\n        setMotion(getControlledMotion(ownerDocument));\n    }\n    pendingOpen.current = null;\n  }, [open, ownerDocument]);\n\n  const handleOpenChange = React.useCallback(\n    (nextOpen: boolean, eventDetails: Details) => {\n      pendingOpen.current = nextOpen;\n      setMotion(getPopupMotion(eventDetails));\n      onOpenChange?.(nextOpen, eventDetails);\n      if (eventDetails.isCanceled) {\n        pendingOpen.current = null;\n        setMotion(\"instant\");\n      }\n    },\n    [onOpenChange]\n  );\n\n  return [motion, handleOpenChange] as const;\n}\n\nfunction setUIDocumentCookie(ownerDocument: Document | null, value: string) {\n  if (ownerDocument) ownerDocument.cookie = value;\n}\n\nexport {\n  getPopupMotion,\n  PopupMotionProvider,\n  setUIDocumentCookie,\n  UIEnvironmentProvider,\n  usePopupMotion,\n  usePopupMotionState,\n  useUIDocument,\n  useUIEnvironmentActive,\n  usePortalContainer,\n  useUIWindow,\n};\n",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nexport type PortalContainer =\n  | HTMLElement\n  | ShadowRoot\n  | React.RefObject<HTMLElement | ShadowRoot | null>\n  | null;\n\nexport type UIEnvironment = {\n  window?: Window | null;\n  document?: Document | null;\n  portalContainer?: PortalContainer;\n};\n\nconst UIEnvironmentContext = React.createContext<UIEnvironment | undefined>(\n  undefined\n);\n\nfunction UIEnvironmentProvider({\n  value,\n  children,\n}: {\n  value: UIEnvironment;\n  children: React.ReactNode;\n}) {\n  return (\n    <UIEnvironmentContext.Provider value={value}>\n      {children}\n    </UIEnvironmentContext.Provider>\n  );\n}\n\nfunction useUIWindow() {\n  const environment = React.useContext(UIEnvironmentContext);\n\n  if (environment?.window !== undefined) {\n    return environment.window;\n  }\n\n  return typeof window === \"undefined\" ? null : window;\n}\n\nfunction useUIDocument() {\n  const environment = React.useContext(UIEnvironmentContext);\n\n  if (environment?.document !== undefined) {\n    return environment.document;\n  }\n\n  if (environment?.window !== undefined) {\n    return environment.window?.document ?? null;\n  }\n\n  return typeof document === \"undefined\" ? null : document;\n}\n\nfunction usePortalContainer(container?: PortalContainer) {\n  const environment = React.useContext(UIEnvironmentContext);\n\n  return container !== undefined ? container : environment?.portalContainer;\n}\n\nfunction useUIEnvironmentActive() {\n  return React.useContext(UIEnvironmentContext) !== undefined;\n}\n\nfunction setUIDocumentCookie(ownerDocument: Document | null, value: string) {\n  if (ownerDocument) ownerDocument.cookie = value;\n}\n\nexport {\n  setUIDocumentCookie,\n  UIEnvironmentProvider,\n  useUIDocument,\n  useUIEnvironmentActive,\n  usePortalContainer,\n  useUIWindow,\n};\n",
       "type": "registry:lib",
       "target": "@lib/ui-environment.tsx"
     },
@@ -26,8 +26,8 @@
     "theme": {
       "font-heading": "var(--font-sans)",
       "motion-duration-press": "140ms",
-      "motion-duration-surface-in": "160ms",
-      "motion-duration-surface-out": "125ms",
+      "motion-duration-surface-in": "100ms",
+      "motion-duration-surface-out": "100ms",
       "motion-ease-out": "cubic-bezier(0.23, 1, 0.32, 1)",
       "font-sans": "var(--font-sans)",
       "radius-sm": "calc(var(--radius) * 0.6)",
@@ -50,7 +50,7 @@
       "foreground": "#121214",
       "card": "#f1f1ef",
       "card-foreground": "#121214",
-      "popover": "#fafaf9",
+      "popover": "#ffffff",
       "popover-foreground": "#121214",
       "primary": "#121214",
       "primary-foreground": "#fafaf9",
@@ -79,7 +79,7 @@
       "sidebar-border": "#e6e5e2",
       "sidebar-ring": "#7d7c83",
       "font-sans": "\"Instrument Sans Variable\", sans-serif",
-      "elevation-popup": "0 1px 1px rgb(16 16 20 / 0.04), 0 8px 20px -8px rgb(16 16 20 / 0.16)",
+      "elevation-popup": "0 0 0 1px rgb(18 18 20 / 0.08), 0 1px 2px rgb(16 16 20 / 0.06), 0 8px 16px -6px rgb(16 16 20 / 0.12), 0 20px 32px -12px rgb(16 16 20 / 0.16)",
       "elevation-lift": "0 1px 1px rgb(16 16 20 / 0.06), 0 10px 18px -6px rgb(16 16 20 / 0.16), 0 28px 44px -16px rgb(16 16 20 / 0.3)"
     },
     "dark": {
@@ -95,7 +95,7 @@
       "secondary-foreground": "#f1f1ef",
       "muted": "#1d1d1b",
       "muted-foreground": "#a19f99",
-      "accent": "#1d1d1b",
+      "accent": "#262624",
       "accent-foreground": "#f1f1ef",
       "destructive": "oklch(0.704 0.191 22.216)",
       "border": "#2b2a27",
@@ -114,8 +114,8 @@
       "sidebar-accent-foreground": "#f1f1ef",
       "sidebar-border": "#2b2a27",
       "sidebar-ring": "#6f6d67",
-      "elevation-popup": "0 1px 1px rgb(0 0 0 / 0.3), 0 8px 20px -8px rgb(0 0 0 / 0.5)",
-      "elevation-lift": "0 1px 1px rgb(0 0 0 / 0.3), 0 10px 18px -6px rgb(0 0 0 / 0.4), 0 28px 44px -16px rgb(0 0 0 / 0.5)"
+      "elevation-popup": "0 0 0 1px rgb(255 255 255 / 0.08), 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 16px -6px rgb(0 0 0 / 0.45), 0 20px 32px -12px rgb(0 0 0 / 0.55)",
+      "elevation-lift": "0 0 0 1px rgb(255 255 255 / 0.06), 0 1px 1px rgb(0 0 0 / 0.3), 0 10px 18px -6px rgb(0 0 0 / 0.4), 0 28px 44px -16px rgb(0 0 0 / 0.5)"
     }
   },
   "css": {
