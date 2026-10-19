@@ -156,7 +156,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-control px-3 py-2 text-sm leading-4 outline-none select-none pointer-coarse:min-h-10 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-primary data-selected:text-primary-foreground forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-control px-3 py-2 text-sm leading-4 outline-none select-none pointer-coarse:min-h-10 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-primary data-selected:text-primary-foreground data-selected:**:text-current forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}

@@ -441,10 +441,10 @@
       "description": "The edbn Combobox component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10212,
-        "gzipped": 2731,
-        "selfSize": 10212,
-        "selfGzip": 2731
+        "minified": 10245,
+        "gzipped": 2742,
+        "selfSize": 10245,
+        "selfGzip": 2742
       },
       "dependencies": [
         {
@@ -470,10 +470,10 @@
       "description": "The edbn Command component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5533,
-        "gzipped": 1573,
-        "selfSize": 5533,
-        "selfGzip": 1573
+        "minified": 5563,
+        "gzipped": 1582,
+        "selfSize": 5563,
+        "selfGzip": 1582
       },
       "dependencies": [
         {
@@ -499,10 +499,10 @@
       "description": "The edbn Context Menu component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 13343,
-        "gzipped": 3090,
-        "selfSize": 13343,
-        "selfGzip": 3090
+        "minified": 13475,
+        "gzipped": 3098,
+        "selfSize": 13475,
+        "selfGzip": 3098
       },
       "dependencies": [
         {
@@ -601,10 +601,10 @@
       "description": "The edbn Dropdown Menu component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10090,
-        "gzipped": 2280,
-        "selfSize": 10090,
-        "selfGzip": 2280
+        "minified": 10222,
+        "gzipped": 2289,
+        "selfSize": 10222,
+        "selfGzip": 2289
       },
       "dependencies": [
         {
@@ -1153,10 +1153,10 @@
       "description": "The edbn Select component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 8373,
-        "gzipped": 2413,
-        "selfSize": 8373,
-        "selfGzip": 2413
+        "minified": 8406,
+        "gzipped": 2424,
+        "selfSize": 8406,
+        "selfGzip": 2424
       },
       "dependencies": [
         {
