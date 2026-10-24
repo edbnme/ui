@@ -50,7 +50,7 @@ function PaginationLink({
       size={size}
       className={cn(
         "tabular-nums",
-        isActive && "bg-foreground/[.08] text-foreground",
+        isActive && "bg-foreground/[.07] text-foreground",
         className
       )}
       nativeButton={false}
