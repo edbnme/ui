@@ -138,7 +138,7 @@
       "svg.lucide[stroke-width=\"2\"]": {
         "stroke-width": "1.5"
       },
-      ":where(button, [role=\"button\"], [role=\"checkbox\"], [role=\"radio\"], [role=\"switch\"], [role=\"tab\"]):not(:disabled, [data-disabled], [aria-disabled=\"true\"])": {
+      ":where(button, select, [role=\"button\"], [role=\"checkbox\"], [role=\"radio\"], [role=\"switch\"], [role=\"tab\"]):not(:disabled, [data-disabled], [aria-disabled=\"true\"])": {
         "cursor": "pointer"
       }
     }

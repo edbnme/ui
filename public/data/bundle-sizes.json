@@ -296,10 +296,10 @@
       "description": "The edbn Calendar component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 9386,
-        "gzipped": 2437,
-        "selfSize": 9386,
-        "selfGzip": 2437
+        "minified": 9891,
+        "gzipped": 2608,
+        "selfSize": 9891,
+        "selfGzip": 2608
       },
       "dependencies": [
         {
