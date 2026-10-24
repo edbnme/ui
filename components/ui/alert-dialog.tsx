@@ -62,7 +62,7 @@ function AlertDialogContent({
         data-slot="alert-dialog-content"
         data-size={size}
         className={cn(
-          "group/alert-dialog-content fixed top-[calc(50%+1.25rem*var(--nested-dialogs))] left-1/2 z-50 grid w-[26rem] max-w-[calc(100%-2rem)] max-h-[calc(100dvh-2rem)] -translate-x-1/2 -translate-y-1/2 scale-[calc(1-0.1*var(--nested-dialogs))] gap-5 overflow-y-auto overscroll-contain rounded-card bg-popover p-6 text-[15px] text-popover-foreground shadow-lift outline-none data-[size=sm]:max-w-xs transition-[top,scale,opacity] duration-(--motion-duration-surface-in) ease-out after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-black/5 after:opacity-0 after:transition-opacity after:duration-(--motion-duration-surface-in) data-starting-style:top-[calc(50%+0.25rem+1.25rem*var(--nested-dialogs))] data-starting-style:scale-[.96] data-starting-style:opacity-0 data-ending-style:top-[calc(50%+0.25rem+1.25rem*var(--nested-dialogs))] data-ending-style:scale-[.96] data-ending-style:opacity-0 data-nested-dialog-open:after:opacity-100 dark:after:bg-black/30 motion-reduce:transition-opacity motion-reduce:data-starting-style:top-[calc(50%+1.25rem*var(--nested-dialogs))] motion-reduce:data-ending-style:top-[calc(50%+1.25rem*var(--nested-dialogs))] motion-reduce:data-starting-style:scale-[calc(1-0.1*var(--nested-dialogs))] motion-reduce:data-ending-style:scale-[calc(1-0.1*var(--nested-dialogs))] contrast-more:shadow-none contrast-more:outline contrast-more:outline-foreground forced-colors:outline forced-colors:outline-[CanvasText]",
+          "group/alert-dialog-content fixed top-[calc(50%+1.25rem*var(--nested-dialogs))] left-1/2 z-50 grid w-[26rem] max-w-[calc(100%-2rem)] max-h-[calc(100dvh-2rem)] -translate-x-1/2 -translate-y-1/2 scale-[calc(1-0.1*var(--nested-dialogs))] gap-5 overflow-y-auto overscroll-contain rounded-card bg-background p-6 text-[15px] text-popover-foreground shadow-lift outline-none dark:bg-popover data-[size=sm]:max-w-xs transition-[top,scale,opacity] duration-(--motion-duration-surface-in) ease-out after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-black/5 after:opacity-0 after:transition-opacity after:duration-(--motion-duration-surface-in) data-starting-style:top-[calc(50%+0.25rem+1.25rem*var(--nested-dialogs))] data-starting-style:scale-[.96] data-starting-style:opacity-0 data-ending-style:top-[calc(50%+0.25rem+1.25rem*var(--nested-dialogs))] data-ending-style:scale-[.96] data-ending-style:opacity-0 data-nested-dialog-open:after:opacity-100 dark:after:bg-black/30 motion-reduce:transition-opacity motion-reduce:data-starting-style:top-[calc(50%+1.25rem*var(--nested-dialogs))] motion-reduce:data-ending-style:top-[calc(50%+1.25rem*var(--nested-dialogs))] motion-reduce:data-starting-style:scale-[calc(1-0.1*var(--nested-dialogs))] motion-reduce:data-ending-style:scale-[calc(1-0.1*var(--nested-dialogs))] contrast-more:shadow-none contrast-more:outline contrast-more:outline-foreground forced-colors:outline forced-colors:outline-[CanvasText]",
           className
         )}
         {...props}
@@ -111,7 +111,7 @@ function AlertDialogMedia({
     <div
       data-slot="alert-dialog-media"
       className={cn(
-        "mb-2 inline-flex size-10 items-center justify-center rounded-control bg-muted sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-5",
+        "mb-2 inline-flex size-10 items-center justify-center rounded-control bg-foreground/[.05] sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-5",
         className
       )}
       {...props}
@@ -127,7 +127,7 @@ function AlertDialogTitle({
     <AlertDialogPrimitive.Title
       data-slot="alert-dialog-title"
       className={cn(
-        "font-heading text-lg leading-snug font-medium sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
+        "font-heading text-lg leading-snug sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
         className
       )}
       {...props}

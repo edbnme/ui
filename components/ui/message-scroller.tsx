@@ -44,7 +44,7 @@ function MessageScrollerViewport({
     <MessageScrollerPrimitive.Viewport
       data-slot="message-scroller-viewport"
       className={cn(
-        "size-full min-h-0 min-w-0 scroll-fade-b [scrollbar-width:thin] [scrollbar-gutter:stable] overflow-y-auto overscroll-contain contain-content data-autoscrolling:[scrollbar-color:transparent_transparent]",
+        "size-full min-h-0 min-w-0 outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring scroll-fade-b [scrollbar-width:thin] [scrollbar-gutter:stable] overflow-y-auto overscroll-contain contain-content data-autoscrolling:[scrollbar-color:transparent_transparent]",
         className
       )}
       {...props}
@@ -115,7 +115,7 @@ function DefaultMessageScrollerButton({
       data-size={size}
       direction={direction}
       className={cn(
-        "absolute inset-s-1/2 -translate-x-1/2 border-border bg-background text-foreground transition-opacity duration-(--motion-duration-surface-in) motion-reduce:duration-100 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:opacity-0 data-[active=false]:duration-(--motion-duration-surface-out) data-[active=false]:ease-(--motion-ease-out) data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=start]:top-4 rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
+        "absolute inset-s-1/2 -translate-x-1/2 border-transparent bg-popover text-foreground shadow-popup transition-opacity duration-(--motion-duration-surface-in) motion-reduce:duration-100 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[color-mix(in_oklab,var(--popover),var(--foreground)_4%)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:opacity-0 data-[active=false]:duration-(--motion-duration-surface-out) data-[active=false]:ease-(--motion-ease-out) data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=start]:top-4 rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
         className
       )}
       render={render ?? <Button variant={variant} size={size} />}
@@ -224,7 +224,7 @@ function EnvironmentMessageScrollerButton({
         </>
       ),
       className: cn(
-        "absolute inset-s-1/2 -translate-x-1/2 border-border bg-background text-foreground transition-opacity duration-(--motion-duration-surface-in) motion-reduce:duration-100 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-muted [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:opacity-0 data-[active=false]:duration-(--motion-duration-surface-out) data-[active=false]:ease-(--motion-ease-out) data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=start]:top-4 rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
+        "absolute inset-s-1/2 -translate-x-1/2 border-transparent bg-popover text-foreground shadow-popup transition-opacity duration-(--motion-duration-surface-in) motion-reduce:duration-100 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[color-mix(in_oklab,var(--popover),var(--foreground)_4%)] [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground data-[active=false]:pointer-events-none data-[active=false]:opacity-0 data-[active=false]:duration-(--motion-duration-surface-out) data-[active=false]:ease-(--motion-ease-out) data-[active=true]:translate-y-0 data-[active=true]:scale-100 data-[active=true]:opacity-100 data-[active=true]:ease-[cubic-bezier(0.23,1,0.32,1)] data-[direction=end]:bottom-4 data-[direction=start]:top-4 rtl:translate-x-1/2 data-[direction=start]:[&_svg]:rotate-180",
         className
       ),
       inert: active ? undefined : true,

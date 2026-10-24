@@ -18,7 +18,7 @@ function ScrollArea({
     >
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
-        className="size-full rounded-[inherit] transition-none outline-none [mask-image:linear-gradient(to_bottom,transparent,black_min(2.5rem,var(--scroll-area-overflow-y-start,0px)),black_calc(100%-min(2.5rem,var(--scroll-area-overflow-y-end,0px))),transparent)] focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-foreground"
+        className="size-full rounded-[inherit] transition-none outline-none [mask-image:linear-gradient(to_bottom,transparent,black_min(2.5rem,var(--scroll-area-overflow-y-start,0px)),black_calc(100%-min(2.5rem,var(--scroll-area-overflow-y-end,0px))),transparent)] focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
@@ -46,7 +46,7 @@ function ScrollBar({
     >
       <ScrollAreaPrimitive.Thumb
         data-slot="scroll-area-thumb"
-        className="relative flex-1 rounded-full bg-border"
+        className="relative flex-1 rounded-full bg-foreground/20 transition-colors duration-100 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/30"
       />
     </ScrollAreaPrimitive.Scrollbar>
   )
