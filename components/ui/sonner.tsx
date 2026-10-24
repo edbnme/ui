@@ -33,14 +33,16 @@ const Toaster = ({ ...props }: ToasterProps) => {
           fontFamily: "var(--font-sans)",
           "--normal-bg": "var(--popover)",
           "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "color-mix(in oklab, var(--foreground) 8%, transparent)",
+          "--normal-border": "transparent",
           // The 14px panel radius, like the other floating surfaces.
           "--border-radius": "14px",
         } as React.CSSProperties
       }
       toastOptions={{
         classNames: {
-          toast: "cn-toast font-sans",
+          // Our floating-paper shadow and one text weight over Sonner's own.
+          toast: "cn-toast font-sans shadow-popup!",
+          title: "text-[15px]! [font-weight:inherit]!",
         },
       }}
       {...props}
