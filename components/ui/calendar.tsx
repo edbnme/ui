@@ -73,22 +73,24 @@ function Calendar({
           defaultClassNames.month_caption
         ),
         dropdowns: cn(
-          "flex h-(--cell-size) w-full items-center justify-center gap-1.5 text-[15px]",
+          "flex h-(--cell-size) w-full items-center justify-center gap-1 text-[15px]",
           defaultClassNames.dropdowns
         ),
+        // The month and year dropdowns are native selects laid over their
+        // label, so the label is the 32px target and carries the states.
         dropdown_root: cn(
-          "relative rounded-(--cell-radius)",
+          "relative rounded-(--cell-radius) transition-[background-color] duration-100 motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:has-[select:hover]:bg-foreground/[.04] has-[select:focus-visible]:outline-2 has-[select:focus-visible]:outline-solid has-[select:focus-visible]:outline-offset-2 has-[select:focus-visible]:outline-ring",
           defaultClassNames.dropdown_root
         ),
         dropdown: cn(
-          "absolute inset-0 bg-popover opacity-0",
+          "absolute inset-0 cursor-pointer bg-popover opacity-0",
           defaultClassNames.dropdown
         ),
         caption_label: cn(
           "select-none",
           captionLayout === "label"
             ? "text-[15px]"
-            : "flex items-center gap-1 rounded-(--cell-radius) text-[15px] [&>svg]:size-3.5 [&>svg]:text-muted-foreground",
+            : "flex h-(--cell-size) items-center gap-1 rounded-(--cell-radius) ps-2 pe-1.5 text-[15px] [&>svg]:size-3.5 [&>svg]:text-muted-foreground",
           defaultClassNames.caption_label
         ),
         month_grid: cn("w-full border-collapse", defaultClassNames.month_grid),

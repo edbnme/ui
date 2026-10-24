@@ -169,9 +169,9 @@
   svg.lucide[stroke-width="2"] {
     stroke-width: 1.5;
   }
-  /* Buttons, and the controls Base UI renders as spans, show the hand on
-     hover, as on kew.edbn.me. Menu and list rows keep the arrow. */
-  :where(button, [role="button"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"]):not(:disabled, [data-disabled], [aria-disabled="true"]) {
+  /* Buttons, native selects and the controls Base UI renders as spans show
+     the hand on hover, as on kew.edbn.me. Menu and list rows keep the arrow. */
+  :where(button, select, [role="button"], [role="checkbox"], [role="radio"], [role="switch"], [role="tab"]):not(:disabled, [data-disabled], [aria-disabled="true"]) {
     cursor: pointer;
   }
   html {
