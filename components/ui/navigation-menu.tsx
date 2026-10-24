@@ -59,7 +59,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-8 w-max items-center justify-center gap-1 rounded-control px-3 text-sm font-medium outline-none select-none pointer-coarse:h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.05] data-popup-open:bg-foreground/[.05] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-foreground disabled:pointer-events-none disabled:opacity-50"
+  "group/navigation-menu-trigger inline-flex h-8 w-max items-center justify-center gap-1 rounded-control px-3 text-[15px] outline-none select-none pointer-coarse:h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] data-popup-open:bg-foreground/[.07] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50"
 )
 
 function NavigationMenuTrigger({
@@ -138,7 +138,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex min-h-8 items-center gap-2 rounded-control p-2 text-sm outline-none pointer-coarse:min-h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-accent focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-foreground data-active:bg-accent [&_svg:not([class*='size-'])]:size-4",
+        "flex min-h-8 items-center gap-2 rounded-control p-2 text-[15px] outline-none pointer-coarse:min-h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring data-active:bg-foreground/[.07] [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -159,7 +159,7 @@ function NavigationMenuIndicator({
       )}
       {...props}
     >
-      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
+      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-popover shadow-popup" />
     </NavigationMenuPrimitive.Icon>
   )
 }
