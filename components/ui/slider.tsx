@@ -50,7 +50,7 @@ function Slider({
             aria-labelledby={props["aria-labelledby"]}
             aria-describedby={props["aria-describedby"]}
             aria-valuetext={props["aria-valuetext"]}
-            className="relative block size-4 shrink-0 rounded-full border border-primary bg-primary transition-none select-none after:absolute after:-inset-3.5 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-solid has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-foreground disabled:pointer-events-none disabled:opacity-50"
+            className="relative block size-4 shrink-0 rounded-full border border-primary bg-primary transition-none select-none after:absolute after:-inset-3.5 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-solid has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ring disabled:pointer-events-none disabled:opacity-50"
           />
         ))}
       </SliderPrimitive.Control>
