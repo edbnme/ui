@@ -90,7 +90,7 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="field-content"
       className={cn(
-        "group/field-content flex flex-1 flex-col gap-0.5 leading-snug",
+        "group/field-content flex flex-1 flex-col gap-0.5",
         className
       )}
       {...props}
@@ -106,7 +106,7 @@ function FieldLabel({
     <Label
       data-slot="field-label"
       className={cn(
-        "group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-panel has-[>[data-slot=field]]:bg-foreground/[.04] has-[>[data-slot=field]]:has-data-checked:ring-1 has-[>[data-slot=field]]:has-data-checked:ring-inset has-[>[data-slot=field]]:has-data-checked:ring-primary has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.07] has-[>[data-slot=field]]:has-[:focus-visible]:outline-2 has-[>[data-slot=field]]:has-[:focus-visible]:outline-solid has-[>[data-slot=field]]:has-[:focus-visible]:outline-offset-2 has-[>[data-slot=field]]:has-[:focus-visible]:outline-ring *:data-[slot=field]:p-4",
+        "group/field-label peer/field-label flex w-fit gap-2 group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-panel has-[>[data-slot=field]]:bg-foreground/[.04] has-[>[data-slot=field]]:has-data-checked:ring-1 has-[>[data-slot=field]]:has-data-checked:ring-inset has-[>[data-slot=field]]:has-data-checked:ring-primary has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.07] has-[>[data-slot=field]]:has-[:focus-visible]:outline-2 has-[>[data-slot=field]]:has-[:focus-visible]:outline-solid has-[>[data-slot=field]]:has-[:focus-visible]:outline-offset-2 has-[>[data-slot=field]]:has-[:focus-visible]:outline-ring *:data-[slot=field]:p-4",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
@@ -133,7 +133,7 @@ function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="field-description"
       className={cn(
-        "text-start text-small leading-normal text-muted-foreground group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
+        "text-start text-small text-muted-foreground group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
         "last:mt-0 nth-last-2:-mt-1",
         "[&>a]:underline [&>a]:underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:[&>a:hover]:text-primary",
         className

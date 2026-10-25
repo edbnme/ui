@@ -74,7 +74,7 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}
-      <ChevronDownIcon className="relative top-px size-3 text-muted-foreground transition-transform duration-200 ease-(--motion-ease-out) motion-reduce:transition-none group-data-popup-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
+      <ChevronDownIcon className="relative top-px size-3.5 text-muted-foreground transition-transform duration-200 ease-(--motion-ease-out) motion-reduce:transition-none group-data-popup-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   )
 }
@@ -138,7 +138,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex min-h-8 items-center gap-2 rounded-control p-2 text-body outline-none pointer-coarse:min-h-control-touch [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring data-active:bg-foreground/[.07] [&_svg:not([class*='size-'])]:size-4",
+        "flex min-h-control items-center gap-2 rounded-control px-3 py-1.5 text-body leading-5 outline-none pointer-coarse:min-h-control-touch [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring data-active:bg-foreground/[.07] [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
