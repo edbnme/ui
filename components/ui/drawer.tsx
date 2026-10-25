@@ -201,7 +201,7 @@ function DrawerTitle({ className, ...props }: DrawerPrimitive.Title.Props) {
     <DrawerPrimitive.Title
       data-slot="drawer-title"
       className={cn(
-        "font-heading text-lg leading-snug text-foreground",
+        "font-heading text-body text-foreground",
         className
       )}
       {...props}
