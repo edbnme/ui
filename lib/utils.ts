@@ -1,13 +1,24 @@
 import { clsx, type ClassValue } from "clsx"
 import { extendTailwindMerge } from "tailwind-merge"
 
-// The edbn-base curves (rounded-card/panel/control) are theme radii, so a
-// size's own `rounded-[6px]` replaces a component's `rounded-control`
-// instead of losing to it in the stylesheet.
+// edbn-base's size scale, so classes merge as Tailwind's own do: stock
+// tailwind-merge reads `text-small` as a text colour and drops it next to
+// `text-muted-foreground`, and keeps `h-control` beside a `className="h-9"`
+// that should replace it.
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      radius: ["card", "panel", "control"],
+      text: ["body", "small", "micro", "stat"],
+      radius: ["card", "panel", "control", "control-sm", "control-xs"],
+      spacing: [
+        "control",
+        "control-xs",
+        "control-sm",
+        "control-lg",
+        "control-touch",
+        "token",
+      ],
+      container: ["menu", "popover", "compact", "dialog", "wide"],
     },
   },
 })

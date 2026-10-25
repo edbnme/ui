@@ -59,7 +59,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-8 w-max items-center justify-center gap-1 rounded-control px-3 text-[15px] outline-none select-none pointer-coarse:h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] data-popup-open:bg-foreground/[.07] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50"
+  "group/navigation-menu-trigger inline-flex h-8 w-max items-center justify-center gap-1 rounded-control px-3 text-body outline-none select-none pointer-coarse:h-control-touch [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] data-popup-open:bg-foreground/[.07] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50"
 )
 
 function NavigationMenuTrigger({
@@ -74,7 +74,7 @@ function NavigationMenuTrigger({
       {...props}
     >
       {children}
-      <ChevronDownIcon className="relative top-px size-3 text-muted-foreground transition-transform duration-200 ease-(--motion-ease-out) motion-reduce:transition-none group-data-popup-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
+      <ChevronDownIcon className="relative top-px size-3.5 text-muted-foreground transition-transform duration-200 ease-(--motion-ease-out) motion-reduce:transition-none group-data-popup-open/navigation-menu-trigger:rotate-180" aria-hidden="true" />
     </NavigationMenuPrimitive.Trigger>
   )
 }
@@ -138,7 +138,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex min-h-8 items-center gap-2 rounded-control p-2 text-[15px] outline-none pointer-coarse:min-h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring data-active:bg-foreground/[.07] [&_svg:not([class*='size-'])]:size-4",
+        "flex min-h-control items-center gap-2 rounded-control px-3 py-1.5 text-body leading-5 outline-none pointer-coarse:min-h-control-touch [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring data-active:bg-foreground/[.07] [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -159,7 +159,7 @@ function NavigationMenuIndicator({
       )}
       {...props}
     >
-      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-popover shadow-popup" />
+      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-control-xs bg-popover shadow-popup" />
     </NavigationMenuPrimitive.Icon>
   )
 }

@@ -51,11 +51,48 @@
 }
 
 /* The kew.edbn.me curves: 24px cards, 14px panels inside them, and 10px
-   controls inside those, so radii nest concentrically. */
+   controls inside those, so radii nest concentrically. Small controls
+   sit 2px or 4px in from a 10px edge, so they take 8px and 6px. */
 @theme {
     --radius-card: 24px;
     --radius-panel: 14px;
     --radius-control: 10px;
+    --radius-control-sm: 8px;
+    --radius-control-xs: 6px;
+}
+
+/* One size scale for every component and block. Text is 15px for body,
+   controls and titles, 13px for descriptions, labels and meta, and 12px
+   only for tokens such as badges and keys, all in one weight. Controls are
+   32px tall by default, 28px for icon-only chrome and 24px inside a field;
+   tall rows and touch targets are 40px. Popups and blocks take one of five
+   widths. */
+@theme {
+    --text-body: 0.9375rem;
+    --text-body--line-height: 1.55;
+    --text-small: 0.8125rem;
+    --text-small--line-height: 1.55;
+    --text-micro: 0.75rem;
+    --text-micro--line-height: 1rem;
+    --text-stat: 1.375rem;
+    --text-stat--line-height: 1.55;
+    --text-stat--letter-spacing: -0.035em;
+
+    --font-weight-normal: 480;
+    --font-mono: "Fragment Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --spacing-control-xs: 1.5rem;
+    --spacing-control-sm: 1.75rem;
+    --spacing-control: 2rem;
+    --spacing-control-lg: 2.25rem;
+    --spacing-control-touch: 2.5rem;
+    --spacing-token: 1.25rem;
+
+    --container-menu: 9rem;
+    --container-popover: 18rem;
+    --container-compact: 20rem;
+    --container-dialog: 24rem;
+    --container-wide: 32rem;
 }
 
 :root {
@@ -154,9 +191,9 @@
      and ink, never from bold. */
   body {
     @apply bg-background text-foreground;
-    font-size: 0.9375rem;
-    font-weight: 480;
-    line-height: 1.55;
+    font-size: var(--text-body);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--text-body--line-height);
     font-variant-numeric: tabular-nums;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
