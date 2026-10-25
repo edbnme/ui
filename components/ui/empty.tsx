@@ -19,7 +19,7 @@ function EmptyHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="empty-header"
-      className={cn("flex max-w-sm flex-col items-center gap-2", className)}
+      className={cn("flex max-w-dialog flex-col items-center gap-2", className)}
       {...props}
     />
   )
@@ -73,7 +73,7 @@ function EmptyDescription({ className, ...props }: React.ComponentProps<"p">) {
     <div
       data-slot="empty-description"
       className={cn(
-        "text-[13px]/relaxed text-muted-foreground [&>a]:underline [&>a]:underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:[&>a:hover]:text-primary",
+        "text-small/relaxed text-muted-foreground [&>a]:underline [&>a]:underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:[&>a:hover]:text-primary",
         className
       )}
       {...props}
@@ -86,7 +86,7 @@ function EmptyContent({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="empty-content"
       className={cn(
-        "flex w-full max-w-sm min-w-0 flex-col items-center gap-2.5 text-[15px] text-balance",
+        "flex w-full max-w-dialog min-w-0 flex-col items-center gap-2.5 text-body text-balance",
         className
       )}
       {...props}

@@ -73,7 +73,7 @@ function Calendar({
           defaultClassNames.month_caption
         ),
         dropdowns: cn(
-          "flex h-(--cell-size) w-full items-center justify-center gap-1 text-[15px]",
+          "flex h-(--cell-size) w-full items-center justify-center gap-1 text-body",
           defaultClassNames.dropdowns
         ),
         // The month and year dropdowns are native selects laid over their
@@ -89,14 +89,14 @@ function Calendar({
         caption_label: cn(
           "select-none",
           captionLayout === "label"
-            ? "text-[15px]"
-            : "flex h-(--cell-size) items-center gap-1 rounded-(--cell-radius) ps-2 pe-1.5 text-[15px] [&>svg]:size-3.5 [&>svg]:text-muted-foreground",
+            ? "text-body"
+            : "flex h-(--cell-size) items-center gap-1 rounded-(--cell-radius) ps-2 pe-1.5 text-body [&>svg]:size-3.5 [&>svg]:text-muted-foreground",
           defaultClassNames.caption_label
         ),
         month_grid: cn("w-full border-collapse", defaultClassNames.month_grid),
         weekdays: cn("flex", defaultClassNames.weekdays),
         weekday: cn(
-          "flex-1 rounded-(--cell-radius) text-[13px] [font-weight:inherit] text-muted-foreground select-none",
+          "flex-1 rounded-(--cell-radius) text-small [font-weight:inherit] text-muted-foreground select-none",
           defaultClassNames.weekday
         ),
         week: cn("mt-2 flex w-full", defaultClassNames.week),
@@ -105,7 +105,7 @@ function Calendar({
           defaultClassNames.week_number_header
         ),
         week_number: cn(
-          "text-[13px] text-muted-foreground select-none",
+          "text-small text-muted-foreground select-none",
           defaultClassNames.week_number
         ),
         day: cn(
@@ -231,7 +231,7 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        "relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 border-0 leading-none focus-visible:-outline-offset-2 data-[selected-single=true]:focus-visible:-outline-offset-4 data-[selected-single=true]:focus-visible:outline-primary-foreground data-[range-start=true]:focus-visible:-outline-offset-4 data-[range-start=true]:focus-visible:outline-primary-foreground data-[range-end=true]:focus-visible:-outline-offset-4 data-[range-end=true]:focus-visible:outline-primary-foreground data-[range-end=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-e-(--cell-radius) data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-foreground/[.04] data-[range-middle=true]:text-foreground data-[range-start=true]:rounded-(--cell-radius) data-[range-start=true]:rounded-s-(--cell-radius) data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:data-[selected-single=true]:bg-primary [@media(hover:hover)_and_(pointer:fine)]:hover:data-[selected-single=true]:text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-start=true]:bg-primary [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-start=true]:text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-end=true]:bg-primary [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-end=true]:text-primary-foreground [&>span]:text-[13px] [&>span]:opacity-70",
+        "relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 border-0 leading-none focus-visible:-outline-offset-2 data-[selected-single=true]:focus-visible:-outline-offset-4 data-[selected-single=true]:focus-visible:outline-primary-foreground data-[range-start=true]:focus-visible:-outline-offset-4 data-[range-start=true]:focus-visible:outline-primary-foreground data-[range-end=true]:focus-visible:-outline-offset-4 data-[range-end=true]:focus-visible:outline-primary-foreground data-[range-end=true]:rounded-(--cell-radius) data-[range-end=true]:rounded-e-(--cell-radius) data-[range-end=true]:bg-primary data-[range-end=true]:text-primary-foreground data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-foreground/[.04] data-[range-middle=true]:text-foreground data-[range-start=true]:rounded-(--cell-radius) data-[range-start=true]:rounded-s-(--cell-radius) data-[range-start=true]:bg-primary data-[range-start=true]:text-primary-foreground data-[selected-single=true]:bg-primary data-[selected-single=true]:text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:data-[selected-single=true]:bg-primary [@media(hover:hover)_and_(pointer:fine)]:hover:data-[selected-single=true]:text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-start=true]:bg-primary [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-start=true]:text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-end=true]:bg-primary [@media(hover:hover)_and_(pointer:fine)]:hover:data-[range-end=true]:text-primary-foreground [&>span]:text-small [&>span]:opacity-70",
         defaultClassNames.day,
         className
       )}

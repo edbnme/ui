@@ -61,7 +61,7 @@ function MenubarTrigger({
     <DropdownMenuTrigger
       data-slot="menubar-trigger"
       className={cn(
-        "flex h-8 items-center rounded-control px-3 text-[15px] outline-none select-none pointer-coarse:h-10 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-popover [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_1px_2px_rgb(16_16_20/0.08)] data-popup-open:bg-popover data-popup-open:shadow-[0_1px_2px_rgb(16_16_20/0.08)] dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/10 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:shadow-none dark:data-popup-open:bg-foreground/10 dark:data-popup-open:shadow-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring data-disabled:opacity-50",
+        "flex h-8 items-center rounded-control px-3 text-body outline-none select-none pointer-coarse:h-control-touch [@media(hover:hover)_and_(pointer:fine)]:hover:bg-popover [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_1px_2px_rgb(16_16_20/0.08)] data-popup-open:bg-popover data-popup-open:shadow-[0_1px_2px_rgb(16_16_20/0.08)] dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/10 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:shadow-none dark:data-popup-open:bg-foreground/10 dark:data-popup-open:shadow-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-2 focus-visible:outline-ring data-disabled:opacity-50",
         className
       )}
       {...props}

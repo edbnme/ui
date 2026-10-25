@@ -35,7 +35,7 @@ function ItemSeparator({
 }
 
 const itemVariants = cva(
-  "group/item flex w-full flex-wrap items-center rounded-panel border text-[15px] transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring [a]:transition-colors [a]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04]",
+  "group/item flex w-full flex-wrap items-center rounded-panel border text-body transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring [a]:transition-colors [a]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04]",
   {
     variants: {
       variant: {
@@ -88,7 +88,7 @@ const itemMediaVariants = cva(
         default: "bg-transparent",
         icon: "[&_svg:not([class*='size-'])]:size-4",
         image:
-          "size-10 overflow-hidden rounded-sm group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 [&_img]:size-full [&_img]:object-cover",
+          "size-10 overflow-hidden rounded-control-xs group-data-[size=sm]/item:size-8 group-data-[size=xs]/item:size-6 [&_img]:size-full [&_img]:object-cover",
       },
     },
     defaultVariants: {
@@ -130,7 +130,7 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="item-title"
       className={cn(
-        "line-clamp-1 flex w-fit items-center gap-2 text-[15px] leading-snug underline-offset-4",
+        "line-clamp-1 flex w-fit items-center gap-2 text-body leading-snug underline-offset-4",
         className
       )}
       {...props}
@@ -143,7 +143,7 @@ function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="item-description"
       className={cn(
-        "line-clamp-2 text-start text-[13px] leading-normal text-muted-foreground group-data-[size=xs]/item:text-xs [&>a]:underline [&>a]:underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:[&>a:hover]:text-primary",
+        "line-clamp-2 text-start text-small leading-normal text-muted-foreground group-data-[size=xs]/item:text-xs [&>a]:underline [&>a]:underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:[&>a:hover]:text-primary",
         className
       )}
       {...props}

@@ -76,7 +76,7 @@ function CommandInput({
         <CommandPrimitive.Input
           data-slot="command-input"
           className={cn(
-            "w-full bg-transparent px-2 text-[15px] outline-none placeholder:text-muted-foreground pointer-coarse:text-base disabled:cursor-not-allowed disabled:opacity-50",
+            "w-full bg-transparent px-2 text-body outline-none placeholder:text-muted-foreground pointer-coarse:text-base disabled:cursor-not-allowed disabled:opacity-50",
             className
           )}
           {...props}
@@ -112,7 +112,7 @@ function CommandEmpty({
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
-      className={cn("py-6 text-center text-[15px] text-muted-foreground", className)}
+      className={cn("py-6 text-center text-body text-muted-foreground", className)}
       {...props}
     />
   )
@@ -126,7 +126,7 @@ function CommandGroup({
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        "overflow-hidden p-1 text-foreground **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:pt-2 **:[[cmdk-group-heading]]:pb-1 **:[[cmdk-group-heading]]:text-[13px] **:[[cmdk-group-heading]]:text-muted-foreground",
+        "overflow-hidden p-1 text-foreground **:[[cmdk-group-heading]]:px-3 **:[[cmdk-group-heading]]:pt-2 **:[[cmdk-group-heading]]:pb-1 **:[[cmdk-group-heading]]:text-small **:[[cmdk-group-heading]]:text-muted-foreground",
         className
       )}
       {...props}
@@ -156,7 +156,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-control px-3 py-2 text-[15px] leading-4 outline-none select-none pointer-coarse:min-h-10 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-primary data-selected:text-primary-foreground data-selected:**:text-current forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-control px-3 py-2 text-body leading-4 outline-none select-none pointer-coarse:min-h-control-touch data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-primary data-selected:text-primary-foreground data-selected:**:text-current forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className
       )}
       {...props}
@@ -175,7 +175,7 @@ function CommandShortcut({
     <span
       data-slot="command-shortcut"
       className={cn(
-        "ms-auto ps-4 text-[13px] text-muted-foreground group-data-selected/command-item:text-current group-data-selected/command-item:opacity-70",
+        "ms-auto ps-4 text-small leading-4 text-muted-foreground group-data-selected/command-item:text-current group-data-selected/command-item:opacity-70",
         className
       )}
       {...props}
