@@ -24,16 +24,16 @@ const buttonVariants = cva(
       },
       size: {
         default:
-          "h-8 gap-1.5 px-3 has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5",
-        xs: "h-6 gap-1 rounded-control-xs px-2 text-xs in-data-[slot=button-group]:rounded-control has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 gap-1 rounded-control-sm px-2.5 text-small in-data-[slot=button-group]:rounded-control has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-9 gap-2 px-4 has-data-[icon=inline-end]:pe-3 has-data-[icon=inline-start]:ps-3",
-        icon: "size-8",
+          "h-control gap-1.5 px-3 has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5",
+        xs: "h-control-xs gap-1 rounded-control-xs px-2 text-small in-data-[slot=button-group]:rounded-control has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+        sm: "h-control-sm gap-1 rounded-control-sm px-2.5 text-small in-data-[slot=button-group]:rounded-control has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "h-control-lg gap-2 px-4 has-data-[icon=inline-end]:pe-3 has-data-[icon=inline-start]:ps-3",
+        icon: "size-control",
         "icon-xs":
-          "size-6 rounded-control-xs in-data-[slot=button-group]:rounded-control [&_svg:not([class*='size-'])]:size-3",
+          "size-control-xs rounded-control-xs in-data-[slot=button-group]:rounded-control [&_svg:not([class*='size-'])]:size-3.5",
         "icon-sm":
-          "size-7 rounded-control-sm in-data-[slot=button-group]:rounded-control",
-        "icon-lg": "size-9",
+          "size-control-sm rounded-control-sm in-data-[slot=button-group]:rounded-control",
+        "icon-lg": "size-control-lg",
       },
     },
     defaultVariants: {

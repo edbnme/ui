@@ -14,7 +14,7 @@ const attachmentVariants = cva(
         default:
           "gap-2 text-body has-data-[slot=attachment-content]:px-3.5 has-data-[slot=attachment-content]:py-3 has-data-[slot=attachment-media]:p-2",
         sm: "gap-2.5 text-small has-data-[slot=attachment-content]:px-2 has-data-[slot=attachment-content]:py-1.5 has-data-[slot=attachment-media]:p-1.5",
-        xs: "gap-1.5 rounded-control text-xs has-data-[slot=attachment-content]:px-1.5 has-data-[slot=attachment-content]:py-1 has-data-[slot=attachment-media]:p-1",
+        xs: "gap-1.5 rounded-control text-small has-data-[slot=attachment-content]:px-1.5 has-data-[slot=attachment-content]:py-1 has-data-[slot=attachment-media]:p-1",
       },
       orientation: {
         horizontal: "min-w-40 items-center",
@@ -145,7 +145,7 @@ function AttachmentActions({
 function AttachmentAction({
   className,
   variant,
-  size = "icon-xs",
+  size = "icon-sm",
   ...props
 }: React.ComponentProps<typeof Button>) {
   return (

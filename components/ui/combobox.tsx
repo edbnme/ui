@@ -139,7 +139,7 @@ function ComboboxList({ className, ...props }: ComboboxPrimitive.List.Props) {
     <ComboboxPrimitive.List
       data-slot="combobox-list"
       className={cn(
-        "no-scrollbar max-h-[min(22.5rem,calc(var(--available-height)---spacing(10)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 data-empty:p-0",
+        "no-scrollbar max-h-[min(22.5rem,calc(var(--available-height)---spacing(10)))] scroll-py-1 overflow-y-auto overscroll-contain p-1 text-body data-empty:p-0",
         className
       )}
       {...props}
@@ -257,7 +257,7 @@ function ComboboxChip({
     <ComboboxPrimitive.Chip
       data-slot="combobox-chip"
       className={cn(
-        "flex h-6 w-fit items-center justify-center gap-1 rounded-control-xs bg-foreground/[.04] px-1.5 text-xs whitespace-nowrap text-foreground outline-none has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pe-0.5 data-highlighted:bg-primary data-highlighted:text-primary-foreground",
+        "flex h-control-xs w-fit items-center justify-center gap-1 rounded-control-xs bg-foreground/[.04] px-1.5 text-small whitespace-nowrap text-foreground outline-none has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pe-0.5 data-highlighted:bg-primary data-highlighted:text-primary-foreground",
         className
       )}
       {...props}

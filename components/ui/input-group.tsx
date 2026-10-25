@@ -23,7 +23,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const inputGroupAddonVariants = cva(
-  "flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-body text-muted-foreground select-none group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-[calc(var(--radius)-5px)] [&>svg:not([class*='size-'])]:size-4",
+  "flex h-auto cursor-text items-center justify-center gap-2 py-1.5 text-body text-muted-foreground select-none group-data-[disabled=true]/input-group:opacity-50 [&>kbd]:rounded-control-xs [&>svg:not([class*='size-'])]:size-4",
   {
     variants: {
       align: {
@@ -70,10 +70,10 @@ const inputGroupButtonVariants = cva(
   {
     variants: {
       size: {
-        xs: "relative h-6 gap-1 rounded-control-xs px-1.5 pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 [&>svg:not([class*='size-'])]:size-3.5",
+        xs: "relative h-control-xs gap-1 rounded-control-xs px-1.5 text-small pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 [&>svg:not([class*='size-'])]:size-3.5",
         sm: "",
-        "icon-xs": "relative size-6 rounded-control-xs p-0 pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 has-[>svg]:p-0",
-        "icon-sm": "size-7 rounded-control-sm p-0 has-[>svg]:p-0",
+        "icon-xs": "relative size-control-xs rounded-control-xs p-0 pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 has-[>svg]:p-0",
+        "icon-sm": "size-control-sm rounded-control-sm p-0 has-[>svg]:p-0",
       },
     },
     defaultVariants: {
