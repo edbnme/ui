@@ -506,7 +506,8 @@ const sidebarMenuButtonVariants = cva(
       size: {
         default: "h-control text-body pointer-coarse:min-h-control-touch",
         sm: "h-control-sm text-small pointer-coarse:min-h-control-touch",
-        lg: "h-12 text-body group-data-[collapsible=icon]:p-0!",
+        // eslint-disable-next-line no-restricted-syntax -- scale-exception: the lg button is a documented two-line row
+        lg: "min-h-12 text-body group-data-[collapsible=icon]:p-0!",
       },
     },
     defaultVariants: {

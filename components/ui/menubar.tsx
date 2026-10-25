@@ -27,7 +27,8 @@ function Menubar({ className, ...props }: MenubarPrimitive.Props) {
     <MenubarPrimitive
       data-slot="menubar"
       className={cn(
-        "flex h-10 items-center gap-0.5 rounded-panel bg-muted p-1 pointer-coarse:h-12",
+        // eslint-disable-next-line no-restricted-syntax -- scale-exception: the bar is p-1 around 40px touch controls
+        "flex h-control-touch items-center gap-0.5 rounded-panel bg-muted p-1 pointer-coarse:h-12",
         className
       )}
       {...props}

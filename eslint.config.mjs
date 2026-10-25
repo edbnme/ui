@@ -1,6 +1,7 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import { offScaleSyntax } from "./scripts/sizing-scale-patterns.mjs";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -52,6 +53,13 @@ const eslintConfig = defineConfig([
           alphabetize: { order: "asc", caseInsensitive: true },
         },
       ],
+    },
+  },
+  // Components keep to the size scale in lib/styles/base.css.
+  {
+    files: ["components/ui/**/*.tsx"],
+    rules: {
+      "no-restricted-syntax": ["error", ...offScaleSyntax],
     },
   },
 ]);

@@ -159,7 +159,7 @@ function NavigationMenuIndicator({
       )}
       {...props}
     >
-      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-popover shadow-popup" />
+      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-control-xs bg-popover shadow-popup" />
     </NavigationMenuPrimitive.Icon>
   )
 }

@@ -52,7 +52,7 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const fieldVariants = cva(
-  "group/field flex w-full gap-3 pointer-coarse:has-[>[role=checkbox],[role=radio],[role=switch]]:min-h-10 data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),black_15%)] dark:data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),white_25%)]",
+  "group/field flex w-full gap-3 pointer-coarse:has-[>[role=checkbox],[role=radio],[role=switch]]:min-h-control-touch data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),black_15%)] dark:data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),white_25%)]",
   {
     variants: {
       orientation: {
