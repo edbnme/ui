@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "summary": {
     "totalPackages": 12,
-    "totalComponents": 62,
+    "totalComponents": 68,
     "computedAt": "2026-08-23T00:00:00.000Z",
     "measurement": "component source bytes; external packages excluded"
   },
@@ -64,10 +64,10 @@
       "description": "The edbn Alert component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2140,
-        "gzipped": 756,
-        "selfSize": 2140,
-        "selfGzip": 756
+        "minified": 2183,
+        "gzipped": 764,
+        "selfSize": 2183,
+        "selfGzip": 764
       },
       "dependencies": [
         {
@@ -100,10 +100,10 @@
       "description": "The edbn Attachment component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 6264,
-        "gzipped": 1690,
-        "selfSize": 6264,
-        "selfGzip": 1690
+        "minified": 7218,
+        "gzipped": 1974,
+        "selfSize": 7218,
+        "selfGzip": 1974
       },
       "dependencies": [
         {
@@ -151,10 +151,10 @@
       "description": "The edbn Badge component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2360,
-        "gzipped": 916,
-        "selfSize": 2360,
-        "selfGzip": 916
+        "minified": 3541,
+        "gzipped": 1243,
+        "selfSize": 3541,
+        "selfGzip": 1243
       },
       "dependencies": [
         {
@@ -209,10 +209,10 @@
       "description": "The edbn Bubble component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5486,
-        "gzipped": 1387,
-        "selfSize": 5486,
-        "selfGzip": 1387
+        "minified": 5632,
+        "gzipped": 1469,
+        "selfSize": 5632,
+        "selfGzip": 1469
       },
       "dependencies": [
         {
@@ -267,10 +267,10 @@
       "description": "The edbn Button component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 4764,
-        "gzipped": 1342,
-        "selfSize": 4764,
-        "selfGzip": 1342
+        "minified": 6235,
+        "gzipped": 1490,
+        "selfSize": 6235,
+        "selfGzip": 1490
       },
       "dependencies": [
         {
@@ -325,10 +325,10 @@
       "description": "The edbn Card component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2547,
-        "gzipped": 696,
-        "selfSize": 2547,
-        "selfGzip": 696
+        "minified": 2910,
+        "gzipped": 822,
+        "selfSize": 2910,
+        "selfGzip": 822
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -419,10 +419,10 @@
       "description": "The edbn Collapsible component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1074,
-        "gzipped": 429,
-        "selfSize": 1074,
-        "selfGzip": 429
+        "minified": 3283,
+        "gzipped": 1142,
+        "selfSize": 3283,
+        "selfGzip": 1142
       },
       "dependencies": [
         {
@@ -431,9 +431,23 @@
           "gzip": 0,
           "source": "unknown",
           "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
         }
       ],
-      "dependencyCount": 1
+      "dependencyCount": 3
     },
     "static/combobox": {
       "name": "combobox",
@@ -441,10 +455,10 @@
       "description": "The edbn Combobox component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10432,
-        "gzipped": 2775,
-        "selfSize": 10432,
-        "selfGzip": 2775
+        "minified": 10597,
+        "gzipped": 2850,
+        "selfSize": 10597,
+        "selfGzip": 2850
       },
       "dependencies": [
         {
@@ -470,10 +484,10 @@
       "description": "The edbn Command component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5590,
-        "gzipped": 1584,
-        "selfSize": 5590,
-        "selfGzip": 1584
+        "minified": 7214,
+        "gzipped": 2091,
+        "selfSize": 7214,
+        "selfGzip": 2091
       },
       "dependencies": [
         {
@@ -624,6 +638,28 @@
       ],
       "dependencyCount": 2
     },
+    "static/dropzone": {
+      "name": "dropzone",
+      "title": "Dropzone",
+      "description": "The edbn Dropzone component with the shared Instrument Sans and paper surface foundation.",
+      "variant": "static",
+      "sizes": {
+        "minified": 8511,
+        "gzipped": 2813,
+        "selfSize": 8511,
+        "selfGzip": 2813
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
+    },
     "static/empty": {
       "name": "empty",
       "title": "Empty",
@@ -696,10 +732,10 @@
       "description": "The edbn Input Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5430,
-        "gzipped": 1548,
-        "selfSize": 5430,
-        "selfGzip": 1548
+        "minified": 7555,
+        "gzipped": 2101,
+        "selfSize": 7555,
+        "selfGzip": 2101
       },
       "dependencies": [
         {
@@ -769,10 +805,10 @@
       "description": "The edbn Item component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5015,
-        "gzipped": 1370,
-        "selfSize": 5015,
-        "selfGzip": 1370
+        "minified": 5249,
+        "gzipped": 1416,
+        "selfSize": 5249,
+        "selfGzip": 1416
       },
       "dependencies": [
         {
@@ -798,10 +834,10 @@
       "description": "The edbn Kbd component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 724,
-        "gzipped": 369,
-        "selfSize": 724,
-        "selfGzip": 369
+        "minified": 1540,
+        "gzipped": 628,
+        "selfSize": 1540,
+        "selfGzip": 628
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -848,6 +884,28 @@
         }
       ],
       "dependencyCount": 2
+    },
+    "static/mention": {
+      "name": "mention",
+      "title": "Mention",
+      "description": "The edbn Mention component with the shared Instrument Sans and paper surface foundation.",
+      "variant": "static",
+      "sizes": {
+        "minified": 19823,
+        "gzipped": 6340,
+        "selfSize": 19823,
+        "selfGzip": 6340
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
     },
     "static/menubar": {
       "name": "menubar",
@@ -920,13 +978,35 @@
       "description": "The edbn Message component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2216,
-        "gzipped": 604,
-        "selfSize": 2216,
-        "selfGzip": 604
+        "minified": 2913,
+        "gzipped": 831,
+        "selfSize": 2913,
+        "selfGzip": 831
       },
       "dependencies": [],
       "dependencyCount": 0
+    },
+    "static/meter": {
+      "name": "meter",
+      "title": "Meter",
+      "description": "The edbn Meter component with the shared Instrument Sans and paper surface foundation.",
+      "variant": "static",
+      "sizes": {
+        "minified": 2039,
+        "gzipped": 725,
+        "selfSize": 2039,
+        "selfGzip": 725
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
     },
     "static/native-select": {
       "name": "native-select",
@@ -1422,6 +1502,35 @@
       ],
       "dependencyCount": 2
     },
+    "static/text-link": {
+      "name": "text-link",
+      "title": "Text Link",
+      "description": "The edbn Text Link component with the shared Instrument Sans and paper surface foundation.",
+      "variant": "static",
+      "sizes": {
+        "minified": 2415,
+        "gzipped": 973,
+        "selfSize": 2415,
+        "selfGzip": 973
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
     "static/textarea": {
       "name": "textarea",
       "title": "Textarea",
@@ -1435,6 +1544,28 @@
       },
       "dependencies": [],
       "dependencyCount": 0
+    },
+    "static/timeline": {
+      "name": "timeline",
+      "title": "Timeline",
+      "description": "The edbn Timeline component with the shared Instrument Sans and paper surface foundation.",
+      "variant": "static",
+      "sizes": {
+        "minified": 5133,
+        "gzipped": 1726,
+        "selfSize": 5133,
+        "selfGzip": 1726
+      },
+      "dependencies": [
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 1
     },
     "static/toast": {
       "name": "toast",
@@ -1504,6 +1635,35 @@
         "gzipped": 883,
         "selfSize": 2345,
         "selfGzip": 883
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "class-variance-authority",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
+    },
+    "static/toolbar": {
+      "name": "toolbar",
+      "title": "Toolbar",
+      "description": "The edbn Toolbar component with the shared Instrument Sans and paper surface foundation.",
+      "variant": "static",
+      "sizes": {
+        "minified": 3630,
+        "gzipped": 1176,
+        "selfSize": 3630,
+        "selfGzip": 1176
       },
       "dependencies": [
         {

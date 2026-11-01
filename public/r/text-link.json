@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-link",
+  "title": "Text Link",
+  "description": "The edbn Text Link component with the shared Instrument Sans and paper surface foundation.",
+  "dependencies": [
+    "@base-ui/react@^1.8.0",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://ui.edbn.me/r/edbn-base.json"
+  ],
+  "files": [
+    {
+      "path": "components/ui/text-link.tsx",
+      "content": "import * as React from \"react\"\nimport { mergeProps } from \"@base-ui/react/merge-props\"\nimport { useRender } from \"@base-ui/react/use-render\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\n// A link in running text. It takes the size of the text around it. Render a\n// framework link with `render={<Link href=\"…\" />}`, or an action that reads\n// as a link (Undo, Retry, Resend) with `render={<button />}`. A link that\n// looks like a button is `buttonVariants()` on an `<a>` instead.\nconst textLinkVariants = cva(\n  \"rounded-[2px] underline-offset-[3px] outline-none transition-[color,text-decoration-color] duration-150 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:text-muted-foreground disabled:no-underline aria-disabled:pointer-events-none aria-disabled:text-muted-foreground aria-disabled:no-underline data-disabled:pointer-events-none data-disabled:text-muted-foreground data-disabled:no-underline\",\n  {\n    variants: {\n      variant: {\n        default: \"text-foreground\",\n        muted:\n          \"text-muted-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground\",\n      },\n      underline: {\n        // A faint rule that darkens under the pointer.\n        always:\n          \"underline decoration-foreground/20 [@media(hover:hover)_and_(pointer:fine)]:hover:decoration-foreground/60\",\n        hover:\n          \"underline-offset-4 decoration-current [@media(hover:hover)_and_(pointer:fine)]:hover:underline\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      underline: \"always\",\n    },\n  }\n)\n\nfunction TextLink({\n  className,\n  variant = \"default\",\n  underline = \"always\",\n  render,\n  ...props\n}: useRender.ComponentProps<\"a\"> & VariantProps<typeof textLinkVariants>) {\n  // A rendered <button> would otherwise submit the form it sits in.\n  const rendersButton = React.isValidElement(render) && render.type === \"button\"\n\n  return useRender({\n    defaultTagName: \"a\",\n    props: mergeProps<\"a\">(\n      {\n        ...(rendersButton ? { type: \"button\" } : {}),\n        className: cn(textLinkVariants({ variant, underline }), className),\n      },\n      props\n    ),\n    render,\n    state: {\n      slot: \"text-link\",\n      variant,\n    },\n  })\n}\n\nexport { TextLink, textLinkVariants }\n",
+      "type": "registry:ui",
+      "target": "@ui/text-link.tsx"
+    }
+  ],
+  "meta": {
+    "license": "https://ui.edbn.me/docs/components/license"
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}
