@@ -1261,6 +1261,31 @@
       }
     },
     {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "The edbn Meter component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/meter.tsx",
+          "type": "registry:ui",
+          "target": "@ui/meter.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "native-select",
       "type": "registry:ui",
       "title": "Native Select",
