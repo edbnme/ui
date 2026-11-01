@@ -1974,6 +1974,35 @@
       }
     },
     {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "The edbn Toolbar component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json",
+        "https://ui.edbn.me/r/button.json",
+        "https://ui.edbn.me/r/input.json",
+        "https://ui.edbn.me/r/text-link.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/toolbar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toolbar.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "title": "Tooltip",
