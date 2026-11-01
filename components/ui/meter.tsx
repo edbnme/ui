@@ -14,10 +14,13 @@ function Meter({
   track = true,
   ...props
 }: MeterPrimitive.Root.Props & { track?: boolean }) {
+  // Past max (a context window over its limit) the meter says so.
+  const over = props.value > (props.max ?? 100)
   return (
     <MeterPrimitive.Root
       data-slot="meter"
-      className={cn("flex w-full flex-wrap gap-3", className)}
+      data-over={over || undefined}
+      className={cn("group/meter flex w-full flex-wrap gap-3", className)}
       {...props}
     >
       {children}
@@ -74,7 +77,7 @@ function MeterValue({ className, ...props }: MeterPrimitive.Value.Props) {
     <MeterPrimitive.Value
       data-slot="meter-value"
       className={cn(
-        "ms-auto text-small text-muted-foreground tabular-nums",
+        "ms-auto text-small text-muted-foreground tabular-nums group-data-over/meter:text-foreground",
         className
       )}
       {...props}
