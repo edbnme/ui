@@ -1910,6 +1910,32 @@
       }
     },
     {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "The edbn Timeline component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "lucide-react@^1.33.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json",
+        "https://ui.edbn.me/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/timeline.tsx",
+          "type": "registry:ui",
+          "target": "@ui/timeline.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
