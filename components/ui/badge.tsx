@@ -20,9 +20,31 @@ const badgeVariants = cva(
           "[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04]",
         link: "text-primary underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:hover:underline",
       },
+      size: {
+        default: "",
+        // A number that keeps its width as it changes: 1, 9 and 99 sit in
+        // the same centred pill.
+        count: "min-w-5 px-1.5",
+      },
     },
     defaultVariants: {
       variant: "default",
+      size: "default",
+    },
+  }
+)
+
+const badgeDotVariants = cva(
+  "inline-block shrink-0 rounded-full bg-primary",
+  {
+    variants: {
+      size: {
+        default: "size-2",
+        sm: "size-1.5",
+      },
+    },
+    defaultVariants: {
+      size: "default",
     },
   }
 )
@@ -30,6 +52,7 @@ const badgeVariants = cva(
 function Badge({
   className,
   variant = "default",
+  size = "default",
   render,
   ...props
 }: useRender.ComponentProps<"span"> & VariantProps<typeof badgeVariants>) {
@@ -37,7 +60,7 @@ function Badge({
     defaultTagName: "span",
     props: mergeProps<"span">(
       {
-        className: cn(badgeVariants({ variant }), className),
+        className: cn(badgeVariants({ variant, size }), className),
       },
       props
     ),
@@ -49,4 +72,32 @@ function Badge({
   })
 }
 
-export { Badge, badgeVariants }
+// An unread marker. Decorative unless it carries a `label`, which screen
+// readers announce in its place.
+function BadgeDot({
+  className,
+  size = "default",
+  label,
+  render,
+  children,
+  ...props
+}: useRender.ComponentProps<"span"> &
+  VariantProps<typeof badgeDotVariants> & { label?: string }) {
+  return useRender({
+    defaultTagName: "span",
+    props: mergeProps<"span">(
+      {
+        "aria-hidden": label ? undefined : true,
+        className: cn(badgeDotVariants({ size }), className),
+        children: label ? <span className="sr-only">{label}</span> : children,
+      },
+      props
+    ),
+    render,
+    state: {
+      slot: "badge-dot",
+    },
+  })
+}
+
+export { Badge, BadgeDot, badgeDotVariants, badgeVariants }
