@@ -66,10 +66,20 @@ function CommandDialog({
   )
 }
 
+// `icon={false}` drops the search glass. `startAddon` and `endAddon` sit
+// inside the field, before and after the text: a breadcrumb back to the
+// previous page, a clear button, a shortcut hint.
 function CommandInput({
   className,
+  icon = true,
+  startAddon,
+  endAddon,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Input>) {
+}: React.ComponentProps<typeof CommandPrimitive.Input> & {
+  icon?: boolean
+  startAddon?: React.ReactNode
+  endAddon?: React.ReactNode
+}) {
   return (
     <div data-slot="command-input-wrapper" className="p-1 pb-0">
       <InputGroup className="bg-background shadow-none *:data-[slot=input-group-addon]:ps-2.5!">
@@ -77,13 +87,22 @@ function CommandInput({
           data-slot="command-input"
           className={cn(
             "w-full bg-transparent px-2 text-body outline-none placeholder:text-muted-foreground pointer-coarse:text-base disabled:cursor-not-allowed disabled:opacity-50",
+            !icon && !startAddon && "ps-3",
             className
           )}
           {...props}
         />
-        <InputGroupAddon>
-          <SearchIcon className="size-4 shrink-0 opacity-50" />
-        </InputGroupAddon>
+        {icon && (
+          <InputGroupAddon>
+            <SearchIcon className="size-4 shrink-0 opacity-50" />
+          </InputGroupAddon>
+        )}
+        {startAddon && (
+          <InputGroupAddon>{startAddon}</InputGroupAddon>
+        )}
+        {endAddon && (
+          <InputGroupAddon align="inline-end">{endAddon}</InputGroupAddon>
+        )}
       </InputGroup>
     </div>
   )
@@ -105,14 +124,24 @@ function CommandList({
   )
 }
 
+// `align="start"` lines the message up with the items' text, for lists
+// that read as a menu rather than a search page.
 function CommandEmpty({
   className,
+  align = "center",
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+}: React.ComponentProps<typeof CommandPrimitive.Empty> & {
+  align?: "center" | "start"
+}) {
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
-      className={cn("py-6 text-center text-body text-muted-foreground", className)}
+      data-align={align}
+      className={cn(
+        "py-6 text-center text-body text-muted-foreground",
+        align === "start" && "grid gap-1 px-3 py-2 text-start leading-5",
+        className
+      )}
       {...props}
     />
   )
@@ -156,7 +185,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-control px-3 py-2 text-body leading-4 outline-none select-none pointer-coarse:min-h-control-touch data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-primary data-selected:text-primary-foreground data-selected:**:text-current forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-control px-3 py-2 text-body leading-4 outline-none select-none pointer-coarse:min-h-control-touch data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 data-selected:bg-primary data-selected:text-primary-foreground data-selected:**:text-current forced-colors:data-selected:bg-[Highlight] forced-colors:data-selected:text-[HighlightText] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 has-data-[slot=command-item-description]:flex-wrap has-data-[slot=command-item-description]:gap-y-0.5 has-data-[slot=command-item-description]:leading-5",
         className
       )}
       {...props}
@@ -183,6 +212,24 @@ function CommandShortcut({
   )
 }
 
+// A second, quieter line under the item's label. It wraps below the label
+// and lines up with it past a leading icon.
+function CommandItemDescription({
+  className,
+  ...props
+}: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="command-item-description"
+      className={cn(
+        "order-last min-w-0 basis-full truncate text-small leading-5 text-muted-foreground group-has-[>svg:first-child]/command-item:ps-6 group-data-selected/command-item:opacity-70",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 export {
   Command,
   CommandDialog,
@@ -191,6 +238,7 @@ export {
   CommandEmpty,
   CommandGroup,
   CommandItem,
+  CommandItemDescription,
   CommandShortcut,
   CommandSeparator,
 }
