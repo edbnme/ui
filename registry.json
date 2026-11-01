@@ -1200,6 +1200,32 @@
       }
     },
     {
+      "name": "mention",
+      "type": "registry:ui",
+      "title": "Mention",
+      "description": "The edbn Mention component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json",
+        "https://ui.edbn.me/r/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mention.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mention.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
