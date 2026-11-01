@@ -892,6 +892,31 @@
       }
     },
     {
+      "name": "dropzone",
+      "type": "registry:ui",
+      "title": "Dropzone",
+      "description": "The edbn Dropzone component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/dropzone.tsx",
+          "type": "registry:ui",
+          "target": "@ui/dropzone.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "empty",
       "type": "registry:ui",
       "title": "Empty",
