@@ -4,7 +4,10 @@
     --font-sans: "Instrument Sans Variable", sans-serif;
 }
 
-@custom-variant dark (&:is(.dark *));
+/* A `.light` element is a light island inside a dark page (a brand page
+   that is always light): dark: utilities skip it, and it gets the light
+   tokens back. :where() keeps the variant's specificity as it was. */
+@custom-variant dark (&:is(.dark *):not(:where(.light, .light *)));
 
 @theme inline {
     --font-heading: var(--font-sans);
@@ -95,7 +98,8 @@
     --container-wide: 32rem;
 }
 
-:root {
+:root,
+.light {
     --font-sans: "Instrument Sans Variable", sans-serif;
     --motion-duration-press: 140ms;
     --motion-duration-surface-in: 100ms;

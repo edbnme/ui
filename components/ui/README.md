@@ -4,7 +4,7 @@ Source of truth for all distributable UI components. This directory is a git sub
 
 ## Contract
 
-- The 62 root files are the canonical public components built on the Base UI + Nova + neutral + Lucide preset, with edbn's authored appearance and motion.
+- The 68 root files are the canonical public components built on the Base UI + Nova + neutral + Lucide preset, with edbn's authored appearance and motion.
 - Import directly from `@/components/ui/<component>`; there is no barrel export.
 - Feature code owns the source after installation and may modify it locally.
 - Product blocks, layouts, recipes, and renderer helpers stay outside this directory.
@@ -17,6 +17,16 @@ Source of truth for all distributable UI components. This directory is a git sub
 - Keep primitive behavior and public props compatible with the pinned CLI output. Declare authored source in `LOCAL_UI_SOURCE_PATHS` so upstream synchronization preserves it.
 - Pointer popup transitions use the shared input-modality provider. Keyboard and programmatic changes are immediate; reduced motion uses short fades without moving surfaces.
 - After changing a file, update `registry.json`, validate, and regenerate `public/r/`.
+
+## Changing a component
+
+Every block, demo and page on ui.edbn.me renders these files live, and blocks install them by URL, so a change here reaches all of them:
+
+1. Edit `components/ui/<name>.tsx` (and its `registry.json` entry for a new dependency or file).
+2. In the ui repo, run `npm run generated:write`: it rebuilds `public/r/`, the demo sources and the bundle sizes here, and the site's generated metadata.
+3. Commit here, then bump the `oss` pointer in ui with its generated files.
+
+Blocks restyle nothing through `className` (the ui repo's `edbn/blocks-use-components` lint rule checks), so a new look belongs in the component as a variant or size.
 
 ## Registry
 

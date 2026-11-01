@@ -82,10 +82,26 @@ function MessageFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+// A message's action row (copy, edit, regenerate). Where there's a mouse it
+// shows while the message is hovered or holds focus; on touch it always shows.
+function MessageActions({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="message-actions"
+      className={cn(
+        "flex items-center transition-opacity duration-150 ease-(--motion-ease-out) motion-reduce:transition-none [@media(hover:hover)_and_(pointer:fine)]:opacity-0 [@media(hover:hover)_and_(pointer:fine)]:group-hover/message:opacity-100 group-focus-within/message:opacity-100 has-aria-expanded:opacity-100",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 export {
   MessageGroup,
   Message,
   MessageAvatar,
+  MessageActions,
   MessageContent,
   MessageFooter,
   MessageHeader,

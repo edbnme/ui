@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar",
+  "title": "Toolbar",
+  "description": "The edbn Toolbar component with the shared Instrument Sans and paper surface foundation.",
+  "dependencies": [
+    "@base-ui/react@^1.8.0",
+    "class-variance-authority@^0.7.1"
+  ],
+  "registryDependencies": [
+    "https://ui.edbn.me/r/edbn-base.json",
+    "https://ui.edbn.me/r/button.json",
+    "https://ui.edbn.me/r/input.json",
+    "https://ui.edbn.me/r/text-link.json"
+  ],
+  "files": [
+    {
+      "path": "components/ui/toolbar.tsx",
+      "content": "\"use client\"\n\nimport { Toolbar as ToolbarPrimitive } from \"@base-ui/react/toolbar\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button, buttonVariants } from \"@/components/ui/button\"\nimport { Input } from \"@/components/ui/input\"\nimport { textLinkVariants } from \"@/components/ui/text-link\"\n\n// One tab stop; arrow keys move between the items. Toggle groups inside it\n// (ToggleGroup + ToggleGroupItem) join the same arrow-key order. `ghost`\n// drops the muted fill, for a toolbar that sits on a panel of its own.\nconst toolbarVariants = cva(\n  \"flex w-fit items-center gap-0.5 rounded-panel p-1 data-vertical:flex-col data-vertical:items-stretch\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-muted\",\n        ghost: \"bg-transparent\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\nfunction Toolbar({\n  className,\n  variant = \"default\",\n  ...props\n}: ToolbarPrimitive.Root.Props & VariantProps<typeof toolbarVariants>) {\n  return (\n    <ToolbarPrimitive.Root\n      data-slot=\"toolbar\"\n      data-variant={variant}\n      className={cn(toolbarVariants({ variant }), className)}\n      {...props}\n    />\n  )\n}\n\nfunction ToolbarGroup({ className, ...props }: ToolbarPrimitive.Group.Props) {\n  return (\n    <ToolbarPrimitive.Group\n      data-slot=\"toolbar-group\"\n      className={cn(\n        \"flex items-center gap-0.5 data-vertical:flex-col data-vertical:items-stretch\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\n// A Button in the toolbar's arrow-key order: quiet ghost icons by default.\n// Popup triggers go in `render` (`render={<DropdownMenuTrigger />}`); a\n// tooltip wraps it instead (`<TooltipTrigger render={<ToolbarButton />} />`).\nfunction ToolbarButton({\n  className,\n  variant = \"ghost\",\n  size = \"icon\",\n  shape = \"default\",\n  render,\n  ...props\n}: ToolbarPrimitive.Button.Props & VariantProps<typeof buttonVariants>) {\n  const quiet = variant === \"ghost\" || variant === \"ghost-destructive\"\n  return (\n    <ToolbarPrimitive.Button\n      data-slot=\"toolbar-button\"\n      render={render ?? <Button variant={variant} size={size} shape={shape} />}\n      className={cn(\n        render && buttonVariants({ variant, size, shape }),\n        quiet && \"text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction ToolbarSeparator({\n  className,\n  ...props\n}: ToolbarPrimitive.Separator.Props) {\n  return (\n    <ToolbarPrimitive.Separator\n      data-slot=\"toolbar-separator\"\n      className={cn(\n        \"shrink-0 bg-foreground/10 data-horizontal:mx-1 data-horizontal:my-1 data-horizontal:h-px data-horizontal:w-auto data-vertical:mx-1 data-vertical:h-4 data-vertical:w-px\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction ToolbarLink({ className, ...props }: ToolbarPrimitive.Link.Props) {\n  return (\n    <ToolbarPrimitive.Link\n      data-slot=\"toolbar-link\"\n      className={cn(\n        textLinkVariants({ variant: \"muted\", underline: \"hover\" }),\n        \"flex-none self-center px-1.5 text-small\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\n// Arrow keys move both the caret and the toolbar's focus, so keep to one\n// input, as the toolbar's last item.\nfunction ToolbarInput({ className, ...props }: ToolbarPrimitive.Input.Props) {\n  return (\n    <ToolbarPrimitive.Input\n      data-slot=\"toolbar-input\"\n      render={<Input />}\n      className={cn(\"w-auto min-w-24 flex-1\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Toolbar,\n  ToolbarButton,\n  ToolbarGroup,\n  ToolbarInput,\n  ToolbarLink,\n  ToolbarSeparator,\n  toolbarVariants,\n}\n",
+      "type": "registry:ui",
+      "target": "@ui/toolbar.tsx"
+    }
+  ],
+  "meta": {
+    "license": "https://ui.edbn.me/docs/components/license"
+  },
+  "categories": [
+    "ui"
+  ],
+  "type": "registry:ui"
+}

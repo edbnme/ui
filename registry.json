@@ -319,7 +319,8 @@
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json",
-        "https://ui.edbn.me/r/button.json"
+        "https://ui.edbn.me/r/button.json",
+        "https://ui.edbn.me/r/progress.json"
       ],
       "files": [
         {
@@ -660,7 +661,9 @@
       "title": "Collapsible",
       "description": "The edbn Collapsible component with the shared Instrument Sans and paper surface foundation.",
       "dependencies": [
-        "@base-ui/react@^1.8.0"
+        "@base-ui/react@^1.8.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^1.33.0"
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json"
@@ -885,6 +888,31 @@
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/dropdown-menu"
         },
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
+      "name": "dropzone",
+      "type": "registry:ui",
+      "title": "Dropzone",
+      "description": "The edbn Dropzone component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/dropzone.tsx",
+          "type": "registry:ui",
+          "target": "@ui/dropzone.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
         "license": "https://ui.edbn.me/docs/components/license"
       }
     },
@@ -1172,6 +1200,32 @@
       }
     },
     {
+      "name": "mention",
+      "type": "registry:ui",
+      "title": "Mention",
+      "description": "The edbn Mention component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json",
+        "https://ui.edbn.me/r/input-group.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/mention.tsx",
+          "type": "registry:ui",
+          "target": "@ui/mention.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
@@ -1254,6 +1308,31 @@
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/message"
         },
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
+      "name": "meter",
+      "type": "registry:ui",
+      "title": "Meter",
+      "description": "The edbn Meter component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/meter.tsx",
+          "type": "registry:ui",
+          "target": "@ui/meter.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
         "license": "https://ui.edbn.me/docs/components/license"
       }
     },
@@ -1831,6 +1910,32 @@
       }
     },
     {
+      "name": "text-link",
+      "type": "registry:ui",
+      "title": "Text Link",
+      "description": "The edbn Text Link component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/text-link.tsx",
+          "type": "registry:ui",
+          "target": "@ui/text-link.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
@@ -1852,6 +1957,32 @@
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/textarea"
         },
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Timeline",
+      "description": "The edbn Timeline component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "lucide-react@^1.33.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json",
+        "https://ui.edbn.me/r/spinner.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/timeline.tsx",
+          "type": "registry:ui",
+          "target": "@ui/timeline.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
         "license": "https://ui.edbn.me/docs/components/license"
       }
     },
@@ -1941,6 +2072,35 @@
         "links": {
           "docs": "https://ui.shadcn.com/docs/components/base/toggle"
         },
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
+      "name": "toolbar",
+      "type": "registry:ui",
+      "title": "Toolbar",
+      "description": "The edbn Toolbar component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json",
+        "https://ui.edbn.me/r/button.json",
+        "https://ui.edbn.me/r/input.json",
+        "https://ui.edbn.me/r/text-link.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/toolbar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/toolbar.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
         "license": "https://ui.edbn.me/docs/components/license"
       }
     },

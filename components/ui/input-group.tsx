@@ -8,13 +8,27 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+function InputGroup({
+  className,
+  variant = "default",
+  ...props
+}: React.ComponentProps<"div"> & {
+  /**
+   * `composer` is the chat prompt shell: a muted card with no border. With
+   * an `inline-end` addon the text and the send button sit side by side;
+   * with `block-start` or `block-end` addons they stack in rows.
+   */
+  variant?: "default" | "composer"
+}) {
   return (
     <div
       data-slot="input-group"
+      data-variant={variant}
       role="group"
       className={cn(
-        "group/input-group relative flex h-8 w-full min-w-0 items-center rounded-control border border-input bg-transparent pointer-coarse:h-control-touch transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:outline-2 has-[[data-slot=input-group-control]:focus-visible]:outline-solid has-[[data-slot=input-group-control]:focus-visible]:-outline-offset-1 has-[[data-slot=input-group-control]:focus-visible]:outline-ring has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
+        "group/input-group relative flex h-control w-full min-w-0 items-center rounded-control border border-input bg-transparent pointer-coarse:h-control-touch transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:outline-2 has-[[data-slot=input-group-control]:focus-visible]:outline-solid has-[[data-slot=input-group-control]:focus-visible]:-outline-offset-1 has-[[data-slot=input-group-control]:focus-visible]:outline-ring has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
+        variant === "composer" &&
+          "h-auto items-end gap-2 rounded-card border-transparent bg-muted py-2 ps-4 pe-2 pointer-coarse:h-auto *:data-[align^=inline]:m-0! *:data-[align^=inline]:p-0! has-[>[data-align^=block]]:items-stretch has-[>[data-align^=block]]:gap-0 has-[>[data-align^=block]]:p-0 *:data-[align=block-start]:px-4! *:data-[align=block-start]:pt-3! *:data-[align=block-start]:pb-0! *:data-[align=block-end]:px-2! *:data-[align=block-end]:pt-0! *:data-[align=block-end]:pb-2!",
         className
       )}
       {...props}
@@ -58,7 +72,12 @@ function InputGroupAddon({
         if ((e.target as HTMLElement).closest("button")) {
           return
         }
-        e.currentTarget.parentElement?.querySelector("input")?.focus()
+        const group = e.currentTarget.parentElement
+        ;(
+          group?.querySelector<HTMLElement>(
+            "[data-slot=input-group-control]"
+          ) ?? group?.querySelector("input")
+        )?.focus()
       }}
       {...props}
     />
@@ -87,6 +106,7 @@ function InputGroupButton({
   type = "button",
   variant = "ghost",
   size = "xs",
+  shape = "default",
   ...props
 }: Omit<React.ComponentProps<typeof Button>, "size" | "type"> &
   VariantProps<typeof inputGroupButtonVariants> & {
@@ -97,7 +117,12 @@ function InputGroupButton({
       type={type}
       data-size={size}
       variant={variant}
-      className={cn(inputGroupButtonVariants({ size }), className)}
+      shape={shape}
+      className={cn(
+        inputGroupButtonVariants({ size }),
+        shape === "round" && "rounded-full",
+        className
+      )}
       {...props}
     />
   )
@@ -140,6 +165,11 @@ function InputGroupTextarea({
       data-slot="input-group-control"
       className={cn(
         "flex-1 resize-none rounded-none border-0 bg-transparent py-2 shadow-none ring-0 focus-visible:ring-0 focus-visible:outline-none aria-invalid:ring-0",
+        // In a composer the field grows with its text, then scrolls: from
+        // one line beside the send button up to five, or in the stacked
+        // layout from a touch-height row up to about six.
+        "group-data-[variant=composer]/input-group:min-h-control-sm group-data-[variant=composer]/input-group:max-h-[calc(5lh+--spacing(1))] group-data-[variant=composer]/input-group:px-0 group-data-[variant=composer]/input-group:py-0.5 group-data-[variant=composer]/input-group:pointer-coarse:max-h-[calc(5lh+--spacing(5))] group-data-[variant=composer]/input-group:pointer-coarse:py-2.5",
+        "group-data-[variant=composer]/input-group:group-has-[>[data-align^=block]]/input-group:min-h-control-touch group-data-[variant=composer]/input-group:group-has-[>[data-align^=block]]/input-group:max-h-40 group-data-[variant=composer]/input-group:group-has-[>[data-align^=block]]/input-group:px-4 group-data-[variant=composer]/input-group:group-has-[>[data-align^=block]]/input-group:pt-3 group-data-[variant=composer]/input-group:group-has-[>[data-align^=block]]/input-group:pb-1",
         className
       )}
       {...props}

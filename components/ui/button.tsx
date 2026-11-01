@@ -7,11 +7,12 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-control border border-transparent bg-clip-padding pointer-coarse:min-h-control-touch pointer-coarse:min-w-control-touch text-body whitespace-nowrap outline-none select-none transition-[color,background-color,opacity,scale] duration-100 data-[pointer-pressed]:duration-(--motion-duration-press) ease-(--motion-ease-out) data-[pointer-pressed]:not-aria-[haspopup]:scale-[.97] motion-reduce:transition-[color,background-color,opacity] motion-reduce:duration-100 motion-reduce:data-[pointer-pressed]:not-aria-[haspopup]:scale-100 motion-reduce:data-[pointer-pressed]:opacity-80 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center rounded-control border border-transparent bg-clip-padding pointer-coarse:min-h-control-touch pointer-coarse:min-w-control-touch text-body whitespace-nowrap outline-none select-none transition-[color,background-color,opacity,scale] duration-100 data-[pointer-pressed]:duration-(--motion-duration-press) ease-(--motion-ease-out) data-[pointer-pressed]:not-aria-[haspopup]:scale-[.97] motion-reduce:transition-[color,background-color,opacity] motion-reduce:duration-100 motion-reduce:data-[pointer-pressed]:not-aria-[haspopup]:scale-100 motion-reduce:data-[pointer-pressed]:opacity-80 data-pressed:not-aria-[haspopup]:not-aria-pressed:duration-(--motion-duration-press) data-pressed:not-aria-[haspopup]:not-aria-pressed:scale-[.97] motion-reduce:data-pressed:not-aria-[haspopup]:not-aria-pressed:scale-100 motion-reduce:data-pressed:not-aria-[haspopup]:not-aria-pressed:opacity-80 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-disabled:pointer-events-none data-disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:bg-primary/80",
+        default:
+          "bg-primary text-primary-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:bg-primary/80 aria-expanded:bg-primary/80",
         outline:
           "bg-foreground/[.04] text-foreground [@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.07] aria-expanded:bg-foreground/[.07]",
         secondary:
@@ -20,6 +21,8 @@ const buttonVariants = cva(
           "[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] [@media(hover:hover)_and_(pointer:fine)]:hover:text-foreground aria-expanded:bg-foreground/[.07] aria-expanded:text-foreground",
         destructive:
           "bg-destructive/10 text-[color-mix(in_oklch,var(--destructive),black_15%)] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/15 aria-expanded:bg-destructive/15 focus-visible:outline-destructive dark:bg-destructive/20 dark:text-[color-mix(in_oklch,var(--destructive),white_25%)] dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/30",
+        "ghost-destructive":
+          "[@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/10 [@media(hover:hover)_and_(pointer:fine)]:hover:text-[color-mix(in_oklch,var(--destructive),black_15%)] focus-visible:bg-destructive/10 focus-visible:text-[color-mix(in_oklch,var(--destructive),black_15%)] focus-visible:outline-destructive aria-expanded:bg-destructive/10 aria-expanded:text-[color-mix(in_oklch,var(--destructive),black_15%)] dark:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-destructive/20 dark:[@media(hover:hover)_and_(pointer:fine)]:hover:text-[color-mix(in_oklch,var(--destructive),white_25%)] dark:focus-visible:bg-destructive/20 dark:focus-visible:text-[color-mix(in_oklch,var(--destructive),white_25%)] dark:aria-expanded:bg-destructive/20 dark:aria-expanded:text-[color-mix(in_oklch,var(--destructive),white_25%)]",
         link: "text-primary underline-offset-4 [@media(hover:hover)_and_(pointer:fine)]:hover:underline",
       },
       size: {
@@ -35,10 +38,15 @@ const buttonVariants = cva(
           "size-control-sm rounded-control-sm in-data-[slot=button-group]:rounded-control",
         "icon-lg": "size-control-lg",
       },
+      shape: {
+        default: "",
+        round: "rounded-full in-data-[slot=button-group]:rounded-full",
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      shape: "default",
     },
   }
 )
@@ -47,6 +55,7 @@ function Button({
   className,
   variant = "default",
   size = "default",
+  shape = "default",
   onPointerDown,
   onPointerUp,
   onPointerCancel,
@@ -60,7 +69,7 @@ function Button({
     <ButtonPrimitive
       data-slot="button"
       data-pointer-pressed={pointerPressed || undefined}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, shape, className }))}
       onPointerDown={(event) => {
         if (event.button === 0) setPointerPressed(true)
         onPointerDown?.(event)

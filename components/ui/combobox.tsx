@@ -237,7 +237,7 @@ function ComboboxChips({
     <ComboboxPrimitive.Chips
       data-slot="combobox-chips"
       className={cn(
-        "flex min-h-8 flex-wrap items-center gap-1 rounded-control border border-input bg-transparent px-2.5 py-1 text-body leading-5 pointer-coarse:min-h-control-touch has-[input:focus-visible]:outline-2 has-[input:focus-visible]:-outline-offset-1 has-[input:focus-visible]:outline-ring has-aria-invalid:border-destructive has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 has-data-[slot=combobox-chip]:px-1 has-data-[slot=combobox-chip]:py-[3px] dark:has-aria-invalid:border-destructive dark:has-aria-invalid:ring-destructive/40",
+        "flex min-h-control flex-wrap items-center gap-1 rounded-control border border-input bg-transparent px-2.5 py-1 text-body leading-5 pointer-coarse:min-h-control-touch has-[input:focus-visible]:outline-2 has-[input:focus-visible]:-outline-offset-1 has-[input:focus-visible]:outline-ring has-aria-invalid:border-destructive has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 has-data-[slot=combobox-chip]:px-1 has-data-[slot=combobox-chip]:py-[3px] dark:has-aria-invalid:border-destructive dark:has-aria-invalid:ring-destructive/40",
         className
       )}
       {...props}
@@ -249,9 +249,12 @@ function ComboboxChip({
   className,
   children,
   showRemove = true,
+  removeLabel = "Remove",
   ...props
 }: ComboboxPrimitive.Chip.Props & {
   showRemove?: boolean
+  /** The remove button's accessible name; say which chip, as "Remove react". */
+  removeLabel?: string
 }) {
   return (
     <ComboboxPrimitive.Chip
@@ -268,6 +271,7 @@ function ComboboxChip({
           render={<Button variant="ghost" size="icon-xs" />}
           className="relative size-5 rounded-[4px] opacity-60 pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-transparent [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-100"
           data-slot="combobox-chip-remove"
+          aria-label={removeLabel}
         >
           <XIcon className="pointer-events-none size-3" />
         </ComboboxPrimitive.ChipRemove>
