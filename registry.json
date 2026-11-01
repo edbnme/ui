@@ -319,7 +319,8 @@
       ],
       "registryDependencies": [
         "https://ui.edbn.me/r/edbn-base.json",
-        "https://ui.edbn.me/r/button.json"
+        "https://ui.edbn.me/r/button.json",
+        "https://ui.edbn.me/r/progress.json"
       ],
       "files": [
         {

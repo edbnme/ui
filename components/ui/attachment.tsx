@@ -5,6 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Progress } from "@/components/ui/progress"
 
 const attachmentVariants = cva(
   "group/attachment relative flex w-fit max-w-full min-w-0 shrink-0 flex-wrap rounded-panel border border-transparent bg-card text-card-foreground transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none focus-within:outline-2 focus-within:outline-solid focus-within:outline-offset-2 focus-within:outline-ring has-[>a,>button]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-[color-mix(in_oklab,var(--card),var(--foreground)_4%)] data-[state=error]:border-destructive/30 data-[state=idle]:border-dashed",
@@ -126,6 +127,27 @@ function AttachmentDescription({
   )
 }
 
+// The upload's progress bar, under or beside the description. Once the
+// attachment is done it fades out and then hides (so screen readers skip
+// it); on an error or before an upload starts it steps aside, so the
+// description can say what happened. Leave `value` null while processing
+// for an indeterminate bar.
+function AttachmentProgress({
+  className,
+  ...props
+}: React.ComponentProps<typeof Progress>) {
+  return (
+    <Progress
+      data-slot="attachment-progress"
+      className={cn(
+        "min-w-0 flex-1 transition-[opacity,visibility] duration-300 motion-reduce:transition-none group-data-[state=done]/attachment:invisible group-data-[state=done]/attachment:opacity-0 group-data-[state=done]/attachment:delay-200 group-data-[state=error]/attachment:hidden group-data-[state=idle]/attachment:hidden",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 function AttachmentActions({
   className,
   ...props
@@ -201,6 +223,7 @@ export {
   AttachmentContent,
   AttachmentTitle,
   AttachmentDescription,
+  AttachmentProgress,
   AttachmentActions,
   AttachmentAction,
   AttachmentTrigger,
