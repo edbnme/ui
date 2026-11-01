@@ -35,13 +35,14 @@ function ItemSeparator({
 }
 
 const itemVariants = cva(
-  "group/item flex w-full flex-wrap items-center rounded-panel border text-body transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring [a]:transition-colors [a]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04]",
+  "group/item flex w-full flex-wrap items-center rounded-panel border text-body transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-ring [a]:transition-colors [a]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] [button,[role=button]]:text-start [button,[role=button]]:[@media(hover:hover)_and_(pointer:fine)]:hover:bg-foreground/[.04] [button,[role=button]]:aria-expanded:bg-foreground/[.04]",
   {
     variants: {
       variant: {
         default: "border-transparent",
         outline: "border-transparent bg-foreground/[.04]",
         muted: "border-transparent bg-muted",
+        bordered: "border-border/70 bg-transparent",
       },
       size: {
         default: "gap-3 px-4 py-4",
