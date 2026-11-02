@@ -267,10 +267,10 @@
       "description": "The edbn Button component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 6235,
-        "gzipped": 1490,
-        "selfSize": 6235,
-        "selfGzip": 1490
+        "minified": 6219,
+        "gzipped": 1479,
+        "selfSize": 6219,
+        "selfGzip": 1479
       },
       "dependencies": [
         {
@@ -325,10 +325,10 @@
       "description": "The edbn Card component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2910,
-        "gzipped": 822,
-        "selfSize": 2910,
-        "selfGzip": 822
+        "minified": 2937,
+        "gzipped": 831,
+        "selfSize": 2937,
+        "selfGzip": 831
       },
       "dependencies": [],
       "dependencyCount": 0
@@ -688,10 +688,10 @@
       "description": "The edbn Field component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 6854,
-        "gzipped": 1859,
-        "selfSize": 6854,
-        "selfGzip": 1859
+        "minified": 7042,
+        "gzipped": 1933,
+        "selfSize": 7042,
+        "selfGzip": 1933
       },
       "dependencies": [
         {
@@ -732,10 +732,10 @@
       "description": "The edbn Input Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 7607,
-        "gzipped": 2109,
-        "selfSize": 7607,
-        "selfGzip": 2109
+        "minified": 8297,
+        "gzipped": 2284,
+        "selfSize": 8297,
+        "selfGzip": 2284
       },
       "dependencies": [
         {
@@ -783,10 +783,10 @@
       "description": "The edbn Input component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1129,
-        "gzipped": 536,
-        "selfSize": 1129,
-        "selfGzip": 536
+        "minified": 1133,
+        "gzipped": 538,
+        "selfSize": 1133,
+        "selfGzip": 538
       },
       "dependencies": [
         {
@@ -992,10 +992,10 @@
       "description": "The edbn Meter component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2240,
-        "gzipped": 829,
-        "selfSize": 2240,
-        "selfGzip": 829
+        "minified": 2250,
+        "gzipped": 834,
+        "selfSize": 2250,
+        "selfGzip": 834
       },
       "dependencies": [
         {
@@ -1014,10 +1014,10 @@
       "description": "The edbn Native Select component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2391,
-        "gzipped": 918,
-        "selfSize": 2391,
-        "selfGzip": 918
+        "minified": 2539,
+        "gzipped": 953,
+        "selfSize": 2539,
+        "selfGzip": 953
       },
       "dependencies": [
         {
@@ -1072,10 +1072,10 @@
       "description": "The edbn Number Field component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 5176,
-        "gzipped": 1561,
-        "selfSize": 5176,
-        "selfGzip": 1561
+        "minified": 5180,
+        "gzipped": 1563,
+        "selfSize": 5180,
+        "selfGzip": 1563
       },
       "dependencies": [
         {
@@ -1145,10 +1145,10 @@
       "description": "The edbn Progress component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1820,
-        "gzipped": 567,
-        "selfSize": 1820,
-        "selfGzip": 567
+        "minified": 1830,
+        "gzipped": 572,
+        "selfSize": 1830,
+        "selfGzip": 572
       },
       "dependencies": [
         {
@@ -1167,10 +1167,10 @@
       "description": "The edbn Questionnaire component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10483,
-        "gzipped": 2034,
-        "selfSize": 10483,
-        "selfGzip": 2034
+        "minified": 10487,
+        "gzipped": 2029,
+        "selfSize": 10487,
+        "selfGzip": 2029
       },
       "dependencies": [
         {
@@ -1262,10 +1262,10 @@
       "description": "The edbn Select component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 8408,
-        "gzipped": 2411,
-        "selfSize": 8408,
-        "selfGzip": 2411
+        "minified": 8521,
+        "gzipped": 2435,
+        "selfSize": 8521,
+        "selfGzip": 2435
       },
       "dependencies": [
         {
@@ -1631,10 +1631,10 @@
       "description": "The edbn Toggle Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2842,
-        "gzipped": 868,
-        "selfSize": 2842,
-        "selfGzip": 868
+        "minified": 3302,
+        "gzipped": 947,
+        "selfSize": 3302,
+        "selfGzip": 947
       },
       "dependencies": [
         {
@@ -1660,10 +1660,10 @@
       "description": "The edbn Toggle component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2357,
-        "gzipped": 881,
-        "selfSize": 2357,
-        "selfGzip": 881
+        "minified": 2355,
+        "gzipped": 875,
+        "selfSize": 2355,
+        "selfGzip": 875
       },
       "dependencies": [
         {

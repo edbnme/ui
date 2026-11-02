@@ -52,15 +52,17 @@ function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const fieldVariants = cva(
-  "group/field flex w-full gap-3 pointer-coarse:has-[>[role=checkbox],[role=radio],[role=switch]]:min-h-control-touch data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),black_15%)] dark:data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),white_25%)]",
+  "group/field flex w-full pointer-coarse:has-[>[role=checkbox],[role=radio],[role=switch]]:min-h-control-touch data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),black_15%)] dark:data-[invalid=true]:text-[color-mix(in_oklch,var(--destructive),white_25%)]",
   {
     variants: {
       orientation: {
-        vertical: "flex-col *:w-full [&>.sr-only]:w-auto",
+        // A label sits 8px above its control, and a description or error 8px
+        // below it; side by side, a control and its label sit 12px apart.
+        vertical: "flex-col gap-2 *:w-full [&>.sr-only]:w-auto",
         horizontal:
-          "flex-row items-center has-[>[data-slot=field-content]]:items-start *:data-[slot=field-label]:flex-auto has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+          "flex-row items-center gap-3 has-[>[data-slot=field-content]]:items-start *:data-[slot=field-label]:flex-auto has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
         responsive:
-          "flex-col *:w-full @md/field-group:flex-row @md/field-group:items-center @md/field-group:*:w-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:*:data-[slot=field-label]:flex-auto [&>.sr-only]:w-auto @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+          "flex-col gap-2 *:w-full @md/field-group:flex-row @md/field-group:gap-3 @md/field-group:items-center @md/field-group:*:w-auto @md/field-group:has-[>[data-slot=field-content]]:items-start @md/field-group:*:data-[slot=field-label]:flex-auto [&>.sr-only]:w-auto @md/field-group:has-[>[data-slot=field-content]]:[&>[role=checkbox],[role=radio]]:mt-px",
       },
     },
     defaultVariants: {
@@ -221,7 +223,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
-      className={cn("text-body text-[color-mix(in_oklch,var(--destructive),black_15%)] dark:text-[color-mix(in_oklch,var(--destructive),white_25%)]", className)}
+      className={cn("text-small text-[color-mix(in_oklch,var(--destructive),black_15%)] dark:text-[color-mix(in_oklch,var(--destructive),white_25%)]", className)}
       {...props}
     >
       {content}
