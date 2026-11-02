@@ -992,10 +992,10 @@
       "description": "The edbn Meter component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2240,
-        "gzipped": 829,
-        "selfSize": 2240,
-        "selfGzip": 829
+        "minified": 2250,
+        "gzipped": 834,
+        "selfSize": 2250,
+        "selfGzip": 834
       },
       "dependencies": [
         {
@@ -1145,10 +1145,10 @@
       "description": "The edbn Progress component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1820,
-        "gzipped": 567,
-        "selfSize": 1820,
-        "selfGzip": 567
+        "minified": 1830,
+        "gzipped": 572,
+        "selfSize": 1830,
+        "selfGzip": 572
       },
       "dependencies": [
         {
