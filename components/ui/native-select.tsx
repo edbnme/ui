@@ -27,10 +27,10 @@ function NativeSelect({
       <select
         data-slot="native-select"
         data-size={size}
-        className="h-control w-full min-w-0 appearance-none rounded-control border border-input bg-transparent py-0 ps-3 pe-8 text-body pointer-coarse:h-control-touch pointer-coarse:text-base transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none select-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-1 focus-visible:outline-ring disabled:pointer-events-none aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=sm]:h-control-sm pointer-coarse:data-[size=sm]:h-control-lg dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/40"
+        className="h-control w-full min-w-0 appearance-none rounded-control border border-input bg-transparent py-0 ps-3 pe-8 text-body pointer-coarse:min-h-control-touch pointer-coarse:text-base transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none select-none selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground focus-visible:outline-2 focus-visible:outline-solid focus-visible:-outline-offset-1 focus-visible:outline-ring disabled:pointer-events-none aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-[size=sm]:h-control-sm data-[size=sm]:rounded-control-sm data-[size=sm]:ps-2.5 data-[size=sm]:pe-7 data-[size=sm]:text-small dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/40"
         {...props}
       />
-      <ChevronDownIcon className="pointer-events-none absolute top-1/2 end-2.5 size-4 -translate-y-1/2 text-muted-foreground select-none" aria-hidden="true" data-slot="native-select-icon" />
+      <ChevronDownIcon className="pointer-events-none absolute top-1/2 end-2.5 size-4 -translate-y-1/2 text-muted-foreground select-none group-data-[size=sm]/native-select:end-2 group-data-[size=sm]/native-select:size-3.5" aria-hidden="true" data-slot="native-select-icon" />
     </div>
   )
 }

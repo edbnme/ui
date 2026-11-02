@@ -26,7 +26,7 @@ function InputGroup({
       data-variant={variant}
       role="group"
       className={cn(
-        "group/input-group relative flex h-control w-full min-w-0 items-center rounded-control border border-input bg-transparent pointer-coarse:h-control-touch transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:outline-2 has-[[data-slot=input-group-control]:focus-visible]:outline-solid has-[[data-slot=input-group-control]:focus-visible]:-outline-offset-1 has-[[data-slot=input-group-control]:focus-visible]:outline-ring has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
+        "group/input-group relative flex h-control w-full min-w-0 items-center rounded-control border border-input bg-transparent pointer-coarse:min-h-control-touch transition-[color,background-color] duration-(--motion-duration-press) motion-reduce:transition-none outline-none has-disabled:opacity-50 has-[[data-slot=input-group-control]:focus-visible]:outline-2 has-[[data-slot=input-group-control]:focus-visible]:outline-solid has-[[data-slot=input-group-control]:focus-visible]:-outline-offset-1 has-[[data-slot=input-group-control]:focus-visible]:outline-ring has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-3 has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40 has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
         variant === "composer" &&
           "h-auto items-end gap-2 rounded-card border-transparent bg-muted py-2 ps-4 pe-2 pointer-coarse:h-auto *:data-[align^=inline]:m-0! *:data-[align^=inline]:p-0! has-[>[data-align^=block]]:items-stretch has-[>[data-align^=block]]:gap-0 has-[>[data-align^=block]]:p-0 *:data-[align=block-start]:px-4! *:data-[align=block-start]:pt-3! *:data-[align=block-start]:pb-0! *:data-[align=block-end]:px-2! *:data-[align=block-end]:pt-0! *:data-[align=block-end]:pb-2!",
         className
@@ -89,10 +89,15 @@ const inputGroupButtonVariants = cva(
   {
     variants: {
       size: {
-        xs: "relative h-control-xs gap-1 rounded-control-xs px-1.5 text-small pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 [&>svg:not([class*='size-'])]:size-3.5",
-        sm: "",
-        "icon-xs": "relative size-control-xs rounded-control-xs p-0 pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 has-[>svg]:p-0",
-        "icon-sm": "size-control-sm rounded-control-sm p-0 has-[>svg]:p-0",
+        // Inside a field a button keeps a 4px inset all round: 24px in the
+        // 32px field, 32px in the 40px touch field, with the field's radius
+        // less the inset. NumberField's steppers do the same.
+        xs: "relative h-control-xs gap-1 rounded-control-xs px-1.5 text-small pointer-coarse:h-control pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 [&_svg:not([class*='size-'])]:size-3.5",
+        // A 28px button, 2px in from the field's edge, so its radius is the
+        // field's less 2 (8px); 36px in the touch field.
+        sm: "h-control-sm gap-1 rounded-control-sm px-2 text-small pointer-coarse:h-control-lg pointer-coarse:min-h-0 pointer-coarse:min-w-0 [&_svg:not([class*='size-'])]:size-3.5",
+        "icon-xs": "relative size-control-xs rounded-control-xs p-0 pointer-coarse:size-control pointer-coarse:min-h-0 pointer-coarse:min-w-0 after:absolute after:-inset-2 has-[>svg]:p-0 [&_svg:not([class*='size-'])]:size-3.5",
+        "icon-sm": "size-control-sm rounded-control-sm p-0 pointer-coarse:size-control-lg pointer-coarse:min-h-0 pointer-coarse:min-w-0 has-[>svg]:p-0",
       },
     },
     defaultVariants: {
