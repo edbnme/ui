@@ -43,10 +43,54 @@ export const OFF_SCALE_CLASSES = [
   },
 ];
 
+// What a page built from the components (a block, a template, the site's
+// showcase) may not do on top of that. A component may: the tab list's 3px
+// inset and a 2px resize handle are part of its geometry, but a page that
+// picks its own px is a page that drifts from its neighbours.
+export const PAGE_OFF_SCALE_CLASSES = [
+  {
+    pattern:
+      /(?<![\w-])-?(min-|max-)?(h|w|size|[mp][xytblrse]?|gap(-[xy])?|space-[xy])-\[-?\d*\.?\d+(px|rem)\]/,
+    message:
+      "No arbitrary px or rem: use the control, width and spacing steps.",
+  },
+  {
+    pattern: /(?<![\w-])(size|h|w)-4\.5\b/,
+    message:
+      "Icons are size-3.5 beside text-small and size-4 beside text-body.",
+  },
+  {
+    pattern: /\bfont-\[\d|\[font-weight:\s*\d/,
+    message: "One weight: font-normal (480), from the tokens.",
+  },
+  {
+    pattern: /@(min|max)-\[\d*\.?\d+(px|rem)\]/,
+    message:
+      "Use the named container sizes (@xl, @2xl, @3xl, @5xl…), not a px breakpoint.",
+  },
+];
+
+// Raw elements at a control's height take the control tokens, which a
+// theme can change and the touch step follows. JSX-aware, so an icon's
+// size-6 is left alone: the site's edbn/consistent-control-size rule
+// applies it to lowercase elements only.
+export const RAW_CONTROL_HEIGHTS = {
+  pattern: /^(h-[68]|min-h-8|size-[68])$/,
+  tokens: {
+    "h-8": "h-control",
+    "min-h-8": "min-h-control",
+    "size-8": "size-control",
+    "h-6": "h-control-xs",
+    "size-6": "size-control-xs",
+  },
+};
+
 /** `no-restricted-syntax` entries for string literals and template text. */
-export const offScaleSyntax = OFF_SCALE_CLASSES.flatMap(
-  ({ pattern, message }) => [
+const toSyntax = (patterns) =>
+  patterns.flatMap(({ pattern, message }) => [
     { selector: `Literal[value=${pattern}]`, message },
     { selector: `TemplateElement[value.raw=${pattern}]`, message },
-  ]
-);
+  ]);
+
+export const offScaleSyntax = toSyntax(OFF_SCALE_CLASSES);
+export const pageOffScaleSyntax = toSyntax(PAGE_OFF_SCALE_CLASSES);
