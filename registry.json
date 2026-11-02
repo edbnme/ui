@@ -1405,6 +1405,32 @@
       }
     },
     {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "The edbn Number Field component with the shared Instrument Sans and paper surface foundation.",
+      "dependencies": [
+        "@base-ui/react@^1.8.0",
+        "lucide-react@^1.33.0"
+      ],
+      "registryDependencies": [
+        "https://ui.edbn.me/r/edbn-base.json"
+      ],
+      "files": [
+        {
+          "path": "components/ui/number-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/number-field.tsx"
+        }
+      ],
+      "categories": [
+        "ui"
+      ],
+      "meta": {
+        "license": "https://ui.edbn.me/docs/components/license"
+      }
+    },
+    {
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",

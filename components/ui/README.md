@@ -4,7 +4,7 @@ Source of truth for all distributable UI components. This directory is a git sub
 
 ## Contract
 
-- The 68 root files are the canonical public components built on the Base UI + Nova + neutral + Lucide preset, with edbn's authored appearance and motion.
+- The 69 root files are the canonical public components built on the Base UI + Nova + neutral + Lucide preset, with edbn's authored appearance and motion.
 - Import directly from `@/components/ui/<component>`; there is no barrel export.
 - Feature code owns the source after installation and may modify it locally.
 - Product blocks, layouts, recipes, and renderer helpers stay outside this directory.
