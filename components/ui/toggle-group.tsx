@@ -73,6 +73,8 @@ function ToggleGroupItem({
       data-spacing={context.spacing}
       className={cn(
         "shrink-0 group-data-[spacing=0]/toggle-group:rounded-none group-data-[spacing=0]/toggle-group:px-2 focus:z-10 focus-visible:z-10 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-end]:pe-1.5 group-data-[spacing=0]/toggle-group:has-data-[icon=inline-start]:ps-1.5 group-data-horizontal/toggle-group:data-[spacing=0]:first:rounded-s-control group-data-vertical/toggle-group:data-[spacing=0]:first:rounded-t-control group-data-horizontal/toggle-group:data-[spacing=0]:last:rounded-e-control group-data-vertical/toggle-group:data-[spacing=0]:last:rounded-b-control",
+        // A small segmented group takes the small control radius at its ends.
+        "group-data-horizontal/toggle-group:data-[spacing=0]:data-[size=sm]:first:rounded-s-control-sm group-data-vertical/toggle-group:data-[spacing=0]:data-[size=sm]:first:rounded-t-control-sm group-data-horizontal/toggle-group:data-[spacing=0]:data-[size=sm]:last:rounded-e-control-sm group-data-vertical/toggle-group:data-[spacing=0]:data-[size=sm]:last:rounded-b-control-sm",
         toggleVariants({
           variant: context.variant || variant,
           size: context.size || size,
