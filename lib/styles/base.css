@@ -89,7 +89,7 @@
     --text-headline: 1.875rem;
     --text-headline--line-height: 1.2;
     --text-headline--letter-spacing: -0.02em;
-    --text-display: clamp(2.25rem, 1.6rem + 2.2vw, 3.25rem);
+    --text-display: clamp(2.25rem, 1.6rem + 2.2cqi, 3.25rem);
     --text-display--line-height: 1.08;
     --text-display--letter-spacing: -0.03em;
 
