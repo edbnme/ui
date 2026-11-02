@@ -20,7 +20,7 @@ function Meter({
     <MeterPrimitive.Root
       data-slot="meter"
       data-over={over || undefined}
-      className={cn("group/meter flex w-full flex-wrap gap-3", className)}
+      className={cn("group/meter flex w-full flex-wrap gap-x-3 gap-y-2", className)}
       {...props}
     >
       {children}
