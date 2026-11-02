@@ -82,7 +82,10 @@ function CommandInput({
 }) {
   return (
     <div data-slot="command-input-wrapper" className="p-1 pb-0">
-      <InputGroup className="bg-background shadow-none *:data-[slot=input-group-addon]:ps-2.5!">
+      {/* An inline command list rings its field on keyboard focus like any
+          input group. In a dialog or popover the field holds focus from the
+          moment it opens, so a ring there would never go away. */}
+      <InputGroup className="bg-background shadow-none *:data-[slot=input-group-addon]:ps-2.5! [&:not([data-slot=dialog-content]_*,[data-slot=popover-content]_*)]:has-[[data-slot=command-input]:focus-visible]:outline-2 [&:not([data-slot=dialog-content]_*,[data-slot=popover-content]_*)]:has-[[data-slot=command-input]:focus-visible]:outline-solid [&:not([data-slot=dialog-content]_*,[data-slot=popover-content]_*)]:has-[[data-slot=command-input]:focus-visible]:-outline-offset-1 [&:not([data-slot=dialog-content]_*,[data-slot=popover-content]_*)]:has-[[data-slot=command-input]:focus-visible]:outline-ring">
         <CommandPrimitive.Input
           data-slot="command-input"
           className={cn(

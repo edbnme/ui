@@ -13,7 +13,7 @@
   "files": [
     {
       "path": "lib/utils.ts",
-      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { extendTailwindMerge } from \"tailwind-merge\"\n\n// edbn-base's size scale, so classes merge as Tailwind's own do: stock\n// tailwind-merge reads `text-small` as a text colour and drops it next to\n// `text-muted-foreground`, and keeps `h-control` beside a `className=\"h-9\"`\n// that should replace it.\nconst twMerge = extendTailwindMerge({\n  extend: {\n    theme: {\n      text: [\"body\", \"small\", \"micro\", \"stat\"],\n      radius: [\"card\", \"panel\", \"control\", \"control-sm\", \"control-xs\"],\n      spacing: [\n        \"control\",\n        \"control-xs\",\n        \"control-sm\",\n        \"control-lg\",\n        \"control-touch\",\n        \"token\",\n      ],\n      container: [\"menu\", \"popover\", \"compact\", \"dialog\", \"wide\"],\n    },\n  },\n})\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "content": "import { clsx, type ClassValue } from \"clsx\"\nimport { extendTailwindMerge } from \"tailwind-merge\"\n\n// edbn-base's size scale, so classes merge as Tailwind's own do: stock\n// tailwind-merge reads `text-small` as a text colour and drops it next to\n// `text-muted-foreground`, and keeps `h-control` beside a `className=\"h-9\"`\n// that should replace it.\nconst twMerge = extendTailwindMerge({\n  extend: {\n    theme: {\n      text: [\"body\", \"small\", \"micro\", \"stat\", \"title\", \"headline\", \"display\"],\n      radius: [\"card\", \"panel\", \"control\", \"control-sm\", \"control-xs\"],\n      spacing: [\n        \"control\",\n        \"control-xs\",\n        \"control-sm\",\n        \"control-lg\",\n        \"control-touch\",\n        \"token\",\n      ],\n      container: [\"menu\", \"popover\", \"compact\", \"dialog\", \"wide\", \"page\"],\n    },\n  },\n})\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
       "type": "registry:lib",
       "target": "@lib/utils.ts"
     },
@@ -63,6 +63,15 @@
       "text-stat": "1.375rem",
       "text-stat--line-height": "1.55",
       "text-stat--letter-spacing": "-0.035em",
+      "text-title": "1.25rem",
+      "text-title--line-height": "1.4",
+      "text-title--letter-spacing": "-0.01em",
+      "text-headline": "1.875rem",
+      "text-headline--line-height": "1.2",
+      "text-headline--letter-spacing": "-0.02em",
+      "text-display": "clamp(2.25rem, 1.6rem + 2.2cqi, 3.25rem)",
+      "text-display--line-height": "1.08",
+      "text-display--letter-spacing": "-0.03em",
       "font-weight-normal": "480",
       "font-mono": "\"Fragment Mono\", ui-monospace, \"SF Mono\", Menlo, monospace",
       "spacing-control-xs": "1.5rem",
@@ -75,7 +84,8 @@
       "container-popover": "18rem",
       "container-compact": "20rem",
       "container-dialog": "24rem",
-      "container-wide": "32rem"
+      "container-wide": "32rem",
+      "container-page": "72rem"
     },
     "light": {
       "background": "#fafaf9",

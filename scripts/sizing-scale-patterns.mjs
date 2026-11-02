@@ -6,11 +6,13 @@ export const OFF_SCALE_CLASSES = [
   {
     // 16px on touch inputs stops iOS zooming in.
     pattern: /(?<!pointer-coarse:)\btext-(xs|sm|base|lg|xl|[2-9]xl)\b/,
-    message: "Use text-body, text-small or text-micro.",
+    message:
+      "Use text-body, text-small, text-micro, text-stat, text-title, text-headline or text-display.",
   },
   {
     pattern: /\btext-\[(\d|\.\d|length:)/,
-    message: "Use text-body, text-small or text-micro, not an arbitrary size.",
+    message:
+      "Use text-body, text-small, text-micro, text-stat, text-title, text-headline or text-display, not an arbitrary size.",
   },
   {
     pattern: /\bleading-(snug|normal|relaxed|tight|loose|\[)/,
@@ -32,7 +34,7 @@ export const OFF_SCALE_CLASSES = [
     pattern:
       /\bmax-w-(xs|sm|md|lg|xl|[2-9]xl|\d+)\b|\bmax-w-\[\d+(px|rem)|(?<![\w-])w-\[\d{2,}/,
     message:
-      "Use the width tokens: menu, popover, compact, dialog or wide.",
+      "Use the width tokens: menu, popover, compact, dialog, wide or page.",
   },
   {
     pattern: /\b(min-)?h-(7|9|10|11|12)\b|\bsize-(9|10|11)\b/,

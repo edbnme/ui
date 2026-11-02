@@ -66,10 +66,13 @@
 
 /* One size scale for every component and block. Text is 15px for body,
    controls and titles, 13px for descriptions, labels and meta, and 12px
-   only for tokens such as badges and keys, all in one weight. Controls are
+   only for tokens such as badges and keys, all in one weight. Full-width
+   sections add three heading steps: title (20px) for a card or column
+   heading, headline (30px) for a section heading and display (36px to
+   52px with the viewport) for a page's one hero heading. Controls are
    32px tall by default, 28px for icon-only chrome and 24px inside a field;
    tall rows and touch targets are 40px. Popups and blocks take one of five
-   widths. */
+   widths, and sections centre their content in the 1152px page width. */
 @theme {
     --text-body: 0.9375rem;
     --text-body--line-height: 1.55;
@@ -80,6 +83,15 @@
     --text-stat: 1.375rem;
     --text-stat--line-height: 1.55;
     --text-stat--letter-spacing: -0.035em;
+    --text-title: 1.25rem;
+    --text-title--line-height: 1.4;
+    --text-title--letter-spacing: -0.01em;
+    --text-headline: 1.875rem;
+    --text-headline--line-height: 1.2;
+    --text-headline--letter-spacing: -0.02em;
+    --text-display: clamp(2.25rem, 1.6rem + 2.2cqi, 3.25rem);
+    --text-display--line-height: 1.08;
+    --text-display--letter-spacing: -0.03em;
 
     --font-weight-normal: 480;
     --font-mono: "Fragment Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -96,6 +108,7 @@
     --container-compact: 20rem;
     --container-dialog: 24rem;
     --container-wide: 32rem;
+    --container-page: 72rem;
 }
 
 :root,

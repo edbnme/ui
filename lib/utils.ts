@@ -8,7 +8,7 @@ import { extendTailwindMerge } from "tailwind-merge"
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      text: ["body", "small", "micro", "stat"],
+      text: ["body", "small", "micro", "stat", "title", "headline", "display"],
       radius: ["card", "panel", "control", "control-sm", "control-xs"],
       spacing: [
         "control",
@@ -18,7 +18,7 @@ const twMerge = extendTailwindMerge({
         "control-touch",
         "token",
       ],
-      container: ["menu", "popover", "compact", "dialog", "wide"],
+      container: ["menu", "popover", "compact", "dialog", "wide", "page"],
     },
   },
 })

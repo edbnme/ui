@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "summary": {
     "totalPackages": 12,
-    "totalComponents": 68,
+    "totalComponents": 69,
     "computedAt": "2026-08-23T00:00:00.000Z",
     "measurement": "component source bytes; external packages excluded"
   },
@@ -368,10 +368,10 @@
       "description": "The edbn Chart component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10444,
-        "gzipped": 2987,
-        "selfSize": 10444,
-        "selfGzip": 2987
+        "minified": 11057,
+        "gzipped": 3179,
+        "selfSize": 11057,
+        "selfGzip": 3179
       },
       "dependencies": [
         {
@@ -484,10 +484,10 @@
       "description": "The edbn Command component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 7214,
-        "gzipped": 2091,
-        "selfSize": 7214,
-        "selfGzip": 2091
+        "minified": 7946,
+        "gzipped": 2281,
+        "selfSize": 7946,
+        "selfGzip": 2281
       },
       "dependencies": [
         {
@@ -1014,10 +1014,10 @@
       "description": "The edbn Native Select component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2185,
-        "gzipped": 803,
-        "selfSize": 2185,
-        "selfGzip": 803
+        "minified": 2391,
+        "gzipped": 918,
+        "selfSize": 2391,
+        "selfGzip": 918
       },
       "dependencies": [
         {
@@ -1065,6 +1065,35 @@
         }
       ],
       "dependencyCount": 3
+    },
+    "static/number-field": {
+      "name": "number-field",
+      "title": "Number Field",
+      "description": "The edbn Number Field component with the shared Instrument Sans and paper surface foundation.",
+      "variant": "static",
+      "sizes": {
+        "minified": 5176,
+        "gzipped": 1561,
+        "selfSize": 5176,
+        "selfGzip": 1561
+      },
+      "dependencies": [
+        {
+          "name": "@base-ui/react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        },
+        {
+          "name": "lucide-react",
+          "size": 0,
+          "gzip": 0,
+          "source": "unknown",
+          "note": "External package size is excluded from the local source measurement."
+        }
+      ],
+      "dependencyCount": 2
     },
     "static/pagination": {
       "name": "pagination",
