@@ -390,10 +390,10 @@
       "description": "The edbn Checkbox component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2091,
-        "gzipped": 758,
-        "selfSize": 2091,
-        "selfGzip": 758
+        "minified": 2055,
+        "gzipped": 748,
+        "selfSize": 2055,
+        "selfGzip": 748
       },
       "dependencies": [
         {
