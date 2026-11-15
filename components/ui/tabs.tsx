@@ -23,8 +23,10 @@ function Tabs({
   )
 }
 
+// A list given overflow-x-auto scrolls sideways without drawing scrollbars
+// inside the 32px pill; arrow keys and swipes still reach every tab.
 const tabsListVariants = cva(
-  "group/tabs-list relative isolate inline-flex w-fit items-center justify-center rounded-control p-[3px] text-muted-foreground group-data-horizontal/tabs:h-control pointer-coarse:min-h-control-touch group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col data-[variant=line]:rounded-none",
+  "group/tabs-list relative isolate inline-flex w-fit items-center justify-center rounded-control p-[3px] text-muted-foreground group-data-horizontal/tabs:h-control pointer-coarse:min-h-control-touch group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col data-[variant=line]:rounded-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
   {
     variants: {
       variant: {
