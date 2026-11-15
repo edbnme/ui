@@ -136,8 +136,10 @@
     --accent: #f1f1ef;
     --accent-foreground: #121214;
     --destructive: oklch(0.577 0.245 27.325);
-    --border: #e6e5e2;
-    --input: #8b8a91;
+    --border: #dfded9;
+    /* Fields rest on a quiet edge, so an idle field never reads as chosen;
+       focus draws the edge in ink. More contrast brings back the 3:1 edge. */
+    --input: #d9d8d4;
     /* Focus rings are ink, like every other "on" state: monochrome. */
     --ring: #121214;
     --chart-1: oklch(0.87 0 0);
@@ -152,7 +154,7 @@
     --sidebar-primary-foreground: #fafaf9;
     --sidebar-accent: #f1f1ef;
     --sidebar-accent-foreground: #121214;
-    --sidebar-border: #e6e5e2;
+    --sidebar-border: #dfded9;
     --sidebar-ring: #121214;
     /* Shadows mean elevation, so only floating layers use them: menus and
        popovers (white paper with a hairline ring), then dialogs, sheets and
@@ -178,9 +180,8 @@
     --accent: #262624;
     --accent-foreground: #f1f1ef;
     --destructive: oklch(0.704 0.191 22.216);
-    --border: #2b2a27;
-    /* 3.5:1 on the page and 3.3:1 on cards, so field edges stay visible. */
-    --input: #6f6d67;
+    --border: #32312d;
+    --input: #3b3a36;
     --ring: #f1f1ef;
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
@@ -193,11 +194,22 @@
     --sidebar-primary-foreground: #141413;
     --sidebar-accent: #1d1d1b;
     --sidebar-accent-foreground: #f1f1ef;
-    --sidebar-border: #2b2a27;
+    --sidebar-border: #32312d;
     --sidebar-ring: #f1f1ef;
     --elevation-popup: 0 0 0 1px rgb(255 255 255 / 0.08), 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 16px -6px rgb(0 0 0 / 0.45), 0 20px 32px -12px rgb(0 0 0 / 0.55);
     --elevation-lift: 0 0 0 1px rgb(255 255 255 / 0.06), 0 1px 1px rgb(0 0 0 / 0.3), 0 10px 18px -6px rgb(0 0 0 / 0.4), 0 28px 44px -16px rgb(0 0 0 / 0.5);
     color-scheme: dark;
+}
+
+/* With more contrast asked for, fields get their 3:1 edge back. */
+@media (prefers-contrast: more) {
+  :root,
+  .light {
+    --input: #8b8a91;
+  }
+  .dark {
+    --input: #6f6d67;
+  }
 }
 
 @layer base {
