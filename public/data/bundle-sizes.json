@@ -390,10 +390,10 @@
       "description": "The edbn Checkbox component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2224,
-        "gzipped": 798,
-        "selfSize": 2224,
-        "selfGzip": 798
+        "minified": 2069,
+        "gzipped": 751,
+        "selfSize": 2069,
+        "selfGzip": 751
       },
       "dependencies": [
         {
@@ -1167,10 +1167,10 @@
       "description": "The edbn Questionnaire component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 10495,
-        "gzipped": 2035,
-        "selfSize": 10495,
-        "selfGzip": 2035
+        "minified": 10494,
+        "gzipped": 2033,
+        "selfSize": 10494,
+        "selfGzip": 2033
       },
       "dependencies": [
         {
@@ -1196,10 +1196,10 @@
       "description": "The edbn Radio Group component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 2123,
-        "gzipped": 757,
-        "selfSize": 2123,
-        "selfGzip": 757
+        "minified": 1968,
+        "gzipped": 709,
+        "selfSize": 1968,
+        "selfGzip": 709
       },
       "dependencies": [
         {
@@ -1472,10 +1472,10 @@
       "description": "The edbn Switch component with the shared Instrument Sans and paper surface foundation.",
       "variant": "static",
       "sizes": {
-        "minified": 1944,
-        "gzipped": 730,
-        "selfSize": 1944,
-        "selfGzip": 730
+        "minified": 1951,
+        "gzipped": 735,
+        "selfSize": 1951,
+        "selfGzip": 735
       },
       "dependencies": [
         {
