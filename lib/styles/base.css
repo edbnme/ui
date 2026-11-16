@@ -26,6 +26,7 @@
     --color-chart-1: var(--chart-1);
     --color-ring: var(--ring);
     --color-input: var(--input);
+    --color-control-edge: var(--control-edge);
     --color-border: var(--border);
     --color-destructive: var(--destructive);
     --color-accent-foreground: var(--accent-foreground);
@@ -140,6 +141,9 @@
     /* Fields rest on a quiet edge, so an idle field never reads as chosen;
        focus draws the edge in ink. More contrast brings back the 3:1 edge. */
     --input: #d9d8d4;
+    /* Controls drawn as nothing but an edge or a track (checkbox, radio, an
+       off switch) keep 3:1, or they'd disappear. */
+    --control-edge: #8b8a91;
     /* Focus rings are ink, like every other "on" state: monochrome. */
     --ring: #121214;
     --chart-1: oklch(0.87 0 0);
@@ -182,6 +186,7 @@
     --destructive: oklch(0.704 0.191 22.216);
     --border: #32312d;
     --input: #3b3a36;
+    --control-edge: #6f6d67;
     --ring: #f1f1ef;
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
